@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+actor "Lab Technician" as LT
+control "Doctor" as D
+control "Insurance Provider" as IP
+entity "Receptionist" as R
+R --> IP : Examine Patient
+D --> R : Book Appointment
+IP -> R : Discharge Patient
+activate R
+R --> IP : ACK
+deactivate R
+IP ->> LT : Admit Patient
+activate LT
+LT --> IP : ACK
+deactivate LT
+note over LT : processing admit patient
+@enduml

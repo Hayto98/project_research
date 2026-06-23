@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+abstract class DeliveryNote {
+  -float level
+  +int email
+  +boolean quantity
+  -String total
+  +int score
+  +createCode()
+}
+abstract class Depot {
+  #Date note
+  -boolean score
+  +int total
+  -float id
+  +createPrice()
+  +validateUpdatedat()
+}
+abstract class Inventory {
+  +Date score
+  -int id
+  +String amount
+  #int updatedAt
+  +setEmail()
+}
+class Manifest {
+  -boolean quantity
+  -int createdAt
+  +updateActive()
+}
+class FuelLog {
+  -long email
+  -String price
+  -float createdAt
+  +float code
+  +getUpdatedat()
+  +getActive()
+  +findName()
+}
+DeliveryNote ..> Inventory : "1"
+Inventory ..> Depot : "1..*"
+DeliveryNote --> FuelLog : "0..1"
+note right of DeliveryNote : Logistics domain
+@enduml

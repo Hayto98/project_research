@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+start
+:Cancel Reservation;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Check In;
+:Process Payment;
+:Order Room Service;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Clean Room;
+:Check Out;
+stop
+@enduml

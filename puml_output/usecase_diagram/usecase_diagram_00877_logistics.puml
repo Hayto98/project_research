@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+left to right direction
+actor "Fleet Manager" as FleetManager
+actor "Driver" as Driver
+actor "Dispatcher" as Dispatcher
+rectangle "Logistics System" {
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+}
+FleetManager --> UC_ReportIssue
+Driver --> UC_ReportIssue
+Driver --> UC_DeliverPackage
+Driver --> UC_TrackShipment
+Dispatcher --> UC_DeliverPackage
+Dispatcher --> UC_TrackShipment
+Dispatcher --> UC_FuelVehicle
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+component "Manifest Service" as C_ManifestService
+component "Inventory Service" as C_InventoryService
+component "Warehouse Service" as C_WarehouseService
+component "Tracking Service" as C_TrackingService
+database "Logistics DB" as DB_logistics
+C_WarehouseService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_InventoryService ..> C_ManifestService : MQ
+C_WarehouseService ..> C_ManifestService : REST
+C_WarehouseService ..> C_TrackingService : MQ
+@enduml

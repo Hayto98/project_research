@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+class Insurance {
+  #Date phone
+  #String createdAt
+  +long updatedAt
+  +long status
+  +sendEmail()
+  +setPhone()
+  +deleteActive()
+}
+abstract class Appointment {
+  #String createdAt
+  #long quantity
+  -Date description
+  +processUpdatedat()
+  +saveDescription()
+  +cancelPhone()
+}
+class LabTest {
+  -String createdAt
+  #boolean amount
+  -boolean status
+  -Date price
+  -float score
+  +saveStatus()
+  +processAddress()
+}
+interface MedicalRecord {
+  -double price
+  +String updatedAt
+  +saveName()
+  +calculateLevel()
+}
+abstract class Hospital {
+  +String id
+  #String active
+  #double address
+  #Date quantity
+  #long amount
+  +processActive()
+  +updateScore()
+  +sendId()
+  +processType()
+}
+interface Nurse {
+  -int description
+  -String level
+  -int address
+  +createCode()
+  +deleteId()
+  +createTotal()
+}
+MedicalRecord --o Nurse
+LabTest --> Appointment : "0..1"
+Nurse ..> Appointment : "1..*"
+Nurse ..> MedicalRecord : "*"
+Insurance --> MedicalRecord : "*"
+note right of Insurance : Healthcare domain
+@enduml

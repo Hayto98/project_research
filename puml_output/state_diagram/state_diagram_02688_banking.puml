@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+[*] --> Cancelled
+Cancelled --> Draft : confirm
+Draft --> Created : submit
+Draft : entry / log branch
+Created --> Active : cancel
+Active --> Closed : reject
+Active : entry / log branch
+Closed --> Reviewed : cancel
+Cancelled --> Draft : revert
+Reviewed --> [*]
+@enduml

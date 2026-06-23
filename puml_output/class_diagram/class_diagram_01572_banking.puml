@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+class Interest {
+  -long amount
+  #float description
+  -boolean level
+  +long id
+  +int status
+  +processUpdatedat()
+  +processAddress()
+}
+class Transfer {
+  -double phone
+  +Date updatedAt
+  -boolean status
+  +createType()
+  +validateActive()
+  +saveScore()
+}
+abstract class Account {
+  -float total
+  -boolean active
+  -int status
+  +boolean description
+  +cancelNote()
+  +findDuration()
+}
+class Teller {
+  #boolean duration
+  #double price
+  -String updatedAt
+  +String address
+  #long note
+  +getStatus()
+  +updateNote()
+}
+class Customer {
+  -boolean name
+  +float level
+  +calculatePrice()
+}
+abstract class Beneficiary {
+  #float email
+  -float code
+  -String phone
+  +boolean name
+  #int description
+  +sendPhone()
+  +getDescription()
+  +setAmount()
+  +validateQuantity()
+}
+Transfer --|> Interest
+Beneficiary --o Interest
+Customer ..|> Account
+Interest --* Beneficiary
+note right of Interest : Banking domain
+@enduml

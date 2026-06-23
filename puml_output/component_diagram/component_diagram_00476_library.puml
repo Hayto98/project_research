@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+component "Book Service" as C_BookService
+component "Renewal Service" as C_RenewalService
+component "Fine Service" as C_FineService
+component "Publisher Service" as C_PublisherService
+database "Library DB" as DB_library
+C_RenewalService --> DB_library
+C_FineService --> DB_library
+C_RenewalService ..> C_BookService : REST
+C_PublisherService ..> C_RenewalService : gRPC
+C_RenewalService ..> C_PublisherService : HTTP
+@enduml

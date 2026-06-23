@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+participant "Seller" as S
+control "Payment Gateway" as PG
+actor "Delivery Service" as DS
+DS --> PG : Cancel Order
+DS --> PG : Manage Inventory
+DS -> S : Add To Cart
+S ->> PG : Checkout
+activate PG
+PG --> S : ACK
+deactivate PG
+DS -> PG : Track Order
+DS --> S : Browse Products
+activate S
+S --> DS : ACK
+deactivate S
+PG --> DS : Make Payment
+@enduml

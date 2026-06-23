@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+class Attendance {
+  -long status
+  +double email
+  +int type
+  +updateCode()
+  +sendPhone()
+}
+class Course {
+  +float updatedAt
+  +long phone
+  #double total
+  +sendScore()
+  +updateDuration()
+}
+class Teacher {
+  -Date email
+  -Date note
+  -int phone
+  #String duration
+  +String score
+  +getLevel()
+  +saveTotal()
+}
+class Assignment {
+  -Date createdAt
+  -Date status
+  +validateUpdatedat()
+}
+abstract class Enrollment {
+  #double code
+  -int type
+  +cancelActive()
+  +saveScore()
+}
+class Department {
+  +int status
+  +long id
+  #double type
+  #long active
+  -int createdAt
+  +validateLevel()
+  +deleteScore()
+  +getCode()
+}
+Course --|> Attendance
+Attendance --* Course
+Course --> Teacher : "1"
+Attendance --o Teacher
+note right of Attendance : Education domain
+@enduml

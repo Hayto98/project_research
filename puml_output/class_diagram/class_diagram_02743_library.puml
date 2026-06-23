@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+class Renewal {
+  +long name
+  +double createdAt
+  -long email
+  +boolean phone
+  +cancelEmail()
+  +updateStatus()
+  +deleteActive()
+  +calculateStatus()
+}
+interface Catalog {
+  +long total
+  -int email
+  +deleteType()
+  +sendLevel()
+}
+class Publisher {
+  #int note
+  -Date status
+  +getType()
+  +cancelActive()
+  +sendType()
+  +calculateStatus()
+}
+interface Fine {
+  -double type
+  -float note
+  +deleteDuration()
+  +saveScore()
+  +sendNote()
+}
+class Shelf {
+  +boolean price
+  -String phone
+  +setLevel()
+}
+interface Member {
+  #long note
+  #int description
+  #double active
+  -long status
+  +sendNote()
+  +getStatus()
+  +calculateActive()
+  +findTotal()
+}
+Fine --|> Shelf
+Publisher --> Renewal : "*"
+Fine ..|> Renewal
+Fine --o Publisher
+Member --> Catalog : "0..1"
+note right of Renewal : Library domain
+@enduml

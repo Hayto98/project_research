@@ -1,0 +1,13 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+[*] --> Cancelled
+Cancelled --> OnHold : update
+Cancelled : entry / log patient
+OnHold --> Processing : process
+Processing --> Draft : confirm
+Processing : entry / log patient
+Draft --> Closed : approve
+Closed --> Draft : revert
+Closed --> [*]
+@enduml

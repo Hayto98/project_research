@@ -1,0 +1,20 @@
+@startuml
+
+component "Notification Service" as C_NotificationService
+component "Profile Service" as C_ProfileService
+component "Group Service" as C_GroupService
+component "Post Service" as C_PostService
+component "Story Service" as C_StoryService
+component "Hashtag Service" as C_HashtagService
+component "Album Service" as C_AlbumService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_GroupService --> DB_social_media
+C_PostService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_ProfileService ..> C_AlbumService : HTTP
+C_GroupService ..> C_PostService : REST
+C_AlbumService ..> C_HashtagService : REST
+C_AlbumService ..> C_PostService : gRPC
+@enduml

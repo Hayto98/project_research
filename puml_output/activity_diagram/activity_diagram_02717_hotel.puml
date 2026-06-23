@@ -1,0 +1,33 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+start
+:Request Service;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Book Room;
+:Clean Room;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Cancel Reservation;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Process Payment;
+stop
+@enduml

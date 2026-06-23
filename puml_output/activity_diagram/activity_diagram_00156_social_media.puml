@@ -1,0 +1,37 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+start
+:Edit Profile;
+:Send Message;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Create Post;
+:Report Content;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Follow User;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Share Post;
+:Comment;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+stop
+@enduml

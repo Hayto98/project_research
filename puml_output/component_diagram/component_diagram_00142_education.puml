@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Course Service" as C_CourseService
+component "Department Service" as C_DepartmentService
+component "Attendance Service" as C_AttendanceService
+component "Classroom Service" as C_ClassroomService
+database "Education DB" as DB_education
+C_CourseService --> DB_education
+C_AttendanceService --> DB_education
+C_ClassroomService --> DB_education
+C_ClassroomService ..> C_AttendanceService : MQ
+C_ClassroomService ..> C_DepartmentService : MQ
+@enduml

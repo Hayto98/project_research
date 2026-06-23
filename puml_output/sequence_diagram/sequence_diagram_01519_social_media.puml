@@ -1,0 +1,26 @@
+@startuml
+skinparam ArrowColor #555555
+control "Admin" as A
+actor "Moderator" as M
+control "Advertiser" as A2
+participant "User" as U
+A -> U : Like Post
+note over U : processing like post
+A --> A2 : Share Post
+note over A2 : processing share post
+M --> A : Comment
+note over A : processing comment
+A2 --> U : Send Message
+activate U
+U --> A2 : ACK
+deactivate U
+A ->> A2 : Edit Profile
+A -> U : Follow User
+activate U
+U --> A : ACK
+deactivate U
+A --> M : Report Content
+activate M
+M --> A : ACK
+deactivate M
+@enduml

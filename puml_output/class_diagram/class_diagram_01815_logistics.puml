@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Manifest {
+  +double total
+  #double phone
+  -long price
+  +String email
+  +sendScore()
+  +findStatus()
+  +saveUpdatedat()
+  +deleteAmount()
+}
+class DeliveryNote {
+  +long updatedAt
+  #double active
+  +sendPrice()
+  +setActive()
+}
+class FuelLog {
+  #String active
+  #String duration
+  +validateLevel()
+}
+class Tracking {
+  #Date createdAt
+  +float quantity
+  #float duration
+  #int score
+  +saveCode()
+  +getEmail()
+  +deleteUpdatedat()
+}
+class Customer {
+  #double quantity
+  #float score
+  +sendAddress()
+  +findTotal()
+  +validateActive()
+}
+interface Package {
+  -double createdAt
+  -float name
+  #float description
+  +cancelEmail()
+  +findDuration()
+  +findId()
+}
+class Depot {
+  -long level
+  -boolean price
+  +int type
+  +getCode()
+  +saveStatus()
+  +processEmail()
+  +calculateTotal()
+}
+Tracking --o Package
+FuelLog --> DeliveryNote : "*"
+DeliveryNote ..|> FuelLog
+Customer ..> FuelLog : "1"
+Depot --> Package : "1..*"
+note right of Manifest : Logistics domain
+@enduml

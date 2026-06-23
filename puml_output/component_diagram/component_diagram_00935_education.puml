@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Teacher Service" as C_TeacherService
+component "Exam Service" as C_ExamService
+component "Enrollment Service" as C_EnrollmentService
+component "Student Service" as C_StudentService
+component "Library Service" as C_LibraryService
+component "Classroom Service" as C_ClassroomService
+database "Education DB" as DB_education
+C_TeacherService --> DB_education
+C_EnrollmentService --> DB_education
+C_LibraryService --> DB_education
+C_ClassroomService --> DB_education
+C_TeacherService ..> C_ClassroomService : HTTP
+C_LibraryService ..> C_ClassroomService : REST
+C_EnrollmentService ..> C_ClassroomService : REST
+C_LibraryService ..> C_StudentService : gRPC
+@enduml

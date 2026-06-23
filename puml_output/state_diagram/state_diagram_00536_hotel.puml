@@ -1,0 +1,12 @@
+@startuml
+skinparam ArrowColor #555555
+[*] --> Rejected
+Rejected --> Pending : review
+Pending --> OnHold : process
+Pending : entry / log checkout
+OnHold --> Shipped : reject
+Shipped --> Delivered : submit
+Delivered --> Active : reject
+OnHold --> Pending : revert
+Active --> [*]
+@enduml

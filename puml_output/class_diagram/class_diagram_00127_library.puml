@@ -1,0 +1,61 @@
+@startuml
+skinparam defaultFontSize 11
+interface Member {
+  +long description
+  -double quantity
+  #long total
+  +float phone
+  +double id
+  +updateActive()
+}
+class Fine {
+  -boolean active
+  -boolean duration
+  -float amount
+  +saveName()
+  +validateDuration()
+  +findActive()
+  +updatePrice()
+}
+class Librarian {
+  #boolean duration
+  -float code
+  #double updatedAt
+  +deleteDescription()
+  +validateCreatedat()
+  +calculateLevel()
+  +deleteNote()
+}
+abstract class Renewal {
+  -Date duration
+  #long code
+  +updateActive()
+  +sendScore()
+  +cancelQuantity()
+  +findName()
+}
+interface Book {
+  +long code
+  #float createdAt
+  -double active
+  -String quantity
+  +setScore()
+}
+interface Loan {
+  +boolean total
+  +float score
+  -String email
+  #int price
+  #long duration
+  +findNote()
+  +calculateDescription()
+  +validateCreatedat()
+  +cancelPhone()
+}
+Book --> Librarian : "1"
+Librarian ..|> Member
+Fine --|> Book
+Loan ..> Renewal : "*"
+Renewal --o Book
+note right of Member : Library domain
+@enduml

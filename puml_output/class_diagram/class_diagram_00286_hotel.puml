@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class CheckOut {
+  -long duration
+  -int score
+  #float description
+  #int active
+  #String note
+  +processAmount()
+  +getTotal()
+}
+abstract class Housekeeping {
+  #String address
+  -long code
+  +deleteCreatedat()
+  +deleteCode()
+}
+class Amenity {
+  #String note
+  -double type
+  +findQuantity()
+  +getActive()
+  +deleteDescription()
+  +validateDescription()
+}
+class Reservation {
+  -String total
+  -double type
+  +Date duration
+  +cancelEmail()
+  +updateActive()
+}
+class Payment {
+  #Date active
+  -int email
+  -int code
+  +setTotal()
+  +getUpdatedat()
+}
+class CheckIn {
+  +boolean id
+  +int score
+  -double type
+  +createAddress()
+  +validateQuantity()
+  +createQuantity()
+  +findName()
+}
+class Booking {
+  #long phone
+  +int quantity
+  +boolean status
+  #int price
+  +float level
+  +cancelPhone()
+  +findCode()
+  +findLevel()
+  +setId()
+}
+CheckIn ..> Reservation : "*"
+Payment --|> Reservation
+CheckIn --o Booking
+note right of CheckOut : Hotel domain
+@enduml

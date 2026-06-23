@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+actor "Nurse" as N
+entity "Receptionist" as R
+control "Patient" as P
+R -> P : Run Lab Test
+note over P : processing run lab test
+N ->> R : Book Appointment
+note over R : processing book appointment
+R ->> N : Process Insurance Claim
+note over N : processing process insurance claim
+R ->> P : Examine Patient
+activate P
+P --> R : ACK
+deactivate P
+note over P : processing examine patient
+R ->> N : Admit Patient
+N --> R : Update Medical Record
+P ->> N : Discharge Patient
+@enduml

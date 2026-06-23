@@ -1,0 +1,16 @@
+@startuml
+skinparam defaultFontSize 13
+boundary "Nurse" as N
+boundary "Lab Technician" as LT
+boundary "Insurance Provider" as IP
+actor "Receptionist" as R
+participant "Patient" as P
+IP ->> LT : Discharge Patient
+P --> N : Process Insurance Claim
+activate N
+N --> P : ACK
+deactivate N
+LT ->> IP : Examine Patient
+note over IP : processing examine patient
+R --> P : Admit Patient
+@enduml

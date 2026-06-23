@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing true
+component "Insurance Service" as C_InsuranceService
+component "LabTest Service" as C_LabTestService
+component "Diagnosis Service" as C_DiagnosisService
+component "Doctor Service" as C_DoctorService
+database "Healthcare DB" as DB_healthcare
+C_InsuranceService --> DB_healthcare
+C_LabTestService --> DB_healthcare
+C_DiagnosisService --> DB_healthcare
+C_DoctorService --> DB_healthcare
+C_LabTestService ..> C_DoctorService : REST
+C_DoctorService ..> C_DiagnosisService : gRPC
+@enduml

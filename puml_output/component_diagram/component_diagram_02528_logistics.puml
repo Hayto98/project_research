@@ -1,0 +1,21 @@
+@startuml
+
+component "Shipment Service" as C_ShipmentService
+component "Inventory Service" as C_InventoryService
+component "Vehicle Service" as C_VehicleService
+component "FuelLog Service" as C_FuelLogService
+component "Package Service" as C_PackageService
+component "Warehouse Service" as C_WarehouseService
+component "Customer Service" as C_CustomerService
+database "Logistics DB" as DB_logistics
+C_ShipmentService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_PackageService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_CustomerService --> DB_logistics
+C_FuelLogService ..> C_WarehouseService : REST
+C_FuelLogService ..> C_WarehouseService : HTTP
+C_InventoryService ..> C_FuelLogService : REST
+C_FuelLogService ..> C_WarehouseService : MQ
+@enduml

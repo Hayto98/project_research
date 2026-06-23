@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 11
+entity "Payment Gateway" as PG
+entity "Admin" as A
+entity "Delivery Service" as DS
+control "Customer" as C
+control "Seller" as S
+A -> DS : Checkout
+note over DS : processing checkout
+S --> PG : Apply Coupon
+note over PG : processing apply coupon
+A --> C : Manage Inventory
+note over C : processing manage inventory
+C -> S : Cancel Order
+activate S
+S --> C : ACK
+deactivate S
+note over S : processing cancel order
+DS -> A : Make Payment
+C -> A : Browse Products
+DS -> S : Add To Cart
+@enduml

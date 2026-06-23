@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+component "Depot Service" as C_DepotService
+component "Inventory Service" as C_InventoryService
+component "Customer Service" as C_CustomerService
+component "Shipment Service" as C_ShipmentService
+database "Logistics DB" as DB_logistics
+C_DepotService --> DB_logistics
+C_InventoryService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_CustomerService ..> C_InventoryService : gRPC
+C_ShipmentService ..> C_DepotService : HTTP
+@enduml

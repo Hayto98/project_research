@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+control "Fleet Manager" as FM
+entity "Driver" as D
+boundary "Warehouse Staff" as WS
+D -> WS : Report Issue
+note over WS : processing report issue
+WS --> D : Schedule Pickup
+activate D
+D --> WS : ACK
+deactivate D
+WS -> FM : Update Inventory
+FM --> D : Load Package
+activate D
+D --> FM : ACK
+deactivate D
+@enduml

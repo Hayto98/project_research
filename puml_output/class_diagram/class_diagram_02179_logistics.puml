@@ -1,0 +1,53 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+interface Tracking {
+  -double note
+  -float address
+  +Date createdAt
+  -Date name
+  #float description
+  +findType()
+  +findLevel()
+  +updateDuration()
+  +calculateAddress()
+}
+class Vehicle {
+  -boolean duration
+  #boolean email
+  +deleteDuration()
+}
+class DeliveryNote {
+  #int id
+  -String total
+  -long price
+  -Date type
+  +validateTotal()
+  +setDescription()
+  +getActive()
+  +processNote()
+}
+abstract class Package {
+  #float duration
+  #double total
+  -long email
+  +long active
+  +findQuantity()
+  +deletePrice()
+  +validatePrice()
+  +sendPhone()
+}
+abstract class Driver {
+  -int duration
+  -long quantity
+  -long description
+  -int name
+  -String updatedAt
+  +cancelCode()
+}
+Package --o Tracking
+Package ..|> Driver
+Tracking --> DeliveryNote : "1"
+Driver --* Package
+note right of Tracking : Logistics domain
+@enduml

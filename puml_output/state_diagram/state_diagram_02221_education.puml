@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+[*] --> Archived
+Archived --> Delivered : process
+Delivered --> Pending : process
+Delivered : entry / log library
+Pending --> Draft : confirm
+Pending : entry / log library
+Draft --> Cancelled : confirm
+Cancelled --> Processing : approve
+Pending --> Archived : revert
+Processing --> [*]
+@enduml

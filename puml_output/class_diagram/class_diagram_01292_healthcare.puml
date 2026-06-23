@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+class Appointment {
+  #Date code
+  #String duration
+  -Date amount
+  +createDescription()
+}
+abstract class Diagnosis {
+  +int active
+  -String email
+  #double total
+  -boolean updatedAt
+  +long name
+  +getTotal()
+  +cancelAddress()
+  +findType()
+  +getStatus()
+}
+class Treatment {
+  +float address
+  #float total
+  #boolean description
+  -double createdAt
+  +String active
+  +cancelDescription()
+}
+class Ward {
+  +long quantity
+  #float level
+  -String description
+  -long createdAt
+  #long type
+  +findAmount()
+}
+abstract class Prescription {
+  -Date duration
+  +long name
+  #int address
+  #float id
+  +getPrice()
+  +updateNote()
+  +createTotal()
+  +createId()
+}
+class Nurse {
+  -boolean name
+  +float email
+  +deleteUpdatedat()
+  +setLevel()
+  +processAmount()
+}
+Nurse --|> Treatment
+Prescription --* Appointment
+Appointment --o Diagnosis
+Nurse --> Ward : "1"
+Ward --* Diagnosis
+note right of Appointment : Healthcare domain
+@enduml

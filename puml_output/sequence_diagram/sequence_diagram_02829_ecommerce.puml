@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+boundary "Seller" as S
+control "Delivery Service" as DS
+participant "Customer" as C
+control "Payment Gateway" as PG
+PG --> DS : Add To Cart
+S --> PG : Write Review
+activate PG
+PG --> S : ACK
+deactivate PG
+PG -> C : Apply Coupon
+S -> PG : Track Order
+activate PG
+PG --> S : ACK
+deactivate PG
+S --> C : Checkout
+activate C
+C --> S : ACK
+deactivate C
+S ->> DS : Browse Products
+activate DS
+DS --> S : ACK
+deactivate DS
+@enduml

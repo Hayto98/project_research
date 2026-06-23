@@ -1,0 +1,56 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+class Coupon {
+  #Date level
+  +String amount
+  #float quantity
+  +findNote()
+}
+class Customer {
+  #long id
+  +double code
+  +long createdAt
+  +double level
+  +validateLevel()
+  +updateDuration()
+  +saveActive()
+}
+abstract class Supplier {
+  +String address
+  -String updatedAt
+  #long status
+  #float active
+  -Date price
+  +sendName()
+}
+class Warehouse {
+  #long duration
+  -int type
+  +validateId()
+  +getType()
+}
+class Product {
+  -String description
+  +Date id
+  -float createdAt
+  -long status
+  -Date updatedAt
+  +cancelAmount()
+  +validateNote()
+}
+interface Return {
+  #long address
+  #String type
+  #int email
+  +long createdAt
+  +findAmount()
+  +getType()
+}
+Product --|> Supplier
+Supplier ..> Product : "1"
+Customer ..> Return : "1..*"
+Supplier --* Coupon
+Customer --> Supplier : "1"
+note right of Coupon : Ecommerce domain
+@enduml

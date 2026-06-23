@@ -1,0 +1,46 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Shipment {
+  -Date level
+  -String type
+  -double price
+  #Date createdAt
+  -float quantity
+  +cancelPrice()
+  +sendCode()
+  +calculateCode()
+  +processCreatedat()
+}
+interface Inventory {
+  +float phone
+  #Date quantity
+  +sendCode()
+  +deleteStatus()
+}
+class FuelLog {
+  #long active
+  #boolean createdAt
+  +updatePhone()
+  +cancelPhone()
+}
+interface Customer {
+  +boolean active
+  #long amount
+  +calculateScore()
+  +findQuantity()
+}
+interface Route {
+  +float email
+  #double total
+  +findActive()
+  +updateDuration()
+  +validateCreatedat()
+  +saveName()
+}
+Inventory ..|> Shipment
+Route ..|> Inventory
+Route --> Customer : "1..*"
+Shipment --> Customer : "0..1"
+note right of Shipment : Logistics domain
+@enduml

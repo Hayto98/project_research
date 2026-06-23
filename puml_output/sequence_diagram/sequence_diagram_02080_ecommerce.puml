@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+boundary "Seller" as S
+control "Payment Gateway" as PG
+entity "Admin" as A
+control "Delivery Service" as DS
+PG ->> DS : Make Payment
+PG --> A : Checkout
+PG -> DS : Add To Cart
+activate DS
+DS --> PG : ACK
+deactivate DS
+DS --> S : Write Review
+S -> PG : Manage Inventory
+activate PG
+PG --> S : ACK
+deactivate PG
+A -> PG : Cancel Order
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class Diagnosis {
+  #Date phone
+  #double name
+  +processLevel()
+}
+interface Treatment {
+  -double amount
+  -long phone
+  -String updatedAt
+  +updateId()
+}
+class Appointment {
+  -boolean email
+  -boolean address
+  +Date level
+  +boolean price
+  +findDuration()
+  +cancelActive()
+  +findAmount()
+  +processEmail()
+}
+interface Hospital {
+  #String code
+  #Date status
+  +updateDuration()
+}
+class Nurse {
+  #boolean description
+  +float code
+  #boolean address
+  +createQuantity()
+  +getAddress()
+}
+Appointment ..> Treatment : "*"
+Hospital --|> Treatment
+Hospital --|> Nurse
+note right of Diagnosis : Healthcare domain
+@enduml

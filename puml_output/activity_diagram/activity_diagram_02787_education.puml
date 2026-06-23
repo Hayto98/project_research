@@ -1,0 +1,35 @@
+@startuml
+skinparam defaultFontSize 13
+start
+:Enroll Course;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Take Attendance;
+:Issue Certificate;
+:View Schedule;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Submit Assignment;
+:Borrow Book;
+:Grade Exam;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Student;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+stop
+@enduml

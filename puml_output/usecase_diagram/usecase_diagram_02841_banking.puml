@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+left to right direction
+actor "Bank Teller" as BankTeller
+actor "Account Holder" as AccountHolder
+actor "ATM" as ATM
+actor "Auditor" as Auditor
+rectangle "Banking System" {
+  usecase "Apply For Loan" as UC_ApplyForLoan
+  usecase "Deposit Money" as UC_DepositMoney
+  usecase "Open Account" as UC_OpenAccount
+  usecase "Block Card" as UC_BlockCard
+  usecase "Withdraw Cash" as UC_WithdrawCash
+  usecase "Pay Bill" as UC_PayBill
+  usecase "View Statement" as UC_ViewStatement
+}
+BankTeller --> UC_OpenAccount
+AccountHolder --> UC_WithdrawCash
+AccountHolder --> UC_ApplyForLoan
+AccountHolder --> UC_BlockCard
+ATM --> UC_ApplyForLoan
+ATM --> UC_ViewStatement
+ATM --> UC_DepositMoney
+Auditor --> UC_PayBill
+UC_WithdrawCash ..> UC_ApplyForLoan : <<include>>
+@enduml

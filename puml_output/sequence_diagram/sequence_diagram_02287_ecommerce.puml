@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+boundary "Customer" as C
+boundary "Delivery Service" as DS
+participant "Seller" as S
+DS -> C : Add To Cart
+activate C
+C --> DS : ACK
+deactivate C
+C ->> DS : Write Review
+note over DS : processing write review
+C -> S : Browse Products
+C --> DS : Cancel Order
+activate DS
+DS --> C : ACK
+deactivate DS
+note over DS : processing cancel order
+S --> C : Track Order
+activate C
+C --> S : ACK
+deactivate C
+@enduml

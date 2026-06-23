@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+abstract class Prescription {
+  #double description
+  +Date email
+  #Date updatedAt
+  +int price
+  +calculateType()
+}
+abstract class Treatment {
+  +boolean id
+  #int duration
+  +processCode()
+  +saveAmount()
+}
+class MedicalRecord {
+  +boolean quantity
+  -boolean duration
+  +long type
+  -int level
+  #long price
+  +sendAmount()
+  +calculateLevel()
+  +setUpdatedat()
+}
+class Patient {
+  #float price
+  -float createdAt
+  +Date active
+  #String total
+  +sendQuantity()
+  +validateName()
+  +deleteLevel()
+  +setActive()
+}
+interface LabTest {
+  -int note
+  -long status
+  +String duration
+  +calculateAddress()
+  +saveStatus()
+  +cancelName()
+}
+interface Insurance {
+  -String price
+  -long code
+  +setDescription()
+  +saveLevel()
+  +createName()
+  +getPhone()
+}
+MedicalRecord --> Insurance : "1"
+Patient ..|> Insurance
+Treatment --* Insurance
+note right of Prescription : Healthcare domain
+@enduml

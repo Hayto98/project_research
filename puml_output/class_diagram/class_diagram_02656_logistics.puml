@@ -1,0 +1,51 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Shipment {
+  #Date address
+  #boolean id
+  +float total
+  -boolean name
+  +saveScore()
+  +sendId()
+  +setCreatedat()
+  +deleteCreatedat()
+}
+abstract class Package {
+  +String level
+  +String updatedAt
+  -String id
+  +int note
+  +saveLevel()
+}
+class FuelLog {
+  +String status
+  +boolean name
+  +Date amount
+  +findAddress()
+}
+interface Route {
+  #float createdAt
+  +double phone
+  +setAddress()
+}
+class Driver {
+  +long code
+  -float amount
+  +Date email
+  #boolean id
+  +findScore()
+}
+class Warehouse {
+  -String description
+  -Date status
+  +int amount
+  +getEmail()
+}
+Package --|> Route
+Route --|> Warehouse
+Package --* Shipment
+Route --|> Driver
+FuelLog ..|> Package
+note right of Shipment : Logistics domain
+@enduml

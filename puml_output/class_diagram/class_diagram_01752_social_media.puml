@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Comment {
+  #String email
+  -int address
+  #int id
+  +String updatedAt
+  +updateNote()
+  +updateCreatedat()
+}
+class Like {
+  -String createdAt
+  +long name
+  +calculateTotal()
+}
+abstract class User {
+  #float name
+  -boolean score
+  +getQuantity()
+  +cancelScore()
+  +validateCode()
+}
+abstract class Group {
+  #boolean status
+  +int code
+  +sendAddress()
+}
+abstract class Hashtag {
+  +float quantity
+  #float phone
+  #int createdAt
+  #double email
+  +cancelLevel()
+  +cancelCode()
+}
+class Report {
+  +long description
+  #boolean total
+  #Date level
+  +String price
+  #boolean id
+  +saveActive()
+  +validateName()
+}
+interface Notification {
+  +String total
+  -int duration
+  -String email
+  +String quantity
+  +sendLevel()
+  +createDuration()
+  +createCreatedat()
+  +processPrice()
+}
+Notification --* Comment
+User ..> Group : "0..1"
+Notification ..|> Report
+Report --> Hashtag : "1"
+Comment --> User : "0..1"
+note right of Comment : Social Media domain
+@enduml

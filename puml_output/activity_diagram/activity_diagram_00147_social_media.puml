@@ -1,0 +1,36 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+start
+:Like Post;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Comment;
+:Send Message;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Edit Profile;
+:Share Post;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Report Content;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Create Post;
+:Follow User;
+stop
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam defaultFontSize 11
+participant "Fleet Manager" as FM
+control "Warehouse Staff" as WS
+control "Driver" as D
+boundary "Dispatcher" as D2
+participant "Customer" as C
+WS -> D : Track Shipment
+WS --> FM : Report Issue
+activate FM
+FM --> WS : ACK
+deactivate FM
+C -> D2 : Deliver Package
+note over D2 : processing deliver package
+WS ->> D2 : Update Inventory
+activate D2
+D2 --> WS : ACK
+deactivate D2
+note over D2 : processing update inventory
+D ->> D2 : Schedule Pickup
+FM --> C : Fuel Vehicle
+note over C : processing fuel vehicle
+@enduml

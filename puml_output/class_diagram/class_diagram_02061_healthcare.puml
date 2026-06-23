@@ -1,0 +1,45 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+interface MedicalRecord {
+  #float address
+  +int level
+  +boolean quantity
+  +setAmount()
+  +createLevel()
+}
+abstract class Doctor {
+  #boolean quantity
+  #long updatedAt
+  -Date score
+  +updateId()
+  +processDescription()
+}
+class Prescription {
+  +boolean total
+  -float amount
+  #float code
+  +getAddress()
+  +saveAddress()
+  +saveTotal()
+}
+abstract class LabTest {
+  +double email
+  +String phone
+  +processType()
+  +getQuantity()
+}
+abstract class Appointment {
+  #int price
+  +double quantity
+  -int email
+  #int phone
+  +double description
+  +deleteQuantity()
+}
+Appointment ..|> MedicalRecord
+LabTest ..> Prescription : "1"
+Appointment --|> Doctor
+note right of MedicalRecord : Healthcare domain
+@enduml

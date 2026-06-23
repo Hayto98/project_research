@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+[*] --> Pending
+Pending --> Processing : review
+Pending : entry / log customer
+Processing --> Active : cancel
+Processing : entry / log customer
+Active --> Archived : submit
+Active : entry / log customer
+Archived --> Created : process
+Created --> Approved : approve
+Archived --> Approved : revert
+Approved --> [*]
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Story Service" as C_StoryService
+component "Group Service" as C_GroupService
+component "Hashtag Service" as C_HashtagService
+component "Follower Service" as C_FollowerService
+component "Message Service" as C_MessageService
+component "Post Service" as C_PostService
+database "Social Media DB" as DB_social_media
+C_FollowerService --> DB_social_media
+C_MessageService ..> C_PostService : gRPC
+C_GroupService ..> C_StoryService : MQ
+C_HashtagService ..> C_GroupService : MQ
+@enduml

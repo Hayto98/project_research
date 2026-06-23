@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+interface Payment {
+  +long active
+  -long level
+  +int duration
+  -Date name
+  #Date email
+  +validateCreatedat()
+  +createActive()
+}
+interface Review {
+  #Date level
+  -String quantity
+  -double price
+  #int note
+  +float active
+  +validateName()
+  +calculateName()
+}
+class Order {
+  #float amount
+  -String name
+  -double id
+  +processDuration()
+  +setCode()
+}
+class Category {
+  #float email
+  -int address
+  +int status
+  #boolean createdAt
+  +setAmount()
+  +sendType()
+  +deleteAddress()
+}
+interface Product {
+  #double score
+  -Date name
+  +String email
+  +validateCode()
+  +saveActive()
+  +saveEmail()
+  +createQuantity()
+}
+abstract class Shipment {
+  +Date code
+  #float note
+  #Date score
+  -int createdAt
+  #float name
+  +cancelEmail()
+}
+Shipment --|> Product
+Product --o Category
+Payment ..> Order : "*"
+note right of Payment : Ecommerce domain
+@enduml

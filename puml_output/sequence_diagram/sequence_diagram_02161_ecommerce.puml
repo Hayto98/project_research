@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+boundary "Admin" as A
+control "Delivery Service" as DS
+entity "Payment Gateway" as PG
+participant "Seller" as S
+participant "Customer" as C
+C -> A : Write Review
+note over A : processing write review
+DS --> PG : Manage Inventory
+S --> C : Make Payment
+PG --> S : Apply Coupon
+S ->> C : Track Order
+activate C
+C --> S : ACK
+deactivate C
+PG ->> S : Browse Products
+activate S
+S --> PG : ACK
+deactivate S
+@enduml

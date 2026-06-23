@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+class Transfer {
+  -long type
+  +int description
+  +getCreatedat()
+  +findCreatedat()
+}
+class Beneficiary {
+  -Date phone
+  #boolean description
+  -int email
+  +calculateType()
+  +createName()
+  +sendNote()
+}
+abstract class Branch {
+  #Date address
+  +boolean duration
+  +double type
+  #Date active
+  #long score
+  +findStatus()
+  +sendName()
+  +updatePhone()
+  +setCreatedat()
+}
+interface Deposit {
+  +float type
+  -double status
+  -boolean id
+  +getEmail()
+  +saveDuration()
+  +updateCode()
+}
+abstract class Loan {
+  -int score
+  #String description
+  +long email
+  +String code
+  +getDescription()
+  +sendStatus()
+}
+interface Withdrawal {
+  +float note
+  +String level
+  +deleteLevel()
+  +createUpdatedat()
+  +createPrice()
+}
+abstract class Card {
+  #String status
+  #long duration
+  #double createdAt
+  +long id
+  +float active
+  +sendStatus()
+  +findPrice()
+  +setUpdatedat()
+}
+Deposit ..|> Withdrawal
+Deposit --|> Beneficiary
+Transfer --|> Deposit
+Card --> Beneficiary : "1..*"
+note right of Transfer : Banking domain
+@enduml

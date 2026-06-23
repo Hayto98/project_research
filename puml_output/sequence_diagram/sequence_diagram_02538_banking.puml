@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+entity "Auditor" as A
+boundary "Bank Teller" as BT
+entity "ATM" as A2
+entity "Branch Manager" as BM
+BM -> A2 : Apply For Loan
+BT --> A2 : Transfer Funds
+activate A2
+A2 --> BT : ACK
+deactivate A2
+A ->> BM : View Statement
+activate BM
+BM --> A : ACK
+deactivate BM
+A2 -> BM : Pay Bill
+note over BM : processing pay bill
+@enduml

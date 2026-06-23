@@ -1,0 +1,29 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Fuel Vehicle;
+:Assign Route;
+:Track Shipment;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Schedule Pickup;
+:Report Issue;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Deliver Package;
+:Load Package;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Update Inventory;
+stop
+@enduml

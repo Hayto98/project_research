@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+boundary "Account Holder" as AH
+participant "Bank Teller" as BT
+control "Branch Manager" as BM
+BM ->> BT : Apply For Loan
+activate BT
+BT --> BM : ACK
+deactivate BT
+BM ->> BT : Pay Bill
+activate BT
+BT --> BM : ACK
+deactivate BT
+AH -> BT : View Statement
+AH ->> BT : Transfer Funds
+AH ->> BM : Withdraw Cash
+activate BM
+BM --> AH : ACK
+deactivate BM
+AH -> BT : Open Account
+AH ->> BT : Block Card
+note over BT : processing block card
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Seller" as Seller
+actor "Payment Gateway" as PaymentGateway
+actor "Admin" as Admin
+rectangle "Ecommerce System" {
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Write Review" as UC_WriteReview
+}
+DeliveryService --> UC_TrackOrder
+Seller --> UC_ManageInventory
+Seller --> UC_TrackOrder
+Seller --> UC_MakePayment
+PaymentGateway --> UC_TrackOrder
+PaymentGateway --> UC_ManageInventory
+Admin --> UC_ManageInventory
+Admin --> UC_MakePayment
+Admin --> UC_AddToCart
+@enduml

@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+interface Diagnosis {
+  +long total
+  -String type
+  +double email
+  #long price
+  -float active
+  +saveDescription()
+  +calculateUpdatedat()
+  +calculateScore()
+  +setId()
+}
+abstract class Appointment {
+  -long description
+  +float address
+  #double name
+  -String status
+  +long level
+  +saveType()
+  +processQuantity()
+  +validateEmail()
+}
+class Hospital {
+  -int id
+  #boolean status
+  +float createdAt
+  -Date quantity
+  +getId()
+}
+class Insurance {
+  -String quantity
+  -double phone
+  +findPhone()
+  +updateTotal()
+  +createScore()
+  +findNote()
+}
+interface Ward {
+  +boolean address
+  +boolean score
+  +int type
+  +boolean level
+  +float status
+  +createLevel()
+  +cancelQuantity()
+  +calculateDuration()
+  +createNote()
+}
+class Billing {
+  -double type
+  -Date code
+  -Date phone
+  -float quantity
+  +deletePhone()
+  +validateUpdatedat()
+}
+Billing ..> Appointment : "1..*"
+Appointment --o Hospital
+Hospital ..|> Billing
+Diagnosis --> Ward : "1"
+note right of Diagnosis : Healthcare domain
+@enduml

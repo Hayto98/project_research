@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+participant "Warehouse Staff" as WS
+boundary "Driver" as D
+boundary "Dispatcher" as D2
+control "Fleet Manager" as FM
+actor "Customer" as C
+WS --> C : Report Issue
+activate C
+C --> WS : ACK
+deactivate C
+note over C : processing report issue
+WS -> D2 : Deliver Package
+WS -> C : Update Inventory
+note over C : processing update inventory
+D2 --> FM : Schedule Pickup
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class Wishlist {
+  -Date code
+  #Date address
+  #double id
+  +deletePhone()
+  +deleteName()
+}
+abstract class Category {
+  +int phone
+  +int description
+  -long status
+  +long total
+  -double duration
+  +cancelType()
+  +deleteQuantity()
+  +createEmail()
+  +deletePrice()
+}
+abstract class Payment {
+  #Date duration
+  +boolean amount
+  +long status
+  #int total
+  -long code
+  +calculateNote()
+  +validateTotal()
+}
+class Shipment {
+  #double name
+  -double type
+  +int amount
+  +calculateType()
+  +validateNote()
+}
+Wishlist --* Shipment
+Payment ..> Shipment : "0..1"
+note right of Wishlist : Ecommerce domain
+@enduml

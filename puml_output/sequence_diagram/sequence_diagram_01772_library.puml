@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+boundary "Member" as M
+boundary "Admin" as A
+boundary "Librarian" as L
+A -> L : Search Catalog
+M -> L : Pay Fine
+activate L
+L --> M : ACK
+deactivate L
+M ->> L : Add New Book
+M --> L : Borrow Book
+note over L : processing borrow book
+M --> A : Return Book
+activate A
+A --> M : ACK
+deactivate A
+note over A : processing return book
+@enduml

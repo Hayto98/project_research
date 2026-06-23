@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Librarian Service" as C_LibrarianService
+component "Book Service" as C_BookService
+component "Branch Service" as C_BranchService
+component "Renewal Service" as C_RenewalService
+component "Fine Service" as C_FineService
+database "Library DB" as DB_library
+C_LibrarianService --> DB_library
+C_BookService --> DB_library
+C_BranchService --> DB_library
+C_RenewalService --> DB_library
+C_FineService ..> C_BookService : REST
+C_LibrarianService ..> C_FineService : REST
+C_RenewalService ..> C_BranchService : gRPC
+C_FineService ..> C_BranchService : REST
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+[*] --> Processing
+Processing --> Cancelled : approve
+Cancelled --> Pending : reject
+Pending --> Active : submit
+Pending : entry / log service
+Active --> Closed : submit
+Closed --> Completed : confirm
+Processing --> Active : revert
+Completed --> [*]
+@enduml

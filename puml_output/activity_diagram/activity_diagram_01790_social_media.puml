@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+start
+:Report Content;
+:Send Message;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Like Post;
+:Edit Profile;
+:Create Post;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Share Post;
+:Comment;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Follow User;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+stop
+@enduml

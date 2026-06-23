@@ -1,0 +1,62 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Invoice {
+  +Date description
+  +boolean active
+  +processEmail()
+  +processActive()
+  +validateId()
+}
+class Cart {
+  +String total
+  #int active
+  +calculateTotal()
+  +deleteType()
+}
+abstract class Review {
+  +long status
+  -double address
+  #double score
+  -long phone
+  +createQuantity()
+  +createCreatedat()
+  +createScore()
+}
+class Order {
+  +Date active
+  #float score
+  #String type
+  +validateCreatedat()
+}
+class Coupon {
+  +float amount
+  -long note
+  +getTotal()
+}
+class Product {
+  +String phone
+  +boolean address
+  +boolean name
+  -float duration
+  +getNote()
+  +updateDescription()
+  +getLevel()
+  +getTotal()
+}
+class Supplier {
+  #double type
+  #Date duration
+  #Date note
+  #int quantity
+  +cancelAddress()
+  +getDescription()
+  +cancelAmount()
+  +getUpdatedat()
+}
+Order --o Coupon
+Cart --|> Order
+Supplier --> Review : "1"
+note right of Invoice : Ecommerce domain
+@enduml

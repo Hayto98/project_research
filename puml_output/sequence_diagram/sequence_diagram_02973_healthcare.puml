@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+control "Receptionist" as R
+boundary "Patient" as P
+boundary "Lab Technician" as LT
+control "Nurse" as N
+P -> R : Admit Patient
+note over R : processing admit patient
+R -> LT : Examine Patient
+R --> N : Book Appointment
+note over N : processing book appointment
+P --> LT : Issue Prescription
+LT -> N : Discharge Patient
+activate N
+N --> LT : ACK
+deactivate N
+@enduml

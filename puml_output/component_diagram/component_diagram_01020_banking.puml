@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Interest Service" as C_InterestService
+component "Teller Service" as C_TellerService
+component "Transaction Service" as C_TransactionService
+component "Card Service" as C_CardService
+database "Banking DB" as DB_banking
+C_TellerService --> DB_banking
+C_TransactionService --> DB_banking
+C_CardService --> DB_banking
+C_InterestService ..> C_TransactionService : HTTP
+C_CardService ..> C_InterestService : REST
+C_TellerService ..> C_TransactionService : REST
+@enduml

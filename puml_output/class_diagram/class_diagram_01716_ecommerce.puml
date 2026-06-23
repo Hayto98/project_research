@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+interface Invoice {
+  -String price
+  -boolean duration
+  -double score
+  +cancelType()
+  +createDescription()
+}
+abstract class Wishlist {
+  #int id
+  +String level
+  -int email
+  +updateQuantity()
+  +validatePrice()
+  +validateDuration()
+}
+abstract class Warehouse {
+  +long status
+  +int type
+  +deletePrice()
+}
+abstract class Order {
+  +int type
+  #boolean status
+  -String description
+  +saveQuantity()
+  +createEmail()
+}
+class Category {
+  #float type
+  -float total
+  +cancelTotal()
+}
+class Product {
+  -String phone
+  +Date type
+  +findTotal()
+  +sendId()
+  +deleteDuration()
+}
+class Cart {
+  +boolean status
+  #float score
+  #long quantity
+  #String duration
+  +saveEmail()
+  +sendAddress()
+  +saveAmount()
+  +saveEmail()
+}
+Category --o Warehouse
+Category ..|> Invoice
+note right of Invoice : Ecommerce domain
+@enduml

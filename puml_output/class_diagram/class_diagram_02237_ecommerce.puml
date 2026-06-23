@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class Cart {
+  +float amount
+  +float quantity
+  +Date price
+  +findCreatedat()
+  +validateDuration()
+  +calculateEmail()
+  +calculateLevel()
+}
+abstract class Return {
+  +Date address
+  +float type
+  +float createdAt
+  +double active
+  -double status
+  +calculateName()
+}
+class Category {
+  -double code
+  -double phone
+  -float amount
+  +getStatus()
+  +findScore()
+}
+abstract class Review {
+  +long updatedAt
+  -long duration
+  +int name
+  -long score
+  +processCreatedat()
+  +deleteEmail()
+}
+abstract class Warehouse {
+  +double updatedAt
+  #Date status
+  -int score
+  +calculateUpdatedat()
+  +sendLevel()
+  +updateId()
+}
+class Wishlist {
+  #Date quantity
+  +String active
+  -String type
+  +saveTotal()
+  +calculateName()
+  +deleteQuantity()
+}
+abstract class Supplier {
+  #String active
+  +float price
+  -boolean note
+  +deleteQuantity()
+}
+Return --* Cart
+Warehouse --* Return
+Wishlist --o Category
+Category ..|> Warehouse
+note right of Cart : Ecommerce domain
+@enduml

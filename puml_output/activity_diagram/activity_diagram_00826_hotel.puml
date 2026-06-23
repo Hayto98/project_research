@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+start
+:Clean Room;
+:Process Payment;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Book Room;
+:Order Room Service;
+:Check In;
+:Cancel Reservation;
+:Request Service;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Check Out;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+stop
+@enduml

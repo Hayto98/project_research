@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+control "Receptionist" as R
+boundary "Lab Technician" as LT
+control "Doctor" as D
+R -> D : Admit Patient
+activate D
+D --> R : ACK
+deactivate D
+LT -> D : Issue Prescription
+LT ->> D : Update Medical Record
+LT --> D : Run Lab Test
+note over D : processing run lab test
+R -> D : Examine Patient
+LT --> R : Process Insurance Claim
+activate R
+R --> LT : ACK
+deactivate R
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+interface Teller {
+  +long code
+  +Date active
+  +deleteLevel()
+}
+interface Interest {
+  #Date address
+  -Date price
+  +updatePrice()
+}
+interface Transfer {
+  #boolean phone
+  +int id
+  #float price
+  +Date name
+  -String code
+  +findCode()
+  +getNote()
+}
+abstract class Statement {
+  -float active
+  #float phone
+  +long createdAt
+  -float address
+  +sendDuration()
+}
+Teller ..> Statement : "1"
+Interest --* Teller
+Statement --o Interest
+note right of Teller : Banking domain
+@enduml

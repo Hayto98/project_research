@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+participant "Nurse" as N
+boundary "Insurance Provider" as IP
+participant "Lab Technician" as LT
+LT -> N : Book Appointment
+LT ->> N : Process Insurance Claim
+activate N
+N --> LT : ACK
+deactivate N
+LT -> IP : Discharge Patient
+activate IP
+IP --> LT : ACK
+deactivate IP
+N -> LT : Run Lab Test
+note over LT : processing run lab test
+@enduml

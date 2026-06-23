@@ -1,0 +1,49 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+abstract class CheckOut {
+  #float duration
+  -double phone
+  -double email
+  +processDescription()
+  +getAddress()
+  +saveType()
+}
+interface Staff {
+  +float score
+  +Date active
+  -double id
+  +double note
+  +setNote()
+  +calculateDescription()
+  +setPhone()
+}
+abstract class Booking {
+  -String price
+  #Date createdAt
+  #float total
+  -boolean email
+  -double type
+  +findTotal()
+}
+class Restaurant {
+  +double total
+  +Date name
+  #String updatedAt
+  #double address
+  +String id
+  +calculateActive()
+  +getEmail()
+  +processAmount()
+}
+class Amenity {
+  +long type
+  -Date quantity
+  +sendName()
+  +cancelActive()
+}
+CheckOut --* Amenity
+Restaurant --> Booking : "1..*"
+note right of CheckOut : Hotel domain
+@enduml

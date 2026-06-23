@@ -1,0 +1,68 @@
+@startuml
+skinparam defaultFontSize 11
+abstract class Profile {
+  -int createdAt
+  #int address
+  #boolean note
+  +double level
+  +String duration
+  +getPrice()
+  +validateActive()
+  +sendCode()
+}
+class Notification {
+  +int updatedAt
+  #int total
+  +boolean type
+  #long price
+  #Date quantity
+  +setType()
+}
+abstract class Album {
+  -boolean type
+  +float updatedAt
+  -Date id
+  +getDuration()
+  +deleteScore()
+  +sendActive()
+}
+class Post {
+  #int active
+  #long email
+  #double createdAt
+  -double status
+  +deleteStatus()
+  +deleteName()
+  +sendAmount()
+  +updateName()
+}
+class Hashtag {
+  +String id
+  +Date updatedAt
+  +Date score
+  +cancelPrice()
+  +sendCode()
+  +cancelDuration()
+  +sendEmail()
+}
+interface Message {
+  +long phone
+  +int price
+  -boolean name
+  +setAmount()
+}
+abstract class Follower {
+  #String price
+  #long note
+  +processCode()
+  +getDuration()
+  +updateAddress()
+}
+Post --o Profile
+Notification ..|> Profile
+Hashtag --o Album
+Hashtag --* Follower
+Post --> Message : "*"
+Album --* Hashtag
+note right of Profile : Social Media domain
+@enduml

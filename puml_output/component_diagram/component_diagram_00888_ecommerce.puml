@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+component "Invoice Service" as C_InvoiceService
+component "Order Service" as C_OrderService
+component "Coupon Service" as C_CouponService
+component "Supplier Service" as C_SupplierService
+component "Product Service" as C_ProductService
+component "Review Service" as C_ReviewService
+component "Warehouse Service" as C_WarehouseService
+database "Ecommerce DB" as DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_SupplierService ..> C_OrderService : MQ
+C_InvoiceService ..> C_WarehouseService : gRPC
+@enduml

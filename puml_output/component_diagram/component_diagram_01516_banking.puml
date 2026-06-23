@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Account Service" as C_AccountService
+component "Loan Service" as C_LoanService
+component "Withdrawal Service" as C_WithdrawalService
+component "Branch Service" as C_BranchService
+component "Transaction Service" as C_TransactionService
+component "Card Service" as C_CardService
+component "Deposit Service" as C_DepositService
+database "Banking DB" as DB_banking
+C_AccountService --> DB_banking
+C_LoanService --> DB_banking
+C_BranchService --> DB_banking
+C_TransactionService --> DB_banking
+C_CardService --> DB_banking
+C_DepositService --> DB_banking
+C_WithdrawalService ..> C_DepositService : REST
+C_LoanService ..> C_WithdrawalService : MQ
+C_WithdrawalService ..> C_DepositService : REST
+@enduml

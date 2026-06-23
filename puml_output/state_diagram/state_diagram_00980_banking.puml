@@ -1,0 +1,13 @@
+@startuml
+skinparam defaultFontSize 13
+[*] --> Processing
+Processing --> Completed : submit
+Processing : entry / log customer
+Completed --> Shipped : cancel
+Shipped --> Pending : approve
+Pending --> Created : update
+Pending : entry / log customer
+Created --> Delivered : process
+Delivered --> Completed : revert
+Delivered --> [*]
+@enduml

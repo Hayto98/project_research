@@ -1,0 +1,57 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+abstract class Branch {
+  +float quantity
+  +String address
+  #long status
+  +createEmail()
+}
+class Member {
+  #boolean code
+  +long phone
+  #String note
+  -long score
+  +updateEmail()
+}
+interface Renewal {
+  +double name
+  -String duration
+  -int price
+  +int level
+  +deleteEmail()
+  +saveDescription()
+}
+class Shelf {
+  +Date note
+  -boolean code
+  #int duration
+  +sendDuration()
+}
+class Publisher {
+  #Date id
+  +long email
+  +calculateDuration()
+}
+interface Fine {
+  -long createdAt
+  -double price
+  -long duration
+  +processPrice()
+}
+class Author {
+  -boolean score
+  +String type
+  +long note
+  -boolean level
+  +sendPrice()
+}
+Fine --* Renewal
+Publisher --|> Fine
+Renewal --* Shelf
+Fine --> Author : "1"
+Branch --* Publisher
+Fine ..|> Shelf
+note right of Branch : Library domain
+@enduml

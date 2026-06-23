@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+participant "Customer" as C
+actor "Warehouse Staff" as WS
+participant "Dispatcher" as D
+WS --> D : Load Package
+activate D
+D --> WS : ACK
+deactivate D
+D --> WS : Assign Route
+activate WS
+WS --> D : ACK
+deactivate WS
+D ->> WS : Report Issue
+C --> D : Track Shipment
+activate D
+D --> C : ACK
+deactivate D
+note over D : processing track shipment
+C ->> WS : Schedule Pickup
+activate WS
+WS --> C : ACK
+deactivate WS
+WS ->> C : Update Inventory
+note over C : processing update inventory
+D --> C : Deliver Package
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam ArrowColor #555555
+actor "Auditor" as A
+control "Branch Manager" as BM
+actor "Bank Teller" as BT
+BM ->> A : Withdraw Cash
+activate A
+A --> BM : ACK
+deactivate A
+BT ->> A : Transfer Funds
+activate A
+A --> BT : ACK
+deactivate A
+note over A : processing transfer funds
+BT -> A : Deposit Money
+note over A : processing deposit money
+BT --> A : Pay Bill
+activate A
+A --> BT : ACK
+deactivate A
+note over A : processing pay bill
+@enduml

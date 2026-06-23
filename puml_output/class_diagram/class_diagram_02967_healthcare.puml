@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+abstract class LabTest {
+  +long quantity
+  #double createdAt
+  #boolean duration
+  #Date code
+  +saveId()
+  +calculateActive()
+  +calculateStatus()
+  +sendLevel()
+}
+class Diagnosis {
+  #Date note
+  #boolean score
+  +setScore()
+  +createDuration()
+}
+class Prescription {
+  +int level
+  +double quantity
+  +boolean description
+  -Date name
+  +setType()
+  +savePrice()
+}
+class Treatment {
+  +Date phone
+  +float price
+  +double code
+  #int score
+  +setActive()
+  +getType()
+  +saveName()
+}
+interface Billing {
+  #Date quantity
+  -long price
+  #boolean total
+  #int level
+  +long active
+  +calculateType()
+}
+abstract class Hospital {
+  +int updatedAt
+  +boolean description
+  +int total
+  +deleteNote()
+  +getTotal()
+}
+Hospital ..> Treatment : "0..1"
+Treatment --* LabTest
+note right of LabTest : Healthcare domain
+@enduml

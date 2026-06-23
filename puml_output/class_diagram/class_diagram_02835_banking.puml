@@ -1,0 +1,39 @@
+@startuml
+skinparam defaultFontSize 13
+class Customer {
+  +long active
+  #Date note
+  #long id
+  +long price
+  +createStatus()
+  +createCreatedat()
+}
+class Withdrawal {
+  +Date address
+  #int note
+  -boolean status
+  +deleteNote()
+}
+abstract class Loan {
+  +Date price
+  #String amount
+  #boolean note
+  -String updatedAt
+  +deleteLevel()
+}
+class Card {
+  #int status
+  -double level
+  #boolean duration
+  +double quantity
+  #boolean address
+  +setCreatedat()
+  +createAddress()
+  +updateDuration()
+  +saveQuantity()
+}
+Card ..|> Loan
+Loan --> Customer : "0..1"
+Withdrawal ..> Card : "0..1"
+note right of Customer : Banking domain
+@enduml

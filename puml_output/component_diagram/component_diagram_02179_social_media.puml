@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Like Service" as C_LikeService
+component "Story Service" as C_StoryService
+component "Post Service" as C_PostService
+component "Message Service" as C_MessageService
+component "Notification Service" as C_NotificationService
+database "Social Media DB" as DB_social_media
+C_PostService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_LikeService ..> C_PostService : REST
+C_LikeService ..> C_PostService : MQ
+C_LikeService ..> C_PostService : MQ
+C_StoryService ..> C_NotificationService : MQ
+@enduml

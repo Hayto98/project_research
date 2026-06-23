@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+left to right direction
+actor "Dispatcher" as Dispatcher
+actor "Driver" as Driver
+rectangle "Logistics System" {
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Schedule Pickup" as UC_SchedulePickup
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+}
+Dispatcher --> UC_FuelVehicle
+Driver --> UC_ReportIssue
+Driver --> UC_UpdateInventory
+Driver --> UC_SchedulePickup
+UC_LoadPackage ..|> UC_FuelVehicle : <<extend>>
+@enduml

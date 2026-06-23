@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+left to right direction
+actor "Receptionist" as Receptionist
+actor "Housekeeper" as Housekeeper
+actor "Guest" as Guest
+rectangle "Hotel System" {
+  usecase "Order Room Service" as UC_OrderRoomService
+  usecase "Clean Room" as UC_CleanRoom
+  usecase "Book Room" as UC_BookRoom
+  usecase "Check Out" as UC_CheckOut
+  usecase "Check In" as UC_CheckIn
+  usecase "Request Service" as UC_RequestService
+}
+Receptionist --> UC_CleanRoom
+Housekeeper --> UC_BookRoom
+Housekeeper --> UC_RequestService
+Guest --> UC_CleanRoom
+UC_CheckIn ..|> UC_BookRoom : <<include>>
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+interface Billing {
+  +Date updatedAt
+  #double level
+  +int status
+  #Date duration
+  +sendStatus()
+  +saveQuantity()
+  +cancelAmount()
+  +getQuantity()
+}
+abstract class LabTest {
+  +double email
+  #float updatedAt
+  -double address
+  +float level
+  +validateActive()
+  +updateTotal()
+}
+abstract class MedicalRecord {
+  -int name
+  -String price
+  #double code
+  +String email
+  +int level
+  +getEmail()
+  +findEmail()
+  +updateNote()
+}
+class Hospital {
+  #long createdAt
+  +String score
+  +long id
+  +processQuantity()
+  +saveScore()
+  +findPrice()
+}
+class Nurse {
+  -String phone
+  -Date level
+  #long price
+  +setAmount()
+  +setDescription()
+  +saveAmount()
+}
+interface Ward {
+  +long id
+  #long duration
+  +deleteActive()
+  +findTotal()
+  +updateId()
+}
+Nurse ..|> Billing
+Billing --> MedicalRecord : "0..1"
+LabTest ..> Hospital : "0..1"
+Ward ..> MedicalRecord : "1"
+note right of Billing : Healthcare domain
+@enduml

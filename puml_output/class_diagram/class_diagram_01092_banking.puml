@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+abstract class Teller {
+  #double name
+  -float status
+  #Date total
+  +cancelUpdatedat()
+  +findUpdatedat()
+  +createNote()
+  +calculateDuration()
+}
+abstract class Loan {
+  -Date note
+  #String updatedAt
+  #float type
+  +deleteUpdatedat()
+}
+interface Customer {
+  -String name
+  -String status
+  +long quantity
+  +setCode()
+  +createDuration()
+  +validateStatus()
+  +getUpdatedat()
+}
+abstract class Interest {
+  +boolean createdAt
+  +long score
+  -boolean note
+  #double total
+  +createActive()
+  +createUpdatedat()
+  +setType()
+}
+Loan --|> Teller
+Customer ..|> Loan
+Interest --> Loan : "1"
+note right of Teller : Banking domain
+@enduml

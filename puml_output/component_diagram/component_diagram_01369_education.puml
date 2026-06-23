@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+component "Assignment Service" as C_AssignmentService
+component "Schedule Service" as C_ScheduleService
+component "Course Service" as C_CourseService
+component "Teacher Service" as C_TeacherService
+database "Education DB" as DB_education
+C_AssignmentService --> DB_education
+C_TeacherService --> DB_education
+C_AssignmentService ..> C_ScheduleService : HTTP
+C_CourseService ..> C_AssignmentService : gRPC
+@enduml

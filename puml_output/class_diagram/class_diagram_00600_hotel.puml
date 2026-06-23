@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+abstract class CheckOut {
+  #float email
+  -float address
+  +double createdAt
+  -float description
+  #long active
+  +saveQuantity()
+  +calculateDuration()
+}
+abstract class Amenity {
+  +float amount
+  -Date status
+  -boolean note
+  -long level
+  #int score
+  +validateNote()
+  +validateTotal()
+  +findPrice()
+  +savePrice()
+}
+abstract class Housekeeping {
+  #long email
+  +float level
+  #Date score
+  +double type
+  -String status
+  +createAmount()
+}
+interface Guest {
+  #Date status
+  +double code
+  -int duration
+  #int active
+  #double description
+  +findUpdatedat()
+  +deleteCreatedat()
+  +validateId()
+}
+abstract class Staff {
+  #String createdAt
+  #double description
+  +updateActive()
+  +sendCreatedat()
+}
+interface Invoice {
+  #long description
+  +boolean createdAt
+  +long code
+  +String type
+  +updateLevel()
+}
+Amenity --|> Invoice
+Invoice --|> CheckOut
+CheckOut --|> Amenity
+note right of CheckOut : Hotel domain
+@enduml

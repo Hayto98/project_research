@@ -1,0 +1,47 @@
+@startuml
+skinparam shadowing true
+class Invoice {
+  #double code
+  -String level
+  #int quantity
+  +sendStatus()
+  +sendPrice()
+  +validateEmail()
+}
+interface Housekeeping {
+  +int status
+  -boolean type
+  #float quantity
+  -String phone
+  #String name
+  +createActive()
+}
+class Room {
+  #Date email
+  #Date note
+  -int code
+  +sendUpdatedat()
+}
+class Guest {
+  +float phone
+  #int duration
+  +boolean note
+  +int type
+  -double code
+  +cancelStatus()
+  +sendId()
+  +savePhone()
+}
+interface CheckIn {
+  #int updatedAt
+  +boolean id
+  -double type
+  +setPhone()
+  +processStatus()
+}
+Invoice --> Guest : "*"
+Room ..|> Invoice
+CheckIn ..> Room : "0..1"
+Invoice --> Room : "1"
+note right of Invoice : Hotel domain
+@enduml

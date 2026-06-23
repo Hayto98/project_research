@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+start
+:Withdraw Cash;
+:Transfer Funds;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Apply For Loan;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Block Card;
+:View Statement;
+stop
+@enduml

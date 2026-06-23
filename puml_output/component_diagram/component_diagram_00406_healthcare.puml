@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+component "Treatment Service" as C_TreatmentService
+component "LabTest Service" as C_LabTestService
+component "Appointment Service" as C_AppointmentService
+component "Insurance Service" as C_InsuranceService
+database "Healthcare DB" as DB_healthcare
+C_TreatmentService --> DB_healthcare
+C_LabTestService --> DB_healthcare
+C_TreatmentService ..> C_AppointmentService : REST
+C_AppointmentService ..> C_LabTestService : MQ
+@enduml

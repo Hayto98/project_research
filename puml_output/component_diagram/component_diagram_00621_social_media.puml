@@ -1,0 +1,13 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+component "Hashtag Service" as C_HashtagService
+component "Group Service" as C_GroupService
+component "Notification Service" as C_NotificationService
+component "Like Service" as C_LikeService
+database "Social Media DB" as DB_social_media
+C_GroupService --> DB_social_media
+C_LikeService ..> C_GroupService : MQ
+C_LikeService ..> C_NotificationService : REST
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+entity "Nurse" as N
+boundary "Doctor" as D
+control "Receptionist" as R
+participant "Lab Technician" as LT
+boundary "Patient" as P
+D --> LT : Book Appointment
+P --> D : Discharge Patient
+note over D : processing discharge patient
+D --> LT : Run Lab Test
+D -> N : Update Medical Record
+activate N
+N --> D : ACK
+deactivate N
+note over N : processing update medical record
+D ->> N : Examine Patient
+activate N
+N --> D : ACK
+deactivate N
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+control "Driver" as D
+actor "Customer" as C
+control "Dispatcher" as D2
+C -> D2 : Fuel Vehicle
+activate D2
+D2 --> C : ACK
+deactivate D2
+D --> C : Schedule Pickup
+activate C
+C --> D : ACK
+deactivate C
+D ->> D2 : Assign Route
+D2 ->> D : Update Inventory
+D2 -> C : Report Issue
+activate C
+C --> D2 : ACK
+deactivate C
+@enduml

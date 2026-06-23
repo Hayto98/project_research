@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Vehicle Service" as C_VehicleService
+component "Inventory Service" as C_InventoryService
+component "Package Service" as C_PackageService
+component "Shipment Service" as C_ShipmentService
+database "Logistics DB" as DB_logistics
+C_VehicleService --> DB_logistics
+C_InventoryService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_ShipmentService ..> C_PackageService : MQ
+C_PackageService ..> C_ShipmentService : gRPC
+@enduml

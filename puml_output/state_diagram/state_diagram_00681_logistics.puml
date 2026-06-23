@@ -1,0 +1,12 @@
+@startuml
+skinparam shadowing true
+[*] --> Created
+Created --> Cancelled : confirm
+Created : entry / log deliverynote
+Cancelled --> Closed : submit
+Cancelled : entry / log deliverynote
+Closed --> Active : reject
+Active --> Pending : reject
+Cancelled --> Pending : revert
+Pending --> [*]
+@enduml

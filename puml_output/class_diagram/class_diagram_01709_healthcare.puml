@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+interface Patient {
+  #boolean code
+  -String duration
+  +updateScore()
+  +calculateUpdatedat()
+  +cancelEmail()
+}
+abstract class Insurance {
+  +String description
+  -float note
+  +getName()
+  +createTotal()
+  +processPrice()
+}
+interface Prescription {
+  +float score
+  +float updatedAt
+  +float status
+  +Date price
+  +cancelUpdatedat()
+  +setScore()
+}
+class Appointment {
+  #String code
+  #Date type
+  +boolean createdAt
+  +double updatedAt
+  +createTotal()
+}
+class Hospital {
+  #String amount
+  +double id
+  +getTotal()
+  +getPhone()
+  +setDescription()
+}
+Insurance ..> Appointment : "0..1"
+Appointment ..|> Hospital
+Hospital --o Patient
+note right of Patient : Healthcare domain
+@enduml

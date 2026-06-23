@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class FuelLog {
+  +double note
+  +float amount
+  +deleteTotal()
+  +cancelCreatedat()
+  +deleteDescription()
+}
+class Route {
+  +float quantity
+  +String duration
+  +createDescription()
+}
+abstract class DeliveryNote {
+  #float address
+  +boolean total
+  +sendStatus()
+  +setDescription()
+}
+abstract class Manifest {
+  #float type
+  +int price
+  +long id
+  -int level
+  +Date description
+  +calculateQuantity()
+}
+class Warehouse {
+  -double price
+  +String type
+  #float active
+  -String total
+  +calculateNote()
+  +deleteUpdatedat()
+  +findId()
+  +getLevel()
+}
+FuelLog --|> Manifest
+Route ..|> Warehouse
+Warehouse ..> Manifest : "1..*"
+note right of FuelLog : Logistics domain
+@enduml

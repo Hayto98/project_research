@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+component "Supplier Service" as C_SupplierService
+component "Payment Service" as C_PaymentService
+component "Order Service" as C_OrderService
+component "Wishlist Service" as C_WishlistService
+component "Return Service" as C_ReturnService
+component "Warehouse Service" as C_WarehouseService
+component "Shipment Service" as C_ShipmentService
+database "Ecommerce DB" as DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_ReturnService ..> C_SupplierService : HTTP
+C_ReturnService ..> C_ShipmentService : REST
+@enduml

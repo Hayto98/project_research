@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+[*] --> Pending
+Pending --> Delivered : cancel
+Delivered --> OnHold : process
+Delivered : entry / log cart
+OnHold --> Shipped : reject
+Shipped --> Cancelled : approve
+Shipped : entry / log cart
+Cancelled --> Active : cancel
+Cancelled : entry / log cart
+Cancelled --> OnHold : revert
+Active --> [*]
+@enduml

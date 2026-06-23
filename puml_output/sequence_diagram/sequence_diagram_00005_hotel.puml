@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing true
+control "Receptionist" as R
+control "Chef" as C
+control "Manager" as M
+control "Housekeeper" as H
+H ->> C : Cancel Reservation
+activate C
+C --> H : ACK
+deactivate C
+R ->> H : Process Payment
+R --> H : Check Out
+R --> M : Clean Room
+activate M
+M --> R : ACK
+deactivate M
+C ->> R : Check In
+activate R
+R --> C : ACK
+deactivate R
+@enduml

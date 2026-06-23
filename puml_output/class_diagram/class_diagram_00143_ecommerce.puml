@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+class Review {
+  +boolean name
+  -String phone
+  -int id
+  +int description
+  +setAmount()
+}
+class Shipment {
+  -double updatedAt
+  #float createdAt
+  -Date id
+  -String quantity
+  +validateScore()
+  +createAmount()
+  +sendQuantity()
+}
+class Return {
+  #double score
+  -long active
+  +double level
+  -boolean status
+  -float total
+  +processScore()
+  +processDuration()
+}
+interface Order {
+  +int name
+  -Date quantity
+  #double level
+  +deleteTotal()
+  +sendDuration()
+  +setUpdatedat()
+  +cancelQuantity()
+}
+abstract class Warehouse {
+  #long address
+  #float total
+  #boolean type
+  +getUpdatedat()
+  +validateStatus()
+  +getName()
+}
+class Category {
+  +float code
+  +Date description
+  +savePrice()
+  +cancelScore()
+  +sendDuration()
+}
+class Cart {
+  -double status
+  #Date name
+  +boolean amount
+  +double level
+  +saveLevel()
+  +getAddress()
+  +createPhone()
+  +updateNote()
+}
+Cart ..> Warehouse : "0..1"
+Review --> Cart : "1"
+Cart ..> Shipment : "1..*"
+Return ..> Warehouse : "1..*"
+note right of Review : Ecommerce domain
+@enduml

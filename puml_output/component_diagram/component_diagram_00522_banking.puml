@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Customer Service" as C_CustomerService
+component "Branch Service" as C_BranchService
+component "Teller Service" as C_TellerService
+component "Statement Service" as C_StatementService
+database "Banking DB" as DB_banking
+C_CustomerService --> DB_banking
+C_BranchService --> DB_banking
+C_TellerService --> DB_banking
+C_BranchService ..> C_TellerService : HTTP
+C_TellerService ..> C_StatementService : HTTP
+C_CustomerService ..> C_TellerService : HTTP
+@enduml

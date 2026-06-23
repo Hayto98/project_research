@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+actor "Admin" as A
+entity "Student" as S
+actor "Teacher" as T
+entity "Librarian" as L
+boundary "Registrar" as R
+R -> T : Grade Exam
+note over T : processing grade exam
+T -> L : View Schedule
+S -> A : Take Attendance
+S ->> R : Issue Certificate
+A --> R : Enroll Course
+activate R
+R --> A : ACK
+deactivate R
+note over R : processing enroll course
+R --> L : Register Student
+A -> L : Submit Assignment
+note over L : processing submit assignment
+@enduml

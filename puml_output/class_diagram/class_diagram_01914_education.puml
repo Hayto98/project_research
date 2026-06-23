@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+class Assignment {
+  +double createdAt
+  #boolean id
+  #long updatedAt
+  -Date price
+  +updateQuantity()
+  +processQuantity()
+  +validatePrice()
+}
+interface Enrollment {
+  -String level
+  +Date description
+  #float amount
+  +processScore()
+  +setStatus()
+}
+class Schedule {
+  +double phone
+  +boolean status
+  +int active
+  #float description
+  +saveNote()
+  +sendEmail()
+  +findId()
+}
+interface Classroom {
+  -String level
+  -float id
+  #String note
+  +String quantity
+  +createTotal()
+}
+Schedule --|> Classroom
+Classroom --* Assignment
+Schedule --> Enrollment : "0..1"
+note right of Assignment : Education domain
+@enduml

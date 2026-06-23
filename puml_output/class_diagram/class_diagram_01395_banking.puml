@@ -1,0 +1,63 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+interface Interest {
+  +double id
+  #int note
+  +saveStatus()
+  +cancelPrice()
+  +setUpdatedat()
+}
+class Customer {
+  #int quantity
+  -int amount
+  #double status
+  +processNote()
+  +saveDescription()
+}
+interface Branch {
+  +boolean createdAt
+  #long description
+  +deleteScore()
+  +setTotal()
+  +saveId()
+}
+abstract class Account {
+  +long name
+  #Date level
+  +deleteTotal()
+  +deleteCode()
+  +sendAddress()
+}
+class Transaction {
+  -int code
+  +String description
+  +saveType()
+  +setPrice()
+}
+class Statement {
+  -float note
+  -int level
+  -int updatedAt
+  #boolean quantity
+  #double code
+  +updateNote()
+  +updatePrice()
+}
+abstract class Card {
+  -Date updatedAt
+  #double note
+  +boolean email
+  #long code
+  -boolean duration
+  +setUpdatedat()
+}
+Statement --> Transaction : "1..*"
+Customer ..|> Branch
+Transaction --* Branch
+Account --|> Interest
+Statement --> Account : "1..*"
+Account ..> Card : "1..*"
+note right of Interest : Banking domain
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+start
+:Write Review;
+:Checkout;
+:Manage Inventory;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Track Order;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Apply Coupon;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Add To Cart;
+stop
+@enduml

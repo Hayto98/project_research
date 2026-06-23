@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+boundary "Parent" as P
+participant "Student" as S
+actor "Librarian" as L
+L -> S : View Schedule
+activate S
+S --> L : ACK
+deactivate S
+S --> P : Issue Certificate
+note over P : processing issue certificate
+S ->> L : Grade Exam
+activate L
+L --> S : ACK
+deactivate L
+note over L : processing grade exam
+P -> L : Take Attendance
+@enduml

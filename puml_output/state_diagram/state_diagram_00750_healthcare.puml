@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+[*] --> Pending
+Pending --> Active : reject
+Pending : entry / log treatment
+Active --> Rejected : confirm
+Active : entry / log treatment
+Rejected --> Shipped : confirm
+Rejected : entry / log treatment
+Shipped --> Created : cancel
+Shipped : entry / log treatment
+Created --> Processing : reject
+Processing --> [*]
+@enduml

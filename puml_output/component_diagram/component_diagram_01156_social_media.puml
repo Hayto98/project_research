@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Story Service" as C_StoryService
+component "Notification Service" as C_NotificationService
+component "Report Service" as C_ReportService
+component "User Service" as C_UserService
+component "Group Service" as C_GroupService
+component "Album Service" as C_AlbumService
+database "Social Media DB" as DB_social_media
+C_StoryService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_ReportService --> DB_social_media
+C_UserService --> DB_social_media
+C_GroupService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_UserService ..> C_GroupService : HTTP
+C_GroupService ..> C_StoryService : REST
+C_GroupService ..> C_ReportService : HTTP
+@enduml

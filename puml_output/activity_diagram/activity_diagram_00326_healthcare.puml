@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+start
+:Book Appointment;
+:Process Insurance Claim;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Issue Prescription;
+:Admit Patient;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Discharge Patient;
+:Run Lab Test;
+:Examine Patient;
+:Update Medical Record;
+stop
+@enduml

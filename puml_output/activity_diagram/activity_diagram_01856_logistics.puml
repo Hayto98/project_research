@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+start
+:Update Inventory;
+:Schedule Pickup;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Track Shipment;
+:Report Issue;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Fuel Vehicle;
+stop
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 11
+left to right direction
+actor "Advertiser" as Advertiser
+actor "Admin" as Admin
+actor "Moderator" as Moderator
+rectangle "Social Media System" {
+  usecase "Report Content" as UC_ReportContent
+  usecase "Like Post" as UC_LikePost
+  usecase "Follow User" as UC_FollowUser
+  usecase "Comment" as UC_Comment
+  usecase "Share Post" as UC_SharePost
+}
+Advertiser --> UC_ReportContent
+Advertiser --> UC_LikePost
+Advertiser --> UC_Comment
+Admin --> UC_LikePost
+Admin --> UC_ReportContent
+Moderator --> UC_LikePost
+Moderator --> UC_FollowUser
+UC_FollowUser ..> UC_Comment : <<extend>>
+@enduml

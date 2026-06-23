@@ -1,0 +1,19 @@
+@startuml
+
+left to right direction
+actor "Admin" as Admin
+actor "Librarian" as Librarian
+rectangle "Library System" {
+  usecase "Return Book" as UC_ReturnBook
+  usecase "Renew Loan" as UC_RenewLoan
+  usecase "Reserve Book" as UC_ReserveBook
+  usecase "Search Catalog" as UC_SearchCatalog
+  usecase "Pay Fine" as UC_PayFine
+}
+Admin --> UC_ReserveBook
+Admin --> UC_SearchCatalog
+Admin --> UC_RenewLoan
+Librarian --> UC_PayFine
+Librarian --> UC_ReturnBook
+UC_ReserveBook ..> UC_PayFine : <<include>>
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class CheckOut {
+  #String status
+  #boolean phone
+  #double duration
+  #Date code
+  -boolean type
+  +setLevel()
+  +validateQuantity()
+  +savePrice()
+}
+class Reservation {
+  -long type
+  #Date updatedAt
+  +int note
+  #boolean level
+  +setUpdatedat()
+}
+class Amenity {
+  +long type
+  -double status
+  #String description
+  #String name
+  +Date price
+  +processCreatedat()
+}
+class Payment {
+  -String address
+  +int phone
+  +cancelUpdatedat()
+  +setDuration()
+  +updateDescription()
+}
+abstract class Service {
+  -float id
+  +double status
+  +long updatedAt
+  +boolean phone
+  +deleteStatus()
+}
+Payment --> CheckOut : "*"
+Amenity --* Reservation
+Payment --|> Amenity
+note right of CheckOut : Hotel domain
+@enduml

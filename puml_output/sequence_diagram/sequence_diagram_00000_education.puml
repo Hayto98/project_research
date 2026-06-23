@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+actor "Librarian" as L
+actor "Parent" as P
+control "Admin" as A
+control "Registrar" as R
+control "Teacher" as T
+P ->> T : View Schedule
+R ->> A : Issue Certificate
+R --> L : Borrow Book
+note over L : processing borrow book
+T --> R : Submit Assignment
+activate R
+R --> T : ACK
+deactivate R
+A ->> R : Register Student
+L --> P : Enroll Course
+activate P
+P --> L : ACK
+deactivate P
+note over P : processing enroll course
+P ->> R : Take Attendance
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam ArrowColor #555555
+left to right direction
+actor "Registrar" as Registrar
+actor "Teacher" as Teacher
+actor "Admin" as Admin
+rectangle "Education System" {
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Issue Certificate" as UC_IssueCertificate
+  usecase "Register Student" as UC_RegisterStudent
+  usecase "Take Attendance" as UC_TakeAttendance
+}
+Registrar --> UC_TakeAttendance
+Teacher --> UC_IssueCertificate
+Teacher --> UC_GradeExam
+Teacher --> UC_BorrowBook
+Admin --> UC_EnrollCourse
+UC_TakeAttendance ..> UC_GradeExam : <<include>>
+@enduml

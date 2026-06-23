@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Appointment Service" as C_AppointmentService
+component "Doctor Service" as C_DoctorService
+component "Hospital Service" as C_HospitalService
+component "Prescription Service" as C_PrescriptionService
+database "Healthcare DB" as DB_healthcare
+C_AppointmentService --> DB_healthcare
+C_HospitalService --> DB_healthcare
+C_DoctorService ..> C_HospitalService : HTTP
+C_AppointmentService ..> C_HospitalService : REST
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Issue Prescription;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Process Insurance Claim;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Admit Patient;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Run Lab Test;
+:Book Appointment;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Update Medical Record;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Examine Patient;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+stop
+@enduml

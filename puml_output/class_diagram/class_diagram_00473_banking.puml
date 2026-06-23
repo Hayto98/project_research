@@ -1,0 +1,54 @@
+@startuml
+
+abstract class Loan {
+  #int quantity
+  -String address
+  +deleteQuantity()
+  +getQuantity()
+  +updateTotal()
+}
+abstract class Teller {
+  +double createdAt
+  #int phone
+  +saveActive()
+  +sendCode()
+  +setType()
+  +updateName()
+}
+interface Customer {
+  #float email
+  -float createdAt
+  #String code
+  #float duration
+  -long amount
+  +processEmail()
+  +deleteActive()
+  +setCreatedat()
+}
+interface Branch {
+  -int createdAt
+  +double updatedAt
+  #boolean name
+  +sendPrice()
+  +deleteCreatedat()
+  +calculatePrice()
+  +getTotal()
+}
+abstract class Account {
+  -float total
+  #float level
+  +updatePrice()
+}
+class Deposit {
+  +float email
+  +boolean duration
+  -boolean level
+  +createTotal()
+  +updateActive()
+  +calculateQuantity()
+}
+Customer ..> Account : "*"
+Branch ..> Teller : "*"
+Account --|> Loan
+note right of Loan : Banking domain
+@enduml

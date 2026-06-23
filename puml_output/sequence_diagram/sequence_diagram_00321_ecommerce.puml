@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+entity "Seller" as S
+control "Delivery Service" as DS
+control "Payment Gateway" as PG
+S -> DS : Add To Cart
+note over DS : processing add to cart
+S -> DS : Cancel Order
+activate DS
+DS --> S : ACK
+deactivate DS
+PG -> DS : Manage Inventory
+activate DS
+DS --> PG : ACK
+deactivate DS
+DS -> S : Browse Products
+activate S
+S --> DS : ACK
+deactivate S
+DS ->> PG : Write Review
+S --> PG : Apply Coupon
+PG --> S : Track Order
+activate S
+S --> PG : ACK
+deactivate S
+@enduml

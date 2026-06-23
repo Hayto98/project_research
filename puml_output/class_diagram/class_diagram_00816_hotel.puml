@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class Amenity {
+  -Date level
+  #double code
+  -double active
+  +boolean type
+  +saveCreatedat()
+}
+class CheckIn {
+  +long level
+  #float active
+  #float price
+  #long score
+  +deleteType()
+  +cancelCreatedat()
+  +getEmail()
+  +validateType()
+}
+interface CheckOut {
+  +String status
+  +long type
+  -float id
+  -int total
+  +updateLevel()
+  +updateScore()
+  +saveId()
+}
+class Reservation {
+  +int updatedAt
+  +long amount
+  #long createdAt
+  +findTotal()
+  +saveTotal()
+}
+CheckIn --o Reservation
+CheckOut ..|> Amenity
+Amenity --* CheckOut
+note right of Amenity : Hotel domain
+@enduml

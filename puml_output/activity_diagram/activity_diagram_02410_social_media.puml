@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+start
+:Follow User;
+:Share Post;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Send Message;
+:Comment;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Create Post;
+:Edit Profile;
+stop
+@enduml

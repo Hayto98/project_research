@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+start
+:Admit Patient;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Run Lab Test;
+:Examine Patient;
+:Book Appointment;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Discharge Patient;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Process Insurance Claim;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Medical Record;
+:Issue Prescription;
+stop
+@enduml

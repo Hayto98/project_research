@@ -1,0 +1,29 @@
+@startuml
+skinparam defaultFontSize 13
+entity "Patient" as P
+boundary "Insurance Provider" as IP
+boundary "Lab Technician" as LT
+entity "Doctor" as D
+entity "Receptionist" as R
+D ->> LT : Book Appointment
+note over LT : processing book appointment
+LT -> P : Process Insurance Claim
+activate P
+P --> LT : ACK
+deactivate P
+note over P : processing process insurance claim
+R -> IP : Examine Patient
+activate IP
+IP --> R : ACK
+deactivate IP
+LT --> IP : Discharge Patient
+activate IP
+IP --> LT : ACK
+deactivate IP
+LT -> R : Run Lab Test
+activate R
+R --> LT : ACK
+deactivate R
+IP ->> P : Admit Patient
+D ->> P : Update Medical Record
+@enduml

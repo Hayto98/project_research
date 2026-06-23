@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+component "Teller Service" as C_TellerService
+component "Branch Service" as C_BranchService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Interest Service" as C_InterestService
+database "Banking DB" as DB_banking
+C_TellerService --> DB_banking
+C_BranchService --> DB_banking
+C_InterestService --> DB_banking
+C_BranchService ..> C_BeneficiaryService : gRPC
+C_TellerService ..> C_BranchService : MQ
+@enduml

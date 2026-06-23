@@ -1,0 +1,35 @@
+@startuml
+skinparam defaultFontSize 13
+start
+:Process Insurance Claim;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Examine Patient;
+:Issue Prescription;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Discharge Patient;
+:Run Lab Test;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Book Appointment;
+:Update Medical Record;
+stop
+@enduml

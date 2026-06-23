@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+start
+:Add To Cart;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Browse Products;
+:Cancel Order;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Write Review;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Track Order;
+:Apply Coupon;
+:Checkout;
+:Make Payment;
+stop
+@enduml

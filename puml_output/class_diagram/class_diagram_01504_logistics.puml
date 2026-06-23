@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+class Driver {
+  +long updatedAt
+  #float address
+  +calculateStatus()
+  +processQuantity()
+  +deleteTotal()
+}
+interface Shipment {
+  #int phone
+  +Date type
+  #int note
+  +setStatus()
+  +deleteStatus()
+  +sendDuration()
+}
+class Depot {
+  -double email
+  -double total
+  #long amount
+  +cancelTotal()
+  +processAmount()
+  +setPhone()
+  +updateEmail()
+}
+class Tracking {
+  +boolean quantity
+  +float phone
+  -boolean code
+  #double level
+  +boolean price
+  +cancelStatus()
+  +calculatePhone()
+}
+abstract class Customer {
+  +float email
+  -Date name
+  #int status
+  +Date amount
+  +Date code
+  +sendAmount()
+  +saveStatus()
+  +findPrice()
+  +deleteDescription()
+}
+abstract class Package {
+  #Date name
+  +long note
+  +int updatedAt
+  +createNote()
+  +setId()
+}
+Driver --|> Customer
+Depot --o Customer
+Driver --o Tracking
+Tracking ..> Depot : "1"
+note right of Driver : Logistics domain
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+class Diagnosis {
+  +double createdAt
+  +double type
+  #Date duration
+  +validateAmount()
+  +saveTotal()
+  +sendAmount()
+  +sendEmail()
+}
+class Treatment {
+  -int phone
+  +String note
+  -boolean address
+  +getQuantity()
+  +processType()
+  +getScore()
+}
+class Ward {
+  #Date status
+  -int updatedAt
+  +double description
+  +int active
+  -boolean createdAt
+  +getUpdatedat()
+  +createAmount()
+}
+interface MedicalRecord {
+  -float createdAt
+  #long type
+  #long note
+  +getCode()
+  +saveNote()
+}
+abstract class Hospital {
+  #int updatedAt
+  -long amount
+  +String code
+  #int total
+  -boolean active
+  +cancelQuantity()
+  +updatePrice()
+  +sendEmail()
+  +calculateStatus()
+}
+Hospital ..|> Diagnosis
+Hospital --> MedicalRecord : "1..*"
+note right of Diagnosis : Healthcare domain
+@enduml

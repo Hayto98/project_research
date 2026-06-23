@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+actor "Dispatcher" as Dispatcher
+actor "Customer" as Customer
+actor "Driver" as Driver
+rectangle "Logistics System" {
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Update Inventory" as UC_UpdateInventory
+}
+Dispatcher --> UC_TrackShipment
+Customer --> UC_TrackShipment
+Customer --> UC_AssignRoute
+Driver --> UC_FuelVehicle
+Driver --> UC_TrackShipment
+UC_LoadPackage ..|> UC_FuelVehicle : <<extend>>
+@enduml

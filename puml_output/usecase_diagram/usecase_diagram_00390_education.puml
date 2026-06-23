@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+left to right direction
+actor "Parent" as Parent
+actor "Student" as Student
+rectangle "Education System" {
+  usecase "View Schedule" as UC_ViewSchedule
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "Register Student" as UC_RegisterStudent
+  usecase "Issue Certificate" as UC_IssueCertificate
+}
+Parent --> UC_GradeExam
+Parent --> UC_TakeAttendance
+Student --> UC_ViewSchedule
+UC_TakeAttendance ..|> UC_GradeExam : <<extend>>
+@enduml

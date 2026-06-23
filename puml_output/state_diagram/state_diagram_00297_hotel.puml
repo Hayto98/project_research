@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+[*] --> Approved
+Approved --> Pending : cancel
+Pending --> Delivered : update
+Pending : entry / log guest
+Delivered --> Processing : confirm
+Processing --> Draft : approve
+Processing : entry / log guest
+Draft --> Active : submit
+Draft : entry / log guest
+Approved --> Processing : revert
+Active --> [*]
+@enduml

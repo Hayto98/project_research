@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+actor "Admin" as A
+control "Payment Gateway" as PG
+actor "Delivery Service" as DS
+control "Seller" as S
+PG ->> A : Track Order
+activate A
+A --> PG : ACK
+deactivate A
+DS --> A : Checkout
+note over A : processing checkout
+PG --> DS : Apply Coupon
+note over DS : processing apply coupon
+DS ->> A : Manage Inventory
+@enduml

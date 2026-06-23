@@ -1,0 +1,57 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+abstract class Patient {
+  -String description
+  +int note
+  #double name
+  #String id
+  +float status
+  +findAddress()
+  +setCreatedat()
+  +getStatus()
+}
+class Nurse {
+  #int description
+  +double phone
+  +long address
+  #double id
+  +saveActive()
+}
+interface Treatment {
+  #boolean createdAt
+  #boolean active
+  +createDescription()
+  +saveQuantity()
+  +getLevel()
+  +validateType()
+}
+class LabTest {
+  -float score
+  -float total
+  +sendId()
+  +cancelDescription()
+  +findNote()
+  +createTotal()
+}
+class Appointment {
+  +float createdAt
+  #String code
+  -String active
+  +sendAddress()
+  +deletePrice()
+}
+class Hospital {
+  #boolean email
+  +long id
+  +deleteId()
+  +saveName()
+  +setStatus()
+}
+Nurse --* Treatment
+LabTest ..|> Treatment
+Patient --o Treatment
+Nurse ..> Hospital : "*"
+Patient --|> Hospital
+note right of Patient : Healthcare domain
+@enduml

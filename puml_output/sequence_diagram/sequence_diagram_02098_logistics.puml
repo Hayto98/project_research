@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+participant "Dispatcher" as D
+entity "Warehouse Staff" as WS
+participant "Fleet Manager" as FM
+entity "Driver" as D2
+boundary "Customer" as C
+D2 --> D : Update Inventory
+C --> D : Schedule Pickup
+C ->> D : Deliver Package
+note over D : processing deliver package
+D ->> D2 : Fuel Vehicle
+D --> WS : Report Issue
+activate WS
+WS --> D : ACK
+deactivate WS
+note over WS : processing report issue
+@enduml

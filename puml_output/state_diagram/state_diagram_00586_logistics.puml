@@ -1,0 +1,14 @@
+@startuml
+skinparam defaultFontSize 11
+[*] --> Rejected
+Rejected --> Created : reject
+Created --> Pending : process
+Created : entry / log fuellog
+Pending --> Completed : process
+Pending : entry / log fuellog
+Completed --> Processing : cancel
+Processing --> OnHold : process
+Processing : entry / log fuellog
+Created --> Processing : revert
+OnHold --> [*]
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+start
+:Apply For Loan;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Open Account;
+:Withdraw Cash;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Transfer Funds;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Deposit Money;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Pay Bill;
+stop
+@enduml

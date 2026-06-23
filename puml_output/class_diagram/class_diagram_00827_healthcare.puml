@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class Appointment {
+  +float id
+  #String updatedAt
+  +deleteQuantity()
+}
+class MedicalRecord {
+  +long code
+  #double name
+  +double quantity
+  +getActive()
+}
+class Insurance {
+  +long code
+  +float score
+  -Date note
+  -double price
+  #float quantity
+  +savePhone()
+  +processAddress()
+  +validateNote()
+  +deleteTotal()
+}
+class Prescription {
+  +float note
+  #Date createdAt
+  #long id
+  +sendDescription()
+  +setLevel()
+  +sendQuantity()
+  +updateCode()
+}
+class Doctor {
+  #String total
+  +float quantity
+  +deleteTotal()
+  +deleteId()
+}
+abstract class LabTest {
+  #float email
+  #int duration
+  -boolean status
+  +int name
+  +float price
+  +validateName()
+}
+MedicalRecord ..|> Doctor
+Appointment --|> Prescription
+Doctor ..> MedicalRecord : "1"
+note right of Appointment : Healthcare domain
+@enduml

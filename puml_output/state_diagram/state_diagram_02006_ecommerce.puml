@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+[*] --> Rejected
+Rejected --> Completed : reject
+Rejected : entry / log supplier
+Completed --> Cancelled : confirm
+Cancelled --> Pending : cancel
+Pending --> OnHold : submit
+Pending : entry / log supplier
+OnHold --> Draft : submit
+Draft --> Pending : revert
+Draft --> [*]
+@enduml

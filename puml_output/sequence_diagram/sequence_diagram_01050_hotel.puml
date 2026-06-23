@@ -1,0 +1,20 @@
+@startuml
+
+actor "Guest" as G
+entity "Chef" as C
+boundary "Housekeeper" as H
+C --> G : Order Room Service
+activate G
+G --> C : ACK
+deactivate G
+C --> G : Request Service
+activate G
+G --> C : ACK
+deactivate G
+note over G : processing request service
+G --> H : Cancel Reservation
+C --> H : Check Out
+activate H
+H --> C : ACK
+deactivate H
+@enduml

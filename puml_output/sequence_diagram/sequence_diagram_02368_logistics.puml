@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+actor "Customer" as C
+entity "Dispatcher" as D
+actor "Driver" as D2
+actor "Warehouse Staff" as WS
+D2 --> D : Deliver Package
+activate D
+D --> D2 : ACK
+deactivate D
+note over D : processing deliver package
+D2 --> WS : Report Issue
+WS ->> D : Load Package
+D ->> WS : Fuel Vehicle
+activate WS
+WS --> D : ACK
+deactivate WS
+@enduml

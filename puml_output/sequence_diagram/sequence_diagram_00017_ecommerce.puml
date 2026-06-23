@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+actor "Seller" as S
+participant "Customer" as C
+control "Payment Gateway" as PG
+S ->> PG : Cancel Order
+PG -> C : Browse Products
+activate C
+C --> PG : ACK
+deactivate C
+note over C : processing browse products
+C --> S : Apply Coupon
+note over S : processing apply coupon
+C -> S : Track Order
+S -> C : Add To Cart
+activate C
+C --> S : ACK
+deactivate C
+@enduml

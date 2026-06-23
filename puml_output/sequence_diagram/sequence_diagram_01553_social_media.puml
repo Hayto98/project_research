@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+actor "Admin" as A
+participant "User" as U
+boundary "Moderator" as M
+actor "Advertiser" as A2
+A ->> A2 : Comment
+A --> M : Send Message
+A2 --> M : Create Post
+activate M
+M --> A2 : ACK
+deactivate M
+note over M : processing create post
+A ->> M : Edit Profile
+activate M
+M --> A : ACK
+deactivate M
+M --> A2 : Follow User
+A2 -> M : Report Content
+activate M
+M --> A2 : ACK
+deactivate M
+note over M : processing report content
+@enduml

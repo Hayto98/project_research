@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing true
+boundary "Advertiser" as A
+participant "User" as U
+control "Admin" as A2
+boundary "Moderator" as M
+A --> A2 : Share Post
+M ->> A2 : Comment
+note over A2 : processing comment
+A ->> M : Follow User
+activate M
+M --> A : ACK
+deactivate M
+note over M : processing follow user
+A --> U : Create Post
+activate U
+U --> A : ACK
+deactivate U
+note over U : processing create post
+A2 -> A : Edit Profile
+A ->> A2 : Send Message
+note over A2 : processing send message
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+component "Loan Service" as C_LoanService
+component "Account Service" as C_AccountService
+component "Withdrawal Service" as C_WithdrawalService
+component "Card Service" as C_CardService
+database "Banking DB" as DB_banking
+C_LoanService --> DB_banking
+C_WithdrawalService --> DB_banking
+C_CardService --> DB_banking
+C_CardService ..> C_LoanService : MQ
+C_WithdrawalService ..> C_LoanService : HTTP
+@enduml

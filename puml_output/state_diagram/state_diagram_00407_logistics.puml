@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+[*] --> Draft
+Draft --> Closed : reject
+Draft : entry / log shipment
+Closed --> Rejected : review
+Rejected --> Shipped : review
+Shipped --> Pending : cancel
+Pending --> OnHold : reject
+Draft --> Pending : revert
+OnHold --> [*]
+@enduml

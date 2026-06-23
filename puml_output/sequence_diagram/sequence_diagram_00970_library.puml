@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+entity "Librarian" as L
+boundary "Member" as M
+boundary "Admin" as A
+L --> A : Renew Loan
+activate A
+A --> L : ACK
+deactivate A
+M -> L : Borrow Book
+A -> L : Add New Book
+M ->> L : Search Catalog
+A ->> M : Return Book
+activate M
+M --> A : ACK
+deactivate M
+L ->> M : Register Member
+@enduml

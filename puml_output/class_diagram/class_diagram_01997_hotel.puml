@@ -1,0 +1,44 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+interface Guest {
+  -float amount
+  #long phone
+  +validateCode()
+  +createAddress()
+  +sendTotal()
+}
+abstract class CheckOut {
+  +Date quantity
+  -float phone
+  +calculateAmount()
+  +setUpdatedat()
+  +validatePhone()
+  +findPhone()
+}
+class Amenity {
+  -Date duration
+  #int updatedAt
+  +updateDescription()
+}
+class Room {
+  -String code
+  #double phone
+  +long active
+  #String description
+  +calculatePhone()
+}
+abstract class Reservation {
+  #long createdAt
+  +Date status
+  #boolean id
+  +validateUpdatedat()
+  +createUpdatedat()
+  +cancelTotal()
+  +sendPrice()
+}
+Guest --o Reservation
+Amenity --> Room : "1..*"
+note right of Guest : Hotel domain
+@enduml

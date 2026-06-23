@@ -1,0 +1,12 @@
+@startuml
+skinparam shadowing true
+component "Driver Service" as C_DriverService
+component "Package Service" as C_PackageService
+component "Depot Service" as C_DepotService
+component "Shipment Service" as C_ShipmentService
+database "Logistics DB" as DB_logistics
+C_DriverService --> DB_logistics
+C_DepotService --> DB_logistics
+C_PackageService ..> C_DepotService : HTTP
+C_DriverService ..> C_DepotService : MQ
+@enduml

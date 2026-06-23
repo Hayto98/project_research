@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+abstract class Renewal {
+  #float active
+  -float description
+  #float quantity
+  -double price
+  +String name
+  +deleteUpdatedat()
+  +setCreatedat()
+  +saveId()
+  +createId()
+}
+class Member {
+  +boolean type
+  -String level
+  +Date phone
+  -double note
+  +float total
+  +getLevel()
+  +validateDescription()
+}
+interface Shelf {
+  +String name
+  #Date id
+  #long level
+  +createScore()
+  +cancelId()
+  +findTotal()
+}
+interface Branch {
+  #String name
+  +boolean note
+  #Date level
+  +createLevel()
+  +getName()
+  +createQuantity()
+  +sendPhone()
+}
+Renewal ..> Member : "1"
+Branch --> Shelf : "*"
+Shelf ..> Branch : "*"
+note right of Renewal : Library domain
+@enduml

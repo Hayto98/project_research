@@ -1,0 +1,56 @@
+@startuml
+skinparam defaultFontSize 11
+class Classroom {
+  #boolean code
+  #long id
+  +validateNote()
+  +processCode()
+}
+class Schedule {
+  #float description
+  #double id
+  -Date quantity
+  +setCreatedat()
+}
+abstract class Course {
+  +long id
+  -float level
+  -Date price
+  +double score
+  +cancelDuration()
+}
+abstract class Department {
+  -Date status
+  -double email
+  #float duration
+  -Date active
+  -long amount
+  +saveStatus()
+}
+class Enrollment {
+  +boolean address
+  #String type
+  -boolean amount
+  -double score
+  -String level
+  +saveDuration()
+}
+interface Exam {
+  #String address
+  #String type
+  +processDuration()
+  +cancelAmount()
+  +deleteScore()
+}
+class Attendance {
+  #boolean description
+  +Date total
+  +cancelUpdatedat()
+}
+Schedule ..> Attendance : "1"
+Department ..|> Classroom
+Course --o Department
+Exam --|> Enrollment
+Enrollment ..> Attendance : "1"
+note right of Classroom : Education domain
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+actor "Customer" as C
+boundary "Warehouse Staff" as WS
+boundary "Driver" as D
+WS ->> D : Assign Route
+D -> WS : Load Package
+WS ->> D : Update Inventory
+activate D
+D --> WS : ACK
+deactivate D
+D --> WS : Schedule Pickup
+D -> C : Fuel Vehicle
+D ->> C : Report Issue
+activate C
+C --> D : ACK
+deactivate C
+C ->> D : Deliver Package
+@enduml

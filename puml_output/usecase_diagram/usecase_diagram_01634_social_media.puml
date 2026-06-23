@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+left to right direction
+actor "User" as User
+actor "Advertiser" as Advertiser
+actor "Moderator" as Moderator
+rectangle "Social Media System" {
+  usecase "Share Post" as UC_SharePost
+  usecase "Send Message" as UC_SendMessage
+  usecase "Follow User" as UC_FollowUser
+  usecase "Comment" as UC_Comment
+  usecase "Like Post" as UC_LikePost
+}
+User --> UC_Comment
+User --> UC_SendMessage
+Advertiser --> UC_FollowUser
+Moderator --> UC_SendMessage
+Moderator --> UC_FollowUser
+Moderator --> UC_LikePost
+UC_SendMessage ..|> UC_Comment : <<include>>
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+boundary "Warehouse Staff" as WS
+boundary "Driver" as D
+entity "Fleet Manager" as FM
+participant "Customer" as C
+C ->> D : Track Shipment
+note over D : processing track shipment
+D ->> FM : Fuel Vehicle
+FM ->> C : Load Package
+activate C
+C --> FM : ACK
+deactivate C
+FM --> C : Report Issue
+D --> WS : Deliver Package
+@enduml

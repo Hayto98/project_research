@@ -1,0 +1,24 @@
+@startuml
+skinparam defaultFontSize 13
+left to right direction
+actor "Admin" as Admin
+actor "Librarian" as Librarian
+actor "Member" as Member
+rectangle "Library System" {
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Search Catalog" as UC_SearchCatalog
+  usecase "Pay Fine" as UC_PayFine
+  usecase "Renew Loan" as UC_RenewLoan
+  usecase "Register Member" as UC_RegisterMember
+  usecase "Return Book" as UC_ReturnBook
+}
+Admin --> UC_PayFine
+Admin --> UC_BorrowBook
+Admin --> UC_RenewLoan
+Librarian --> UC_RenewLoan
+Librarian --> UC_BorrowBook
+Librarian --> UC_ReturnBook
+Member --> UC_RegisterMember
+Member --> UC_RenewLoan
+Member --> UC_BorrowBook
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+class Room {
+  -float type
+  -boolean note
+  +double total
+  #float name
+  +boolean status
+  +processUpdatedat()
+  +getUpdatedat()
+  +deletePhone()
+}
+class Payment {
+  -long updatedAt
+  -float name
+  +String description
+  #int phone
+  -double active
+  +getAddress()
+  +createEmail()
+}
+abstract class Amenity {
+  #Date id
+  #int phone
+  -Date note
+  +int amount
+  +processDescription()
+  +createName()
+  +validateName()
+}
+interface Booking {
+  +String code
+  -String active
+  +long createdAt
+  -boolean amount
+  +validateStatus()
+  +cancelPhone()
+  +getScore()
+  +createTotal()
+}
+class Housekeeping {
+  #float createdAt
+  +boolean price
+  -Date amount
+  #long phone
+  +sendNote()
+  +cancelCode()
+  +sendNote()
+}
+Payment --> Amenity : "*"
+Payment --|> Booking
+Room --> Amenity : "0..1"
+note right of Room : Hotel domain
+@enduml

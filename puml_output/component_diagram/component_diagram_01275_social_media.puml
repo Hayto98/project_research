@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Notification Service" as C_NotificationService
+component "Follower Service" as C_FollowerService
+component "Profile Service" as C_ProfileService
+component "Group Service" as C_GroupService
+component "Hashtag Service" as C_HashtagService
+component "Message Service" as C_MessageService
+component "Report Service" as C_ReportService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_ReportService --> DB_social_media
+C_NotificationService ..> C_MessageService : HTTP
+C_NotificationService ..> C_FollowerService : MQ
+C_MessageService ..> C_ReportService : gRPC
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+
+boundary "Dispatcher" as D
+entity "Warehouse Staff" as WS
+control "Customer" as C
+WS -> C : Assign Route
+note over C : processing assign route
+WS ->> D : Deliver Package
+C ->> D : Load Package
+activate D
+D --> C : ACK
+deactivate D
+WS -> C : Report Issue
+D ->> C : Update Inventory
+@enduml

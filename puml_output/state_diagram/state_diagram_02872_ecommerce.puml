@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+[*] --> OnHold
+OnHold --> Pending : submit
+Pending --> Cancelled : process
+Cancelled --> Completed : reject
+Completed --> Draft : approve
+Completed : entry / log invoice
+Draft --> Approved : process
+Completed --> Approved : revert
+Approved --> [*]
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+component "Message Service" as C_MessageService
+component "Group Service" as C_GroupService
+component "Follower Service" as C_FollowerService
+component "Report Service" as C_ReportService
+component "User Service" as C_UserService
+component "Notification Service" as C_NotificationService
+database "Social Media DB" as DB_social_media
+C_MessageService --> DB_social_media
+C_ReportService --> DB_social_media
+C_UserService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_FollowerService ..> C_MessageService : MQ
+C_UserService ..> C_MessageService : REST
+C_NotificationService ..> C_MessageService : gRPC
+C_FollowerService ..> C_UserService : MQ
+C_GroupService ..> C_FollowerService : HTTP
+@enduml

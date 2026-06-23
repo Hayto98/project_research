@@ -1,0 +1,65 @@
+@startuml
+skinparam defaultFontSize 13
+interface Tracking {
+  +float quantity
+  -Date name
+  +updateEmail()
+  +createActive()
+}
+interface Warehouse {
+  +float score
+  -float level
+  +setAmount()
+  +deleteName()
+  +getAddress()
+  +cancelPhone()
+}
+class Package {
+  +long type
+  -int active
+  -int address
+  +updateName()
+  +setTotal()
+}
+class Route {
+  -double updatedAt
+  +int level
+  #int score
+  +Date active
+  +getPhone()
+  +validateScore()
+  +processType()
+  +createType()
+}
+interface Shipment {
+  +double amount
+  #boolean status
+  #long phone
+  +double type
+  #String address
+  +setActive()
+  +saveQuantity()
+  +validateQuantity()
+  +saveId()
+}
+interface FuelLog {
+  -String address
+  -long name
+  +getQuantity()
+  +createDuration()
+}
+class DeliveryNote {
+  +Date total
+  +long status
+  +boolean amount
+  +sendType()
+  +setCode()
+}
+Tracking ..|> FuelLog
+Shipment ..|> Route
+Shipment --* DeliveryNote
+FuelLog ..> DeliveryNote : "1"
+Route --o FuelLog
+Package ..> Shipment : "1"
+note right of Tracking : Logistics domain
+@enduml

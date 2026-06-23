@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Restaurant Service" as C_RestaurantService
+component "Housekeeping Service" as C_HousekeepingService
+component "Payment Service" as C_PaymentService
+component "CheckOut Service" as C_CheckOutService
+database "Hotel DB" as DB_hotel
+C_RestaurantService --> DB_hotel
+C_PaymentService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_RestaurantService ..> C_PaymentService : REST
+C_PaymentService ..> C_CheckOutService : HTTP
+C_RestaurantService ..> C_PaymentService : MQ
+@enduml

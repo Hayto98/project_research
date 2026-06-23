@@ -1,0 +1,35 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+start
+:Follow User;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Like Post;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Report Content;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Comment;
+:Send Message;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Create Post;
+stop
+@enduml

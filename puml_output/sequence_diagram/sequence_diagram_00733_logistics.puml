@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+participant "Dispatcher" as D
+actor "Driver" as D2
+control "Customer" as C
+actor "Fleet Manager" as FM
+D -> D2 : Schedule Pickup
+D --> D2 : Deliver Package
+activate D2
+D2 --> D : ACK
+deactivate D2
+D2 -> C : Update Inventory
+D ->> D2 : Assign Route
+activate D2
+D2 --> D : ACK
+deactivate D2
+D2 ->> D : Report Issue
+activate D
+D --> D2 : ACK
+deactivate D
+D --> D2 : Track Shipment
+activate D2
+D2 --> D : ACK
+deactivate D2
+@enduml

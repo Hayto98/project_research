@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+entity "Auditor" as A
+boundary "Bank Teller" as BT
+participant "Branch Manager" as BM
+A -> BT : Deposit Money
+activate BT
+BT --> A : ACK
+deactivate BT
+BT ->> BM : View Statement
+BM --> A : Pay Bill
+activate A
+A --> BM : ACK
+deactivate A
+BM --> A : Open Account
+BM ->> BT : Apply For Loan
+activate BT
+BT --> BM : ACK
+deactivate BT
+BT --> BM : Block Card
+BT -> BM : Withdraw Cash
+@enduml

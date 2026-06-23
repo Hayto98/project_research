@@ -1,0 +1,18 @@
+@startuml
+skinparam ArrowColor #555555
+actor "Admin" as A
+entity "Teacher" as T
+actor "Registrar" as R
+entity "Student" as S
+T ->> A : Grade Exam
+note over A : processing grade exam
+R ->> T : View Schedule
+R -> A : Submit Assignment
+T --> S : Take Attendance
+activate S
+S --> T : ACK
+deactivate S
+note over S : processing take attendance
+S -> A : Issue Certificate
+note over A : processing issue certificate
+@enduml

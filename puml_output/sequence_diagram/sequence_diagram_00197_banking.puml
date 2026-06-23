@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+entity "Auditor" as A
+actor "Branch Manager" as BM
+boundary "Bank Teller" as BT
+entity "Account Holder" as AH
+BM -> BT : Transfer Funds
+note over BT : processing transfer funds
+A -> AH : Pay Bill
+activate AH
+AH --> A : ACK
+deactivate AH
+A -> AH : Withdraw Cash
+activate AH
+AH --> A : ACK
+deactivate AH
+AH --> A : Deposit Money
+note over A : processing deposit money
+BM ->> AH : View Statement
+@enduml

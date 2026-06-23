@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+class Invoice {
+  +long level
+  -boolean price
+  +double total
+  -long duration
+  +saveType()
+  +processAmount()
+  +calculateDescription()
+  +deletePrice()
+}
+class CheckOut {
+  +long updatedAt
+  -int type
+  +long address
+  #int total
+  +findAmount()
+}
+class Payment {
+  #Date description
+  #float phone
+  #double email
+  +createTotal()
+  +processPrice()
+}
+class Housekeeping {
+  +boolean email
+  -boolean address
+  +updateName()
+  +processActive()
+}
+class Guest {
+  -boolean amount
+  +String email
+  #double score
+  +validateStatus()
+  +deleteId()
+  +deleteNote()
+}
+class Booking {
+  +Date id
+  +long amount
+  +long note
+  +cancelDescription()
+  +updateQuantity()
+}
+Housekeeping ..> Guest : "0..1"
+Invoice ..> Booking : "0..1"
+Payment --* CheckOut
+note right of Invoice : Hotel domain
+@enduml

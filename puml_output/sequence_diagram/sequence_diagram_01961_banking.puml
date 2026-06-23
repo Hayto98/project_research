@@ -1,0 +1,19 @@
+@startuml
+skinparam defaultFontSize 13
+actor "Auditor" as A
+control "Branch Manager" as BM
+actor "Bank Teller" as BT
+entity "ATM" as A2
+BM --> BT : Pay Bill
+BT ->> A : Block Card
+A2 --> A : Withdraw Cash
+activate A
+A --> A2 : ACK
+deactivate A
+BM ->> A2 : Open Account
+A2 ->> BM : Transfer Funds
+activate BM
+BM --> A2 : ACK
+deactivate BM
+BT ->> A : Apply For Loan
+@enduml

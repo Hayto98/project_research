@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+entity "Doctor" as D
+actor "Nurse" as N
+control "Lab Technician" as LT
+N ->> LT : Book Appointment
+activate LT
+LT --> N : ACK
+deactivate LT
+LT ->> N : Update Medical Record
+LT -> D : Discharge Patient
+activate D
+D --> LT : ACK
+deactivate D
+LT --> N : Examine Patient
+note over N : processing examine patient
+D -> LT : Issue Prescription
+activate LT
+LT --> D : ACK
+deactivate LT
+N --> LT : Process Insurance Claim
+@enduml

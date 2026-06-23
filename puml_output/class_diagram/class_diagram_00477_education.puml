@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+interface Schedule {
+  #double phone
+  +int duration
+  +String updatedAt
+  +Date status
+  #int email
+  +findCode()
+  +validateActive()
+  +cancelCode()
+  +createActive()
+}
+abstract class Library {
+  #String quantity
+  #Date code
+  -Date price
+  +boolean email
+  +setStatus()
+  +deleteEmail()
+  +saveCode()
+  +calculateScore()
+}
+class Book {
+  +boolean price
+  -float code
+  #String note
+  +calculateQuantity()
+  +createDescription()
+}
+class Enrollment {
+  #boolean updatedAt
+  -int code
+  #boolean name
+  #boolean email
+  +setType()
+}
+interface Student {
+  +Date active
+  +float name
+  #String note
+  #Date address
+  #int code
+  +sendDuration()
+  +updateActive()
+}
+class Course {
+  #String note
+  -double level
+  #int code
+  +cancelDescription()
+}
+Schedule ..|> Course
+Book ..|> Course
+Course --* Library
+Student ..> Schedule : "1..*"
+note right of Schedule : Education domain
+@enduml

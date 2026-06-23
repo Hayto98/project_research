@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 13
+left to right direction
+actor "Seller" as Seller
+actor "Delivery Service" as DeliveryService
+actor "Customer" as Customer
+rectangle "Ecommerce System" {
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Checkout" as UC_Checkout
+  usecase "Manage Inventory" as UC_ManageInventory
+}
+Seller --> UC_AddToCart
+DeliveryService --> UC_CancelOrder
+DeliveryService --> UC_Checkout
+DeliveryService --> UC_TrackOrder
+Customer --> UC_Checkout
+Customer --> UC_CancelOrder
+Customer --> UC_ManageInventory
+UC_AddToCart ..> UC_ManageInventory : <<include>>
+@enduml

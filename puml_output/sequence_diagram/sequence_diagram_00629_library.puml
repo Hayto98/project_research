@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+actor "Admin" as A
+actor "Member" as M
+boundary "Librarian" as L
+A -> M : Reserve Book
+activate M
+M --> A : ACK
+deactivate M
+M ->> A : Register Member
+A -> M : Return Book
+activate M
+M --> A : ACK
+deactivate M
+M ->> A : Renew Loan
+activate A
+A --> M : ACK
+deactivate A
+M --> A : Pay Fine
+activate A
+A --> M : ACK
+deactivate A
+M ->> A : Borrow Book
+@enduml

@@ -1,0 +1,67 @@
+@startuml
+skinparam shadowing true
+interface Route {
+  -Date level
+  +boolean quantity
+  +long name
+  #int updatedAt
+  +updatePrice()
+  +saveNote()
+  +cancelNote()
+  +sendName()
+}
+interface Warehouse {
+  #int phone
+  #Date status
+  +float email
+  +double address
+  +getId()
+}
+class Shipment {
+  +float createdAt
+  -Date description
+  +saveCode()
+  +cancelLevel()
+  +createTotal()
+  +setLevel()
+}
+class Manifest {
+  -float phone
+  #int total
+  #float address
+  #String quantity
+  #String code
+  +getCode()
+  +cancelUpdatedat()
+}
+class Customer {
+  -Date name
+  #boolean createdAt
+  #boolean address
+  +createCreatedat()
+  +setCode()
+  +createAmount()
+}
+class Vehicle {
+  -Date note
+  #double level
+  -Date description
+  +double code
+  +setLevel()
+}
+class FuelLog {
+  #double createdAt
+  #float code
+  -int price
+  +boolean description
+  #int id
+  +getDescription()
+}
+Route --* Warehouse
+FuelLog --> Manifest : "1"
+Manifest --|> Vehicle
+Warehouse --|> Shipment
+Vehicle ..> Shipment : "0..1"
+Customer ..> Vehicle : "0..1"
+note right of Route : Logistics domain
+@enduml

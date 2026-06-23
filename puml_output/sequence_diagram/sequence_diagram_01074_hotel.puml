@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 13
+participant "Manager" as M
+entity "Guest" as G
+participant "Housekeeper" as H
+M -> H : Process Payment
+note over H : processing process payment
+M ->> G : Check In
+note over G : processing check in
+G ->> M : Request Service
+M --> G : Order Room Service
+activate G
+G --> M : ACK
+deactivate G
+H --> M : Book Room
+note over M : processing book room
+M ->> G : Check Out
+activate G
+G --> M : ACK
+deactivate G
+G --> M : Cancel Reservation
+@enduml

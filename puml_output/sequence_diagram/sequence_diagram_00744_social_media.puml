@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+boundary "Admin" as A
+actor "Moderator" as M
+participant "Advertiser" as A2
+A2 ->> M : Create Post
+note over M : processing create post
+A --> A2 : Comment
+A2 ->> A : Edit Profile
+A -> M : Share Post
+activate M
+M --> A : ACK
+deactivate M
+A ->> A2 : Follow User
+activate A2
+A2 --> A : ACK
+deactivate A2
+note over A2 : processing follow user
+A ->> M : Send Message
+activate M
+M --> A : ACK
+deactivate M
+A2 -> M : Like Post
+@enduml

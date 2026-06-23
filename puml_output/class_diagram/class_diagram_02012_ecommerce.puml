@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+class Return {
+  +double status
+  +boolean createdAt
+  +saveUpdatedat()
+}
+class Coupon {
+  -long address
+  -double duration
+  +int id
+  +String code
+  +int note
+  +processCreatedat()
+}
+abstract class Invoice {
+  #float type
+  #boolean level
+  #Date active
+  +setCode()
+}
+abstract class Order {
+  -Date level
+  #int email
+  +boolean updatedAt
+  +Date total
+  +processCreatedat()
+  +getUpdatedat()
+  +sendActive()
+}
+interface Review {
+  +boolean duration
+  #double phone
+  +setEmail()
+}
+interface Payment {
+  -Date createdAt
+  #boolean phone
+  -double duration
+  +getTotal()
+  +getAmount()
+  +createCode()
+  +updateQuantity()
+}
+Payment ..|> Coupon
+Review --|> Coupon
+Payment ..> Invoice : "*"
+note right of Return : Ecommerce domain
+@enduml

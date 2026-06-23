@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+component "Invoice Service" as C_InvoiceService
+component "Guest Service" as C_GuestService
+component "Service Service" as C_ServiceService
+component "Housekeeping Service" as C_HousekeepingService
+database "Hotel DB" as DB_hotel
+C_InvoiceService --> DB_hotel
+C_GuestService --> DB_hotel
+C_ServiceService --> DB_hotel
+C_HousekeepingService --> DB_hotel
+C_ServiceService ..> C_HousekeepingService : gRPC
+C_InvoiceService ..> C_GuestService : MQ
+C_GuestService ..> C_InvoiceService : REST
+@enduml

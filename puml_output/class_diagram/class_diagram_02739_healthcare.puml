@@ -1,0 +1,37 @@
+@startuml
+skinparam defaultFontSize 13
+abstract class Nurse {
+  #boolean phone
+  #Date quantity
+  +setActive()
+}
+abstract class Billing {
+  +Date type
+  #int email
+  -double id
+  #float level
+  +Date description
+  +validateDuration()
+  +updateQuantity()
+  +saveName()
+}
+interface Appointment {
+  #Date level
+  +String type
+  #int address
+  #boolean id
+  -Date email
+  +sendType()
+  +deleteNote()
+}
+abstract class Prescription {
+  #Date price
+  #float status
+  #long amount
+  +getDescription()
+}
+Prescription ..> Billing : "1..*"
+Billing --|> Nurse
+Nurse ..> Appointment : "*"
+note right of Nurse : Healthcare domain
+@enduml

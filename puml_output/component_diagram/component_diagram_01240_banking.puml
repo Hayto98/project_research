@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing true
+component "Card Service" as C_CardService
+component "Branch Service" as C_BranchService
+component "Customer Service" as C_CustomerService
+component "Withdrawal Service" as C_WithdrawalService
+database "Banking DB" as DB_banking
+C_CardService --> DB_banking
+C_CustomerService --> DB_banking
+C_WithdrawalService --> DB_banking
+C_WithdrawalService ..> C_CustomerService : REST
+C_CardService ..> C_WithdrawalService : REST
+C_WithdrawalService ..> C_BranchService : MQ
+@enduml

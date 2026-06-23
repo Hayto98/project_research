@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+control "Student" as S
+participant "Registrar" as R
+boundary "Admin" as A
+participant "Parent" as P
+participant "Librarian" as L
+R --> L : Grade Exam
+activate L
+L --> R : ACK
+deactivate L
+L -> A : Register Student
+activate A
+A --> L : ACK
+deactivate A
+note over A : processing register student
+L -> A : Borrow Book
+S --> R : Issue Certificate
+note over R : processing issue certificate
+S --> P : Enroll Course
+@enduml

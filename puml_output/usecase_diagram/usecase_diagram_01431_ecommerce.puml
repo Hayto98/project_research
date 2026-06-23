@@ -1,0 +1,25 @@
+@startuml
+skinparam shadowing true
+left to right direction
+actor "Payment Gateway" as PaymentGateway
+actor "Delivery Service" as DeliveryService
+actor "Seller" as Seller
+actor "Customer" as Customer
+rectangle "Ecommerce System" {
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Write Review" as UC_WriteReview
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Manage Inventory" as UC_ManageInventory
+}
+PaymentGateway --> UC_WriteReview
+PaymentGateway --> UC_TrackOrder
+DeliveryService --> UC_BrowseProducts
+DeliveryService --> UC_ManageInventory
+Seller --> UC_TrackOrder
+Seller --> UC_ManageInventory
+Seller --> UC_CancelOrder
+Customer --> UC_CancelOrder
+UC_ManageInventory ..> UC_TrackOrder : <<include>>
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+entity "Admin" as A
+participant "Advertiser" as A2
+actor "User" as U
+participant "Moderator" as M
+A2 -> A : Report Content
+A2 --> M : Share Post
+activate M
+M --> A2 : ACK
+deactivate M
+A -> U : Like Post
+activate U
+U --> A : ACK
+deactivate U
+A ->> U : Create Post
+activate U
+U --> A : ACK
+deactivate U
+note over U : processing create post
+U -> A2 : Follow User
+A --> M : Edit Profile
+activate M
+M --> A : ACK
+deactivate M
+@enduml

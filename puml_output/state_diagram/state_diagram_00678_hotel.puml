@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+[*] --> Reviewed
+Reviewed --> Active : reject
+Active --> Delivered : reject
+Active : entry / log invoice
+Delivered --> Pending : update
+Pending --> Closed : confirm
+Reviewed --> Pending : revert
+Closed --> [*]
+@enduml

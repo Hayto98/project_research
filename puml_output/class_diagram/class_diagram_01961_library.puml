@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+interface Renewal {
+  -Date duration
+  #int level
+  -int id
+  #Date updatedAt
+  +calculateLevel()
+  +sendStatus()
+}
+abstract class Branch {
+  #String email
+  #float price
+  -int score
+  #String phone
+  #int duration
+  +sendLevel()
+  +setId()
+}
+interface Member {
+  #String amount
+  -boolean name
+  +createTotal()
+  +updatePrice()
+  +savePrice()
+}
+class Catalog {
+  #Date active
+  -Date price
+  -long level
+  -Date id
+  -String updatedAt
+  +findUpdatedat()
+  +validateQuantity()
+}
+abstract class Fine {
+  -int status
+  #String price
+  #int phone
+  #long updatedAt
+  +int amount
+  +saveNote()
+  +validateAddress()
+  +createUpdatedat()
+  +saveId()
+}
+class Publisher {
+  #String name
+  #float email
+  +processActive()
+  +cancelLevel()
+  +updateDescription()
+  +updateAmount()
+}
+class Loan {
+  +String status
+  -int level
+  +findType()
+}
+Renewal --* Catalog
+Renewal --|> Loan
+Member --* Branch
+Catalog ..> Publisher : "0..1"
+Renewal --* Publisher
+Catalog ..> Member : "1"
+note right of Renewal : Library domain
+@enduml

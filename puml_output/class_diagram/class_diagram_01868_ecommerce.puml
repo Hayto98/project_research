@@ -1,0 +1,74 @@
+@startuml
+skinparam defaultFontSize 13
+interface Payment {
+  -double name
+  #Date code
+  -String amount
+  #float quantity
+  #long status
+  +createAddress()
+  +processScore()
+}
+abstract class Supplier {
+  -float code
+  #String name
+  -Date price
+  -long active
+  #boolean status
+  +cancelDuration()
+  +updateName()
+  +validateAmount()
+  +getEmail()
+}
+abstract class Warehouse {
+  #long total
+  #long score
+  -String status
+  +findAddress()
+  +processActive()
+  +cancelActive()
+  +deleteAddress()
+}
+interface Review {
+  -boolean status
+  +double amount
+  -float address
+  +updateTotal()
+  +processName()
+  +findPhone()
+}
+abstract class Category {
+  #long level
+  #float address
+  +double phone
+  +double email
+  -boolean status
+  +processLevel()
+  +savePhone()
+  +validateEmail()
+  +setPhone()
+}
+abstract class Cart {
+  +long amount
+  #long active
+  -float code
+  -Date createdAt
+  +long phone
+  +sendId()
+  +cancelType()
+  +deleteAmount()
+}
+class Product {
+  #boolean duration
+  #long note
+  +Date type
+  +setCode()
+}
+Cart --> Review : "0..1"
+Cart --> Warehouse : "1"
+Warehouse ..> Supplier : "1..*"
+Category --|> Warehouse
+Warehouse --* Review
+Payment --> Cart : "1"
+note right of Payment : Ecommerce domain
+@enduml

@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Cart {
+  #boolean status
+  #boolean note
+  #boolean quantity
+  #boolean createdAt
+  +createDuration()
+  +deleteQuantity()
+}
+class Product {
+  -boolean note
+  -boolean total
+  +findAmount()
+  +updateDuration()
+  +getStatus()
+}
+interface Payment {
+  #Date level
+  +float id
+  #String note
+  +String code
+  +deleteScore()
+  +processPhone()
+}
+interface Invoice {
+  +float code
+  -int status
+  -String address
+  #Date type
+  +saveName()
+  +processTotal()
+}
+class Customer {
+  -Date active
+  #float code
+  +float price
+  #double name
+  +calculateScore()
+}
+class Category {
+  #long email
+  -int total
+  #int status
+  #double createdAt
+  -String type
+  +getEmail()
+  +saveName()
+  +deleteStatus()
+  +updateTotal()
+}
+Invoice --|> Cart
+Category ..> Cart : "*"
+Payment --> Customer : "1..*"
+Product --o Category
+note right of Cart : Ecommerce domain
+@enduml

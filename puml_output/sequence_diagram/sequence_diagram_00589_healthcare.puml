@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+entity "Patient" as P
+participant "Doctor" as D
+entity "Nurse" as N
+N --> P : Admit Patient
+N ->> D : Issue Prescription
+activate D
+D --> N : ACK
+deactivate D
+P -> N : Examine Patient
+activate N
+N --> P : ACK
+deactivate N
+note over N : processing examine patient
+D -> N : Discharge Patient
+activate N
+N --> D : ACK
+deactivate N
+N ->> P : Run Lab Test
+D --> N : Book Appointment
+D -> P : Update Medical Record
+@enduml

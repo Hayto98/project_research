@@ -1,0 +1,53 @@
+@startuml
+skinparam defaultFontSize 11
+class Restaurant {
+  -long createdAt
+  -String total
+  +int level
+  +createTotal()
+}
+abstract class Service {
+  +int level
+  +long note
+  -int code
+  -double id
+  +sendName()
+}
+class Amenity {
+  +long updatedAt
+  +boolean email
+  #float total
+  +createId()
+}
+abstract class Payment {
+  #boolean name
+  #String amount
+  +int email
+  +boolean quantity
+  +processStatus()
+  +processAddress()
+  +getAmount()
+}
+abstract class CheckIn {
+  #long id
+  +int code
+  #long price
+  +double quantity
+  +validateDescription()
+  +setCreatedat()
+  +saveNote()
+}
+interface Reservation {
+  +double code
+  +boolean type
+  #long phone
+  +calculateId()
+  +cancelUpdatedat()
+  +cancelDescription()
+  +calculatePrice()
+}
+Payment --|> Service
+CheckIn ..> Service : "1..*"
+Restaurant --> Amenity : "0..1"
+note right of Restaurant : Hotel domain
+@enduml

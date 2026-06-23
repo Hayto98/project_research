@@ -1,0 +1,58 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+interface Reservation {
+  -Date amount
+  #boolean duration
+  +setId()
+}
+interface Branch {
+  +int id
+  #double price
+  +Date level
+  +validateEmail()
+  +createCode()
+  +findDescription()
+  +validateId()
+}
+abstract class Loan {
+  +boolean note
+  #int total
+  +long type
+  +validateType()
+  +findScore()
+}
+class Publisher {
+  +float note
+  #long id
+  +float description
+  -float address
+  #long price
+  +setTotal()
+  +findTotal()
+  +deleteUpdatedat()
+  +processQuantity()
+}
+class Librarian {
+  #double description
+  #long amount
+  +sendScore()
+  +deleteQuantity()
+}
+abstract class Catalog {
+  +double name
+  -long price
+  -float quantity
+  -int updatedAt
+  #long type
+  +calculateEmail()
+  +calculateType()
+  +createName()
+  +saveLevel()
+}
+Catalog ..|> Reservation
+Branch --|> Publisher
+Catalog --> Publisher : "1"
+Publisher --> Loan : "1"
+note right of Reservation : Library domain
+@enduml

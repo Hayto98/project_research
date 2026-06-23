@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+[*] --> Shipped
+Shipped --> OnHold : submit
+Shipped : entry / log library
+OnHold --> Rejected : confirm
+Rejected --> Delivered : submit
+Delivered --> Created : confirm
+Delivered : entry / log library
+Created --> Completed : cancel
+Created : entry / log library
+OnHold --> Created : revert
+Completed --> [*]
+@enduml

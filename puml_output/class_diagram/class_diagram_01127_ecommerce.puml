@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+class Order {
+  #String email
+  -String address
+  #Date score
+  +String phone
+  +findQuantity()
+}
+class Warehouse {
+  #long level
+  #int price
+  -Date total
+  +int code
+  #float name
+  +cancelPrice()
+  +getActive()
+  +calculateLevel()
+  +saveTotal()
+}
+interface Invoice {
+  #float description
+  #Date price
+  -double address
+  #long level
+  -String duration
+  +updateAmount()
+  +savePhone()
+}
+class Wishlist {
+  +boolean description
+  #String createdAt
+  -long id
+  +setUpdatedat()
+}
+class Customer {
+  +boolean id
+  #String active
+  #Date quantity
+  #Date type
+  +calculateScore()
+  +cancelName()
+  +setId()
+  +sendPhone()
+}
+interface Shipment {
+  +Date note
+  +int createdAt
+  +deleteCode()
+  +savePhone()
+}
+class Review {
+  -long updatedAt
+  #float address
+  -boolean quantity
+  #String createdAt
+  +String active
+  +createId()
+}
+Order --o Customer
+Wishlist ..> Order : "1"
+Shipment --|> Invoice
+Shipment --|> Order
+Warehouse --* Invoice
+note right of Order : Ecommerce domain
+@enduml

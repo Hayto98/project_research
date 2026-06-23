@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+control "Chef" as C
+control "Receptionist" as R
+control "Manager" as M
+entity "Guest" as G
+R ->> G : Cancel Reservation
+M ->> C : Clean Room
+C -> G : Book Room
+R ->> G : Request Service
+activate G
+G --> R : ACK
+deactivate G
+M -> G : Check Out
+activate G
+G --> M : ACK
+deactivate G
+note over G : processing check out
+@enduml

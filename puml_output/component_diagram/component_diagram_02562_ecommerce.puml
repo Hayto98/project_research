@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+component "Cart Service" as C_CartService
+component "Customer Service" as C_CustomerService
+component "Category Service" as C_CategoryService
+component "Return Service" as C_ReturnService
+component "Review Service" as C_ReviewService
+component "Supplier Service" as C_SupplierService
+component "Shipment Service" as C_ShipmentService
+database "Ecommerce DB" as DB_ecommerce
+C_CartService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_ShipmentService ..> C_CategoryService : MQ
+C_CustomerService ..> C_ShipmentService : gRPC
+C_CartService ..> C_ReturnService : MQ
+C_ReviewService ..> C_CustomerService : MQ
+C_SupplierService ..> C_ReturnService : HTTP
+C_ReturnService ..> C_CategoryService : REST
+@enduml

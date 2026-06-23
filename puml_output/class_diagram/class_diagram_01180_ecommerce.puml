@@ -1,0 +1,59 @@
+@startuml
+skinparam shadowing true
+class Wishlist {
+  -float score
+  #long quantity
+  +updateType()
+  +createQuantity()
+  +saveEmail()
+}
+class Payment {
+  #long name
+  #Date duration
+  #Date quantity
+  -float email
+  #String code
+  +setPrice()
+  +sendScore()
+  +processActive()
+}
+class Warehouse {
+  -String id
+  #double email
+  +boolean level
+  #int score
+  +String status
+  +calculateName()
+  +cancelEmail()
+}
+class Return {
+  #int level
+  #boolean price
+  +float id
+  +setName()
+  +sendPrice()
+}
+class Product {
+  #float total
+  #float amount
+  +calculateLevel()
+  +getPrice()
+}
+abstract class Cart {
+  +long createdAt
+  #float score
+  +cancelId()
+  +findPrice()
+  +getDuration()
+}
+interface Coupon {
+  +Date createdAt
+  -int note
+  +processStatus()
+}
+Product --> Return : "1"
+Wishlist ..|> Cart
+Return ..|> Payment
+Wishlist ..> Payment : "1..*"
+note right of Wishlist : Ecommerce domain
+@enduml

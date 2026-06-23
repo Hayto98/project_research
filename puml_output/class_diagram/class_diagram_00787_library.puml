@@ -1,0 +1,65 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Reservation {
+  +String total
+  +boolean quantity
+  -String description
+  #Date id
+  +getType()
+  +saveEmail()
+}
+interface Librarian {
+  +long createdAt
+  +int address
+  -boolean id
+  +getName()
+  +createPhone()
+}
+interface Book {
+  #float address
+  #int phone
+  #String type
+  #int id
+  -Date total
+  +setLevel()
+}
+class Catalog {
+  -float note
+  +String code
+  #int active
+  -boolean description
+  +setTotal()
+  +updateUpdatedat()
+  +updateDescription()
+  +cancelEmail()
+}
+abstract class Loan {
+  #Date phone
+  +String status
+  -double name
+  #Date score
+  -int address
+  +sendId()
+}
+class Author {
+  +Date createdAt
+  +Date code
+  +createNote()
+}
+class Member {
+  #long type
+  #long level
+  -double id
+  +findScore()
+  +updateTotal()
+}
+Librarian ..|> Catalog
+Book ..> Member : "*"
+Reservation --o Loan
+Reservation --o Member
+Librarian --|> Author
+Catalog --> Reservation : "0..1"
+note right of Reservation : Library domain
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class Depot {
+  #Date type
+  -Date name
+  -double level
+  +Date email
+  +processDescription()
+  +sendAddress()
+  +sendPhone()
+  +updateTotal()
+}
+class Shipment {
+  -long active
+  #float description
+  -double total
+  -boolean createdAt
+  +String updatedAt
+  +cancelScore()
+  +getTotal()
+  +deleteScore()
+  +setType()
+}
+class DeliveryNote {
+  -long note
+  #double email
+  +double name
+  #double code
+  +getCode()
+  +sendType()
+  +getId()
+  +validateId()
+}
+interface Driver {
+  +String active
+  +String phone
+  +long score
+  +setCode()
+  +findActive()
+}
+interface Customer {
+  #String amount
+  +boolean email
+  +int name
+  -int score
+  +sendQuantity()
+  +validateTotal()
+  +updateScore()
+  +processCode()
+}
+DeliveryNote --o Driver
+DeliveryNote --o Shipment
+Shipment ..> DeliveryNote : "0..1"
+note right of Depot : Logistics domain
+@enduml

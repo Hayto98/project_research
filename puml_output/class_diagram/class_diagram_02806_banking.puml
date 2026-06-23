@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+class Transfer {
+  #float email
+  -float phone
+  #String name
+  +boolean description
+  +findEmail()
+  +validateAmount()
+}
+class Branch {
+  +double active
+  -float createdAt
+  +double email
+  #float score
+  +deleteNote()
+  +processDuration()
+}
+interface Beneficiary {
+  -boolean phone
+  -long price
+  #String note
+  #int updatedAt
+  +validateCreatedat()
+  +validateAddress()
+  +setPhone()
+  +findCode()
+}
+class Customer {
+  -long amount
+  -Date duration
+  +setActive()
+}
+class Account {
+  +int amount
+  -float name
+  -int total
+  #int phone
+  +cancelLevel()
+  +sendId()
+}
+class Teller {
+  +float code
+  -long total
+  +float type
+  -boolean active
+  #String duration
+  +getCode()
+}
+Customer --> Branch : "0..1"
+Transfer --|> Teller
+Teller --> Customer : "1..*"
+Branch --> Beneficiary : "1"
+note right of Transfer : Banking domain
+@enduml

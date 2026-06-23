@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+start
+:Admit Patient;
+:Discharge Patient;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Run Lab Test;
+:Book Appointment;
+:Process Insurance Claim;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Examine Patient;
+:Issue Prescription;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Update Medical Record;
+stop
+@enduml

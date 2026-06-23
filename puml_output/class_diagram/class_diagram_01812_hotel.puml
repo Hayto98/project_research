@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+interface Guest {
+  +Date score
+  +float type
+  -long name
+  #Date email
+  +float address
+  +createTotal()
+  +validateLevel()
+  +processPhone()
+}
+abstract class Payment {
+  #boolean active
+  -boolean code
+  +double type
+  +calculateActive()
+  +getEmail()
+}
+interface Reservation {
+  -String name
+  -boolean type
+  +int description
+  -double status
+  -String amount
+  +savePrice()
+}
+abstract class Booking {
+  #Date note
+  #int amount
+  #long code
+  #long createdAt
+  -String address
+  +saveActive()
+  +calculateAmount()
+  +validateCode()
+  +updateScore()
+}
+Guest --* Booking
+Booking --|> Payment
+note right of Guest : Hotel domain
+@enduml

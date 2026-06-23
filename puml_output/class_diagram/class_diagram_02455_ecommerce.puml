@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class Warehouse {
+  +boolean status
+  +double code
+  -boolean active
+  +String total
+  #int updatedAt
+  +deleteType()
+}
+class Invoice {
+  -float createdAt
+  #long id
+  -boolean email
+  +double quantity
+  +updateTotal()
+  +createCreatedat()
+}
+abstract class Payment {
+  -int type
+  #boolean id
+  +sendPhone()
+  +validatePrice()
+  +updatePrice()
+  +calculatePhone()
+}
+class Shipment {
+  -String type
+  #boolean duration
+  +createUpdatedat()
+  +sendQuantity()
+  +updateScore()
+}
+Invoice --* Warehouse
+Shipment --> Payment : "0..1"
+Warehouse --|> Invoice
+note right of Warehouse : Ecommerce domain
+@enduml

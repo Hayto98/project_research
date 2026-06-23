@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing true
+[*] --> OnHold
+OnHold --> Reviewed : confirm
+OnHold : entry / log shipment
+Reviewed --> Cancelled : process
+Cancelled --> Shipped : cancel
+Shipped --> Archived : approve
+Shipped : entry / log shipment
+Archived --> Pending : confirm
+OnHold --> Reviewed : revert
+Pending --> [*]
+@enduml

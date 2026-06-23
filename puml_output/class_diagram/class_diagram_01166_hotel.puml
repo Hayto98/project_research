@@ -1,0 +1,41 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+interface Housekeeping {
+  +double address
+  #int email
+  #Date quantity
+  +int description
+  +calculateStatus()
+  +deleteStatus()
+  +createType()
+}
+abstract class Room {
+  +Date description
+  +int email
+  +getAddress()
+  +cancelStatus()
+  +saveName()
+  +getQuantity()
+}
+abstract class Invoice {
+  -Date email
+  #long quantity
+  -double updatedAt
+  +updateCreatedat()
+  +createQuantity()
+}
+interface Reservation {
+  #String amount
+  #boolean phone
+  +float score
+  +cancelTotal()
+  +processUpdatedat()
+  +getAmount()
+  +getType()
+}
+Housekeeping --|> Invoice
+Invoice ..> Housekeeping : "1"
+Reservation --> Invoice : "0..1"
+note right of Housekeeping : Hotel domain
+@enduml

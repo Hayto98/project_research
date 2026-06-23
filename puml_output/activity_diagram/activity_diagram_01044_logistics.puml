@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+start
+:Fuel Vehicle;
+:Update Inventory;
+:Deliver Package;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Report Issue;
+:Schedule Pickup;
+stop
+@enduml

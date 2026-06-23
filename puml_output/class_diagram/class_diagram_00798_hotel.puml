@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+class Reservation {
+  -long code
+  -Date phone
+  -float score
+  +calculateCreatedat()
+  +createName()
+  +sendCode()
+  +cancelType()
+}
+abstract class Staff {
+  #String id
+  #long code
+  #int active
+  +processScore()
+}
+abstract class Restaurant {
+  -float score
+  +double createdAt
+  #long amount
+  +validateDescription()
+  +createDescription()
+  +processStatus()
+  +saveLevel()
+}
+class Housekeeping {
+  +int code
+  #float email
+  #Date status
+  +validateStatus()
+  +sendQuantity()
+}
+abstract class Guest {
+  #float address
+  -long name
+  -double level
+  #Date phone
+  +cancelAmount()
+  +sendPrice()
+  +cancelCode()
+}
+class Booking {
+  -int quantity
+  +float score
+  #Date address
+  +saveName()
+  +validateDescription()
+}
+Staff --o Guest
+Housekeeping --|> Restaurant
+Restaurant --o Housekeeping
+note right of Reservation : Hotel domain
+@enduml

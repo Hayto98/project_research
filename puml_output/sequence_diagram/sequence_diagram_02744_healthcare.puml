@@ -1,0 +1,20 @@
+@startuml
+
+participant "Receptionist" as R
+boundary "Patient" as P
+boundary "Lab Technician" as LT
+actor "Insurance Provider" as IP
+LT -> R : Run Lab Test
+P --> IP : Process Insurance Claim
+activate IP
+IP --> P : ACK
+deactivate IP
+IP --> R : Issue Prescription
+P -> LT : Discharge Patient
+activate LT
+LT --> P : ACK
+deactivate LT
+IP ->> LT : Book Appointment
+IP -> P : Admit Patient
+note over P : processing admit patient
+@enduml

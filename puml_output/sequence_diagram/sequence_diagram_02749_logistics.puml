@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+actor "Driver" as D
+actor "Warehouse Staff" as WS
+participant "Fleet Manager" as FM
+entity "Customer" as C
+actor "Dispatcher" as D2
+D2 ->> D : Deliver Package
+note over D : processing deliver package
+FM --> C : Track Shipment
+activate C
+C --> FM : ACK
+deactivate C
+D2 ->> FM : Assign Route
+note over FM : processing assign route
+D ->> FM : Update Inventory
+activate FM
+FM --> D : ACK
+deactivate FM
+note over FM : processing update inventory
+D --> D2 : Fuel Vehicle
+D2 --> D : Load Package
+@enduml

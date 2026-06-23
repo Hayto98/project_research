@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+left to right direction
+actor "Admin" as Admin
+actor "Delivery Service" as DeliveryService
+rectangle "Ecommerce System" {
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Checkout" as UC_Checkout
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Apply Coupon" as UC_ApplyCoupon
+}
+Admin --> UC_AddToCart
+Admin --> UC_Checkout
+DeliveryService --> UC_AddToCart
+DeliveryService --> UC_ManageInventory
+DeliveryService --> UC_Checkout
+UC_ApplyCoupon ..|> UC_AddToCart : <<include>>
+@enduml

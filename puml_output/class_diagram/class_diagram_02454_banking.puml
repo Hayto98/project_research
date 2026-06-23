@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+interface Branch {
+  -boolean type
+  -boolean status
+  #float phone
+  -String email
+  +Date score
+  +sendNote()
+  +findActive()
+}
+class Beneficiary {
+  #int code
+  +long active
+  #Date createdAt
+  +validateStatus()
+  +updatePhone()
+}
+class Deposit {
+  #double quantity
+  -double description
+  +Date duration
+  -long total
+  +cancelAddress()
+  +createDuration()
+  +getLevel()
+}
+class Transfer {
+  -long quantity
+  #float active
+  -double createdAt
+  +findLevel()
+}
+abstract class Statement {
+  #boolean updatedAt
+  #int score
+  +float note
+  +createTotal()
+  +cancelAmount()
+  +findPrice()
+}
+Branch ..|> Deposit
+Transfer --* Statement
+Beneficiary ..|> Branch
+Beneficiary --* Deposit
+note right of Branch : Banking domain
+@enduml

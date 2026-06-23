@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+class Package {
+  +long name
+  #int price
+  -long code
+  +float address
+  +int amount
+  +processQuantity()
+  +sendId()
+  +createCode()
+  +calculateTotal()
+}
+class DeliveryNote {
+  +boolean duration
+  -String id
+  -double total
+  #Date name
+  +getEmail()
+}
+class FuelLog {
+  +long id
+  -long total
+  +findDescription()
+}
+abstract class Vehicle {
+  +boolean note
+  -Date type
+  +double quantity
+  -int updatedAt
+  +float id
+  +calculateScore()
+  +createPrice()
+  +sendAmount()
+}
+class Route {
+  #long address
+  +long phone
+  -double id
+  +double score
+  +String quantity
+  +saveId()
+  +findCode()
+  +getCode()
+  +validatePhone()
+}
+class Manifest {
+  -String name
+  +String phone
+  +String email
+  -float updatedAt
+  #double total
+  +saveId()
+  +deleteNote()
+  +cancelType()
+}
+Manifest --|> Vehicle
+DeliveryNote --|> Package
+FuelLog --o Manifest
+Vehicle --o DeliveryNote
+Manifest --|> Route
+note right of Package : Logistics domain
+@enduml

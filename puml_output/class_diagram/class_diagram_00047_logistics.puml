@@ -1,0 +1,56 @@
+@startuml
+skinparam defaultFontSize 11
+interface Depot {
+  #boolean createdAt
+  #int duration
+  +processCode()
+  +calculateScore()
+}
+class Route {
+  #int code
+  +int updatedAt
+  #String note
+  -long level
+  +boolean email
+  +updateAddress()
+  +getScore()
+}
+abstract class Customer {
+  #int price
+  #float id
+  #boolean createdAt
+  #double description
+  +updateNote()
+  +processPrice()
+}
+class Driver {
+  +String address
+  -String total
+  +boolean score
+  +double price
+  +Date id
+  +saveEmail()
+  +updatePhone()
+  +validateTotal()
+}
+class FuelLog {
+  -float phone
+  +int price
+  -boolean createdAt
+  -int type
+  +getDuration()
+  +createCode()
+}
+class Vehicle {
+  +float active
+  #long price
+  +updateEmail()
+  +setPhone()
+  +processCreatedat()
+}
+Vehicle --|> Route
+Vehicle --* Depot
+Vehicle --|> FuelLog
+Route ..|> Driver
+note right of Depot : Logistics domain
+@enduml

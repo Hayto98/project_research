@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+[*] --> Closed
+Closed --> OnHold : process
+OnHold --> Delivered : process
+OnHold : entry / log branch
+Delivered --> Active : process
+Active --> Archived : confirm
+Archived --> Draft : review
+Archived : entry / log branch
+Closed --> Active : revert
+Draft --> [*]
+@enduml

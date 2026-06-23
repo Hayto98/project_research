@@ -1,0 +1,50 @@
+@startuml
+
+class Card {
+  -double total
+  #String price
+  +saveAddress()
+  +sendEmail()
+  +sendScore()
+  +findQuantity()
+}
+class Interest {
+  -Date active
+  +long code
+  -long updatedAt
+  #String description
+  +validateDescription()
+  +saveLevel()
+}
+class Customer {
+  -String code
+  #double total
+  #boolean quantity
+  #Date type
+  +Date duration
+  +deleteEmail()
+  +updateStatus()
+  +validateCreatedat()
+  +processStatus()
+}
+abstract class Transaction {
+  #double name
+  +int id
+  +double amount
+  +validateAmount()
+  +setEmail()
+}
+abstract class Deposit {
+  +long duration
+  #boolean createdAt
+  +sendScore()
+  +processId()
+  +findCreatedat()
+  +getScore()
+}
+Transaction ..|> Card
+Deposit --* Transaction
+Customer ..> Interest : "*"
+Card --* Transaction
+note right of Card : Banking domain
+@enduml

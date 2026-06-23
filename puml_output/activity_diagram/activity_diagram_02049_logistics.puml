@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing true
+start
+:Deliver Package;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Inventory;
+:Load Package;
+:Assign Route;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Track Shipment;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+stop
+@enduml

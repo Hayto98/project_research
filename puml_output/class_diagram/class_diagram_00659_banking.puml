@@ -1,0 +1,48 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+abstract class Interest {
+  #long id
+  +long createdAt
+  +float email
+  +cancelLevel()
+  +cancelNote()
+  +cancelDescription()
+  +getAmount()
+}
+abstract class Deposit {
+  +double name
+  -double note
+  -String email
+  +validatePrice()
+}
+class Transfer {
+  +float address
+  -int total
+  -long duration
+  #float createdAt
+  #String level
+  +sendScore()
+  +saveType()
+  +updateLevel()
+  +sendEmail()
+}
+interface Loan {
+  -String quantity
+  #Date level
+  #Date name
+  +validateType()
+}
+class Card {
+  +float score
+  -int level
+  +boolean address
+  +float total
+  +saveStatus()
+}
+Loan ..|> Card
+Transfer --> Card : "1"
+Loan --|> Interest
+note right of Interest : Banking domain
+@enduml

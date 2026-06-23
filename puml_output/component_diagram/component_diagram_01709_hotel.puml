@@ -1,0 +1,19 @@
+@startuml
+skinparam defaultFontSize 11
+component "Housekeeping Service" as C_HousekeepingService
+component "Reservation Service" as C_ReservationService
+component "Service Service" as C_ServiceService
+component "CheckOut Service" as C_CheckOutService
+component "Guest Service" as C_GuestService
+component "Amenity Service" as C_AmenityService
+component "CheckIn Service" as C_CheckInService
+database "Hotel DB" as DB_hotel
+C_HousekeepingService --> DB_hotel
+C_ServiceService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_GuestService --> DB_hotel
+C_CheckOutService ..> C_CheckInService : MQ
+C_HousekeepingService ..> C_GuestService : MQ
+C_GuestService ..> C_AmenityService : HTTP
+C_HousekeepingService ..> C_ReservationService : REST
+@enduml

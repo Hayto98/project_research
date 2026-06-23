@@ -1,0 +1,32 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+participant "Librarian" as L
+participant "Admin" as A
+entity "Member" as M
+L --> A : Add New Book
+activate A
+A --> L : ACK
+deactivate A
+M --> L : Pay Fine
+A --> L : Search Catalog
+activate L
+L --> A : ACK
+deactivate L
+A -> M : Borrow Book
+activate M
+M --> A : ACK
+deactivate M
+note over M : processing borrow book
+M --> A : Renew Loan
+activate A
+A --> M : ACK
+deactivate A
+note over A : processing renew loan
+A ->> L : Return Book
+activate L
+L --> A : ACK
+deactivate L
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Report Service" as C_ReportService
+component "Notification Service" as C_NotificationService
+component "Comment Service" as C_CommentService
+component "Post Service" as C_PostService
+component "Group Service" as C_GroupService
+component "User Service" as C_UserService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_CommentService --> DB_social_media
+C_PostService --> DB_social_media
+C_GroupService --> DB_social_media
+C_UserService --> DB_social_media
+C_ReportService ..> C_UserService : gRPC
+C_CommentService ..> C_PostService : MQ
+C_CommentService ..> C_UserService : REST
+C_NotificationService ..> C_UserService : REST
+@enduml

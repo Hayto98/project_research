@@ -1,0 +1,24 @@
+@startuml
+
+left to right direction
+actor "Guest" as Guest
+actor "Receptionist" as Receptionist
+actor "Housekeeper" as Housekeeper
+rectangle "Hotel System" {
+  usecase "Process Payment" as UC_ProcessPayment
+  usecase "Clean Room" as UC_CleanRoom
+  usecase "Check In" as UC_CheckIn
+  usecase "Request Service" as UC_RequestService
+  usecase "Check Out" as UC_CheckOut
+  usecase "Order Room Service" as UC_OrderRoomService
+  usecase "Book Room" as UC_BookRoom
+  usecase "Cancel Reservation" as UC_CancelReservation
+}
+Guest --> UC_ProcessPayment
+Guest --> UC_BookRoom
+Guest --> UC_RequestService
+Receptionist --> UC_CancelReservation
+Housekeeper --> UC_ProcessPayment
+Housekeeper --> UC_CancelReservation
+UC_CancelReservation ..> UC_CheckIn : <<extend>>
+@enduml

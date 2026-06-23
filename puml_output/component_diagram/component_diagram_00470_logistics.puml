@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Shipment Service" as C_ShipmentService
+component "Manifest Service" as C_ManifestService
+component "Package Service" as C_PackageService
+component "Customer Service" as C_CustomerService
+component "Tracking Service" as C_TrackingService
+component "Driver Service" as C_DriverService
+database "Logistics DB" as DB_logistics
+C_ShipmentService --> DB_logistics
+C_PackageService --> DB_logistics
+C_CustomerService --> DB_logistics
+C_TrackingService ..> C_PackageService : MQ
+C_PackageService ..> C_ShipmentService : HTTP
+C_PackageService ..> C_DriverService : MQ
+@enduml

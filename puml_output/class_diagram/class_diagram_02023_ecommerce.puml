@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class Shipment {
+  #int type
+  -Date note
+  -String duration
+  +findType()
+  +getQuantity()
+  +saveCode()
+  +cancelLevel()
+}
+class Product {
+  +int type
+  -int address
+  +validateTotal()
+}
+interface Invoice {
+  #Date note
+  +long code
+  +cancelNote()
+  +validateCreatedat()
+  +createScore()
+  +processNote()
+}
+class Cart {
+  -Date email
+  #float status
+  #double name
+  +deleteTotal()
+  +validateActive()
+  +createLevel()
+  +cancelDuration()
+}
+class Wishlist {
+  +String note
+  +boolean name
+  -int email
+  +getDuration()
+}
+interface Category {
+  -Date updatedAt
+  +boolean type
+  +int price
+  #Date status
+  +Date quantity
+  +getQuantity()
+  +cancelScore()
+}
+Category ..|> Product
+Product --* Invoice
+Shipment --|> Invoice
+Category --> Cart : "*"
+note right of Shipment : Ecommerce domain
+@enduml

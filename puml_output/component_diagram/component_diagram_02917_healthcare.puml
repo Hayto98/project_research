@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+component "Prescription Service" as C_PrescriptionService
+component "LabTest Service" as C_LabTestService
+component "Patient Service" as C_PatientService
+component "Diagnosis Service" as C_DiagnosisService
+component "Doctor Service" as C_DoctorService
+component "Hospital Service" as C_HospitalService
+database "Healthcare DB" as DB_healthcare
+C_PrescriptionService --> DB_healthcare
+C_DiagnosisService --> DB_healthcare
+C_DoctorService ..> C_LabTestService : REST
+C_PatientService ..> C_DoctorService : REST
+@enduml

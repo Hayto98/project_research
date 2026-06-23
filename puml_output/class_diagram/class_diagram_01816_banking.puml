@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+class Transaction {
+  -String score
+  -Date updatedAt
+  +long amount
+  +long quantity
+  +findCreatedat()
+  +updateScore()
+  +updateUpdatedat()
+}
+abstract class Teller {
+  #float amount
+  +boolean createdAt
+  #int status
+  #int note
+  +calculateCode()
+}
+interface Branch {
+  #float price
+  #double name
+  -int createdAt
+  +String score
+  +getNote()
+}
+class Statement {
+  -double id
+  +boolean note
+  -Date updatedAt
+  -float duration
+  +validateDuration()
+  +setAmount()
+}
+interface Card {
+  #boolean active
+  #boolean createdAt
+  -Date price
+  +sendEmail()
+}
+abstract class Deposit {
+  -float id
+  #boolean note
+  #int updatedAt
+  -String quantity
+  +saveAmount()
+  +cancelAddress()
+}
+Statement --|> Deposit
+Transaction --o Deposit
+Deposit --o Card
+Branch --|> Teller
+Deposit --o Teller
+note right of Transaction : Banking domain
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+component "Warehouse Service" as C_WarehouseService
+component "Review Service" as C_ReviewService
+component "Customer Service" as C_CustomerService
+component "Wishlist Service" as C_WishlistService
+component "Return Service" as C_ReturnService
+database "Ecommerce DB" as DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_CustomerService ..> C_ReturnService : gRPC
+C_ReturnService ..> C_WishlistService : gRPC
+@enduml

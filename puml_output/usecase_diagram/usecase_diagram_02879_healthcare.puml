@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+left to right direction
+actor "Insurance Provider" as InsuranceProvider
+actor "Doctor" as Doctor
+actor "Nurse" as Nurse
+actor "Patient" as Patient
+rectangle "Healthcare System" {
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Book Appointment" as UC_BookAppointment
+  usecase "Examine Patient" as UC_ExaminePatient
+  usecase "Run Lab Test" as UC_RunLabTest
+}
+InsuranceProvider --> UC_ProcessInsuranceClaim
+InsuranceProvider --> UC_BookAppointment
+InsuranceProvider --> UC_RunLabTest
+Doctor --> UC_ProcessInsuranceClaim
+Nurse --> UC_ProcessInsuranceClaim
+Nurse --> UC_RunLabTest
+Nurse --> UC_BookAppointment
+Patient --> UC_ExaminePatient
+UC_ProcessInsuranceClaim ..> UC_ExaminePatient : <<include>>
+@enduml

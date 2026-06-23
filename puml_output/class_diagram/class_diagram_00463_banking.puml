@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+interface Loan {
+  +int code
+  +float phone
+  +float score
+  #boolean address
+  #Date duration
+  +validateNote()
+  +cancelDescription()
+  +sendDescription()
+}
+class Customer {
+  -long name
+  -Date total
+  +long amount
+  +long phone
+  +validateAddress()
+  +deleteAmount()
+}
+class Teller {
+  #int address
+  +boolean score
+  #double id
+  +cancelStatus()
+}
+abstract class Transaction {
+  -Date name
+  +float id
+  +validateDuration()
+  +processQuantity()
+}
+class Account {
+  -double duration
+  #float quantity
+  +sendAmount()
+  +calculateQuantity()
+  +processAddress()
+}
+Transaction --* Account
+Account --|> Loan
+note right of Loan : Banking domain
+@enduml

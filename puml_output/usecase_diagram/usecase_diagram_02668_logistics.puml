@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+left to right direction
+actor "Warehouse Staff" as WarehouseStaff
+actor "Fleet Manager" as FleetManager
+actor "Dispatcher" as Dispatcher
+actor "Driver" as Driver
+rectangle "Logistics System" {
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+}
+WarehouseStaff --> UC_DeliverPackage
+FleetManager --> UC_AssignRoute
+FleetManager --> UC_ReportIssue
+FleetManager --> UC_TrackShipment
+Dispatcher --> UC_AssignRoute
+Dispatcher --> UC_ReportIssue
+Driver --> UC_DeliverPackage
+Driver --> UC_AssignRoute
+@enduml

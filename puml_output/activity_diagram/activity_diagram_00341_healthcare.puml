@@ -1,0 +1,35 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+start
+:Run Lab Test;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Issue Prescription;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Examine Patient;
+:Admit Patient;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Process Insurance Claim;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Medical Record;
+stop
+@enduml

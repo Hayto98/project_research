@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Staff {
+  +double note
+  +boolean total
+  -int status
+  -long email
+  +createCreatedat()
+}
+class Room {
+  #Date note
+  #boolean updatedAt
+  #boolean address
+  +updateDescription()
+}
+abstract class Reservation {
+  -String duration
+  +boolean level
+  -long description
+  #double price
+  +cancelAddress()
+  +deleteLevel()
+  +sendCode()
+}
+interface CheckIn {
+  +int price
+  -String duration
+  +validateLevel()
+  +updateCreatedat()
+}
+interface Guest {
+  +float code
+  #long amount
+  +double price
+  +Date id
+  #float description
+  +findPrice()
+  +sendCode()
+  +createActive()
+  +getNote()
+}
+class Restaurant {
+  -String amount
+  -double quantity
+  #float code
+  +cancelEmail()
+}
+Staff --o Reservation
+CheckIn --|> Reservation
+Reservation --o Restaurant
+Staff ..|> Guest
+Room --o Restaurant
+note right of Staff : Hotel domain
+@enduml

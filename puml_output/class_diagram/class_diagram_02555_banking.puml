@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+interface Withdrawal {
+  #String status
+  #double email
+  +float id
+  +calculateQuantity()
+  +saveDuration()
+  +processCode()
+}
+abstract class Teller {
+  -Date note
+  #long name
+  +boolean quantity
+  +saveScore()
+  +saveStatus()
+}
+abstract class Loan {
+  #boolean level
+  -boolean id
+  #Date active
+  +double duration
+  +processAmount()
+  +calculateAmount()
+  +findCode()
+}
+class Customer {
+  #String email
+  +int code
+  +int score
+  +boolean name
+  +validatePrice()
+}
+class Account {
+  -long id
+  +Date score
+  +long amount
+  -double quantity
+  +sendDescription()
+  +getStatus()
+  +saveScore()
+  +saveActive()
+}
+Customer --o Loan
+Teller --|> Withdrawal
+note right of Withdrawal : Banking domain
+@enduml

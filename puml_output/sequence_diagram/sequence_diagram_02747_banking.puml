@@ -1,0 +1,33 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+participant "Branch Manager" as BM
+actor "ATM" as A
+control "Auditor" as A2
+boundary "Account Holder" as AH
+participant "Bank Teller" as BT
+A2 ->> AH : Deposit Money
+note over AH : processing deposit money
+BM --> AH : Withdraw Cash
+activate AH
+AH --> BM : ACK
+deactivate AH
+BT ->> AH : Apply For Loan
+activate AH
+AH --> BT : ACK
+deactivate AH
+A2 ->> A : Pay Bill
+activate A
+A --> A2 : ACK
+deactivate A
+note over A : processing pay bill
+AH -> A2 : Block Card
+A ->> A2 : Open Account
+activate A2
+A2 --> A : ACK
+deactivate A2
+note over A2 : processing open account
+BT --> A : Transfer Funds
+@enduml

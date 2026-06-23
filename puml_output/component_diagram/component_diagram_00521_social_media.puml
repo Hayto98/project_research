@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+component "User Service" as C_UserService
+component "Profile Service" as C_ProfileService
+component "Album Service" as C_AlbumService
+component "Like Service" as C_LikeService
+component "Post Service" as C_PostService
+database "Social Media DB" as DB_social_media
+C_UserService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_LikeService --> DB_social_media
+C_PostService --> DB_social_media
+C_ProfileService ..> C_UserService : MQ
+C_LikeService ..> C_PostService : gRPC
+@enduml

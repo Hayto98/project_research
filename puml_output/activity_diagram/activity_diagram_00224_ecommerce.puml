@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+start
+:Apply Coupon;
+:Add To Cart;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Track Order;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Browse Products;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Checkout;
+:Make Payment;
+:Cancel Order;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Write Review;
+stop
+@enduml

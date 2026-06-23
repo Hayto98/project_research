@@ -1,0 +1,19 @@
+@startuml
+
+actor "Fleet Manager" as FM
+entity "Customer" as C
+entity "Warehouse Staff" as WS
+actor "Driver" as D
+FM ->> WS : Assign Route
+C ->> D : Deliver Package
+D ->> C : Schedule Pickup
+activate C
+C --> D : ACK
+deactivate C
+note over C : processing schedule pickup
+WS ->> D : Update Inventory
+D -> FM : Report Issue
+WS ->> D : Track Shipment
+D ->> WS : Fuel Vehicle
+note over WS : processing fuel vehicle
+@enduml

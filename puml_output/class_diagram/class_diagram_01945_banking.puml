@@ -1,0 +1,51 @@
+@startuml
+skinparam monochrome true
+abstract class Branch {
+  -float address
+  #boolean price
+  -int description
+  #float code
+  +getLevel()
+}
+interface Statement {
+  #boolean name
+  #boolean updatedAt
+  +long score
+  -double id
+  -int amount
+  +updateAddress()
+}
+class Interest {
+  #double amount
+  +int duration
+  -Date note
+  +updateEmail()
+  +getName()
+  +savePrice()
+  +sendDescription()
+}
+interface Transaction {
+  -int level
+  #float status
+  +deleteDuration()
+  +calculateDescription()
+}
+class Deposit {
+  +int amount
+  +String duration
+  +setActive()
+}
+abstract class Teller {
+  -Date description
+  #long amount
+  -long total
+  -String address
+  +validateId()
+  +saveLevel()
+}
+Deposit --> Teller : "*"
+Transaction --> Branch : "1"
+Transaction ..> Statement : "0..1"
+Transaction --o Teller
+note right of Branch : Banking domain
+@enduml

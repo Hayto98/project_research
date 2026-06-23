@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+left to right direction
+actor "Housekeeper" as Housekeeper
+actor "Manager" as Manager
+actor "Guest" as Guest
+actor "Receptionist" as Receptionist
+rectangle "Hotel System" {
+  usecase "Request Service" as UC_RequestService
+  usecase "Order Room Service" as UC_OrderRoomService
+  usecase "Check Out" as UC_CheckOut
+  usecase "Cancel Reservation" as UC_CancelReservation
+  usecase "Clean Room" as UC_CleanRoom
+  usecase "Process Payment" as UC_ProcessPayment
+  usecase "Book Room" as UC_BookRoom
+}
+Housekeeper --> UC_ProcessPayment
+Manager --> UC_OrderRoomService
+Manager --> UC_CheckOut
+Guest --> UC_CancelReservation
+Guest --> UC_CleanRoom
+Receptionist --> UC_CleanRoom
+Receptionist --> UC_OrderRoomService
+@enduml

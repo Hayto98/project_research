@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+left to right direction
+actor "Seller" as Seller
+actor "Customer" as Customer
+actor "Delivery Service" as DeliveryService
+rectangle "Ecommerce System" {
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Checkout" as UC_Checkout
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Manage Inventory" as UC_ManageInventory
+}
+Seller --> UC_AddToCart
+Seller --> UC_ManageInventory
+Customer --> UC_MakePayment
+Customer --> UC_BrowseProducts
+DeliveryService --> UC_TrackOrder
+DeliveryService --> UC_BrowseProducts
+DeliveryService --> UC_ManageInventory
+UC_TrackOrder ..|> UC_ManageInventory : <<include>>
+@enduml

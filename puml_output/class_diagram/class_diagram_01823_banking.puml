@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+class Withdrawal {
+  -boolean status
+  #int type
+  #long amount
+  +processActive()
+  +cancelCreatedat()
+  +getActive()
+}
+class Loan {
+  #String createdAt
+  #int updatedAt
+  #int duration
+  +long phone
+  #String score
+  +cancelUpdatedat()
+  +processQuantity()
+  +sendAmount()
+  +findDuration()
+}
+class Branch {
+  +long email
+  #String id
+  +getStatus()
+  +calculateEmail()
+  +updateCode()
+  +updateNote()
+}
+class Customer {
+  +int active
+  -long duration
+  +boolean type
+  +getUpdatedat()
+  +sendNote()
+}
+class Transaction {
+  #Date price
+  -long amount
+  +processTotal()
+}
+Branch --|> Loan
+Transaction ..|> Branch
+Loan ..> Withdrawal : "*"
+Loan --|> Customer
+note right of Withdrawal : Banking domain
+@enduml

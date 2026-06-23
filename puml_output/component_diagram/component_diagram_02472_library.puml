@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+component "Shelf Service" as C_ShelfService
+component "Renewal Service" as C_RenewalService
+component "Publisher Service" as C_PublisherService
+component "Author Service" as C_AuthorService
+component "Book Service" as C_BookService
+database "Library DB" as DB_library
+C_PublisherService --> DB_library
+C_AuthorService --> DB_library
+C_BookService --> DB_library
+C_ShelfService ..> C_PublisherService : MQ
+C_ShelfService ..> C_PublisherService : HTTP
+C_AuthorService ..> C_PublisherService : gRPC
+C_PublisherService ..> C_AuthorService : MQ
+@enduml

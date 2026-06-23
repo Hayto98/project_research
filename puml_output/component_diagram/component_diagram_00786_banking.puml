@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+component "Transfer Service" as C_TransferService
+component "Account Service" as C_AccountService
+component "Teller Service" as C_TellerService
+component "Interest Service" as C_InterestService
+component "Beneficiary Service" as C_BeneficiaryService
+database "Banking DB" as DB_banking
+C_TransferService --> DB_banking
+C_TellerService --> DB_banking
+C_InterestService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_AccountService ..> C_TellerService : MQ
+C_AccountService ..> C_TellerService : gRPC
+@enduml

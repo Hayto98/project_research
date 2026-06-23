@@ -1,0 +1,46 @@
+@startuml
+skinparam monochrome true
+abstract class Loan {
+  #String quantity
+  #Date description
+  +updateCode()
+}
+abstract class Librarian {
+  +double name
+  #long status
+  +processStatus()
+}
+class Shelf {
+  +String description
+  -int amount
+  #long total
+  +long level
+  +cancelTotal()
+  +sendAmount()
+}
+class Renewal {
+  -String updatedAt
+  #double note
+  +int duration
+  +long id
+  -long total
+  +setName()
+  +findAmount()
+}
+class Fine {
+  +int status
+  -double name
+  #int duration
+  +String type
+  #boolean note
+  +setQuantity()
+  +findLevel()
+  +setAmount()
+  +processTotal()
+}
+Shelf --o Librarian
+Renewal --|> Shelf
+Shelf --o Renewal
+Shelf --o Fine
+note right of Loan : Library domain
+@enduml

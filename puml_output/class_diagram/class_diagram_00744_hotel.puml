@@ -1,0 +1,70 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+abstract class Reservation {
+  #long quantity
+  #int name
+  +createPrice()
+}
+interface Restaurant {
+  #long code
+  -Date duration
+  -int level
+  #Date id
+  -Date status
+  +findCode()
+  +createDuration()
+  +processAddress()
+}
+class Staff {
+  -String level
+  #Date updatedAt
+  #int createdAt
+  +getActive()
+  +processEmail()
+  +createId()
+  +updateStatus()
+}
+class Room {
+  +long email
+  -int status
+  +boolean active
+  +sendAddress()
+  +getPhone()
+}
+class Invoice {
+  #boolean updatedAt
+  #int email
+  -String code
+  +boolean name
+  -Date id
+  +calculateLevel()
+  +findAmount()
+  +createUpdatedat()
+  +updateEmail()
+}
+abstract class Service {
+  +boolean email
+  +float duration
+  -int active
+  #float createdAt
+  -boolean phone
+  +findUpdatedat()
+  +saveTotal()
+  +setId()
+}
+class CheckIn {
+  -String price
+  -boolean duration
+  +Date name
+  +long description
+  +deleteType()
+  +deleteNote()
+  +getTotal()
+}
+Invoice --* Restaurant
+Staff --o CheckIn
+Invoice ..> Room : "*"
+Invoice ..> Service : "0..1"
+note right of Reservation : Hotel domain
+@enduml

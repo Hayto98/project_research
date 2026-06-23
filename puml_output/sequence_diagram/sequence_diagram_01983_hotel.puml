@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+boundary "Housekeeper" as H
+boundary "Receptionist" as R
+participant "Manager" as M
+participant "Guest" as G
+control "Chef" as C
+H -> G : Clean Room
+R ->> C : Check Out
+activate C
+C --> R : ACK
+deactivate C
+M -> G : Process Payment
+M -> R : Request Service
+G --> C : Book Room
+activate C
+C --> G : ACK
+deactivate C
+note over C : processing book room
+H ->> R : Order Room Service
+note over R : processing order room service
+@enduml

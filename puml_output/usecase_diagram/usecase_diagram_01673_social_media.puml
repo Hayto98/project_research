@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+actor "User" as User
+actor "Advertiser" as Advertiser
+actor "Moderator" as Moderator
+rectangle "Social Media System" {
+  usecase "Share Post" as UC_SharePost
+  usecase "Like Post" as UC_LikePost
+  usecase "Send Message" as UC_SendMessage
+  usecase "Comment" as UC_Comment
+  usecase "Follow User" as UC_FollowUser
+}
+User --> UC_Comment
+User --> UC_SendMessage
+Advertiser --> UC_FollowUser
+Advertiser --> UC_LikePost
+Moderator --> UC_SendMessage
+Moderator --> UC_SharePost
+UC_FollowUser ..|> UC_LikePost : <<include>>
+@enduml

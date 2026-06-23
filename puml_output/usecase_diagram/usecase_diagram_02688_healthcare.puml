@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 11
+left to right direction
+actor "Lab Technician" as LabTechnician
+actor "Receptionist" as Receptionist
+actor "Patient" as Patient
+actor "Doctor" as Doctor
+rectangle "Healthcare System" {
+  usecase "Book Appointment" as UC_BookAppointment
+  usecase "Update Medical Record" as UC_UpdateMedicalRecord
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+}
+LabTechnician --> UC_BookAppointment
+Receptionist --> UC_UpdateMedicalRecord
+Patient --> UC_IssuePrescription
+Patient --> UC_AdmitPatient
+Doctor --> UC_BookAppointment
+Doctor --> UC_UpdateMedicalRecord
+UC_UpdateMedicalRecord ..> UC_AdmitPatient : <<include>>
+@enduml

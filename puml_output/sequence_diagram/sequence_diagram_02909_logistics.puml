@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+entity "Warehouse Staff" as WS
+entity "Customer" as C
+boundary "Dispatcher" as D
+C ->> D : Assign Route
+activate D
+D --> C : ACK
+deactivate D
+note over D : processing assign route
+C -> D : Update Inventory
+activate D
+D --> C : ACK
+deactivate D
+WS ->> D : Report Issue
+WS --> D : Schedule Pickup
+@enduml

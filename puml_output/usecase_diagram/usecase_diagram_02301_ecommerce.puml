@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Seller" as Seller
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Make Payment" as UC_MakePayment
+}
+DeliveryService --> UC_ApplyCoupon
+DeliveryService --> UC_MakePayment
+DeliveryService --> UC_BrowseProducts
+Seller --> UC_ManageInventory
+PaymentGateway --> UC_BrowseProducts
+@enduml

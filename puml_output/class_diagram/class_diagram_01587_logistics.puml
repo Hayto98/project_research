@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+class Manifest {
+  -Date note
+  +String description
+  #Date createdAt
+  #long code
+  +String level
+  +setAmount()
+  +updateDescription()
+  +findName()
+  +findStatus()
+}
+interface Route {
+  +boolean amount
+  -Date id
+  +long description
+  +processId()
+  +updateId()
+}
+abstract class Customer {
+  +float status
+  #Date duration
+  #Date amount
+  +Date code
+  +deleteDescription()
+  +createDescription()
+  +calculateQuantity()
+  +updateLevel()
+}
+class DeliveryNote {
+  +int description
+  +boolean createdAt
+  #long code
+  +String note
+  +calculateEmail()
+}
+abstract class Warehouse {
+  +String note
+  -int updatedAt
+  +processPhone()
+  +updateType()
+}
+Warehouse ..> DeliveryNote : "*"
+Manifest --o Route
+Warehouse --> Route : "1..*"
+Route --* Manifest
+note right of Manifest : Logistics domain
+@enduml

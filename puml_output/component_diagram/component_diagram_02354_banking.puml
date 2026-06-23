@@ -1,0 +1,21 @@
+@startuml
+
+component "Beneficiary Service" as C_BeneficiaryService
+component "Deposit Service" as C_DepositService
+component "Statement Service" as C_StatementService
+component "Withdrawal Service" as C_WithdrawalService
+component "Teller Service" as C_TellerService
+component "Loan Service" as C_LoanService
+component "Interest Service" as C_InterestService
+database "Banking DB" as DB_banking
+C_BeneficiaryService --> DB_banking
+C_DepositService --> DB_banking
+C_StatementService --> DB_banking
+C_WithdrawalService --> DB_banking
+C_TellerService --> DB_banking
+C_InterestService --> DB_banking
+C_DepositService ..> C_InterestService : HTTP
+C_InterestService ..> C_TellerService : gRPC
+C_TellerService ..> C_InterestService : gRPC
+C_TellerService ..> C_BeneficiaryService : REST
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+boundary "Housekeeper" as H
+actor "Manager" as M
+actor "Guest" as G
+entity "Chef" as C
+M -> C : Process Payment
+note over C : processing process payment
+C -> M : Book Room
+M --> H : Check In
+activate H
+H --> M : ACK
+deactivate H
+G ->> H : Clean Room
+activate H
+H --> G : ACK
+deactivate H
+M -> G : Request Service
+@enduml

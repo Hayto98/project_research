@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+class Customer {
+  +boolean id
+  +String duration
+  +int name
+  +Date description
+  +createUpdatedat()
+  +saveUpdatedat()
+  +processNote()
+  +calculateTotal()
+}
+abstract class Transaction {
+  #float type
+  +double address
+  +long id
+  +String duration
+  +updateAddress()
+  +sendName()
+}
+abstract class Loan {
+  +int createdAt
+  #boolean status
+  #double description
+  #double note
+  -double type
+  +createNote()
+  +createDescription()
+  +validateStatus()
+}
+class Withdrawal {
+  -Date quantity
+  -Date score
+  -float level
+  +setTotal()
+}
+abstract class Card {
+  +double name
+  #boolean score
+  +validateActive()
+  +updateAmount()
+  +setAddress()
+  +validateAddress()
+}
+interface Deposit {
+  +Date note
+  #Date description
+  +updateActive()
+}
+Deposit --o Customer
+Card ..|> Deposit
+Transaction ..|> Withdrawal
+Loan --|> Transaction
+note right of Customer : Banking domain
+@enduml

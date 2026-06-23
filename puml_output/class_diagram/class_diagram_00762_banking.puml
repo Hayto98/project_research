@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Interest {
+  -boolean total
+  -Date note
+  #float name
+  -int type
+  +updateQuantity()
+  +setNote()
+  +updateName()
+}
+interface Beneficiary {
+  +boolean createdAt
+  -Date code
+  #int amount
+  +String status
+  +cancelActive()
+  +validateNote()
+  +validatePrice()
+  +deleteNote()
+}
+class Account {
+  -long createdAt
+  #Date description
+  #String level
+  #int code
+  +String active
+  +cancelName()
+  +cancelDuration()
+  +setQuantity()
+}
+interface Transfer {
+  +int updatedAt
+  +int level
+  +deleteLevel()
+  +getNote()
+  +processAddress()
+}
+Transfer ..> Beneficiary : "1"
+Transfer --> Interest : "1"
+note right of Interest : Banking domain
+@enduml

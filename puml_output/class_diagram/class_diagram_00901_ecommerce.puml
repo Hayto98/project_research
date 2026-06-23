@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Cart {
+  +int quantity
+  +double name
+  +cancelPhone()
+}
+abstract class Coupon {
+  +float createdAt
+  +float code
+  -boolean note
+  +boolean description
+  +findStatus()
+}
+class Invoice {
+  -long id
+  -String updatedAt
+  #String email
+  +calculateAmount()
+  +validateAddress()
+  +saveAddress()
+  +validateQuantity()
+}
+class Wishlist {
+  -Date level
+  -Date createdAt
+  -boolean active
+  +setQuantity()
+  +saveDuration()
+  +processCreatedat()
+}
+abstract class Category {
+  +float phone
+  +Date name
+  +double code
+  +cancelLevel()
+  +processTotal()
+  +cancelCreatedat()
+  +validateAddress()
+}
+Cart ..> Coupon : "*"
+Category ..> Invoice : "*"
+note right of Cart : Ecommerce domain
+@enduml

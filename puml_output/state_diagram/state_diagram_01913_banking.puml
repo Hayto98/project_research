@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+[*] --> Completed
+Completed --> Reviewed : reject
+Completed : entry / log transfer
+Reviewed --> Processing : confirm
+Reviewed : entry / log transfer
+Processing --> Approved : process
+Approved --> Rejected : cancel
+Approved : entry / log transfer
+Rejected --> Pending : confirm
+Rejected : entry / log transfer
+Rejected --> Completed : revert
+Pending --> [*]
+@enduml

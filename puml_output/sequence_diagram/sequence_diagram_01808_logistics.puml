@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+control "Fleet Manager" as FM
+boundary "Dispatcher" as D
+boundary "Warehouse Staff" as WS
+D ->> FM : Schedule Pickup
+activate FM
+FM --> D : ACK
+deactivate FM
+D --> WS : Track Shipment
+activate WS
+WS --> D : ACK
+deactivate WS
+D --> FM : Load Package
+activate FM
+FM --> D : ACK
+deactivate FM
+D -> WS : Report Issue
+note over WS : processing report issue
+@enduml

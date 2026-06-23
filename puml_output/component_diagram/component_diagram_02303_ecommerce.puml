@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+component "Shipment Service" as C_ShipmentService
+component "Warehouse Service" as C_WarehouseService
+component "Supplier Service" as C_SupplierService
+component "Product Service" as C_ProductService
+database "Ecommerce DB" as DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ShipmentService ..> C_ProductService : MQ
+C_SupplierService ..> C_ShipmentService : gRPC
+@enduml

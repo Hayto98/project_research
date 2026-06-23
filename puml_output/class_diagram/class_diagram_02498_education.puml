@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+interface Assignment {
+  +int level
+  #double status
+  +int active
+  -double duration
+  +calculateUpdatedat()
+}
+interface Exam {
+  -long total
+  -long level
+  -float name
+  +long code
+  +sendId()
+  +processDescription()
+  +processDuration()
+}
+abstract class Schedule {
+  -String level
+  +String score
+  +double duration
+  +deleteEmail()
+  +sendNote()
+  +createPrice()
+  +cancelCreatedat()
+}
+class Course {
+  +int duration
+  #float updatedAt
+  #Date name
+  +String code
+  +String price
+  +cancelQuantity()
+}
+class Library {
+  -String type
+  +int price
+  +deleteEmail()
+  +findActive()
+  +saveTotal()
+}
+class Student {
+  #float phone
+  +int createdAt
+  +calculateAddress()
+  +saveActive()
+}
+abstract class Teacher {
+  +int active
+  -long updatedAt
+  -int phone
+  -String name
+  +calculateEmail()
+}
+Assignment --o Library
+Course ..|> Exam
+Student --* Teacher
+Library --|> Teacher
+Student --o Assignment
+note right of Assignment : Education domain
+@enduml

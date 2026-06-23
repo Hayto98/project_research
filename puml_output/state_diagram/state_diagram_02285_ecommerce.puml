@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+[*] --> Pending
+Pending --> Active : reject
+Active --> OnHold : confirm
+Active : entry / log warehouse
+OnHold --> Rejected : approve
+Rejected --> Delivered : confirm
+Delivered --> Draft : submit
+Rejected --> Active : revert
+Draft --> [*]
+@enduml

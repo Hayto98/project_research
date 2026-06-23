@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+left to right direction
+actor "Payment Gateway" as PaymentGateway
+actor "Seller" as Seller
+actor "Customer" as Customer
+actor "Admin" as Admin
+rectangle "Ecommerce System" {
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Checkout" as UC_Checkout
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Add To Cart" as UC_AddToCart
+}
+PaymentGateway --> UC_CancelOrder
+PaymentGateway --> UC_ApplyCoupon
+Seller --> UC_ApplyCoupon
+Seller --> UC_AddToCart
+Seller --> UC_TrackOrder
+Customer --> UC_Checkout
+Customer --> UC_TrackOrder
+Admin --> UC_AddToCart
+UC_CancelOrder ..> UC_ApplyCoupon : <<extend>>
+@enduml

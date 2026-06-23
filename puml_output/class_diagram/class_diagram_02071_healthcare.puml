@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+abstract class Insurance {
+  #boolean id
+  +boolean updatedAt
+  +setEmail()
+  +cancelActive()
+  +saveQuantity()
+}
+class Doctor {
+  +long phone
+  -Date createdAt
+  #long name
+  +sendNote()
+  +validateActive()
+  +setNote()
+  +createStatus()
+}
+class Nurse {
+  -float phone
+  +boolean status
+  +setPrice()
+  +calculateActive()
+}
+interface Hospital {
+  -int type
+  -String description
+  +double email
+  -String createdAt
+  +boolean active
+  +cancelTotal()
+  +calculateCode()
+  +deleteUpdatedat()
+}
+Hospital --> Nurse : "1"
+Hospital --* Insurance
+Doctor ..> Hospital : "*"
+note right of Insurance : Healthcare domain
+@enduml

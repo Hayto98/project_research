@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+start
+:Enroll Course;
+:Take Attendance;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Student;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Grade Exam;
+:Submit Assignment;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Issue Certificate;
+stop
+@enduml

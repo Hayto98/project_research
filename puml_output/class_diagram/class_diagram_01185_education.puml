@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+interface Attendance {
+  -double email
+  -Date description
+  +Date createdAt
+  +float price
+  +String code
+  +findAddress()
+  +validateAddress()
+  +setDescription()
+  +calculateDescription()
+}
+abstract class Grade {
+  -double name
+  #boolean price
+  +cancelPhone()
+  +findQuantity()
+}
+interface Assignment {
+  +float price
+  +String address
+  +getStatus()
+  +findDescription()
+  +createActive()
+}
+abstract class Book {
+  #Date updatedAt
+  -long duration
+  +calculateName()
+  +deleteCode()
+  +createCode()
+}
+Attendance --* Grade
+Book ..> Grade : "*"
+Assignment --* Attendance
+note right of Attendance : Education domain
+@enduml

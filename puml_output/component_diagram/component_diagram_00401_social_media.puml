@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+component "Post Service" as C_PostService
+component "Follower Service" as C_FollowerService
+component "Profile Service" as C_ProfileService
+component "Report Service" as C_ReportService
+component "Album Service" as C_AlbumService
+component "Story Service" as C_StoryService
+database "Social Media DB" as DB_social_media
+C_PostService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_ReportService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_StoryService --> DB_social_media
+C_AlbumService ..> C_ReportService : gRPC
+C_FollowerService ..> C_AlbumService : REST
+C_ProfileService ..> C_FollowerService : HTTP
+@enduml

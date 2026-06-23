@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+actor "Customer" as C
+control "Seller" as S
+control "Delivery Service" as DS
+S ->> DS : Apply Coupon
+activate DS
+DS --> S : ACK
+deactivate DS
+S ->> C : Cancel Order
+note over C : processing cancel order
+C --> DS : Write Review
+activate DS
+DS --> C : ACK
+deactivate DS
+S ->> C : Make Payment
+activate C
+C --> S : ACK
+deactivate C
+C ->> S : Manage Inventory
+activate S
+S --> C : ACK
+deactivate S
+@enduml

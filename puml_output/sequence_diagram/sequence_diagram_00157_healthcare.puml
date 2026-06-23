@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+entity "Patient" as P
+actor "Nurse" as N
+boundary "Doctor" as D
+N ->> D : Examine Patient
+note over D : processing examine patient
+D -> N : Issue Prescription
+D ->> N : Discharge Patient
+P ->> N : Run Lab Test
+activate N
+N --> P : ACK
+deactivate N
+P -> D : Process Insurance Claim
+activate D
+D --> P : ACK
+deactivate D
+@enduml

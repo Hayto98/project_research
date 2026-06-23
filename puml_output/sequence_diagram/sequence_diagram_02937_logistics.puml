@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+participant "Warehouse Staff" as WS
+control "Dispatcher" as D
+boundary "Driver" as D2
+D2 ->> D : Report Issue
+D -> D2 : Schedule Pickup
+note over D2 : processing schedule pickup
+D2 ->> D : Track Shipment
+activate D
+D --> D2 : ACK
+deactivate D
+note over D : processing track shipment
+D2 -> D : Load Package
+WS -> D2 : Fuel Vehicle
+D -> D2 : Deliver Package
+D2 -> D : Update Inventory
+activate D
+D --> D2 : ACK
+deactivate D
+@enduml

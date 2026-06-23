@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+control "Guest" as G
+participant "Manager" as M
+participant "Chef" as C
+actor "Receptionist" as R
+entity "Housekeeper" as H
+M ->> R : Book Room
+note over R : processing book room
+R ->> G : Cancel Reservation
+activate G
+G --> R : ACK
+deactivate G
+C ->> H : Order Room Service
+note over H : processing order room service
+G --> H : Check In
+activate H
+H --> G : ACK
+deactivate H
+note over H : processing check in
+@enduml

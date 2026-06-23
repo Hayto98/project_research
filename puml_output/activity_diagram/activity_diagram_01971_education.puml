@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+start
+:Borrow Book;
+:Issue Certificate;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Submit Assignment;
+:Register Student;
+:Enroll Course;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:View Schedule;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+stop
+@enduml

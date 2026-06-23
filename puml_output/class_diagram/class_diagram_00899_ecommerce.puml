@@ -1,0 +1,47 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Customer {
+  #double id
+  -String address
+  -Date total
+  +createTotal()
+}
+interface Order {
+  #boolean address
+  #double price
+  +processNote()
+  +validateScore()
+}
+interface Coupon {
+  +Date level
+  +float duration
+  +saveDuration()
+  +sendDuration()
+  +deleteQuantity()
+}
+interface Category {
+  #Date total
+  +String description
+  +float code
+  +findId()
+  +validateUpdatedat()
+  +getNote()
+}
+abstract class Invoice {
+  #long duration
+  +boolean status
+  +String price
+  +boolean email
+  +long phone
+  +createAddress()
+  +saveType()
+  +updateTotal()
+}
+Invoice ..> Order : "0..1"
+Customer --o Category
+Invoice --o Customer
+Customer --|> Invoice
+note right of Customer : Ecommerce domain
+@enduml

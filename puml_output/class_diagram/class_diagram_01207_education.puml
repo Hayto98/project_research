@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+interface Student {
+  -Date address
+  -double type
+  +cancelEmail()
+  +validateAddress()
+}
+class Schedule {
+  -double id
+  #int type
+  #float createdAt
+  -Date phone
+  +createLevel()
+  +setNote()
+}
+abstract class Classroom {
+  #long code
+  +int status
+  +setCode()
+  +createTotal()
+  +getScore()
+  +deleteScore()
+}
+interface Attendance {
+  #String id
+  +Date updatedAt
+  +String active
+  +getQuantity()
+}
+interface Library {
+  +int note
+  +String duration
+  #int address
+  -long updatedAt
+  +calculateNote()
+  +findActive()
+  +setDuration()
+  +setPrice()
+}
+class Department {
+  #Date duration
+  +boolean createdAt
+  #double code
+  +float score
+  #float quantity
+  +setPhone()
+}
+Schedule --> Attendance : "0..1"
+Schedule ..|> Library
+Schedule ..|> Department
+note right of Student : Education domain
+@enduml

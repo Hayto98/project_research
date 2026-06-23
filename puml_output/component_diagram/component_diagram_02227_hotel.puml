@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+component "Amenity Service" as C_AmenityService
+component "CheckIn Service" as C_CheckInService
+component "Payment Service" as C_PaymentService
+component "Room Service" as C_RoomService
+database "Hotel DB" as DB_hotel
+C_AmenityService --> DB_hotel
+C_CheckInService --> DB_hotel
+C_PaymentService --> DB_hotel
+C_RoomService --> DB_hotel
+C_PaymentService ..> C_AmenityService : REST
+C_CheckInService ..> C_AmenityService : HTTP
+C_AmenityService ..> C_PaymentService : MQ
+@enduml

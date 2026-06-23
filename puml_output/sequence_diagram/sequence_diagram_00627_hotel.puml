@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+entity "Housekeeper" as H
+boundary "Manager" as M
+boundary "Chef" as C
+C --> M : Request Service
+note over M : processing request service
+M ->> H : Process Payment
+C -> H : Check In
+note over H : processing check in
+C --> H : Cancel Reservation
+M -> C : Book Room
+activate C
+C --> M : ACK
+deactivate C
+M --> H : Order Room Service
+note over H : processing order room service
+M -> H : Clean Room
+note over H : processing clean room
+@enduml

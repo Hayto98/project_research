@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+participant "ATM" as A
+participant "Bank Teller" as BT
+participant "Branch Manager" as BM
+boundary "Auditor" as A2
+BM ->> A2 : Block Card
+A2 -> A : Open Account
+note over A : processing open account
+A2 ->> BT : Pay Bill
+activate BT
+BT --> A2 : ACK
+deactivate BT
+BM -> A2 : Transfer Funds
+A --> BT : Deposit Money
+activate BT
+BT --> A : ACK
+deactivate BT
+@enduml

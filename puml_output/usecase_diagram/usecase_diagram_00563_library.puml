@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+left to right direction
+actor "Admin" as Admin
+actor "Member" as Member
+actor "Librarian" as Librarian
+rectangle "Library System" {
+  usecase "Register Member" as UC_RegisterMember
+  usecase "Add New Book" as UC_AddNewBook
+  usecase "Renew Loan" as UC_RenewLoan
+  usecase "Search Catalog" as UC_SearchCatalog
+  usecase "Return Book" as UC_ReturnBook
+  usecase "Pay Fine" as UC_PayFine
+}
+Admin --> UC_RegisterMember
+Admin --> UC_SearchCatalog
+Member --> UC_PayFine
+Member --> UC_SearchCatalog
+Librarian --> UC_RenewLoan
+UC_RegisterMember ..> UC_RenewLoan : <<include>>
+@enduml

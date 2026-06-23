@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+participant "Doctor" as D
+control "Patient" as P
+actor "Lab Technician" as LT
+actor "Nurse" as N
+control "Receptionist" as R
+P --> N : Update Medical Record
+P -> N : Process Insurance Claim
+P -> LT : Issue Prescription
+note over LT : processing issue prescription
+R -> LT : Discharge Patient
+note over LT : processing discharge patient
+P -> R : Book Appointment
+activate R
+R --> P : ACK
+deactivate R
+@enduml

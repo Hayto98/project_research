@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+component "Warehouse Service" as C_WarehouseService
+component "Inventory Service" as C_InventoryService
+component "Vehicle Service" as C_VehicleService
+component "Package Service" as C_PackageService
+component "Tracking Service" as C_TrackingService
+component "Shipment Service" as C_ShipmentService
+component "Depot Service" as C_DepotService
+database "Logistics DB" as DB_logistics
+C_InventoryService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_TrackingService ..> C_DepotService : HTTP
+C_TrackingService ..> C_DepotService : HTTP
+C_InventoryService ..> C_TrackingService : HTTP
+@enduml

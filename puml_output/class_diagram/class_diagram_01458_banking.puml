@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Withdrawal {
+  #Date duration
+  +Date price
+  #int id
+  +boolean type
+  #int total
+  +createName()
+}
+class Statement {
+  #String level
+  #Date address
+  +validateActive()
+  +createId()
+  +findDuration()
+  +sendStatus()
+}
+class Teller {
+  -float description
+  #boolean code
+  #Date level
+  #long total
+  #Date status
+  +findDescription()
+  +processType()
+  +setId()
+}
+class Branch {
+  +long amount
+  +long quantity
+  #boolean active
+  #String name
+  +long total
+  +validateNote()
+  +findDuration()
+  +findCreatedat()
+}
+class Deposit {
+  #int amount
+  +boolean address
+  -String price
+  +calculateName()
+  +calculateActive()
+}
+interface Interest {
+  +double active
+  #long address
+  +findActive()
+}
+Interest ..> Teller : "1..*"
+Branch --|> Withdrawal
+Deposit --* Interest
+Deposit --o Withdrawal
+note right of Withdrawal : Banking domain
+@enduml

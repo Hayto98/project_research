@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+abstract class Post {
+  +Date note
+  #String price
+  +int score
+  +boolean duration
+  +validateType()
+  +deleteTotal()
+  +deletePrice()
+}
+abstract class User {
+  #int description
+  -Date level
+  +float quantity
+  +cancelQuantity()
+  +updateId()
+  +processDuration()
+}
+interface Group {
+  #int createdAt
+  #double address
+  +long id
+  #int level
+  +saveQuantity()
+  +findPrice()
+}
+class Notification {
+  +String type
+  #int price
+  -double note
+  +validateId()
+}
+Post --> User : "1..*"
+Notification ..|> User
+User --> Notification : "1"
+note right of Post : Social Media domain
+@enduml

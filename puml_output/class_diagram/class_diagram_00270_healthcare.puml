@@ -1,0 +1,59 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+class Hospital {
+  #int description
+  #long score
+  +boolean type
+  +int price
+  -double createdAt
+  +updatePrice()
+  +findPrice()
+  +getActive()
+}
+interface Appointment {
+  -float total
+  -int phone
+  -int quantity
+  +String updatedAt
+  +float duration
+  +cancelStatus()
+}
+class Prescription {
+  -double status
+  #int phone
+  +findId()
+}
+class LabTest {
+  #int quantity
+  #int phone
+  -float amount
+  +String id
+  +long price
+  +setPrice()
+}
+class Nurse {
+  +Date quantity
+  -long phone
+  #double active
+  +sendType()
+}
+class Treatment {
+  +boolean name
+  #int amount
+  -float status
+  +processName()
+}
+abstract class Diagnosis {
+  +float code
+  +long note
+  -double type
+  +findPhone()
+  +getEmail()
+}
+Hospital ..|> Nurse
+Prescription ..> Diagnosis : "1..*"
+Diagnosis --o Appointment
+LabTest --> Prescription : "*"
+note right of Hospital : Healthcare domain
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+interface Manifest {
+  +Date active
+  -float updatedAt
+  #int description
+  +String amount
+  +findNote()
+}
+class Warehouse {
+  +Date active
+  +String amount
+  +processTotal()
+}
+abstract class Route {
+  #long phone
+  +boolean duration
+  +int quantity
+  +cancelPrice()
+}
+class Customer {
+  #String price
+  -String type
+  -boolean description
+  -String quantity
+  +sendEmail()
+}
+Route --* Customer
+Warehouse ..|> Customer
+Manifest ..|> Customer
+note right of Manifest : Logistics domain
+@enduml

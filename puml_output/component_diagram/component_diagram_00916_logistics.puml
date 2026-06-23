@@ -1,0 +1,12 @@
+@startuml
+skinparam defaultFontSize 13
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Shipment Service" as C_ShipmentService
+component "Package Service" as C_PackageService
+component "Inventory Service" as C_InventoryService
+database "Logistics DB" as DB_logistics
+C_PackageService --> DB_logistics
+C_DeliveryNoteService ..> C_ShipmentService : REST
+C_PackageService ..> C_ShipmentService : MQ
+C_PackageService ..> C_DeliveryNoteService : MQ
+@enduml

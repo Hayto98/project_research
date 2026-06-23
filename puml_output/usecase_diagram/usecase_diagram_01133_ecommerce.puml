@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+left to right direction
+actor "Admin" as Admin
+actor "Delivery Service" as DeliveryService
+actor "Customer" as Customer
+rectangle "Ecommerce System" {
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Write Review" as UC_WriteReview
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Checkout" as UC_Checkout
+  usecase "Track Order" as UC_TrackOrder
+}
+Admin --> UC_ManageInventory
+Admin --> UC_AddToCart
+DeliveryService --> UC_Checkout
+DeliveryService --> UC_BrowseProducts
+DeliveryService --> UC_TrackOrder
+Customer --> UC_TrackOrder
+Customer --> UC_ManageInventory
+Customer --> UC_BrowseProducts
+@enduml

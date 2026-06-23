@@ -1,0 +1,12 @@
+@startuml
+skinparam shadowing true
+component "Customer Service" as C_CustomerService
+component "Withdrawal Service" as C_WithdrawalService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Interest Service" as C_InterestService
+database "Banking DB" as DB_banking
+C_CustomerService --> DB_banking
+C_InterestService --> DB_banking
+C_InterestService ..> C_BeneficiaryService : gRPC
+C_InterestService ..> C_WithdrawalService : gRPC
+@enduml

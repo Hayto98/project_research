@@ -1,0 +1,48 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+start
+:Deposit Money;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Pay Bill;
+:Open Account;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Transfer Funds;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Withdraw Cash;
+:Block Card;
+:View Statement;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Apply For Loan;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+stop
+@enduml

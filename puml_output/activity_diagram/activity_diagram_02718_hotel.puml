@@ -1,0 +1,37 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+start
+:Check In;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Book Room;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Order Room Service;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Check Out;
+:Cancel Reservation;
+:Request Service;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Clean Room;
+:Process Payment;
+stop
+@enduml

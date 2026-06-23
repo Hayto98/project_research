@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+participant "Warehouse Staff" as WS
+boundary "Dispatcher" as D
+actor "Driver" as D2
+entity "Fleet Manager" as FM
+boundary "Customer" as C
+FM --> WS : Load Package
+note over WS : processing load package
+C -> D2 : Report Issue
+WS --> C : Update Inventory
+activate C
+C --> WS : ACK
+deactivate C
+D -> D2 : Deliver Package
+@enduml

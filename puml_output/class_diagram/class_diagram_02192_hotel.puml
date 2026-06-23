@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+abstract class Guest {
+  #long duration
+  -float active
+  #boolean level
+  #int updatedAt
+  +processEmail()
+  +deleteQuantity()
+  +updateName()
+  +updateScore()
+}
+interface Reservation {
+  -Date price
+  +float score
+  -float status
+  #long quantity
+  #float note
+  +saveId()
+  +getLevel()
+  +updateCode()
+}
+class Room {
+  -float amount
+  -String address
+  +String email
+  #int total
+  +getCreatedat()
+  +validateQuantity()
+  +setName()
+}
+interface Restaurant {
+  #float code
+  +int email
+  -float address
+  #double level
+  +int active
+  +deleteQuantity()
+  +setLevel()
+}
+abstract class Housekeeping {
+  +boolean status
+  +int description
+  +calculateCode()
+  +setQuantity()
+  +calculateDuration()
+}
+abstract class Service {
+  #float status
+  -Date amount
+  #long email
+  +processPhone()
+}
+Housekeeping --* Reservation
+Service ..> Housekeeping : "1..*"
+Housekeeping --|> Restaurant
+note right of Guest : Hotel domain
+@enduml

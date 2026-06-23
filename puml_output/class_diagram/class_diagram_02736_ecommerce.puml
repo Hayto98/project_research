@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+class Category {
+  +long quantity
+  #boolean total
+  +Date address
+  -long amount
+  +validateStatus()
+  +getPrice()
+}
+interface Wishlist {
+  -double price
+  #boolean createdAt
+  +updatePrice()
+  +createLevel()
+  +deleteActive()
+}
+class Return {
+  -Date duration
+  +boolean status
+  +Date price
+  +processType()
+  +updatePrice()
+  +saveScore()
+  +setQuantity()
+}
+class Product {
+  -String code
+  #boolean phone
+  +Date note
+  +processCode()
+  +updateScore()
+  +saveDescription()
+}
+interface Coupon {
+  -double description
+  -Date price
+  +boolean note
+  +validatePrice()
+  +deleteId()
+  +validateType()
+  +validateUpdatedat()
+}
+abstract class Cart {
+  #String duration
+  #float createdAt
+  #boolean name
+  -boolean code
+  +getPhone()
+  +sendTotal()
+  +createStatus()
+  +createScore()
+}
+Product --> Coupon : "1"
+Product --o Category
+Cart --|> Category
+note right of Category : Ecommerce domain
+@enduml

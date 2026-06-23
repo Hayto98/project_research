@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+interface Catalog {
+  #float quantity
+  +Date phone
+  -boolean name
+  +long code
+  +deleteDescription()
+  +processPrice()
+  +setAmount()
+  +updatePhone()
+}
+abstract class Shelf {
+  #long quantity
+  #Date name
+  -String code
+  +setAddress()
+  +cancelEmail()
+  +validatePhone()
+  +saveTotal()
+}
+interface Reservation {
+  -boolean createdAt
+  +long score
+  -String address
+  -Date name
+  +saveQuantity()
+}
+class Librarian {
+  -int active
+  +float status
+  +deleteStatus()
+}
+class Branch {
+  +String createdAt
+  #boolean code
+  #boolean level
+  #boolean active
+  -boolean total
+  +deleteAddress()
+  +createEmail()
+  +findNote()
+  +cancelAddress()
+}
+Catalog --o Reservation
+Librarian --* Branch
+Reservation --|> Shelf
+note right of Catalog : Library domain
+@enduml

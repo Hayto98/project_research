@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+[*] --> Draft
+Draft --> Archived : reject
+Archived --> Processing : reject
+Archived : entry / log inventory
+Processing --> Delivered : reject
+Processing : entry / log inventory
+Processing --> Archived : revert
+Delivered --> [*]
+@enduml

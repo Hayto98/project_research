@@ -1,0 +1,27 @@
+@startuml
+skinparam defaultFontSize 11
+start
+:Browse Products;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Manage Inventory;
+:Cancel Order;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Write Review;
+:Add To Cart;
+stop
+@enduml

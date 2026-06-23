@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Shelf Service" as C_ShelfService
+component "Reservation Service" as C_ReservationService
+component "Member Service" as C_MemberService
+component "Book Service" as C_BookService
+component "Renewal Service" as C_RenewalService
+database "Library DB" as DB_library
+C_ReservationService --> DB_library
+C_MemberService --> DB_library
+C_BookService --> DB_library
+C_RenewalService --> DB_library
+C_BookService ..> C_RenewalService : REST
+C_RenewalService ..> C_BookService : gRPC
+C_MemberService ..> C_ReservationService : MQ
+@enduml

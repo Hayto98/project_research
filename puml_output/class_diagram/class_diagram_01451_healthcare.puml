@@ -1,0 +1,70 @@
+@startuml
+skinparam shadowing true
+class Nurse {
+  -String total
+  -double createdAt
+  #boolean score
+  -int price
+  +validateCreatedat()
+  +cancelId()
+  +cancelPrice()
+  +cancelUpdatedat()
+}
+class Doctor {
+  +float updatedAt
+  #Date price
+  #double name
+  -boolean phone
+  +updateLevel()
+}
+class Billing {
+  -float quantity
+  +int updatedAt
+  #Date active
+  -long price
+  #int note
+  +getNote()
+  +updateDescription()
+  +sendNote()
+}
+abstract class MedicalRecord {
+  +String amount
+  #double id
+  #String note
+  #long duration
+  +processQuantity()
+  +validateCreatedat()
+}
+class Hospital {
+  #float amount
+  #double status
+  #double score
+  +float phone
+  -float type
+  +findAmount()
+  +cancelType()
+}
+class Diagnosis {
+  +int active
+  #int level
+  +int email
+  #String amount
+  -float phone
+  +cancelPhone()
+}
+class Ward {
+  #Date note
+  -String description
+  #String duration
+  -Date quantity
+  +float total
+  +setCreatedat()
+  +processType()
+}
+Billing ..|> MedicalRecord
+Nurse ..|> Diagnosis
+Ward ..|> Diagnosis
+Nurse --* Doctor
+Billing ..> Diagnosis : "1"
+note right of Nurse : Healthcare domain
+@enduml

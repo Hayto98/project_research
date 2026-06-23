@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+abstract class Supplier {
+  #String phone
+  -long type
+  #Date price
+  +double note
+  +deleteEmail()
+  +calculateActive()
+  +deleteType()
+  +setAmount()
+}
+class Customer {
+  -int active
+  -String updatedAt
+  +boolean address
+  +setName()
+  +createName()
+  +setUpdatedat()
+}
+class Warehouse {
+  #boolean updatedAt
+  #float amount
+  +saveActive()
+  +findName()
+}
+abstract class Wishlist {
+  -Date id
+  -long name
+  #int code
+  +boolean active
+  +createStatus()
+  +findNote()
+}
+class Product {
+  +int createdAt
+  -boolean type
+  +Date email
+  -double score
+  -float status
+  +findActive()
+  +findStatus()
+  +setAmount()
+}
+class Invoice {
+  +long type
+  -boolean total
+  +validatePhone()
+  +setQuantity()
+}
+abstract class Shipment {
+  +String score
+  -double status
+  +deleteLevel()
+  +updateAddress()
+}
+Warehouse --* Customer
+Shipment ..> Supplier : "0..1"
+Invoice ..|> Shipment
+Customer --> Shipment : "1"
+note right of Supplier : Ecommerce domain
+@enduml

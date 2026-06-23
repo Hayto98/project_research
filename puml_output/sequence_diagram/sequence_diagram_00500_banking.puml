@@ -1,0 +1,25 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+entity "Auditor" as A
+actor "Bank Teller" as BT
+actor "Account Holder" as AH
+AH ->> A : View Statement
+activate A
+A --> AH : ACK
+deactivate A
+note over A : processing view statement
+A ->> AH : Pay Bill
+activate AH
+AH --> A : ACK
+deactivate AH
+A ->> BT : Deposit Money
+note over BT : processing deposit money
+BT --> A : Apply For Loan
+BT --> A : Block Card
+AH --> A : Open Account
+activate A
+A --> AH : ACK
+deactivate A
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Tracking {
+  #String price
+  +long code
+  +findPrice()
+  +saveActive()
+}
+class Driver {
+  #double duration
+  -String code
+  +boolean total
+  +updateLevel()
+  +setTotal()
+  +cancelUpdatedat()
+  +cancelDuration()
+}
+abstract class Inventory {
+  #float type
+  #boolean level
+  #long active
+  +createDuration()
+  +getLevel()
+  +updateNote()
+  +updateEmail()
+}
+class Customer {
+  -boolean address
+  -boolean id
+  +validateQuantity()
+  +cancelNote()
+  +setDuration()
+  +setStatus()
+}
+class DeliveryNote {
+  #long updatedAt
+  +int score
+  +processNote()
+}
+interface Vehicle {
+  #String total
+  -Date description
+  #float name
+  -double active
+  +long updatedAt
+  +getUpdatedat()
+  +deleteActive()
+}
+Inventory --* DeliveryNote
+Tracking --|> Vehicle
+Customer --|> Vehicle
+note right of Tracking : Logistics domain
+@enduml

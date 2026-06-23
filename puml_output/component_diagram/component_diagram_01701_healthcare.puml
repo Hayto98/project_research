@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Appointment Service" as C_AppointmentService
+component "Prescription Service" as C_PrescriptionService
+component "Nurse Service" as C_NurseService
+component "Billing Service" as C_BillingService
+component "LabTest Service" as C_LabTestService
+database "Healthcare DB" as DB_healthcare
+C_NurseService --> DB_healthcare
+C_BillingService --> DB_healthcare
+C_LabTestService --> DB_healthcare
+C_LabTestService ..> C_AppointmentService : REST
+C_AppointmentService ..> C_PrescriptionService : gRPC
+C_LabTestService ..> C_NurseService : REST
+C_PrescriptionService ..> C_AppointmentService : REST
+@enduml

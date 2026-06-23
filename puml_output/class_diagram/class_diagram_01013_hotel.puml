@@ -1,0 +1,76 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+abstract class Amenity {
+  +boolean email
+  #int price
+  +Date createdAt
+  -long description
+  +cancelId()
+  +updateCode()
+  +sendTotal()
+  +cancelLevel()
+}
+abstract class Reservation {
+  #long status
+  +long type
+  +long description
+  +validateLevel()
+  +sendDescription()
+  +findNote()
+}
+abstract class Housekeeping {
+  #boolean level
+  +int total
+  #long amount
+  +boolean id
+  +updateDescription()
+  +findActive()
+  +validateUpdatedat()
+  +cancelLevel()
+}
+class Staff {
+  +boolean createdAt
+  -int address
+  +double score
+  #boolean id
+  +Date status
+  +calculateEmail()
+  +saveAddress()
+}
+class Booking {
+  +Date quantity
+  -Date id
+  -long score
+  +int code
+  +cancelQuantity()
+  +sendEmail()
+}
+class Invoice {
+  #boolean id
+  -long createdAt
+  +String description
+  -boolean address
+  +boolean amount
+  +processActive()
+  +getUpdatedat()
+  +getActive()
+}
+class Room {
+  -Date amount
+  +boolean createdAt
+  -long price
+  -double address
+  -String duration
+  +createEmail()
+}
+Invoice --|> Booking
+Staff ..|> Amenity
+Staff ..> Housekeeping : "0..1"
+Staff ..> Invoice : "1..*"
+Amenity --> Room : "1"
+Reservation --> Amenity : "0..1"
+note right of Amenity : Hotel domain
+@enduml

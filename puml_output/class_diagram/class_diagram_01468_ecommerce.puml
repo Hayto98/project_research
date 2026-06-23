@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+abstract class Invoice {
+  #Date name
+  +String id
+  +updateAmount()
+}
+class Return {
+  -boolean score
+  #float code
+  +int type
+  +deleteQuantity()
+  +getEmail()
+}
+interface Warehouse {
+  -Date total
+  #String type
+  +boolean note
+  +deleteActive()
+  +setDescription()
+  +cancelEmail()
+  +validateAddress()
+}
+interface Cart {
+  +float name
+  #String code
+  +deleteCreatedat()
+  +setCreatedat()
+  +saveDescription()
+}
+abstract class Supplier {
+  -float price
+  +double createdAt
+  +float address
+  +double phone
+  +findAddress()
+  +sendPhone()
+  +processPrice()
+}
+Supplier --|> Warehouse
+Cart --|> Warehouse
+Return --* Supplier
+Warehouse ..> Cart : "1"
+note right of Invoice : Ecommerce domain
+@enduml

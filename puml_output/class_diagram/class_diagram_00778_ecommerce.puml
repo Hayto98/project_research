@@ -1,0 +1,56 @@
+@startuml
+skinparam shadowing true
+abstract class Category {
+  -String active
+  #float id
+  #double amount
+  #int status
+  +cancelPhone()
+}
+class Wishlist {
+  +int name
+  +Date note
+  +boolean score
+  -long updatedAt
+  +cancelCreatedat()
+  +cancelQuantity()
+  +sendNote()
+}
+class Payment {
+  #float total
+  -boolean email
+  -float active
+  +Date address
+  +calculateStatus()
+  +processScore()
+  +saveAddress()
+}
+interface Coupon {
+  #int email
+  -boolean score
+  +double type
+  +deleteDuration()
+}
+class Return {
+  -float amount
+  +String total
+  -boolean createdAt
+  +float price
+  +double code
+  +cancelAddress()
+  +deletePhone()
+}
+interface Cart {
+  #Date duration
+  #Date active
+  #double total
+  #boolean quantity
+  +findPrice()
+  +getCreatedat()
+  +setQuantity()
+}
+Wishlist ..> Payment : "1"
+Coupon --> Payment : "*"
+Cart --> Coupon : "1"
+note right of Category : Ecommerce domain
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+abstract class Profile {
+  +int price
+  +float email
+  +String type
+  +processAmount()
+  +getDescription()
+}
+interface Post {
+  +String createdAt
+  +boolean email
+  #int description
+  +updateId()
+}
+class Group {
+  -String quantity
+  -boolean note
+  -double status
+  +cancelAddress()
+  +findTotal()
+  +sendDuration()
+}
+class Comment {
+  +Date level
+  -float score
+  #int id
+  +String code
+  #double amount
+  +sendId()
+  +processQuantity()
+  +setEmail()
+  +getPrice()
+}
+class Like {
+  +Date name
+  #Date active
+  -long note
+  +double updatedAt
+  +processStatus()
+}
+abstract class Album {
+  +boolean status
+  +String quantity
+  -long code
+  +float name
+  #String score
+  +updateActive()
+}
+Profile --|> Group
+Album ..> Profile : "1..*"
+Album --> Like : "0..1"
+Profile ..|> Comment
+note right of Profile : Social Media domain
+@enduml

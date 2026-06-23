@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+class Billing {
+  #float id
+  #String email
+  #float address
+  -boolean total
+  #long type
+  +updateLevel()
+  +calculateDuration()
+  +getQuantity()
+  +cancelName()
+}
+class Ward {
+  +double quantity
+  #Date amount
+  -String id
+  +setEmail()
+  +updateName()
+}
+class Treatment {
+  #long id
+  #float quantity
+  +float active
+  -boolean phone
+  +calculateEmail()
+}
+class Diagnosis {
+  #double status
+  -int score
+  -String id
+  +long quantity
+  +updateType()
+  +updateCreatedat()
+  +sendAmount()
+}
+interface Doctor {
+  -boolean note
+  +String duration
+  -int type
+  -double updatedAt
+  +sendCode()
+}
+interface Patient {
+  -double total
+  +boolean amount
+  +validatePhone()
+  +sendStatus()
+  +createPrice()
+  +cancelScore()
+}
+abstract class MedicalRecord {
+  #String amount
+  -long price
+  +validateQuantity()
+  +updateAddress()
+  +getAddress()
+  +cancelActive()
+}
+Patient --* MedicalRecord
+Diagnosis --> MedicalRecord : "*"
+note right of Billing : Healthcare domain
+@enduml

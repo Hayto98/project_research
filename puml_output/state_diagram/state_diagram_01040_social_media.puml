@@ -1,0 +1,15 @@
+@startuml
+
+[*] --> Pending
+Pending --> OnHold : approve
+Pending : entry / log profile
+OnHold --> Processing : review
+Processing --> Active : process
+Processing : entry / log profile
+Active --> Created : update
+Active : entry / log profile
+Created --> Closed : update
+Created : entry / log profile
+Active --> Closed : revert
+Closed --> [*]
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+participant "Insurance Provider" as IP
+participant "Lab Technician" as LT
+actor "Receptionist" as R
+actor "Patient" as P
+R -> P : Book Appointment
+activate P
+P --> R : ACK
+deactivate P
+P ->> IP : Process Insurance Claim
+activate IP
+IP --> P : ACK
+deactivate IP
+LT ->> P : Discharge Patient
+activate P
+P --> LT : ACK
+deactivate P
+R ->> P : Update Medical Record
+activate P
+P --> R : ACK
+deactivate P
+@enduml

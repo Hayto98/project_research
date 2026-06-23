@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+entity "Customer" as C
+control "Admin" as A
+boundary "Delivery Service" as DS
+boundary "Seller" as S
+entity "Payment Gateway" as PG
+S --> PG : Browse Products
+activate PG
+PG --> S : ACK
+deactivate PG
+A ->> S : Manage Inventory
+C --> DS : Cancel Order
+C --> A : Make Payment
+A --> S : Write Review
+A ->> C : Track Order
+C --> PG : Apply Coupon
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+entity "Doctor" as D
+boundary "Patient" as P
+participant "Insurance Provider" as IP
+P -> IP : Discharge Patient
+activate IP
+IP --> P : ACK
+deactivate IP
+note over IP : processing discharge patient
+IP --> D : Book Appointment
+activate D
+D --> IP : ACK
+deactivate D
+D ->> P : Run Lab Test
+D --> P : Admit Patient
+activate P
+P --> D : ACK
+deactivate P
+@enduml

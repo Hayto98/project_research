@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+class Category {
+  -boolean address
+  +double phone
+  +sendType()
+}
+class Product {
+  #double name
+  -int quantity
+  -double phone
+  +validateAddress()
+  +calculateAmount()
+  +saveNote()
+}
+class Cart {
+  #float duration
+  #double amount
+  -int phone
+  +processTotal()
+  +sendQuantity()
+  +calculateAmount()
+}
+abstract class Return {
+  +Date amount
+  -String createdAt
+  +String level
+  +cancelEmail()
+  +saveCode()
+  +getName()
+}
+interface Invoice {
+  +boolean updatedAt
+  -String amount
+  -int note
+  +updateEmail()
+  +createUpdatedat()
+  +validateLevel()
+  +deleteId()
+}
+interface Order {
+  -int address
+  #boolean active
+  #long price
+  +deletePrice()
+}
+Order --|> Category
+Return ..> Category : "1"
+Order --|> Cart
+Return --o Cart
+note right of Category : Ecommerce domain
+@enduml

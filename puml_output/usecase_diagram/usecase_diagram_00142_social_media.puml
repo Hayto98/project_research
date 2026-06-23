@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+left to right direction
+actor "Admin" as Admin
+actor "Advertiser" as Advertiser
+actor "User" as User
+rectangle "Social Media System" {
+  usecase "Comment" as UC_Comment
+  usecase "Share Post" as UC_SharePost
+  usecase "Create Post" as UC_CreatePost
+  usecase "Follow User" as UC_FollowUser
+  usecase "Send Message" as UC_SendMessage
+  usecase "Report Content" as UC_ReportContent
+}
+Admin --> UC_SendMessage
+Advertiser --> UC_FollowUser
+Advertiser --> UC_SharePost
+Advertiser --> UC_Comment
+User --> UC_CreatePost
+UC_FollowUser ..|> UC_ReportContent : <<extend>>
+@enduml

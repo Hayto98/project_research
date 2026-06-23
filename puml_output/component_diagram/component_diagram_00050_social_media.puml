@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+component "Post Service" as C_PostService
+component "Report Service" as C_ReportService
+component "Notification Service" as C_NotificationService
+component "Comment Service" as C_CommentService
+component "Album Service" as C_AlbumService
+component "Group Service" as C_GroupService
+database "Social Media DB" as DB_social_media
+C_PostService --> DB_social_media
+C_ReportService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_CommentService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_GroupService --> DB_social_media
+C_PostService ..> C_CommentService : HTTP
+C_PostService ..> C_NotificationService : MQ
+@enduml

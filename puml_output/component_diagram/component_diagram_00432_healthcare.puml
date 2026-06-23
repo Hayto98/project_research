@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Appointment Service" as C_AppointmentService
+component "Prescription Service" as C_PrescriptionService
+component "Treatment Service" as C_TreatmentService
+component "Billing Service" as C_BillingService
+component "Ward Service" as C_WardService
+database "Healthcare DB" as DB_healthcare
+C_AppointmentService --> DB_healthcare
+C_PrescriptionService --> DB_healthcare
+C_BillingService --> DB_healthcare
+C_WardService --> DB_healthcare
+C_BillingService ..> C_AppointmentService : MQ
+C_BillingService ..> C_TreatmentService : REST
+@enduml

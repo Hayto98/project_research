@@ -1,0 +1,42 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class MedicalRecord {
+  -double type
+  +long updatedAt
+  #String score
+  #float createdAt
+  -boolean status
+  +getTotal()
+  +cancelLevel()
+}
+class Prescription {
+  #Date id
+  -int address
+  +double status
+  +sendId()
+  +sendTotal()
+  +validateTotal()
+}
+class Doctor {
+  #float quantity
+  -Date description
+  #double createdAt
+  -double level
+  +long total
+  +validateQuantity()
+  +setNote()
+  +sendCode()
+}
+class Patient {
+  #Date address
+  +String type
+  #Date score
+  +calculateTotal()
+}
+Patient --|> MedicalRecord
+Prescription ..> Doctor : "1..*"
+Prescription --* Patient
+note right of MedicalRecord : Healthcare domain
+@enduml

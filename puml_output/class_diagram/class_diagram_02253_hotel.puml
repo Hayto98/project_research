@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class CheckOut {
+  -long name
+  +float quantity
+  -boolean description
+  +setPhone()
+  +findScore()
+}
+abstract class Room {
+  -boolean active
+  -boolean type
+  -boolean score
+  +String id
+  +String level
+  +cancelPrice()
+  +saveDescription()
+  +validateActive()
+  +updatePhone()
+}
+interface Booking {
+  #float address
+  -long type
+  +int total
+  -long quantity
+  +updateQuantity()
+  +calculateNote()
+  +cancelNote()
+  +createType()
+}
+interface Invoice {
+  -String email
+  -int duration
+  -int name
+  -double total
+  -int phone
+  +saveCreatedat()
+  +validateDescription()
+  +findQuantity()
+}
+interface Reservation {
+  +String status
+  -Date price
+  -boolean score
+  +long quantity
+  +validateType()
+  +processAddress()
+  +setStatus()
+}
+abstract class Payment {
+  -long phone
+  +Date amount
+  +long active
+  #Date name
+  +setDescription()
+  +deleteType()
+}
+Booking --> Room : "1"
+CheckOut --|> Payment
+Payment ..> CheckOut : "1..*"
+Payment --* Booking
+Reservation --> Booking : "*"
+note right of CheckOut : Hotel domain
+@enduml

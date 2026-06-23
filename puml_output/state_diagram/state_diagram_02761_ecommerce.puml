@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+[*] --> Closed
+Closed --> Pending : process
+Closed : entry / log shipment
+Pending --> Draft : update
+Draft --> Completed : reject
+Draft : entry / log shipment
+Completed --> Reviewed : submit
+Reviewed --> Rejected : confirm
+Rejected --> Draft : revert
+Rejected --> [*]
+@enduml

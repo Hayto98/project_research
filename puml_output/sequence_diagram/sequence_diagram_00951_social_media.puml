@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing true
+participant "Advertiser" as A
+control "Moderator" as M
+actor "User" as U
+A ->> M : Follow User
+activate M
+M --> A : ACK
+deactivate M
+U --> M : Create Post
+activate M
+M --> U : ACK
+deactivate M
+note over M : processing create post
+M ->> A : Send Message
+activate A
+A --> M : ACK
+deactivate A
+A --> M : Report Content
+U -> M : Share Post
+@enduml

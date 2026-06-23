@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+actor "Admin" as A
+boundary "Librarian" as L
+boundary "Member" as M
+A --> M : Add New Book
+activate M
+M --> A : ACK
+deactivate M
+M -> L : Renew Loan
+activate L
+L --> M : ACK
+deactivate L
+M ->> L : Reserve Book
+M ->> L : Return Book
+L --> A : Borrow Book
+activate A
+A --> L : ACK
+deactivate A
+@enduml

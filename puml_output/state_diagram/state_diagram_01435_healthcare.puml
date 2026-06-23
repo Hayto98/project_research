@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+[*] --> Delivered
+Delivered --> Pending : update
+Delivered : entry / log patient
+Pending --> Shipped : process
+Pending : entry / log patient
+Shipped --> Rejected : reject
+Rejected --> Draft : update
+Draft --> Cancelled : submit
+Delivered --> Shipped : revert
+Cancelled --> [*]
+@enduml

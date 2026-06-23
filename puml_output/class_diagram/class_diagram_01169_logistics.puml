@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class DeliveryNote {
+  +String level
+  -int createdAt
+  +validateCode()
+  +saveScore()
+}
+class Driver {
+  #int createdAt
+  -boolean score
+  -String level
+  +double email
+  +setAmount()
+  +deleteCode()
+}
+interface Package {
+  #double type
+  +float amount
+  +saveAddress()
+  +validateCode()
+}
+class Tracking {
+  -long id
+  #Date type
+  +float active
+  +processName()
+  +findTotal()
+  +updateDuration()
+  +setLevel()
+}
+interface Manifest {
+  #double score
+  #double updatedAt
+  #float id
+  +processDescription()
+  +findAmount()
+  +updateType()
+}
+class Depot {
+  -long name
+  -String email
+  -boolean amount
+  +deleteUpdatedat()
+  +sendCode()
+  +cancelPhone()
+  +deleteActive()
+}
+Tracking ..> Manifest : "1..*"
+Depot ..|> Manifest
+Depot --|> Driver
+Driver ..> Tracking : "0..1"
+Package ..|> Driver
+note right of DeliveryNote : Logistics domain
+@enduml

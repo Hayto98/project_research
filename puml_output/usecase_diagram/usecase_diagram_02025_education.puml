@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+left to right direction
+actor "Student" as Student
+actor "Registrar" as Registrar
+rectangle "Education System" {
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "View Schedule" as UC_ViewSchedule
+}
+Student --> UC_ViewSchedule
+Student --> UC_TakeAttendance
+Student --> UC_GradeExam
+Registrar --> UC_GradeExam
+Registrar --> UC_ViewSchedule
+UC_SubmitAssignment ..|> UC_ViewSchedule : <<extend>>
+@enduml

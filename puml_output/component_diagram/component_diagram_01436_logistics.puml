@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+component "Manifest Service" as C_ManifestService
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Shipment Service" as C_ShipmentService
+component "Depot Service" as C_DepotService
+component "Package Service" as C_PackageService
+database "Logistics DB" as DB_logistics
+C_DeliveryNoteService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_DepotService --> DB_logistics
+C_DeliveryNoteService ..> C_PackageService : REST
+C_PackageService ..> C_ManifestService : HTTP
+C_ShipmentService ..> C_DepotService : REST
+C_DepotService ..> C_DeliveryNoteService : REST
+@enduml

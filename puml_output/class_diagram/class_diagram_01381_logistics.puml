@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+abstract class Manifest {
+  #long total
+  -String name
+  #boolean updatedAt
+  +validateCode()
+  +deleteActive()
+}
+interface Driver {
+  #boolean quantity
+  -String phone
+  #Date active
+  +deleteTotal()
+  +getPhone()
+}
+abstract class Vehicle {
+  -int address
+  -String description
+  +String active
+  +deleteCode()
+}
+abstract class Route {
+  -int description
+  #String type
+  -String status
+  -double id
+  +updateDescription()
+  +findQuantity()
+}
+abstract class Shipment {
+  +long type
+  +boolean code
+  #double level
+  +sendPhone()
+  +processEmail()
+}
+Driver --o Shipment
+Driver --o Route
+Vehicle ..> Manifest : "1"
+Manifest --o Route
+note right of Manifest : Logistics domain
+@enduml

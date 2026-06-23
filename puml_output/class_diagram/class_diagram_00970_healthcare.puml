@@ -1,0 +1,45 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Doctor {
+  +long score
+  #Date email
+  #float total
+  +String price
+  #float level
+  +validateNote()
+  +sendAddress()
+}
+interface Appointment {
+  #double description
+  -int createdAt
+  +sendLevel()
+  +validateActive()
+  +validateName()
+  +cancelActive()
+}
+interface Insurance {
+  -int id
+  #boolean score
+  +double quantity
+  #boolean level
+  +findActive()
+  +processActive()
+  +saveQuantity()
+}
+class LabTest {
+  +long description
+  +long id
+  -int type
+  +boolean status
+  #String score
+  +cancelType()
+  +saveType()
+  +getStatus()
+  +findDuration()
+}
+LabTest ..> Doctor : "0..1"
+Appointment --* Insurance
+Appointment ..|> Doctor
+note right of Doctor : Healthcare domain
+@enduml

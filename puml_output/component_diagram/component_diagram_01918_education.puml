@@ -1,0 +1,14 @@
+@startuml
+
+component "Attendance Service" as C_AttendanceService
+component "Teacher Service" as C_TeacherService
+component "Grade Service" as C_GradeService
+component "Course Service" as C_CourseService
+database "Education DB" as DB_education
+C_TeacherService --> DB_education
+C_GradeService --> DB_education
+C_CourseService --> DB_education
+C_GradeService ..> C_TeacherService : REST
+C_TeacherService ..> C_CourseService : MQ
+C_CourseService ..> C_TeacherService : HTTP
+@enduml

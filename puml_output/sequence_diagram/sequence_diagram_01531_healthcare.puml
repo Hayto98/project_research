@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+boundary "Nurse" as N
+participant "Lab Technician" as LT
+boundary "Receptionist" as R
+entity "Doctor" as D
+participant "Patient" as P
+N --> LT : Examine Patient
+activate LT
+LT --> N : ACK
+deactivate LT
+LT -> D : Run Lab Test
+LT ->> R : Book Appointment
+activate R
+R --> LT : ACK
+deactivate R
+N --> P : Issue Prescription
+P -> LT : Update Medical Record
+activate LT
+LT --> P : ACK
+deactivate LT
+N -> R : Discharge Patient
+@enduml

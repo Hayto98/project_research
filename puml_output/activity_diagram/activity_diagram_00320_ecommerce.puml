@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+start
+:Track Order;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Add To Cart;
+:Write Review;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Checkout;
+:Cancel Order;
+stop
+@enduml

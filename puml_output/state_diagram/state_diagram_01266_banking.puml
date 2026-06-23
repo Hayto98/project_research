@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+[*] --> Pending
+Pending --> Rejected : cancel
+Rejected --> Approved : submit
+Rejected : entry / log deposit
+Approved --> OnHold : cancel
+OnHold --> Completed : reject
+OnHold : entry / log deposit
+Completed --> OnHold : revert
+Completed --> [*]
+@enduml

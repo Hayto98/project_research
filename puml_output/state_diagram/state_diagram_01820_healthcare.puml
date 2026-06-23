@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+[*] --> Pending
+Pending --> Processing : update
+Pending : entry / log treatment
+Processing --> Delivered : process
+Delivered --> Draft : cancel
+Draft --> Cancelled : review
+Cancelled --> Reviewed : process
+Cancelled : entry / log treatment
+Reviewed --> [*]
+@enduml

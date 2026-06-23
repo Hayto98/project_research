@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+entity "Dispatcher" as D
+actor "Driver" as D2
+actor "Warehouse Staff" as WS
+entity "Fleet Manager" as FM
+WS ->> FM : Report Issue
+D2 ->> D : Fuel Vehicle
+activate D
+D --> D2 : ACK
+deactivate D
+D2 -> WS : Schedule Pickup
+activate WS
+WS --> D2 : ACK
+deactivate WS
+FM -> D2 : Track Shipment
+activate D2
+D2 --> FM : ACK
+deactivate D2
+FM ->> D : Load Package
+D2 ->> FM : Assign Route
+@enduml

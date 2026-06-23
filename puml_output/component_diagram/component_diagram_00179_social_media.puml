@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+component "Message Service" as C_MessageService
+component "User Service" as C_UserService
+component "Report Service" as C_ReportService
+component "Like Service" as C_LikeService
+component "Profile Service" as C_ProfileService
+component "Group Service" as C_GroupService
+component "Album Service" as C_AlbumService
+database "Social Media DB" as DB_social_media
+C_UserService --> DB_social_media
+C_ReportService --> DB_social_media
+C_LikeService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_ProfileService ..> C_AlbumService : MQ
+C_ReportService ..> C_MessageService : MQ
+C_ReportService ..> C_LikeService : HTTP
+C_AlbumService ..> C_MessageService : gRPC
+C_ProfileService ..> C_AlbumService : MQ
+@enduml

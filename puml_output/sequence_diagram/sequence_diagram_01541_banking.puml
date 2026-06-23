@@ -1,0 +1,32 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+participant "ATM" as A
+entity "Auditor" as A2
+boundary "Bank Teller" as BT
+actor "Branch Manager" as BM
+A ->> A2 : View Statement
+BM ->> A2 : Pay Bill
+activate A2
+A2 --> BM : ACK
+deactivate A2
+note over A2 : processing pay bill
+A ->> A2 : Withdraw Cash
+activate A2
+A2 --> A : ACK
+deactivate A2
+BM --> BT : Deposit Money
+activate BT
+BT --> BM : ACK
+deactivate BT
+note over BT : processing deposit money
+BM --> A : Apply For Loan
+activate A
+A --> BM : ACK
+deactivate A
+BM ->> BT : Transfer Funds
+BT ->> A : Open Account
+activate A
+A --> BT : ACK
+deactivate A
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+start
+:Check In;
+:Order Room Service;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Process Payment;
+:Request Service;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Clean Room;
+stop
+@enduml

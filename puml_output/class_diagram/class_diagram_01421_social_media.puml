@@ -1,0 +1,55 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Message {
+  +String note
+  -double price
+  -Date email
+  -String level
+  +findAddress()
+  +updateScore()
+  +deleteAddress()
+}
+abstract class Post {
+  +double duration
+  +int active
+  #Date email
+  #int phone
+  +float address
+  +savePhone()
+  +saveDuration()
+}
+class Report {
+  -int code
+  +Date amount
+  +updateDescription()
+  +cancelTotal()
+}
+class Profile {
+  -boolean phone
+  #double level
+  #boolean score
+  +String active
+  +String address
+  +sendDuration()
+  +sendLevel()
+}
+class Follower {
+  #boolean active
+  #float score
+  +sendQuantity()
+}
+interface User {
+  -boolean type
+  +long code
+  +Date note
+  -long duration
+  #boolean name
+  +saveScore()
+}
+User ..> Message : "1..*"
+Report --* Message
+Report ..> Profile : "1"
+note right of Message : Social Media domain
+@enduml

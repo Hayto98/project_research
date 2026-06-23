@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+entity "Payment Gateway" as PG
+boundary "Admin" as A
+entity "Seller" as S
+actor "Delivery Service" as DS
+boundary "Customer" as C
+A --> C : Add To Cart
+activate C
+C --> A : ACK
+deactivate C
+note over C : processing add to cart
+A ->> DS : Write Review
+activate DS
+DS --> A : ACK
+deactivate DS
+note over DS : processing write review
+DS ->> C : Track Order
+activate C
+C --> DS : ACK
+deactivate C
+C -> A : Make Payment
+DS --> C : Manage Inventory
+DS --> A : Checkout
+activate A
+A --> DS : ACK
+deactivate A
+S -> DS : Cancel Order
+@enduml

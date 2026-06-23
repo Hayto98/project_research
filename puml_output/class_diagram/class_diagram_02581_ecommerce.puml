@@ -1,0 +1,61 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Order {
+  #long price
+  +String quantity
+  #long description
+  +Date status
+  +cancelDuration()
+  +cancelType()
+  +setAddress()
+  +createAmount()
+}
+class Product {
+  +String email
+  +long updatedAt
+  +Date price
+  +int note
+  -long description
+  +getId()
+  +updateStatus()
+  +validateEmail()
+  +validateDuration()
+}
+class Cart {
+  +double level
+  +boolean amount
+  #Date active
+  +setDescription()
+}
+interface Warehouse {
+  +Date type
+  -boolean status
+  +float amount
+  -int duration
+  +calculateId()
+}
+class Customer {
+  +String address
+  +Date id
+  +int price
+  -double createdAt
+  +boolean status
+  +setId()
+  +updateEmail()
+  +setUpdatedat()
+}
+abstract class Supplier {
+  -double total
+  #String name
+  +Date code
+  +getUpdatedat()
+  +cancelUpdatedat()
+  +sendAddress()
+}
+Product ..> Cart : "1..*"
+Supplier ..> Product : "0..1"
+Warehouse --* Cart
+Order --* Warehouse
+note right of Order : Ecommerce domain
+@enduml

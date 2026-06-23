@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+left to right direction
+actor "Seller" as Seller
+actor "Customer" as Customer
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Write Review" as UC_WriteReview
+}
+Seller --> UC_ManageInventory
+Seller --> UC_MakePayment
+Customer --> UC_WriteReview
+Customer --> UC_MakePayment
+PaymentGateway --> UC_MakePayment
+UC_AddToCart ..> UC_WriteReview : <<extend>>
+@enduml

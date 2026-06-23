@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Prescription {
+  #int code
+  -float phone
+  -int price
+  +getCode()
+}
+abstract class Diagnosis {
+  #Date duration
+  #boolean status
+  -float note
+  #String phone
+  -Date quantity
+  +setCreatedat()
+  +setNote()
+  +cancelId()
+  +updateId()
+}
+interface Billing {
+  #double updatedAt
+  -String note
+  #boolean score
+  -String code
+  +createPrice()
+  +setScore()
+}
+interface Ward {
+  +String id
+  #float address
+  -boolean phone
+  +updateActive()
+}
+Billing --|> Ward
+Ward ..> Diagnosis : "1..*"
+note right of Prescription : Healthcare domain
+@enduml

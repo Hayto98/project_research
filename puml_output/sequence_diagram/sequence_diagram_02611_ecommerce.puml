@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+entity "Payment Gateway" as PG
+participant "Admin" as A
+participant "Seller" as S
+PG --> S : Browse Products
+activate S
+S --> PG : ACK
+deactivate S
+PG --> A : Apply Coupon
+activate A
+A --> PG : ACK
+deactivate A
+PG -> S : Cancel Order
+PG --> A : Write Review
+S --> A : Track Order
+A -> S : Add To Cart
+S -> A : Make Payment
+activate A
+A --> S : ACK
+deactivate A
+@enduml

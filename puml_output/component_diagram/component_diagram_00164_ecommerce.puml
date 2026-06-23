@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Review Service" as C_ReviewService
+component "Category Service" as C_CategoryService
+component "Warehouse Service" as C_WarehouseService
+component "Supplier Service" as C_SupplierService
+component "Product Service" as C_ProductService
+component "Coupon Service" as C_CouponService
+database "Ecommerce DB" as DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_ProductService ..> C_WarehouseService : MQ
+C_CouponService ..> C_WarehouseService : MQ
+@enduml

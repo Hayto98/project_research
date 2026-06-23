@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Enrollment {
+  -float updatedAt
+  +Date description
+  -boolean createdAt
+  +float address
+  -String total
+  +saveType()
+  +sendPhone()
+  +updateDescription()
+  +updateNote()
+}
+class Attendance {
+  #String createdAt
+  #boolean amount
+  -float status
+  +boolean level
+  +setStatus()
+}
+class Assignment {
+  +boolean duration
+  #boolean address
+  #boolean total
+  -long active
+  +findNote()
+}
+class Classroom {
+  #int score
+  -long code
+  -String updatedAt
+  #Date email
+  +setDescription()
+  +findActive()
+}
+abstract class Course {
+  +String id
+  #long amount
+  -String updatedAt
+  +saveUpdatedat()
+  +validateLevel()
+}
+class Grade {
+  +int status
+  #long duration
+  +getName()
+  +sendType()
+  +updateUpdatedat()
+  +processQuantity()
+}
+Enrollment --> Grade : "1"
+Grade --* Classroom
+Enrollment --o Classroom
+Attendance ..> Course : "1..*"
+Attendance --|> Assignment
+note right of Enrollment : Education domain
+@enduml

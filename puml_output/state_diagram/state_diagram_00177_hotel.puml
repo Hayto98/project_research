@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+[*] --> Completed
+Completed --> Created : process
+Created --> OnHold : cancel
+OnHold --> Cancelled : process
+OnHold : entry / log checkin
+Cancelled --> Active : cancel
+Active --> Closed : process
+Active : entry / log checkin
+Active --> OnHold : revert
+Closed --> [*]
+@enduml

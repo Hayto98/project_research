@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+start
+:Grade Exam;
+:Enroll Course;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Borrow Book;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Register Student;
+:View Schedule;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Take Attendance;
+:Submit Assignment;
+stop
+@enduml

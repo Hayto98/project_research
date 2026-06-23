@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+class Hospital {
+  +Date active
+  -Date createdAt
+  +sendLevel()
+  +setDuration()
+  +getAmount()
+}
+class Insurance {
+  +boolean description
+  #boolean price
+  #double quantity
+  +cancelActive()
+  +sendTotal()
+}
+interface Prescription {
+  #boolean phone
+  #long id
+  #String duration
+  +int total
+  +saveQuantity()
+  +calculateDuration()
+}
+interface Nurse {
+  #long description
+  -double createdAt
+  #String total
+  -int level
+  +validateScore()
+  +findStatus()
+  +createPhone()
+  +setLevel()
+}
+Nurse --|> Hospital
+Prescription ..|> Nurse
+Hospital --> Prescription : "1..*"
+note right of Hospital : Healthcare domain
+@enduml

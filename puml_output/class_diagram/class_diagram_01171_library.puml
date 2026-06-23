@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+interface Reservation {
+  #boolean quantity
+  -float updatedAt
+  +boolean description
+  +Date type
+  -boolean duration
+  +cancelUpdatedat()
+}
+abstract class Librarian {
+  -int active
+  +boolean updatedAt
+  +processNote()
+  +createType()
+  +findActive()
+}
+abstract class Author {
+  #Date createdAt
+  -float score
+  +float total
+  #String updatedAt
+  -boolean name
+  +cancelNote()
+  +sendDuration()
+  +updateStatus()
+  +deleteStatus()
+}
+interface Branch {
+  +double amount
+  -float code
+  -float active
+  #int score
+  +sendActive()
+  +saveScore()
+  +setPrice()
+}
+class Loan {
+  #boolean description
+  +long type
+  #Date name
+  -Date createdAt
+  #long total
+  +sendDuration()
+  +calculateType()
+  +saveLevel()
+}
+class Fine {
+  #boolean amount
+  +long status
+  +processPhone()
+}
+class Member {
+  -String createdAt
+  +float email
+  +calculatePhone()
+}
+Loan --> Branch : "*"
+Author ..|> Branch
+Librarian ..|> Branch
+Loan ..> Fine : "0..1"
+Author --* Librarian
+note right of Reservation : Library domain
+@enduml

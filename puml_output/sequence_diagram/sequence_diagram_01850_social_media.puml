@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+actor "Admin" as A
+control "Moderator" as M
+boundary "User" as U
+control "Advertiser" as A2
+A -> M : Follow User
+activate M
+M --> A : ACK
+deactivate M
+note over M : processing follow user
+A ->> U : Comment
+activate U
+U --> A : ACK
+deactivate U
+U -> A : Like Post
+A --> M : Send Message
+activate M
+M --> A : ACK
+deactivate M
+M ->> U : Report Content
+@enduml

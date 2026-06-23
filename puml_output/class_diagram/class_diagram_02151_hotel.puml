@@ -1,0 +1,55 @@
+@startuml
+skinparam defaultFontSize 11
+interface CheckOut {
+  -double amount
+  -String updatedAt
+  -double duration
+  #float total
+  +setCode()
+  +savePhone()
+}
+interface CheckIn {
+  -float description
+  +long name
+  +validatePhone()
+  +findLevel()
+  +savePhone()
+}
+class Restaurant {
+  -float description
+  #double email
+  +calculatePhone()
+}
+class Payment {
+  +Date score
+  +long status
+  +deleteTotal()
+  +cancelId()
+  +cancelLevel()
+  +saveEmail()
+}
+interface Room {
+  -Date duration
+  #double createdAt
+  #double note
+  +findNote()
+  +validateType()
+  +getNote()
+}
+abstract class Housekeeping {
+  #String note
+  -Date createdAt
+  #double code
+  -boolean status
+  +boolean quantity
+  +setId()
+  +validateUpdatedat()
+  +findId()
+}
+Housekeeping --|> CheckOut
+CheckOut --|> Housekeeping
+CheckIn --* CheckOut
+CheckIn ..|> Payment
+CheckOut ..> Restaurant : "0..1"
+note right of CheckOut : Hotel domain
+@enduml

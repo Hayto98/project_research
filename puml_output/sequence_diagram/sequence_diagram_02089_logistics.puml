@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+participant "Customer" as C
+control "Dispatcher" as D
+boundary "Driver" as D2
+C ->> D2 : Report Issue
+activate D2
+D2 --> C : ACK
+deactivate D2
+note over D2 : processing report issue
+C ->> D2 : Schedule Pickup
+activate D2
+D2 --> C : ACK
+deactivate D2
+D -> C : Load Package
+activate C
+C --> D : ACK
+deactivate C
+D2 --> D : Deliver Package
+activate D
+D --> D2 : ACK
+deactivate D
+note over D : processing deliver package
+D -> C : Assign Route
+@enduml

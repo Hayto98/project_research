@@ -1,0 +1,20 @@
+@startuml
+skinparam defaultFontSize 13
+participant "Member" as M
+control "Admin" as A
+entity "Librarian" as L
+M -> L : Pay Fine
+note over L : processing pay fine
+A -> M : Return Book
+L -> M : Register Member
+activate M
+M --> L : ACK
+deactivate M
+A --> L : Reserve Book
+activate L
+L --> A : ACK
+deactivate L
+note over L : processing reserve book
+L --> A : Borrow Book
+M ->> L : Renew Loan
+@enduml

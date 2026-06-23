@@ -1,0 +1,66 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+class Payment {
+  +int id
+  -double quantity
+  -int description
+  +boolean type
+  +processId()
+  +updateType()
+  +validateUpdatedat()
+  +calculateQuantity()
+}
+interface Cart {
+  #boolean address
+  #double type
+  -double id
+  +validateCode()
+  +findPrice()
+}
+interface Invoice {
+  -int score
+  -int name
+  +int phone
+  +saveQuantity()
+  +createEmail()
+  +sendAddress()
+  +deleteAmount()
+}
+interface Shipment {
+  +double price
+  -int updatedAt
+  #String code
+  #String total
+  +createActive()
+  +updatePrice()
+  +createDescription()
+  +processActive()
+}
+class Customer {
+  +int phone
+  +long duration
+  -Date address
+  +cancelStatus()
+  +cancelScore()
+}
+interface Wishlist {
+  -int total
+  #boolean phone
+  +createCreatedat()
+  +deletePrice()
+}
+abstract class Warehouse {
+  +boolean description
+  #double email
+  +deleteDuration()
+  +updateType()
+  +sendId()
+  +validateCode()
+}
+Invoice --* Cart
+Cart --o Payment
+Shipment ..|> Wishlist
+Invoice ..> Wishlist : "0..1"
+note right of Payment : Ecommerce domain
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+actor "Dispatcher" as D
+actor "Warehouse Staff" as WS
+participant "Fleet Manager" as FM
+FM -> D : Report Issue
+WS --> FM : Fuel Vehicle
+note over FM : processing fuel vehicle
+WS --> D : Track Shipment
+activate D
+D --> WS : ACK
+deactivate D
+WS ->> FM : Assign Route
+D -> WS : Deliver Package
+FM --> WS : Update Inventory
+@enduml

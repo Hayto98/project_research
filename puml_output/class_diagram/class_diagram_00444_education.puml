@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+abstract class Classroom {
+  -double id
+  +boolean note
+  +updateActive()
+  +savePrice()
+  +processAddress()
+  +findNote()
+}
+abstract class Grade {
+  +String duration
+  +Date name
+  -long description
+  +String quantity
+  +findType()
+  +saveType()
+  +saveTotal()
+}
+class Exam {
+  #double total
+  #float code
+  +processId()
+  +cancelDescription()
+  +sendEmail()
+}
+class Assignment {
+  -String email
+  #long level
+  +Date total
+  +float updatedAt
+  +createAddress()
+  +deleteQuantity()
+}
+Grade --> Classroom : "1"
+Assignment ..> Grade : "0..1"
+Assignment --|> Classroom
+note right of Classroom : Education domain
+@enduml

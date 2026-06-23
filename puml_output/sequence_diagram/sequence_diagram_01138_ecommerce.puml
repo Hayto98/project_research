@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+boundary "Seller" as S
+entity "Customer" as C
+participant "Admin" as A
+actor "Payment Gateway" as PG
+entity "Delivery Service" as DS
+A ->> PG : Checkout
+note over PG : processing checkout
+C --> A : Add To Cart
+DS --> A : Track Order
+note over A : processing track order
+C --> DS : Write Review
+PG ->> A : Apply Coupon
+C -> DS : Browse Products
+@enduml

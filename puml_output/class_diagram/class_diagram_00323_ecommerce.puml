@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Review {
+  #int level
+  +long id
+  -String phone
+  +Date code
+  -String email
+  +updatePrice()
+  +calculateId()
+  +findCreatedat()
+  +processId()
+}
+abstract class Return {
+  #long createdAt
+  +float updatedAt
+  #String note
+  +float active
+  +createAmount()
+}
+class Wishlist {
+  -String code
+  +float email
+  -double active
+  -String address
+  -Date name
+  +saveType()
+}
+abstract class Payment {
+  +double name
+  -long address
+  #int note
+  +cancelDuration()
+  +processQuantity()
+  +processAddress()
+}
+class Invoice {
+  +double updatedAt
+  -boolean active
+  -float duration
+  -boolean id
+  +getEmail()
+}
+class Cart {
+  #double description
+  #double total
+  +validateType()
+}
+class Category {
+  -boolean id
+  -long quantity
+  +Date name
+  +deleteId()
+  +createCode()
+  +findQuantity()
+}
+Cart ..> Review : "*"
+Category --o Review
+Category --|> Invoice
+Review ..|> Return
+Return ..|> Wishlist
+note right of Review : Ecommerce domain
+@enduml

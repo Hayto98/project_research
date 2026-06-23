@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+[*] --> Processing
+Processing --> Approved : update
+Approved --> Cancelled : approve
+Approved : entry / log deposit
+Cancelled --> Completed : cancel
+Completed --> OnHold : update
+OnHold --> Rejected : update
+OnHold : entry / log deposit
+Approved --> Processing : revert
+Rejected --> [*]
+@enduml

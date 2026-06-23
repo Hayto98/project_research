@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+left to right direction
+actor "Parent" as Parent
+actor "Librarian" as Librarian
+actor "Student" as Student
+rectangle "Education System" {
+  usecase "Issue Certificate" as UC_IssueCertificate
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "View Schedule" as UC_ViewSchedule
+  usecase "Submit Assignment" as UC_SubmitAssignment
+}
+Parent --> UC_IssueCertificate
+Parent --> UC_ViewSchedule
+Parent --> UC_BorrowBook
+Librarian --> UC_GradeExam
+Student --> UC_ViewSchedule
+Student --> UC_SubmitAssignment
+Student --> UC_BorrowBook
+UC_BorrowBook ..> UC_SubmitAssignment : <<extend>>
+@enduml

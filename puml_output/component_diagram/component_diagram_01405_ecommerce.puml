@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+component "Payment Service" as C_PaymentService
+component "Shipment Service" as C_ShipmentService
+component "Customer Service" as C_CustomerService
+component "Coupon Service" as C_CouponService
+database "Ecommerce DB" as DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_CouponService ..> C_PaymentService : MQ
+C_PaymentService ..> C_CouponService : HTTP
+@enduml

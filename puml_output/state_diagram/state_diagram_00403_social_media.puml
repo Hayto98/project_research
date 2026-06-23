@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+[*] --> Rejected
+Rejected --> Archived : process
+Archived --> Completed : reject
+Completed --> Active : process
+Active --> Pending : reject
+Pending --> Reviewed : cancel
+Pending : entry / log user
+Completed --> Archived : revert
+Reviewed --> [*]
+@enduml

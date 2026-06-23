@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Payment {
+  -String address
+  #Date name
+  +double score
+  +sendNote()
+  +validateUpdatedat()
+}
+interface Order {
+  +long level
+  #Date status
+  +long updatedAt
+  #long note
+  -double total
+  +validateEmail()
+  +getActive()
+  +sendPrice()
+}
+interface Warehouse {
+  -float type
+  -int email
+  +long amount
+  +float id
+  #float address
+  +saveScore()
+  +updatePrice()
+}
+class Cart {
+  #float email
+  +int price
+  -float quantity
+  +deleteName()
+  +saveName()
+  +validateEmail()
+  +getType()
+}
+class Category {
+  #int address
+  #int phone
+  #long createdAt
+  +long code
+  +updateName()
+  +calculateType()
+  +cancelDescription()
+}
+Category ..|> Payment
+Warehouse --* Order
+Category ..|> Warehouse
+note right of Payment : Ecommerce domain
+@enduml

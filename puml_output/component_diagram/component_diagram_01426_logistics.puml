@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+component "Warehouse Service" as C_WarehouseService
+component "Customer Service" as C_CustomerService
+component "FuelLog Service" as C_FuelLogService
+component "Tracking Service" as C_TrackingService
+component "Package Service" as C_PackageService
+component "Manifest Service" as C_ManifestService
+database "Logistics DB" as DB_logistics
+C_CustomerService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_PackageService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_CustomerService ..> C_FuelLogService : HTTP
+C_PackageService ..> C_TrackingService : gRPC
+@enduml

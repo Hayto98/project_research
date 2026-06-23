@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+class DeliveryNote {
+  +int updatedAt
+  #long active
+  #boolean note
+  #Date price
+  +long phone
+  +cancelId()
+}
+abstract class Tracking {
+  -double quantity
+  -long amount
+  -Date phone
+  +updateDescription()
+  +deleteName()
+  +savePrice()
+}
+interface Depot {
+  -double email
+  #long createdAt
+  #long code
+  +Date address
+  +getCode()
+}
+interface Warehouse {
+  +long score
+  #double quantity
+  +String note
+  +sendQuantity()
+  +saveCreatedat()
+  +processStatus()
+  +validatePrice()
+}
+class Vehicle {
+  -boolean note
+  +String code
+  +double type
+  +deletePhone()
+  +deletePhone()
+}
+class Driver {
+  +boolean status
+  #Date active
+  +boolean duration
+  +getNote()
+  +setScore()
+  +getTotal()
+}
+DeliveryNote ..|> Tracking
+Tracking ..> Vehicle : "1..*"
+Driver --o Depot
+note right of DeliveryNote : Logistics domain
+@enduml

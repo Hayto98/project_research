@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+participant "Patient" as P
+actor "Nurse" as N
+entity "Doctor" as D
+participant "Insurance Provider" as IP
+boundary "Lab Technician" as LT
+N -> LT : Discharge Patient
+activate LT
+LT --> N : ACK
+deactivate LT
+LT ->> P : Run Lab Test
+P ->> D : Examine Patient
+D -> P : Issue Prescription
+@enduml

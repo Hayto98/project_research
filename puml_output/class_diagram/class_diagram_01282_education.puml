@@ -1,0 +1,44 @@
+@startuml
+skinparam defaultFontSize 11
+interface Teacher {
+  +String total
+  +long email
+  +float status
+  #boolean level
+  +long quantity
+  +sendUpdatedat()
+  +findStatus()
+  +cancelDescription()
+  +updateDuration()
+}
+abstract class Enrollment {
+  -boolean price
+  -float quantity
+  +long email
+  +processActive()
+}
+interface Attendance {
+  +long note
+  +float score
+  #float address
+  #String name
+  +boolean type
+  +saveId()
+  +findStatus()
+  +validateUpdatedat()
+}
+interface Course {
+  -long status
+  #double total
+  +int type
+  +float price
+  +getScore()
+  +validateUpdatedat()
+  +deleteStatus()
+  +processAddress()
+}
+Attendance ..|> Teacher
+Enrollment --* Attendance
+Attendance ..> Enrollment : "*"
+note right of Teacher : Education domain
+@enduml

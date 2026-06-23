@@ -1,0 +1,76 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+interface Shelf {
+  +String level
+  #boolean updatedAt
+  -boolean duration
+  #boolean total
+  +findPrice()
+  +processActive()
+}
+interface Branch {
+  #long duration
+  -int createdAt
+  -long email
+  -Date amount
+  +double score
+  +cancelNote()
+  +deleteCreatedat()
+  +validatePrice()
+}
+interface Reservation {
+  +String active
+  #boolean id
+  -double name
+  +Date price
+  +getPhone()
+  +deleteDuration()
+}
+abstract class Librarian {
+  -long total
+  +int level
+  -Date name
+  -Date code
+  #int description
+  +getPrice()
+}
+interface Book {
+  +String phone
+  #String duration
+  +long address
+  +String name
+  +double code
+  +deletePhone()
+  +cancelPhone()
+}
+class Author {
+  -String type
+  -int duration
+  -long active
+  #long note
+  -String address
+  +findLevel()
+  +validateUpdatedat()
+  +saveName()
+  +deleteCreatedat()
+}
+interface Publisher {
+  +Date address
+  -long duration
+  +double level
+  #int note
+  #Date total
+  +calculateNote()
+  +setCreatedat()
+  +createEmail()
+}
+Author --|> Shelf
+Reservation --o Branch
+Librarian --* Shelf
+Shelf ..|> Reservation
+Branch --* Book
+note right of Shelf : Library domain
+@enduml

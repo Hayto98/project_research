@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+[*] --> Created
+Created --> Processing : update
+Created : entry / log patient
+Processing --> Reviewed : review
+Reviewed --> Active : update
+Reviewed : entry / log patient
+Active --> Archived : review
+Archived --> Approved : approve
+Archived : entry / log patient
+Reviewed --> Processing : revert
+Approved --> [*]
+@enduml

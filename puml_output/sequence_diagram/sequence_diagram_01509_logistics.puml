@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+boundary "Driver" as D
+actor "Customer" as C
+entity "Fleet Manager" as FM
+C --> D : Schedule Pickup
+activate D
+D --> C : ACK
+deactivate D
+FM ->> C : Update Inventory
+note over C : processing update inventory
+C --> FM : Deliver Package
+note over FM : processing deliver package
+C --> D : Report Issue
+activate D
+D --> C : ACK
+deactivate D
+note over D : processing report issue
+@enduml

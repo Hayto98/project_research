@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+class MedicalRecord {
+  -String total
+  +boolean note
+  #String updatedAt
+  +updateCode()
+  +processDescription()
+  +updateDuration()
+  +deleteDuration()
+}
+interface Nurse {
+  #boolean id
+  -int email
+  +int total
+  #boolean createdAt
+  -Date type
+  +createDescription()
+}
+abstract class Treatment {
+  +Date amount
+  #String score
+  #String quantity
+  +deletePhone()
+}
+class LabTest {
+  #double duration
+  #int description
+  -int updatedAt
+  +getAmount()
+}
+abstract class Patient {
+  #boolean level
+  +float note
+  #long phone
+  +deleteCreatedat()
+  +saveQuantity()
+}
+class Diagnosis {
+  #long note
+  -String name
+  #int code
+  +deleteAddress()
+}
+LabTest --> Patient : "*"
+Nurse ..|> Treatment
+MedicalRecord --> Nurse : "0..1"
+Treatment --o Patient
+note right of MedicalRecord : Healthcare domain
+@enduml

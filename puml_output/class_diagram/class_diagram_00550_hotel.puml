@@ -1,0 +1,55 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Housekeeping {
+  +long score
+  #float code
+  -String email
+  #long active
+  +int level
+  +saveActive()
+  +updateCode()
+  +createDescription()
+}
+class CheckIn {
+  +double createdAt
+  -int name
+  #long quantity
+  +boolean code
+  +processUpdatedat()
+  +saveCreatedat()
+}
+class Amenity {
+  +double address
+  +float quantity
+  #boolean updatedAt
+  +Date createdAt
+  #Date level
+  +deleteUpdatedat()
+  +setNote()
+}
+class Guest {
+  #float email
+  +double active
+  #long description
+  +validateEmail()
+  +sendCode()
+  +validateUpdatedat()
+  +findCode()
+}
+interface Staff {
+  #String updatedAt
+  #Date duration
+  +float code
+  -double description
+  +long status
+  +validatePrice()
+  +findDuration()
+  +getCode()
+}
+Staff ..> CheckIn : "1"
+Guest --o Housekeeping
+CheckIn --> Housekeeping : "*"
+Amenity ..> Housekeeping : "1..*"
+note right of Housekeeping : Hotel domain
+@enduml

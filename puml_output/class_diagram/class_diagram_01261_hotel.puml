@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+abstract class Restaurant {
+  #String description
+  -double address
+  +findCode()
+}
+class Service {
+  -double id
+  #boolean total
+  -String status
+  +calculateDuration()
+  +createDescription()
+  +updateUpdatedat()
+}
+abstract class Payment {
+  #double amount
+  -double level
+  +calculateDuration()
+  +updateAmount()
+  +saveId()
+  +processScore()
+}
+abstract class Staff {
+  #float name
+  -long duration
+  #int total
+  +double status
+  +findUpdatedat()
+  +sendName()
+  +setEmail()
+}
+Staff ..> Service : "1..*"
+Staff --* Restaurant
+Restaurant --o Service
+note right of Restaurant : Hotel domain
+@enduml

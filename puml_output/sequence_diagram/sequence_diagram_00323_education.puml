@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+entity "Parent" as P
+entity "Admin" as A
+participant "Registrar" as R
+actor "Student" as S
+actor "Librarian" as L
+P --> S : Grade Exam
+activate S
+S --> P : ACK
+deactivate S
+L -> A : View Schedule
+R ->> A : Issue Certificate
+activate A
+A --> R : ACK
+deactivate A
+note over A : processing issue certificate
+P ->> S : Register Student
+note over S : processing register student
+@enduml

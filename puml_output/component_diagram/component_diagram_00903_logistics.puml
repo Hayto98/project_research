@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+component "Route Service" as C_RouteService
+component "Inventory Service" as C_InventoryService
+component "Package Service" as C_PackageService
+component "FuelLog Service" as C_FuelLogService
+component "Manifest Service" as C_ManifestService
+database "Logistics DB" as DB_logistics
+C_RouteService --> DB_logistics
+C_InventoryService --> DB_logistics
+C_PackageService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_PackageService ..> C_InventoryService : MQ
+C_RouteService ..> C_ManifestService : REST
+@enduml

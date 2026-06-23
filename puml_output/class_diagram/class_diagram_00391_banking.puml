@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+interface Beneficiary {
+  -String price
+  #String code
+  +boolean address
+  #float score
+  +calculateType()
+}
+abstract class Customer {
+  #double total
+  #boolean price
+  +double quantity
+  -long phone
+  +setType()
+  +findUpdatedat()
+}
+class Teller {
+  -int active
+  #double phone
+  -String price
+  +createDescription()
+}
+class Loan {
+  -String address
+  #String id
+  -double phone
+  +Date amount
+  -double code
+  +calculateAddress()
+}
+class Withdrawal {
+  #Date type
+  #double createdAt
+  #Date price
+  #String amount
+  +calculateCreatedat()
+  +deleteName()
+}
+abstract class Transaction {
+  -double note
+  +Date total
+  #long updatedAt
+  +double address
+  +double description
+  +calculateScore()
+  +deleteType()
+  +setQuantity()
+  +setActive()
+}
+class Branch {
+  -String phone
+  +long note
+  +boolean duration
+  #Date description
+  -int id
+  +findCreatedat()
+}
+Customer --o Beneficiary
+Beneficiary --* Loan
+Withdrawal ..|> Transaction
+Loan ..> Branch : "1"
+note right of Beneficiary : Banking domain
+@enduml

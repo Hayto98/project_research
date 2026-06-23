@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+component "Attendance Service" as C_AttendanceService
+component "Course Service" as C_CourseService
+component "Schedule Service" as C_ScheduleService
+component "Assignment Service" as C_AssignmentService
+database "Education DB" as DB_education
+C_AttendanceService --> DB_education
+C_AttendanceService ..> C_ScheduleService : MQ
+C_CourseService ..> C_AssignmentService : HTTP
+C_AttendanceService ..> C_AssignmentService : HTTP
+@enduml

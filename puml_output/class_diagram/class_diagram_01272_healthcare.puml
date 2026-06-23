@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Billing {
+  +long status
+  #long duration
+  #int total
+  +boolean updatedAt
+  #String quantity
+  +findName()
+  +createEmail()
+}
+abstract class Insurance {
+  #double name
+  #Date phone
+  #boolean level
+  -Date id
+  +boolean status
+  +processEmail()
+  +getActive()
+}
+interface Diagnosis {
+  -String price
+  #String total
+  +float type
+  -double phone
+  -long duration
+  +processId()
+}
+interface Appointment {
+  +float id
+  -double price
+  +processNote()
+  +updateScore()
+}
+class Doctor {
+  -int phone
+  +String email
+  +long active
+  +String id
+  +boolean quantity
+  +saveQuantity()
+  +cancelType()
+  +setQuantity()
+}
+class Ward {
+  #int active
+  +double code
+  +findTotal()
+  +updateDuration()
+  +setScore()
+  +validateTotal()
+}
+Diagnosis ..> Appointment : "1"
+Billing ..|> Doctor
+Ward --* Billing
+note right of Billing : Healthcare domain
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+boundary "Fleet Manager" as FM
+actor "Dispatcher" as D
+participant "Warehouse Staff" as WS
+participant "Driver" as D2
+D2 --> FM : Update Inventory
+FM --> WS : Assign Route
+activate WS
+WS --> FM : ACK
+deactivate WS
+note over WS : processing assign route
+D2 ->> D : Load Package
+D ->> FM : Schedule Pickup
+note over FM : processing schedule pickup
+D ->> FM : Report Issue
+note over FM : processing report issue
+D2 ->> D : Deliver Package
+@enduml

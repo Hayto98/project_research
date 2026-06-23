@@ -1,0 +1,30 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+start
+:Schedule Pickup;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Load Package;
+:Deliver Package;
+:Assign Route;
+:Update Inventory;
+:Fuel Vehicle;
+:Report Issue;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+stop
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+interface Review {
+  #float price
+  #float code
+  +updatePrice()
+  +setDuration()
+}
+class Category {
+  -String address
+  -String active
+  +createQuantity()
+  +calculateNote()
+  +calculateStatus()
+  +sendPrice()
+}
+class Payment {
+  #String note
+  -float amount
+  #String name
+  +Date level
+  +processScore()
+}
+interface Customer {
+  #double quantity
+  #long phone
+  -long type
+  #float updatedAt
+  #String total
+  +validateActive()
+  +saveCreatedat()
+}
+class Shipment {
+  +float price
+  +long address
+  -String name
+  +sendDescription()
+  +processCode()
+  +createAddress()
+  +processAmount()
+}
+interface Order {
+  #Date address
+  #double phone
+  +long level
+  -float email
+  +getScore()
+  +calculateDescription()
+}
+interface Product {
+  #long phone
+  +int total
+  -int type
+  +validateEmail()
+}
+Order --> Shipment : "*"
+Product --o Payment
+Customer ..> Category : "1"
+note right of Review : Ecommerce domain
+@enduml

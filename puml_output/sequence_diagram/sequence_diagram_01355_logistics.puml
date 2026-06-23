@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+control "Fleet Manager" as FM
+boundary "Customer" as C
+actor "Dispatcher" as D
+actor "Driver" as D2
+participant "Warehouse Staff" as WS
+FM --> WS : Update Inventory
+C ->> FM : Load Package
+activate FM
+FM --> C : ACK
+deactivate FM
+D ->> WS : Schedule Pickup
+D2 -> FM : Track Shipment
+activate FM
+FM --> D2 : ACK
+deactivate FM
+C -> WS : Assign Route
+note over WS : processing assign route
+WS -> D2 : Deliver Package
+@enduml

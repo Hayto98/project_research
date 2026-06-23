@@ -1,0 +1,18 @@
+@startuml
+skinparam ArrowColor #555555
+boundary "Account Holder" as AH
+boundary "ATM" as A
+participant "Auditor" as A2
+AH -> A2 : Transfer Funds
+activate A2
+A2 --> AH : ACK
+deactivate A2
+note over A2 : processing transfer funds
+A2 ->> AH : View Statement
+note over AH : processing view statement
+A2 ->> A : Open Account
+A2 ->> A : Block Card
+activate A
+A --> A2 : ACK
+deactivate A
+@enduml

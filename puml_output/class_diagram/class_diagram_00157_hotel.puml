@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+class Guest {
+  #Date code
+  #float duration
+  -boolean price
+  -double quantity
+  +int score
+  +cancelNote()
+  +saveName()
+  +deleteNote()
+}
+class Staff {
+  +long description
+  +float status
+  +processAddress()
+  +findStatus()
+  +calculateUpdatedat()
+  +processPhone()
+}
+class CheckIn {
+  #boolean quantity
+  -Date code
+  #int phone
+  #Date level
+  +float duration
+  +cancelLevel()
+  +validateTotal()
+  +saveUpdatedat()
+  +createPrice()
+}
+class Reservation {
+  +double price
+  -long code
+  #double note
+  +double id
+  +createNote()
+}
+class Payment {
+  -double level
+  #double id
+  +double duration
+  -float address
+  -Date createdAt
+  +findPhone()
+  +getAmount()
+  +findDuration()
+}
+class Room {
+  +double email
+  -boolean level
+  +findCreatedat()
+}
+Room --* Reservation
+Room --|> CheckIn
+Staff ..> Payment : "*"
+Reservation --o Guest
+Guest ..|> Room
+note right of Guest : Hotel domain
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+control "Payment Gateway" as PG
+entity "Admin" as A
+participant "Customer" as C
+A ->> PG : Browse Products
+A ->> PG : Write Review
+C --> PG : Apply Coupon
+note over PG : processing apply coupon
+C -> A : Checkout
+activate A
+A --> C : ACK
+deactivate A
+C ->> A : Make Payment
+note over A : processing make payment
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+class Shipment {
+  +boolean code
+  #long status
+  +boolean address
+  #Date quantity
+  -long level
+  +cancelId()
+  +cancelPhone()
+  +cancelQuantity()
+  +findActive()
+}
+class Cart {
+  +int quantity
+  #String id
+  +Date phone
+  +long price
+  +calculateTotal()
+  +findName()
+}
+class Order {
+  #boolean description
+  -long note
+  -int score
+  +getActive()
+  +processActive()
+  +validateLevel()
+  +setStatus()
+}
+abstract class Invoice {
+  -String status
+  #float quantity
+  -boolean note
+  +processTotal()
+  +calculateId()
+  +setNote()
+  +saveActive()
+}
+Cart --|> Invoice
+Shipment --o Invoice
+Order --> Cart : "0..1"
+note right of Shipment : Ecommerce domain
+@enduml

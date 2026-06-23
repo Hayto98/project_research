@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+participant "Account Holder" as AH
+boundary "Bank Teller" as BT
+participant "Branch Manager" as BM
+boundary "Auditor" as A
+A --> BT : Deposit Money
+activate BT
+BT --> A : ACK
+deactivate BT
+BT --> AH : Withdraw Cash
+BM -> AH : Pay Bill
+note over AH : processing pay bill
+BT ->> AH : View Statement
+AH --> BT : Transfer Funds
+activate BT
+BT --> AH : ACK
+deactivate BT
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Group Service" as C_GroupService
+component "Post Service" as C_PostService
+component "User Service" as C_UserService
+component "Report Service" as C_ReportService
+database "Social Media DB" as DB_social_media
+C_GroupService --> DB_social_media
+C_PostService --> DB_social_media
+C_UserService --> DB_social_media
+C_ReportService --> DB_social_media
+C_ReportService ..> C_PostService : REST
+C_UserService ..> C_ReportService : REST
+C_UserService ..> C_GroupService : gRPC
+@enduml

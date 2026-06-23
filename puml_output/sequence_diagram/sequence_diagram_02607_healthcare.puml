@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+control "Insurance Provider" as IP
+participant "Doctor" as D
+participant "Receptionist" as R
+participant "Nurse" as N
+D -> N : Issue Prescription
+N -> D : Update Medical Record
+activate D
+D --> N : ACK
+deactivate D
+N -> D : Run Lab Test
+note over D : processing run lab test
+N ->> R : Book Appointment
+activate R
+R --> N : ACK
+deactivate R
+note over R : processing book appointment
+D -> R : Admit Patient
+N --> IP : Process Insurance Claim
+@enduml

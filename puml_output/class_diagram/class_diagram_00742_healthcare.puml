@@ -1,0 +1,47 @@
+@startuml
+skinparam ArrowColor #555555
+class Appointment {
+  #String status
+  +float updatedAt
+  +float total
+  +calculateDescription()
+  +findPhone()
+  +saveCode()
+}
+class Insurance {
+  #float description
+  -String price
+  +deleteCode()
+}
+abstract class Treatment {
+  -float amount
+  -Date total
+  #float address
+  -Date quantity
+  +Date phone
+  +deleteCode()
+  +validateTotal()
+  +deleteActive()
+  +updateEmail()
+}
+class Hospital {
+  -float total
+  +int amount
+  #boolean address
+  -String level
+  +deleteNote()
+  +updateEmail()
+}
+class LabTest {
+  #float price
+  +String total
+  +saveUpdatedat()
+  +processName()
+  +savePhone()
+}
+Treatment ..> Appointment : "0..1"
+Insurance ..|> Hospital
+Treatment ..> Hospital : "1..*"
+Treatment ..> LabTest : "1..*"
+note right of Appointment : Healthcare domain
+@enduml

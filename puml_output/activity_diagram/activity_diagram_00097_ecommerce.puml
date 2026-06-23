@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+start
+:Track Order;
+:Make Payment;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Add To Cart;
+:Cancel Order;
+:Manage Inventory;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Checkout;
+:Apply Coupon;
+stop
+@enduml

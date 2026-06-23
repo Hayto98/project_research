@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+start
+:Transfer Funds;
+:Block Card;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Pay Bill;
+:View Statement;
+:Apply For Loan;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Deposit Money;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Open Account;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Withdraw Cash;
+stop
+@enduml

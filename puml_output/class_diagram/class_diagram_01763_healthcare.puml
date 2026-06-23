@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+abstract class Billing {
+  -int id
+  -double address
+  -double createdAt
+  +int duration
+  +validateName()
+  +processScore()
+  +updateQuantity()
+}
+abstract class Prescription {
+  #int name
+  +Date email
+  +float phone
+  +createQuantity()
+  +processDuration()
+  +createAmount()
+  +createScore()
+}
+class Doctor {
+  -int id
+  -String active
+  +getNote()
+  +deleteCode()
+}
+interface LabTest {
+  +String total
+  +boolean duration
+  #float email
+  -String amount
+  +calculateCode()
+  +calculateAddress()
+  +saveLevel()
+  +createName()
+}
+class Patient {
+  #long amount
+  #double description
+  +validateCreatedat()
+}
+class Appointment {
+  #int type
+  #Date id
+  +String status
+  +deleteActive()
+  +calculateType()
+  +getAddress()
+  +saveName()
+}
+class Insurance {
+  #long type
+  #String phone
+  #float email
+  #double note
+  #double createdAt
+  +processCreatedat()
+  +sendType()
+}
+Insurance --* Patient
+Billing --> Insurance : "1..*"
+Appointment --> LabTest : "1..*"
+Doctor --> LabTest : "1"
+note right of Billing : Healthcare domain
+@enduml

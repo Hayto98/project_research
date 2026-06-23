@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+component "Room Service" as C_RoomService
+component "Restaurant Service" as C_RestaurantService
+component "Invoice Service" as C_InvoiceService
+component "Guest Service" as C_GuestService
+component "Booking Service" as C_BookingService
+component "Amenity Service" as C_AmenityService
+component "Service Service" as C_ServiceService
+database "Hotel DB" as DB_hotel
+C_RoomService --> DB_hotel
+C_RestaurantService --> DB_hotel
+C_InvoiceService --> DB_hotel
+C_GuestService --> DB_hotel
+C_BookingService --> DB_hotel
+C_AmenityService --> DB_hotel
+C_ServiceService --> DB_hotel
+C_InvoiceService ..> C_BookingService : REST
+C_RoomService ..> C_AmenityService : REST
+C_ServiceService ..> C_GuestService : REST
+@enduml

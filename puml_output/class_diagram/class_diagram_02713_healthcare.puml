@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Diagnosis {
+  +float total
+  #double address
+  +float status
+  +String code
+  +validateActive()
+  +saveAmount()
+}
+class Prescription {
+  #float level
+  +boolean name
+  +getId()
+  +getDuration()
+}
+abstract class Insurance {
+  +double email
+  -Date price
+  +deleteActive()
+  +deleteTotal()
+}
+interface LabTest {
+  -String id
+  +float active
+  +double amount
+  -Date price
+  +getDescription()
+  +cancelType()
+  +setCode()
+}
+abstract class Billing {
+  -float type
+  -Date total
+  +String score
+  +getName()
+}
+LabTest --* Billing
+Prescription --|> Billing
+Diagnosis ..|> Insurance
+note right of Diagnosis : Healthcare domain
+@enduml

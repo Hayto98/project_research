@@ -1,0 +1,25 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+left to right direction
+actor "Librarian" as Librarian
+actor "Member" as Member
+actor "Admin" as Admin
+rectangle "Library System" {
+  usecase "Reserve Book" as UC_ReserveBook
+  usecase "Add New Book" as UC_AddNewBook
+  usecase "Renew Loan" as UC_RenewLoan
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Search Catalog" as UC_SearchCatalog
+  usecase "Pay Fine" as UC_PayFine
+  usecase "Register Member" as UC_RegisterMember
+}
+Librarian --> UC_RenewLoan
+Librarian --> UC_AddNewBook
+Member --> UC_RegisterMember
+Member --> UC_BorrowBook
+Admin --> UC_BorrowBook
+Admin --> UC_RenewLoan
+Admin --> UC_SearchCatalog
+UC_SearchCatalog ..> UC_AddNewBook : <<extend>>
+@enduml

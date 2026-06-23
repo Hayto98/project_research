@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+component "Message Service" as C_MessageService
+component "Story Service" as C_StoryService
+component "Follower Service" as C_FollowerService
+component "Comment Service" as C_CommentService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_MessageService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_CommentService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_StoryService ..> C_HashtagService : MQ
+C_MessageService ..> C_StoryService : gRPC
+C_StoryService ..> C_FollowerService : REST
+@enduml

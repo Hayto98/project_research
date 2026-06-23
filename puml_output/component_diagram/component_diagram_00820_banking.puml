@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Transaction Service" as C_TransactionService
+component "Statement Service" as C_StatementService
+component "Card Service" as C_CardService
+component "Interest Service" as C_InterestService
+database "Banking DB" as DB_banking
+C_TransactionService --> DB_banking
+C_InterestService --> DB_banking
+C_CardService ..> C_TransactionService : REST
+C_TransactionService ..> C_CardService : MQ
+C_TransactionService ..> C_CardService : MQ
+@enduml

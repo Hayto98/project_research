@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Category {
+  #String status
+  #int address
+  +boolean quantity
+  -long total
+  #String level
+  +findTotal()
+  +processDescription()
+}
+class Coupon {
+  -double description
+  +Date price
+  +calculateCreatedat()
+  +getActive()
+}
+interface Invoice {
+  +int type
+  -float duration
+  +getPrice()
+  +createUpdatedat()
+  +cancelQuantity()
+}
+class Order {
+  +String quantity
+  +int description
+  -long score
+  +setId()
+  +processLevel()
+  +saveId()
+  +deleteType()
+}
+interface Return {
+  +double score
+  #Date active
+  #String phone
+  -String status
+  +cancelUpdatedat()
+  +createStatus()
+  +setId()
+}
+abstract class Review {
+  +double duration
+  +String email
+  -int status
+  #float level
+  +float phone
+  +processQuantity()
+  +setTotal()
+  +findType()
+}
+interface Product {
+  +String phone
+  -int level
+  -double name
+  -double score
+  +sendActive()
+}
+Coupon --* Invoice
+Return --> Invoice : "1"
+Coupon --|> Product
+note right of Category : Ecommerce domain
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam defaultFontSize 11
+component "Group Service" as C_GroupService
+component "Post Service" as C_PostService
+component "Hashtag Service" as C_HashtagService
+component "Notification Service" as C_NotificationService
+component "Album Service" as C_AlbumService
+component "Profile Service" as C_ProfileService
+database "Social Media DB" as DB_social_media
+C_HashtagService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_ProfileService ..> C_PostService : gRPC
+C_HashtagService ..> C_AlbumService : HTTP
+C_PostService ..> C_GroupService : REST
+C_AlbumService ..> C_GroupService : MQ
+@enduml

@@ -1,0 +1,68 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+interface Ward {
+  +Date level
+  -Date type
+  +String status
+  -Date duration
+  +setUpdatedat()
+  +deleteScore()
+  +updateQuantity()
+}
+class Nurse {
+  -long name
+  +long note
+  -long level
+  #boolean active
+  +saveNote()
+  +createType()
+  +calculateEmail()
+  +getId()
+}
+abstract class Appointment {
+  +double amount
+  -String name
+  +cancelNote()
+  +sendDuration()
+  +getNote()
+  +saveNote()
+}
+class Prescription {
+  +String email
+  +Date status
+  +sendTotal()
+  +deleteAddress()
+}
+class Hospital {
+  +Date price
+  #long duration
+  +saveName()
+  +cancelTotal()
+  +validateAmount()
+}
+class Treatment {
+  -double quantity
+  +double code
+  -Date email
+  -int name
+  +getAddress()
+  +cancelTotal()
+  +sendAmount()
+  +findAddress()
+}
+class MedicalRecord {
+  #float level
+  -float active
+  -long id
+  +long total
+  +findScore()
+}
+Prescription --o Appointment
+Prescription --> Nurse : "1"
+MedicalRecord --o Appointment
+Prescription --* Treatment
+Ward --* Treatment
+Treatment ..> MedicalRecord : "1..*"
+note right of Ward : Healthcare domain
+@enduml

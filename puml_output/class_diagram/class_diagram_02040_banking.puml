@@ -1,0 +1,63 @@
+@startuml
+skinparam shadowing true
+interface Transaction {
+  +int note
+  -long total
+  #float price
+  +long active
+  #double status
+  +getQuantity()
+}
+abstract class Branch {
+  -String total
+  -Date address
+  +findAmount()
+}
+class Interest {
+  #String duration
+  -Date description
+  +int amount
+  -boolean active
+  -double code
+  +saveStatus()
+}
+interface Deposit {
+  +Date quantity
+  #String note
+  -Date active
+  +boolean price
+  +boolean code
+  +updateType()
+  +deleteCode()
+  +createQuantity()
+}
+class Customer {
+  #int code
+  #String note
+  #int status
+  #boolean type
+  #double total
+  +calculateUpdatedat()
+}
+class Teller {
+  #Date createdAt
+  +boolean name
+  -long duration
+  -String type
+  +saveLevel()
+  +calculateStatus()
+  +cancelAmount()
+}
+class Account {
+  -boolean duration
+  +boolean quantity
+  #Date score
+  #float active
+  -double code
+  +deleteActive()
+  +getQuantity()
+}
+Account --* Transaction
+Teller --* Customer
+note right of Transaction : Banking domain
+@enduml

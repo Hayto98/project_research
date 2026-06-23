@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Payment Gateway" as PaymentGateway
+actor "Customer" as Customer
+rectangle "Ecommerce System" {
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Track Order" as UC_TrackOrder
+}
+DeliveryService --> UC_CancelOrder
+DeliveryService --> UC_MakePayment
+PaymentGateway --> UC_CancelOrder
+PaymentGateway --> UC_ManageInventory
+PaymentGateway --> UC_MakePayment
+Customer --> UC_ManageInventory
+Customer --> UC_MakePayment
+UC_CancelOrder ..> UC_AddToCart : <<extend>>
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+interface Diagnosis {
+  -int score
+  #double description
+  -long phone
+  +String active
+  +cancelEmail()
+}
+class Prescription {
+  -Date updatedAt
+  #long duration
+  +saveType()
+  +getDescription()
+  +deleteAddress()
+}
+class Insurance {
+  +boolean quantity
+  #String active
+  -float total
+  +saveAmount()
+  +cancelPrice()
+  +getTotal()
+  +sendNote()
+}
+class Doctor {
+  -long score
+  +float level
+  #Date price
+  -Date name
+  -boolean note
+  +deleteCode()
+}
+Insurance ..> Prescription : "*"
+Prescription ..|> Insurance
+note right of Diagnosis : Healthcare domain
+@enduml

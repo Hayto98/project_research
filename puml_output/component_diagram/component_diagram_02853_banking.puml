@@ -1,0 +1,16 @@
+@startuml
+
+component "Deposit Service" as C_DepositService
+component "Customer Service" as C_CustomerService
+component "Loan Service" as C_LoanService
+component "Card Service" as C_CardService
+component "Beneficiary Service" as C_BeneficiaryService
+database "Banking DB" as DB_banking
+C_DepositService --> DB_banking
+C_CustomerService --> DB_banking
+C_LoanService --> DB_banking
+C_CardService --> DB_banking
+C_LoanService ..> C_CardService : MQ
+C_CardService ..> C_CustomerService : MQ
+C_CustomerService ..> C_BeneficiaryService : REST
+@enduml

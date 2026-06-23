@@ -1,0 +1,41 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Deposit {
+  #double description
+  -float type
+  +boolean score
+  #String level
+  #String id
+  +cancelType()
+  +cancelId()
+}
+class Customer {
+  -long description
+  -float phone
+  +boolean createdAt
+  #boolean type
+  +float score
+  +deleteAddress()
+}
+class Statement {
+  +String status
+  +Date description
+  #float total
+  +long active
+  -Date duration
+  +findScore()
+  +findPrice()
+  +findAmount()
+}
+abstract class Beneficiary {
+  -double total
+  -int updatedAt
+  -double createdAt
+  #boolean code
+  +cancelName()
+}
+Beneficiary ..|> Statement
+Customer --* Deposit
+note right of Deposit : Banking domain
+@enduml

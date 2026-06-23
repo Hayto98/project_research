@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+[*] --> Processing
+Processing --> Shipped : submit
+Shipped --> Archived : approve
+Shipped : entry / log transfer
+Archived --> Delivered : reject
+Delivered --> Approved : confirm
+Delivered : entry / log transfer
+Approved --> Rejected : confirm
+Delivered --> Archived : revert
+Rejected --> [*]
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+participant "Receptionist" as R
+entity "Lab Technician" as LT
+participant "Nurse" as N
+N --> LT : Book Appointment
+LT --> R : Process Insurance Claim
+activate R
+R --> LT : ACK
+deactivate R
+LT ->> R : Update Medical Record
+note over R : processing update medical record
+N ->> LT : Admit Patient
+note over LT : processing admit patient
+LT --> R : Examine Patient
+activate R
+R --> LT : ACK
+deactivate R
+N --> R : Run Lab Test
+N -> R : Issue Prescription
+@enduml

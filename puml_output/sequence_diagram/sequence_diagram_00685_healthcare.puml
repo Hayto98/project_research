@@ -1,0 +1,22 @@
+@startuml
+
+entity "Insurance Provider" as IP
+boundary "Lab Technician" as LT
+entity "Doctor" as D
+boundary "Nurse" as N
+boundary "Receptionist" as R
+R --> IP : Book Appointment
+IP -> R : Examine Patient
+D --> IP : Process Insurance Claim
+LT --> IP : Issue Prescription
+activate IP
+IP --> LT : ACK
+deactivate IP
+note over IP : processing issue prescription
+LT --> R : Update Medical Record
+activate R
+R --> LT : ACK
+deactivate R
+LT -> N : Discharge Patient
+IP ->> LT : Admit Patient
+@enduml

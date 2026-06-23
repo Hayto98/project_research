@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+[*] --> Draft
+Draft --> Processing : submit
+Processing --> Completed : confirm
+Completed --> Cancelled : approve
+Completed : entry / log report
+Cancelled --> OnHold : update
+Cancelled : entry / log report
+OnHold --> Rejected : process
+OnHold --> Completed : revert
+Rejected --> [*]
+@enduml

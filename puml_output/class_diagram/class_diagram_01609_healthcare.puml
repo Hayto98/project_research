@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+abstract class Billing {
+  #boolean email
+  #Date code
+  +double quantity
+  -String updatedAt
+  +createAmount()
+  +processStatus()
+}
+interface Nurse {
+  -double active
+  #long quantity
+  +int description
+  +String status
+  +processNote()
+}
+class MedicalRecord {
+  -String id
+  #Date updatedAt
+  +calculateQuantity()
+  +deleteEmail()
+  +saveLevel()
+  +cancelStatus()
+}
+class Hospital {
+  -String level
+  -int note
+  -float price
+  +calculateLevel()
+  +sendStatus()
+  +processCode()
+}
+interface Prescription {
+  #int note
+  +boolean code
+  #double description
+  #float price
+  +boolean active
+  +getActive()
+  +saveType()
+}
+Nurse --o Billing
+Prescription --> MedicalRecord : "0..1"
+MedicalRecord --* Nurse
+Prescription ..> Nurse : "0..1"
+note right of Billing : Healthcare domain
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+boundary "Lab Technician" as LT
+boundary "Doctor" as D
+control "Insurance Provider" as IP
+participant "Nurse" as N
+IP ->> LT : Update Medical Record
+D -> IP : Discharge Patient
+note over IP : processing discharge patient
+N --> IP : Issue Prescription
+activate IP
+IP --> N : ACK
+deactivate IP
+N --> LT : Admit Patient
+note over LT : processing admit patient
+D ->> IP : Run Lab Test
+@enduml

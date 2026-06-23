@@ -1,0 +1,74 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+abstract class Staff {
+  -Date updatedAt
+  #int price
+  +Date note
+  -double createdAt
+  +cancelActive()
+  +getName()
+  +getDescription()
+}
+class Service {
+  -float updatedAt
+  +String description
+  #float id
+  -long amount
+  #double type
+  +setEmail()
+  +deletePhone()
+  +saveQuantity()
+  +sendEmail()
+}
+interface Housekeeping {
+  -int total
+  #boolean description
+  +setNote()
+  +getDescription()
+}
+interface Room {
+  -int duration
+  #Date price
+  -double id
+  +findPrice()
+}
+class Restaurant {
+  -Date phone
+  #double score
+  +Date duration
+  #Date address
+  +deleteCode()
+  +updateAmount()
+}
+class Invoice {
+  +Date createdAt
+  +int address
+  #String level
+  +Date phone
+  +findPrice()
+  +getType()
+  +deleteTotal()
+  +getPrice()
+}
+class Payment {
+  +boolean updatedAt
+  -int address
+  #float score
+  #float active
+  +int quantity
+  +sendEmail()
+  +validatePhone()
+  +findUpdatedat()
+  +saveAddress()
+}
+Restaurant ..> Service : "1"
+Staff --o Service
+Invoice --> Service : "*"
+Service --|> Restaurant
+Room --o Restaurant
+Staff --> Housekeeping : "1..*"
+note right of Staff : Hotel domain
+@enduml

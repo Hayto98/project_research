@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+interface Coupon {
+  -int description
+  #float quantity
+  +findAmount()
+}
+abstract class Category {
+  -long name
+  -Date note
+  -double price
+  +cancelCode()
+  +setDescription()
+}
+class Wishlist {
+  +float status
+  -double note
+  -Date id
+  +calculateQuantity()
+  +cancelDuration()
+  +validateLevel()
+}
+class Order {
+  #long createdAt
+  #boolean note
+  +String status
+  #Date email
+  +sendType()
+}
+class Shipment {
+  +double note
+  -int name
+  -double level
+  +String email
+  -float phone
+  +setCode()
+}
+Shipment ..> Coupon : "1..*"
+Wishlist --* Shipment
+Order ..|> Category
+note right of Coupon : Ecommerce domain
+@enduml

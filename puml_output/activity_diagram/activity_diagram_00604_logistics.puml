@@ -1,0 +1,34 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Update Inventory;
+:Track Shipment;
+:Load Package;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Deliver Package;
+:Schedule Pickup;
+:Fuel Vehicle;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Assign Route;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Report Issue;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+stop
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+entity "Branch Manager" as BM
+boundary "Auditor" as A
+boundary "Account Holder" as AH
+actor "ATM" as A2
+BM --> A2 : Apply For Loan
+activate A2
+A2 --> BM : ACK
+deactivate A2
+A -> A2 : Deposit Money
+AH --> BM : Open Account
+activate BM
+BM --> AH : ACK
+deactivate BM
+BM ->> A2 : Pay Bill
+activate A2
+A2 --> BM : ACK
+deactivate A2
+note over A2 : processing pay bill
+AH --> A : Withdraw Cash
+note over A : processing withdraw cash
+A ->> AH : View Statement
+note over AH : processing view statement
+A ->> AH : Block Card
+@enduml

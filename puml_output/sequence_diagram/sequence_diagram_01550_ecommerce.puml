@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+boundary "Admin" as A
+entity "Seller" as S
+boundary "Customer" as C
+entity "Delivery Service" as DS
+control "Payment Gateway" as PG
+DS -> A : Track Order
+S --> C : Manage Inventory
+activate C
+C --> S : ACK
+deactivate C
+A -> C : Checkout
+activate C
+C --> A : ACK
+deactivate C
+DS ->> A : Browse Products
+A -> DS : Apply Coupon
+DS -> A : Write Review
+S -> C : Add To Cart
+@enduml

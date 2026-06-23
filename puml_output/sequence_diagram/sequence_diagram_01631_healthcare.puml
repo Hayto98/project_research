@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+control "Lab Technician" as LT
+participant "Insurance Provider" as IP
+control "Nurse" as N
+IP ->> N : Update Medical Record
+N ->> LT : Admit Patient
+note over LT : processing admit patient
+N -> IP : Examine Patient
+LT -> N : Book Appointment
+activate N
+N --> LT : ACK
+deactivate N
+IP --> LT : Issue Prescription
+@enduml

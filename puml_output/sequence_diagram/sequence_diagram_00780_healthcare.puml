@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+participant "Nurse" as N
+control "Receptionist" as R
+control "Insurance Provider" as IP
+boundary "Doctor" as D
+IP --> N : Admit Patient
+activate N
+N --> IP : ACK
+deactivate N
+IP -> R : Book Appointment
+activate R
+R --> IP : ACK
+deactivate R
+IP --> R : Process Insurance Claim
+activate R
+R --> IP : ACK
+deactivate R
+D --> R : Run Lab Test
+note over R : processing run lab test
+IP --> D : Examine Patient
+note over D : processing examine patient
+@enduml

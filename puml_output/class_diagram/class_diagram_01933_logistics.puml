@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Depot {
+  -boolean name
+  -boolean updatedAt
+  -String email
+  #String note
+  +getActive()
+}
+class Customer {
+  #long duration
+  #Date amount
+  +boolean level
+  -int createdAt
+  +processQuantity()
+}
+abstract class FuelLog {
+  +Date type
+  #int address
+  +long createdAt
+  -double total
+  +int amount
+  +cancelAmount()
+  +saveLevel()
+  +updatePhone()
+  +processNote()
+}
+interface Package {
+  #int type
+  #int level
+  +updateId()
+}
+abstract class Tracking {
+  -long code
+  #int active
+  -long duration
+  #boolean score
+  #long status
+  +createActive()
+}
+Depot --> Tracking : "0..1"
+Depot ..|> FuelLog
+Package ..|> Tracking
+note right of Depot : Logistics domain
+@enduml

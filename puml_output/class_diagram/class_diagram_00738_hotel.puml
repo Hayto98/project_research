@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+abstract class Service {
+  -Date phone
+  +boolean id
+  -long score
+  +deletePhone()
+  +getLevel()
+}
+class Housekeeping {
+  +float status
+  -float code
+  +Date id
+  +cancelTotal()
+}
+interface Payment {
+  +String type
+  -float phone
+  +int score
+  +setType()
+  +validateAmount()
+  +setAddress()
+}
+class CheckOut {
+  -int total
+  -boolean phone
+  -float duration
+  +Date type
+  +updatePhone()
+  +getPhone()
+  +processScore()
+}
+abstract class Invoice {
+  #double status
+  -int active
+  +Date amount
+  -Date phone
+  +deleteEmail()
+  +processPhone()
+}
+class Booking {
+  -boolean quantity
+  -long phone
+  -boolean note
+  #String status
+  +validateAmount()
+  +processPhone()
+}
+class CheckIn {
+  #float level
+  -double code
+  +sendPhone()
+}
+Payment ..|> Housekeeping
+Housekeeping --* Invoice
+Housekeeping ..|> CheckOut
+Housekeeping --* Booking
+note right of Service : Hotel domain
+@enduml

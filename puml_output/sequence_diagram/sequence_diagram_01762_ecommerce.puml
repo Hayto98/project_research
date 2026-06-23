@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+participant "Admin" as A
+participant "Delivery Service" as DS
+actor "Customer" as C
+C --> A : Track Order
+activate A
+A --> C : ACK
+deactivate A
+DS -> C : Browse Products
+A ->> C : Checkout
+activate C
+C --> A : ACK
+deactivate C
+C --> DS : Add To Cart
+activate DS
+DS --> C : ACK
+deactivate DS
+note over DS : processing add to cart
+@enduml

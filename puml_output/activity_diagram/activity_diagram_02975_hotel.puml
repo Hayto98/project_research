@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+start
+:Clean Room;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Check In;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Cancel Reservation;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Request Service;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Check Out;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Order Room Service;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Book Room;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Process Payment;
+stop
+@enduml

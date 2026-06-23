@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+component "Renewal Service" as C_RenewalService
+component "Book Service" as C_BookService
+component "Author Service" as C_AuthorService
+component "Publisher Service" as C_PublisherService
+database "Library DB" as DB_library
+C_RenewalService --> DB_library
+C_BookService --> DB_library
+C_AuthorService --> DB_library
+C_RenewalService ..> C_BookService : MQ
+C_RenewalService ..> C_AuthorService : HTTP
+@enduml

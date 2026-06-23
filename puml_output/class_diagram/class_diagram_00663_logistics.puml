@@ -1,0 +1,54 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+interface DeliveryNote {
+  +float total
+  -String price
+  +boolean level
+  +createTotal()
+  +sendLevel()
+  +setAmount()
+}
+class Tracking {
+  -float total
+  -long active
+  -int duration
+  -long price
+  +validateActive()
+}
+class Depot {
+  +int address
+  +float phone
+  -double active
+  +double createdAt
+  +getPrice()
+  +createStatus()
+  +cancelAmount()
+  +processAddress()
+}
+abstract class Inventory {
+  +boolean status
+  +float score
+  +getLevel()
+  +processCode()
+  +cancelEmail()
+  +processCode()
+}
+interface Route {
+  -Date id
+  #String updatedAt
+  +float type
+  -double phone
+  +findUpdatedat()
+}
+class Shipment {
+  -String phone
+  #long status
+  +validateLevel()
+}
+Depot --> Shipment : "*"
+Route --* Tracking
+Route --> DeliveryNote : "0..1"
+note right of DeliveryNote : Logistics domain
+@enduml

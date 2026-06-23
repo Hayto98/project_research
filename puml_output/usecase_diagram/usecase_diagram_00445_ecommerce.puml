@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+left to right direction
+actor "Seller" as Seller
+actor "Delivery Service" as DeliveryService
+actor "Customer" as Customer
+rectangle "Ecommerce System" {
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Checkout" as UC_Checkout
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Write Review" as UC_WriteReview
+}
+Seller --> UC_ManageInventory
+Seller --> UC_Checkout
+DeliveryService --> UC_WriteReview
+Customer --> UC_WriteReview
+Customer --> UC_AddToCart
+Customer --> UC_MakePayment
+UC_ManageInventory ..> UC_AddToCart : <<include>>
+@enduml

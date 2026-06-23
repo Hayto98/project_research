@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+entity "Account Holder" as AH
+control "Auditor" as A
+entity "Bank Teller" as BT
+boundary "ATM" as A2
+A2 -> A : View Statement
+activate A
+A --> A2 : ACK
+deactivate A
+A2 --> BT : Withdraw Cash
+activate BT
+BT --> A2 : ACK
+deactivate BT
+AH ->> BT : Transfer Funds
+note over BT : processing transfer funds
+A2 --> A : Block Card
+activate A
+A --> A2 : ACK
+deactivate A
+@enduml

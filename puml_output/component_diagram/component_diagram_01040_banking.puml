@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Deposit Service" as C_DepositService
+component "Account Service" as C_AccountService
+component "Teller Service" as C_TellerService
+component "Loan Service" as C_LoanService
+component "Card Service" as C_CardService
+database "Banking DB" as DB_banking
+C_AccountService --> DB_banking
+C_TellerService --> DB_banking
+C_LoanService --> DB_banking
+C_CardService --> DB_banking
+C_TellerService ..> C_DepositService : REST
+C_LoanService ..> C_CardService : REST
+C_LoanService ..> C_AccountService : MQ
+@enduml

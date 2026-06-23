@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Book {
+  +String description
+  -boolean code
+  +saveUpdatedat()
+  +processTotal()
+  +deleteCode()
+  +setLevel()
+}
+class Member {
+  -float address
+  -float description
+  +cancelType()
+  +cancelScore()
+  +sendPrice()
+}
+class Catalog {
+  #long status
+  #boolean duration
+  +saveDuration()
+}
+class Librarian {
+  +String email
+  #int phone
+  +findCode()
+  +processTotal()
+  +updatePrice()
+  +validateCreatedat()
+}
+class Shelf {
+  -long createdAt
+  +int amount
+  +deletePhone()
+}
+class Fine {
+  #Date updatedAt
+  +int score
+  #boolean status
+  -String createdAt
+  +int amount
+  +cancelUpdatedat()
+}
+class Renewal {
+  -boolean price
+  -int description
+  #int duration
+  +float name
+  +sendPhone()
+}
+Librarian --* Renewal
+Catalog ..|> Fine
+Librarian --|> Member
+Fine ..|> Renewal
+Fine ..> Book : "0..1"
+Renewal ..|> Shelf
+note right of Book : Library domain
+@enduml

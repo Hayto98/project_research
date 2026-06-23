@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+[*] --> OnHold
+OnHold --> Reviewed : confirm
+Reviewed --> Completed : reject
+Completed --> Delivered : reject
+Completed : entry / log member
+Delivered --> Cancelled : confirm
+Delivered : entry / log member
+Cancelled --> Draft : submit
+OnHold --> Cancelled : revert
+Draft --> [*]
+@enduml

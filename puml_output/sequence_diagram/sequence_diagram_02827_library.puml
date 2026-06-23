@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+entity "Member" as M
+participant "Librarian" as L
+participant "Admin" as A
+L ->> M : Reserve Book
+M --> A : Return Book
+note over A : processing return book
+L -> M : Search Catalog
+M --> A : Register Member
+M -> A : Pay Fine
+A --> M : Add New Book
+activate M
+M --> A : ACK
+deactivate M
+note over M : processing add new book
+@enduml

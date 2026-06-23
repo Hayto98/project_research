@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+actor "Registrar" as R
+participant "Student" as S
+control "Admin" as A
+R --> A : Register Student
+note over A : processing register student
+S ->> A : Issue Certificate
+activate A
+A --> S : ACK
+deactivate A
+R -> S : Take Attendance
+note over S : processing take attendance
+R -> S : Borrow Book
+activate S
+S --> R : ACK
+deactivate S
+note over S : processing borrow book
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+participant "Chef" as C
+boundary "Guest" as G
+participant "Receptionist" as R
+G --> C : Cancel Reservation
+activate C
+C --> G : ACK
+deactivate C
+C -> G : Order Room Service
+activate G
+G --> C : ACK
+deactivate G
+G -> R : Request Service
+R ->> C : Clean Room
+activate C
+C --> R : ACK
+deactivate C
+R ->> C : Check Out
+C --> G : Check In
+note over G : processing check in
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Statement {
+  #Date email
+  #String duration
+  #double score
+  +calculateAddress()
+  +sendNote()
+}
+interface Beneficiary {
+  #int active
+  +double total
+  +Date quantity
+  #double amount
+  +validatePrice()
+}
+interface Withdrawal {
+  +long score
+  -long description
+  -Date amount
+  +saveEmail()
+  +deleteUpdatedat()
+  +sendStatus()
+  +updateAmount()
+}
+class Deposit {
+  #Date description
+  #double createdAt
+  #boolean id
+  +processStatus()
+  +calculateActive()
+}
+class Account {
+  -int code
+  #boolean note
+  +setCreatedat()
+  +createUpdatedat()
+  +validateActive()
+  +calculateAmount()
+}
+class Loan {
+  +String score
+  -String email
+  +findAmount()
+  +findLevel()
+  +saveNote()
+}
+Deposit ..> Beneficiary : "1..*"
+Statement --|> Deposit
+Beneficiary ..> Statement : "1..*"
+Withdrawal --* Beneficiary
+note right of Statement : Banking domain
+@enduml

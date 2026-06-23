@@ -1,0 +1,13 @@
+@startuml
+skinparam ArrowColor #555555
+[*] --> Archived
+Archived --> Reviewed : reject
+Archived : entry / log warehouse
+Reviewed --> Processing : cancel
+Reviewed : entry / log warehouse
+Processing --> Closed : reject
+Closed --> Approved : update
+Approved --> Pending : cancel
+Pending --> Archived : revert
+Pending --> [*]
+@enduml

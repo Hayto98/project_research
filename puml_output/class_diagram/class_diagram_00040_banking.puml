@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Beneficiary {
+  #long duration
+  #boolean active
+  +Date phone
+  #double level
+  -Date updatedAt
+  +deleteActive()
+  +updateTotal()
+  +cancelActive()
+}
+abstract class Loan {
+  +int address
+  +String note
+  +double description
+  #long active
+  #boolean status
+  +findPrice()
+}
+class Branch {
+  +String id
+  #float price
+  -String duration
+  #int address
+  +String note
+  +processAddress()
+  +sendPhone()
+}
+class Customer {
+  #boolean status
+  -float id
+  +sendCode()
+  +validateQuantity()
+  +setTotal()
+  +sendDuration()
+}
+abstract class Transaction {
+  -double duration
+  -boolean code
+  -String amount
+  #boolean total
+  -Date type
+  +createType()
+  +calculatePrice()
+  +saveActive()
+  +updateEmail()
+}
+Beneficiary ..> Loan : "1"
+Transaction --> Loan : "*"
+Loan ..|> Customer
+note right of Beneficiary : Banking domain
+@enduml

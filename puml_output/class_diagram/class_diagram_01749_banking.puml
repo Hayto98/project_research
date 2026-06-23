@@ -1,0 +1,37 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+interface Beneficiary {
+  #Date duration
+  #long id
+  +findScore()
+}
+interface Branch {
+  -int type
+  #String code
+  +Date createdAt
+  -float amount
+  #String level
+  +sendName()
+  +getName()
+  +findPhone()
+}
+class Withdrawal {
+  #int price
+  -double note
+  +String email
+  +updateEmail()
+}
+interface Customer {
+  #String duration
+  +boolean active
+  -int description
+  +updateAmount()
+  +saveScore()
+  +createDuration()
+}
+Customer ..> Withdrawal : "*"
+Withdrawal ..|> Customer
+Withdrawal --o Beneficiary
+note right of Beneficiary : Banking domain
+@enduml

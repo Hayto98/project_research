@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+class Treatment {
+  #String createdAt
+  -Date address
+  -int status
+  -Date active
+  -boolean amount
+  +validateLevel()
+  +processQuantity()
+}
+class Billing {
+  +Date updatedAt
+  #Date createdAt
+  +createNote()
+}
+class Hospital {
+  +float phone
+  +Date duration
+  -long status
+  +setDuration()
+  +calculatePrice()
+  +cancelName()
+}
+class Diagnosis {
+  -float quantity
+  -Date price
+  +validateId()
+  +findType()
+}
+abstract class MedicalRecord {
+  #long total
+  #String active
+  #String phone
+  +getDuration()
+  +cancelActive()
+  +getQuantity()
+  +updatePhone()
+}
+Diagnosis ..|> Treatment
+Diagnosis --o Hospital
+note right of Treatment : Healthcare domain
+@enduml

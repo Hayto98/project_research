@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+class Group {
+  +String name
+  -double quantity
+  #String duration
+  +validateAddress()
+}
+class Story {
+  -boolean phone
+  +long name
+  #Date email
+  +getAddress()
+  +deleteAddress()
+  +updateNote()
+}
+class Follower {
+  +double quantity
+  -boolean type
+  #boolean level
+  -long updatedAt
+  +processScore()
+  +saveCreatedat()
+  +getCreatedat()
+  +findDuration()
+}
+class User {
+  -long level
+  #float score
+  -long quantity
+  #int price
+  -int code
+  +setActive()
+  +calculateAmount()
+}
+abstract class Message {
+  +boolean description
+  +int createdAt
+  -float phone
+  +double note
+  +updateUpdatedat()
+}
+Follower ..> Message : "1..*"
+Story --> Follower : "0..1"
+Story ..> User : "1..*"
+Follower --|> Story
+note right of Group : Social Media domain
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+abstract class Customer {
+  +String status
+  +int updatedAt
+  +boolean total
+  +boolean quantity
+  +cancelActive()
+}
+class Shipment {
+  -double createdAt
+  #float description
+  +int address
+  +int type
+  +cancelScore()
+  +calculateQuantity()
+}
+class Package {
+  -Date updatedAt
+  -double note
+  #boolean quantity
+  -long amount
+  +Date email
+  +updateDescription()
+  +createId()
+  +getNote()
+  +validateUpdatedat()
+}
+class FuelLog {
+  #double updatedAt
+  -int name
+  +double email
+  #Date id
+  +Date note
+  +validateScore()
+  +getScore()
+  +findPrice()
+  +deletePrice()
+}
+class Manifest {
+  #float address
+  -String quantity
+  -String updatedAt
+  -float note
+  -String total
+  +createName()
+  +setDescription()
+  +getStatus()
+  +sendId()
+}
+Package --o FuelLog
+Shipment --* Package
+Shipment --> Customer : "*"
+note right of Customer : Logistics domain
+@enduml

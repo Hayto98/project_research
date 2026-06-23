@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+[*] --> Processing
+Processing --> Rejected : submit
+Processing : entry / log warehouse
+Rejected --> Active : update
+Rejected : entry / log warehouse
+Active --> Created : reject
+Active : entry / log warehouse
+Created --> Reviewed : update
+Reviewed --> OnHold : review
+Reviewed --> OnHold : revert
+OnHold --> [*]
+@enduml

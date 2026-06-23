@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+class Ward {
+  +String code
+  +float id
+  #boolean duration
+  -double note
+  #int amount
+  +updateAddress()
+  +updateLevel()
+  +cancelType()
+}
+interface Diagnosis {
+  #long id
+  +float level
+  +double address
+  #int duration
+  +saveAmount()
+  +validateLevel()
+  +sendScore()
+  +deleteCode()
+}
+abstract class Patient {
+  -long type
+  -double email
+  +createStatus()
+  +saveActive()
+}
+abstract class MedicalRecord {
+  -int duration
+  -double email
+  #Date price
+  #String name
+  +findDescription()
+  +sendDescription()
+  +cancelPhone()
+}
+class Insurance {
+  #String type
+  -Date updatedAt
+  +cancelDuration()
+  +calculateActive()
+}
+class Prescription {
+  +int code
+  +String active
+  -boolean quantity
+  -String status
+  #boolean description
+  +setType()
+}
+class Hospital {
+  -float active
+  -boolean updatedAt
+  +findPrice()
+  +createAmount()
+}
+Patient ..> Insurance : "*"
+Ward ..|> Patient
+note right of Ward : Healthcare domain
+@enduml

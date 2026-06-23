@@ -1,0 +1,33 @@
+@startuml
+
+start
+:Pay Fine;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Reserve Book;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Return Book;
+:Renew Loan;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Register Member;
+:Search Catalog;
+stop
+@enduml

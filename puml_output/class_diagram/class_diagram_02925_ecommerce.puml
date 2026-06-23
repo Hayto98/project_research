@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+class Warehouse {
+  -int name
+  #Date code
+  -long duration
+  +cancelId()
+}
+class Shipment {
+  +String status
+  -Date email
+  +cancelQuantity()
+  +cancelTotal()
+  +cancelActive()
+  +updateNote()
+}
+interface Invoice {
+  -int id
+  #float type
+  +validateActive()
+}
+class Return {
+  -float quantity
+  #int description
+  +int duration
+  +int type
+  +createDescription()
+  +updateEmail()
+  +setType()
+}
+class Cart {
+  #float total
+  #float price
+  +deletePhone()
+  +updateCreatedat()
+  +getUpdatedat()
+  +calculatePrice()
+}
+Shipment --> Cart : "*"
+Cart --|> Shipment
+note right of Warehouse : Ecommerce domain
+@enduml

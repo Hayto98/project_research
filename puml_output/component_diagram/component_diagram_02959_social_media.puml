@@ -1,0 +1,17 @@
+@startuml
+skinparam defaultFontSize 11
+component "Hashtag Service" as C_HashtagService
+component "Profile Service" as C_ProfileService
+component "Notification Service" as C_NotificationService
+component "User Service" as C_UserService
+component "Message Service" as C_MessageService
+component "Group Service" as C_GroupService
+database "Social Media DB" as DB_social_media
+C_ProfileService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_UserService --> DB_social_media
+C_UserService ..> C_NotificationService : REST
+C_HashtagService ..> C_NotificationService : MQ
+C_ProfileService ..> C_HashtagService : REST
+C_HashtagService ..> C_GroupService : MQ
+@enduml

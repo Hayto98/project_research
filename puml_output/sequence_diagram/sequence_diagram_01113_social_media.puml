@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+control "User" as U
+control "Advertiser" as A
+entity "Moderator" as M
+participant "Admin" as A2
+A2 -> A : Like Post
+activate A
+A --> A2 : ACK
+deactivate A
+A2 ->> A : Edit Profile
+A --> U : Report Content
+activate U
+U --> A : ACK
+deactivate U
+U -> A2 : Comment
+activate A2
+A2 --> U : ACK
+deactivate A2
+note over A2 : processing comment
+A2 ->> A : Share Post
+@enduml

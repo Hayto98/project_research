@@ -1,0 +1,36 @@
+@startuml
+skinparam defaultFontSize 13
+start
+:Send Message;
+:Edit Profile;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Report Content;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Share Post;
+:Create Post;
+:Follow User;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Like Post;
+:Comment;
+stop
+@enduml

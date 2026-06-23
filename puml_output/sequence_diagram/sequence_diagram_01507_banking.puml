@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+boundary "Bank Teller" as BT
+control "ATM" as A
+boundary "Account Holder" as AH
+BT -> AH : Transfer Funds
+activate AH
+AH --> BT : ACK
+deactivate AH
+BT --> AH : Open Account
+activate AH
+AH --> BT : ACK
+deactivate AH
+BT ->> A : Withdraw Cash
+activate A
+A --> BT : ACK
+deactivate A
+A -> AH : Deposit Money
+activate AH
+AH --> A : ACK
+deactivate AH
+BT --> A : Pay Bill
+activate A
+A --> BT : ACK
+deactivate A
+@enduml

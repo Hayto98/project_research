@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+class Shipment {
+  +long code
+  +double description
+  +long status
+  #boolean id
+  +calculateCreatedat()
+  +sendTotal()
+  +cancelPrice()
+  +deleteNote()
+}
+class Invoice {
+  +int score
+  #int total
+  #float description
+  +calculateLevel()
+  +updateScore()
+  +findAddress()
+}
+class Wishlist {
+  +int status
+  -float score
+  -String address
+  +setDescription()
+  +calculateCreatedat()
+  +sendDuration()
+  +findScore()
+}
+interface Category {
+  #String active
+  +long quantity
+  +findNote()
+  +setDuration()
+  +createEmail()
+}
+abstract class Return {
+  +String quantity
+  +boolean duration
+  -boolean phone
+  -boolean active
+  +boolean description
+  +calculateTotal()
+  +createScore()
+}
+interface Customer {
+  #float quantity
+  #String status
+  +String updatedAt
+  +deleteEmail()
+}
+class Order {
+  #float total
+  +double type
+  -boolean amount
+  +processTotal()
+}
+Customer --|> Category
+Wishlist --* Category
+Shipment --* Wishlist
+Wishlist --* Order
+Category ..|> Return
+note right of Shipment : Ecommerce domain
+@enduml

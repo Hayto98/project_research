@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+[*] --> Cancelled
+Cancelled --> Delivered : reject
+Cancelled : entry / log diagnosis
+Delivered --> OnHold : reject
+Delivered : entry / log diagnosis
+OnHold --> Archived : cancel
+OnHold : entry / log diagnosis
+Archived --> Rejected : review
+Archived : entry / log diagnosis
+Rejected --> [*]
+@enduml

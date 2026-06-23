@@ -1,0 +1,15 @@
+@startuml
+skinparam defaultFontSize 11
+boundary "Nurse" as N
+participant "Lab Technician" as LT
+boundary "Patient" as P
+actor "Doctor" as D
+LT ->> P : Book Appointment
+N ->> LT : Examine Patient
+activate LT
+LT --> N : ACK
+deactivate LT
+note over LT : processing examine patient
+D ->> LT : Issue Prescription
+P --> N : Admit Patient
+@enduml

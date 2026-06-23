@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+class Prescription {
+  +float amount
+  #long type
+  -Date description
+  #Date code
+  +processUpdatedat()
+  +calculateLevel()
+  +cancelScore()
+  +saveScore()
+}
+class Billing {
+  +boolean price
+  -int amount
+  -boolean active
+  -int createdAt
+  +findActive()
+  +findAmount()
+  +setPhone()
+}
+class Diagnosis {
+  -float duration
+  #long name
+  +Date updatedAt
+  +setScore()
+}
+class Nurse {
+  -double status
+  +Date name
+  -float phone
+  -int duration
+  +validateAmount()
+  +updateName()
+  +deleteNote()
+}
+interface MedicalRecord {
+  +Date duration
+  #double price
+  +long quantity
+  #double total
+  +updateActive()
+  +updateQuantity()
+}
+Diagnosis ..> Nurse : "1..*"
+MedicalRecord ..|> Diagnosis
+Nurse --|> Billing
+note right of Prescription : Healthcare domain
+@enduml

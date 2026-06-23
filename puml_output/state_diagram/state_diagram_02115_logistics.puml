@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+[*] --> OnHold
+OnHold --> Active : submit
+Active --> Shipped : update
+Shipped --> Pending : reject
+Pending --> Rejected : process
+Pending : entry / log customer
+Rejected --> Processing : approve
+Processing --> Active : revert
+Processing --> [*]
+@enduml

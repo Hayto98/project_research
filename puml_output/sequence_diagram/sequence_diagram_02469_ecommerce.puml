@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+control "Seller" as S
+actor "Customer" as C
+actor "Payment Gateway" as PG
+actor "Delivery Service" as DS
+DS ->> PG : Cancel Order
+activate PG
+PG --> DS : ACK
+deactivate PG
+S -> PG : Add To Cart
+PG -> S : Apply Coupon
+activate S
+S --> PG : ACK
+deactivate S
+note over S : processing apply coupon
+C ->> S : Make Payment
+note over S : processing make payment
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+left to right direction
+actor "Admin" as Admin
+actor "Member" as Member
+actor "Librarian" as Librarian
+rectangle "Library System" {
+  usecase "Return Book" as UC_ReturnBook
+  usecase "Renew Loan" as UC_RenewLoan
+  usecase "Register Member" as UC_RegisterMember
+  usecase "Reserve Book" as UC_ReserveBook
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Pay Fine" as UC_PayFine
+}
+Admin --> UC_RegisterMember
+Admin --> UC_ReserveBook
+Admin --> UC_PayFine
+Member --> UC_RegisterMember
+Librarian --> UC_ReturnBook
+UC_RenewLoan ..> UC_RegisterMember : <<include>>
+@enduml

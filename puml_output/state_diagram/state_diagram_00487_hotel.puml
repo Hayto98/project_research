@@ -1,0 +1,13 @@
+@startuml
+skinparam defaultFontSize 11
+[*] --> Closed
+Closed --> OnHold : reject
+OnHold --> Delivered : reject
+OnHold : entry / log housekeeping
+Delivered --> Pending : cancel
+Delivered : entry / log housekeeping
+Pending --> Created : update
+Pending : entry / log housekeeping
+Created --> Processing : submit
+Processing --> [*]
+@enduml

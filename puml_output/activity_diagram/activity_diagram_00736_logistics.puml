@@ -1,0 +1,30 @@
+@startuml
+
+start
+:Schedule Pickup;
+:Assign Route;
+:Update Inventory;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Load Package;
+:Fuel Vehicle;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Report Issue;
+:Track Shipment;
+:Deliver Package;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+stop
+@enduml

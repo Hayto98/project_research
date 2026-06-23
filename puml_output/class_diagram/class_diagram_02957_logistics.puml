@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+class Shipment {
+  #Date level
+  #int type
+  #long quantity
+  -int createdAt
+  +deleteAmount()
+  +findScore()
+  +createDuration()
+  +deleteAddress()
+}
+class Package {
+  -Date duration
+  +Date phone
+  #Date updatedAt
+  +Date name
+  #double score
+  +setDuration()
+  +validateType()
+  +validateDescription()
+}
+interface Route {
+  +double amount
+  +double name
+  -Date email
+  -Date id
+  +int duration
+  +createType()
+  +saveCode()
+}
+class Depot {
+  -double price
+  #boolean note
+  -String level
+  #int status
+  -float name
+  +cancelStatus()
+  +createLevel()
+  +processLevel()
+  +validateDescription()
+}
+Package ..|> Depot
+Shipment ..> Package : "0..1"
+note right of Shipment : Logistics domain
+@enduml

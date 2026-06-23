@@ -1,0 +1,33 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+start
+:Pay Bill;
+:View Statement;
+:Apply For Loan;
+:Transfer Funds;
+:Withdraw Cash;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Open Account;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Block Card;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Deposit Money;
+stop
+@enduml

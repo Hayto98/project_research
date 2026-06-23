@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+actor "User" as U
+entity "Moderator" as M
+boundary "Advertiser" as A
+entity "Admin" as A2
+U --> A : Report Content
+A2 -> A : Comment
+M --> A2 : Send Message
+note over A2 : processing send message
+M -> A : Create Post
+activate A
+A --> M : ACK
+deactivate A
+M -> A : Share Post
+M --> A2 : Like Post
+U -> M : Edit Profile
+@enduml

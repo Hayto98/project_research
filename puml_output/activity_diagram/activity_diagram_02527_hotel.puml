@@ -1,0 +1,32 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+start
+:Process Payment;
+:Order Room Service;
+:Request Service;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Check In;
+:Clean Room;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Cancel Reservation;
+:Book Room;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Check Out;
+stop
+@enduml

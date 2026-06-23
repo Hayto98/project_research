@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+class Tracking {
+  -Date id
+  -String name
+  -String quantity
+  +float address
+  +createPrice()
+  +validateDuration()
+  +sendType()
+  +setType()
+}
+interface Shipment {
+  -float price
+  #float total
+  -String type
+  +boolean active
+  +cancelCreatedat()
+}
+abstract class FuelLog {
+  -double address
+  +Date updatedAt
+  #Date type
+  +float id
+  +calculateId()
+  +calculatePhone()
+  +updateDuration()
+}
+class Inventory {
+  #long code
+  -String score
+  +String amount
+  +getType()
+}
+class Manifest {
+  +long id
+  -float score
+  +String price
+  +deleteTotal()
+  +saveActive()
+}
+FuelLog --* Manifest
+Shipment --> Inventory : "1..*"
+Manifest --o FuelLog
+FuelLog --* Shipment
+note right of Tracking : Logistics domain
+@enduml

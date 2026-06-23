@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+entity "Admin" as A
+entity "Librarian" as L
+boundary "Parent" as P
+actor "Teacher" as T
+entity "Student" as S
+P ->> A : Issue Certificate
+activate A
+A --> P : ACK
+deactivate A
+S ->> A : Borrow Book
+activate A
+A --> S : ACK
+deactivate A
+S --> T : Register Student
+A -> T : Take Attendance
+A -> L : Enroll Course
+activate L
+L --> A : ACK
+deactivate L
+@enduml

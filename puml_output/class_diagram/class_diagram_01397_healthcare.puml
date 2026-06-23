@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Doctor {
+  -String code
+  #double quantity
+  -Date level
+  +processQuantity()
+  +sendDescription()
+  +updateNote()
+}
+interface Billing {
+  #Date status
+  -boolean email
+  -long active
+  +double address
+  +calculateNote()
+}
+class Nurse {
+  +Date name
+  +long total
+  +double type
+  #float note
+  +findNote()
+  +getDescription()
+  +deleteLevel()
+  +sendName()
+}
+class Ward {
+  -long quantity
+  +String duration
+  +processEmail()
+}
+abstract class Hospital {
+  #long price
+  -long updatedAt
+  +boolean id
+  +calculateScore()
+  +updateNote()
+  +findCreatedat()
+}
+class Treatment {
+  -long updatedAt
+  +int level
+  +calculateType()
+}
+Billing --* Hospital
+Treatment --* Ward
+Hospital --|> Ward
+note right of Doctor : Healthcare domain
+@enduml

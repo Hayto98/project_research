@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+component "Warehouse Service" as C_WarehouseService
+component "Tracking Service" as C_TrackingService
+component "Vehicle Service" as C_VehicleService
+component "Depot Service" as C_DepotService
+component "FuelLog Service" as C_FuelLogService
+database "Logistics DB" as DB_logistics
+C_WarehouseService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_TrackingService ..> C_DepotService : HTTP
+C_VehicleService ..> C_TrackingService : REST
+@enduml

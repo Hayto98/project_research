@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+interface DeliveryNote {
+  -String amount
+  +int level
+  +sendName()
+}
+class Shipment {
+  #float score
+  +Date level
+  -float quantity
+  +Date name
+  #float amount
+  +createDuration()
+  +processQuantity()
+  +sendQuantity()
+  +getTotal()
+}
+class Manifest {
+  -long status
+  -String active
+  -boolean note
+  +processLevel()
+  +cancelAddress()
+}
+abstract class Driver {
+  -long note
+  +float name
+  +float createdAt
+  +double id
+  -Date type
+  +calculateDuration()
+  +cancelPrice()
+}
+abstract class Tracking {
+  -Date description
+  #String note
+  +deleteCreatedat()
+  +deleteNote()
+  +getId()
+}
+class Warehouse {
+  -float description
+  #int address
+  +int total
+  -long note
+  -float phone
+  +createEmail()
+}
+class Vehicle {
+  -int phone
+  +float description
+  #long score
+  -long duration
+  +validateNote()
+  +sendName()
+  +deleteAmount()
+  +deleteAddress()
+}
+DeliveryNote --> Manifest : "1"
+Warehouse --|> DeliveryNote
+Vehicle ..|> Tracking
+Warehouse --|> Shipment
+Manifest --> Warehouse : "*"
+Shipment --|> Vehicle
+note right of DeliveryNote : Logistics domain
+@enduml

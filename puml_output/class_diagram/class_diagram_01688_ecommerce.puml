@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+interface Order {
+  +long price
+  -double address
+  -float score
+  +getScore()
+  +validateStatus()
+  +processDuration()
+}
+abstract class Wishlist {
+  +int total
+  -Date code
+  +processId()
+  +updateType()
+}
+abstract class Invoice {
+  -float note
+  #double createdAt
+  #boolean quantity
+  +boolean type
+  +String email
+  +processScore()
+  +validatePhone()
+}
+abstract class Product {
+  +float note
+  +Date id
+  +int description
+  #String amount
+  #long total
+  +deletePhone()
+  +cancelStatus()
+  +validateActive()
+  +updateAmount()
+}
+class Return {
+  #double address
+  -boolean type
+  +float email
+  #double updatedAt
+  +int code
+  +calculateAddress()
+}
+Order ..> Invoice : "*"
+Product --> Wishlist : "*"
+note right of Order : Ecommerce domain
+@enduml

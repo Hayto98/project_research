@@ -1,0 +1,35 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+start
+:Run Lab Test;
+:Issue Prescription;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Medical Record;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Process Insurance Claim;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Discharge Patient;
+:Examine Patient;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+stop
+@enduml

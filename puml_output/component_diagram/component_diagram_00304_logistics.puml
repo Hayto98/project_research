@@ -1,0 +1,17 @@
+@startuml
+skinparam ArrowColor #555555
+component "FuelLog Service" as C_FuelLogService
+component "Customer Service" as C_CustomerService
+component "Tracking Service" as C_TrackingService
+component "Warehouse Service" as C_WarehouseService
+component "Shipment Service" as C_ShipmentService
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Route Service" as C_RouteService
+database "Logistics DB" as DB_logistics
+C_FuelLogService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_RouteService --> DB_logistics
+C_ShipmentService ..> C_FuelLogService : gRPC
+C_WarehouseService ..> C_ShipmentService : MQ
+@enduml

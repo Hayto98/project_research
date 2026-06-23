@@ -1,0 +1,38 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Appointment {
+  -String createdAt
+  -int price
+  +createType()
+  +saveActive()
+  +calculateScore()
+}
+class Diagnosis {
+  -double quantity
+  -float phone
+  +String active
+  +Date type
+  +saveCode()
+  +setId()
+}
+interface Nurse {
+  +Date type
+  -Date score
+  +calculateScore()
+  +setDescription()
+}
+abstract class Prescription {
+  #int amount
+  +long note
+  +double address
+  #String score
+  +createDescription()
+  +sendActive()
+  +calculateDuration()
+  +sendPrice()
+}
+Nurse ..> Diagnosis : "1"
+Diagnosis ..> Nurse : "1"
+note right of Appointment : Healthcare domain
+@enduml

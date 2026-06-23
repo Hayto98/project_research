@@ -1,0 +1,21 @@
+@startuml
+
+component "Attendance Service" as C_AttendanceService
+component "Exam Service" as C_ExamService
+component "Book Service" as C_BookService
+component "Student Service" as C_StudentService
+component "Library Service" as C_LibraryService
+component "Classroom Service" as C_ClassroomService
+component "Teacher Service" as C_TeacherService
+database "Education DB" as DB_education
+C_AttendanceService --> DB_education
+C_ExamService --> DB_education
+C_BookService --> DB_education
+C_StudentService --> DB_education
+C_LibraryService --> DB_education
+C_ClassroomService --> DB_education
+C_TeacherService --> DB_education
+C_AttendanceService ..> C_ClassroomService : HTTP
+C_ExamService ..> C_ClassroomService : gRPC
+C_TeacherService ..> C_StudentService : MQ
+@enduml

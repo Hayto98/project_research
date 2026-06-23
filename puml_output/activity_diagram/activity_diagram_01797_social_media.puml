@@ -1,0 +1,27 @@
+@startuml
+
+start
+:Like Post;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Send Message;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Comment;
+:Edit Profile;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Report Content;
+stop
+@enduml

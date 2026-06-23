@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+[*] --> Cancelled
+Cancelled --> Pending : process
+Cancelled : entry / log fuellog
+Pending --> Completed : submit
+Pending : entry / log fuellog
+Completed --> Rejected : submit
+Rejected --> Approved : approve
+Pending --> Cancelled : revert
+Approved --> [*]
+@enduml

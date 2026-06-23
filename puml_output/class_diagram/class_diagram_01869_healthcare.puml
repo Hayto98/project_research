@@ -1,0 +1,58 @@
+@startuml
+
+class MedicalRecord {
+  +double duration
+  #boolean name
+  -Date description
+  #boolean phone
+  -Date level
+  +validateId()
+  +findCode()
+}
+abstract class Insurance {
+  -long note
+  +boolean duration
+  #float id
+  -int level
+  +deleteScore()
+  +updateCode()
+}
+interface Patient {
+  +boolean level
+  -double id
+  +double amount
+  +int quantity
+  #float email
+  +cancelActive()
+}
+class Treatment {
+  +float email
+  -long quantity
+  #boolean duration
+  +cancelTotal()
+}
+abstract class Diagnosis {
+  #double id
+  -Date address
+  +boolean type
+  +processNote()
+}
+abstract class LabTest {
+  -float code
+  #int createdAt
+  +getPrice()
+  +processTotal()
+  +getStatus()
+}
+class Appointment {
+  -Date active
+  +String name
+  +validateLevel()
+  +validateId()
+}
+MedicalRecord --* Diagnosis
+Insurance --> Diagnosis : "*"
+Treatment --|> Patient
+Diagnosis ..|> MedicalRecord
+note right of MedicalRecord : Healthcare domain
+@enduml

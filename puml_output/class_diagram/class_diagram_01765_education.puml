@@ -1,0 +1,63 @@
+@startuml
+skinparam ArrowColor #555555
+class Teacher {
+  +double email
+  -boolean duration
+  +getTotal()
+  +cancelUpdatedat()
+}
+interface Classroom {
+  +double code
+  -String price
+  -String duration
+  #Date updatedAt
+  -double description
+  +cancelActive()
+  +deleteUpdatedat()
+  +getCode()
+  +updateNote()
+}
+class Grade {
+  #boolean amount
+  #double description
+  #int level
+  +String score
+  +setId()
+  +processTotal()
+  +processActive()
+}
+abstract class Enrollment {
+  +double note
+  +boolean level
+  +long description
+  -Date id
+  +validateDuration()
+  +createDuration()
+}
+abstract class Attendance {
+  +float description
+  #int createdAt
+  +processScore()
+  +setActive()
+  +getId()
+}
+interface Schedule {
+  +boolean code
+  #boolean level
+  +long duration
+  #String amount
+  +deleteScore()
+  +getAddress()
+}
+class Student {
+  +Date phone
+  #long quantity
+  +validateAmount()
+  +processDuration()
+  +saveTotal()
+}
+Grade --> Attendance : "0..1"
+Schedule --|> Teacher
+Classroom ..|> Grade
+note right of Teacher : Education domain
+@enduml

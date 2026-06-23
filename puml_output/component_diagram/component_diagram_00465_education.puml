@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+component "Enrollment Service" as C_EnrollmentService
+component "Schedule Service" as C_ScheduleService
+component "Library Service" as C_LibraryService
+component "Attendance Service" as C_AttendanceService
+component "Department Service" as C_DepartmentService
+database "Education DB" as DB_education
+C_EnrollmentService --> DB_education
+C_ScheduleService --> DB_education
+C_LibraryService --> DB_education
+C_AttendanceService --> DB_education
+C_LibraryService ..> C_AttendanceService : MQ
+C_EnrollmentService ..> C_LibraryService : REST
+C_AttendanceService ..> C_DepartmentService : MQ
+@enduml

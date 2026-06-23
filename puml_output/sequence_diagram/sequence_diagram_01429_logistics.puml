@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+actor "Driver" as D
+boundary "Customer" as C
+entity "Fleet Manager" as FM
+entity "Dispatcher" as D2
+D -> C : Fuel Vehicle
+D -> C : Report Issue
+FM ->> D : Load Package
+C ->> D : Deliver Package
+FM ->> C : Schedule Pickup
+C --> D : Assign Route
+note over D : processing assign route
+C -> FM : Update Inventory
+activate FM
+FM --> C : ACK
+deactivate FM
+@enduml

@@ -1,0 +1,68 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Teller {
+  -long updatedAt
+  #float score
+  #double status
+  #long phone
+  #double active
+  +getDuration()
+  +validateActive()
+  +processLevel()
+}
+class Beneficiary {
+  +float active
+  -long level
+  +double createdAt
+  +String score
+  +processType()
+  +cancelUpdatedat()
+}
+abstract class Loan {
+  #float type
+  +boolean description
+  -boolean score
+  -double active
+  +double code
+  +calculateId()
+  +cancelId()
+  +findLevel()
+}
+class Customer {
+  +long active
+  -double updatedAt
+  #double status
+  -double name
+  +findTotal()
+  +setQuantity()
+}
+interface Card {
+  #long email
+  -long address
+  +setPrice()
+  +findTotal()
+  +deleteDescription()
+  +findActive()
+}
+class Interest {
+  -long amount
+  -double status
+  +cancelPrice()
+  +sendEmail()
+}
+abstract class Statement {
+  -String phone
+  +double note
+  -Date name
+  #double status
+  #long address
+  +findActive()
+  +saveCreatedat()
+  +getScore()
+  +updateName()
+}
+Statement ..> Loan : "*"
+Interest --* Beneficiary
+note right of Teller : Banking domain
+@enduml

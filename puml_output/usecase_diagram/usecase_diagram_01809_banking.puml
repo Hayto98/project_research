@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+left to right direction
+actor "Auditor" as Auditor
+actor "Account Holder" as AccountHolder
+actor "Bank Teller" as BankTeller
+rectangle "Banking System" {
+  usecase "Transfer Funds" as UC_TransferFunds
+  usecase "Deposit Money" as UC_DepositMoney
+  usecase "Apply For Loan" as UC_ApplyForLoan
+  usecase "Withdraw Cash" as UC_WithdrawCash
+  usecase "Pay Bill" as UC_PayBill
+}
+Auditor --> UC_DepositMoney
+AccountHolder --> UC_PayBill
+AccountHolder --> UC_TransferFunds
+AccountHolder --> UC_DepositMoney
+BankTeller --> UC_TransferFunds
+UC_TransferFunds ..> UC_ApplyForLoan : <<include>>
+@enduml

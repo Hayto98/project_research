@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+entity "Doctor" as D
+participant "Nurse" as N
+boundary "Insurance Provider" as IP
+boundary "Patient" as P
+entity "Receptionist" as R
+D -> N : Examine Patient
+note over N : processing examine patient
+D --> R : Process Insurance Claim
+activate R
+R --> D : ACK
+deactivate R
+P ->> D : Issue Prescription
+activate D
+D --> P : ACK
+deactivate D
+R -> D : Run Lab Test
+N ->> D : Discharge Patient
+activate D
+D --> N : ACK
+deactivate D
+D -> IP : Update Medical Record
+@enduml

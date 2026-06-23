@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+boundary "Dispatcher" as D
+actor "Warehouse Staff" as WS
+participant "Fleet Manager" as FM
+WS -> D : Load Package
+activate D
+D --> WS : ACK
+deactivate D
+note over D : processing load package
+WS --> FM : Assign Route
+D ->> WS : Deliver Package
+FM -> D : Report Issue
+note over D : processing report issue
+FM --> WS : Fuel Vehicle
+activate WS
+WS --> FM : ACK
+deactivate WS
+@enduml

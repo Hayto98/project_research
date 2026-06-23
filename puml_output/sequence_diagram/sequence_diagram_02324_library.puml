@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontSize 11
+entity "Admin" as A
+boundary "Member" as M
+control "Librarian" as L
+L --> M : Return Book
+A -> M : Renew Loan
+activate M
+M --> A : ACK
+deactivate M
+L ->> A : Borrow Book
+M ->> L : Search Catalog
+activate L
+L --> M : ACK
+deactivate L
+A --> M : Register Member
+activate M
+M --> A : ACK
+deactivate M
+L -> A : Reserve Book
+@enduml

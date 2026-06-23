@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+participant "Patient" as P
+participant "Insurance Provider" as IP
+actor "Receptionist" as R
+P -> R : Run Lab Test
+activate R
+R --> P : ACK
+deactivate R
+P --> IP : Process Insurance Claim
+note over IP : processing process insurance claim
+R --> IP : Discharge Patient
+R --> IP : Admit Patient
+activate IP
+IP --> R : ACK
+deactivate IP
+R -> P : Examine Patient
+P --> IP : Issue Prescription
+@enduml

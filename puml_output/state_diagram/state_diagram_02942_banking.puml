@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+[*] --> Delivered
+Delivered --> Draft : confirm
+Delivered : entry / log transaction
+Draft --> Cancelled : reject
+Cancelled --> Shipped : process
+Cancelled : entry / log transaction
+Shipped --> Active : submit
+Shipped : entry / log transaction
+Active --> Pending : approve
+Pending --> [*]
+@enduml

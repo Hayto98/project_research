@@ -1,0 +1,34 @@
+@startuml
+skinparam shadowing true
+start
+:Borrow Book;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Student;
+:Submit Assignment;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Take Attendance;
+:Grade Exam;
+:Enroll Course;
+:View Schedule;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+stop
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+class Nurse {
+  #double note
+  +float duration
+  -Date phone
+  #long email
+  #long status
+  +processActive()
+}
+interface Billing {
+  #Date email
+  +float name
+  +long phone
+  -double address
+  +sendPhone()
+  +deleteId()
+  +sendType()
+  +sendTotal()
+}
+interface Patient {
+  #String code
+  #int createdAt
+  -String score
+  +getName()
+}
+class Diagnosis {
+  +int note
+  +boolean updatedAt
+  #Date score
+  -float price
+  +deletePrice()
+}
+Diagnosis --|> Patient
+Patient ..|> Nurse
+note right of Nurse : Healthcare domain
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+
+boundary "Customer" as C
+boundary "Warehouse Staff" as WS
+entity "Driver" as D
+C -> D : Report Issue
+note over D : processing report issue
+WS -> C : Deliver Package
+C --> D : Assign Route
+C -> D : Fuel Vehicle
+D -> WS : Track Shipment
+WS --> C : Schedule Pickup
+WS --> C : Load Package
+activate C
+C --> WS : ACK
+deactivate C
+@enduml

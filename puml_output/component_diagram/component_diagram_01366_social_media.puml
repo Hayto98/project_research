@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Notification Service" as C_NotificationService
+component "Post Service" as C_PostService
+component "Hashtag Service" as C_HashtagService
+component "Report Service" as C_ReportService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_ReportService ..> C_NotificationService : MQ
+C_NotificationService ..> C_ReportService : HTTP
+C_HashtagService ..> C_ReportService : gRPC
+@enduml

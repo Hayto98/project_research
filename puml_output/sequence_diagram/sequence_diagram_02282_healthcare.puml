@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+control "Insurance Provider" as IP
+boundary "Nurse" as N
+entity "Lab Technician" as LT
+N -> LT : Admit Patient
+LT -> IP : Update Medical Record
+activate IP
+IP --> LT : ACK
+deactivate IP
+IP ->> N : Issue Prescription
+LT ->> IP : Run Lab Test
+N --> LT : Process Insurance Claim
+LT -> IP : Book Appointment
+@enduml

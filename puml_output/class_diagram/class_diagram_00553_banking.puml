@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+interface Statement {
+  #long status
+  -int createdAt
+  +float description
+  +String email
+  +validateAmount()
+}
+class Beneficiary {
+  -Date level
+  -long total
+  +saveCreatedat()
+}
+abstract class Loan {
+  +float total
+  #float active
+  -long duration
+  +saveId()
+  +calculateCreatedat()
+  +processScore()
+  +saveType()
+}
+class Branch {
+  #int score
+  #double createdAt
+  #Date phone
+  -String active
+  +getAddress()
+  +saveId()
+  +saveCreatedat()
+  +saveDescription()
+}
+Statement ..> Loan : "0..1"
+Branch --* Beneficiary
+note right of Statement : Banking domain
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+[*] --> Shipped
+Shipped --> Processing : reject
+Processing --> Created : confirm
+Processing : entry / log transfer
+Created --> Rejected : review
+Created : entry / log transfer
+Rejected --> Processing : revert
+Rejected --> [*]
+@enduml

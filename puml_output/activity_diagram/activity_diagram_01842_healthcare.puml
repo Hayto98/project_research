@@ -1,0 +1,35 @@
+@startuml
+skinparam monochrome true
+start
+:Run Lab Test;
+:Update Medical Record;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Discharge Patient;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Process Insurance Claim;
+:Issue Prescription;
+:Book Appointment;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Admit Patient;
+stop
+@enduml

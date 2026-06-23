@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+control "Seller" as S
+control "Delivery Service" as DS
+participant "Customer" as C
+control "Admin" as A
+A --> C : Manage Inventory
+S --> C : Browse Products
+DS -> C : Make Payment
+A --> S : Add To Cart
+C -> S : Write Review
+activate S
+S --> C : ACK
+deactivate S
+C -> S : Cancel Order
+C ->> DS : Track Order
+activate DS
+DS --> C : ACK
+deactivate DS
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class DeliveryNote {
+  #boolean name
+  +boolean address
+  +findScore()
+  +createDuration()
+}
+class Vehicle {
+  +double description
+  -float note
+  +Date total
+  -long status
+  +calculateQuantity()
+  +findDescription()
+  +createAmount()
+}
+interface Package {
+  +double score
+  #long note
+  +Date type
+  +createCode()
+}
+class Shipment {
+  -float price
+  +int level
+  -int name
+  -double description
+  -int code
+  +updateDescription()
+  +findCode()
+  +getAddress()
+}
+abstract class Depot {
+  -double level
+  +double active
+  +float description
+  +cancelAddress()
+  +processTotal()
+  +deleteQuantity()
+}
+class Manifest {
+  #boolean level
+  +int amount
+  +saveDescription()
+  +calculateId()
+}
+Vehicle ..> Depot : "1..*"
+Manifest --* Package
+Manifest --o Depot
+Shipment --* Package
+note right of DeliveryNote : Logistics domain
+@enduml

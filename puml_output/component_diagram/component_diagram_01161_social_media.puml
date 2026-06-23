@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Notification Service" as C_NotificationService
+component "Hashtag Service" as C_HashtagService
+component "Post Service" as C_PostService
+component "Comment Service" as C_CommentService
+database "Social Media DB" as DB_social_media
+C_HashtagService --> DB_social_media
+C_PostService --> DB_social_media
+C_CommentService --> DB_social_media
+C_CommentService ..> C_HashtagService : MQ
+C_HashtagService ..> C_CommentService : REST
+C_CommentService ..> C_NotificationService : MQ
+@enduml

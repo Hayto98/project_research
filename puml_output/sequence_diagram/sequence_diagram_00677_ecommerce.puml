@@ -1,0 +1,15 @@
+@startuml
+skinparam defaultFontSize 13
+control "Delivery Service" as DS
+boundary "Payment Gateway" as PG
+participant "Customer" as C
+boundary "Seller" as S
+PG --> C : Manage Inventory
+C ->> PG : Add To Cart
+note over PG : processing add to cart
+C ->> S : Cancel Order
+activate S
+S --> C : ACK
+deactivate S
+DS ->> PG : Track Order
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+start
+:Borrow Book;
+:Renew Loan;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Member;
+:Pay Fine;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Search Catalog;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Add New Book;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Return Book;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+stop
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+skinparam monochrome true
+class Amenity {
+  +String phone
+  -String code
+  +double email
+  #Date type
+  +cancelStatus()
+  +sendPrice()
+}
+class Service {
+  -long level
+  +String active
+  +validateCode()
+  +processDuration()
+  +saveName()
+  +getAddress()
+}
+class Payment {
+  #double active
+  +boolean email
+  +String total
+  -String description
+  #float quantity
+  +findAddress()
+  +calculateCreatedat()
+  +validateDescription()
+  +processNote()
+}
+class Booking {
+  -Date total
+  -double score
+  -Date price
+  +sendAddress()
+}
+class Housekeeping {
+  +Date updatedAt
+  -boolean status
+  +savePrice()
+}
+class Restaurant {
+  #Date active
+  -long address
+  +validateLevel()
+  +findDescription()
+  +createCode()
+  +updateScore()
+}
+Restaurant --|> Housekeeping
+Booking --o Housekeeping
+Payment --> Restaurant : "0..1"
+note right of Amenity : Hotel domain
+@enduml

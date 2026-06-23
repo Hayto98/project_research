@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+left to right direction
+actor "Student" as Student
+actor "Registrar" as Registrar
+rectangle "Education System" {
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Issue Certificate" as UC_IssueCertificate
+  usecase "Register Student" as UC_RegisterStudent
+}
+Student --> UC_GradeExam
+Registrar --> UC_IssueCertificate
+Registrar --> UC_RegisterStudent
+Registrar --> UC_GradeExam
+UC_IssueCertificate ..|> UC_RegisterStudent : <<include>>
+@enduml

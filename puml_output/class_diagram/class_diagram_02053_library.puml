@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+class Shelf {
+  -String code
+  #double duration
+  +validateStatus()
+  +cancelPhone()
+}
+interface Reservation {
+  -double code
+  +long level
+  -Date duration
+  #long description
+  +int phone
+  +savePhone()
+}
+class Publisher {
+  +double quantity
+  #boolean code
+  -double name
+  #float createdAt
+  #long type
+  +saveId()
+  +setQuantity()
+  +saveStatus()
+  +sendAmount()
+}
+interface Librarian {
+  #String updatedAt
+  -Date createdAt
+  -boolean email
+  +Date total
+  +validateTotal()
+  +deletePrice()
+  +sendQuantity()
+}
+abstract class Renewal {
+  +String status
+  +Date code
+  -boolean total
+  +calculateType()
+}
+class Loan {
+  -boolean email
+  #int createdAt
+  +findId()
+  +sendStatus()
+  +updateNote()
+}
+class Branch {
+  -long address
+  #String total
+  +validateDescription()
+  +deleteName()
+}
+Reservation ..> Renewal : "*"
+Branch ..> Reservation : "1"
+Branch --> Renewal : "*"
+Reservation --|> Publisher
+Librarian --o Branch
+note right of Shelf : Library domain
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+participant "ATM" as A
+control "Branch Manager" as BM
+control "Account Holder" as AH
+AH --> BM : Apply For Loan
+activate BM
+BM --> AH : ACK
+deactivate BM
+AH ->> BM : Transfer Funds
+activate BM
+BM --> AH : ACK
+deactivate BM
+A ->> BM : Open Account
+activate BM
+BM --> A : ACK
+deactivate BM
+note over BM : processing open account
+AH -> BM : Pay Bill
+note over BM : processing pay bill
+A -> AH : Withdraw Cash
+activate AH
+AH --> A : ACK
+deactivate AH
+A -> AH : Deposit Money
+note over AH : processing deposit money
+A -> AH : Block Card
+@enduml

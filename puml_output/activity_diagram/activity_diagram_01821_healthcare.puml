@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+start
+:Discharge Patient;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Admit Patient;
+:Examine Patient;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Process Insurance Claim;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Book Appointment;
+:Issue Prescription;
+:Run Lab Test;
+stop
+@enduml

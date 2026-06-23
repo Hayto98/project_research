@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+left to right direction
+actor "Fleet Manager" as FleetManager
+actor "Customer" as Customer
+actor "Dispatcher" as Dispatcher
+rectangle "Logistics System" {
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Schedule Pickup" as UC_SchedulePickup
+}
+FleetManager --> UC_UpdateInventory
+Customer --> UC_AssignRoute
+Customer --> UC_ReportIssue
+Dispatcher --> UC_AssignRoute
+Dispatcher --> UC_UpdateInventory
+@enduml

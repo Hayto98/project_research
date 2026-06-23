@@ -1,0 +1,18 @@
+@startuml
+
+component "Doctor Service" as C_DoctorService
+component "Patient Service" as C_PatientService
+component "Prescription Service" as C_PrescriptionService
+component "Appointment Service" as C_AppointmentService
+component "Treatment Service" as C_TreatmentService
+component "Hospital Service" as C_HospitalService
+component "Nurse Service" as C_NurseService
+database "Healthcare DB" as DB_healthcare
+C_DoctorService --> DB_healthcare
+C_TreatmentService --> DB_healthcare
+C_AppointmentService ..> C_DoctorService : gRPC
+C_DoctorService ..> C_HospitalService : gRPC
+C_PatientService ..> C_AppointmentService : REST
+C_DoctorService ..> C_PatientService : HTTP
+C_PrescriptionService ..> C_TreatmentService : gRPC
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Invoice Service" as C_InvoiceService
+component "Restaurant Service" as C_RestaurantService
+component "Payment Service" as C_PaymentService
+component "CheckOut Service" as C_CheckOutService
+database "Hotel DB" as DB_hotel
+C_RestaurantService --> DB_hotel
+C_PaymentService --> DB_hotel
+C_PaymentService ..> C_InvoiceService : gRPC
+C_CheckOutService ..> C_InvoiceService : MQ
+C_CheckOutService ..> C_RestaurantService : HTTP
+@enduml

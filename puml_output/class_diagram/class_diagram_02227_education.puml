@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+class Department {
+  -boolean status
+  +int total
+  +int type
+  +long name
+  +updateUpdatedat()
+}
+interface Course {
+  +boolean active
+  -float createdAt
+  -boolean description
+  -double note
+  -Date email
+  +sendNote()
+  +setLevel()
+}
+abstract class Assignment {
+  +boolean amount
+  #long address
+  +float description
+  -long createdAt
+  -long duration
+  +sendPhone()
+  +calculateName()
+  +createAddress()
+  +getType()
+}
+abstract class Library {
+  #Date updatedAt
+  #int status
+  +int price
+  +updateTotal()
+}
+abstract class Classroom {
+  +Date description
+  #String email
+  #float code
+  #float phone
+  +saveUpdatedat()
+  +processAmount()
+  +calculateScore()
+  +deleteType()
+}
+interface Schedule {
+  #float duration
+  #boolean total
+  #String price
+  +boolean score
+  -double name
+  +sendTotal()
+  +saveName()
+  +sendPrice()
+}
+Schedule ..|> Classroom
+Assignment ..> Library : "1..*"
+Classroom --> Assignment : "*"
+Schedule --o Assignment
+Course --o Schedule
+note right of Department : Education domain
+@enduml

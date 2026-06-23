@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+[*] --> Archived
+Archived --> OnHold : cancel
+OnHold --> Delivered : update
+OnHold : entry / log shelf
+Delivered --> Completed : review
+Delivered : entry / log shelf
+Completed --> Approved : approve
+Approved --> Reviewed : review
+Approved : entry / log shelf
+Completed --> Reviewed : revert
+Reviewed --> [*]
+@enduml

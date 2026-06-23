@@ -1,0 +1,62 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+class Payment {
+  +double email
+  +double address
+  +boolean active
+  +float quantity
+  -String createdAt
+  +sendLevel()
+  +findStatus()
+  +calculatePrice()
+  +calculatePrice()
+}
+class Customer {
+  -boolean description
+  #float amount
+  #Date status
+  -String note
+  +validateLevel()
+  +saveName()
+  +cancelDescription()
+}
+interface Coupon {
+  #double description
+  #float price
+  +getScore()
+  +findAmount()
+  +calculateEmail()
+  +calculateType()
+}
+abstract class Supplier {
+  +boolean quantity
+  +String id
+  #Date level
+  +Date note
+  +sendName()
+  +updateEmail()
+  +cancelLevel()
+}
+abstract class Review {
+  #int status
+  -float duration
+  -float createdAt
+  +long name
+  -double amount
+  +deleteQuantity()
+  +sendEmail()
+}
+interface Return {
+  -int updatedAt
+  +double note
+  -boolean code
+  -boolean active
+  #double total
+  +calculateEmail()
+}
+Review --|> Return
+Review ..> Payment : "*"
+Payment --|> Review
+note right of Payment : Ecommerce domain
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+interface Librarian {
+  #boolean active
+  +Date type
+  +boolean phone
+  +validateEmail()
+  +setAmount()
+}
+class Loan {
+  +long description
+  #long address
+  -long email
+  +saveTotal()
+  +processCode()
+  +findScore()
+}
+class Shelf {
+  #Date note
+  #double level
+  -double total
+  +processAmount()
+}
+class Catalog {
+  #String quantity
+  -int level
+  +deleteActive()
+}
+class Branch {
+  #Date price
+  -float note
+  -boolean type
+  +findName()
+}
+class Author {
+  +double code
+  -boolean address
+  +double price
+  +boolean id
+  +int email
+  +calculateCreatedat()
+  +processEmail()
+  +cancelLevel()
+}
+interface Publisher {
+  #int type
+  -String description
+  +createScore()
+  +saveAmount()
+  +cancelCode()
+}
+Publisher --o Catalog
+Author ..|> Catalog
+Catalog --o Shelf
+Shelf --o Librarian
+note right of Librarian : Library domain
+@enduml

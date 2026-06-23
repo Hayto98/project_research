@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Tracking Service" as C_TrackingService
+component "FuelLog Service" as C_FuelLogService
+component "Package Service" as C_PackageService
+component "Driver Service" as C_DriverService
+database "Logistics DB" as DB_logistics
+C_TrackingService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_PackageService --> DB_logistics
+C_FuelLogService ..> C_TrackingService : gRPC
+C_PackageService ..> C_DriverService : HTTP
+C_TrackingService ..> C_FuelLogService : HTTP
+@enduml

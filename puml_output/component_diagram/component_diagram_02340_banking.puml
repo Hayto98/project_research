@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+component "Withdrawal Service" as C_WithdrawalService
+component "Branch Service" as C_BranchService
+component "Transfer Service" as C_TransferService
+component "Customer Service" as C_CustomerService
+component "Transaction Service" as C_TransactionService
+database "Banking DB" as DB_banking
+C_WithdrawalService --> DB_banking
+C_BranchService --> DB_banking
+C_CustomerService --> DB_banking
+C_TransactionService --> DB_banking
+C_BranchService ..> C_WithdrawalService : HTTP
+C_TransactionService ..> C_WithdrawalService : HTTP
+C_BranchService ..> C_CustomerService : MQ
+@enduml

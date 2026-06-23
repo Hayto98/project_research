@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+abstract class Book {
+  -String email
+  +boolean amount
+  #boolean phone
+  +findDuration()
+  +findTotal()
+  +cancelUpdatedat()
+}
+interface Renewal {
+  #double note
+  #long amount
+  +Date createdAt
+  #String code
+  +validateCreatedat()
+}
+abstract class Catalog {
+  #long createdAt
+  #Date updatedAt
+  -double quantity
+  +int id
+  -Date phone
+  +calculatePhone()
+  +findPrice()
+  +saveTotal()
+  +calculateQuantity()
+}
+class Publisher {
+  +long quantity
+  -boolean updatedAt
+  +Date phone
+  +updateQuantity()
+  +sendEmail()
+}
+class Loan {
+  +double email
+  -Date address
+  -String note
+  +double name
+  -double createdAt
+  +cancelScore()
+  +findAddress()
+  +deleteStatus()
+  +setUpdatedat()
+}
+abstract class Shelf {
+  #String total
+  +String status
+  #int phone
+  +findPrice()
+  +getCode()
+}
+interface Member {
+  #double status
+  #double duration
+  -String price
+  #Date name
+  +getUpdatedat()
+  +processEmail()
+  +deleteStatus()
+}
+Member ..> Loan : "1..*"
+Book --|> Member
+Loan ..> Shelf : "1..*"
+note right of Book : Library domain
+@enduml

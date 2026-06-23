@@ -1,0 +1,34 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Guest {
+  +double email
+  +int description
+  +double code
+  +setPrice()
+  +findActive()
+}
+class Payment {
+  -float score
+  +float name
+  -float code
+  -float duration
+  +createDuration()
+}
+class CheckOut {
+  #String price
+  #int note
+  +setLevel()
+  +calculateScore()
+}
+interface CheckIn {
+  #Date name
+  -float status
+  +sendNote()
+}
+CheckOut --* CheckIn
+Guest --|> Payment
+CheckOut --o Guest
+note right of Guest : Hotel domain
+@enduml

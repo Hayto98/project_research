@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+component "Album Service" as C_AlbumService
+component "Report Service" as C_ReportService
+component "User Service" as C_UserService
+component "Profile Service" as C_ProfileService
+component "Notification Service" as C_NotificationService
+component "Message Service" as C_MessageService
+component "Story Service" as C_StoryService
+database "Social Media DB" as DB_social_media
+C_AlbumService --> DB_social_media
+C_ReportService --> DB_social_media
+C_UserService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_UserService ..> C_ProfileService : HTTP
+C_NotificationService ..> C_ReportService : MQ
+C_UserService ..> C_StoryService : HTTP
+C_MessageService ..> C_ReportService : REST
+@enduml

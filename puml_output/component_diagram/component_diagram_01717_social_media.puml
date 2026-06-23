@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+component "Notification Service" as C_NotificationService
+component "Group Service" as C_GroupService
+component "User Service" as C_UserService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_GroupService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_GroupService ..> C_UserService : MQ
+C_NotificationService ..> C_GroupService : MQ
+C_UserService ..> C_GroupService : MQ
+@enduml

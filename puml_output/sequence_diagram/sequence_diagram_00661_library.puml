@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+participant "Librarian" as L
+actor "Member" as M
+actor "Admin" as A
+L ->> A : Search Catalog
+activate A
+A --> L : ACK
+deactivate A
+A ->> M : Pay Fine
+note over M : processing pay fine
+M ->> A : Return Book
+L -> M : Renew Loan
+L -> A : Reserve Book
+activate A
+A --> L : ACK
+deactivate A
+M -> A : Register Member
+L -> M : Borrow Book
+@enduml

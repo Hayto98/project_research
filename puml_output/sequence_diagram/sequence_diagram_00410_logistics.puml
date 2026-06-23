@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+control "Driver" as D
+entity "Dispatcher" as D2
+actor "Fleet Manager" as FM
+actor "Customer" as C
+FM ->> D : Fuel Vehicle
+D2 -> FM : Schedule Pickup
+note over FM : processing schedule pickup
+C -> D : Track Shipment
+activate D
+D --> C : ACK
+deactivate D
+FM -> C : Deliver Package
+D ->> C : Load Package
+@enduml

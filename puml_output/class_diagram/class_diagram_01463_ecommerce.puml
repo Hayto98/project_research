@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+interface Coupon {
+  #float type
+  +String address
+  +double id
+  #float name
+  #boolean description
+  +updateNote()
+  +updateActive()
+}
+abstract class Payment {
+  #boolean amount
+  #int createdAt
+  +String price
+  +processCode()
+}
+interface Invoice {
+  -float total
+  #int code
+  +float email
+  +long updatedAt
+  +deleteEmail()
+}
+class Order {
+  +Date phone
+  #String total
+  #float id
+  +calculatePhone()
+  +deleteCode()
+  +setEmail()
+  +cancelActive()
+}
+interface Return {
+  -Date note
+  #double quantity
+  -long status
+  +float address
+  +updateType()
+  +getEmail()
+}
+class Wishlist {
+  #long name
+  #double createdAt
+  +int total
+  +String score
+  +calculateCode()
+  +setPhone()
+  +saveCode()
+}
+Invoice ..> Coupon : "1"
+Payment --> Order : "0..1"
+note right of Coupon : Ecommerce domain
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+entity "Receptionist" as R
+control "Nurse" as N
+entity "Lab Technician" as LT
+entity "Doctor" as D
+boundary "Patient" as P
+LT --> P : Discharge Patient
+note over P : processing discharge patient
+R -> N : Admit Patient
+activate N
+N --> R : ACK
+deactivate N
+LT -> P : Update Medical Record
+activate P
+P --> LT : ACK
+deactivate P
+LT ->> D : Process Insurance Claim
+note over D : processing process insurance claim
+P -> LT : Issue Prescription
+@enduml

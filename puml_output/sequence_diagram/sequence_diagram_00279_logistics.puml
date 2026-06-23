@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+boundary "Fleet Manager" as FM
+boundary "Dispatcher" as D
+actor "Driver" as D2
+D2 --> D : Assign Route
+activate D
+D --> D2 : ACK
+deactivate D
+D2 -> FM : Report Issue
+activate FM
+FM --> D2 : ACK
+deactivate FM
+D2 -> D : Schedule Pickup
+D2 --> FM : Update Inventory
+activate FM
+FM --> D2 : ACK
+deactivate FM
+note over FM : processing update inventory
+@enduml

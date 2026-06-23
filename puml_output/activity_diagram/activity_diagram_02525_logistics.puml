@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+start
+:Schedule Pickup;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Inventory;
+:Track Shipment;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Load Package;
+:Assign Route;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Report Issue;
+:Deliver Package;
+stop
+@enduml

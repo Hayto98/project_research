@@ -1,0 +1,68 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class FuelLog {
+  #float updatedAt
+  -Date email
+  +Date active
+  +processNote()
+}
+class Tracking {
+  +Date price
+  #Date score
+  +float quantity
+  #String duration
+  +saveId()
+}
+class Inventory {
+  +long name
+  #int status
+  #float id
+  #boolean amount
+  #long level
+  +updateTotal()
+  +getTotal()
+}
+class Warehouse {
+  #float note
+  #int phone
+  #Date updatedAt
+  #boolean total
+  -Date address
+  +sendId()
+  +sendDuration()
+  +saveScore()
+  +getEmail()
+}
+interface Package {
+  -long active
+  #float phone
+  -float total
+  #int type
+  +boolean address
+  +deleteAmount()
+  +getTotal()
+  +deletePrice()
+}
+interface Route {
+  #String name
+  #double address
+  -int total
+  +long createdAt
+  +deleteQuantity()
+  +processName()
+}
+interface Driver {
+  -long total
+  +Date status
+  +int id
+  +findId()
+  +getPhone()
+  +sendLevel()
+  +deleteLevel()
+}
+Driver --> Package : "0..1"
+Package --|> Tracking
+note right of FuelLog : Logistics domain
+@enduml

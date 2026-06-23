@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+start
+:Check In;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Request Service;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Clean Room;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Cancel Reservation;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Process Payment;
+:Check Out;
+stop
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+boundary "Receptionist" as R
+actor "Patient" as P
+actor "Nurse" as N
+P -> R : Discharge Patient
+N -> R : Issue Prescription
+note over R : processing issue prescription
+P -> N : Run Lab Test
+N --> R : Book Appointment
+activate R
+R --> N : ACK
+deactivate R
+@enduml

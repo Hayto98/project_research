@@ -1,0 +1,58 @@
+@startuml
+skinparam monochrome true
+class DeliveryNote {
+  #float status
+  #int active
+  +Date address
+  +saveEmail()
+  +cancelType()
+  +createNote()
+  +findId()
+}
+class Inventory {
+  -boolean quantity
+  #long active
+  -double code
+  -Date amount
+  #double updatedAt
+  +setTotal()
+  +processId()
+  +updateCode()
+  +saveId()
+}
+class Depot {
+  +float code
+  -int status
+  -int address
+  -float type
+  +findId()
+  +validateAmount()
+  +updateType()
+  +createStatus()
+}
+abstract class Route {
+  -long note
+  -Date score
+  +String phone
+  -long email
+  +calculateType()
+  +getStatus()
+  +deleteAmount()
+  +getCode()
+}
+abstract class Vehicle {
+  +float level
+  #double price
+  #boolean name
+  #Date duration
+  -String email
+  +saveQuantity()
+  +calculateNote()
+  +findStatus()
+}
+Vehicle --> Route : "*"
+Vehicle ..> DeliveryNote : "*"
+DeliveryNote ..> Inventory : "*"
+Route ..|> Inventory
+note right of DeliveryNote : Logistics domain
+@enduml

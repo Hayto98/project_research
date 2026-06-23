@@ -1,0 +1,44 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Transaction {
+  -double createdAt
+  -String id
+  -boolean level
+  -double code
+  +int type
+  +sendAddress()
+  +calculateEmail()
+  +findCode()
+}
+interface Withdrawal {
+  +float duration
+  +float email
+  +findActive()
+  +setDuration()
+  +processDuration()
+}
+class Card {
+  -String code
+  -float duration
+  +getId()
+  +getLevel()
+  +setId()
+  +validateDuration()
+}
+interface Loan {
+  -int updatedAt
+  +long name
+  -float price
+  #double description
+  #int level
+  +updateStatus()
+  +validateAddress()
+}
+Withdrawal --o Transaction
+Card --|> Loan
+Loan --> Card : "0..1"
+note right of Transaction : Banking domain
+@enduml

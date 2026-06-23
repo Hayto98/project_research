@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+participant "Fleet Manager" as FM
+boundary "Warehouse Staff" as WS
+actor "Dispatcher" as D
+WS -> D : Schedule Pickup
+D ->> WS : Fuel Vehicle
+activate WS
+WS --> D : ACK
+deactivate WS
+WS --> D : Deliver Package
+activate D
+D --> WS : ACK
+deactivate D
+note over D : processing deliver package
+D -> FM : Assign Route
+note over FM : processing assign route
+D ->> WS : Load Package
+activate WS
+WS --> D : ACK
+deactivate WS
+WS ->> FM : Report Issue
+D --> WS : Track Shipment
+activate WS
+WS --> D : ACK
+deactivate WS
+@enduml

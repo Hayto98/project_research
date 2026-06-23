@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Supplier {
+  +int total
+  -String updatedAt
+  -Date level
+  #boolean name
+  +deleteTotal()
+  +getDuration()
+  +deleteLevel()
+}
+abstract class Customer {
+  +long type
+  #boolean id
+  -float duration
+  +updateType()
+}
+abstract class Return {
+  +String level
+  #double code
+  -float updatedAt
+  +cancelId()
+}
+class Payment {
+  #boolean address
+  -boolean id
+  +String status
+  +findDescription()
+  +deleteQuantity()
+}
+interface Order {
+  -boolean level
+  #long name
+  +long address
+  +Date quantity
+  +double status
+  +getAddress()
+  +findUpdatedat()
+  +updateCreatedat()
+  +getLevel()
+}
+class Wishlist {
+  #boolean amount
+  +float duration
+  #int note
+  #float status
+  #double updatedAt
+  +sendLevel()
+}
+Payment --o Wishlist
+Order --|> Return
+Order --> Payment : "1..*"
+Wishlist --|> Supplier
+Supplier --> Wishlist : "1"
+note right of Supplier : Ecommerce domain
+@enduml

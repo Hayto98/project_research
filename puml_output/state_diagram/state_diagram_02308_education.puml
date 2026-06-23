@@ -1,0 +1,11 @@
+@startuml
+skinparam shadowing true
+[*] --> Processing
+Processing --> OnHold : reject
+OnHold --> Cancelled : confirm
+Cancelled --> Pending : cancel
+Cancelled : entry / log course
+Pending --> Draft : cancel
+Draft --> Reviewed : approve
+Reviewed --> [*]
+@enduml

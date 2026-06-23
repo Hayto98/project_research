@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing true
+actor "Branch Manager" as BM
+control "Auditor" as A
+entity "Bank Teller" as BT
+boundary "Account Holder" as AH
+AH -> BT : Apply For Loan
+activate BT
+BT --> AH : ACK
+deactivate BT
+A -> AH : Withdraw Cash
+activate AH
+AH --> A : ACK
+deactivate AH
+AH ->> A : Deposit Money
+activate A
+A --> AH : ACK
+deactivate A
+BM --> AH : Block Card
+@enduml

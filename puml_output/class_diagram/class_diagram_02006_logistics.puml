@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+class Route {
+  -int description
+  +boolean note
+  #int updatedAt
+  +processNote()
+}
+abstract class DeliveryNote {
+  #Date name
+  -float id
+  +deleteType()
+  +saveCode()
+  +processUpdatedat()
+  +calculateDuration()
+}
+class Inventory {
+  #String type
+  +int level
+  #float email
+  +Date code
+  +validateNote()
+}
+class Depot {
+  #double phone
+  +float name
+  +Date total
+  +float amount
+  #float code
+  +createCode()
+  +validateActive()
+  +updateEmail()
+}
+class FuelLog {
+  +String description
+  +float level
+  +String quantity
+  -long address
+  +setLevel()
+  +saveAddress()
+  +cancelCreatedat()
+  +validatePrice()
+}
+abstract class Shipment {
+  #double email
+  -int type
+  #int status
+  -String createdAt
+  +saveCreatedat()
+  +validateNote()
+}
+Shipment --o Inventory
+Depot --o Inventory
+FuelLog ..> Route : "*"
+Depot ..|> FuelLog
+note right of Route : Logistics domain
+@enduml

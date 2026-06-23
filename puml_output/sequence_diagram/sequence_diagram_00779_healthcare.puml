@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+boundary "Receptionist" as R
+participant "Patient" as P
+actor "Insurance Provider" as IP
+actor "Lab Technician" as LT
+R --> P : Issue Prescription
+activate P
+P --> R : ACK
+deactivate P
+P -> R : Run Lab Test
+activate R
+R --> P : ACK
+deactivate R
+note over R : processing run lab test
+P ->> R : Discharge Patient
+activate R
+R --> P : ACK
+deactivate R
+IP ->> R : Update Medical Record
+IP ->> LT : Process Insurance Claim
+activate LT
+LT --> IP : ACK
+deactivate LT
+@enduml

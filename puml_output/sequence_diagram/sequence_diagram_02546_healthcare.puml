@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+entity "Receptionist" as R
+actor "Lab Technician" as LT
+control "Doctor" as D
+R ->> LT : Update Medical Record
+note over LT : processing update medical record
+R -> D : Discharge Patient
+note over D : processing discharge patient
+LT --> D : Process Insurance Claim
+R ->> D : Examine Patient
+D ->> LT : Run Lab Test
+activate LT
+LT --> D : ACK
+deactivate LT
+R --> LT : Issue Prescription
+activate LT
+LT --> R : ACK
+deactivate LT
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+abstract class Reservation {
+  -long updatedAt
+  -float active
+  -double status
+  -String code
+  +createQuantity()
+  +calculateName()
+}
+interface Room {
+  -boolean name
+  +float score
+  -boolean duration
+  -float total
+  #boolean description
+  +validateNote()
+  +validateId()
+}
+class Housekeeping {
+  -float address
+  -Date level
+  #long price
+  +cancelId()
+  +setAmount()
+}
+abstract class Amenity {
+  -double updatedAt
+  +long price
+  +long name
+  -Date duration
+  #float phone
+  +createType()
+  +sendAmount()
+  +processStatus()
+  +updateAmount()
+}
+class CheckIn {
+  +String quantity
+  #float description
+  #Date id
+  -long name
+  #long amount
+  +sendQuantity()
+  +calculateEmail()
+  +sendPhone()
+}
+CheckIn ..|> Reservation
+Housekeeping ..|> CheckIn
+Reservation --|> Amenity
+note right of Reservation : Hotel domain
+@enduml

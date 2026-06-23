@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+left to right direction
+actor "Payment Gateway" as PaymentGateway
+actor "Delivery Service" as DeliveryService
+actor "Customer" as Customer
+actor "Seller" as Seller
+rectangle "Ecommerce System" {
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Checkout" as UC_Checkout
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Write Review" as UC_WriteReview
+}
+PaymentGateway --> UC_WriteReview
+PaymentGateway --> UC_ApplyCoupon
+DeliveryService --> UC_Checkout
+DeliveryService --> UC_AddToCart
+DeliveryService --> UC_ApplyCoupon
+Customer --> UC_AddToCart
+Customer --> UC_BrowseProducts
+Customer --> UC_Checkout
+Seller --> UC_AddToCart
+Seller --> UC_ManageInventory
+UC_ApplyCoupon ..|> UC_MakePayment : <<include>>
+@enduml

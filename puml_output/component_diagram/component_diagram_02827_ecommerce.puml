@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Review Service" as C_ReviewService
+component "Product Service" as C_ProductService
+component "Coupon Service" as C_CouponService
+component "Wishlist Service" as C_WishlistService
+component "Payment Service" as C_PaymentService
+component "Customer Service" as C_CustomerService
+component "Invoice Service" as C_InvoiceService
+database "Ecommerce DB" as DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_ProductService ..> C_InvoiceService : HTTP
+C_CustomerService ..> C_WishlistService : HTTP
+C_ProductService ..> C_CustomerService : HTTP
+C_CouponService ..> C_InvoiceService : gRPC
+C_InvoiceService ..> C_ReviewService : MQ
+C_ReviewService ..> C_PaymentService : REST
+@enduml

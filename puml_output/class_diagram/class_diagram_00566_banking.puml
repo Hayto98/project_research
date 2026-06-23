@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class Branch {
+  -float description
+  -String score
+  -boolean quantity
+  +saveAddress()
+  +sendActive()
+}
+class Account {
+  -String name
+  -int type
+  +getStatus()
+  +sendNote()
+  +deleteEmail()
+}
+abstract class Beneficiary {
+  -long updatedAt
+  -float note
+  +int createdAt
+  -float description
+  +processPhone()
+}
+abstract class Withdrawal {
+  -int name
+  #float level
+  +processScore()
+  +calculateStatus()
+  +deleteNote()
+  +validateScore()
+}
+class Loan {
+  -boolean phone
+  -String updatedAt
+  +calculateEmail()
+}
+Account --o Beneficiary
+Loan --o Withdrawal
+Branch ..|> Withdrawal
+Withdrawal ..> Loan : "0..1"
+note right of Branch : Banking domain
+@enduml

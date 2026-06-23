@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+[*] --> Cancelled
+Cancelled --> Processing : update
+Cancelled : entry / log loan
+Processing --> OnHold : review
+Processing : entry / log loan
+OnHold --> Delivered : review
+Delivered --> Approved : update
+Delivered : entry / log loan
+Cancelled --> OnHold : revert
+Approved --> [*]
+@enduml

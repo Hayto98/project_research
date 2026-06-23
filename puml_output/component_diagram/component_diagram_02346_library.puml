@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Author Service" as C_AuthorService
+component "Renewal Service" as C_RenewalService
+component "Fine Service" as C_FineService
+component "Catalog Service" as C_CatalogService
+database "Library DB" as DB_library
+C_RenewalService --> DB_library
+C_CatalogService --> DB_library
+C_CatalogService ..> C_RenewalService : HTTP
+C_RenewalService ..> C_AuthorService : MQ
+@enduml

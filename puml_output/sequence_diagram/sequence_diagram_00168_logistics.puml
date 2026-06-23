@@ -1,0 +1,33 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+participant "Dispatcher" as D
+control "Fleet Manager" as FM
+control "Customer" as C
+entity "Warehouse Staff" as WS
+entity "Driver" as D2
+WS ->> C : Deliver Package
+activate C
+C --> WS : ACK
+deactivate C
+D -> FM : Schedule Pickup
+D2 -> D : Assign Route
+activate D
+D --> D2 : ACK
+deactivate D
+FM -> D2 : Report Issue
+activate D2
+D2 --> FM : ACK
+deactivate D2
+WS ->> FM : Fuel Vehicle
+activate FM
+FM --> WS : ACK
+deactivate FM
+D2 ->> D : Track Shipment
+C -> FM : Load Package
+activate FM
+FM --> C : ACK
+deactivate FM
+@enduml

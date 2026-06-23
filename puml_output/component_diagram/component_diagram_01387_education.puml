@@ -1,0 +1,21 @@
+@startuml
+skinparam ArrowColor #555555
+component "Library Service" as C_LibraryService
+component "Department Service" as C_DepartmentService
+component "Exam Service" as C_ExamService
+component "Grade Service" as C_GradeService
+component "Schedule Service" as C_ScheduleService
+component "Book Service" as C_BookService
+component "Teacher Service" as C_TeacherService
+database "Education DB" as DB_education
+C_LibraryService --> DB_education
+C_DepartmentService --> DB_education
+C_ExamService --> DB_education
+C_GradeService --> DB_education
+C_ScheduleService --> DB_education
+C_BookService --> DB_education
+C_LibraryService ..> C_ScheduleService : MQ
+C_ExamService ..> C_BookService : MQ
+C_TeacherService ..> C_ScheduleService : REST
+C_TeacherService ..> C_DepartmentService : HTTP
+@enduml

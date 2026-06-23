@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+[*] --> Shipped
+Shipped --> Pending : cancel
+Shipped : entry / log hashtag
+Pending --> Completed : review
+Completed --> Approved : confirm
+Completed : entry / log hashtag
+Approved --> Created : cancel
+Created --> OnHold : review
+Pending --> OnHold : revert
+OnHold --> [*]
+@enduml

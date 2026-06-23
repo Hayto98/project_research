@@ -1,0 +1,25 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+entity "Librarian" as L
+actor "Teacher" as T
+control "Student" as S
+T --> L : Grade Exam
+L -> S : Submit Assignment
+note over S : processing submit assignment
+S -> T : Borrow Book
+activate T
+T --> S : ACK
+deactivate T
+L -> T : Register Student
+activate T
+T --> L : ACK
+deactivate T
+note over T : processing register student
+S --> L : View Schedule
+activate L
+L --> S : ACK
+deactivate L
+L -> S : Issue Certificate
+@enduml

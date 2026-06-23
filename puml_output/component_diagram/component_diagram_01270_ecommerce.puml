@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+component "Warehouse Service" as C_WarehouseService
+component "Coupon Service" as C_CouponService
+component "Supplier Service" as C_SupplierService
+component "Product Service" as C_ProductService
+database "Ecommerce DB" as DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_CouponService ..> C_ProductService : HTTP
+C_SupplierService ..> C_WarehouseService : MQ
+C_CouponService ..> C_SupplierService : MQ
+@enduml

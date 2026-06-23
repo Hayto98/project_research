@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+participant "Customer" as C
+control "Fleet Manager" as FM
+boundary "Dispatcher" as D
+FM -> D : Track Shipment
+activate D
+D --> FM : ACK
+deactivate D
+C -> D : Update Inventory
+activate D
+D --> C : ACK
+deactivate D
+D ->> C : Deliver Package
+FM ->> C : Report Issue
+@enduml

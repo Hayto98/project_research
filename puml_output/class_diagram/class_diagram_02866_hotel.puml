@@ -1,0 +1,35 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class Room {
+  +String code
+  +boolean description
+  #long score
+  #long duration
+  +validateScore()
+  +saveEmail()
+  +calculateStatus()
+}
+abstract class Amenity {
+  #boolean email
+  +long level
+  +boolean code
+  +Date price
+  +saveDescription()
+}
+class Housekeeping {
+  +String amount
+  -boolean phone
+  +createPrice()
+  +createScore()
+}
+class Payment {
+  -float duration
+  +Date status
+  +setCreatedat()
+}
+Payment ..> Amenity : "1..*"
+Housekeeping --* Amenity
+note right of Room : Hotel domain
+@enduml

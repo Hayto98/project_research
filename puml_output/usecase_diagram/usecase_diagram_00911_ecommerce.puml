@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+left to right direction
+actor "Seller" as Seller
+actor "Delivery Service" as DeliveryService
+actor "Admin" as Admin
+rectangle "Ecommerce System" {
+  usecase "Checkout" as UC_Checkout
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Cancel Order" as UC_CancelOrder
+}
+Seller --> UC_Checkout
+Seller --> UC_ManageInventory
+Seller --> UC_BrowseProducts
+DeliveryService --> UC_ApplyCoupon
+DeliveryService --> UC_ManageInventory
+DeliveryService --> UC_AddToCart
+Admin --> UC_ManageInventory
+Admin --> UC_BrowseProducts
+UC_ApplyCoupon ..|> UC_ManageInventory : <<extend>>
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+actor "Doctor" as D
+actor "Insurance Provider" as IP
+control "Patient" as P
+boundary "Receptionist" as R
+IP --> D : Discharge Patient
+IP -> P : Book Appointment
+activate P
+P --> IP : ACK
+deactivate P
+note over P : processing book appointment
+IP -> R : Admit Patient
+IP --> R : Run Lab Test
+D --> P : Process Insurance Claim
+R ->> D : Issue Prescription
+P --> IP : Examine Patient
+@enduml

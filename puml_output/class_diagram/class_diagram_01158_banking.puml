@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Account {
+  #int name
+  -boolean updatedAt
+  +processCode()
+  +getDuration()
+  +validateScore()
+  +createPhone()
+}
+abstract class Transfer {
+  -boolean level
+  -Date type
+  +cancelType()
+  +getActive()
+  +setPhone()
+}
+abstract class Card {
+  +int code
+  +Date createdAt
+  +getActive()
+}
+class Statement {
+  #double active
+  +Date note
+  +createName()
+  +saveAmount()
+  +savePrice()
+  +sendUpdatedat()
+}
+interface Transaction {
+  #int address
+  +Date updatedAt
+  +getType()
+  +createAddress()
+}
+Card --o Statement
+Account ..> Statement : "1..*"
+Account --> Transaction : "1..*"
+Statement --o Transfer
+note right of Account : Banking domain
+@enduml

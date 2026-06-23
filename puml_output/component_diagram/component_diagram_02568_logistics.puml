@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+component "Customer Service" as C_CustomerService
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Depot Service" as C_DepotService
+component "Shipment Service" as C_ShipmentService
+database "Logistics DB" as DB_logistics
+C_DepotService ..> C_ShipmentService : HTTP
+C_DeliveryNoteService ..> C_DepotService : REST
+C_ShipmentService ..> C_DeliveryNoteService : MQ
+@enduml

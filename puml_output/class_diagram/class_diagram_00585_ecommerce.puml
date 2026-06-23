@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Return {
+  +int address
+  -boolean price
+  +double note
+  +createStatus()
+  +saveTotal()
+}
+abstract class Shipment {
+  #String email
+  +int quantity
+  #String id
+  +float total
+  +calculateEmail()
+  +findLevel()
+  +processCode()
+  +validateActive()
+}
+abstract class Supplier {
+  +float price
+  +boolean score
+  +validateDescription()
+  +saveTotal()
+  +updateStatus()
+}
+class Review {
+  +boolean name
+  +float price
+  +setName()
+  +validateLevel()
+  +deleteDescription()
+  +processPrice()
+}
+interface Wishlist {
+  #Date level
+  #String type
+  -double updatedAt
+  +updateAddress()
+  +deleteQuantity()
+  +findDuration()
+}
+class Coupon {
+  +String createdAt
+  #Date updatedAt
+  #double description
+  #int amount
+  #float score
+  +updateName()
+}
+class Order {
+  -String amount
+  #int note
+  #int phone
+  +deleteId()
+  +getType()
+  +saveName()
+}
+Return ..> Coupon : "0..1"
+Return --* Supplier
+Wishlist --o Coupon
+Wishlist ..|> Supplier
+Shipment --|> Coupon
+note right of Return : Ecommerce domain
+@enduml

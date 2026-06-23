@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Prescription Service" as C_PrescriptionService
+component "Patient Service" as C_PatientService
+component "Diagnosis Service" as C_DiagnosisService
+component "Ward Service" as C_WardService
+component "Insurance Service" as C_InsuranceService
+database "Healthcare DB" as DB_healthcare
+C_PrescriptionService --> DB_healthcare
+C_PatientService --> DB_healthcare
+C_InsuranceService --> DB_healthcare
+C_PatientService ..> C_WardService : MQ
+C_InsuranceService ..> C_DiagnosisService : MQ
+C_PatientService ..> C_PrescriptionService : HTTP
+@enduml

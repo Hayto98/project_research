@@ -1,0 +1,44 @@
+@startuml
+skinparam defaultFontSize 13
+abstract class Invoice {
+  #double active
+  +double total
+  -String createdAt
+  -double price
+  -long email
+  +processActive()
+  +cancelId()
+  +validatePrice()
+  +cancelActive()
+}
+abstract class Booking {
+  #Date amount
+  +double email
+  +sendId()
+  +processNote()
+  +updateQuantity()
+  +processNote()
+}
+interface CheckOut {
+  +double total
+  +double id
+  +int updatedAt
+  -Date amount
+  +processId()
+  +saveActive()
+}
+class CheckIn {
+  #float createdAt
+  #int total
+  +long updatedAt
+  #int active
+  -double code
+  +setNote()
+  +sendType()
+  +sendCode()
+  +validateDescription()
+}
+CheckIn --* Booking
+CheckOut --* CheckIn
+note right of Invoice : Hotel domain
+@enduml

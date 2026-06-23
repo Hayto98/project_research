@@ -1,0 +1,28 @@
+@startuml
+skinparam defaultFontSize 13
+start
+:Schedule Pickup;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Assign Route;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Load Package;
+:Report Issue;
+:Track Shipment;
+:Fuel Vehicle;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+stop
+@enduml

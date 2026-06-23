@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+class Invoice {
+  #long total
+  #long level
+  #double status
+  -long duration
+  +findAmount()
+  +createStatus()
+}
+class Wishlist {
+  #boolean description
+  -Date code
+  -long id
+  +validateType()
+  +getDuration()
+  +updateName()
+}
+class Category {
+  #boolean total
+  +int amount
+  -long note
+  +double createdAt
+  +updateType()
+  +cancelName()
+  +calculatePrice()
+  +findPhone()
+}
+abstract class Payment {
+  +float note
+  +float duration
+  -float updatedAt
+  +boolean quantity
+  +float phone
+  +sendLevel()
+}
+abstract class Review {
+  #Date name
+  +boolean email
+  -double score
+  +processCreatedat()
+  +processAddress()
+  +setAddress()
+}
+class Warehouse {
+  #boolean note
+  #boolean email
+  -Date active
+  -String amount
+  +boolean description
+  +findEmail()
+}
+Payment --* Review
+Wishlist --o Invoice
+Category --> Invoice : "1..*"
+Review ..|> Wishlist
+note right of Invoice : Ecommerce domain
+@enduml

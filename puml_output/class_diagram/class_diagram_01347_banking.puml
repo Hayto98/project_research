@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+abstract class Statement {
+  #long type
+  #long status
+  +Date phone
+  +validateStatus()
+  +calculateActive()
+}
+interface Account {
+  #String name
+  -int phone
+  -int id
+  #float amount
+  +setCreatedat()
+  +processType()
+  +getPhone()
+}
+abstract class Interest {
+  #String createdAt
+  -float phone
+  +int code
+  +sendType()
+}
+interface Customer {
+  #float email
+  -String code
+  #long status
+  #double name
+  +validateAmount()
+  +getId()
+}
+class Card {
+  -int name
+  +float note
+  +float code
+  +String id
+  -boolean phone
+  +createCode()
+  +sendTotal()
+  +sendStatus()
+  +updateDescription()
+}
+abstract class Teller {
+  +float name
+  +double code
+  +long type
+  -String score
+  +findNote()
+}
+class Transaction {
+  #long phone
+  +String total
+  +createCode()
+}
+Card ..> Interest : "1..*"
+Card --* Teller
+Transaction --> Statement : "0..1"
+note right of Statement : Banking domain
+@enduml

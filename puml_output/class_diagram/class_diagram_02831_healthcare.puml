@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+class Ward {
+  -long description
+  #Date level
+  #boolean createdAt
+  +String status
+  +processTotal()
+}
+interface Appointment {
+  +String address
+  #Date status
+  #long name
+  +saveName()
+  +setLevel()
+}
+class Doctor {
+  #double quantity
+  #boolean createdAt
+  +validateQuantity()
+}
+abstract class MedicalRecord {
+  #String phone
+  +Date score
+  -boolean type
+  #String updatedAt
+  #Date id
+  +createDescription()
+  +processScore()
+}
+class LabTest {
+  -float amount
+  -boolean email
+  -boolean price
+  +String type
+  +setAmount()
+}
+Ward --o Appointment
+LabTest ..|> Doctor
+MedicalRecord ..|> Doctor
+Appointment --|> Doctor
+note right of Ward : Healthcare domain
+@enduml

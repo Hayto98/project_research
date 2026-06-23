@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Insurance {
+  +float phone
+  -String updatedAt
+  #Date createdAt
+  +getActive()
+  +getDuration()
+  +validateLevel()
+  +cancelAddress()
+}
+abstract class Ward {
+  +int total
+  +Date level
+  +updateScore()
+}
+class Prescription {
+  +String code
+  #double email
+  -float total
+  #String address
+  +createPrice()
+  +findPrice()
+}
+interface Patient {
+  #long id
+  -Date status
+  +long email
+  +float active
+  -long type
+  +createPhone()
+  +getStatus()
+}
+Prescription --* Ward
+Ward ..> Prescription : "1"
+Patient --o Insurance
+note right of Insurance : Healthcare domain
+@enduml

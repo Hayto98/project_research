@@ -1,0 +1,29 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Enroll Course;
+:Submit Assignment;
+:Borrow Book;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Grade Exam;
+:View Schedule;
+:Register Student;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Take Attendance;
+:Issue Certificate;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+stop
+@enduml

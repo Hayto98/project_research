@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+control "Lab Technician" as LT
+boundary "Receptionist" as R
+participant "Nurse" as N
+actor "Insurance Provider" as IP
+control "Doctor" as D
+LT ->> D : Admit Patient
+note over D : processing admit patient
+LT ->> R : Run Lab Test
+note over R : processing run lab test
+IP -> R : Process Insurance Claim
+IP -> N : Update Medical Record
+activate N
+N --> IP : ACK
+deactivate N
+note over N : processing update medical record
+N --> D : Examine Patient
+note over D : processing examine patient
+@enduml

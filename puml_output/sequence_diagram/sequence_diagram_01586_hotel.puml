@@ -1,0 +1,34 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+control "Chef" as C
+participant "Receptionist" as R
+actor "Guest" as G
+control "Housekeeper" as H
+H -> G : Request Service
+activate G
+G --> H : ACK
+deactivate G
+R ->> H : Process Payment
+activate H
+H --> R : ACK
+deactivate H
+note over H : processing process payment
+G --> R : Check Out
+activate R
+R --> G : ACK
+deactivate R
+G --> H : Order Room Service
+activate H
+H --> G : ACK
+deactivate H
+H -> R : Cancel Reservation
+note over R : processing cancel reservation
+H ->> G : Clean Room
+activate G
+G --> H : ACK
+deactivate G
+note over G : processing clean room
+R -> H : Check In
+@enduml

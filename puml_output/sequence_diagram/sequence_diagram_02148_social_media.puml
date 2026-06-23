@@ -1,0 +1,28 @@
+@startuml
+skinparam defaultFontSize 11
+boundary "User" as U
+entity "Moderator" as M
+boundary "Advertiser" as A
+participant "Admin" as A2
+A ->> U : Send Message
+activate U
+U --> A : ACK
+deactivate U
+U -> A : Edit Profile
+activate A
+A --> U : ACK
+deactivate A
+A -> A2 : Share Post
+A2 ->> U : Create Post
+activate U
+U --> A2 : ACK
+deactivate U
+note over U : processing create post
+U --> M : Comment
+A -> A2 : Like Post
+activate A2
+A2 --> A : ACK
+deactivate A2
+U -> A2 : Report Content
+note over A2 : processing report content
+@enduml

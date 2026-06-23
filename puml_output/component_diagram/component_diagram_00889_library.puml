@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing true
+component "Reservation Service" as C_ReservationService
+component "Fine Service" as C_FineService
+component "Renewal Service" as C_RenewalService
+component "Catalog Service" as C_CatalogService
+component "Author Service" as C_AuthorService
+component "Member Service" as C_MemberService
+component "Shelf Service" as C_ShelfService
+database "Library DB" as DB_library
+C_ReservationService --> DB_library
+C_FineService --> DB_library
+C_RenewalService --> DB_library
+C_AuthorService --> DB_library
+C_MemberService --> DB_library
+C_ShelfService --> DB_library
+C_AuthorService ..> C_CatalogService : gRPC
+C_AuthorService ..> C_FineService : MQ
+@enduml

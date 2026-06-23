@@ -1,0 +1,30 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+start
+:Pay Bill;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Withdraw Cash;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Transfer Funds;
+:Apply For Loan;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Open Account;
+:Block Card;
+stop
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+control "Admin" as A
+participant "Moderator" as M
+boundary "Advertiser" as A2
+actor "User" as U
+U -> A : Comment
+A --> M : Share Post
+note over M : processing share post
+A2 ->> M : Report Content
+A --> U : Like Post
+M --> A2 : Send Message
+activate A2
+A2 --> M : ACK
+deactivate A2
+A --> M : Create Post
+activate M
+M --> A : ACK
+deactivate M
+note over M : processing create post
+A -> U : Follow User
+note over U : processing follow user
+@enduml

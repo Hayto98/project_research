@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+actor "Receptionist" as R
+control "Manager" as M
+control "Guest" as G
+R --> G : Order Room Service
+activate G
+G --> R : ACK
+deactivate G
+R -> G : Process Payment
+note over G : processing process payment
+G --> M : Check In
+R --> M : Clean Room
+G ->> R : Book Room
+R -> G : Request Service
+G ->> R : Cancel Reservation
+activate R
+R --> G : ACK
+deactivate R
+@enduml

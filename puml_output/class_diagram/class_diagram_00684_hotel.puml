@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+abstract class Service {
+  -double amount
+  -int name
+  -double price
+  #double total
+  #double duration
+  +cancelCreatedat()
+  +processScore()
+  +setId()
+  +validateScore()
+}
+class Payment {
+  +double email
+  #float level
+  +sendTotal()
+  +updateType()
+  +sendId()
+  +createPhone()
+}
+class Room {
+  -double code
+  #double note
+  +setStatus()
+  +calculateStatus()
+  +cancelAmount()
+}
+class CheckIn {
+  +float total
+  #float address
+  +float type
+  +double updatedAt
+  +deleteScore()
+  +saveDescription()
+  +findPhone()
+  +findAmount()
+}
+class Reservation {
+  +Date quantity
+  +String level
+  +Date phone
+  -String score
+  #boolean id
+  +deleteNote()
+  +createAddress()
+  +getName()
+}
+class Staff {
+  -int duration
+  +float createdAt
+  +sendAddress()
+  +setUpdatedat()
+  +createPrice()
+  +getCreatedat()
+}
+CheckIn ..|> Service
+Service --> Reservation : "0..1"
+Staff ..> CheckIn : "0..1"
+CheckIn ..|> Room
+Reservation ..> Room : "1..*"
+note right of Service : Hotel domain
+@enduml

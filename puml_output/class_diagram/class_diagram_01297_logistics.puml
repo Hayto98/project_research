@@ -1,0 +1,74 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+abstract class Shipment {
+  -int createdAt
+  +Date type
+  +long phone
+  +long amount
+  +deleteTotal()
+  +sendScore()
+  +getPrice()
+}
+interface Depot {
+  -long duration
+  +int phone
+  +saveAmount()
+  +calculateActive()
+  +processEmail()
+}
+class Manifest {
+  -double id
+  #long total
+  #int price
+  #long updatedAt
+  +updateAddress()
+  +setCreatedat()
+  +sendDescription()
+  +deleteNote()
+}
+class Tracking {
+  +boolean level
+  +Date address
+  -float phone
+  +String amount
+  -Date email
+  +createCode()
+  +saveEmail()
+  +saveTotal()
+  +setUpdatedat()
+}
+class Customer {
+  +boolean description
+  +boolean score
+  +boolean note
+  -double type
+  -long quantity
+  +setDuration()
+  +findType()
+  +validateName()
+}
+interface Package {
+  +float duration
+  #double id
+  -long price
+  +processLevel()
+  +createType()
+  +cancelScore()
+}
+class Route {
+  +int duration
+  -String name
+  +getPrice()
+  +updateActive()
+  +processScore()
+  +validateDuration()
+}
+Depot ..|> Shipment
+Tracking ..|> Manifest
+Shipment ..> Package : "*"
+Package ..> Manifest : "1"
+Customer ..> Package : "1"
+note right of Shipment : Logistics domain
+@enduml

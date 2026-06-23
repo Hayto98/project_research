@@ -1,0 +1,48 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+class CheckIn {
+  +boolean amount
+  +double note
+  -long id
+  +int level
+  +sendPrice()
+  +findQuantity()
+  +setNote()
+}
+abstract class Guest {
+  -Date duration
+  +boolean code
+  +saveUpdatedat()
+  +setDuration()
+  +processAmount()
+  +getAmount()
+}
+abstract class Staff {
+  +String email
+  -long address
+  +getAmount()
+}
+class CheckOut {
+  #int updatedAt
+  +String price
+  -float id
+  #double code
+  -double status
+  +saveId()
+  +saveDuration()
+}
+abstract class Service {
+  #Date amount
+  #double description
+  +boolean price
+  +float name
+  +createId()
+  +calculateNote()
+  +deletePrice()
+  +cancelTotal()
+}
+Staff --|> Guest
+CheckIn --> Staff : "1..*"
+note right of CheckIn : Hotel domain
+@enduml

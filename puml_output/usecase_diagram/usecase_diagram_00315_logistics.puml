@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+left to right direction
+actor "Driver" as Driver
+actor "Fleet Manager" as FleetManager
+actor "Dispatcher" as Dispatcher
+rectangle "Logistics System" {
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Schedule Pickup" as UC_SchedulePickup
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Update Inventory" as UC_UpdateInventory
+}
+Driver --> UC_DeliverPackage
+Driver --> UC_SchedulePickup
+Driver --> UC_FuelVehicle
+FleetManager --> UC_LoadPackage
+FleetManager --> UC_SchedulePickup
+FleetManager --> UC_AssignRoute
+Dispatcher --> UC_AssignRoute
+Dispatcher --> UC_LoadPackage
+@enduml

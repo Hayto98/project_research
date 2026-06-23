@@ -1,0 +1,40 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+start
+:Renew Loan;
+:Reserve Book;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Register Member;
+:Add New Book;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Return Book;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Pay Fine;
+:Search Catalog;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+stop
+@enduml

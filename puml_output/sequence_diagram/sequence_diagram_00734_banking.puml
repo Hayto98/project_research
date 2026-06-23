@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing true
+participant "Branch Manager" as BM
+participant "Auditor" as A
+boundary "Account Holder" as AH
+A -> BM : Transfer Funds
+note over BM : processing transfer funds
+A ->> BM : Deposit Money
+activate BM
+BM --> A : ACK
+deactivate BM
+AH --> A : View Statement
+activate A
+A --> AH : ACK
+deactivate A
+note over A : processing view statement
+AH ->> A : Block Card
+activate A
+A --> AH : ACK
+deactivate A
+note over A : processing block card
+@enduml

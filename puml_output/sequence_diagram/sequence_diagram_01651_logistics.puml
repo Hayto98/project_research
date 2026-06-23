@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+entity "Warehouse Staff" as WS
+actor "Fleet Manager" as FM
+boundary "Customer" as C
+boundary "Dispatcher" as D
+control "Driver" as D2
+D -> WS : Track Shipment
+D2 --> WS : Update Inventory
+note over WS : processing update inventory
+D2 --> C : Load Package
+activate C
+C --> D2 : ACK
+deactivate C
+WS --> C : Schedule Pickup
+activate C
+C --> WS : ACK
+deactivate C
+D -> D2 : Report Issue
+D2 -> D : Assign Route
+activate D
+D --> D2 : ACK
+deactivate D
+FM -> C : Deliver Package
+@enduml

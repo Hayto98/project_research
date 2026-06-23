@@ -1,0 +1,35 @@
+@startuml
+
+start
+:Write Review;
+:Track Order;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Cancel Order;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Checkout;
+:Apply Coupon;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Manage Inventory;
+:Make Payment;
+stop
+@enduml

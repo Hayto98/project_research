@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+class Enrollment {
+  #float email
+  #String level
+  +findId()
+  +validateEmail()
+}
+abstract class Department {
+  -String description
+  #float duration
+  -float updatedAt
+  +createTotal()
+  +sendTotal()
+  +setActive()
+}
+interface Exam {
+  #String quantity
+  -double status
+  +getEmail()
+  +createDuration()
+}
+abstract class Grade {
+  #Date name
+  -long email
+  +findName()
+  +saveTotal()
+}
+interface Schedule {
+  +double name
+  #int address
+  -String description
+  +cancelDuration()
+}
+class Classroom {
+  +String createdAt
+  #String note
+  -String price
+  +validatePhone()
+  +setLevel()
+}
+Grade --* Schedule
+Exam ..|> Enrollment
+Grade --> Department : "1"
+Enrollment ..|> Department
+note right of Enrollment : Education domain
+@enduml

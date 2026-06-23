@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+start
+:Withdraw Cash;
+:Deposit Money;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Transfer Funds;
+:Open Account;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Pay Bill;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:View Statement;
+stop
+@enduml

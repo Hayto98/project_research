@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+[*] --> Reviewed
+Reviewed --> Processing : confirm
+Processing --> Archived : reject
+Processing : entry / log group
+Archived --> Cancelled : approve
+Archived : entry / log group
+Cancelled --> Approved : submit
+Cancelled : entry / log group
+Reviewed --> Processing : revert
+Approved --> [*]
+@enduml

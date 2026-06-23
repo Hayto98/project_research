@@ -1,0 +1,39 @@
+@startuml
+skinparam defaultFontSize 11
+interface Ward {
+  +float level
+  -String quantity
+  -int type
+  -int createdAt
+  #double duration
+  +findEmail()
+  +saveEmail()
+  +validateAmount()
+}
+abstract class Insurance {
+  #boolean score
+  +Date duration
+  -Date address
+  +getActive()
+  +sendQuantity()
+  +sendTotal()
+}
+class MedicalRecord {
+  -double address
+  #int amount
+  -boolean price
+  +getDescription()
+}
+class Appointment {
+  #int quantity
+  -Date email
+  +sendActive()
+  +setStatus()
+  +findType()
+  +calculateName()
+}
+Appointment ..> MedicalRecord : "0..1"
+Insurance ..|> MedicalRecord
+Appointment --|> Ward
+note right of Ward : Healthcare domain
+@enduml

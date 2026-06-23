@@ -1,0 +1,47 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+interface Notification {
+  +String email
+  +Date status
+  +float score
+  +createDescription()
+  +findPrice()
+  +findPhone()
+}
+interface Post {
+  +boolean status
+  #double id
+  -String phone
+  -double active
+  +cancelTotal()
+  +calculateScore()
+  +createCreatedat()
+  +processAmount()
+}
+interface Follower {
+  -long phone
+  #long type
+  -long active
+  +saveName()
+  +setAddress()
+  +getAddress()
+}
+abstract class Album {
+  +float email
+  -double address
+  #int level
+  #long status
+  +validateActive()
+}
+class Report {
+  #Date createdAt
+  +float status
+  +deleteQuantity()
+  +calculateName()
+  +processTotal()
+}
+Notification ..|> Report
+Notification --|> Follower
+note right of Notification : Social Media domain
+@enduml

@@ -1,0 +1,73 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class FuelLog {
+  #boolean name
+  #long status
+  +double score
+  +boolean address
+  +updateQuantity()
+  +saveScore()
+  +setTotal()
+}
+class Depot {
+  #Date duration
+  +int note
+  #long quantity
+  -float description
+  +createActive()
+  +cancelQuantity()
+  +updateActive()
+}
+interface Driver {
+  -long active
+  #boolean description
+  #int note
+  +Date type
+  +findActive()
+  +validateUpdatedat()
+  +updatePhone()
+  +calculateId()
+}
+class Package {
+  #long address
+  +boolean phone
+  #long createdAt
+  #Date email
+  +sendNote()
+  +processId()
+  +validateActive()
+}
+abstract class Vehicle {
+  -float id
+  -float score
+  #boolean phone
+  +boolean active
+  +float amount
+  +calculateAmount()
+  +calculateAddress()
+  +saveScore()
+}
+abstract class DeliveryNote {
+  #int duration
+  #long quantity
+  +calculateId()
+  +sendScore()
+}
+interface Inventory {
+  +Date price
+  #boolean email
+  -Date code
+  +float level
+  +sendQuantity()
+  +createQuantity()
+}
+Depot --* Driver
+Vehicle ..> DeliveryNote : "*"
+Driver --o Depot
+Depot ..> Inventory : "1..*"
+FuelLog --* Vehicle
+note right of FuelLog : Logistics domain
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+start
+:Process Payment;
+:Order Room Service;
+:Cancel Reservation;
+:Book Room;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Request Service;
+:Clean Room;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Check In;
+stop
+@enduml

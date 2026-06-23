@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+start
+:Borrow Book;
+:Submit Assignment;
+:Grade Exam;
+:Enroll Course;
+:Register Student;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Take Attendance;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+stop
+@enduml

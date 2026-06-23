@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing true
+[*] --> Completed
+Completed --> Processing : confirm
+Completed : entry / log prescription
+Processing --> Created : reject
+Processing : entry / log prescription
+Created --> Pending : approve
+Created : entry / log prescription
+Pending --> Shipped : update
+Shipped --> Completed : revert
+Shipped --> [*]
+@enduml

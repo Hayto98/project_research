@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing true
+component "Customer Service" as C_CustomerService
+component "Transaction Service" as C_TransactionService
+component "Loan Service" as C_LoanService
+component "Statement Service" as C_StatementService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Teller Service" as C_TellerService
+database "Banking DB" as DB_banking
+C_CustomerService --> DB_banking
+C_TransactionService --> DB_banking
+C_LoanService --> DB_banking
+C_TellerService --> DB_banking
+C_StatementService ..> C_BeneficiaryService : REST
+C_StatementService ..> C_BeneficiaryService : MQ
+C_LoanService ..> C_BeneficiaryService : HTTP
+C_CustomerService ..> C_LoanService : MQ
+C_LoanService ..> C_BeneficiaryService : REST
+@enduml

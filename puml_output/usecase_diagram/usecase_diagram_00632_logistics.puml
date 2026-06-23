@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+left to right direction
+actor "Dispatcher" as Dispatcher
+actor "Driver" as Driver
+actor "Fleet Manager" as FleetManager
+actor "Customer" as Customer
+rectangle "Logistics System" {
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Schedule Pickup" as UC_SchedulePickup
+}
+Dispatcher --> UC_DeliverPackage
+Driver --> UC_LoadPackage
+FleetManager --> UC_SchedulePickup
+FleetManager --> UC_DeliverPackage
+FleetManager --> UC_LoadPackage
+Customer --> UC_TrackShipment
+@enduml

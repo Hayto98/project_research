@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontSize 11
+actor "Student" as S
+actor "Teacher" as T
+boundary "Parent" as P
+participant "Admin" as A
+S --> T : Grade Exam
+P --> A : View Schedule
+note over A : processing view schedule
+S ->> T : Enroll Course
+activate T
+T --> S : ACK
+deactivate T
+note over T : processing enroll course
+S -> P : Take Attendance
+note over P : processing take attendance
+T --> S : Borrow Book
+activate S
+S --> T : ACK
+deactivate S
+@enduml

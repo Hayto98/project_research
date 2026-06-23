@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+entity "Chef" as C
+boundary "Manager" as M
+control "Guest" as G
+G --> M : Clean Room
+activate M
+M --> G : ACK
+deactivate M
+M --> G : Check In
+activate G
+G --> M : ACK
+deactivate G
+G --> M : Book Room
+activate M
+M --> G : ACK
+deactivate M
+note over M : processing book room
+C -> M : Cancel Reservation
+activate M
+M --> C : ACK
+deactivate M
+note over M : processing cancel reservation
+M ->> G : Process Payment
+note over G : processing process payment
+@enduml

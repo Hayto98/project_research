@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+abstract class Return {
+  -boolean quantity
+  +double updatedAt
+  -double id
+  +getName()
+}
+interface Payment {
+  +double quantity
+  +Date status
+  -boolean updatedAt
+  -Date total
+  +sendAddress()
+  +saveActive()
+  +validateId()
+}
+class Review {
+  +int updatedAt
+  +float amount
+  +float quantity
+  -int description
+  +updateDescription()
+  +cancelQuantity()
+}
+abstract class Coupon {
+  -float email
+  -double updatedAt
+  -float address
+  +long status
+  +sendScore()
+}
+class Order {
+  #int updatedAt
+  +String phone
+  -double level
+  +getPrice()
+  +getId()
+  +createCreatedat()
+  +createTotal()
+}
+class Invoice {
+  -float type
+  #Date duration
+  -long createdAt
+  +String address
+  +createStatus()
+  +saveUpdatedat()
+  +sendDuration()
+}
+interface Shipment {
+  -String status
+  #boolean quantity
+  -double note
+  +saveCreatedat()
+  +sendAmount()
+  +getCreatedat()
+}
+Review ..|> Order
+Shipment --o Order
+Shipment --o Coupon
+Return --|> Review
+Coupon --o Review
+note right of Return : Ecommerce domain
+@enduml

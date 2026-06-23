@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+component "Booking Service" as C_BookingService
+component "Restaurant Service" as C_RestaurantService
+component "Amenity Service" as C_AmenityService
+component "CheckOut Service" as C_CheckOutService
+component "Room Service" as C_RoomService
+component "Payment Service" as C_PaymentService
+database "Hotel DB" as DB_hotel
+C_BookingService --> DB_hotel
+C_RestaurantService --> DB_hotel
+C_AmenityService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_RoomService --> DB_hotel
+C_AmenityService ..> C_BookingService : gRPC
+C_BookingService ..> C_CheckOutService : REST
+C_RoomService ..> C_CheckOutService : HTTP
+C_RestaurantService ..> C_BookingService : HTTP
+@enduml

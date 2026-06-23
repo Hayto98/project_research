@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+[*] --> Shipped
+Shipped --> Active : reject
+Active --> Pending : confirm
+Active : entry / log profile
+Pending --> Rejected : approve
+Rejected --> Approved : reject
+Approved --> Draft : submit
+Approved : entry / log profile
+Approved --> Rejected : revert
+Draft --> [*]
+@enduml

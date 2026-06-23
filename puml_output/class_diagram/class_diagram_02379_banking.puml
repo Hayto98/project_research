@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+interface Account {
+  #String total
+  -boolean id
+  #long name
+  #boolean phone
+  -boolean status
+  +cancelAmount()
+}
+abstract class Deposit {
+  #boolean status
+  #float address
+  -boolean email
+  #int quantity
+  +deleteName()
+}
+interface Branch {
+  +long amount
+  #int total
+  -Date phone
+  -boolean createdAt
+  #long code
+  +cancelActive()
+}
+class Beneficiary {
+  +double level
+  #float phone
+  +getScore()
+}
+class Withdrawal {
+  #double description
+  #Date active
+  +long id
+  #double email
+  +deleteStatus()
+  +findStatus()
+}
+class Statement {
+  -int level
+  #float quantity
+  +long type
+  -double updatedAt
+  #boolean name
+  +findName()
+  +processCode()
+}
+interface Card {
+  +long phone
+  #boolean updatedAt
+  #boolean price
+  +int address
+  +processPhone()
+  +updatePrice()
+  +processStatus()
+  +findActive()
+}
+Card --> Account : "1"
+Deposit --o Card
+Withdrawal ..|> Card
+Withdrawal ..|> Branch
+note right of Account : Banking domain
+@enduml

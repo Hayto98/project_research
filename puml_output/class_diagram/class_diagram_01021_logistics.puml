@@ -1,0 +1,33 @@
+@startuml
+skinparam shadowing true
+interface DeliveryNote {
+  -float description
+  #boolean level
+  +calculateName()
+  +deleteQuantity()
+}
+class FuelLog {
+  +float type
+  #int createdAt
+  #boolean note
+  +cancelId()
+}
+class Shipment {
+  +String price
+  -long duration
+  +getDuration()
+  +updatePrice()
+}
+class Warehouse {
+  #long code
+  +boolean status
+  -int createdAt
+  +deleteDescription()
+  +updateQuantity()
+  +deleteLevel()
+}
+DeliveryNote --> Shipment : "*"
+Warehouse ..|> FuelLog
+Shipment ..|> Warehouse
+note right of DeliveryNote : Logistics domain
+@enduml

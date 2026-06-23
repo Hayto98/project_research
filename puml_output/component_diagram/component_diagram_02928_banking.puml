@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Loan Service" as C_LoanService
+component "Transfer Service" as C_TransferService
+component "Statement Service" as C_StatementService
+component "Branch Service" as C_BranchService
+component "Card Service" as C_CardService
+database "Banking DB" as DB_banking
+C_LoanService --> DB_banking
+C_TransferService --> DB_banking
+C_StatementService --> DB_banking
+C_BranchService --> DB_banking
+C_CardService --> DB_banking
+C_CardService ..> C_LoanService : gRPC
+C_CardService ..> C_BranchService : REST
+C_StatementService ..> C_TransferService : MQ
+C_BranchService ..> C_TransferService : gRPC
+@enduml

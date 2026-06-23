@@ -1,0 +1,32 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Admin" as Admin
+actor "Customer" as Customer
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Checkout" as UC_Checkout
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Write Review" as UC_WriteReview
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Track Order" as UC_TrackOrder
+}
+DeliveryService --> UC_MakePayment
+DeliveryService --> UC_TrackOrder
+DeliveryService --> UC_Checkout
+Admin --> UC_MakePayment
+Admin --> UC_CancelOrder
+Admin --> UC_Checkout
+Customer --> UC_WriteReview
+Customer --> UC_CancelOrder
+Customer --> UC_ManageInventory
+PaymentGateway --> UC_Checkout
+PaymentGateway --> UC_CancelOrder
+PaymentGateway --> UC_ApplyCoupon
+@enduml

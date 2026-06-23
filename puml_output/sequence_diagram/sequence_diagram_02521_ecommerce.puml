@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+participant "Delivery Service" as DS
+actor "Admin" as A
+participant "Customer" as C
+DS --> A : Track Order
+activate A
+A --> DS : ACK
+deactivate A
+note over A : processing track order
+C ->> DS : Browse Products
+C --> DS : Make Payment
+note over DS : processing make payment
+A --> DS : Write Review
+activate DS
+DS --> A : ACK
+deactivate DS
+note over DS : processing write review
+C -> DS : Cancel Order
+DS -> A : Manage Inventory
+A --> DS : Apply Coupon
+activate DS
+DS --> A : ACK
+deactivate DS
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+class Return {
+  +String status
+  +long description
+  #String note
+  -float quantity
+  +float active
+  +validateActive()
+  +getCode()
+}
+class Supplier {
+  -boolean active
+  -String level
+  +boolean note
+  -float duration
+  +deleteAddress()
+  +setDuration()
+  +saveCreatedat()
+  +findId()
+}
+abstract class Shipment {
+  +double active
+  #String amount
+  +updatePhone()
+  +getDescription()
+  +processTotal()
+}
+abstract class Coupon {
+  -int score
+  #long amount
+  #boolean total
+  +processLevel()
+}
+class Warehouse {
+  -String phone
+  #double code
+  -int email
+  +findDescription()
+  +saveDuration()
+  +validateStatus()
+}
+class Order {
+  -double total
+  -Date level
+  +long description
+  #float name
+  -String price
+  +deleteAmount()
+  +calculateStatus()
+  +validateDescription()
+}
+Coupon --|> Shipment
+Order ..|> Supplier
+Return ..> Coupon : "0..1"
+Shipment ..|> Supplier
+note right of Return : Ecommerce domain
+@enduml

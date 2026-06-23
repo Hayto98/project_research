@@ -1,0 +1,32 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+boundary "Delivery Service" as DS
+actor "Customer" as C
+participant "Payment Gateway" as PG
+PG ->> C : Track Order
+activate C
+C --> PG : ACK
+deactivate C
+PG --> C : Browse Products
+activate C
+C --> PG : ACK
+deactivate C
+C ->> PG : Write Review
+activate PG
+PG --> C : ACK
+deactivate PG
+PG ->> C : Checkout
+activate C
+C --> PG : ACK
+deactivate C
+note over C : processing checkout
+PG -> C : Cancel Order
+activate C
+C --> PG : ACK
+deactivate C
+PG -> C : Make Payment
+note over C : processing make payment
+C ->> DS : Add To Cart
+@enduml

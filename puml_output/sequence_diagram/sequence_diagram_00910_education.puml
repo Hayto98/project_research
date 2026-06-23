@@ -1,0 +1,24 @@
+@startuml
+skinparam defaultFontSize 13
+participant "Registrar" as R
+participant "Admin" as A
+control "Parent" as P
+R -> A : Register Student
+activate A
+A --> R : ACK
+deactivate A
+R --> A : Enroll Course
+activate A
+A --> R : ACK
+deactivate A
+P --> A : Issue Certificate
+activate A
+A --> P : ACK
+deactivate A
+P ->> R : Take Attendance
+A ->> R : Submit Assignment
+activate R
+R --> A : ACK
+deactivate R
+note over R : processing submit assignment
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+class Order {
+  -double duration
+  +int status
+  +saveActive()
+}
+class Warehouse {
+  +boolean email
+  -Date quantity
+  #float description
+  +double total
+  +long note
+  +cancelAmount()
+  +sendNote()
+  +cancelDuration()
+}
+class Invoice {
+  +int note
+  +String total
+  -float updatedAt
+  +findId()
+  +processPrice()
+  +cancelCreatedat()
+}
+class Coupon {
+  -Date active
+  +int level
+  +createScore()
+  +calculateName()
+}
+class Return {
+  +long updatedAt
+  -Date email
+  +setScore()
+  +calculateQuantity()
+  +deleteAddress()
+  +processType()
+}
+Order ..|> Return
+Warehouse --> Invoice : "0..1"
+Invoice --* Warehouse
+note right of Order : Ecommerce domain
+@enduml

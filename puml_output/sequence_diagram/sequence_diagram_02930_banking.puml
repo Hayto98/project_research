@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+control "ATM" as A
+actor "Branch Manager" as BM
+entity "Auditor" as A2
+BM -> A2 : Pay Bill
+A ->> A2 : View Statement
+BM -> A2 : Block Card
+A -> A2 : Withdraw Cash
+activate A2
+A2 --> A : ACK
+deactivate A2
+note over A2 : processing withdraw cash
+A2 --> A : Deposit Money
+BM --> A2 : Open Account
+@enduml

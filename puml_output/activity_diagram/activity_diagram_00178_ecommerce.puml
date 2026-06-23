@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+start
+:Browse Products;
+:Write Review;
+:Checkout;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Track Order;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Apply Coupon;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Cancel Order;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Make Payment;
+stop
+@enduml

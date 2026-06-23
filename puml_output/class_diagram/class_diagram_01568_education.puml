@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+class Schedule {
+  -long email
+  +String total
+  -boolean address
+  -int type
+  #Date createdAt
+  +cancelLevel()
+  +updateQuantity()
+}
+interface Exam {
+  +float score
+  +long updatedAt
+  #float level
+  #double price
+  #long status
+  +sendType()
+  +cancelId()
+  +cancelPrice()
+}
+class Department {
+  -float name
+  +Date note
+  #String score
+  +updateNote()
+}
+class Attendance {
+  -Date status
+  +boolean code
+  #double description
+  +cancelNote()
+  +createAmount()
+}
+abstract class Enrollment {
+  +String status
+  #float code
+  #Date id
+  +setName()
+  +findQuantity()
+  +setType()
+  +calculatePrice()
+}
+Attendance --> Schedule : "0..1"
+Department --|> Enrollment
+Enrollment --|> Exam
+Exam ..|> Schedule
+note right of Schedule : Education domain
+@enduml

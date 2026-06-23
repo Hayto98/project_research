@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+component "Reservation Service" as C_ReservationService
+component "Guest Service" as C_GuestService
+component "Restaurant Service" as C_RestaurantService
+component "Amenity Service" as C_AmenityService
+component "Payment Service" as C_PaymentService
+database "Hotel DB" as DB_hotel
+C_ReservationService --> DB_hotel
+C_GuestService --> DB_hotel
+C_AmenityService --> DB_hotel
+C_PaymentService --> DB_hotel
+C_ReservationService ..> C_PaymentService : gRPC
+C_GuestService ..> C_RestaurantService : HTTP
+@enduml

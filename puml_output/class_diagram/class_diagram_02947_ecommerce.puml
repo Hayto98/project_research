@@ -1,0 +1,61 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+abstract class Warehouse {
+  #int note
+  +long name
+  +Date updatedAt
+  +float type
+  -double createdAt
+  +updateTotal()
+  +calculateStatus()
+  +findCode()
+  +deleteId()
+}
+class Return {
+  -long name
+  +long address
+  -long note
+  #boolean updatedAt
+  +calculateDuration()
+  +updateDuration()
+}
+class Category {
+  #int address
+  +double active
+  #double id
+  +long email
+  +setPhone()
+  +deleteNote()
+}
+class Payment {
+  #long code
+  +Date level
+  -String address
+  #Date name
+  +deleteDescription()
+  +saveCode()
+  +createType()
+}
+abstract class Supplier {
+  -double name
+  +String quantity
+  +Date amount
+  +double score
+  -Date id
+  +saveLevel()
+}
+interface Invoice {
+  +int phone
+  -boolean type
+  +updatePhone()
+}
+interface Customer {
+  -boolean email
+  #float status
+  +createEmail()
+}
+Return --|> Payment
+Supplier --* Category
+note right of Warehouse : Ecommerce domain
+@enduml

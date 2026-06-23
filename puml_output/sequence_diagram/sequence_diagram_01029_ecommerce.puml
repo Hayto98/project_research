@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+control "Admin" as A
+participant "Payment Gateway" as PG
+boundary "Seller" as S
+boundary "Customer" as C
+S --> C : Manage Inventory
+PG -> A : Apply Coupon
+PG ->> C : Track Order
+note over C : processing track order
+C -> A : Checkout
+PG -> A : Cancel Order
+activate A
+A --> PG : ACK
+deactivate A
+S -> C : Write Review
+@enduml

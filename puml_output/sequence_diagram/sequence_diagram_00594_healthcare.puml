@@ -1,0 +1,29 @@
+@startuml
+
+actor "Doctor" as D
+participant "Insurance Provider" as IP
+entity "Patient" as P
+boundary "Nurse" as N
+actor "Lab Technician" as LT
+N ->> D : Issue Prescription
+D -> LT : Update Medical Record
+activate LT
+LT --> D : ACK
+deactivate LT
+note over LT : processing update medical record
+P ->> IP : Examine Patient
+activate IP
+IP --> P : ACK
+deactivate IP
+LT --> P : Book Appointment
+activate P
+P --> LT : ACK
+deactivate P
+note over P : processing book appointment
+IP ->> D : Admit Patient
+N ->> IP : Process Insurance Claim
+activate IP
+IP --> N : ACK
+deactivate IP
+P -> D : Run Lab Test
+@enduml

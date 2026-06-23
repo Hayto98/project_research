@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+start
+:Admit Patient;
+:Book Appointment;
+:Issue Prescription;
+:Discharge Patient;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Run Lab Test;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+stop
+@enduml

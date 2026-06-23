@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+component "Schedule Service" as C_ScheduleService
+component "Book Service" as C_BookService
+component "Teacher Service" as C_TeacherService
+component "Student Service" as C_StudentService
+component "Library Service" as C_LibraryService
+component "Course Service" as C_CourseService
+database "Education DB" as DB_education
+C_ScheduleService --> DB_education
+C_BookService --> DB_education
+C_TeacherService --> DB_education
+C_LibraryService --> DB_education
+C_CourseService ..> C_TeacherService : MQ
+C_ScheduleService ..> C_TeacherService : gRPC
+C_CourseService ..> C_TeacherService : MQ
+C_BookService ..> C_ScheduleService : HTTP
+@enduml

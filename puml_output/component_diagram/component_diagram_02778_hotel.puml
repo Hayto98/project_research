@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Service Service" as C_ServiceService
+component "Invoice Service" as C_InvoiceService
+component "Booking Service" as C_BookingService
+component "Guest Service" as C_GuestService
+component "Room Service" as C_RoomService
+database "Hotel DB" as DB_hotel
+C_ServiceService --> DB_hotel
+C_BookingService --> DB_hotel
+C_GuestService --> DB_hotel
+C_ServiceService ..> C_GuestService : HTTP
+C_GuestService ..> C_BookingService : HTTP
+C_BookingService ..> C_RoomService : REST
+@enduml

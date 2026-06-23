@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class Doctor {
+  -Date id
+  #int status
+  -String duration
+  +boolean createdAt
+  +sendActive()
+}
+interface Diagnosis {
+  #int score
+  +int createdAt
+  #int id
+  -double total
+  +sendAmount()
+}
+abstract class Prescription {
+  -long quantity
+  #double name
+  +boolean active
+  -boolean type
+  +setPrice()
+  +getDuration()
+  +sendCreatedat()
+}
+class Ward {
+  -String address
+  +boolean amount
+  -String updatedAt
+  +sendStatus()
+  +calculateActive()
+  +setActive()
+  +saveCreatedat()
+}
+class Hospital {
+  +long updatedAt
+  -String description
+  -long price
+  +validateCode()
+  +calculateType()
+  +sendPrice()
+  +calculateAddress()
+}
+class Billing {
+  -double id
+  -double type
+  +Date createdAt
+  -Date address
+  +Date email
+  +processQuantity()
+  +getCreatedat()
+  +createTotal()
+}
+class LabTest {
+  -float description
+  -double name
+  +createAmount()
+}
+Hospital --* Billing
+Ward --o LabTest
+LabTest ..> Hospital : "1..*"
+LabTest --|> Prescription
+note right of Doctor : Healthcare domain
+@enduml

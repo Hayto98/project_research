@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing true
+component "Like Service" as C_LikeService
+component "Message Service" as C_MessageService
+component "Profile Service" as C_ProfileService
+component "Group Service" as C_GroupService
+database "Social Media DB" as DB_social_media
+C_LikeService --> DB_social_media
+C_MessageService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_GroupService --> DB_social_media
+C_MessageService ..> C_ProfileService : MQ
+C_ProfileService ..> C_GroupService : HTTP
+C_GroupService ..> C_ProfileService : HTTP
+@enduml

@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Customer {
+  -Date code
+  +int address
+  #int duration
+  +validateEmail()
+  +calculateTotal()
+  +findPhone()
+}
+interface Return {
+  -float total
+  #boolean status
+  #int name
+  +cancelPrice()
+}
+abstract class Product {
+  #int quantity
+  -double level
+  +float note
+  -double id
+  +cancelDuration()
+  +setActive()
+  +updateNote()
+}
+class Review {
+  +Date duration
+  #long total
+  +setId()
+}
+interface Wishlist {
+  +Date type
+  #int address
+  #int amount
+  +String score
+  +Date createdAt
+  +setStatus()
+}
+interface Category {
+  +long address
+  #String name
+  +Date phone
+  +getCode()
+  +cancelPrice()
+}
+class Payment {
+  +String total
+  +long price
+  #Date quantity
+  #boolean code
+  -float phone
+  +findCode()
+  +calculateType()
+  +cancelCreatedat()
+}
+Wishlist ..|> Product
+Category --* Customer
+Payment ..|> Customer
+Category --o Review
+Product ..> Customer : "1..*"
+note right of Customer : Ecommerce domain
+@enduml

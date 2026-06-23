@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+interface Warehouse {
+  +boolean quantity
+  +float id
+  #int address
+  +getAddress()
+  +deleteLevel()
+}
+class Vehicle {
+  -long level
+  #int createdAt
+  +float id
+  +boolean price
+  +createAddress()
+  +deleteType()
+  +updateStatus()
+}
+interface Customer {
+  -double name
+  #double type
+  -long description
+  +validateQuantity()
+  +setName()
+}
+interface Driver {
+  #Date code
+  +boolean address
+  -Date level
+  +int name
+  +validateNote()
+  +cancelId()
+}
+abstract class Depot {
+  -int phone
+  +Date note
+  +int type
+  +getUpdatedat()
+  +cancelName()
+  +setAddress()
+}
+interface Shipment {
+  #String price
+  #String score
+  #Date email
+  +boolean name
+  +boolean quantity
+  +updateId()
+  +validateCreatedat()
+  +validateName()
+}
+abstract class Package {
+  #String quantity
+  -double address
+  -String price
+  +validatePrice()
+  +saveType()
+  +validateName()
+  +deletePrice()
+}
+Customer --* Package
+Package --* Shipment
+Depot --> Shipment : "1"
+Depot ..|> Warehouse
+note right of Warehouse : Logistics domain
+@enduml

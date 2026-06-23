@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+[*] --> Processing
+Processing --> Completed : update
+Processing : entry / log teller
+Completed --> Active : update
+Active --> Shipped : reject
+Active : entry / log teller
+Shipped --> Created : confirm
+Shipped : entry / log teller
+Created --> [*]
+@enduml

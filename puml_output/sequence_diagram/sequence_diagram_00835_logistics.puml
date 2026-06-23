@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+entity "Dispatcher" as D
+boundary "Driver" as D2
+actor "Warehouse Staff" as WS
+D ->> D2 : Deliver Package
+D2 --> WS : Report Issue
+activate WS
+WS --> D2 : ACK
+deactivate WS
+WS --> D : Update Inventory
+WS ->> D : Fuel Vehicle
+note over D : processing fuel vehicle
+@enduml

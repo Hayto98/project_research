@@ -1,0 +1,30 @@
+@startuml
+skinparam ArrowColor #555555
+entity "Nurse" as N
+participant "Patient" as P
+control "Lab Technician" as LT
+actor "Receptionist" as R
+entity "Insurance Provider" as IP
+P -> N : Discharge Patient
+activate N
+N --> P : ACK
+deactivate N
+R --> P : Process Insurance Claim
+activate P
+P --> R : ACK
+deactivate P
+note over P : processing process insurance claim
+P ->> IP : Book Appointment
+activate IP
+IP --> P : ACK
+deactivate IP
+IP --> N : Examine Patient
+activate N
+N --> IP : ACK
+deactivate N
+note over N : processing examine patient
+R --> IP : Run Lab Test
+activate IP
+IP --> R : ACK
+deactivate IP
+@enduml

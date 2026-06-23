@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+interface Restaurant {
+  +int address
+  +long createdAt
+  +double active
+  +String status
+  -long type
+  +validateName()
+  +cancelQuantity()
+  +sendScore()
+  +calculateDescription()
+}
+class Invoice {
+  -long note
+  -float phone
+  +float score
+  +Date active
+  +validateCreatedat()
+}
+interface Payment {
+  -long id
+  #long duration
+  #boolean updatedAt
+  +calculateType()
+  +setAmount()
+  +processName()
+  +calculateDescription()
+}
+class Staff {
+  #float price
+  +String amount
+  -String note
+  -float phone
+  +int score
+  +findAmount()
+  +validateStatus()
+  +createCreatedat()
+}
+class Booking {
+  +double amount
+  #Date email
+  -double active
+  -double createdAt
+  +validateLevel()
+  +calculateCreatedat()
+}
+class Reservation {
+  -boolean price
+  -Date phone
+  #boolean active
+  +int quantity
+  +updateScore()
+  +deleteName()
+}
+class Room {
+  +double total
+  #String updatedAt
+  -long active
+  +getQuantity()
+}
+Reservation --> Staff : "0..1"
+Room --> Booking : "*"
+Restaurant --|> Room
+note right of Restaurant : Hotel domain
+@enduml

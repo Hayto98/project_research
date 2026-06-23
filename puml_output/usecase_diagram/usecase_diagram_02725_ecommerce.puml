@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+left to right direction
+actor "Customer" as Customer
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Checkout" as UC_Checkout
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Write Review" as UC_WriteReview
+  usecase "Manage Inventory" as UC_ManageInventory
+}
+Customer --> UC_ManageInventory
+Customer --> UC_Checkout
+Customer --> UC_BrowseProducts
+PaymentGateway --> UC_Checkout
+PaymentGateway --> UC_BrowseProducts
+UC_TrackOrder ..> UC_BrowseProducts : <<extend>>
+@enduml

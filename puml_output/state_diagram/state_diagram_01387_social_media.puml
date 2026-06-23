@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+[*] --> OnHold
+OnHold --> Created : submit
+Created --> Rejected : reject
+Created : entry / log follower
+Rejected --> Shipped : update
+Shipped --> Archived : approve
+Archived --> Completed : cancel
+OnHold --> Completed : revert
+Completed --> [*]
+@enduml

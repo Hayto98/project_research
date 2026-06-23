@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+start
+:Enroll Course;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Borrow Book;
+:View Schedule;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Issue Certificate;
+:Register Student;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Grade Exam;
+stop
+@enduml

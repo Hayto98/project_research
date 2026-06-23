@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+actor "Admin" as A
+actor "Member" as M
+control "Librarian" as L
+A ->> L : Pay Fine
+activate L
+L --> A : ACK
+deactivate L
+M -> A : Borrow Book
+activate A
+A --> M : ACK
+deactivate A
+note over A : processing borrow book
+M ->> A : Search Catalog
+note over A : processing search catalog
+L --> M : Return Book
+M -> A : Renew Loan
+@enduml

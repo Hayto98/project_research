@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+participant "Librarian" as L
+control "Registrar" as R
+participant "Admin" as A
+participant "Parent" as P
+actor "Student" as S
+A -> P : View Schedule
+note over P : processing view schedule
+P ->> L : Submit Assignment
+S ->> R : Grade Exam
+A ->> S : Register Student
+R --> S : Enroll Course
+activate S
+S --> R : ACK
+deactivate S
+R -> S : Issue Certificate
+note over S : processing issue certificate
+@enduml

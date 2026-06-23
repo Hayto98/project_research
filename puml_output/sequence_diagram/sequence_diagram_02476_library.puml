@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+boundary "Admin" as A
+actor "Librarian" as L
+control "Member" as M
+M --> L : Return Book
+L --> A : Pay Fine
+activate A
+A --> L : ACK
+deactivate A
+L -> M : Renew Loan
+activate M
+M --> L : ACK
+deactivate M
+A -> L : Add New Book
+A -> M : Borrow Book
+activate M
+M --> A : ACK
+deactivate M
+@enduml

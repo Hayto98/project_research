@@ -1,0 +1,33 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+start
+:Report Content;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Send Message;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Create Post;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Like Post;
+:Share Post;
+stop
+@enduml

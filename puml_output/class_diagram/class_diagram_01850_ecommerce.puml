@@ -1,0 +1,73 @@
+@startuml
+skinparam monochrome true
+interface Review {
+  +double id
+  -long amount
+  #boolean createdAt
+  +processActive()
+  +sendActive()
+  +updateName()
+  +getDescription()
+}
+interface Payment {
+  -float price
+  #double quantity
+  -boolean createdAt
+  -long amount
+  +double status
+  +processEmail()
+  +setType()
+  +createStatus()
+}
+class Category {
+  -float email
+  -float updatedAt
+  +setEmail()
+  +cancelAddress()
+  +setPrice()
+  +savePrice()
+}
+abstract class Shipment {
+  -double price
+  +double active
+  #long email
+  -float updatedAt
+  #String createdAt
+  +sendPhone()
+  +setStatus()
+}
+abstract class Coupon {
+  -long description
+  +boolean status
+  #double price
+  -Date amount
+  +sendType()
+  +deleteAmount()
+  +calculateAddress()
+  +setLevel()
+}
+abstract class Customer {
+  +long active
+  #float createdAt
+  -String duration
+  #float amount
+  #Date level
+  +deleteScore()
+  +getAddress()
+  +getScore()
+  +findTotal()
+}
+abstract class Invoice {
+  -long code
+  #int email
+  +saveDuration()
+  +deleteStatus()
+  +validateTotal()
+  +getAddress()
+}
+Category ..|> Payment
+Customer --* Invoice
+Review --* Customer
+Payment --> Coupon : "0..1"
+note right of Review : Ecommerce domain
+@enduml

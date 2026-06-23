@@ -1,0 +1,33 @@
+@startuml
+skinparam shadowing true
+start
+:Search Catalog;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Reserve Book;
+:Register Member;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Add New Book;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Return Book;
+:Pay Fine;
+stop
+@enduml

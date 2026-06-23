@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+abstract class Diagnosis {
+  -float code
+  +int updatedAt
+  +long address
+  +boolean note
+  +getEmail()
+  +updateLevel()
+}
+abstract class Billing {
+  +double price
+  -double type
+  -double score
+  +deleteLevel()
+  +findId()
+  +findStatus()
+}
+interface Ward {
+  +boolean createdAt
+  +float id
+  #double amount
+  #float status
+  -Date quantity
+  +processLevel()
+}
+class Insurance {
+  +int quantity
+  -int type
+  -boolean phone
+  -int name
+  +long status
+  +sendPrice()
+}
+Ward --> Billing : "0..1"
+Insurance --o Ward
+note right of Diagnosis : Healthcare domain
+@enduml

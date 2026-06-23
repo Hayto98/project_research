@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+left to right direction
+actor "Driver" as Driver
+actor "Warehouse Staff" as WarehouseStaff
+actor "Fleet Manager" as FleetManager
+rectangle "Logistics System" {
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Schedule Pickup" as UC_SchedulePickup
+}
+Driver --> UC_LoadPackage
+Driver --> UC_DeliverPackage
+Driver --> UC_ReportIssue
+WarehouseStaff --> UC_TrackShipment
+FleetManager --> UC_SchedulePickup
+FleetManager --> UC_ReportIssue
+FleetManager --> UC_UpdateInventory
+UC_SchedulePickup ..> UC_UpdateInventory : <<include>>
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+component "Amenity Service" as C_AmenityService
+component "CheckIn Service" as C_CheckInService
+component "Restaurant Service" as C_RestaurantService
+component "Staff Service" as C_StaffService
+database "Hotel DB" as DB_hotel
+C_AmenityService --> DB_hotel
+C_CheckInService --> DB_hotel
+C_RestaurantService --> DB_hotel
+C_StaffService ..> C_AmenityService : HTTP
+C_RestaurantService ..> C_AmenityService : gRPC
+@enduml

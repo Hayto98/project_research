@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+abstract class CheckIn {
+  #String total
+  #boolean id
+  #boolean price
+  -double description
+  +deleteUpdatedat()
+  +getCode()
+  +sendLevel()
+  +sendPrice()
+}
+class Staff {
+  #long note
+  #String price
+  -float type
+  +updateLevel()
+  +updateTotal()
+  +createName()
+}
+class Amenity {
+  +double name
+  #int createdAt
+  #String type
+  +double duration
+  +sendStatus()
+  +calculateScore()
+  +processDescription()
+}
+class Reservation {
+  -boolean level
+  +int name
+  +setCreatedat()
+  +cancelScore()
+}
+class CheckOut {
+  +boolean quantity
+  -float type
+  +saveUpdatedat()
+}
+CheckIn --> Staff : "*"
+Reservation --|> CheckOut
+CheckOut ..|> Staff
+Reservation --o Staff
+note right of CheckIn : Hotel domain
+@enduml

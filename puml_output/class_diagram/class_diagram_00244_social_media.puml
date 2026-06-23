@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+interface Profile {
+  -float type
+  #Date updatedAt
+  +validateType()
+  +getAmount()
+}
+class Comment {
+  +String active
+  +double total
+  +long phone
+  +processNote()
+}
+class Report {
+  +long level
+  -boolean id
+  +calculatePrice()
+  +getAmount()
+  +cancelQuantity()
+  +updateCode()
+}
+class Story {
+  +long description
+  +String active
+  +createCode()
+}
+abstract class Like {
+  -double duration
+  -String description
+  +validateType()
+}
+Like --o Report
+Comment ..|> Profile
+Report ..|> Like
+Profile --> Comment : "0..1"
+note right of Profile : Social Media domain
+@enduml

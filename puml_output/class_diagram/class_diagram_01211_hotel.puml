@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+class Amenity {
+  +boolean phone
+  +double id
+  +createName()
+  +savePhone()
+  +sendPrice()
+  +sendType()
+}
+class Reservation {
+  -String type
+  #Date id
+  -Date score
+  -float price
+  +double total
+  +cancelTotal()
+  +validateTotal()
+}
+class Payment {
+  -float quantity
+  #String name
+  +deleteDescription()
+}
+abstract class CheckOut {
+  #float address
+  -long email
+  #float type
+  #boolean id
+  +setType()
+  +getStatus()
+}
+class Staff {
+  #int status
+  +int type
+  -long description
+  +findEmail()
+  +calculateTotal()
+  +cancelDescription()
+}
+Staff --|> Reservation
+Reservation ..|> Staff
+Staff --o CheckOut
+note right of Amenity : Hotel domain
+@enduml

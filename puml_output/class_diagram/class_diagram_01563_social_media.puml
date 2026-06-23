@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+class Like {
+  #Date description
+  +Date level
+  +deleteDuration()
+  +getTotal()
+  +sendId()
+}
+abstract class Comment {
+  +float updatedAt
+  +int total
+  -int type
+  -double level
+  +long email
+  +cancelLevel()
+  +updateNote()
+  +validateStatus()
+}
+class Follower {
+  -float type
+  +float createdAt
+  +getLevel()
+  +processLevel()
+  +getNote()
+}
+class Group {
+  #Date active
+  +boolean type
+  #long note
+  +boolean id
+  +getCreatedat()
+  +processDuration()
+}
+class Hashtag {
+  #float createdAt
+  +float description
+  +String type
+  +boolean phone
+  +processName()
+}
+class Album {
+  -String level
+  +double description
+  +updatePrice()
+  +processPhone()
+  +calculateId()
+  +validatePhone()
+}
+Follower --* Hashtag
+Like --* Album
+Comment ..|> Like
+Comment --> Follower : "0..1"
+note right of Like : Social Media domain
+@enduml

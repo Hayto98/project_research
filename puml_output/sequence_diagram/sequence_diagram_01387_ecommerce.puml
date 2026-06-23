@@ -1,0 +1,31 @@
+@startuml
+skinparam shadowing true
+entity "Payment Gateway" as PG
+actor "Delivery Service" as DS
+actor "Admin" as A
+control "Customer" as C
+control "Seller" as S
+DS --> C : Track Order
+activate C
+C --> DS : ACK
+deactivate C
+A --> C : Write Review
+activate C
+C --> A : ACK
+deactivate C
+S ->> A : Browse Products
+PG -> C : Checkout
+activate C
+C --> PG : ACK
+deactivate C
+C -> S : Make Payment
+C --> PG : Cancel Order
+activate PG
+PG --> C : ACK
+deactivate PG
+note over PG : processing cancel order
+DS ->> S : Manage Inventory
+activate S
+S --> DS : ACK
+deactivate S
+@enduml

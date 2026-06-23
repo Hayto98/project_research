@@ -1,0 +1,65 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Return {
+  +long id
+  #double status
+  #long level
+  +createUpdatedat()
+  +saveUpdatedat()
+  +calculateScore()
+  +validateStatus()
+}
+abstract class Category {
+  #String createdAt
+  -long level
+  +Date name
+  +int price
+  +int updatedAt
+  +validateLevel()
+  +findDescription()
+  +validateDescription()
+  +deleteScore()
+}
+class Review {
+  -float amount
+  #boolean createdAt
+  +saveDescription()
+  +deleteEmail()
+}
+interface Coupon {
+  -Date duration
+  #int name
+  +String id
+  #boolean total
+  +sendCode()
+}
+interface Shipment {
+  +Date amount
+  #long name
+  #Date description
+  +calculateAmount()
+  +processStatus()
+}
+class Customer {
+  -boolean createdAt
+  -Date code
+  -String note
+  +updateUpdatedat()
+  +processLevel()
+  +setTotal()
+  +updateEmail()
+}
+class Order {
+  +Date code
+  +String price
+  #boolean note
+  #Date description
+  -String score
+  +createCreatedat()
+}
+Shipment --|> Customer
+Shipment --|> Order
+note right of Return : Ecommerce domain
+@enduml

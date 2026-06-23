@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+control "Fleet Manager" as FM
+entity "Customer" as C
+control "Driver" as D
+C --> D : Update Inventory
+activate D
+D --> C : ACK
+deactivate D
+D --> C : Load Package
+C --> FM : Track Shipment
+note over FM : processing track shipment
+C ->> D : Assign Route
+C ->> FM : Schedule Pickup
+note over FM : processing schedule pickup
+D -> C : Deliver Package
+activate C
+C --> D : ACK
+deactivate C
+@enduml

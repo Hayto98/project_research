@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+left to right direction
+actor "Bank Teller" as BankTeller
+actor "ATM" as ATM
+actor "Account Holder" as AccountHolder
+actor "Branch Manager" as BranchManager
+rectangle "Banking System" {
+  usecase "Transfer Funds" as UC_TransferFunds
+  usecase "Block Card" as UC_BlockCard
+  usecase "Apply For Loan" as UC_ApplyForLoan
+  usecase "Open Account" as UC_OpenAccount
+  usecase "View Statement" as UC_ViewStatement
+}
+BankTeller --> UC_BlockCard
+BankTeller --> UC_ApplyForLoan
+BankTeller --> UC_TransferFunds
+ATM --> UC_ApplyForLoan
+ATM --> UC_TransferFunds
+AccountHolder --> UC_OpenAccount
+AccountHolder --> UC_TransferFunds
+AccountHolder --> UC_ViewStatement
+BranchManager --> UC_OpenAccount
+@enduml

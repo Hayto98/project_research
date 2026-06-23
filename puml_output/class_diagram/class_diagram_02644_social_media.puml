@@ -1,0 +1,67 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+abstract class Message {
+  #int type
+  +String code
+  -float amount
+  -double price
+  +sendDuration()
+  +findUpdatedat()
+  +cancelId()
+}
+abstract class Follower {
+  +boolean id
+  #double name
+  +float active
+  +calculateDuration()
+}
+interface Comment {
+  #String id
+  #String address
+  +double amount
+  #float code
+  -Date status
+  +validateStatus()
+  +sendCode()
+  +saveCode()
+  +findAddress()
+}
+class User {
+  +Date quantity
+  -String total
+  +boolean id
+  -Date note
+  +calculateDescription()
+  +deletePhone()
+  +processCode()
+}
+abstract class Album {
+  #int price
+  #double score
+  -boolean id
+  -long amount
+  +saveId()
+  +findEmail()
+  +deleteDescription()
+}
+class Notification {
+  +Date note
+  +boolean address
+  #String duration
+  +processCode()
+  +cancelAmount()
+}
+interface Post {
+  +long phone
+  #float active
+  +createAmount()
+  +findId()
+}
+User --|> Notification
+Follower ..> Notification : "1..*"
+User --> Comment : "*"
+Message --|> Notification
+Message --> Post : "0..1"
+note right of Message : Social Media domain
+@enduml

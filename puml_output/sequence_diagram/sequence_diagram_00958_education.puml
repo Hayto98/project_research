@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+boundary "Librarian" as L
+boundary "Registrar" as R
+entity "Admin" as A
+A -> L : Grade Exam
+activate L
+L --> A : ACK
+deactivate L
+note over L : processing grade exam
+L --> A : View Schedule
+A ->> R : Take Attendance
+note over R : processing take attendance
+L ->> A : Borrow Book
+A ->> R : Submit Assignment
+activate R
+R --> A : ACK
+deactivate R
+L ->> A : Enroll Course
+activate A
+A --> L : ACK
+deactivate A
+@enduml

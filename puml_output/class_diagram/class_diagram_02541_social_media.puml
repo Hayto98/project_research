@@ -1,0 +1,44 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+interface Hashtag {
+  -long quantity
+  +Date address
+  #long amount
+  #int active
+  +getTotal()
+  +cancelLevel()
+  +validateActive()
+  +calculateAddress()
+}
+interface Notification {
+  -boolean description
+  -double score
+  -float name
+  +sendScore()
+  +updateDescription()
+  +saveNote()
+}
+abstract class Story {
+  +int price
+  +float status
+  #boolean name
+  +processEmail()
+  +updateCode()
+  +processPhone()
+  +cancelActive()
+}
+class Message {
+  +long address
+  -double total
+  -double name
+  #String phone
+  +findPhone()
+  +sendActive()
+}
+Notification --> Story : "*"
+Story --o Hashtag
+Hashtag --|> Notification
+note right of Hashtag : Social Media domain
+@enduml

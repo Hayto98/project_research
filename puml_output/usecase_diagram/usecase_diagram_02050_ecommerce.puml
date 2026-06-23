@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+actor "Customer" as Customer
+actor "Delivery Service" as DeliveryService
+actor "Admin" as Admin
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Apply Coupon" as UC_ApplyCoupon
+}
+Customer --> UC_MakePayment
+Customer --> UC_AddToCart
+DeliveryService --> UC_ApplyCoupon
+Admin --> UC_AddToCart
+PaymentGateway --> UC_AddToCart
+UC_MakePayment ..> UC_ApplyCoupon : <<extend>>
+@enduml

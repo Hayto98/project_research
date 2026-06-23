@@ -1,0 +1,63 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+abstract class Payment {
+  -String id
+  +Date description
+  -float active
+  +int total
+  +calculateDescription()
+}
+interface CheckOut {
+  -boolean updatedAt
+  +float address
+  +long email
+  +findDuration()
+  +cancelId()
+  +processDescription()
+  +getAmount()
+}
+class Reservation {
+  +long amount
+  -Date note
+  -int quantity
+  +sendPrice()
+  +setCode()
+  +processId()
+  +updateCode()
+}
+interface Room {
+  -float status
+  #boolean amount
+  +sendEmail()
+  +getNote()
+  +saveAmount()
+}
+class Invoice {
+  -String quantity
+  +float email
+  +getAddress()
+  +processDescription()
+  +processAmount()
+  +deleteTotal()
+}
+class Amenity {
+  #long code
+  +int phone
+  +int amount
+  +sendEmail()
+  +setType()
+}
+class Booking {
+  #float price
+  -String quantity
+  -double email
+  -int description
+  +processStatus()
+}
+Booking --* Reservation
+Reservation --> CheckOut : "0..1"
+Amenity --o Payment
+Invoice ..|> CheckOut
+note right of Payment : Hotel domain
+@enduml

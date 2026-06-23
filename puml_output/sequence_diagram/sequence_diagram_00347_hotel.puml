@@ -1,0 +1,26 @@
+@startuml
+
+participant "Manager" as M
+entity "Receptionist" as R
+participant "Housekeeper" as H
+actor "Chef" as C
+participant "Guest" as G
+G ->> H : Order Room Service
+activate H
+H --> G : ACK
+deactivate H
+note over H : processing order room service
+M -> G : Request Service
+M -> G : Clean Room
+note over G : processing clean room
+C -> H : Process Payment
+activate H
+H --> C : ACK
+deactivate H
+note over H : processing process payment
+G -> M : Check Out
+C -> H : Cancel Reservation
+activate H
+H --> C : ACK
+deactivate H
+@enduml

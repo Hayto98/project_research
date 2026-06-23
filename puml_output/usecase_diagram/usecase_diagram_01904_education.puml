@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+left to right direction
+actor "Student" as Student
+actor "Librarian" as Librarian
+rectangle "Education System" {
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "View Schedule" as UC_ViewSchedule
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "Issue Certificate" as UC_IssueCertificate
+  usecase "Register Student" as UC_RegisterStudent
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Borrow Book" as UC_BorrowBook
+}
+Student --> UC_IssueCertificate
+Librarian --> UC_BorrowBook
+Librarian --> UC_SubmitAssignment
+Librarian --> UC_IssueCertificate
+UC_EnrollCourse ..> UC_GradeExam : <<extend>>
+@enduml

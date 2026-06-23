@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class Route {
+  -double level
+  +String duration
+  #double address
+  #int active
+  -long createdAt
+  +savePrice()
+}
+class Tracking {
+  +double code
+  -double total
+  #long amount
+  +saveNote()
+  +sendActive()
+  +deleteCode()
+  +calculateEmail()
+}
+interface FuelLog {
+  +Date total
+  #double email
+  +int duration
+  -Date level
+  +updateNote()
+  +saveLevel()
+  +sendScore()
+}
+class Depot {
+  -float score
+  -float quantity
+  +double price
+  +String note
+  +setUpdatedat()
+  +updateCode()
+}
+abstract class Driver {
+  -long price
+  +int status
+  +int quantity
+  +createDuration()
+  +processAddress()
+  +calculateName()
+}
+Tracking --|> FuelLog
+Route ..> Tracking : "1..*"
+Driver --> Route : "1"
+note right of Route : Logistics domain
+@enduml

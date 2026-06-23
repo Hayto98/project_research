@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+interface Ward {
+  -long score
+  #int phone
+  -double amount
+  +deleteScore()
+  +findLevel()
+  +sendNote()
+}
+class Diagnosis {
+  -boolean address
+  -long description
+  -long price
+  +createCode()
+}
+interface MedicalRecord {
+  -boolean id
+  -int address
+  +Date total
+  #int note
+  -float code
+  +getTotal()
+  +saveQuantity()
+  +createLevel()
+}
+class Prescription {
+  +boolean status
+  +boolean amount
+  +updateNote()
+  +processTotal()
+  +cancelStatus()
+  +createLevel()
+}
+abstract class Billing {
+  -boolean level
+  -double code
+  +processId()
+}
+Prescription --o Diagnosis
+Diagnosis ..|> Billing
+Billing ..|> MedicalRecord
+Diagnosis ..> Prescription : "0..1"
+note right of Ward : Healthcare domain
+@enduml

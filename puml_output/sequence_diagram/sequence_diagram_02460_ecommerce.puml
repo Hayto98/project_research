@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+control "Payment Gateway" as PG
+control "Customer" as C
+control "Seller" as S
+boundary "Admin" as A
+PG ->> C : Browse Products
+A ->> S : Manage Inventory
+PG ->> S : Write Review
+activate S
+S --> PG : ACK
+deactivate S
+note over S : processing write review
+A -> S : Track Order
+activate S
+S --> A : ACK
+deactivate S
+C -> A : Make Payment
+note over A : processing make payment
+S ->> PG : Cancel Order
+activate PG
+PG --> S : ACK
+deactivate PG
+@enduml

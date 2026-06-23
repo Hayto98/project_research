@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+component "Report Service" as C_ReportService
+component "Hashtag Service" as C_HashtagService
+component "Comment Service" as C_CommentService
+component "Album Service" as C_AlbumService
+component "User Service" as C_UserService
+component "Post Service" as C_PostService
+component "Profile Service" as C_ProfileService
+database "Social Media DB" as DB_social_media
+C_ReportService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_PostService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_UserService ..> C_ReportService : HTTP
+C_PostService ..> C_UserService : gRPC
+@enduml

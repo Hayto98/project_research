@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+component "Comment Service" as C_CommentService
+component "User Service" as C_UserService
+component "Message Service" as C_MessageService
+component "Story Service" as C_StoryService
+component "Follower Service" as C_FollowerService
+component "Album Service" as C_AlbumService
+database "Social Media DB" as DB_social_media
+C_CommentService --> DB_social_media
+C_StoryService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_UserService ..> C_MessageService : gRPC
+C_CommentService ..> C_FollowerService : HTTP
+@enduml

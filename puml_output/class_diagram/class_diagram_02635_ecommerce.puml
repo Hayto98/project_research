@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+class Payment {
+  +long description
+  -float score
+  -double code
+  -String email
+  -float createdAt
+  +sendAddress()
+  +deleteType()
+}
+class Return {
+  -double status
+  +double address
+  #long phone
+  #float total
+  +findActive()
+  +sendPhone()
+  +saveTotal()
+  +updateNote()
+}
+abstract class Customer {
+  -int type
+  -int id
+  #double price
+  +double createdAt
+  +saveAddress()
+  +calculateScore()
+  +processScore()
+}
+class Product {
+  -double status
+  -int phone
+  #long duration
+  -double active
+  +cancelCode()
+  +getPrice()
+}
+Payment ..|> Return
+Customer --|> Product
+note right of Payment : Ecommerce domain
+@enduml

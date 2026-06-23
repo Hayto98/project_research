@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+class Route {
+  -Date phone
+  #float note
+  +cancelLevel()
+  +cancelName()
+}
+class Tracking {
+  +double total
+  #String type
+  #Date level
+  #boolean score
+  +updateCreatedat()
+  +cancelTotal()
+  +sendPrice()
+}
+class Inventory {
+  #long duration
+  +String type
+  -Date amount
+  +getPrice()
+  +processType()
+  +cancelDuration()
+}
+abstract class Driver {
+  -double note
+  #Date phone
+  #String price
+  #boolean total
+  +sendEmail()
+  +deleteName()
+  +validateId()
+  +cancelStatus()
+}
+abstract class Customer {
+  -String status
+  -float email
+  +updateLevel()
+}
+class Shipment {
+  -long note
+  #int score
+  -String status
+  -Date description
+  +validateUpdatedat()
+  +saveAddress()
+}
+class DeliveryNote {
+  -double amount
+  #int duration
+  #long updatedAt
+  -Date description
+  +sendName()
+}
+Route --> Driver : "1"
+Route --|> Customer
+Shipment ..|> Inventory
+Shipment ..|> Driver
+DeliveryNote ..> Shipment : "1..*"
+DeliveryNote --> Inventory : "*"
+note right of Route : Logistics domain
+@enduml

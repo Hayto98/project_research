@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+[*] --> Active
+Active --> OnHold : reject
+Active : entry / log book
+OnHold --> Archived : reject
+OnHold : entry / log book
+Archived --> Shipped : approve
+Archived : entry / log book
+OnHold --> Active : revert
+Shipped --> [*]
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+start
+:Load Package;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Report Issue;
+:Track Shipment;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Deliver Package;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Schedule Pickup;
+:Update Inventory;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+stop
+@enduml

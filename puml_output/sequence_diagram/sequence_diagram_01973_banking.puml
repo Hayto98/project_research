@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing true
+entity "Bank Teller" as BT
+participant "Account Holder" as AH
+entity "ATM" as A
+control "Branch Manager" as BM
+BT -> AH : Pay Bill
+AH --> BM : Deposit Money
+activate BM
+BM --> AH : ACK
+deactivate BM
+BM ->> A : Withdraw Cash
+activate A
+A --> BM : ACK
+deactivate A
+A -> BM : Transfer Funds
+AH ->> A : Open Account
+A --> AH : Block Card
+@enduml

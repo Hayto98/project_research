@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+[*] --> Processing
+Processing --> Closed : confirm
+Processing : entry / log beneficiary
+Closed --> Cancelled : reject
+Closed : entry / log beneficiary
+Cancelled --> OnHold : update
+OnHold --> Shipped : confirm
+Shipped --> Pending : confirm
+OnHold --> Shipped : revert
+Pending --> [*]
+@enduml

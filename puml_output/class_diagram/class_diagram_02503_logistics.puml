@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+class Inventory {
+  +float name
+  +int amount
+  -float address
+  +processStatus()
+  +createPrice()
+  +deleteTotal()
+  +cancelLevel()
+}
+class Route {
+  +Date createdAt
+  -Date type
+  -float total
+  +String description
+  +calculateUpdatedat()
+}
+class Shipment {
+  -String total
+  +float updatedAt
+  +int address
+  #boolean status
+  +calculateNote()
+  +findName()
+  +sendQuantity()
+  +processNote()
+}
+abstract class Depot {
+  +float duration
+  #boolean total
+  +calculateAddress()
+  +setScore()
+}
+class Driver {
+  -float id
+  #float email
+  -Date code
+  -int address
+  +deleteDescription()
+  +savePhone()
+  +saveType()
+}
+abstract class Manifest {
+  +boolean type
+  +String status
+  #float note
+  +createLevel()
+  +saveName()
+  +getDescription()
+  +getScore()
+}
+interface Warehouse {
+  +int quantity
+  -double active
+  -double price
+  +processPhone()
+}
+Warehouse ..> Shipment : "1..*"
+Warehouse --> Route : "*"
+Shipment ..|> Warehouse
+note right of Inventory : Logistics domain
+@enduml

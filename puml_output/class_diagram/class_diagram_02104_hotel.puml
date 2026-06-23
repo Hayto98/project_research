@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+interface Staff {
+  -long amount
+  +int id
+  +deleteUpdatedat()
+  +updateUpdatedat()
+}
+class Payment {
+  #boolean note
+  +int total
+  +saveDuration()
+}
+class CheckOut {
+  #boolean email
+  -int name
+  -int description
+  +findDuration()
+}
+abstract class Reservation {
+  -long level
+  #String price
+  +Date score
+  +savePrice()
+  +validateAmount()
+}
+class Amenity {
+  #Date id
+  #boolean email
+  -float createdAt
+  +String type
+  #Date total
+  +processPrice()
+  +deleteActive()
+}
+abstract class CheckIn {
+  #float total
+  -String email
+  #float duration
+  +updateCode()
+  +getDuration()
+  +sendTotal()
+}
+Staff --|> Payment
+Reservation --o CheckIn
+Amenity ..|> CheckIn
+Payment ..|> CheckOut
+note right of Staff : Hotel domain
+@enduml

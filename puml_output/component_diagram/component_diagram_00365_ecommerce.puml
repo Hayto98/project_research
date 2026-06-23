@@ -1,0 +1,13 @@
+@startuml
+skinparam defaultFontSize 13
+component "Product Service" as C_ProductService
+component "Shipment Service" as C_ShipmentService
+component "Category Service" as C_CategoryService
+component "Supplier Service" as C_SupplierService
+database "Ecommerce DB" as DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_CategoryService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ShipmentService ..> C_CategoryService : gRPC
+C_ProductService ..> C_SupplierService : MQ
+@enduml

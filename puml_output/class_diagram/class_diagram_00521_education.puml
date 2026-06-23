@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+abstract class Schedule {
+  -String total
+  -long code
+  +double note
+  +String address
+  +boolean score
+  +getDuration()
+  +processDuration()
+  +createType()
+}
+class Book {
+  -String price
+  +float updatedAt
+  +findPhone()
+  +sendDescription()
+  +sendAmount()
+}
+abstract class Enrollment {
+  +long price
+  -boolean id
+  +float amount
+  #long total
+  #String description
+  +updateScore()
+}
+class Exam {
+  +int level
+  -long email
+  +updateDescription()
+  +cancelTotal()
+}
+class Department {
+  -double type
+  +float phone
+  +calculateTotal()
+  +processPrice()
+  +calculateNote()
+  +findLevel()
+}
+interface Teacher {
+  -Date duration
+  #int quantity
+  +createDescription()
+  +getName()
+  +createTotal()
+  +createEmail()
+}
+Department --> Book : "0..1"
+Book ..> Enrollment : "*"
+Schedule --* Exam
+note right of Schedule : Education domain
+@enduml

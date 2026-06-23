@@ -1,0 +1,64 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+abstract class Transfer {
+  #int status
+  #Date address
+  -double phone
+  -String email
+  +findStatus()
+  +calculateEmail()
+}
+class Withdrawal {
+  -float createdAt
+  -boolean name
+  +float code
+  -String phone
+  +int quantity
+  +createDescription()
+}
+class Statement {
+  -double total
+  #int status
+  #Date createdAt
+  +Date type
+  +cancelDuration()
+  +createDuration()
+  +setDescription()
+}
+class Deposit {
+  +float email
+  +int amount
+  +findLevel()
+  +calculateCreatedat()
+}
+class Teller {
+  #boolean description
+  #String amount
+  #int level
+  -double type
+  +createUpdatedat()
+  +cancelName()
+}
+abstract class Loan {
+  -String address
+  +Date type
+  +saveDuration()
+  +calculateQuantity()
+}
+class Customer {
+  +String note
+  #Date score
+  +double id
+  -long price
+  #float address
+  +findDuration()
+  +deleteActive()
+  +processCode()
+  +createPrice()
+}
+Statement ..|> Customer
+Transfer --> Teller : "*"
+Deposit --> Teller : "0..1"
+note right of Transfer : Banking domain
+@enduml

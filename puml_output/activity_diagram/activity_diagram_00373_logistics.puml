@@ -1,0 +1,37 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+start
+:Deliver Package;
+:Report Issue;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Schedule Pickup;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Load Package;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Assign Route;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Inventory;
+:Fuel Vehicle;
+stop
+@enduml

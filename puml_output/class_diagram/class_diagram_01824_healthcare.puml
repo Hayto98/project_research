@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+interface Treatment {
+  +String code
+  #Date description
+  #String note
+  +validateCode()
+  +createStatus()
+  +processType()
+  +calculateName()
+}
+abstract class Ward {
+  -Date active
+  +boolean phone
+  +updateName()
+}
+class LabTest {
+  +long duration
+  #String email
+  +String active
+  #long updatedAt
+  -String name
+  +saveId()
+  +processLevel()
+  +calculateTotal()
+}
+class Insurance {
+  -float amount
+  +boolean price
+  +float status
+  -long name
+  +setStatus()
+  +calculateType()
+  +deleteEmail()
+  +deleteQuantity()
+}
+Ward --> Insurance : "1..*"
+Treatment --o LabTest
+LabTest --o Ward
+note right of Treatment : Healthcare domain
+@enduml

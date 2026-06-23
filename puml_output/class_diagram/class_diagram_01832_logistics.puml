@@ -1,0 +1,70 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+interface FuelLog {
+  #String code
+  +Date createdAt
+  +createId()
+  +setCode()
+  +getDescription()
+  +validatePrice()
+}
+class Shipment {
+  +float level
+  -long type
+  +Date code
+  -String name
+  +saveQuantity()
+}
+class Package {
+  +long price
+  +int note
+  #double description
+  +createPhone()
+  +cancelDescription()
+  +updateScore()
+  +updateEmail()
+}
+class Tracking {
+  #float email
+  #long active
+  -long createdAt
+  +updateLevel()
+  +processTotal()
+}
+interface Route {
+  -int updatedAt
+  #String duration
+  #Date quantity
+  +float level
+  +calculateEmail()
+  +setUpdatedat()
+  +validateEmail()
+}
+abstract class Depot {
+  #String price
+  +Date email
+  -Date updatedAt
+  +double id
+  +int total
+  +getActive()
+}
+class Customer {
+  +long score
+  +Date type
+  -double phone
+  #int address
+  +String total
+  +saveName()
+  +getDescription()
+  +updateQuantity()
+  +deleteDescription()
+}
+Package ..> Tracking : "0..1"
+Customer --o Route
+FuelLog --> Route : "0..1"
+FuelLog --o Depot
+Tracking ..> FuelLog : "0..1"
+Tracking --o Depot
+note right of FuelLog : Logistics domain
+@enduml

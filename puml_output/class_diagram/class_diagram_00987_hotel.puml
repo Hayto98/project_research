@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+class Amenity {
+  #float id
+  #long email
+  #int active
+  #double address
+  #boolean total
+  +saveAddress()
+  +processName()
+  +sendTotal()
+}
+interface Reservation {
+  -double phone
+  #double id
+  +long name
+  -Date total
+  +String type
+  +saveEmail()
+  +calculateStatus()
+  +deleteDuration()
+}
+class Staff {
+  -String id
+  -double level
+  +saveQuantity()
+}
+class Booking {
+  -int type
+  -String amount
+  +setPrice()
+  +findLevel()
+  +validateStatus()
+}
+abstract class Guest {
+  -long code
+  -String duration
+  #float description
+  #int phone
+  +validatePrice()
+  +processAmount()
+  +calculateDuration()
+  +updateId()
+}
+interface Invoice {
+  +long price
+  +double code
+  +String address
+  +processActive()
+}
+Invoice ..> Amenity : "0..1"
+Reservation --o Booking
+Reservation --* Staff
+Guest ..> Reservation : "0..1"
+note right of Amenity : Hotel domain
+@enduml

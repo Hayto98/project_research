@@ -1,0 +1,63 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class Service {
+  #double type
+  #boolean status
+  +cancelStatus()
+  +sendActive()
+}
+class CheckOut {
+  #Date createdAt
+  +float name
+  -String email
+  +createUpdatedat()
+  +getCreatedat()
+  +cancelEmail()
+  +updateQuantity()
+}
+class Payment {
+  #String id
+  #double amount
+  -long phone
+  #boolean note
+  +getUpdatedat()
+}
+class Room {
+  +String updatedAt
+  +boolean phone
+  +int status
+  +int quantity
+  +sendActive()
+  +processName()
+}
+class Restaurant {
+  +Date address
+  +Date name
+  +sendActive()
+  +updateActive()
+  +setActive()
+}
+class Booking {
+  -Date amount
+  -int active
+  #Date name
+  +double note
+  +calculateCreatedat()
+}
+class Housekeeping {
+  +Date code
+  -long score
+  +saveCreatedat()
+  +cancelActive()
+  +deleteAddress()
+}
+Booking ..|> Service
+Booking --> Restaurant : "0..1"
+Housekeeping ..> Room : "1..*"
+Restaurant --|> Room
+Housekeeping ..|> Booking
+Room --o Payment
+note right of Service : Hotel domain
+@enduml

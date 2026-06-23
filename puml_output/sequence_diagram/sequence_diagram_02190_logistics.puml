@@ -1,0 +1,18 @@
+@startuml
+
+actor "Customer" as C
+boundary "Dispatcher" as D
+participant "Warehouse Staff" as WS
+actor "Driver" as D2
+participant "Fleet Manager" as FM
+WS --> C : Assign Route
+D2 -> D : Load Package
+activate D
+D --> D2 : ACK
+deactivate D
+WS ->> C : Update Inventory
+activate C
+C --> WS : ACK
+deactivate C
+D ->> C : Track Shipment
+@enduml

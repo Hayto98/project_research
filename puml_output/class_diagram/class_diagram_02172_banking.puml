@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+abstract class Transaction {
+  +double active
+  -int code
+  +cancelCode()
+}
+class Card {
+  -String phone
+  -float duration
+  #double name
+  #String level
+  #long price
+  +calculatePhone()
+  +findCreatedat()
+  +validateScore()
+}
+interface Branch {
+  #Date duration
+  +int description
+  #int level
+  -Date updatedAt
+  +boolean score
+  +setActive()
+  +processPrice()
+  +deleteUpdatedat()
+  +getId()
+}
+abstract class Customer {
+  -int note
+  -double address
+  -Date createdAt
+  #String amount
+  +boolean updatedAt
+  +sendEmail()
+  +updateNote()
+  +sendEmail()
+  +deleteCode()
+}
+Customer ..|> Branch
+Branch ..> Card : "1..*"
+Transaction ..|> Card
+note right of Transaction : Banking domain
+@enduml

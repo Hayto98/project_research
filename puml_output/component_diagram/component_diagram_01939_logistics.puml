@@ -1,0 +1,17 @@
+@startuml
+skinparam ArrowColor #555555
+component "Manifest Service" as C_ManifestService
+component "Depot Service" as C_DepotService
+component "FuelLog Service" as C_FuelLogService
+component "Tracking Service" as C_TrackingService
+component "Route Service" as C_RouteService
+component "Inventory Service" as C_InventoryService
+database "Logistics DB" as DB_logistics
+C_ManifestService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_RouteService --> DB_logistics
+C_InventoryService --> DB_logistics
+C_ManifestService ..> C_FuelLogService : MQ
+C_InventoryService ..> C_ManifestService : MQ
+@enduml

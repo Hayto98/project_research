@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+interface Service {
+  -Date updatedAt
+  -int phone
+  +processId()
+  +deleteScore()
+}
+class Amenity {
+  +int type
+  #String status
+  #String address
+  -int phone
+  +setNote()
+  +updateDuration()
+}
+class CheckIn {
+  -String id
+  +Date email
+  +boolean duration
+  +cancelQuantity()
+  +calculateCode()
+}
+class Room {
+  +float status
+  -long name
+  #boolean updatedAt
+  +findLevel()
+  +calculateAddress()
+  +cancelDescription()
+}
+class CheckOut {
+  #Date address
+  #double note
+  +boolean type
+  +long total
+  +findPrice()
+  +findCreatedat()
+  +validateNote()
+}
+Service --> Room : "1"
+CheckOut ..> Room : "0..1"
+Amenity --* Service
+note right of Service : Hotel domain
+@enduml

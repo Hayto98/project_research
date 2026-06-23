@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+left to right direction
+actor "Admin" as Admin
+actor "Student" as Student
+actor "Parent" as Parent
+actor "Librarian" as Librarian
+rectangle "Education System" {
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "View Schedule" as UC_ViewSchedule
+  usecase "Take Attendance" as UC_TakeAttendance
+}
+Admin --> UC_BorrowBook
+Student --> UC_BorrowBook
+Parent --> UC_SubmitAssignment
+Librarian --> UC_ViewSchedule
+Librarian --> UC_SubmitAssignment
+Librarian --> UC_EnrollCourse
+UC_EnrollCourse ..|> UC_GradeExam : <<extend>>
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+component "Customer Service" as C_CustomerService
+component "Withdrawal Service" as C_WithdrawalService
+component "Loan Service" as C_LoanService
+component "Branch Service" as C_BranchService
+component "Transaction Service" as C_TransactionService
+database "Banking DB" as DB_banking
+C_LoanService --> DB_banking
+C_BranchService --> DB_banking
+C_TransactionService --> DB_banking
+C_CustomerService ..> C_BranchService : REST
+C_TransactionService ..> C_CustomerService : gRPC
+C_CustomerService ..> C_WithdrawalService : gRPC
+@enduml

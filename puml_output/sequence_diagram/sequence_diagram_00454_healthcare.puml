@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+actor "Nurse" as N
+participant "Doctor" as D
+boundary "Insurance Provider" as IP
+participant "Patient" as P
+IP --> P : Admit Patient
+IP --> N : Issue Prescription
+activate N
+N --> IP : ACK
+deactivate N
+N -> P : Examine Patient
+note over P : processing examine patient
+N --> IP : Book Appointment
+P -> N : Update Medical Record
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+entity "Parent" as P
+boundary "Registrar" as R
+actor "Student" as S
+S --> R : Register Student
+activate R
+R --> S : ACK
+deactivate R
+R -> S : Borrow Book
+P --> S : Take Attendance
+note over S : processing take attendance
+S --> R : Issue Certificate
+S ->> P : Submit Assignment
+S ->> P : Grade Exam
+activate P
+P --> S : ACK
+deactivate P
+@enduml

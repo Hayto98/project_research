@@ -1,0 +1,14 @@
+@startuml
+skinparam ArrowColor #555555
+component "Driver Service" as C_DriverService
+component "Customer Service" as C_CustomerService
+component "FuelLog Service" as C_FuelLogService
+component "Tracking Service" as C_TrackingService
+database "Logistics DB" as DB_logistics
+C_DriverService --> DB_logistics
+C_CustomerService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_DriverService ..> C_CustomerService : REST
+C_FuelLogService ..> C_CustomerService : REST
+C_TrackingService ..> C_DriverService : MQ
+@enduml

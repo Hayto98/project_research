@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+control "Dispatcher" as D
+participant "Customer" as C
+actor "Fleet Manager" as FM
+entity "Driver" as D2
+participant "Warehouse Staff" as WS
+C ->> WS : Track Shipment
+note over WS : processing track shipment
+WS ->> D2 : Assign Route
+WS -> C : Schedule Pickup
+D ->> C : Update Inventory
+note over C : processing update inventory
+D2 -> C : Deliver Package
+C --> D2 : Report Issue
+@enduml

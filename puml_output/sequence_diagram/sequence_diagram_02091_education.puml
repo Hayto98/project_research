@@ -1,0 +1,31 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+entity "Student" as S
+entity "Parent" as P
+entity "Teacher" as T
+participant "Registrar" as R
+actor "Admin" as A
+P -> A : Issue Certificate
+activate A
+A --> P : ACK
+deactivate A
+T ->> A : Enroll Course
+activate A
+A --> T : ACK
+deactivate A
+note over A : processing enroll course
+A ->> R : Register Student
+S --> R : Grade Exam
+note over R : processing grade exam
+S -> T : Take Attendance
+activate T
+T --> S : ACK
+deactivate T
+note over T : processing take attendance
+S --> T : Submit Assignment
+P -> S : View Schedule
+activate S
+S --> P : ACK
+deactivate S
+@enduml

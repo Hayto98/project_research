@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+control "ATM" as A
+control "Bank Teller" as BT
+entity "Auditor" as A2
+entity "Account Holder" as AH
+BT --> A : Block Card
+AH -> BT : Apply For Loan
+AH --> BT : Withdraw Cash
+activate BT
+BT --> AH : ACK
+deactivate BT
+note over BT : processing withdraw cash
+BT --> A : Pay Bill
+AH --> A : View Statement
+note over A : processing view statement
+@enduml

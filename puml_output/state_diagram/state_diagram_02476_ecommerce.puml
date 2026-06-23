@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+[*] --> Active
+Active --> Rejected : update
+Rejected --> Processing : process
+Rejected : entry / log warehouse
+Processing --> Draft : update
+Processing : entry / log warehouse
+Draft --> Created : review
+Created --> Shipped : approve
+Shipped --> [*]
+@enduml

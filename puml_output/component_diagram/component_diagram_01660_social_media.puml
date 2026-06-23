@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+component "Post Service" as C_PostService
+component "Notification Service" as C_NotificationService
+component "Like Service" as C_LikeService
+component "Message Service" as C_MessageService
+database "Social Media DB" as DB_social_media
+C_LikeService --> DB_social_media
+C_MessageService --> DB_social_media
+C_LikeService ..> C_MessageService : MQ
+C_NotificationService ..> C_PostService : REST
+C_MessageService ..> C_PostService : gRPC
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+abstract class Catalog {
+  -Date duration
+  -int name
+  +validateAmount()
+  +calculateUpdatedat()
+}
+class Author {
+  -double price
+  +double note
+  +findId()
+  +saveType()
+}
+class Publisher {
+  +int note
+  -boolean amount
+  +findTotal()
+  +processTotal()
+}
+abstract class Reservation {
+  #long amount
+  +long level
+  #boolean phone
+  -float note
+  +updatePhone()
+  +calculateUpdatedat()
+  +cancelType()
+  +saveType()
+}
+abstract class Shelf {
+  +String level
+  #boolean type
+  -double note
+  +calculateUpdatedat()
+  +validatePrice()
+  +getDescription()
+}
+abstract class Book {
+  -int name
+  +Date note
+  #boolean amount
+  +calculateStatus()
+  +calculateLevel()
+  +calculateNote()
+}
+Book --> Publisher : "1"
+Book --> Shelf : "0..1"
+Shelf --* Catalog
+Book ..> Reservation : "1..*"
+note right of Catalog : Library domain
+@enduml

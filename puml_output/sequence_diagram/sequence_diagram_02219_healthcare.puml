@@ -1,0 +1,26 @@
+@startuml
+skinparam defaultFontSize 11
+control "Nurse" as N
+boundary "Doctor" as D
+entity "Insurance Provider" as IP
+IP ->> D : Run Lab Test
+activate D
+D --> IP : ACK
+deactivate D
+N ->> IP : Admit Patient
+activate IP
+IP --> N : ACK
+deactivate IP
+N -> IP : Update Medical Record
+activate IP
+IP --> N : ACK
+deactivate IP
+IP --> N : Book Appointment
+note over N : processing book appointment
+D -> IP : Issue Prescription
+note over IP : processing issue prescription
+N --> D : Discharge Patient
+activate D
+D --> N : ACK
+deactivate D
+@enduml

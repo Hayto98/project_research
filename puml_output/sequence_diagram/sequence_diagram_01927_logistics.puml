@@ -1,0 +1,31 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+actor "Dispatcher" as D
+control "Fleet Manager" as FM
+control "Driver" as D2
+entity "Warehouse Staff" as WS
+D2 --> WS : Track Shipment
+activate WS
+WS --> D2 : ACK
+deactivate WS
+D2 -> WS : Assign Route
+activate WS
+WS --> D2 : ACK
+deactivate WS
+D -> WS : Update Inventory
+activate WS
+WS --> D : ACK
+deactivate WS
+WS -> D2 : Fuel Vehicle
+note over D2 : processing fuel vehicle
+WS ->> D : Schedule Pickup
+activate D
+D --> WS : ACK
+deactivate D
+WS --> D : Deliver Package
+activate D
+D --> WS : ACK
+deactivate D
+D2 --> WS : Report Issue
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+interface Prescription {
+  #String type
+  -Date status
+  +double name
+  -double code
+  +findStatus()
+  +sendQuantity()
+}
+class Insurance {
+  #long total
+  #long id
+  -Date quantity
+  +getCode()
+  +setType()
+}
+abstract class Hospital {
+  +String duration
+  #float description
+  -long quantity
+  +double note
+  +updateCode()
+  +processStatus()
+  +calculateType()
+}
+class Billing {
+  -String email
+  #long note
+  +float address
+  -boolean total
+  +Date score
+  +createEmail()
+  +cancelPrice()
+  +findAddress()
+}
+Prescription --> Insurance : "1..*"
+Hospital --> Insurance : "1"
+Billing --> Prescription : "*"
+note right of Prescription : Healthcare domain
+@enduml

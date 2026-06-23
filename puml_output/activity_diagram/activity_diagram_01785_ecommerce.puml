@@ -1,0 +1,36 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Add To Cart;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Checkout;
+:Write Review;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Apply Coupon;
+:Manage Inventory;
+:Track Order;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Make Payment;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Browse Products;
+stop
+@enduml

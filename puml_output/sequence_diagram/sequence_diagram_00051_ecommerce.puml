@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing true
+participant "Admin" as A
+boundary "Payment Gateway" as PG
+control "Customer" as C
+participant "Delivery Service" as DS
+participant "Seller" as S
+A ->> PG : Manage Inventory
+note over PG : processing manage inventory
+PG --> S : Write Review
+A ->> DS : Checkout
+note over DS : processing checkout
+PG ->> DS : Browse Products
+A -> PG : Track Order
+activate PG
+PG --> A : ACK
+deactivate PG
+note over PG : processing track order
+@enduml

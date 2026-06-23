@@ -1,0 +1,20 @@
+@startuml
+
+actor "Housekeeper" as H
+participant "Chef" as C
+control "Receptionist" as R
+boundary "Guest" as G
+C ->> R : Check Out
+activate R
+R --> C : ACK
+deactivate R
+note over R : processing check out
+G ->> R : Process Payment
+G -> C : Clean Room
+R -> C : Book Room
+activate C
+C --> R : ACK
+deactivate C
+G --> H : Order Room Service
+note over H : processing order room service
+@enduml

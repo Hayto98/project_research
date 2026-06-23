@@ -1,0 +1,40 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Pay Bill;
+:Block Card;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Open Account;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Transfer Funds;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Apply For Loan;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:View Statement;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+stop
+@enduml

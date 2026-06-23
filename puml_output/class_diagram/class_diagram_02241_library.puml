@@ -1,0 +1,54 @@
+@startuml
+skinparam ArrowColor #555555
+class Branch {
+  +Date status
+  -Date email
+  #String duration
+  +float id
+  #float code
+  +validateStatus()
+  +processId()
+  +findStatus()
+}
+class Reservation {
+  #String level
+  -float createdAt
+  #boolean type
+  -boolean price
+  +calculateQuantity()
+}
+class Book {
+  -Date note
+  -String email
+  +updateDuration()
+  +updateLevel()
+  +processAddress()
+  +createNote()
+}
+interface Member {
+  -Date name
+  -String status
+  #long score
+  +calculateDescription()
+}
+class Publisher {
+  #double price
+  -long duration
+  #boolean quantity
+  +createEmail()
+  +cancelActive()
+}
+interface Fine {
+  +int type
+  #boolean createdAt
+  +float description
+  +String code
+  +getName()
+}
+Fine ..|> Reservation
+Book --* Member
+Branch ..> Member : "1"
+Publisher --|> Reservation
+Reservation --> Book : "*"
+note right of Branch : Library domain
+@enduml

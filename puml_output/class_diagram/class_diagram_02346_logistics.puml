@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Manifest {
+  +Date phone
+  #boolean price
+  -String duration
+  #long type
+  -long level
+  +processName()
+}
+interface Customer {
+  #long price
+  +long amount
+  +processLevel()
+  +createUpdatedat()
+}
+class Inventory {
+  -int description
+  +float address
+  #String status
+  +validateLevel()
+  +processUpdatedat()
+  +getStatus()
+}
+class Shipment {
+  #String email
+  -boolean description
+  +String address
+  #Date code
+  -float type
+  +getNote()
+  +processPrice()
+  +findStatus()
+  +calculateId()
+}
+abstract class Warehouse {
+  -String quantity
+  -double note
+  +float description
+  #int code
+  -double duration
+  +processNote()
+  +findAddress()
+}
+Manifest --o Warehouse
+Shipment --* Customer
+Shipment ..> Manifest : "1..*"
+Shipment ..> Inventory : "*"
+note right of Manifest : Logistics domain
+@enduml

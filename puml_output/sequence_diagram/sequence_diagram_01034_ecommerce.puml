@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+actor "Payment Gateway" as PG
+control "Delivery Service" as DS
+participant "Admin" as A
+entity "Customer" as C
+entity "Seller" as S
+DS --> C : Make Payment
+PG ->> S : Manage Inventory
+C --> DS : Checkout
+note over DS : processing checkout
+A -> S : Apply Coupon
+activate S
+S --> A : ACK
+deactivate S
+@enduml

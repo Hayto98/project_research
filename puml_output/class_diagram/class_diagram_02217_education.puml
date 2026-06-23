@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+abstract class Attendance {
+  +long active
+  #int name
+  +getCreatedat()
+  +validateAddress()
+  +deleteTotal()
+  +saveDescription()
+}
+interface Course {
+  +double status
+  #int price
+  +float note
+  +setPhone()
+  +setEmail()
+  +findTotal()
+  +saveAddress()
+}
+class Student {
+  -long createdAt
+  -Date active
+  +deleteTotal()
+  +deleteCode()
+  +calculateType()
+}
+abstract class Enrollment {
+  -boolean duration
+  -boolean email
+  +long code
+  +int status
+  +processCode()
+}
+class Teacher {
+  #long email
+  -float duration
+  +getAddress()
+}
+Student --> Enrollment : "0..1"
+Student --o Attendance
+note right of Attendance : Education domain
+@enduml

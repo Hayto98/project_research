@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class Follower {
+  #Date level
+  #Date name
+  +int id
+  +updateTotal()
+  +findAmount()
+}
+class Hashtag {
+  -Date name
+  -String code
+  -boolean note
+  #double createdAt
+  -int status
+  +getNote()
+  +setId()
+  +validateType()
+}
+abstract class User {
+  +float type
+  +long active
+  -int level
+  +setEmail()
+  +setUpdatedat()
+}
+interface Comment {
+  +String total
+  -Date id
+  #long status
+  +findCreatedat()
+}
+class Message {
+  +boolean note
+  -Date quantity
+  +String price
+  #long score
+  +setTotal()
+  +setId()
+  +sendDuration()
+  +getType()
+}
+abstract class Group {
+  #String email
+  -double type
+  +double status
+  +calculateLevel()
+  +cancelActive()
+  +validateDescription()
+  +validateCode()
+}
+interface Notification {
+  #float quantity
+  +int level
+  #Date score
+  #double price
+  #Date code
+  +cancelNote()
+  +validateAddress()
+}
+Group ..> Hashtag : "1"
+Follower --|> User
+Follower ..|> Message
+Comment --|> Hashtag
+User --> Group : "1..*"
+note right of Follower : Social Media domain
+@enduml

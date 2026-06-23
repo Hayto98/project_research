@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+actor "Account Holder" as AH
+actor "Auditor" as A
+boundary "ATM" as A2
+AH -> A2 : Deposit Money
+A2 ->> AH : Apply For Loan
+A2 -> A : Open Account
+activate A
+A --> A2 : ACK
+deactivate A
+A2 --> A : Block Card
+AH --> A : Withdraw Cash
+activate A
+A --> AH : ACK
+deactivate A
+@enduml

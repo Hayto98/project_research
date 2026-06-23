@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+participant "Customer" as C
+boundary "Warehouse Staff" as WS
+boundary "Fleet Manager" as FM
+C --> WS : Update Inventory
+FM ->> WS : Fuel Vehicle
+activate WS
+WS --> FM : ACK
+deactivate WS
+FM ->> C : Report Issue
+activate C
+C --> FM : ACK
+deactivate C
+WS -> C : Assign Route
+note over C : processing assign route
+C -> FM : Schedule Pickup
+WS ->> C : Deliver Package
+activate C
+C --> WS : ACK
+deactivate C
+@enduml

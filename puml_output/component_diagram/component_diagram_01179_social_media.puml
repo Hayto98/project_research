@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Group Service" as C_GroupService
+component "Hashtag Service" as C_HashtagService
+component "Report Service" as C_ReportService
+component "Like Service" as C_LikeService
+database "Social Media DB" as DB_social_media
+C_GroupService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_HashtagService ..> C_ReportService : HTTP
+C_GroupService ..> C_ReportService : HTTP
+C_LikeService ..> C_GroupService : REST
+@enduml

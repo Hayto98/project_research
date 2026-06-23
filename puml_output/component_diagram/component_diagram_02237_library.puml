@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Book Service" as C_BookService
+component "Branch Service" as C_BranchService
+component "Loan Service" as C_LoanService
+component "Catalog Service" as C_CatalogService
+database "Library DB" as DB_library
+C_BookService --> DB_library
+C_BranchService --> DB_library
+C_CatalogService --> DB_library
+C_CatalogService ..> C_BookService : MQ
+C_CatalogService ..> C_LoanService : MQ
+C_CatalogService ..> C_BranchService : REST
+@enduml

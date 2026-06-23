@@ -1,0 +1,17 @@
+@startuml
+skinparam defaultFontSize 13
+component "Course Service" as C_CourseService
+component "Grade Service" as C_GradeService
+component "Schedule Service" as C_ScheduleService
+component "Attendance Service" as C_AttendanceService
+component "Classroom Service" as C_ClassroomService
+database "Education DB" as DB_education
+C_CourseService --> DB_education
+C_GradeService --> DB_education
+C_AttendanceService --> DB_education
+C_ClassroomService --> DB_education
+C_ClassroomService ..> C_CourseService : gRPC
+C_AttendanceService ..> C_ScheduleService : HTTP
+C_CourseService ..> C_GradeService : REST
+C_CourseService ..> C_AttendanceService : REST
+@enduml

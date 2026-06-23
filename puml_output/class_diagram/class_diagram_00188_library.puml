@@ -1,0 +1,68 @@
+@startuml
+skinparam monochrome true
+class Renewal {
+  +float duration
+  +double note
+  -int amount
+  +String address
+  +Date description
+  +getActive()
+  +validateUpdatedat()
+  +saveActive()
+}
+interface Catalog {
+  +float price
+  #long level
+  +saveDuration()
+  +validateNote()
+}
+class Publisher {
+  +String total
+  +float status
+  +String phone
+  #Date createdAt
+  +long code
+  +deleteAddress()
+  +validateId()
+}
+abstract class Author {
+  #int total
+  +float score
+  -double note
+  #Date id
+  #boolean address
+  +validateLevel()
+  +sendAddress()
+  +updateScore()
+  +calculateNote()
+}
+class Shelf {
+  #int description
+  -boolean createdAt
+  #double name
+  +cancelActive()
+  +findDuration()
+  +validateAddress()
+  +setId()
+}
+interface Librarian {
+  -Date duration
+  +int type
+  +getPhone()
+  +getAddress()
+  +findId()
+  +updateDuration()
+}
+class Reservation {
+  +boolean type
+  #float phone
+  +cancelPrice()
+}
+Librarian --o Catalog
+Librarian --> Renewal : "1..*"
+Renewal ..> Catalog : "1"
+Author --|> Catalog
+Publisher ..> Shelf : "*"
+Catalog ..|> Publisher
+note right of Renewal : Library domain
+@enduml

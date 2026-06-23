@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+abstract class Customer {
+  -long type
+  -double name
+  #String total
+  +processPhone()
+  +cancelStatus()
+  +setScore()
+}
+class Shipment {
+  #double description
+  -int code
+  +String price
+  +deleteTotal()
+  +deleteId()
+}
+interface Driver {
+  +float price
+  -Date description
+  +String duration
+  +int status
+  +Date id
+  +processUpdatedat()
+}
+interface Manifest {
+  #long createdAt
+  +boolean active
+  -double amount
+  +getNote()
+  +createTotal()
+  +calculateTotal()
+}
+class DeliveryNote {
+  #Date score
+  #boolean note
+  #long active
+  +sendUpdatedat()
+}
+class FuelLog {
+  #boolean updatedAt
+  -double score
+  #String duration
+  -long id
+  +cancelId()
+  +processLevel()
+  +calculateType()
+}
+DeliveryNote ..|> FuelLog
+Shipment ..> Customer : "0..1"
+Shipment --> DeliveryNote : "1..*"
+note right of Customer : Logistics domain
+@enduml

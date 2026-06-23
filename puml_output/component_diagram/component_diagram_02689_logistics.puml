@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+component "Vehicle Service" as C_VehicleService
+component "FuelLog Service" as C_FuelLogService
+component "Warehouse Service" as C_WarehouseService
+component "Package Service" as C_PackageService
+component "Route Service" as C_RouteService
+component "Manifest Service" as C_ManifestService
+database "Logistics DB" as DB_logistics
+C_VehicleService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_PackageService --> DB_logistics
+C_RouteService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_FuelLogService ..> C_WarehouseService : gRPC
+C_PackageService ..> C_VehicleService : HTTP
+C_FuelLogService ..> C_RouteService : REST
+C_ManifestService ..> C_RouteService : gRPC
+C_WarehouseService ..> C_FuelLogService : MQ
+@enduml

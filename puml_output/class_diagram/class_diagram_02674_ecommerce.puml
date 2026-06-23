@@ -1,0 +1,48 @@
+@startuml
+skinparam defaultFontSize 13
+class Product {
+  +String total
+  #int quantity
+  -boolean status
+  -String phone
+  +findTotal()
+  +createScore()
+}
+class Customer {
+  #Date createdAt
+  #long quantity
+  +long code
+  #long updatedAt
+  +findDescription()
+  +createPrice()
+}
+class Warehouse {
+  #String quantity
+  #boolean description
+  +createLevel()
+  +findType()
+  +processActive()
+  +getCreatedat()
+}
+abstract class Supplier {
+  +int createdAt
+  #boolean price
+  +createNote()
+  +deleteScore()
+  +updateAmount()
+  +validateName()
+}
+class Return {
+  +float price
+  +long updatedAt
+  +createActive()
+  +getStatus()
+  +createCode()
+  +createType()
+}
+Warehouse --o Customer
+Customer --> Return : "1..*"
+Return --|> Warehouse
+Product --o Warehouse
+note right of Product : Ecommerce domain
+@enduml

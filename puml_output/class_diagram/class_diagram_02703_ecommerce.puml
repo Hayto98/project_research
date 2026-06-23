@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+abstract class Payment {
+  -Date createdAt
+  +int description
+  -float price
+  #double active
+  +cancelDuration()
+  +sendDuration()
+}
+interface Review {
+  #Date amount
+  +float name
+  #float phone
+  +findPhone()
+  +sendAddress()
+}
+abstract class Invoice {
+  -int name
+  -long updatedAt
+  -String duration
+  #boolean code
+  +deleteId()
+  +validateScore()
+  +createName()
+}
+abstract class Customer {
+  -boolean note
+  -String updatedAt
+  +findEmail()
+  +validateDuration()
+  +getStatus()
+}
+Invoice ..|> Review
+Payment ..> Customer : "1"
+Review ..|> Invoice
+note right of Payment : Ecommerce domain
+@enduml

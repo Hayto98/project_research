@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+control "Admin" as A
+boundary "Customer" as C
+control "Payment Gateway" as PG
+entity "Seller" as S
+entity "Delivery Service" as DS
+A --> S : Add To Cart
+note over S : processing add to cart
+A --> S : Manage Inventory
+note over S : processing manage inventory
+C -> S : Checkout
+DS --> A : Apply Coupon
+activate A
+A --> DS : ACK
+deactivate A
+note over A : processing apply coupon
+C -> S : Make Payment
+@enduml

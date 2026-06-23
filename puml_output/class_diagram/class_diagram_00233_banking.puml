@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class Transfer {
+  #Date type
+  +long price
+  +double updatedAt
+  #String level
+  +setLevel()
+}
+interface Statement {
+  #double createdAt
+  #long address
+  +float amount
+  -long active
+  -Date email
+  +processType()
+}
+abstract class Transaction {
+  -String email
+  -boolean level
+  +boolean type
+  #int note
+  +float score
+  +calculateCode()
+}
+class Beneficiary {
+  #long code
+  #float updatedAt
+  #float active
+  +processEmail()
+}
+Transaction --* Transfer
+Statement ..> Transfer : "1..*"
+note right of Transfer : Banking domain
+@enduml

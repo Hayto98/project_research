@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+interface Student {
+  +String id
+  -long price
+  +deleteId()
+  +saveStatus()
+  +createPhone()
+  +getDescription()
+}
+abstract class Enrollment {
+  #double description
+  -long amount
+  -Date score
+  #int phone
+  +deleteTotal()
+  +deleteType()
+}
+interface Teacher {
+  #long duration
+  -boolean note
+  +int address
+  +String type
+  +updateDuration()
+  +getActive()
+}
+interface Book {
+  -long type
+  #boolean price
+  #int amount
+  +String quantity
+  +deleteCreatedat()
+}
+class Library {
+  -double code
+  -Date type
+  -float name
+  +sendUpdatedat()
+  +createScore()
+  +processScore()
+  +createId()
+}
+interface Classroom {
+  +String id
+  #boolean status
+  +createCode()
+  +calculateEmail()
+}
+Enrollment ..|> Teacher
+Student --|> Enrollment
+Book --> Enrollment : "1..*"
+Teacher ..|> Enrollment
+note right of Student : Education domain
+@enduml

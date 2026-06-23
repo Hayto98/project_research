@@ -1,0 +1,41 @@
+@startuml
+
+start
+:Issue Prescription;
+:Update Medical Record;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Process Insurance Claim;
+:Admit Patient;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Examine Patient;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Run Lab Test;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Book Appointment;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Discharge Patient;
+stop
+@enduml

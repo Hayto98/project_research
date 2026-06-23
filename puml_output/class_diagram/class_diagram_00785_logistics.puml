@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Inventory {
+  -float updatedAt
+  #boolean active
+  +updateDescription()
+  +savePrice()
+}
+class Warehouse {
+  +int amount
+  +int description
+  -boolean email
+  +saveEmail()
+  +saveAmount()
+  +validateAddress()
+}
+class Depot {
+  -String address
+  #long total
+  +double updatedAt
+  +processAmount()
+  +deleteQuantity()
+  +processLevel()
+  +sendAddress()
+}
+abstract class Manifest {
+  #Date code
+  +int quantity
+  #String total
+  -float email
+  +long score
+  +setCreatedat()
+  +cancelEmail()
+}
+abstract class Tracking {
+  +String quantity
+  #String code
+  #String note
+  #int createdAt
+  +boolean price
+  +sendDescription()
+  +sendAddress()
+  +deleteQuantity()
+  +updateStatus()
+}
+class DeliveryNote {
+  -long level
+  +Date type
+  +boolean phone
+  #long total
+  +float description
+  +saveStatus()
+  +saveStatus()
+  +cancelNote()
+  +sendType()
+}
+abstract class FuelLog {
+  -long score
+  #boolean type
+  -long name
+  #int createdAt
+  -float phone
+  +getType()
+}
+Warehouse ..|> FuelLog
+FuelLog ..> Inventory : "1"
+note right of Inventory : Logistics domain
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+[*] --> Cancelled
+Cancelled --> Active : submit
+Active --> Created : reject
+Created --> Processing : update
+Created : entry / log schedule
+Processing --> Completed : approve
+Processing : entry / log schedule
+Completed --> Shipped : cancel
+Completed : entry / log schedule
+Created --> Cancelled : revert
+Shipped --> [*]
+@enduml

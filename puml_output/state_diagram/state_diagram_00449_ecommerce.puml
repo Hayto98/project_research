@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+[*] --> Pending
+Pending --> OnHold : reject
+Pending : entry / log category
+OnHold --> Completed : process
+OnHold : entry / log category
+Completed --> Created : process
+Created --> Rejected : review
+Rejected --> Created : revert
+Rejected --> [*]
+@enduml

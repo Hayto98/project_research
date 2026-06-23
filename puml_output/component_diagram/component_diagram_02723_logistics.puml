@@ -1,0 +1,13 @@
+@startuml
+skinparam defaultFontSize 11
+component "FuelLog Service" as C_FuelLogService
+component "Driver Service" as C_DriverService
+component "Vehicle Service" as C_VehicleService
+component "Tracking Service" as C_TrackingService
+database "Logistics DB" as DB_logistics
+C_FuelLogService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_FuelLogService ..> C_TrackingService : REST
+C_DriverService ..> C_FuelLogService : gRPC
+C_DriverService ..> C_TrackingService : gRPC
+@enduml

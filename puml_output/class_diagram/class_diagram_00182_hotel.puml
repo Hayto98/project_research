@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+interface Service {
+  #boolean id
+  #String name
+  +String total
+  -boolean note
+  +saveAmount()
+  +findCode()
+  +cancelPrice()
+}
+interface Payment {
+  +int active
+  -boolean note
+  +String type
+  #float amount
+  +sendActive()
+  +processEmail()
+  +getUpdatedat()
+  +updateScore()
+}
+class Guest {
+  #float address
+  -int name
+  #long total
+  +getUpdatedat()
+  +calculateCreatedat()
+}
+interface Invoice {
+  -long total
+  -Date createdAt
+  -int description
+  +processNote()
+  +createCode()
+}
+abstract class Housekeeping {
+  -int phone
+  #Date score
+  +createCode()
+  +updateName()
+  +sendAmount()
+  +getType()
+}
+class Reservation {
+  -boolean name
+  +float active
+  +saveUpdatedat()
+  +createLevel()
+  +sendPhone()
+  +validateScore()
+}
+Housekeeping --* Service
+Housekeeping --o Invoice
+Reservation --o Payment
+Guest --o Housekeeping
+Invoice --* Reservation
+note right of Service : Hotel domain
+@enduml

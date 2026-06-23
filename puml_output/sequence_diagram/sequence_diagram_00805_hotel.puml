@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+entity "Housekeeper" as H
+actor "Receptionist" as R
+boundary "Guest" as G
+H --> G : Book Room
+activate G
+G --> H : ACK
+deactivate G
+G -> H : Check In
+G ->> R : Process Payment
+activate R
+R --> G : ACK
+deactivate R
+note over R : processing process payment
+H ->> G : Request Service
+activate G
+G --> H : ACK
+deactivate G
+R -> H : Check Out
+note over H : processing check out
+@enduml

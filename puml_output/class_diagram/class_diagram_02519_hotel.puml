@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Housekeeping {
+  +boolean code
+  +Date active
+  +calculateScore()
+  +getType()
+}
+class Booking {
+  +boolean type
+  -boolean price
+  #int level
+  -int email
+  #boolean active
+  +calculateAmount()
+  +updateDuration()
+  +processUpdatedat()
+}
+interface Guest {
+  -float duration
+  -double updatedAt
+  +calculateQuantity()
+  +saveAmount()
+  +findStatus()
+}
+class Payment {
+  #double active
+  -double name
+  #long type
+  +float total
+  +saveCreatedat()
+  +setStatus()
+  +calculateNote()
+}
+Booking --> Payment : "1..*"
+Guest ..> Housekeeping : "1..*"
+Housekeeping ..> Payment : "0..1"
+note right of Housekeeping : Hotel domain
+@enduml

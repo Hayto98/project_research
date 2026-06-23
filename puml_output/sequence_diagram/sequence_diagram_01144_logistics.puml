@@ -1,0 +1,25 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+entity "Warehouse Staff" as WS
+actor "Dispatcher" as D
+participant "Fleet Manager" as FM
+participant "Driver" as D2
+WS ->> FM : Report Issue
+FM ->> D : Fuel Vehicle
+activate D
+D --> FM : ACK
+deactivate D
+note over D : processing fuel vehicle
+FM -> D : Track Shipment
+activate D
+D --> FM : ACK
+deactivate D
+note over D : processing track shipment
+D -> FM : Deliver Package
+activate FM
+FM --> D : ACK
+deactivate FM
+D --> D2 : Assign Route
+@enduml

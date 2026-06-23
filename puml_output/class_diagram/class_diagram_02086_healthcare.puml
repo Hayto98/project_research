@@ -1,0 +1,58 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+interface LabTest {
+  #boolean active
+  -float email
+  +findCreatedat()
+  +createStatus()
+  +findDuration()
+}
+interface Hospital {
+  -Date updatedAt
+  -float phone
+  +Date status
+  #Date score
+  +Date amount
+  +getName()
+  +validateId()
+}
+abstract class Diagnosis {
+  +boolean updatedAt
+  #boolean email
+  -int note
+  -Date duration
+  #long score
+  +savePrice()
+  +validateStatus()
+}
+class Treatment {
+  #long active
+  #Date amount
+  #float code
+  -long total
+  +setStatus()
+  +cancelActive()
+}
+class Doctor {
+  -Date level
+  #int name
+  -Date updatedAt
+  +createActive()
+  +sendName()
+  +processEmail()
+  +setUpdatedat()
+}
+class Billing {
+  #float updatedAt
+  -float code
+  +saveName()
+  +updateUpdatedat()
+  +saveType()
+}
+Treatment --* Diagnosis
+LabTest --|> Treatment
+Hospital --> Diagnosis : "1"
+Hospital ..> Treatment : "1..*"
+note right of LabTest : Healthcare domain
+@enduml

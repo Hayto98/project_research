@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+abstract class Account {
+  -boolean total
+  #double id
+  -String score
+  +String description
+  +getDescription()
+  +validatePrice()
+}
+interface Statement {
+  +float quantity
+  +boolean price
+  +processName()
+  +createEmail()
+  +cancelEmail()
+}
+class Loan {
+  +boolean level
+  +int price
+  +saveCode()
+  +processAddress()
+}
+abstract class Card {
+  +double total
+  #double code
+  -long phone
+  #int description
+  +createCreatedat()
+  +deletePhone()
+  +validateStatus()
+}
+abstract class Interest {
+  #long amount
+  #double email
+  +getName()
+  +updateName()
+  +findAddress()
+  +setPhone()
+}
+Loan ..> Interest : "*"
+Account ..|> Card
+note right of Account : Banking domain
+@enduml

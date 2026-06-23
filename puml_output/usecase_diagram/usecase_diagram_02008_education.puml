@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+left to right direction
+actor "Registrar" as Registrar
+actor "Teacher" as Teacher
+rectangle "Education System" {
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Register Student" as UC_RegisterStudent
+  usecase "View Schedule" as UC_ViewSchedule
+}
+Registrar --> UC_EnrollCourse
+Registrar --> UC_ViewSchedule
+Teacher --> UC_RegisterStudent
+Teacher --> UC_ViewSchedule
+Teacher --> UC_EnrollCourse
+UC_SubmitAssignment ..> UC_RegisterStudent : <<extend>>
+@enduml

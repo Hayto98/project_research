@@ -1,0 +1,14 @@
+@startuml
+skinparam ArrowColor #555555
+component "Billing Service" as C_BillingService
+component "Diagnosis Service" as C_DiagnosisService
+component "Doctor Service" as C_DoctorService
+component "LabTest Service" as C_LabTestService
+database "Healthcare DB" as DB_healthcare
+C_BillingService --> DB_healthcare
+C_DoctorService --> DB_healthcare
+C_LabTestService --> DB_healthcare
+C_LabTestService ..> C_BillingService : MQ
+C_DiagnosisService ..> C_DoctorService : MQ
+C_LabTestService ..> C_BillingService : HTTP
+@enduml

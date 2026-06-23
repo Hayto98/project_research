@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+start
+:View Statement;
+:Block Card;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Deposit Money;
+:Transfer Funds;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Open Account;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Withdraw Cash;
+stop
+@enduml

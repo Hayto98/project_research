@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+participant "Delivery Service" as DS
+participant "Admin" as A
+actor "Seller" as S
+control "Customer" as C
+A ->> DS : Manage Inventory
+activate DS
+DS --> A : ACK
+deactivate DS
+A ->> S : Track Order
+activate S
+S --> A : ACK
+deactivate S
+A ->> C : Apply Coupon
+activate C
+C --> A : ACK
+deactivate C
+note over C : processing apply coupon
+S -> DS : Checkout
+C ->> S : Browse Products
+activate S
+S --> C : ACK
+deactivate S
+note over S : processing browse products
+DS -> C : Add To Cart
+@enduml

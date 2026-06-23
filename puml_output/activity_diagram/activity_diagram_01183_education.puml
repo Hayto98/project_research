@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+start
+:View Schedule;
+:Borrow Book;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Take Attendance;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Grade Exam;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Student;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Submit Assignment;
+:Issue Certificate;
+stop
+@enduml

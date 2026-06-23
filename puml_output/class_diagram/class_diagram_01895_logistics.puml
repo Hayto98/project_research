@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+abstract class FuelLog {
+  #Date amount
+  #float id
+  -double phone
+  -Date active
+  #Date createdAt
+  +cancelAmount()
+}
+class Route {
+  -Date type
+  +Date updatedAt
+  #Date quantity
+  #float id
+  #String email
+  +getLevel()
+  +createDescription()
+  +calculateAddress()
+  +processId()
+}
+abstract class Warehouse {
+  +long type
+  +float createdAt
+  -double price
+  +int score
+  +sendScore()
+}
+class Tracking {
+  #double type
+  +int id
+  +createAddress()
+  +getPrice()
+  +processType()
+}
+FuelLog ..|> Route
+Route ..> Tracking : "0..1"
+note right of FuelLog : Logistics domain
+@enduml

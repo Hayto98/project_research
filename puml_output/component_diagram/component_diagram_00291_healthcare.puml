@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+component "Prescription Service" as C_PrescriptionService
+component "Insurance Service" as C_InsuranceService
+component "Doctor Service" as C_DoctorService
+component "Ward Service" as C_WardService
+component "Hospital Service" as C_HospitalService
+database "Healthcare DB" as DB_healthcare
+C_InsuranceService --> DB_healthcare
+C_DoctorService --> DB_healthcare
+C_WardService --> DB_healthcare
+C_HospitalService --> DB_healthcare
+C_DoctorService ..> C_HospitalService : REST
+C_HospitalService ..> C_WardService : HTTP
+C_WardService ..> C_PrescriptionService : gRPC
+C_PrescriptionService ..> C_DoctorService : gRPC
+@enduml

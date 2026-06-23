@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+left to right direction
+actor "Dispatcher" as Dispatcher
+actor "Fleet Manager" as FleetManager
+rectangle "Logistics System" {
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Update Inventory" as UC_UpdateInventory
+}
+Dispatcher --> UC_DeliverPackage
+Dispatcher --> UC_TrackShipment
+Dispatcher --> UC_FuelVehicle
+FleetManager --> UC_LoadPackage
+FleetManager --> UC_TrackShipment
+FleetManager --> UC_FuelVehicle
+UC_FuelVehicle ..> UC_TrackShipment : <<include>>
+@enduml

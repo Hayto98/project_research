@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+class Guest {
+  +String active
+  -Date description
+  +long email
+  #double price
+  +setId()
+  +processAmount()
+  +cancelTotal()
+  +createTotal()
+}
+abstract class Service {
+  +float email
+  -String name
+  #String createdAt
+  +String code
+  +calculateQuantity()
+}
+interface Reservation {
+  -long note
+  +boolean updatedAt
+  +sendPhone()
+}
+class Booking {
+  #String level
+  +int amount
+  +long name
+  -Date id
+  +updateScore()
+  +cancelPhone()
+  +sendActive()
+}
+class CheckIn {
+  -long address
+  +double id
+  +double quantity
+  #Date total
+  #boolean phone
+  +validateId()
+}
+class Invoice {
+  #boolean level
+  +int score
+  #double price
+  +findUpdatedat()
+  +updateStatus()
+  +setUpdatedat()
+  +calculateScore()
+}
+class Amenity {
+  #boolean duration
+  -boolean createdAt
+  -Date note
+  +cancelAddress()
+}
+Booking --|> Reservation
+Reservation ..> CheckIn : "1..*"
+Reservation ..> Booking : "0..1"
+Booking --o CheckIn
+Reservation --* Amenity
+note right of Guest : Hotel domain
+@enduml

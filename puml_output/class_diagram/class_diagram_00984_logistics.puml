@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Warehouse {
+  +float amount
+  #String description
+  +long active
+  #float code
+  +cancelNote()
+  +cancelCreatedat()
+  +deleteStatus()
+  +validatePrice()
+}
+class Tracking {
+  #long level
+  -String status
+  -String duration
+  +validateCreatedat()
+  +getLevel()
+  +getPhone()
+}
+class DeliveryNote {
+  +Date code
+  #long createdAt
+  -double amount
+  -int duration
+  #long note
+  +sendNote()
+}
+class FuelLog {
+  +int updatedAt
+  -boolean duration
+  +saveScore()
+  +setCreatedat()
+  +updatePhone()
+}
+class Driver {
+  -int price
+  +boolean score
+  +deletePhone()
+}
+Driver ..> DeliveryNote : "1..*"
+FuelLog --o Warehouse
+Warehouse --o Driver
+note right of Warehouse : Logistics domain
+@enduml

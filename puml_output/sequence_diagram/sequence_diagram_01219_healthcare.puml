@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+participant "Nurse" as N
+participant "Patient" as P
+entity "Receptionist" as R
+R ->> P : Update Medical Record
+activate P
+P --> R : ACK
+deactivate P
+P -> R : Admit Patient
+activate R
+R --> P : ACK
+deactivate R
+N --> R : Discharge Patient
+activate R
+R --> N : ACK
+deactivate R
+note over R : processing discharge patient
+N -> P : Run Lab Test
+note over P : processing run lab test
+P ->> R : Process Insurance Claim
+R --> P : Book Appointment
+activate P
+P --> R : ACK
+deactivate P
+note over P : processing book appointment
+@enduml

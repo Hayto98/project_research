@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+entity "Payment Gateway" as PG
+actor "Admin" as A
+entity "Delivery Service" as DS
+actor "Seller" as S
+DS ->> PG : Checkout
+DS --> A : Add To Cart
+PG -> S : Cancel Order
+activate S
+S --> PG : ACK
+deactivate S
+A ->> PG : Browse Products
+note over PG : processing browse products
+S ->> A : Apply Coupon
+activate A
+A --> S : ACK
+deactivate A
+A ->> PG : Make Payment
+note over PG : processing make payment
+S -> A : Manage Inventory
+note over A : processing manage inventory
+@enduml

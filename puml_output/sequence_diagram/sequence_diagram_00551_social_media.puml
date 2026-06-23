@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+control "Admin" as A
+boundary "Advertiser" as A2
+control "Moderator" as M
+control "User" as U
+U -> A : Follow User
+M --> A2 : Send Message
+activate A2
+A2 --> M : ACK
+deactivate A2
+M --> A2 : Comment
+M ->> A2 : Share Post
+note over A2 : processing share post
+U --> A2 : Report Content
+activate A2
+A2 --> U : ACK
+deactivate A2
+@enduml

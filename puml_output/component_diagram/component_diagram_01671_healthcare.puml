@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+component "Nurse Service" as C_NurseService
+component "Appointment Service" as C_AppointmentService
+component "MedicalRecord Service" as C_MedicalRecordService
+component "Doctor Service" as C_DoctorService
+component "Insurance Service" as C_InsuranceService
+component "Ward Service" as C_WardService
+component "Treatment Service" as C_TreatmentService
+database "Healthcare DB" as DB_healthcare
+C_NurseService --> DB_healthcare
+C_MedicalRecordService --> DB_healthcare
+C_DoctorService --> DB_healthcare
+C_WardService --> DB_healthcare
+C_TreatmentService --> DB_healthcare
+C_NurseService ..> C_MedicalRecordService : gRPC
+C_MedicalRecordService ..> C_WardService : gRPC
+C_WardService ..> C_NurseService : HTTP
+C_DoctorService ..> C_MedicalRecordService : HTTP
+C_NurseService ..> C_TreatmentService : HTTP
+@enduml

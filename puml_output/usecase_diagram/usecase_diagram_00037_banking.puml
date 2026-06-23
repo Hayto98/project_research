@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+left to right direction
+actor "Account Holder" as AccountHolder
+actor "Auditor" as Auditor
+rectangle "Banking System" {
+  usecase "Block Card" as UC_BlockCard
+  usecase "Transfer Funds" as UC_TransferFunds
+  usecase "Pay Bill" as UC_PayBill
+  usecase "View Statement" as UC_ViewStatement
+  usecase "Deposit Money" as UC_DepositMoney
+  usecase "Apply For Loan" as UC_ApplyForLoan
+  usecase "Open Account" as UC_OpenAccount
+  usecase "Withdraw Cash" as UC_WithdrawCash
+}
+AccountHolder --> UC_OpenAccount
+Auditor --> UC_ApplyForLoan
+Auditor --> UC_DepositMoney
+UC_TransferFunds ..|> UC_OpenAccount : <<extend>>
+@enduml

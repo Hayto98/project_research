@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+actor "Guest" as G
+participant "Housekeeper" as H
+actor "Manager" as M
+boundary "Receptionist" as R
+R ->> M : Process Payment
+note over M : processing process payment
+M ->> R : Request Service
+activate R
+R --> M : ACK
+deactivate R
+M -> R : Check In
+note over R : processing check in
+G --> H : Clean Room
+activate H
+H --> G : ACK
+deactivate H
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+component "Reservation Service" as C_ReservationService
+component "Invoice Service" as C_InvoiceService
+component "Housekeeping Service" as C_HousekeepingService
+component "Booking Service" as C_BookingService
+component "CheckIn Service" as C_CheckInService
+database "Hotel DB" as DB_hotel
+C_ReservationService --> DB_hotel
+C_InvoiceService --> DB_hotel
+C_HousekeepingService --> DB_hotel
+C_BookingService --> DB_hotel
+C_ReservationService ..> C_BookingService : HTTP
+C_CheckInService ..> C_BookingService : REST
+C_BookingService ..> C_ReservationService : REST
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Publisher Service" as C_PublisherService
+component "Branch Service" as C_BranchService
+component "Renewal Service" as C_RenewalService
+component "Catalog Service" as C_CatalogService
+database "Library DB" as DB_library
+C_PublisherService --> DB_library
+C_BranchService --> DB_library
+C_CatalogService --> DB_library
+C_BranchService ..> C_CatalogService : gRPC
+C_CatalogService ..> C_BranchService : gRPC
+C_PublisherService ..> C_CatalogService : REST
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Treatment {
+  #String updatedAt
+  +long email
+  #boolean duration
+  +getQuantity()
+}
+abstract class Ward {
+  -Date score
+  -boolean id
+  +double description
+  +updateCode()
+  +processAmount()
+}
+interface Nurse {
+  #boolean id
+  -int active
+  -boolean type
+  +sendAddress()
+  +findAddress()
+}
+abstract class Hospital {
+  #Date code
+  #int price
+  #double type
+  +long quantity
+  #long total
+  +cancelCode()
+}
+class Diagnosis {
+  -double createdAt
+  -boolean phone
+  -long type
+  +sendPhone()
+  +sendNote()
+  +deleteType()
+  +getAddress()
+}
+class Prescription {
+  +long type
+  -boolean score
+  +int id
+  #long duration
+  +getQuantity()
+  +deleteId()
+}
+class Patient {
+  #boolean score
+  #Date name
+  +cancelStatus()
+  +calculateTotal()
+}
+Prescription --o Nurse
+Nurse --* Patient
+Prescription --o Diagnosis
+Ward --> Diagnosis : "0..1"
+Ward ..> Hospital : "0..1"
+note right of Treatment : Healthcare domain
+@enduml

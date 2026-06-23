@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+abstract class Shipment {
+  -float description
+  +boolean amount
+  +boolean type
+  #double address
+  #double phone
+  +setDuration()
+}
+interface Manifest {
+  +float createdAt
+  +boolean quantity
+  +double duration
+  #boolean total
+  +deleteName()
+  +sendDescription()
+  +processActive()
+  +updateId()
+}
+interface Package {
+  #String code
+  #Date createdAt
+  -String phone
+  +double active
+  +createEmail()
+  +processType()
+  +updateType()
+  +deleteLevel()
+}
+class Customer {
+  +float active
+  #long duration
+  +deleteDescription()
+  +getStatus()
+  +processStatus()
+  +createScore()
+}
+class FuelLog {
+  #double code
+  -int score
+  #String duration
+  +float name
+  +cancelStatus()
+  +findScore()
+}
+Customer --> FuelLog : "1"
+Customer --o Package
+note right of Shipment : Logistics domain
+@enduml

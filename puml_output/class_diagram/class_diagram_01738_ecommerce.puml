@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class Supplier {
+  +boolean level
+  +String type
+  -float duration
+  +cancelEmail()
+  +updateEmail()
+}
+abstract class Payment {
+  +double price
+  +long code
+  +deleteQuantity()
+  +cancelActive()
+}
+interface Warehouse {
+  #String code
+  -boolean description
+  +findAddress()
+}
+interface Category {
+  -boolean id
+  +int type
+  +calculateCreatedat()
+  +cancelStatus()
+}
+class Wishlist {
+  -double total
+  #String amount
+  +getType()
+  +sendUpdatedat()
+}
+interface Cart {
+  +Date updatedAt
+  #double phone
+  #Date level
+  +findEmail()
+  +createEmail()
+  +calculateTotal()
+  +getScore()
+}
+Category ..|> Wishlist
+Cart ..|> Warehouse
+Warehouse ..> Category : "0..1"
+Wishlist ..|> Warehouse
+Cart ..|> Payment
+note right of Supplier : Ecommerce domain
+@enduml

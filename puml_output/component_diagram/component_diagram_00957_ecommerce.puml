@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+component "Shipment Service" as C_ShipmentService
+component "Warehouse Service" as C_WarehouseService
+component "Cart Service" as C_CartService
+component "Wishlist Service" as C_WishlistService
+component "Product Service" as C_ProductService
+component "Return Service" as C_ReturnService
+component "Supplier Service" as C_SupplierService
+database "Ecommerce DB" as DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_CartService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_SupplierService ..> C_CartService : MQ
+C_ReturnService ..> C_WarehouseService : HTTP
+C_SupplierService ..> C_CartService : REST
+C_CartService ..> C_ProductService : gRPC
+C_ProductService ..> C_WishlistService : gRPC
+@enduml

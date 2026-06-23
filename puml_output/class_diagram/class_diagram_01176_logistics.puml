@@ -1,0 +1,67 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Warehouse {
+  +float price
+  +float id
+  +long name
+  +long description
+  +saveDescription()
+  +sendPrice()
+  +savePrice()
+  +processActive()
+}
+abstract class Customer {
+  +String type
+  +String email
+  +String id
+  +double note
+  +float amount
+  +saveName()
+}
+class Package {
+  +int description
+  #String name
+  -double id
+  +getId()
+  +findDescription()
+  +saveAddress()
+  +processName()
+}
+interface Shipment {
+  -long quantity
+  -Date description
+  -double createdAt
+  +validateStatus()
+}
+class Vehicle {
+  #int phone
+  +int code
+  +String price
+  +String email
+  -boolean updatedAt
+  +cancelAddress()
+  +saveCode()
+  +cancelAmount()
+}
+class Inventory {
+  -long name
+  #float email
+  -String active
+  #double type
+  +calculateQuantity()
+  +saveScore()
+  +sendCreatedat()
+}
+class DeliveryNote {
+  #String note
+  #String score
+  +setStatus()
+  +saveQuantity()
+}
+Package --|> Customer
+Warehouse --> Vehicle : "*"
+DeliveryNote ..> Warehouse : "1"
+Customer --* Warehouse
+note right of Warehouse : Logistics domain
+@enduml

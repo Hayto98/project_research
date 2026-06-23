@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+participant "Registrar" as R
+control "Librarian" as L
+boundary "Teacher" as T
+R -> T : Issue Certificate
+note over T : processing issue certificate
+T -> L : Take Attendance
+activate L
+L --> T : ACK
+deactivate L
+L --> R : View Schedule
+activate R
+R --> L : ACK
+deactivate R
+note over R : processing view schedule
+T --> R : Grade Exam
+R -> T : Enroll Course
+activate T
+T --> R : ACK
+deactivate T
+note over T : processing enroll course
+L ->> T : Register Student
+@enduml

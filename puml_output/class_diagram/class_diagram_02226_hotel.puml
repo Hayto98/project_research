@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Room {
+  #boolean price
+  +int amount
+  +int name
+  +sendCode()
+}
+class CheckOut {
+  #boolean quantity
+  -String price
+  -int phone
+  +findPrice()
+}
+abstract class CheckIn {
+  #float address
+  #String updatedAt
+  +getName()
+  +updateActive()
+}
+class Housekeeping {
+  -boolean quantity
+  +double id
+  +String type
+  +getDescription()
+  +sendId()
+  +findType()
+  +savePrice()
+}
+interface Guest {
+  -float amount
+  #int type
+  +deleteQuantity()
+  +deleteStatus()
+  +findType()
+  +validateDuration()
+}
+Guest --|> CheckOut
+Guest ..> Housekeeping : "1..*"
+Room --> Housekeeping : "0..1"
+note right of Room : Hotel domain
+@enduml

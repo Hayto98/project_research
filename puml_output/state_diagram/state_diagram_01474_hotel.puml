@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+[*] --> OnHold
+OnHold --> Closed : cancel
+Closed --> Cancelled : update
+Closed : entry / log amenity
+Cancelled --> Completed : confirm
+Cancelled : entry / log amenity
+Completed --> Pending : approve
+Pending --> Created : reject
+Created --> OnHold : revert
+Created --> [*]
+@enduml

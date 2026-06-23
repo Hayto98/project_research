@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+actor "Branch Manager" as BM
+actor "ATM" as A
+entity "Account Holder" as AH
+A ->> BM : Open Account
+activate BM
+BM --> A : ACK
+deactivate BM
+AH --> A : Pay Bill
+AH -> A : Deposit Money
+activate A
+A --> AH : ACK
+deactivate A
+note over A : processing deposit money
+BM ->> A : Apply For Loan
+AH -> BM : Block Card
+activate BM
+BM --> AH : ACK
+deactivate BM
+BM ->> AH : Withdraw Cash
+AH --> A : Transfer Funds
+activate A
+A --> AH : ACK
+deactivate A
+note over A : processing transfer funds
+@enduml

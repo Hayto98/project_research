@@ -1,0 +1,59 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+class Comment {
+  -boolean name
+  #long email
+  -int id
+  #double total
+  +setCode()
+  +cancelPhone()
+}
+abstract class Report {
+  #long phone
+  #String price
+  +findLevel()
+  +deleteId()
+  +validateNote()
+}
+class Hashtag {
+  -double price
+  +Date name
+  -double email
+  +setPrice()
+}
+class Story {
+  +boolean price
+  #String note
+  +String phone
+  -float name
+  +saveStatus()
+  +createId()
+}
+class Notification {
+  #float note
+  -int code
+  #double updatedAt
+  -boolean address
+  +saveScore()
+}
+class Group {
+  -float amount
+  -boolean id
+  +saveNote()
+  +setCreatedat()
+}
+interface Post {
+  #double level
+  -String email
+  +cancelNote()
+  +createNote()
+}
+Group ..|> Notification
+Comment ..> Notification : "*"
+Comment --o Report
+Notification --* Post
+Report ..|> Comment
+Comment ..> Story : "0..1"
+note right of Comment : Social Media domain
+@enduml

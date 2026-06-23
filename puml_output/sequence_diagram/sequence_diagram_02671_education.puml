@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+boundary "Teacher" as T
+boundary "Student" as S
+control "Registrar" as R
+actor "Librarian" as L
+L ->> S : Enroll Course
+S -> T : Register Student
+T -> S : Grade Exam
+activate S
+S --> T : ACK
+deactivate S
+R ->> T : Take Attendance
+activate T
+T --> R : ACK
+deactivate T
+S -> L : Issue Certificate
+activate L
+L --> S : ACK
+deactivate L
+L -> S : View Schedule
+activate S
+S --> L : ACK
+deactivate S
+L -> S : Borrow Book
+@enduml

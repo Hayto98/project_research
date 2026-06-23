@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+entity "Insurance Provider" as IP
+boundary "Nurse" as N
+entity "Doctor" as D
+N ->> IP : Discharge Patient
+note over IP : processing discharge patient
+N -> D : Admit Patient
+D -> IP : Examine Patient
+activate IP
+IP --> D : ACK
+deactivate IP
+IP -> N : Process Insurance Claim
+activate N
+N --> IP : ACK
+deactivate N
+@enduml

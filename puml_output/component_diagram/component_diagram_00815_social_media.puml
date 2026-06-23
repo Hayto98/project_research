@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+component "Report Service" as C_ReportService
+component "Message Service" as C_MessageService
+component "Profile Service" as C_ProfileService
+component "Album Service" as C_AlbumService
+database "Social Media DB" as DB_social_media
+C_MessageService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_ReportService ..> C_AlbumService : REST
+C_ProfileService ..> C_MessageService : MQ
+@enduml

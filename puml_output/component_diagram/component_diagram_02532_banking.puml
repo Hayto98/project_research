@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+component "Account Service" as C_AccountService
+component "Transaction Service" as C_TransactionService
+component "Withdrawal Service" as C_WithdrawalService
+component "Beneficiary Service" as C_BeneficiaryService
+database "Banking DB" as DB_banking
+C_AccountService --> DB_banking
+C_TransactionService ..> C_WithdrawalService : MQ
+C_BeneficiaryService ..> C_AccountService : HTTP
+@enduml

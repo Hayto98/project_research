@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+boundary "Customer" as C
+participant "Fleet Manager" as FM
+actor "Driver" as D
+actor "Warehouse Staff" as WS
+WS ->> D : Report Issue
+C -> WS : Assign Route
+D --> FM : Schedule Pickup
+WS -> D : Update Inventory
+activate D
+D --> WS : ACK
+deactivate D
+FM -> D : Fuel Vehicle
+@enduml

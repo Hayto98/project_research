@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+control "Insurance Provider" as IP
+boundary "Nurse" as N
+boundary "Doctor" as D
+entity "Patient" as P
+IP --> P : Update Medical Record
+activate P
+P --> IP : ACK
+deactivate P
+D -> IP : Run Lab Test
+note over IP : processing run lab test
+P ->> IP : Admit Patient
+activate IP
+IP --> P : ACK
+deactivate IP
+note over IP : processing admit patient
+N --> P : Discharge Patient
+N ->> P : Book Appointment
+activate P
+P --> N : ACK
+deactivate P
+note over P : processing book appointment
+N -> IP : Examine Patient
+note over IP : processing examine patient
+N --> P : Process Insurance Claim
+@enduml

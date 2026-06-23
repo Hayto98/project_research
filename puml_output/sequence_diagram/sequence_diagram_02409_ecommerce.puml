@@ -1,0 +1,23 @@
+@startuml
+skinparam defaultFontSize 13
+control "Delivery Service" as DS
+entity "Payment Gateway" as PG
+participant "Admin" as A
+actor "Seller" as S
+entity "Customer" as C
+C ->> DS : Write Review
+activate DS
+DS --> C : ACK
+deactivate DS
+note over DS : processing write review
+DS --> S : Make Payment
+activate S
+S --> DS : ACK
+deactivate S
+C -> DS : Checkout
+DS --> PG : Apply Coupon
+activate PG
+PG --> DS : ACK
+deactivate PG
+note over PG : processing apply coupon
+@enduml

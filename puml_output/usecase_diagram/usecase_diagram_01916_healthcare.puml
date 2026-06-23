@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+left to right direction
+actor "Patient" as Patient
+actor "Insurance Provider" as InsuranceProvider
+actor "Receptionist" as Receptionist
+actor "Nurse" as Nurse
+rectangle "Healthcare System" {
+  usecase "Update Medical Record" as UC_UpdateMedicalRecord
+  usecase "Examine Patient" as UC_ExaminePatient
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Run Lab Test" as UC_RunLabTest
+  usecase "Book Appointment" as UC_BookAppointment
+  usecase "Discharge Patient" as UC_DischargePatient
+}
+Patient --> UC_DischargePatient
+InsuranceProvider --> UC_UpdateMedicalRecord
+InsuranceProvider --> UC_RunLabTest
+InsuranceProvider --> UC_AdmitPatient
+Receptionist --> UC_BookAppointment
+Receptionist --> UC_UpdateMedicalRecord
+Receptionist --> UC_AdmitPatient
+Nurse --> UC_RunLabTest
+Nurse --> UC_DischargePatient
+@enduml

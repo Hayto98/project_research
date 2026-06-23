@@ -1,0 +1,65 @@
+@startuml
+skinparam shadowing true
+abstract class DeliveryNote {
+  -double level
+  #long amount
+  -float name
+  +createDescription()
+  +updateId()
+  +calculatePrice()
+}
+interface Shipment {
+  #String duration
+  +double address
+  +boolean type
+  +processName()
+  +createTotal()
+  +getName()
+}
+interface Inventory {
+  -int code
+  #float price
+  +long createdAt
+  #long score
+  +cancelQuantity()
+  +cancelEmail()
+}
+abstract class Vehicle {
+  +int amount
+  -boolean duration
+  +double name
+  +cancelPhone()
+  +createScore()
+  +setEmail()
+  +deleteDescription()
+}
+class Warehouse {
+  +String code
+  +long duration
+  -float name
+  +Date active
+  -float address
+  +processPhone()
+  +setAmount()
+}
+abstract class Customer {
+  #String phone
+  +String active
+  -Date duration
+  -long id
+  -double level
+  +updateCreatedat()
+  +findPhone()
+  +saveEmail()
+  +validateAmount()
+}
+class Tracking {
+  #Date id
+  +double description
+  #int name
+  +getAddress()
+}
+Vehicle ..> Shipment : "0..1"
+Warehouse ..> Shipment : "1"
+note right of DeliveryNote : Logistics domain
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+start
+:Manage Inventory;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Make Payment;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Apply Coupon;
+:Write Review;
+:Browse Products;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Add To Cart;
+stop
+@enduml

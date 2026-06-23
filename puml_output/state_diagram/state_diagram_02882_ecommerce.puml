@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+[*] --> Pending
+Pending --> Delivered : cancel
+Pending : entry / log shipment
+Delivered --> OnHold : submit
+Delivered : entry / log shipment
+OnHold --> Archived : cancel
+Archived --> Created : process
+Archived : entry / log shipment
+Created --> Closed : submit
+Pending --> Closed : revert
+Closed --> [*]
+@enduml

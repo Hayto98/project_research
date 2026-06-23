@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Wishlist {
+  +long phone
+  #Date name
+  -long quantity
+  -int price
+  #double description
+  +updateQuantity()
+  +updateScore()
+}
+class Coupon {
+  +long description
+  +String score
+  +long duration
+  -double note
+  +sendQuantity()
+  +validateAmount()
+  +processAddress()
+}
+class Warehouse {
+  #String status
+  #Date id
+  +setLevel()
+  +setQuantity()
+}
+abstract class Return {
+  +String description
+  #float price
+  #long amount
+  #boolean createdAt
+  #long name
+  +cancelPhone()
+  +sendAmount()
+}
+class Category {
+  +int email
+  -String amount
+  -long quantity
+  +saveLevel()
+  +updateEmail()
+  +updateStatus()
+}
+class Supplier {
+  +Date description
+  +String phone
+  +double id
+  -double total
+  #double createdAt
+  +getDescription()
+  +getStatus()
+  +validateDescription()
+}
+Return --* Category
+Supplier ..> Warehouse : "*"
+Category --* Coupon
+Warehouse ..|> Category
+Wishlist ..|> Supplier
+note right of Wishlist : Ecommerce domain
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+boundary "Auditor" as A
+boundary "ATM" as A2
+participant "Branch Manager" as BM
+BM --> A2 : View Statement
+activate A2
+A2 --> BM : ACK
+deactivate A2
+A2 --> BM : Pay Bill
+BM --> A : Withdraw Cash
+activate A
+A --> BM : ACK
+deactivate A
+BM --> A : Deposit Money
+activate A
+A --> BM : ACK
+deactivate A
+A -> BM : Open Account
+BM -> A : Apply For Loan
+activate A
+A --> BM : ACK
+deactivate A
+@enduml

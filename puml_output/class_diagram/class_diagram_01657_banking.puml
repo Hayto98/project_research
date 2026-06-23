@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+interface Card {
+  #Date total
+  #long id
+  +String note
+  +findNote()
+  +findType()
+  +updateTotal()
+}
+abstract class Withdrawal {
+  #long amount
+  -Date email
+  -Date id
+  #String type
+  #double active
+  +sendId()
+  +deleteCode()
+  +cancelAmount()
+}
+class Branch {
+  -boolean code
+  -double note
+  +float duration
+  #boolean score
+  +updateActive()
+  +cancelName()
+  +deleteDuration()
+}
+class Deposit {
+  #boolean status
+  #String score
+  +findPrice()
+}
+Deposit --|> Branch
+Withdrawal --> Deposit : "1"
+Withdrawal --* Branch
+note right of Card : Banking domain
+@enduml

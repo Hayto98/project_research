@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+abstract class Customer {
+  +double phone
+  #long name
+  +sendStatus()
+  +updateAddress()
+  +processCreatedat()
+  +processDescription()
+}
+class Invoice {
+  #Date address
+  #double score
+  +String quantity
+  +validateLevel()
+  +createName()
+}
+interface Supplier {
+  +int score
+  -String amount
+  #boolean quantity
+  #long name
+  #int id
+  +cancelActive()
+  +cancelAddress()
+  +setActive()
+}
+class Coupon {
+  -float total
+  #int status
+  #Date description
+  +saveUpdatedat()
+  +findEmail()
+  +processLevel()
+  +createTotal()
+}
+abstract class Shipment {
+  +int duration
+  #double total
+  -double score
+  -double phone
+  -double updatedAt
+  +findAmount()
+  +cancelDuration()
+}
+class Cart {
+  #long note
+  #long duration
+  #float type
+  +findUpdatedat()
+}
+Shipment --> Invoice : "1"
+Cart ..|> Coupon
+Cart --o Supplier
+Supplier --> Customer : "1..*"
+note right of Customer : Ecommerce domain
+@enduml

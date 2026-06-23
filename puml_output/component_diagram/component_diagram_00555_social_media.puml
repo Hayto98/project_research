@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+component "Story Service" as C_StoryService
+component "Album Service" as C_AlbumService
+component "Report Service" as C_ReportService
+component "Group Service" as C_GroupService
+component "Follower Service" as C_FollowerService
+component "Profile Service" as C_ProfileService
+component "Like Service" as C_LikeService
+database "Social Media DB" as DB_social_media
+C_StoryService --> DB_social_media
+C_ReportService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_LikeService --> DB_social_media
+C_ProfileService ..> C_GroupService : gRPC
+C_ReportService ..> C_ProfileService : gRPC
+C_ReportService ..> C_GroupService : gRPC
+C_LikeService ..> C_GroupService : gRPC
+@enduml

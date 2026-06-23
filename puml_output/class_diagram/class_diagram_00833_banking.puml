@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Transfer {
+  -int address
+  +Date level
+  +processTotal()
+  +updateActive()
+  +processStatus()
+}
+interface Interest {
+  -String type
+  +Date phone
+  #int total
+  #double email
+  +updateTotal()
+  +cancelEmail()
+  +calculateDuration()
+  +calculateCode()
+}
+class Withdrawal {
+  +int active
+  -int updatedAt
+  +double status
+  +updateId()
+  +createName()
+  +getDuration()
+  +findTotal()
+}
+class Branch {
+  -long email
+  #Date updatedAt
+  +cancelNote()
+  +updateEmail()
+}
+class Customer {
+  #long updatedAt
+  -long total
+  +Date level
+  +updateAddress()
+}
+interface Card {
+  -long level
+  -int address
+  -Date description
+  +Date phone
+  +validateId()
+  +deleteDuration()
+  +sendStatus()
+}
+class Transaction {
+  #long createdAt
+  -String description
+  +getStatus()
+  +deleteScore()
+  +saveId()
+  +findQuantity()
+}
+Customer --> Card : "*"
+Transfer ..|> Customer
+Interest --|> Branch
+Withdrawal ..|> Customer
+Transfer --* Card
+Withdrawal ..|> Card
+note right of Transfer : Banking domain
+@enduml

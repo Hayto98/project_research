@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+abstract class Amenity {
+  #String level
+  #Date name
+  -double description
+  #int active
+  -String id
+  +validateScore()
+}
+interface Staff {
+  +int updatedAt
+  #float amount
+  #double status
+  -String price
+  +createDuration()
+  +processDuration()
+  +validateNote()
+  +validateDuration()
+}
+abstract class Booking {
+  -Date createdAt
+  +int id
+  +validateActive()
+}
+abstract class Service {
+  -long duration
+  -float quantity
+  +int amount
+  #float phone
+  +Date active
+  +updateStatus()
+}
+Amenity ..> Staff : "0..1"
+Amenity ..|> Service
+note right of Amenity : Hotel domain
+@enduml

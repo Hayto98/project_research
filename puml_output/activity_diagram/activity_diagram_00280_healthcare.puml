@@ -1,0 +1,36 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+start
+:Book Appointment;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Process Insurance Claim;
+:Update Medical Record;
+:Run Lab Test;
+:Discharge Patient;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Examine Patient;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Issue Prescription;
+stop
+@enduml

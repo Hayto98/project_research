@@ -1,0 +1,15 @@
+@startuml
+skinparam ArrowColor #555555
+component "Category Service" as C_CategoryService
+component "Payment Service" as C_PaymentService
+component "Wishlist Service" as C_WishlistService
+component "Shipment Service" as C_ShipmentService
+component "Cart Service" as C_CartService
+database "Ecommerce DB" as DB_ecommerce
+C_CategoryService --> DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_CategoryService ..> C_ShipmentService : MQ
+C_WishlistService ..> C_CartService : gRPC
+@enduml

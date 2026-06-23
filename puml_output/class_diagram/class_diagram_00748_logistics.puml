@@ -1,0 +1,49 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class Shipment {
+  +long score
+  #boolean email
+  +double note
+  #int total
+  -double updatedAt
+  +findPhone()
+  +validateCreatedat()
+  +updateName()
+  +validateId()
+}
+abstract class Tracking {
+  -long id
+  +String amount
+  +createId()
+}
+interface DeliveryNote {
+  #float amount
+  +float name
+  +long id
+  +findDuration()
+  +deleteCreatedat()
+}
+class Package {
+  -double amount
+  +long id
+  +getLevel()
+  +setUpdatedat()
+  +processPhone()
+  +processDescription()
+}
+class Route {
+  #Date status
+  #boolean phone
+  #int updatedAt
+  -String name
+  +getCreatedat()
+  +processNote()
+}
+Tracking --o Route
+Package --* Shipment
+Package --o Route
+Shipment --|> Package
+note right of Shipment : Logistics domain
+@enduml

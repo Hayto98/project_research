@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+entity "Manager" as M
+entity "Chef" as C
+actor "Guest" as G
+participant "Receptionist" as R
+entity "Housekeeper" as H
+C -> G : Order Room Service
+R --> M : Process Payment
+note over M : processing process payment
+H --> G : Request Service
+R -> C : Clean Room
+note over C : processing clean room
+C -> R : Book Room
+activate R
+R --> C : ACK
+deactivate R
+M ->> R : Check In
+R --> M : Cancel Reservation
+@enduml

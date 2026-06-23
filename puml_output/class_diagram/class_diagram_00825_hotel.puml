@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+class Room {
+  #String type
+  +long email
+  #long quantity
+  +setEmail()
+}
+class Booking {
+  #boolean updatedAt
+  #boolean note
+  +calculateScore()
+}
+interface Service {
+  +boolean active
+  #long quantity
+  +int phone
+  +processTotal()
+  +cancelName()
+  +validateEmail()
+}
+class Reservation {
+  -double amount
+  #int description
+  -float quantity
+  +getActive()
+}
+abstract class Payment {
+  +double level
+  -String phone
+  -long duration
+  -int status
+  +long score
+  +validateCreatedat()
+}
+Payment ..> Reservation : "1..*"
+Service --> Payment : "*"
+Service --> Booking : "*"
+note right of Room : Hotel domain
+@enduml

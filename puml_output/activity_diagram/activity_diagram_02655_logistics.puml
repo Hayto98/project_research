@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+start
+:Assign Route;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Inventory;
+:Report Issue;
+:Schedule Pickup;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Load Package;
+:Fuel Vehicle;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Deliver Package;
+:Track Shipment;
+stop
+@enduml

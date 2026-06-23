@@ -1,0 +1,12 @@
+@startuml
+
+component "Billing Service" as C_BillingService
+component "Prescription Service" as C_PrescriptionService
+component "Patient Service" as C_PatientService
+component "Doctor Service" as C_DoctorService
+database "Healthcare DB" as DB_healthcare
+C_PatientService --> DB_healthcare
+C_PrescriptionService ..> C_PatientService : MQ
+C_PatientService ..> C_DoctorService : gRPC
+C_PrescriptionService ..> C_DoctorService : REST
+@enduml

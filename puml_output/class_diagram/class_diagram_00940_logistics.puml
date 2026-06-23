@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+abstract class Shipment {
+  +float description
+  #double phone
+  +deletePhone()
+}
+interface Depot {
+  -boolean quantity
+  -int code
+  +sendPrice()
+  +updateTotal()
+  +sendDuration()
+}
+interface Customer {
+  +float duration
+  +long updatedAt
+  +updateAddress()
+}
+class Warehouse {
+  +double total
+  -double updatedAt
+  +processPhone()
+  +cancelName()
+  +createCode()
+}
+interface FuelLog {
+  -long phone
+  #long active
+  #float price
+  +double quantity
+  #float status
+  +saveCode()
+  +findPhone()
+  +cancelQuantity()
+  +updatePrice()
+}
+class Tracking {
+  -int id
+  #long note
+  #float score
+  +int status
+  +sendCode()
+}
+FuelLog --> Warehouse : "1"
+Customer --o FuelLog
+Customer --> Depot : "1..*"
+note right of Shipment : Logistics domain
+@enduml

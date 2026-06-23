@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+class Warehouse {
+  +Date duration
+  #float createdAt
+  -long active
+  +saveCode()
+}
+class FuelLog {
+  #float address
+  +String code
+  -String price
+  +boolean amount
+  +createScore()
+}
+abstract class Tracking {
+  +float amount
+  -Date description
+  #boolean code
+  +processAmount()
+  +createPrice()
+  +getTotal()
+}
+abstract class Package {
+  -int duration
+  +Date name
+  +updateDescription()
+  +calculateCode()
+  +findPrice()
+}
+interface Depot {
+  -double active
+  -boolean address
+  #float phone
+  +float name
+  -String total
+  +validateAmount()
+  +updateActive()
+  +saveUpdatedat()
+  +createName()
+}
+class DeliveryNote {
+  -String score
+  -int price
+  -Date status
+  +double createdAt
+  +updateAmount()
+  +validateDuration()
+}
+FuelLog --|> Warehouse
+Warehouse --> FuelLog : "*"
+FuelLog --|> Package
+note right of Warehouse : Logistics domain
+@enduml

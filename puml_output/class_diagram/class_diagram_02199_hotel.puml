@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+class Service {
+  +Date active
+  -String amount
+  +calculateDescription()
+}
+interface Staff {
+  +long address
+  +double score
+  +String phone
+  +saveLevel()
+  +updateStatus()
+}
+interface Amenity {
+  #double active
+  +boolean price
+  +saveType()
+  +findDuration()
+  +processName()
+  +findScore()
+}
+class Payment {
+  -double code
+  +double updatedAt
+  +String name
+  -double note
+  #Date description
+  +saveDescription()
+  +findPhone()
+  +createUpdatedat()
+  +updateCreatedat()
+}
+abstract class Guest {
+  -Date amount
+  +float id
+  -Date code
+  #float level
+  +boolean updatedAt
+  +validateStatus()
+  +saveDescription()
+}
+interface Booking {
+  #String quantity
+  +double code
+  #int address
+  +cancelStatus()
+  +updateCode()
+}
+class Reservation {
+  +float email
+  #long duration
+  +long quantity
+  +Date amount
+  +createTotal()
+}
+Guest --|> Amenity
+Payment --> Guest : "0..1"
+Staff ..|> Amenity
+Amenity --|> Guest
+Payment ..|> Reservation
+Service ..> Reservation : "1"
+note right of Service : Hotel domain
+@enduml

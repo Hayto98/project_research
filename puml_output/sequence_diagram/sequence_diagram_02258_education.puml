@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+participant "Registrar" as R
+entity "Admin" as A
+entity "Parent" as P
+P --> R : Submit Assignment
+A -> P : Enroll Course
+R -> A : Issue Certificate
+activate A
+A --> R : ACK
+deactivate A
+A -> P : Register Student
+activate P
+P --> A : ACK
+deactivate P
+R --> P : Grade Exam
+activate P
+P --> R : ACK
+deactivate P
+P -> A : Borrow Book
+activate A
+A --> P : ACK
+deactivate A
+note over A : processing borrow book
+R --> A : View Schedule
+@enduml

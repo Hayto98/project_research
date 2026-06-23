@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+interface Inventory {
+  #long address
+  #Date score
+  #String status
+  #Date active
+  +validateId()
+  +validateCode()
+}
+class Vehicle {
+  #float quantity
+  -double note
+  -int duration
+  +processAddress()
+}
+class Package {
+  +long description
+  -String note
+  +float active
+  #String duration
+  +double amount
+  +updateAddress()
+  +updateLevel()
+  +updateQuantity()
+  +updateType()
+}
+interface Driver {
+  -String createdAt
+  #double duration
+  +double level
+  #float description
+  +setNote()
+  +cancelStatus()
+  +updateDuration()
+}
+Vehicle --> Inventory : "1"
+Vehicle ..> Package : "0..1"
+Package --o Vehicle
+note right of Inventory : Logistics domain
+@enduml

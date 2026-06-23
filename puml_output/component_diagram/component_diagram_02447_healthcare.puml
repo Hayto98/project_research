@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "MedicalRecord Service" as C_MedicalRecordService
+component "Hospital Service" as C_HospitalService
+component "Nurse Service" as C_NurseService
+component "Prescription Service" as C_PrescriptionService
+component "Patient Service" as C_PatientService
+database "Healthcare DB" as DB_healthcare
+C_HospitalService --> DB_healthcare
+C_NurseService --> DB_healthcare
+C_PrescriptionService --> DB_healthcare
+C_PatientService --> DB_healthcare
+C_PatientService ..> C_MedicalRecordService : MQ
+C_PatientService ..> C_MedicalRecordService : REST
+C_HospitalService ..> C_PrescriptionService : HTTP
+@enduml

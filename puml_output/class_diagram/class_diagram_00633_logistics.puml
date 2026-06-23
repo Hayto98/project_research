@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+class Customer {
+  #long score
+  +float type
+  +findTotal()
+  +saveNote()
+}
+abstract class Depot {
+  #long type
+  #int quantity
+  +long updatedAt
+  #long address
+  +processAddress()
+}
+abstract class Warehouse {
+  #Date createdAt
+  #long total
+  -int duration
+  #int active
+  +processEmail()
+  +calculateScore()
+}
+abstract class Driver {
+  +int address
+  -String price
+  -double score
+  -long createdAt
+  #String code
+  +createTotal()
+}
+class DeliveryNote {
+  +long note
+  #float score
+  +processUpdatedat()
+}
+class Route {
+  -Date updatedAt
+  -Date total
+  -double level
+  #double active
+  +deleteActive()
+}
+class Shipment {
+  +float phone
+  -Date note
+  #double price
+  -String email
+  +findScore()
+  +sendEmail()
+}
+DeliveryNote ..|> Warehouse
+Customer --> Route : "1"
+Depot ..> Shipment : "0..1"
+note right of Customer : Logistics domain
+@enduml

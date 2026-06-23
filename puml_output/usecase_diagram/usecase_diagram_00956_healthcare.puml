@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+left to right direction
+actor "Receptionist" as Receptionist
+actor "Patient" as Patient
+actor "Doctor" as Doctor
+rectangle "Healthcare System" {
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Run Lab Test" as UC_RunLabTest
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Update Medical Record" as UC_UpdateMedicalRecord
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Admit Patient" as UC_AdmitPatient
+}
+Receptionist --> UC_AdmitPatient
+Receptionist --> UC_UpdateMedicalRecord
+Patient --> UC_AdmitPatient
+Patient --> UC_UpdateMedicalRecord
+Patient --> UC_DischargePatient
+Doctor --> UC_DischargePatient
+Doctor --> UC_UpdateMedicalRecord
+Doctor --> UC_RunLabTest
+UC_RunLabTest ..> UC_UpdateMedicalRecord : <<include>>
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+interface Invoice {
+  #Date level
+  #float total
+  -boolean duration
+  #boolean note
+  +createTotal()
+  +setCode()
+  +processActive()
+  +sendLevel()
+}
+class Category {
+  -int type
+  +float createdAt
+  +double level
+  +String address
+  #double phone
+  +updateType()
+  +validateAddress()
+}
+interface Shipment {
+  -Date type
+  +int price
+  #Date quantity
+  #boolean duration
+  +createPrice()
+  +createQuantity()
+}
+class Cart {
+  -boolean score
+  +boolean type
+  +float name
+  #int total
+  +findAddress()
+  +sendDescription()
+  +updateCode()
+}
+class Coupon {
+  #Date note
+  -String name
+  -double quantity
+  +validateType()
+  +cancelAddress()
+}
+class Warehouse {
+  #float status
+  -Date description
+  +createLevel()
+  +processActive()
+  +saveTotal()
+  +sendEmail()
+}
+Coupon ..|> Shipment
+Cart ..|> Shipment
+Warehouse --> Coupon : "*"
+note right of Invoice : Ecommerce domain
+@enduml

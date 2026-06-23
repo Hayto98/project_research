@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+[*] --> Delivered
+Delivered --> Draft : confirm
+Draft --> Pending : process
+Pending --> OnHold : reject
+Pending : entry / log assignment
+OnHold --> Processing : confirm
+Processing --> Active : update
+Processing : entry / log assignment
+Processing --> Draft : revert
+Active --> [*]
+@enduml

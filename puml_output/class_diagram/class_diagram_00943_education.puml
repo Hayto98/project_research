@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+interface Enrollment {
+  -long email
+  +float score
+  #long level
+  +int id
+  #double phone
+  +getStatus()
+  +saveActive()
+  +processCreatedat()
+}
+class Schedule {
+  -int address
+  +String name
+  +float level
+  +String code
+  +findAmount()
+}
+class Library {
+  -String score
+  +Date phone
+  -String code
+  -double quantity
+  +sendAddress()
+  +deleteUpdatedat()
+  +saveActive()
+}
+abstract class Teacher {
+  +int id
+  #double name
+  -double description
+  +sendPhone()
+  +setTotal()
+}
+class Department {
+  #int note
+  -boolean phone
+  #long price
+  +long createdAt
+  +updateLevel()
+}
+abstract class Grade {
+  #double description
+  +int address
+  +int level
+  -Date status
+  +validateDuration()
+  +setName()
+  +validatePhone()
+  +deleteTotal()
+}
+Department --* Grade
+Library ..> Schedule : "*"
+Grade --> Department : "*"
+Library --|> Teacher
+Library ..|> Enrollment
+note right of Enrollment : Education domain
+@enduml

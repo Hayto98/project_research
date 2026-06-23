@@ -1,0 +1,55 @@
+@startuml
+skinparam defaultFontSize 11
+class Staff {
+  +Date address
+  #Date price
+  +cancelNote()
+  +createStatus()
+}
+interface Reservation {
+  -boolean amount
+  #boolean type
+  #long level
+  +processTotal()
+  +saveAmount()
+}
+interface Invoice {
+  #int quantity
+  +float status
+  +double duration
+  +calculatePhone()
+  +setAddress()
+}
+abstract class Room {
+  -boolean address
+  -float level
+  #boolean email
+  #float score
+  #double quantity
+  +setStatus()
+  +validateActive()
+  +findDuration()
+}
+class CheckOut {
+  #String active
+  -Date score
+  #boolean phone
+  #boolean status
+  -int amount
+  +findStatus()
+  +setId()
+}
+class Housekeeping {
+  +int active
+  -long address
+  +int score
+  +cancelId()
+  +createAmount()
+}
+CheckOut ..|> Staff
+Staff ..> CheckOut : "1..*"
+CheckOut ..|> Invoice
+Housekeeping --o CheckOut
+Housekeeping ..> Room : "1"
+note right of Staff : Hotel domain
+@enduml

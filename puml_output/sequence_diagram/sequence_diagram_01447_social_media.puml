@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+boundary "Moderator" as M
+entity "User" as U
+control "Advertiser" as A
+U --> A : Report Content
+A --> U : Like Post
+activate U
+U --> A : ACK
+deactivate U
+note over U : processing like post
+A --> U : Comment
+activate U
+U --> A : ACK
+deactivate U
+note over U : processing comment
+A ->> U : Share Post
+activate U
+U --> A : ACK
+deactivate U
+note over U : processing share post
+@enduml

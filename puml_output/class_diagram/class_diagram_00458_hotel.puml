@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+interface CheckIn {
+  #float note
+  #long description
+  #boolean amount
+  #float email
+  -double updatedAt
+  +updateName()
+  +getCode()
+  +deleteAddress()
+}
+class Invoice {
+  +long phone
+  -float id
+  +processAmount()
+  +validateLevel()
+  +findName()
+}
+interface Service {
+  +double level
+  #Date description
+  +calculateScore()
+}
+class Payment {
+  +boolean address
+  #boolean duration
+  +processId()
+  +getEmail()
+  +getLevel()
+}
+class Room {
+  -int note
+  -int status
+  #String duration
+  #boolean total
+  -float price
+  +createDuration()
+  +calculateQuantity()
+  +updatePrice()
+  +getDescription()
+}
+Payment --* Room
+Room --* Payment
+Service --> Invoice : "1..*"
+CheckIn ..> Service : "*"
+note right of CheckIn : Hotel domain
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+entity "Nurse" as N
+control "Receptionist" as R
+participant "Patient" as P
+N --> P : Admit Patient
+R ->> P : Process Insurance Claim
+P -> N : Run Lab Test
+activate N
+N --> P : ACK
+deactivate N
+note over N : processing run lab test
+R ->> P : Discharge Patient
+note over P : processing discharge patient
+R -> N : Issue Prescription
+activate N
+N --> R : ACK
+deactivate N
+note over N : processing issue prescription
+@enduml

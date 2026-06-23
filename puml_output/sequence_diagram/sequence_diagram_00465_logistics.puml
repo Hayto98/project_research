@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+boundary "Fleet Manager" as FM
+participant "Dispatcher" as D
+boundary "Customer" as C
+entity "Driver" as D2
+FM ->> C : Schedule Pickup
+C --> D2 : Deliver Package
+note over D2 : processing deliver package
+D2 ->> FM : Fuel Vehicle
+activate FM
+FM --> D2 : ACK
+deactivate FM
+D2 ->> D : Update Inventory
+activate D
+D --> D2 : ACK
+deactivate D
+D -> FM : Report Issue
+activate FM
+FM --> D : ACK
+deactivate FM
+D2 --> FM : Load Package
+@enduml

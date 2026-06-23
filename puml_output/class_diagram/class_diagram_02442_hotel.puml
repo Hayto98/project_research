@@ -1,0 +1,47 @@
+@startuml
+skinparam defaultFontSize 13
+class Service {
+  -long total
+  -long status
+  +validateCode()
+}
+class Restaurant {
+  +Date address
+  #Date id
+  +findCode()
+  +setQuantity()
+  +validateAddress()
+}
+class CheckIn {
+  -long active
+  #float price
+  +boolean amount
+  #Date score
+  #float code
+  +createEmail()
+}
+class Amenity {
+  -long code
+  +long amount
+  -boolean email
+  #long description
+  +int duration
+  +cancelAddress()
+  +saveType()
+}
+abstract class Invoice {
+  +String type
+  -Date name
+  -int note
+  #double duration
+  +double description
+  +processName()
+  +cancelDescription()
+  +updateEmail()
+  +sendId()
+}
+Service ..|> Amenity
+Invoice --> Service : "*"
+CheckIn --* Invoice
+note right of Service : Hotel domain
+@enduml

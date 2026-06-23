@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Review {
+  -String status
+  #long note
+  +double code
+  +long email
+  +int name
+  +cancelId()
+  +validateName()
+  +findPrice()
+}
+abstract class Order {
+  -long duration
+  -float address
+  -String email
+  +processType()
+}
+abstract class Shipment {
+  #double id
+  #int active
+  -boolean quantity
+  +validateDescription()
+}
+class Coupon {
+  #double type
+  +boolean description
+  -boolean createdAt
+  -float amount
+  -double email
+  +calculateNote()
+  +getAmount()
+  +getPrice()
+  +getAmount()
+}
+Order --o Shipment
+Coupon ..|> Order
+Order ..> Coupon : "1"
+note right of Review : Ecommerce domain
+@enduml

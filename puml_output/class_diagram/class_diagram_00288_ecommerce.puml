@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+abstract class Category {
+  -long score
+  -float phone
+  #long note
+  #double active
+  +saveDuration()
+  +processLevel()
+  +findAddress()
+}
+interface Cart {
+  +float price
+  -double address
+  +float total
+  #float amount
+  -double type
+  +validateDuration()
+  +calculateQuantity()
+}
+class Invoice {
+  +double active
+  -double phone
+  -boolean updatedAt
+  +float amount
+  -boolean name
+  +validateCode()
+  +cancelAddress()
+}
+interface Shipment {
+  #boolean phone
+  #float duration
+  +setCreatedat()
+  +validateAddress()
+}
+Cart --> Shipment : "*"
+Invoice ..> Shipment : "*"
+Category --|> Cart
+note right of Category : Ecommerce domain
+@enduml

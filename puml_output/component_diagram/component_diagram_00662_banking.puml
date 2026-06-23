@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+component "Account Service" as C_AccountService
+component "Deposit Service" as C_DepositService
+component "Card Service" as C_CardService
+component "Customer Service" as C_CustomerService
+database "Banking DB" as DB_banking
+C_AccountService --> DB_banking
+C_DepositService --> DB_banking
+C_CardService --> DB_banking
+C_AccountService ..> C_DepositService : REST
+C_CustomerService ..> C_DepositService : MQ
+C_CardService ..> C_CustomerService : REST
+@enduml

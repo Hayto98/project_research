@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+component "Invoice Service" as C_InvoiceService
+component "Return Service" as C_ReturnService
+component "Warehouse Service" as C_WarehouseService
+component "Order Service" as C_OrderService
+database "Ecommerce DB" as DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_WarehouseService ..> C_OrderService : gRPC
+C_InvoiceService ..> C_ReturnService : HTTP
+@enduml

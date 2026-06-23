@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Beneficiary Service" as C_BeneficiaryService
+component "Transaction Service" as C_TransactionService
+component "Teller Service" as C_TellerService
+component "Transfer Service" as C_TransferService
+database "Banking DB" as DB_banking
+C_BeneficiaryService --> DB_banking
+C_TransactionService --> DB_banking
+C_TellerService --> DB_banking
+C_TransferService --> DB_banking
+C_TransferService ..> C_TransactionService : MQ
+C_TransactionService ..> C_TransferService : MQ
+C_TransactionService ..> C_BeneficiaryService : HTTP
+@enduml

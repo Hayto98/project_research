@@ -1,0 +1,44 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Warehouse {
+  +Date active
+  #String type
+  +deleteActive()
+  +sendType()
+  +cancelLevel()
+  +calculateActive()
+}
+class Coupon {
+  +String score
+  -Date amount
+  #String name
+  +saveActive()
+  +setType()
+  +cancelType()
+  +sendEmail()
+}
+class Shipment {
+  +String total
+  +Date quantity
+  -Date amount
+  +long id
+  +getAddress()
+  +updateTotal()
+}
+interface Wishlist {
+  +Date email
+  -float type
+  -double name
+  -String duration
+  +updateDescription()
+  +validateCreatedat()
+  +cancelNote()
+  +findActive()
+}
+Wishlist ..> Coupon : "*"
+Warehouse ..|> Coupon
+note right of Warehouse : Ecommerce domain
+@enduml

@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+class Attendance {
+  #String status
+  #float name
+  #double phone
+  +int quantity
+  +calculateTotal()
+  +sendCreatedat()
+  +findUpdatedat()
+  +validateEmail()
+}
+abstract class Library {
+  +float price
+  +double email
+  +String description
+  #double quantity
+  -int phone
+  +cancelStatus()
+  +processType()
+  +setCode()
+  +setPrice()
+}
+class Grade {
+  #boolean note
+  -long level
+  #long quantity
+  -boolean email
+  +sendQuantity()
+  +updatePrice()
+}
+interface Schedule {
+  #boolean level
+  -float status
+  #boolean quantity
+  +validatePhone()
+}
+class Teacher {
+  +double level
+  -float code
+  +sendCreatedat()
+  +sendTotal()
+  +updateTotal()
+}
+abstract class Student {
+  +float duration
+  #float id
+  #int score
+  +getUpdatedat()
+  +validateCode()
+}
+class Exam {
+  -long price
+  -int score
+  +findName()
+  +saveDescription()
+  +setCode()
+}
+Attendance ..|> Student
+Schedule ..|> Library
+Teacher --|> Exam
+Library --* Student
+Student ..> Schedule : "*"
+note right of Attendance : Education domain
+@enduml

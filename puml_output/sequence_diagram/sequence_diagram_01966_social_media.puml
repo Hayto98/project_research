@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+control "Admin" as A
+control "User" as U
+boundary "Moderator" as M
+entity "Advertiser" as A2
+A -> A2 : Like Post
+A -> M : Report Content
+note over M : processing report content
+A2 -> U : Create Post
+activate U
+U --> A2 : ACK
+deactivate U
+A -> U : Comment
+A --> U : Share Post
+activate U
+U --> A : ACK
+deactivate U
+U --> A : Edit Profile
+@enduml

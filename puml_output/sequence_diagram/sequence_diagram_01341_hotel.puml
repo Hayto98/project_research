@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+participant "Guest" as G
+participant "Receptionist" as R
+control "Manager" as M
+actor "Housekeeper" as H
+control "Chef" as C
+C -> M : Check Out
+R --> M : Check In
+activate M
+M --> R : ACK
+deactivate M
+G --> M : Clean Room
+R --> H : Order Room Service
+activate H
+H --> R : ACK
+deactivate H
+note over H : processing order room service
+G --> C : Request Service
+activate C
+C --> G : ACK
+deactivate C
+@enduml

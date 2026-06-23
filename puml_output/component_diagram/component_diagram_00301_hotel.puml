@@ -1,0 +1,16 @@
+@startuml
+
+component "Booking Service" as C_BookingService
+component "CheckOut Service" as C_CheckOutService
+component "Restaurant Service" as C_RestaurantService
+component "Housekeeping Service" as C_HousekeepingService
+component "Room Service" as C_RoomService
+database "Hotel DB" as DB_hotel
+C_BookingService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_RoomService --> DB_hotel
+C_CheckOutService ..> C_BookingService : MQ
+C_CheckOutService ..> C_RestaurantService : gRPC
+C_HousekeepingService ..> C_RoomService : HTTP
+C_CheckOutService ..> C_RoomService : MQ
+@enduml

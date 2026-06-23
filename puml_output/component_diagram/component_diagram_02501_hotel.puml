@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+component "Housekeeping Service" as C_HousekeepingService
+component "CheckOut Service" as C_CheckOutService
+component "Restaurant Service" as C_RestaurantService
+component "Service Service" as C_ServiceService
+component "CheckIn Service" as C_CheckInService
+component "Guest Service" as C_GuestService
+component "Reservation Service" as C_ReservationService
+database "Hotel DB" as DB_hotel
+C_CheckOutService --> DB_hotel
+C_RestaurantService --> DB_hotel
+C_ServiceService --> DB_hotel
+C_GuestService --> DB_hotel
+C_ReservationService --> DB_hotel
+C_CheckOutService ..> C_RestaurantService : HTTP
+C_GuestService ..> C_CheckOutService : REST
+C_ReservationService ..> C_GuestService : gRPC
+C_CheckInService ..> C_GuestService : gRPC
+C_ServiceService ..> C_GuestService : MQ
+@enduml

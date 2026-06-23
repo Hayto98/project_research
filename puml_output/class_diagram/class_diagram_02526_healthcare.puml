@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+abstract class Hospital {
+  -String amount
+  -float updatedAt
+  #float quantity
+  +double description
+  +updateAmount()
+  +deleteName()
+  +deleteType()
+  +saveId()
+}
+class MedicalRecord {
+  +float price
+  -long id
+  +updateType()
+  +cancelQuantity()
+}
+class Doctor {
+  #int type
+  -int note
+  +float code
+  +updatePrice()
+  +createName()
+  +calculateType()
+}
+interface LabTest {
+  -boolean level
+  -int duration
+  +Date createdAt
+  +Date code
+  +updateCreatedat()
+}
+class Diagnosis {
+  -long price
+  +long quantity
+  -long status
+  +saveCode()
+  +cancelPrice()
+}
+Doctor --* MedicalRecord
+LabTest --> Hospital : "1"
+LabTest --|> MedicalRecord
+MedicalRecord ..> Hospital : "0..1"
+note right of Hospital : Healthcare domain
+@enduml

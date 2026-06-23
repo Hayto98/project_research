@@ -1,0 +1,64 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Prescription {
+  -Date quantity
+  -Date id
+  #double duration
+  +boolean price
+  +cancelLevel()
+}
+class Diagnosis {
+  #double note
+  #String level
+  +Date quantity
+  #String phone
+  +float description
+  +calculateName()
+}
+class LabTest {
+  -String note
+  +boolean id
+  #float description
+  +String price
+  #boolean duration
+  +setEmail()
+  +createScore()
+  +sendActive()
+  +calculateId()
+}
+abstract class Doctor {
+  -int total
+  +long description
+  +double price
+  -String type
+  +setId()
+  +updateNote()
+  +cancelStatus()
+}
+abstract class Ward {
+  -int price
+  #boolean address
+  +validateEmail()
+  +saveName()
+  +setDescription()
+}
+class Nurse {
+  +boolean status
+  +double email
+  +findCode()
+  +deletePrice()
+  +deleteScore()
+}
+abstract class Insurance {
+  +long type
+  +int email
+  #String description
+  +deletePrice()
+}
+Doctor --o Insurance
+LabTest --o Doctor
+Prescription --* Nurse
+Diagnosis ..> LabTest : "0..1"
+note right of Prescription : Healthcare domain
+@enduml

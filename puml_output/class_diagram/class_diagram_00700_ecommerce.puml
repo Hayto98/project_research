@@ -1,0 +1,57 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Customer {
+  +String active
+  +Date score
+  +cancelStatus()
+  +saveAddress()
+}
+class Warehouse {
+  -boolean description
+  -int code
+  -String level
+  +processStatus()
+}
+class Wishlist {
+  -boolean quantity
+  -int active
+  +long level
+  +double status
+  +updateLevel()
+  +processName()
+  +cancelAddress()
+  +cancelTotal()
+}
+class Return {
+  #Date email
+  -float quantity
+  +savePrice()
+  +saveActive()
+  +deleteTotal()
+  +updateNote()
+}
+class Order {
+  -long email
+  +int note
+  #boolean updatedAt
+  -long createdAt
+  +setTotal()
+}
+interface Supplier {
+  +long price
+  -float code
+  #float address
+  +deleteQuantity()
+}
+interface Coupon {
+  +boolean amount
+  +Date total
+  +calculateCreatedat()
+}
+Customer --> Coupon : "0..1"
+Supplier ..|> Customer
+Wishlist --o Supplier
+note right of Customer : Ecommerce domain
+@enduml

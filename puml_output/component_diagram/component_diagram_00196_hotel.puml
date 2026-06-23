@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+component "Room Service" as C_RoomService
+component "Reservation Service" as C_ReservationService
+component "Staff Service" as C_StaffService
+component "Service Service" as C_ServiceService
+database "Hotel DB" as DB_hotel
+C_RoomService --> DB_hotel
+C_ReservationService --> DB_hotel
+C_StaffService --> DB_hotel
+C_RoomService ..> C_ServiceService : REST
+C_StaffService ..> C_RoomService : HTTP
+@enduml

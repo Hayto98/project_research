@@ -1,0 +1,40 @@
+@startuml
+skinparam shadowing true
+start
+:Search Catalog;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Pay Fine;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Borrow Book;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Return Book;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Renew Loan;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Add New Book;
+stop
+@enduml

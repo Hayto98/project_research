@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+abstract class Transaction {
+  -String id
+  #String quantity
+  +boolean price
+  +validateScore()
+}
+class Account {
+  #long active
+  +long email
+  +long level
+  +String status
+  +processDuration()
+  +setDescription()
+}
+class Interest {
+  #Date quantity
+  #Date type
+  #int level
+  -boolean score
+  +calculateName()
+  +calculateDescription()
+  +saveId()
+}
+abstract class Beneficiary {
+  -String type
+  +float phone
+  #float quantity
+  +float score
+  -boolean price
+  +updatePrice()
+}
+class Customer {
+  -double code
+  +String duration
+  #Date total
+  +sendCreatedat()
+}
+abstract class Withdrawal {
+  #long amount
+  -Date status
+  #float description
+  +setDuration()
+  +saveUpdatedat()
+  +saveAddress()
+}
+abstract class Branch {
+  +float quantity
+  +String phone
+  +boolean duration
+  +deleteUpdatedat()
+  +setCreatedat()
+  +getLevel()
+  +createDuration()
+}
+Transaction --o Account
+Branch --> Customer : "0..1"
+note right of Transaction : Banking domain
+@enduml

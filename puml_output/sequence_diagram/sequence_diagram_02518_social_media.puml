@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+control "Advertiser" as A
+control "Admin" as A2
+entity "User" as U
+A2 ->> U : Create Post
+activate U
+U --> A2 : ACK
+deactivate U
+note over U : processing create post
+U -> A : Like Post
+U --> A2 : Send Message
+activate A2
+A2 --> U : ACK
+deactivate A2
+A2 --> A : Share Post
+U --> A2 : Report Content
+A2 --> U : Comment
+activate U
+U --> A2 : ACK
+deactivate U
+@enduml

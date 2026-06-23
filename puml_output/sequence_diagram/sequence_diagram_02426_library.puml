@@ -1,0 +1,18 @@
+@startuml
+
+entity "Member" as M
+boundary "Librarian" as L
+control "Admin" as A
+M -> A : Borrow Book
+M --> L : Register Member
+activate L
+L --> M : ACK
+deactivate L
+L -> A : Renew Loan
+note over A : processing renew loan
+A ->> M : Add New Book
+A --> M : Search Catalog
+activate M
+M --> A : ACK
+deactivate M
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+component "Notification Service" as C_NotificationService
+component "Follower Service" as C_FollowerService
+component "Comment Service" as C_CommentService
+component "Like Service" as C_LikeService
+component "Story Service" as C_StoryService
+component "Report Service" as C_ReportService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_CommentService --> DB_social_media
+C_LikeService --> DB_social_media
+C_StoryService --> DB_social_media
+C_ReportService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_FollowerService ..> C_LikeService : REST
+C_LikeService ..> C_ReportService : REST
+C_CommentService ..> C_HashtagService : REST
+C_FollowerService ..> C_NotificationService : MQ
+C_ReportService ..> C_LikeService : REST
+C_StoryService ..> C_NotificationService : gRPC
+@enduml

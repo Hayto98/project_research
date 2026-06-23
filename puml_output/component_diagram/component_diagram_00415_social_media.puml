@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Notification Service" as C_NotificationService
+component "Profile Service" as C_ProfileService
+component "Message Service" as C_MessageService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_MessageService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_ProfileService ..> C_NotificationService : gRPC
+C_NotificationService ..> C_ProfileService : gRPC
+@enduml

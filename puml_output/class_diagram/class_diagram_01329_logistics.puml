@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+class Manifest {
+  +int id
+  -int note
+  -String active
+  +processDuration()
+  +setDescription()
+}
+class Warehouse {
+  -Date active
+  +String score
+  +Date note
+  +Date status
+  #float updatedAt
+  +deleteCreatedat()
+  +findName()
+  +getPrice()
+}
+class Shipment {
+  #int amount
+  -float active
+  +String total
+  +validateEmail()
+}
+abstract class Inventory {
+  +String amount
+  -String updatedAt
+  -boolean description
+  -String note
+  +getScore()
+  +calculateScore()
+  +deleteAmount()
+  +setStatus()
+}
+class FuelLog {
+  +Date status
+  -double id
+  +String score
+  +validateName()
+}
+class Customer {
+  +Date status
+  +int id
+  #int email
+  +findEmail()
+  +createCreatedat()
+}
+class Package {
+  +int level
+  #double score
+  +deletePrice()
+  +findNote()
+  +updateUpdatedat()
+  +updateDuration()
+}
+Customer --o FuelLog
+Customer --> Inventory : "1"
+Manifest --|> Shipment
+Package ..> Inventory : "*"
+Shipment --* Inventory
+note right of Manifest : Logistics domain
+@enduml

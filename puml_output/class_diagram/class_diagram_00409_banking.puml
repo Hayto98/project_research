@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+interface Statement {
+  #boolean address
+  #long note
+  -Date score
+  +calculateId()
+  +getQuantity()
+}
+abstract class Transfer {
+  -int code
+  #String id
+  #boolean duration
+  #long address
+  +updateScore()
+  +deleteTotal()
+}
+abstract class Teller {
+  -float updatedAt
+  #double note
+  -Date price
+  -int active
+  +getActive()
+}
+class Beneficiary {
+  -long email
+  #double name
+  #String duration
+  +double code
+  +long quantity
+  +deleteUpdatedat()
+  +cancelDescription()
+  +calculateStatus()
+  +calculateType()
+}
+class Deposit {
+  #String amount
+  +String active
+  -Date createdAt
+  #Date code
+  +getCreatedat()
+  +saveLevel()
+}
+abstract class Interest {
+  #int address
+  -Date phone
+  +sendCreatedat()
+}
+Interest --> Teller : "0..1"
+Teller --> Statement : "*"
+Statement --> Deposit : "1"
+note right of Statement : Banking domain
+@enduml

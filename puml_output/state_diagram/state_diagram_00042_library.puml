@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+[*] --> Delivered
+Delivered --> Closed : approve
+Delivered : entry / log publisher
+Closed --> Archived : reject
+Closed : entry / log publisher
+Archived --> Rejected : reject
+Rejected --> Completed : approve
+Completed --> Processing : reject
+Completed : entry / log publisher
+Closed --> Rejected : revert
+Processing --> [*]
+@enduml

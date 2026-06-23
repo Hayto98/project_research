@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+entity "Branch Manager" as BM
+boundary "Auditor" as A
+boundary "Account Holder" as AH
+A --> BM : Apply For Loan
+activate BM
+BM --> A : ACK
+deactivate BM
+BM ->> AH : Block Card
+note over AH : processing block card
+BM --> A : Open Account
+activate A
+A --> BM : ACK
+deactivate A
+note over A : processing open account
+BM ->> A : View Statement
+BM -> AH : Deposit Money
+note over AH : processing deposit money
+AH ->> A : Withdraw Cash
+activate A
+A --> AH : ACK
+deactivate A
+note over A : processing withdraw cash
+BM ->> A : Pay Bill
+@enduml

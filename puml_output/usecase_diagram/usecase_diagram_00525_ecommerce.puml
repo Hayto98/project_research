@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+left to right direction
+actor "Customer" as Customer
+actor "Seller" as Seller
+rectangle "Ecommerce System" {
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Write Review" as UC_WriteReview
+  usecase "Checkout" as UC_Checkout
+  usecase "Make Payment" as UC_MakePayment
+}
+Customer --> UC_BrowseProducts
+Customer --> UC_ManageInventory
+Customer --> UC_MakePayment
+Seller --> UC_BrowseProducts
+Seller --> UC_AddToCart
+UC_ManageInventory ..|> UC_BrowseProducts : <<include>>
+@enduml

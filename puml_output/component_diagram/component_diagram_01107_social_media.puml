@@ -1,0 +1,12 @@
+@startuml
+skinparam shadowing true
+component "Album Service" as C_AlbumService
+component "Message Service" as C_MessageService
+component "Profile Service" as C_ProfileService
+component "Comment Service" as C_CommentService
+database "Social Media DB" as DB_social_media
+C_CommentService --> DB_social_media
+C_CommentService ..> C_AlbumService : gRPC
+C_AlbumService ..> C_CommentService : gRPC
+C_ProfileService ..> C_MessageService : REST
+@enduml

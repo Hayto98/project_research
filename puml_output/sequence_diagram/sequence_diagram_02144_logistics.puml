@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+entity "Fleet Manager" as FM
+participant "Customer" as C
+actor "Driver" as D
+boundary "Dispatcher" as D2
+C -> D2 : Schedule Pickup
+activate D2
+D2 --> C : ACK
+deactivate D2
+note over D2 : processing schedule pickup
+FM -> C : Fuel Vehicle
+activate C
+C --> FM : ACK
+deactivate C
+note over C : processing fuel vehicle
+FM --> C : Update Inventory
+activate C
+C --> FM : ACK
+deactivate C
+FM --> D2 : Report Issue
+@enduml

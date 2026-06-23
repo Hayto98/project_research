@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+entity "Student" as S
+boundary "Librarian" as L
+entity "Teacher" as T
+participant "Registrar" as R
+T --> R : Borrow Book
+activate R
+R --> T : ACK
+deactivate R
+T -> R : Issue Certificate
+R ->> L : Register Student
+activate L
+L --> R : ACK
+deactivate L
+note over L : processing register student
+R -> T : View Schedule
+activate T
+T --> R : ACK
+deactivate T
+S -> L : Take Attendance
+note over L : processing take attendance
+S -> T : Enroll Course
+activate T
+T --> S : ACK
+deactivate T
+S -> R : Submit Assignment
+@enduml

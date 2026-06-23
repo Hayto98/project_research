@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+abstract class Order {
+  #int price
+  +boolean createdAt
+  +calculateStatus()
+}
+class Customer {
+  -float id
+  +Date code
+  +boolean level
+  #String address
+  +long email
+  +calculatePrice()
+  +sendActive()
+}
+abstract class Wishlist {
+  +float active
+  +double createdAt
+  +String quantity
+  -int name
+  +createNote()
+}
+interface Category {
+  +long email
+  -int description
+  #long active
+  -Date price
+  -double amount
+  +setId()
+}
+class Coupon {
+  #Date code
+  -Date score
+  +Date amount
+  +boolean phone
+  +updateEmail()
+}
+interface Review {
+  #float total
+  #int name
+  +boolean code
+  #float email
+  +createStatus()
+  +findDescription()
+  +validateType()
+}
+Customer --|> Order
+Wishlist --> Order : "1..*"
+Wishlist --* Review
+note right of Order : Ecommerce domain
+@enduml

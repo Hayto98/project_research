@@ -1,0 +1,14 @@
+@startuml
+skinparam defaultFontSize 13
+[*] --> Pending
+Pending --> Archived : review
+Pending : entry / log invoice
+Archived --> Draft : approve
+Archived : entry / log invoice
+Draft --> Created : approve
+Draft : entry / log invoice
+Created --> Shipped : reject
+Shipped --> Closed : process
+Pending --> Created : revert
+Closed --> [*]
+@enduml

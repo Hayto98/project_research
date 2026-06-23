@@ -1,0 +1,55 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Inventory {
+  +int name
+  -int level
+  +boolean email
+  #double duration
+  +long code
+  +cancelNote()
+  +getCreatedat()
+  +deleteEmail()
+}
+class Shipment {
+  #long active
+  +long status
+  +sendCode()
+}
+class Driver {
+  -int description
+  #Date amount
+  +getUpdatedat()
+  +saveAddress()
+  +createType()
+  +getNote()
+}
+interface Package {
+  -String createdAt
+  -Date id
+  +setStatus()
+  +createStatus()
+  +validateQuantity()
+}
+class Tracking {
+  #double name
+  +double duration
+  #boolean level
+  #double description
+  -boolean type
+  +updateId()
+  +updatePhone()
+  +getAmount()
+}
+class Vehicle {
+  #float createdAt
+  #float active
+  +createId()
+  +deleteId()
+}
+Vehicle ..|> Inventory
+Package --* Inventory
+Driver --> Shipment : "1..*"
+Shipment ..|> Vehicle
+note right of Inventory : Logistics domain
+@enduml

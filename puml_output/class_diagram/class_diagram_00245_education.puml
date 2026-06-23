@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+class Library {
+  -long quantity
+  #double note
+  -long status
+  +findDescription()
+  +createId()
+  +findLevel()
+  +getType()
+}
+abstract class Course {
+  +int code
+  -boolean type
+  -float createdAt
+  #float quantity
+  +boolean status
+  +setCode()
+  +validateLevel()
+  +calculateType()
+}
+abstract class Classroom {
+  +String active
+  -int address
+  #float price
+  +validateCreatedat()
+}
+class Assignment {
+  #int name
+  #double level
+  +float active
+  +updateId()
+}
+interface Exam {
+  #float email
+  +int note
+  -String amount
+  +validateLevel()
+  +sendCreatedat()
+  +findPrice()
+  +updateId()
+}
+class Schedule {
+  +int type
+  #float score
+  +Date id
+  +Date duration
+  +setDescription()
+}
+Schedule ..> Assignment : "*"
+Assignment --o Exam
+Course ..|> Exam
+note right of Library : Education domain
+@enduml

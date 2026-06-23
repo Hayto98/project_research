@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+left to right direction
+actor "Patient" as Patient
+actor "Insurance Provider" as InsuranceProvider
+actor "Lab Technician" as LabTechnician
+actor "Receptionist" as Receptionist
+rectangle "Healthcare System" {
+  usecase "Examine Patient" as UC_ExaminePatient
+  usecase "Update Medical Record" as UC_UpdateMedicalRecord
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Run Lab Test" as UC_RunLabTest
+}
+Patient --> UC_DischargePatient
+Patient --> UC_AdmitPatient
+Patient --> UC_ExaminePatient
+InsuranceProvider --> UC_RunLabTest
+InsuranceProvider --> UC_ExaminePatient
+LabTechnician --> UC_ProcessInsuranceClaim
+LabTechnician --> UC_IssuePrescription
+LabTechnician --> UC_RunLabTest
+Receptionist --> UC_IssuePrescription
+Receptionist --> UC_ExaminePatient
+@enduml

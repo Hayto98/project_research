@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+actor "Auditor" as A
+actor "ATM" as A2
+boundary "Bank Teller" as BT
+A ->> A2 : View Statement
+note over A2 : processing view statement
+A --> A2 : Apply For Loan
+activate A2
+A2 --> A : ACK
+deactivate A2
+A2 -> A : Deposit Money
+activate A
+A --> A2 : ACK
+deactivate A
+A2 --> A : Block Card
+note over A : processing block card
+A2 --> A : Transfer Funds
+@enduml

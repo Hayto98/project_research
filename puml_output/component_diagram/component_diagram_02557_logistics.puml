@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Customer Service" as C_CustomerService
+component "Tracking Service" as C_TrackingService
+component "Warehouse Service" as C_WarehouseService
+component "Route Service" as C_RouteService
+component "FuelLog Service" as C_FuelLogService
+database "Logistics DB" as DB_logistics
+C_TrackingService --> DB_logistics
+C_RouteService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_WarehouseService ..> C_FuelLogService : HTTP
+C_CustomerService ..> C_RouteService : REST
+C_FuelLogService ..> C_WarehouseService : HTTP
+@enduml

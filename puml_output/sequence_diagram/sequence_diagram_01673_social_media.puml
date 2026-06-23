@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+participant "Moderator" as M
+actor "User" as U
+entity "Admin" as A
+participant "Advertiser" as A2
+U ->> A2 : Create Post
+M --> A : Edit Profile
+note over A : processing edit profile
+U --> A2 : Comment
+activate A2
+A2 --> U : ACK
+deactivate A2
+M -> A : Report Content
+note over A : processing report content
+A ->> A2 : Send Message
+note over A2 : processing send message
+A -> U : Like Post
+@enduml

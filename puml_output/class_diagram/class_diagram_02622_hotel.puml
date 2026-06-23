@@ -1,0 +1,60 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class Reservation {
+  #boolean amount
+  +int score
+  #long description
+  -String phone
+  +updateCode()
+  +processPhone()
+}
+class CheckOut {
+  +double email
+  +float address
+  #int description
+  +long id
+  +validatePrice()
+  +createPrice()
+  +getAmount()
+}
+abstract class Booking {
+  +Date id
+  #String address
+  +long price
+  -int quantity
+  +calculateType()
+}
+class Amenity {
+  #long phone
+  #double type
+  +getName()
+  +saveDuration()
+  +createCreatedat()
+}
+class Housekeeping {
+  #long quantity
+  -int address
+  +float updatedAt
+  #boolean note
+  #String status
+  +updateUpdatedat()
+  +cancelNote()
+  +calculateType()
+}
+class CheckIn {
+  -boolean note
+  -float score
+  +setType()
+  +updateScore()
+  +getPrice()
+  +saveTotal()
+}
+Amenity --o CheckIn
+Housekeeping --|> Amenity
+CheckOut --|> CheckIn
+Housekeeping --o Reservation
+Housekeeping --o CheckOut
+note right of Reservation : Hotel domain
+@enduml

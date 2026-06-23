@@ -1,0 +1,36 @@
+@startuml
+
+abstract class Publisher {
+  -Date updatedAt
+  #Date createdAt
+  #int address
+  -float code
+  +validateDescription()
+  +cancelStatus()
+  +calculateStatus()
+}
+abstract class Author {
+  #Date score
+  +String address
+  -long description
+  #long code
+  +updateName()
+  +deleteUpdatedat()
+  +validateCode()
+}
+class Librarian {
+  #double updatedAt
+  #String email
+  -float note
+  +setNote()
+}
+class Loan {
+  +String code
+  +boolean quantity
+  +processStatus()
+}
+Loan --> Librarian : "1..*"
+Publisher --* Librarian
+Loan ..|> Author
+note right of Publisher : Library domain
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+component "Coupon Service" as C_CouponService
+component "Shipment Service" as C_ShipmentService
+component "Invoice Service" as C_InvoiceService
+component "Customer Service" as C_CustomerService
+database "Ecommerce DB" as DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_CustomerService ..> C_ShipmentService : gRPC
+C_InvoiceService ..> C_CustomerService : HTTP
+@enduml

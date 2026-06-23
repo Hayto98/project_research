@@ -1,0 +1,49 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+abstract class Insurance {
+  -int amount
+  +Date createdAt
+  +long phone
+  -Date description
+  +calculatePrice()
+}
+abstract class Treatment {
+  +float description
+  +int quantity
+  #float name
+  #Date amount
+  #Date code
+  +calculateStatus()
+}
+class Billing {
+  +double name
+  #Date total
+  +saveStatus()
+  +findAddress()
+}
+interface Doctor {
+  -boolean note
+  #Date level
+  +Date address
+  #double type
+  #double active
+  +createName()
+}
+class Diagnosis {
+  +long note
+  -double price
+  #int level
+  #Date email
+  +saveAddress()
+  +calculateLevel()
+  +deleteStatus()
+  +calculateAddress()
+}
+Diagnosis ..> Billing : "*"
+Treatment --o Insurance
+Billing ..|> Diagnosis
+Doctor ..> Treatment : "1..*"
+note right of Insurance : Healthcare domain
+@enduml

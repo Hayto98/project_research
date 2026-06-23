@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+boundary "Bank Teller" as BT
+boundary "ATM" as A
+entity "Branch Manager" as BM
+A ->> BM : Withdraw Cash
+BT --> A : Pay Bill
+note over A : processing pay bill
+BT ->> BM : View Statement
+A ->> BM : Deposit Money
+activate BM
+BM --> A : ACK
+deactivate BM
+BT ->> A : Block Card
+BM --> A : Transfer Funds
+BT ->> BM : Apply For Loan
+activate BM
+BM --> BT : ACK
+deactivate BM
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "CheckIn Service" as C_CheckInService
+component "Staff Service" as C_StaffService
+component "Restaurant Service" as C_RestaurantService
+component "CheckOut Service" as C_CheckOutService
+component "Service Service" as C_ServiceService
+database "Hotel DB" as DB_hotel
+C_CheckInService --> DB_hotel
+C_StaffService --> DB_hotel
+C_RestaurantService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_RestaurantService ..> C_StaffService : HTTP
+C_CheckOutService ..> C_RestaurantService : MQ
+C_CheckInService ..> C_CheckOutService : MQ
+@enduml

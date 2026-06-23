@@ -1,0 +1,64 @@
+@startuml
+skinparam shadowing true
+class Billing {
+  +long id
+  +boolean note
+  +double score
+  +updateStatus()
+  +sendStatus()
+}
+class Ward {
+  -Date id
+  -double score
+  #long duration
+  -String total
+  +String phone
+  +processActive()
+  +sendActive()
+  +updateCode()
+}
+class Prescription {
+  -Date id
+  +String quantity
+  +findUpdatedat()
+  +createId()
+}
+class Patient {
+  #String note
+  #double active
+  +getPhone()
+  +validateDescription()
+  +deleteEmail()
+}
+abstract class Diagnosis {
+  #float duration
+  +long code
+  -int type
+  +float createdAt
+  -boolean quantity
+  +calculateDuration()
+  +setActive()
+}
+abstract class Appointment {
+  +long price
+  -String type
+  #long createdAt
+  +boolean note
+  -float phone
+  +cancelEmail()
+  +processDuration()
+}
+interface Hospital {
+  #boolean name
+  #double description
+  -float code
+  -int id
+  #int createdAt
+  +createAddress()
+  +cancelDescription()
+}
+Ward --> Diagnosis : "1..*"
+Billing --|> Patient
+Ward ..> Patient : "*"
+note right of Billing : Healthcare domain
+@enduml

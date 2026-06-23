@@ -1,0 +1,72 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+abstract class Reservation {
+  #String price
+  +boolean total
+  #String level
+  +Date note
+  +long name
+  +validateDescription()
+  +getId()
+  +cancelCreatedat()
+  +createDuration()
+}
+class Fine {
+  #String active
+  #long price
+  -boolean updatedAt
+  -long createdAt
+  +setLevel()
+  +createName()
+}
+interface Book {
+  -boolean id
+  #float status
+  +float code
+  -boolean updatedAt
+  -int quantity
+  +validateQuantity()
+  +savePrice()
+}
+class Librarian {
+  #String phone
+  +boolean price
+  -float level
+  +createPhone()
+}
+class Loan {
+  +Date createdAt
+  -String phone
+  #Date quantity
+  #int note
+  +calculateAddress()
+}
+abstract class Catalog {
+  +double duration
+  #int active
+  -long quantity
+  +boolean name
+  +updatePrice()
+  +calculateQuantity()
+  +setLevel()
+  +deleteEmail()
+}
+class Author {
+  #int amount
+  #long updatedAt
+  +validateStatus()
+  +getAmount()
+  +setScore()
+  +deleteCode()
+}
+Author --> Fine : "1..*"
+Loan --* Book
+Reservation --|> Book
+Loan ..> Author : "1..*"
+Catalog ..|> Loan
+Fine --> Book : "0..1"
+note right of Reservation : Library domain
+@enduml

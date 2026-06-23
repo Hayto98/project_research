@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing true
+boundary "Advertiser" as A
+boundary "User" as U
+control "Moderator" as M
+U ->> A : Report Content
+U ->> M : Edit Profile
+activate M
+M --> U : ACK
+deactivate M
+note over M : processing edit profile
+U ->> M : Create Post
+activate M
+M --> U : ACK
+deactivate M
+note over M : processing create post
+A ->> M : Share Post
+@enduml

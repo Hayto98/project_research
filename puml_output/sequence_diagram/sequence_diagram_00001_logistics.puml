@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+control "Dispatcher" as D
+participant "Customer" as C
+actor "Driver" as D2
+control "Fleet Manager" as FM
+D2 ->> C : Update Inventory
+note over C : processing update inventory
+FM --> D2 : Schedule Pickup
+D --> FM : Assign Route
+activate FM
+FM --> D : ACK
+deactivate FM
+note over FM : processing assign route
+FM ->> D2 : Deliver Package
+activate D2
+D2 --> FM : ACK
+deactivate D2
+D ->> D2 : Load Package
+note over D2 : processing load package
+C -> FM : Report Issue
+D ->> FM : Track Shipment
+@enduml

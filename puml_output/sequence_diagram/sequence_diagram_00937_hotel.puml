@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+control "Receptionist" as R
+actor "Housekeeper" as H
+entity "Chef" as C
+control "Manager" as M
+M ->> H : Request Service
+activate H
+H --> M : ACK
+deactivate H
+H --> C : Order Room Service
+M -> R : Check In
+note over R : processing check in
+C -> M : Process Payment
+activate M
+M --> C : ACK
+deactivate M
+C ->> R : Check Out
+C --> R : Book Room
+activate R
+R --> C : ACK
+deactivate R
+@enduml

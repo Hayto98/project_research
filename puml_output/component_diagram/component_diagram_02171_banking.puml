@@ -1,0 +1,13 @@
+@startuml
+skinparam ArrowColor #555555
+component "Card Service" as C_CardService
+component "Branch Service" as C_BranchService
+component "Interest Service" as C_InterestService
+component "Transaction Service" as C_TransactionService
+database "Banking DB" as DB_banking
+C_BranchService --> DB_banking
+C_InterestService --> DB_banking
+C_TransactionService --> DB_banking
+C_CardService ..> C_BranchService : MQ
+C_BranchService ..> C_InterestService : MQ
+@enduml

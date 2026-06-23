@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+class Prescription {
+  #float amount
+  -String updatedAt
+  +createName()
+}
+class Patient {
+  #float score
+  -long level
+  +boolean phone
+  #long updatedAt
+  +setName()
+  +calculateId()
+}
+class Nurse {
+  +Date name
+  +Date email
+  +long total
+  -Date type
+  +long level
+  +deleteAmount()
+  +deleteNote()
+  +getActive()
+  +sendStatus()
+}
+class Appointment {
+  -double phone
+  +boolean createdAt
+  -String updatedAt
+  +updateId()
+  +setEmail()
+}
+interface Treatment {
+  -long address
+  +String score
+  -double status
+  #boolean price
+  +long description
+  +findAmount()
+}
+Appointment --o Prescription
+Prescription ..> Nurse : "1"
+Patient --> Prescription : "1"
+Treatment ..> Nurse : "*"
+note right of Prescription : Healthcare domain
+@enduml

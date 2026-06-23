@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+component "Story Service" as C_StoryService
+component "Group Service" as C_GroupService
+component "Hashtag Service" as C_HashtagService
+component "Like Service" as C_LikeService
+component "Message Service" as C_MessageService
+component "Album Service" as C_AlbumService
+component "Follower Service" as C_FollowerService
+database "Social Media DB" as DB_social_media
+C_HashtagService --> DB_social_media
+C_LikeService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_LikeService ..> C_AlbumService : MQ
+C_LikeService ..> C_FollowerService : REST
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+[*] --> Draft
+Draft --> Cancelled : process
+Cancelled --> OnHold : review
+OnHold --> Created : update
+OnHold : entry / log like
+Created --> Processing : confirm
+Processing --> Active : submit
+Processing : entry / log like
+Created --> Cancelled : revert
+Active --> [*]
+@enduml

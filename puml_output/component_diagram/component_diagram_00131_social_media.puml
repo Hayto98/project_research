@@ -1,0 +1,16 @@
+@startuml
+skinparam defaultFontSize 11
+component "Follower Service" as C_FollowerService
+component "Comment Service" as C_CommentService
+component "User Service" as C_UserService
+component "Like Service" as C_LikeService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_FollowerService --> DB_social_media
+C_LikeService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_HashtagService ..> C_UserService : HTTP
+C_UserService ..> C_CommentService : MQ
+C_HashtagService ..> C_FollowerService : gRPC
+C_CommentService ..> C_HashtagService : REST
+@enduml

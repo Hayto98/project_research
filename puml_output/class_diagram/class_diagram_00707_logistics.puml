@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+abstract class Inventory {
+  -Date email
+  -int address
+  +updateQuantity()
+  +updateScore()
+  +getDescription()
+}
+abstract class Route {
+  -String score
+  -int description
+  #boolean total
+  +saveEmail()
+  +validatePrice()
+  +cancelCode()
+  +updateAddress()
+}
+abstract class Manifest {
+  +Date active
+  #Date name
+  #double code
+  #float score
+  +Date updatedAt
+  +findQuantity()
+  +findActive()
+  +setTotal()
+}
+class Shipment {
+  -int email
+  #int id
+  +Date level
+  +validatePrice()
+  +saveQuantity()
+  +updateId()
+}
+class Vehicle {
+  -boolean phone
+  #int email
+  +findCreatedat()
+  +updateActive()
+}
+Route --* Vehicle
+Vehicle ..> Manifest : "0..1"
+Manifest --o Inventory
+Manifest ..|> Route
+note right of Inventory : Logistics domain
+@enduml

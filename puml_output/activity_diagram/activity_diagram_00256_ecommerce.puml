@@ -1,0 +1,34 @@
+@startuml
+skinparam shadowing true
+start
+:Cancel Order;
+:Checkout;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Browse Products;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Track Order;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Manage Inventory;
+:Add To Cart;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Write Review;
+stop
+@enduml

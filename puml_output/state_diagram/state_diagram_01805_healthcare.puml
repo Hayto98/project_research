@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+[*] --> Cancelled
+Cancelled --> Delivered : update
+Cancelled : entry / log insurance
+Delivered --> Approved : update
+Approved --> Archived : submit
+Archived --> Reviewed : reject
+Reviewed --> Processing : update
+Delivered --> Processing : revert
+Processing --> [*]
+@enduml

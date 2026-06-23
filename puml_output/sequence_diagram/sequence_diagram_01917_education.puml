@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+control "Librarian" as L
+boundary "Parent" as P
+control "Registrar" as R
+R -> P : View Schedule
+R ->> P : Issue Certificate
+L --> R : Grade Exam
+note over R : processing grade exam
+P ->> L : Enroll Course
+L ->> P : Register Student
+activate P
+P --> L : ACK
+deactivate P
+@enduml

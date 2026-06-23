@@ -1,0 +1,22 @@
+@startuml
+
+boundary "Member" as M
+participant "Admin" as A
+control "Librarian" as L
+A -> L : Reserve Book
+L -> M : Return Book
+note over M : processing return book
+L ->> M : Add New Book
+L --> A : Pay Fine
+activate A
+A --> L : ACK
+deactivate A
+note over A : processing pay fine
+L ->> M : Search Catalog
+note over M : processing search catalog
+M ->> A : Register Member
+activate A
+A --> M : ACK
+deactivate A
+note over A : processing register member
+@enduml

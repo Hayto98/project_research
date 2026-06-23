@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+start
+:Search Catalog;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Renew Loan;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Register Member;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Pay Fine;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Return Book;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Borrow Book;
+:Add New Book;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Reserve Book;
+stop
+@enduml

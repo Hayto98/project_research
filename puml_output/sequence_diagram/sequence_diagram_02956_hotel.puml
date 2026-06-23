@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+boundary "Manager" as M
+control "Guest" as G
+entity "Receptionist" as R
+boundary "Housekeeper" as H
+boundary "Chef" as C
+H ->> M : Check In
+H -> G : Clean Room
+C ->> H : Order Room Service
+activate H
+H --> C : ACK
+deactivate H
+G -> M : Book Room
+R -> C : Check Out
+C -> G : Process Payment
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+entity "Patient" as P
+entity "Lab Technician" as LT
+entity "Nurse" as N
+participant "Doctor" as D
+D ->> LT : Examine Patient
+activate LT
+LT --> D : ACK
+deactivate LT
+note over LT : processing examine patient
+P -> N : Run Lab Test
+note over N : processing run lab test
+P --> LT : Admit Patient
+LT ->> P : Issue Prescription
+note over P : processing issue prescription
+P ->> D : Update Medical Record
+LT -> N : Book Appointment
+activate N
+N --> LT : ACK
+deactivate N
+P -> D : Discharge Patient
+activate D
+D --> P : ACK
+deactivate D
+@enduml

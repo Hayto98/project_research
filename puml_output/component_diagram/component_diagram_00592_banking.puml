@@ -1,0 +1,20 @@
+@startuml
+skinparam defaultFontSize 13
+component "Customer Service" as C_CustomerService
+component "Deposit Service" as C_DepositService
+component "Teller Service" as C_TellerService
+component "Account Service" as C_AccountService
+component "Loan Service" as C_LoanService
+component "Transfer Service" as C_TransferService
+database "Banking DB" as DB_banking
+C_CustomerService --> DB_banking
+C_DepositService --> DB_banking
+C_TellerService --> DB_banking
+C_AccountService --> DB_banking
+C_LoanService --> DB_banking
+C_AccountService ..> C_LoanService : MQ
+C_TellerService ..> C_CustomerService : HTTP
+C_DepositService ..> C_AccountService : REST
+C_LoanService ..> C_TellerService : HTTP
+C_DepositService ..> C_TellerService : REST
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+interface Route {
+  +double duration
+  +double price
+  +double code
+  +cancelCode()
+}
+class DeliveryNote {
+  +Date updatedAt
+  +Date createdAt
+  +Date amount
+  +deleteStatus()
+  +setCode()
+  +saveName()
+}
+class Tracking {
+  -long id
+  #double active
+  -int level
+  #String quantity
+  +Date code
+  +deleteActive()
+  +processAddress()
+}
+class FuelLog {
+  -double status
+  +String type
+  -String level
+  -Date id
+  +long note
+  +updateEmail()
+}
+class Vehicle {
+  #int score
+  +String status
+  -int updatedAt
+  -double id
+  -long email
+  +deleteLevel()
+  +validatePrice()
+  +cancelAmount()
+}
+Tracking --o DeliveryNote
+DeliveryNote ..> FuelLog : "0..1"
+note right of Route : Logistics domain
+@enduml

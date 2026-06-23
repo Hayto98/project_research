@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+participant "Dispatcher" as D
+participant "Warehouse Staff" as WS
+participant "Driver" as D2
+D --> WS : Load Package
+activate WS
+WS --> D : ACK
+deactivate WS
+WS --> D2 : Assign Route
+note over D2 : processing assign route
+D ->> D2 : Update Inventory
+WS --> D2 : Fuel Vehicle
+activate D2
+D2 --> WS : ACK
+deactivate D2
+@enduml

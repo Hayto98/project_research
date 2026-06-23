@@ -1,0 +1,13 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+component "Reservation Service" as C_ReservationService
+component "Fine Service" as C_FineService
+component "Renewal Service" as C_RenewalService
+component "Author Service" as C_AuthorService
+database "Library DB" as DB_library
+C_AuthorService --> DB_library
+C_AuthorService ..> C_RenewalService : gRPC
+C_FineService ..> C_AuthorService : HTTP
+@enduml

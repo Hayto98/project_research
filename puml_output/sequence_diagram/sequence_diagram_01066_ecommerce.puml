@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontSize 13
+entity "Admin" as A
+participant "Delivery Service" as DS
+entity "Customer" as C
+DS --> A : Checkout
+note over A : processing checkout
+C -> A : Track Order
+A -> C : Make Payment
+activate C
+C --> A : ACK
+deactivate C
+note over C : processing make payment
+A -> C : Apply Coupon
+DS --> C : Cancel Order
+activate C
+C --> DS : ACK
+deactivate C
+DS -> A : Manage Inventory
+note over A : processing manage inventory
+@enduml

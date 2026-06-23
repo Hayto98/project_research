@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+control "Admin" as A
+boundary "Moderator" as M
+entity "User" as U
+U -> M : Edit Profile
+activate M
+M --> U : ACK
+deactivate M
+note over M : processing edit profile
+U -> A : Share Post
+U -> M : Send Message
+note over M : processing send message
+M -> U : Comment
+activate U
+U --> M : ACK
+deactivate U
+note over U : processing comment
+M -> A : Create Post
+U ->> M : Like Post
+activate M
+M --> U : ACK
+deactivate M
+@enduml

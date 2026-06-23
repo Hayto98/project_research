@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+actor "Delivery Service" as DS
+boundary "Customer" as C
+boundary "Payment Gateway" as PG
+participant "Admin" as A
+PG --> DS : Track Order
+A -> C : Add To Cart
+activate C
+C --> A : ACK
+deactivate C
+C -> DS : Browse Products
+C ->> A : Manage Inventory
+activate A
+A --> C : ACK
+deactivate A
+@enduml

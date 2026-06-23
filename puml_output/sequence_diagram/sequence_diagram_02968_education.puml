@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+entity "Admin" as A
+control "Teacher" as T
+participant "Registrar" as R
+actor "Student" as S
+S --> A : Enroll Course
+activate A
+A --> S : ACK
+deactivate A
+A ->> R : Grade Exam
+A ->> S : Register Student
+note over S : processing register student
+T -> S : Take Attendance
+activate S
+S --> T : ACK
+deactivate S
+@enduml

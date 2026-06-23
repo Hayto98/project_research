@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+left to right direction
+actor "Customer" as Customer
+actor "Seller" as Seller
+actor "Admin" as Admin
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Write Review" as UC_WriteReview
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Checkout" as UC_Checkout
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Manage Inventory" as UC_ManageInventory
+}
+Customer --> UC_WriteReview
+Customer --> UC_AddToCart
+Seller --> UC_ManageInventory
+Seller --> UC_Checkout
+Seller --> UC_CancelOrder
+Admin --> UC_WriteReview
+PaymentGateway --> UC_AddToCart
+PaymentGateway --> UC_ManageInventory
+PaymentGateway --> UC_Checkout
+UC_CancelOrder ..|> UC_Checkout : <<include>>
+@enduml

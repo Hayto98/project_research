@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+component "Vehicle Service" as C_VehicleService
+component "Depot Service" as C_DepotService
+component "Package Service" as C_PackageService
+component "Shipment Service" as C_ShipmentService
+component "Manifest Service" as C_ManifestService
+database "Logistics DB" as DB_logistics
+C_VehicleService --> DB_logistics
+C_PackageService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_PackageService ..> C_ShipmentService : REST
+C_VehicleService ..> C_ShipmentService : REST
+@enduml

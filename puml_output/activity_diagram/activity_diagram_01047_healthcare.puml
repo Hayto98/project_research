@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+start
+:Update Medical Record;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Discharge Patient;
+:Issue Prescription;
+:Run Lab Test;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Examine Patient;
+stop
+@enduml

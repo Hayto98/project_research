@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+control "Branch Manager" as BM
+actor "Auditor" as A
+control "ATM" as A2
+control "Account Holder" as AH
+BM --> A2 : Transfer Funds
+activate A2
+A2 --> BM : ACK
+deactivate A2
+note over A2 : processing transfer funds
+BM -> A : Open Account
+note over A : processing open account
+A -> AH : Withdraw Cash
+activate AH
+AH --> A : ACK
+deactivate AH
+A ->> A2 : Pay Bill
+@enduml

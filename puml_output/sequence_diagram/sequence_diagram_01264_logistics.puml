@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+entity "Warehouse Staff" as WS
+participant "Dispatcher" as D
+entity "Fleet Manager" as FM
+D -> FM : Update Inventory
+FM --> D : Track Shipment
+activate D
+D --> FM : ACK
+deactivate D
+FM -> WS : Load Package
+FM ->> WS : Assign Route
+WS --> D : Deliver Package
+FM -> WS : Report Issue
+FM ->> D : Schedule Pickup
+@enduml

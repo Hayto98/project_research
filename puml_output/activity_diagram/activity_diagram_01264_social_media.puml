@@ -1,0 +1,21 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Follow User;
+:Comment;
+:Send Message;
+:Report Content;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Share Post;
+stop
+@enduml

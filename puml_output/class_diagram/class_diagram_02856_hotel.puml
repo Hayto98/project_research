@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class CheckOut {
+  #String score
+  +boolean active
+  +long amount
+  -boolean level
+  +calculateName()
+  +validatePhone()
+  +updateAmount()
+}
+abstract class Booking {
+  +double name
+  #String note
+  +setScore()
+  +getCode()
+  +cancelScore()
+}
+abstract class Restaurant {
+  #double score
+  -int amount
+  +saveNote()
+  +findNote()
+}
+class Service {
+  -Date status
+  #String createdAt
+  +Date address
+  -Date email
+  +createCreatedat()
+  +cancelId()
+  +deleteAddress()
+  +getEmail()
+}
+class Payment {
+  -float total
+  -float email
+  -int phone
+  +updateQuantity()
+  +updatePrice()
+  +calculateId()
+}
+class Room {
+  -double createdAt
+  #float quantity
+  #float phone
+  +findDescription()
+  +setLevel()
+}
+abstract class Staff {
+  -long total
+  #double description
+  +saveDescription()
+  +findDuration()
+  +setId()
+  +getCode()
+}
+CheckOut --|> Booking
+Service --|> Staff
+Service ..|> Restaurant
+CheckOut --* Room
+note right of CheckOut : Hotel domain
+@enduml

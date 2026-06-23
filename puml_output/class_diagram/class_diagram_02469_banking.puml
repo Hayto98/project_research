@@ -1,0 +1,42 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class Transfer {
+  #float amount
+  #Date level
+  #int price
+  +saveAddress()
+  +cancelActive()
+  +saveAmount()
+}
+class Loan {
+  +boolean type
+  #Date note
+  -double id
+  +findId()
+  +calculateAddress()
+  +getDescription()
+}
+class Deposit {
+  -Date status
+  #Date address
+  +boolean level
+  +setLevel()
+  +validateType()
+  +getCreatedat()
+}
+abstract class Withdrawal {
+  +long id
+  +Date description
+  -int active
+  -float address
+  +validateType()
+  +sendScore()
+  +updateDuration()
+  +createActive()
+}
+Withdrawal --|> Deposit
+Transfer ..> Loan : "0..1"
+note right of Transfer : Banking domain
+@enduml

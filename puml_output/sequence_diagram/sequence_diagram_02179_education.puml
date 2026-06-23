@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+control "Parent" as P
+participant "Student" as S
+boundary "Admin" as A
+entity "Registrar" as R
+control "Librarian" as L
+L --> P : Grade Exam
+R -> P : Enroll Course
+note over P : processing enroll course
+R --> P : Take Attendance
+activate P
+P --> R : ACK
+deactivate P
+L ->> A : View Schedule
+activate A
+A --> L : ACK
+deactivate A
+note over A : processing view schedule
+@enduml

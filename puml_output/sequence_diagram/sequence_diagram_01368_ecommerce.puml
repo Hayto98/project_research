@@ -1,0 +1,19 @@
+@startuml
+
+actor "Seller" as S
+boundary "Delivery Service" as DS
+participant "Admin" as A
+entity "Customer" as C
+C --> A : Track Order
+S ->> A : Manage Inventory
+activate A
+A --> S : ACK
+deactivate A
+A -> DS : Apply Coupon
+activate DS
+DS --> A : ACK
+deactivate DS
+C --> S : Cancel Order
+C -> S : Make Payment
+note over S : processing make payment
+@enduml

@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+interface Story {
+  -boolean active
+  +String type
+  #boolean name
+  +saveStatus()
+  +updateTotal()
+}
+class Notification {
+  #int status
+  #float address
+  -boolean price
+  -Date active
+  -double description
+  +updateScore()
+  +calculateStatus()
+  +calculateScore()
+  +findNote()
+}
+class Report {
+  -String note
+  +float code
+  -String phone
+  -String description
+  +updateNote()
+  +getDescription()
+  +deleteAddress()
+  +setCreatedat()
+}
+abstract class Comment {
+  #Date note
+  +long type
+  -Date price
+  -float level
+  +calculateLevel()
+}
+interface Like {
+  #long updatedAt
+  +int phone
+  +float address
+  +cancelDuration()
+  +updateId()
+  +getUpdatedat()
+  +findPhone()
+}
+class Hashtag {
+  #int status
+  -double code
+  +boolean createdAt
+  #int address
+  +getNote()
+  +cancelNote()
+  +findCode()
+}
+class Group {
+  -long level
+  -String name
+  +cancelPrice()
+  +calculateQuantity()
+}
+Hashtag --> Group : "0..1"
+Story --|> Group
+Comment --> Hashtag : "1"
+Story ..> Hashtag : "1"
+Hashtag --* Report
+note right of Story : Social Media domain
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Shipment {
+  +float address
+  #long id
+  +String phone
+  +sendTotal()
+  +calculateCode()
+  +validateQuantity()
+  +validatePhone()
+}
+interface Payment {
+  +Date createdAt
+  +String email
+  -String level
+  +cancelId()
+  +deleteName()
+  +cancelName()
+}
+abstract class Customer {
+  -boolean score
+  -long phone
+  +double quantity
+  +int active
+  +createLevel()
+  +calculateEmail()
+  +processScore()
+}
+class Return {
+  +int amount
+  -double total
+  +boolean status
+  +long updatedAt
+  +sendType()
+  +updateType()
+}
+class Cart {
+  +boolean quantity
+  #double description
+  #float name
+  -float total
+  +findLevel()
+  +deletePhone()
+}
+class Supplier {
+  +Date status
+  #double level
+  #float score
+  +int amount
+  #double email
+  +findCode()
+}
+Cart --> Customer : "1"
+Customer --> Supplier : "*"
+note right of Shipment : Ecommerce domain
+@enduml

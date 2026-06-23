@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+interface Billing {
+  #double code
+  -int quantity
+  -double amount
+  #Date updatedAt
+  +processName()
+  +saveDescription()
+  +setQuantity()
+  +findAddress()
+}
+class MedicalRecord {
+  -long updatedAt
+  -double total
+  +String code
+  +findLevel()
+  +getCode()
+  +createActive()
+}
+class Diagnosis {
+  +double type
+  #boolean email
+  -double quantity
+  +getStatus()
+}
+interface Patient {
+  -long description
+  #long code
+  +double id
+  -int address
+  +setAmount()
+  +updateActive()
+  +createCode()
+  +findAmount()
+}
+interface Appointment {
+  +String active
+  #boolean address
+  #float createdAt
+  +long code
+  +calculateEmail()
+  +sendCode()
+}
+interface Nurse {
+  -double phone
+  -long email
+  #double price
+  +sendDescription()
+  +cancelActive()
+  +updateNote()
+}
+abstract class Treatment {
+  #float note
+  -int price
+  +updatePrice()
+  +validateUpdatedat()
+  +deleteStatus()
+  +saveStatus()
+}
+MedicalRecord ..|> Nurse
+Patient --o Nurse
+Treatment --> Billing : "0..1"
+Nurse ..|> Patient
+Appointment --* Treatment
+note right of Billing : Healthcare domain
+@enduml

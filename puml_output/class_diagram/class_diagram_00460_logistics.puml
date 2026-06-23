@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class FuelLog {
+  -double updatedAt
+  +int duration
+  +long phone
+  #String quantity
+  +processPrice()
+  +validateActive()
+  +saveNote()
+}
+interface Shipment {
+  +String note
+  -String createdAt
+  -Date active
+  #Date code
+  +createAddress()
+}
+class Customer {
+  +String email
+  +boolean code
+  #long createdAt
+  +findAmount()
+  +processScore()
+  +processType()
+}
+abstract class Manifest {
+  #double address
+  -float name
+  +validateActive()
+  +setQuantity()
+  +createCreatedat()
+}
+class Vehicle {
+  +String description
+  #String price
+  -String note
+  +long createdAt
+  +saveEmail()
+  +cancelAmount()
+}
+abstract class DeliveryNote {
+  #long amount
+  -boolean price
+  #String address
+  +float active
+  +processName()
+  +getCreatedat()
+  +deleteCode()
+  +validateScore()
+}
+Manifest --> FuelLog : "0..1"
+Manifest --|> Vehicle
+Vehicle ..|> Manifest
+Customer --* Shipment
+note right of FuelLog : Logistics domain
+@enduml

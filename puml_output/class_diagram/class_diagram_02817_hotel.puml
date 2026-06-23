@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+abstract class Reservation {
+  -double level
+  +boolean score
+  #float price
+  -double quantity
+  +cancelPrice()
+}
+interface Room {
+  +float updatedAt
+  #int active
+  +findUpdatedat()
+  +sendLevel()
+}
+class CheckOut {
+  #long price
+  -String updatedAt
+  #String type
+  -float active
+  #String status
+  +findNote()
+  +getEmail()
+  +sendDescription()
+  +setDescription()
+}
+class Payment {
+  +boolean phone
+  #int status
+  +calculateUpdatedat()
+}
+abstract class Service {
+  +long createdAt
+  -String active
+  -String price
+  +saveTotal()
+  +saveNote()
+}
+class Restaurant {
+  -Date duration
+  #double createdAt
+  +getPhone()
+  +validateTotal()
+  +setType()
+}
+Restaurant --o Service
+Service ..|> Payment
+Service --> CheckOut : "0..1"
+note right of Reservation : Hotel domain
+@enduml

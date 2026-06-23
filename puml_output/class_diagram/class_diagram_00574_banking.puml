@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Account {
+  #boolean type
+  +String description
+  #float score
+  +deleteAddress()
+}
+interface Teller {
+  +long address
+  -boolean email
+  #long code
+  -double note
+  +setDescription()
+  +validateId()
+}
+interface Statement {
+  #int email
+  -boolean amount
+  -long total
+  +createNote()
+  +getAddress()
+}
+abstract class Withdrawal {
+  #long updatedAt
+  -Date type
+  #String name
+  #float amount
+  -int level
+  +processId()
+  +findPhone()
+}
+class Deposit {
+  -int active
+  +double amount
+  +float note
+  +Date quantity
+  +saveDuration()
+}
+Account --|> Statement
+Deposit --o Statement
+Account --* Teller
+Account --|> Withdrawal
+note right of Account : Banking domain
+@enduml

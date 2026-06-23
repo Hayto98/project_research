@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+component "Card Service" as C_CardService
+component "Deposit Service" as C_DepositService
+component "Teller Service" as C_TellerService
+component "Customer Service" as C_CustomerService
+database "Banking DB" as DB_banking
+C_CardService --> DB_banking
+C_DepositService --> DB_banking
+C_TellerService --> DB_banking
+C_CustomerService --> DB_banking
+C_CustomerService ..> C_CardService : MQ
+C_CustomerService ..> C_CardService : MQ
+C_DepositService ..> C_TellerService : MQ
+@enduml

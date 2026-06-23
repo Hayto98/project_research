@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Booking {
+  #boolean id
+  #long duration
+  +updateType()
+  +cancelQuantity()
+}
+class Room {
+  +double type
+  +double address
+  #long duration
+  +double updatedAt
+  -boolean id
+  +processType()
+  +sendDescription()
+  +updateType()
+  +calculateQuantity()
+}
+abstract class Amenity {
+  #long total
+  +long code
+  +cancelType()
+  +createName()
+}
+class Reservation {
+  #long id
+  +long phone
+  #long address
+  +cancelDescription()
+}
+Booking ..> Room : "1..*"
+Reservation --|> Amenity
+Room --|> Reservation
+note right of Booking : Hotel domain
+@enduml

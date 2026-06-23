@@ -1,0 +1,41 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Tracking {
+  #String description
+  -float name
+  +Date createdAt
+  #Date price
+  #int quantity
+  +getType()
+}
+class Manifest {
+  #double note
+  -double updatedAt
+  #Date name
+  -long phone
+  +int price
+  +calculateLevel()
+  +processNote()
+  +calculateActive()
+  +findName()
+}
+interface DeliveryNote {
+  #float phone
+  -long level
+  +Date note
+  -Date code
+  +saveAddress()
+  +updatePhone()
+}
+abstract class Depot {
+  -String id
+  #double price
+  -Date amount
+  +getStatus()
+  +getQuantity()
+}
+DeliveryNote ..|> Depot
+Depot ..> Manifest : "*"
+note right of Tracking : Logistics domain
+@enduml

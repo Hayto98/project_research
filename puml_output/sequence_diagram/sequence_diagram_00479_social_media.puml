@@ -1,0 +1,20 @@
+@startuml
+skinparam defaultFontSize 13
+entity "User" as U
+participant "Advertiser" as A
+boundary "Admin" as A2
+participant "Moderator" as M
+M --> A : Edit Profile
+activate A
+A --> M : ACK
+deactivate A
+note over A : processing edit profile
+A2 --> U : Share Post
+M ->> A2 : Send Message
+note over A2 : processing send message
+U -> A2 : Follow User
+M -> U : Comment
+activate U
+U --> M : ACK
+deactivate U
+@enduml

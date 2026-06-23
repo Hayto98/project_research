@@ -1,0 +1,15 @@
+@startuml
+skinparam defaultFontSize 11
+component "Statement Service" as C_StatementService
+component "Branch Service" as C_BranchService
+component "Transfer Service" as C_TransferService
+component "Transaction Service" as C_TransactionService
+database "Banking DB" as DB_banking
+C_StatementService --> DB_banking
+C_BranchService --> DB_banking
+C_TransferService --> DB_banking
+C_TransactionService --> DB_banking
+C_BranchService ..> C_TransferService : HTTP
+C_BranchService ..> C_StatementService : gRPC
+C_TransactionService ..> C_TransferService : gRPC
+@enduml

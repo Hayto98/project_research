@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+class Coupon {
+  -String name
+  #String createdAt
+  +processLevel()
+  +setTotal()
+}
+abstract class Invoice {
+  +boolean status
+  +Date level
+  -String createdAt
+  +setAmount()
+  +cancelNote()
+  +deleteAddress()
+  +cancelPhone()
+}
+abstract class Supplier {
+  +String total
+  +Date duration
+  +String id
+  -long name
+  +processTotal()
+}
+class Order {
+  #Date duration
+  -float quantity
+  +float code
+  +createType()
+  +findDescription()
+}
+class Cart {
+  +Date address
+  -boolean score
+  +sendPrice()
+}
+class Customer {
+  -int code
+  +float type
+  +saveLevel()
+  +cancelLevel()
+}
+Supplier ..> Coupon : "1..*"
+Cart ..> Coupon : "0..1"
+note right of Coupon : Ecommerce domain
+@enduml

@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+class Withdrawal {
+  -long amount
+  +float type
+  +getPhone()
+  +getType()
+  +createDescription()
+  +cancelUpdatedat()
+}
+class Statement {
+  +long email
+  +boolean status
+  -double phone
+  #Date createdAt
+  +double duration
+  +processDuration()
+}
+abstract class Customer {
+  +Date duration
+  -float price
+  +long email
+  -float quantity
+  +cancelCode()
+  +updatePhone()
+  +calculateNote()
+}
+class Interest {
+  #double email
+  +Date name
+  +findId()
+}
+abstract class Teller {
+  -double phone
+  #int id
+  +Date note
+  +Date status
+  #int quantity
+  +createId()
+}
+interface Transfer {
+  #String note
+  +double name
+  #Date createdAt
+  +sendUpdatedat()
+  +saveNote()
+  +getCode()
+}
+class Loan {
+  +int amount
+  #String score
+  -long updatedAt
+  +validateCreatedat()
+  +processName()
+  +calculatePrice()
+  +processPhone()
+}
+Loan --o Teller
+Customer --|> Withdrawal
+Withdrawal --* Interest
+Interest --|> Statement
+Interest ..|> Withdrawal
+Customer ..> Loan : "1..*"
+note right of Withdrawal : Banking domain
+@enduml

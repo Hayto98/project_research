@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing true
+component "Shipment Service" as C_ShipmentService
+component "Inventory Service" as C_InventoryService
+component "Driver Service" as C_DriverService
+component "Package Service" as C_PackageService
+component "DeliveryNote Service" as C_DeliveryNoteService
+database "Logistics DB" as DB_logistics
+C_DriverService --> DB_logistics
+C_PackageService --> DB_logistics
+C_DeliveryNoteService --> DB_logistics
+C_DeliveryNoteService ..> C_InventoryService : gRPC
+C_ShipmentService ..> C_PackageService : MQ
+@enduml

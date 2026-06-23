@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+component "Invoice Service" as C_InvoiceService
+component "Category Service" as C_CategoryService
+component "Review Service" as C_ReviewService
+component "Return Service" as C_ReturnService
+component "Coupon Service" as C_CouponService
+component "Wishlist Service" as C_WishlistService
+component "Customer Service" as C_CustomerService
+database "Ecommerce DB" as DB_ecommerce
+C_CategoryService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_InvoiceService ..> C_CouponService : gRPC
+C_InvoiceService ..> C_CustomerService : gRPC
+C_CustomerService ..> C_ReviewService : MQ
+C_CouponService ..> C_WishlistService : MQ
+C_WishlistService ..> C_CustomerService : HTTP
+@enduml

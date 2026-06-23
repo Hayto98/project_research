@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+participant "Customer" as C
+control "Driver" as D
+control "Warehouse Staff" as WS
+entity "Fleet Manager" as FM
+WS --> C : Report Issue
+D ->> FM : Track Shipment
+WS ->> FM : Fuel Vehicle
+note over FM : processing fuel vehicle
+WS --> C : Update Inventory
+activate C
+C --> WS : ACK
+deactivate C
+note over C : processing update inventory
+@enduml

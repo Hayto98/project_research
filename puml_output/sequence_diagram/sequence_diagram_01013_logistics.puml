@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing true
+actor "Driver" as D
+control "Fleet Manager" as FM
+boundary "Customer" as C
+boundary "Dispatcher" as D2
+control "Warehouse Staff" as WS
+D -> C : Schedule Pickup
+note over C : processing schedule pickup
+D2 --> FM : Load Package
+activate FM
+FM --> D2 : ACK
+deactivate FM
+FM --> WS : Track Shipment
+note over WS : processing track shipment
+WS -> FM : Update Inventory
+D2 --> FM : Fuel Vehicle
+activate FM
+FM --> D2 : ACK
+deactivate FM
+@enduml

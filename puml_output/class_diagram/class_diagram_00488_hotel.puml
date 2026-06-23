@@ -1,0 +1,57 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Reservation {
+  +float price
+  #String updatedAt
+  #long createdAt
+  +String active
+  +long code
+  +sendCode()
+}
+class Restaurant {
+  #Date phone
+  #Date amount
+  -boolean id
+  -double level
+  +createAddress()
+  +sendType()
+  +deleteCode()
+}
+class CheckOut {
+  +String status
+  #boolean id
+  -long active
+  +saveDescription()
+  +deleteAddress()
+  +createQuantity()
+}
+class Staff {
+  -boolean address
+  #boolean note
+  #int status
+  -int active
+  +int id
+  +sendAddress()
+  +getId()
+}
+abstract class Amenity {
+  +int active
+  -String code
+  #float note
+  +sendCreatedat()
+  +deletePrice()
+}
+class Room {
+  #Date note
+  +double quantity
+  -long price
+  +processPrice()
+  +processLevel()
+}
+Room --|> Reservation
+Restaurant --o Room
+Amenity --* Restaurant
+note right of Reservation : Hotel domain
+@enduml

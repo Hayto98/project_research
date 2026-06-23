@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+abstract class Account {
+  +double total
+  -long createdAt
+  +boolean duration
+  +float price
+  +setEmail()
+}
+class Branch {
+  +float duration
+  #long address
+  +validateDescription()
+  +sendId()
+  +deleteTotal()
+}
+class Interest {
+  #float level
+  #long status
+  +float type
+  -double quantity
+  +float score
+  +getEmail()
+  +validateId()
+}
+class Withdrawal {
+  +boolean active
+  +long level
+  -String note
+  +validateLevel()
+  +deleteDescription()
+  +createActive()
+  +saveId()
+}
+class Customer {
+  #String id
+  #float score
+  +float duration
+  +boolean name
+  +validatePrice()
+  +processQuantity()
+  +getLevel()
+  +saveAddress()
+}
+class Deposit {
+  #Date description
+  -Date updatedAt
+  #boolean name
+  #boolean type
+  -long code
+  +findAddress()
+}
+Deposit --* Branch
+Deposit --o Withdrawal
+Account ..|> Deposit
+Withdrawal --o Customer
+Branch --> Deposit : "1..*"
+note right of Account : Banking domain
+@enduml

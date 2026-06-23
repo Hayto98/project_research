@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+abstract class Staff {
+  #int note
+  -String status
+  #Date updatedAt
+  #String address
+  #String total
+  +processUpdatedat()
+  +validatePhone()
+  +validateName()
+}
+interface Invoice {
+  -Date createdAt
+  +float total
+  +createActive()
+}
+interface Room {
+  +float note
+  -int code
+  #boolean createdAt
+  #Date quantity
+  +updateName()
+  +saveType()
+  +saveTotal()
+}
+abstract class CheckIn {
+  #long score
+  #float code
+  -boolean duration
+  #float active
+  +saveDuration()
+  +cancelActive()
+  +updateCreatedat()
+  +setPrice()
+}
+class Restaurant {
+  -Date createdAt
+  +double phone
+  #boolean quantity
+  +long address
+  #String price
+  +createDescription()
+  +cancelAmount()
+}
+interface CheckOut {
+  #double name
+  #double createdAt
+  +getActive()
+  +setPhone()
+  +setId()
+}
+Invoice --> Staff : "*"
+Invoice --|> Room
+Invoice --* CheckIn
+CheckOut ..> Restaurant : "0..1"
+note right of Staff : Hotel domain
+@enduml

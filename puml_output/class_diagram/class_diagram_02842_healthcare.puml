@@ -1,0 +1,67 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+abstract class Doctor {
+  +String name
+  #float code
+  -Date id
+  +deleteAddress()
+  +sendScore()
+}
+interface Appointment {
+  -boolean type
+  -double name
+  +updateNote()
+  +saveAmount()
+  +getType()
+}
+interface MedicalRecord {
+  +boolean price
+  -String type
+  -long active
+  #int status
+  #boolean updatedAt
+  +updateId()
+  +setId()
+  +findActive()
+}
+abstract class Hospital {
+  +double name
+  #String status
+  +setName()
+  +validateTotal()
+  +setPrice()
+  +createDescription()
+}
+class Diagnosis {
+  -Date status
+  #Date description
+  +double code
+  #int name
+  +updateStatus()
+}
+class Treatment {
+  +double active
+  -Date email
+  -boolean name
+  +deletePrice()
+  +findDescription()
+  +deleteUpdatedat()
+}
+class Billing {
+  #long description
+  #String total
+  +Date price
+  +int note
+  +sendCreatedat()
+  +processCreatedat()
+  +findAmount()
+}
+Hospital --o MedicalRecord
+MedicalRecord ..|> Appointment
+Diagnosis --* Doctor
+Doctor --o Appointment
+Hospital --|> Diagnosis
+Appointment --|> Treatment
+note right of Doctor : Healthcare domain
+@enduml

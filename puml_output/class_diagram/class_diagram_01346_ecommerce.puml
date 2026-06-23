@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+interface Cart {
+  +long address
+  #long email
+  -double code
+  #float name
+  +validateDuration()
+  +calculateType()
+}
+class Product {
+  -double name
+  -double phone
+  #long email
+  +setQuantity()
+}
+class Shipment {
+  -String phone
+  -float code
+  +int quantity
+  +float active
+  #float price
+  +createActive()
+  +createCreatedat()
+  +findDescription()
+}
+class Order {
+  -int note
+  -int total
+  +long createdAt
+  -float duration
+  +calculateAddress()
+  +findQuantity()
+}
+interface Customer {
+  -float phone
+  #int code
+  -boolean type
+  +findUpdatedat()
+  +cancelActive()
+  +cancelScore()
+}
+abstract class Supplier {
+  +String level
+  +boolean type
+  +Date description
+  +validateNote()
+  +setTotal()
+}
+interface Review {
+  -Date level
+  #long phone
+  +double createdAt
+  -double type
+  -float id
+  +calculateDescription()
+  +setCode()
+  +cancelScore()
+  +validateScore()
+}
+Order ..> Shipment : "0..1"
+Review --> Shipment : "1"
+Order ..|> Review
+Cart --o Review
+Shipment --* Order
+note right of Cart : Ecommerce domain
+@enduml

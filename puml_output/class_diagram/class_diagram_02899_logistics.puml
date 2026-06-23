@@ -1,0 +1,60 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class Manifest {
+  #double updatedAt
+  #double description
+  +setAddress()
+  +deleteDescription()
+  +saveAddress()
+  +updateName()
+}
+interface Route {
+  #float note
+  +int name
+  #boolean updatedAt
+  #String duration
+  #long active
+  +deleteCode()
+  +processQuantity()
+}
+interface Vehicle {
+  #double price
+  +float createdAt
+  +createDescription()
+  +updateCode()
+  +cancelType()
+  +processAmount()
+}
+class Inventory {
+  -Date name
+  +Date active
+  #double createdAt
+  +setUpdatedat()
+  +processNote()
+}
+interface Shipment {
+  +Date duration
+  +boolean address
+  +float total
+  +createType()
+  +findEmail()
+  +validateStatus()
+}
+abstract class Package {
+  -int total
+  +long quantity
+  -float amount
+  +createAmount()
+  +calculateDuration()
+  +saveScore()
+  +sendType()
+}
+Route --* Vehicle
+Manifest ..> Package : "1..*"
+Route --o Shipment
+Inventory --|> Package
+Vehicle --* Shipment
+note right of Manifest : Logistics domain
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+[*] --> Reviewed
+Reviewed --> Processing : cancel
+Reviewed : entry / log author
+Processing --> Active : review
+Processing : entry / log author
+Active --> Delivered : review
+Delivered --> Completed : review
+Completed --> Closed : reject
+Completed --> Reviewed : revert
+Closed --> [*]
+@enduml

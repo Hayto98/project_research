@@ -1,0 +1,34 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+left to right direction
+actor "Patient" as Patient
+actor "Insurance Provider" as InsuranceProvider
+actor "Nurse" as Nurse
+actor "Lab Technician" as LabTechnician
+rectangle "Healthcare System" {
+  usecase "Book Appointment" as UC_BookAppointment
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Run Lab Test" as UC_RunLabTest
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Examine Patient" as UC_ExaminePatient
+  usecase "Update Medical Record" as UC_UpdateMedicalRecord
+}
+Patient --> UC_ProcessInsuranceClaim
+Patient --> UC_IssuePrescription
+Patient --> UC_RunLabTest
+InsuranceProvider --> UC_DischargePatient
+InsuranceProvider --> UC_UpdateMedicalRecord
+InsuranceProvider --> UC_BookAppointment
+Nurse --> UC_DischargePatient
+Nurse --> UC_ExaminePatient
+Nurse --> UC_AdmitPatient
+LabTechnician --> UC_ExaminePatient
+LabTechnician --> UC_BookAppointment
+LabTechnician --> UC_ProcessInsuranceClaim
+UC_IssuePrescription ..|> UC_BookAppointment : <<include>>
+@enduml

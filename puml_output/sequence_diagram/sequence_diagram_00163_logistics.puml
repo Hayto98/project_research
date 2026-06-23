@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+boundary "Driver" as D
+actor "Warehouse Staff" as WS
+boundary "Fleet Manager" as FM
+entity "Dispatcher" as D2
+entity "Customer" as C
+C ->> FM : Report Issue
+D2 --> D : Deliver Package
+FM --> D2 : Load Package
+activate D2
+D2 --> FM : ACK
+deactivate D2
+C --> D2 : Schedule Pickup
+activate D2
+D2 --> C : ACK
+deactivate D2
+D2 --> D : Fuel Vehicle
+note over D : processing fuel vehicle
+@enduml

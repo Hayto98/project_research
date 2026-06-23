@@ -1,0 +1,60 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+class Billing {
+  +Date active
+  #long code
+  +deleteNote()
+  +calculateQuantity()
+  +processId()
+  +sendCreatedat()
+}
+class LabTest {
+  -float quantity
+  +int description
+  -float code
+  +getDescription()
+  +getAddress()
+  +processTotal()
+}
+abstract class Prescription {
+  -boolean updatedAt
+  #boolean price
+  +cancelDuration()
+}
+class MedicalRecord {
+  +double type
+  #double createdAt
+  +processEmail()
+  +cancelPrice()
+  +deleteTotal()
+}
+class Nurse {
+  +double name
+  +int active
+  +getType()
+  +setCreatedat()
+}
+abstract class Treatment {
+  -boolean address
+  #Date phone
+  +int status
+  #int score
+  #double active
+  +setUpdatedat()
+  +sendStatus()
+}
+class Appointment {
+  +String description
+  +long amount
+  +processNote()
+  +findAddress()
+}
+MedicalRecord --> Nurse : "0..1"
+Billing --o MedicalRecord
+Treatment --* Nurse
+Appointment ..> Treatment : "0..1"
+Appointment --* Nurse
+Billing --o Prescription
+note right of Billing : Healthcare domain
+@enduml

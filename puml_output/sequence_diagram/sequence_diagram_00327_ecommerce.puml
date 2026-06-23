@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+boundary "Admin" as A
+participant "Delivery Service" as DS
+control "Seller" as S
+DS -> A : Browse Products
+DS --> S : Checkout
+activate S
+S --> DS : ACK
+deactivate S
+DS ->> A : Write Review
+S -> A : Apply Coupon
+activate A
+A --> S : ACK
+deactivate A
+note over A : processing apply coupon
+A ->> S : Add To Cart
+activate S
+S --> A : ACK
+deactivate S
+@enduml

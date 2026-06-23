@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+actor "Insurance Provider" as IP
+actor "Receptionist" as R
+control "Nurse" as N
+N --> IP : Discharge Patient
+R -> N : Admit Patient
+activate N
+N --> R : ACK
+deactivate N
+N -> IP : Issue Prescription
+activate IP
+IP --> N : ACK
+deactivate IP
+IP ->> R : Run Lab Test
+activate R
+R --> IP : ACK
+deactivate R
+note over R : processing run lab test
+R ->> IP : Examine Patient
+R -> N : Update Medical Record
+IP ->> N : Process Insurance Claim
+activate N
+N --> IP : ACK
+deactivate N
+@enduml

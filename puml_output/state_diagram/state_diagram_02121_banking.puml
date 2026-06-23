@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+[*] --> Cancelled
+Cancelled --> Active : cancel
+Cancelled : entry / log loan
+Active --> Processing : process
+Processing --> OnHold : reject
+Processing : entry / log loan
+OnHold --> Rejected : update
+OnHold : entry / log loan
+Rejected --> Shipped : update
+Shipped --> [*]
+@enduml

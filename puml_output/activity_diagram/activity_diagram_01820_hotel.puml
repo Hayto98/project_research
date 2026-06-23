@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+start
+:Process Payment;
+:Check In;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Check Out;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Request Service;
+:Cancel Reservation;
+stop
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+interface Warehouse {
+  #long email
+  #long status
+  -float phone
+  +processTotal()
+}
+interface Package {
+  #double quantity
+  #Date address
+  +processAddress()
+  +saveNote()
+  +processId()
+}
+abstract class Vehicle {
+  +String address
+  #long quantity
+  +float phone
+  +getName()
+  +sendLevel()
+  +deleteAddress()
+}
+abstract class Shipment {
+  -long amount
+  #long price
+  -int phone
+  +float updatedAt
+  #float type
+  +cancelAddress()
+  +processScore()
+  +validatePrice()
+  +processAmount()
+}
+class Manifest {
+  -String price
+  -double total
+  -long active
+  -int updatedAt
+  +createNote()
+  +saveUpdatedat()
+  +saveAddress()
+}
+Shipment --|> Manifest
+Manifest --|> Package
+note right of Warehouse : Logistics domain
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+component "Wishlist Service" as C_WishlistService
+component "Invoice Service" as C_InvoiceService
+component "Customer Service" as C_CustomerService
+component "Coupon Service" as C_CouponService
+component "Return Service" as C_ReturnService
+component "Warehouse Service" as C_WarehouseService
+component "Product Service" as C_ProductService
+database "Ecommerce DB" as DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_ProductService ..> C_InvoiceService : REST
+C_CouponService ..> C_ReturnService : HTTP
+C_CustomerService ..> C_ProductService : MQ
+@enduml

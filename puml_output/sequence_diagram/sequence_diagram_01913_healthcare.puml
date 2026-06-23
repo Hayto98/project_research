@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+participant "Insurance Provider" as IP
+participant "Nurse" as N
+control "Receptionist" as R
+R ->> N : Book Appointment
+N -> R : Issue Prescription
+activate R
+R --> N : ACK
+deactivate R
+note over R : processing issue prescription
+N --> R : Run Lab Test
+activate R
+R --> N : ACK
+deactivate R
+R --> IP : Examine Patient
+@enduml

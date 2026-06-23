@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+control "Seller" as S
+participant "Customer" as C
+boundary "Admin" as A
+entity "Delivery Service" as DS
+A -> C : Track Order
+activate C
+C --> A : ACK
+deactivate C
+DS -> A : Cancel Order
+activate A
+A --> DS : ACK
+deactivate A
+A --> DS : Apply Coupon
+DS -> A : Add To Cart
+@enduml

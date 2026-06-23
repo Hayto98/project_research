@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+component "Product Service" as C_ProductService
+component "Shipment Service" as C_ShipmentService
+component "Coupon Service" as C_CouponService
+component "Return Service" as C_ReturnService
+component "Supplier Service" as C_SupplierService
+component "Review Service" as C_ReviewService
+component "Customer Service" as C_CustomerService
+database "Ecommerce DB" as DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_ShipmentService ..> C_SupplierService : HTTP
+C_CustomerService ..> C_SupplierService : gRPC
+C_ReviewService ..> C_SupplierService : REST
+@enduml

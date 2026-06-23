@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+abstract class Librarian {
+  +Date quantity
+  +double score
+  #String note
+  #boolean type
+  +boolean duration
+  +findStatus()
+  +updateTotal()
+  +cancelPhone()
+}
+class Book {
+  #long status
+  +String quantity
+  #Date price
+  -Date type
+  +updateQuantity()
+}
+class Author {
+  +Date level
+  +boolean type
+  +validateType()
+}
+abstract class Catalog {
+  -float total
+  -Date amount
+  -String updatedAt
+  #long name
+  -float code
+  +validateAmount()
+  +deleteName()
+  +deleteScore()
+}
+class Reservation {
+  +boolean total
+  #long level
+  +boolean createdAt
+  #long status
+  +processAddress()
+  +findActive()
+  +setDescription()
+  +updateAmount()
+}
+abstract class Publisher {
+  +long active
+  #boolean id
+  -String updatedAt
+  #String description
+  #float status
+  +createDescription()
+}
+interface Renewal {
+  -boolean phone
+  #long type
+  -float amount
+  +updateScore()
+}
+Renewal --|> Catalog
+Catalog --* Book
+Librarian --> Book : "1..*"
+Renewal ..|> Publisher
+note right of Librarian : Library domain
+@enduml

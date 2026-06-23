@@ -1,0 +1,14 @@
+@startuml
+
+component "Package Service" as C_PackageService
+component "Inventory Service" as C_InventoryService
+component "Vehicle Service" as C_VehicleService
+component "Tracking Service" as C_TrackingService
+component "Driver Service" as C_DriverService
+database "Logistics DB" as DB_logistics
+C_InventoryService --> DB_logistics
+C_DriverService --> DB_logistics
+C_VehicleService ..> C_TrackingService : REST
+C_PackageService ..> C_InventoryService : MQ
+C_DriverService ..> C_PackageService : REST
+@enduml

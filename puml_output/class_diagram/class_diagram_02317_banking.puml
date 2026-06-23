@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class Account {
+  #int address
+  +double status
+  +Date name
+  +deleteLevel()
+  +setQuantity()
+  +validateDuration()
+  +cancelCreatedat()
+}
+class Transaction {
+  #float price
+  +boolean code
+  +findLevel()
+  +sendPrice()
+}
+class Deposit {
+  +String code
+  +long address
+  +double quantity
+  -long createdAt
+  +String type
+  +getPrice()
+  +processDescription()
+}
+class Loan {
+  -long email
+  +String code
+  +float duration
+  +processAddress()
+  +updatePrice()
+}
+abstract class Branch {
+  +String amount
+  #double email
+  -String status
+  -int quantity
+  +setType()
+  +setEmail()
+  +deleteUpdatedat()
+  +calculateId()
+}
+Account --|> Loan
+Branch --|> Transaction
+Loan --> Deposit : "1..*"
+Loan ..> Branch : "1..*"
+note right of Account : Banking domain
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+class Beneficiary {
+  -String note
+  #int amount
+  +cancelId()
+}
+class Teller {
+  -Date status
+  #String id
+  +String phone
+  #Date price
+  +cancelNote()
+  +getPhone()
+}
+interface Account {
+  #float phone
+  -String updatedAt
+  +String quantity
+  +Date name
+  #String code
+  +getId()
+  +sendPrice()
+  +getCode()
+  +deleteName()
+}
+class Transaction {
+  #float address
+  #int createdAt
+  +validateCreatedat()
+}
+class Deposit {
+  +String description
+  -float amount
+  +updateDescription()
+  +deleteId()
+  +validateQuantity()
+}
+interface Customer {
+  +String updatedAt
+  #Date code
+  #String email
+  +float score
+  -int duration
+  +updateAddress()
+}
+Deposit ..> Account : "1"
+Beneficiary --* Customer
+Teller ..> Deposit : "0..1"
+Beneficiary --* Deposit
+Deposit --> Customer : "0..1"
+note right of Beneficiary : Banking domain
+@enduml

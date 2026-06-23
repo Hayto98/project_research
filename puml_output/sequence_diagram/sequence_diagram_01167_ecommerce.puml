@@ -1,0 +1,19 @@
+@startuml
+skinparam ArrowColor #555555
+control "Delivery Service" as DS
+participant "Payment Gateway" as PG
+control "Customer" as C
+boundary "Admin" as A
+PG -> C : Cancel Order
+C -> PG : Checkout
+activate PG
+PG --> C : ACK
+deactivate PG
+A --> DS : Browse Products
+note over DS : processing browse products
+A --> PG : Apply Coupon
+A --> DS : Make Payment
+activate DS
+DS --> A : ACK
+deactivate DS
+@enduml

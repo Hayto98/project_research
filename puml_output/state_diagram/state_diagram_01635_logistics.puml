@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+[*] --> Processing
+Processing --> OnHold : cancel
+OnHold --> Completed : reject
+Completed --> Cancelled : approve
+Completed : entry / log manifest
+Cancelled --> Rejected : cancel
+Rejected --> Pending : reject
+Rejected : entry / log manifest
+Pending --> [*]
+@enduml

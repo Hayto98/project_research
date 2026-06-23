@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+class Guest {
+  +long email
+  -long level
+  #int price
+  #boolean total
+  #Date code
+  +setUpdatedat()
+  +saveDescription()
+}
+class Reservation {
+  -int price
+  #long description
+  #long quantity
+  -boolean id
+  #String note
+  +sendEmail()
+  +deleteNote()
+  +createDescription()
+  +updateDuration()
+}
+class Booking {
+  #boolean id
+  +double code
+  -boolean name
+  +savePhone()
+}
+class Payment {
+  -Date createdAt
+  +int amount
+  -float type
+  -float code
+  +deleteScore()
+  +findDescription()
+}
+class CheckIn {
+  -double quantity
+  -float id
+  +calculateId()
+  +findScore()
+  +validateLevel()
+}
+Guest ..|> CheckIn
+Guest --> Payment : "1..*"
+Payment --o Guest
+note right of Guest : Hotel domain
+@enduml

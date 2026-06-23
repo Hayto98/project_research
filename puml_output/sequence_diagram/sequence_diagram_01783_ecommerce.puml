@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+actor "Admin" as A
+actor "Delivery Service" as DS
+control "Seller" as S
+boundary "Payment Gateway" as PG
+control "Customer" as C
+DS ->> C : Track Order
+S --> PG : Browse Products
+activate PG
+PG --> S : ACK
+deactivate PG
+DS ->> PG : Add To Cart
+activate PG
+PG --> DS : ACK
+deactivate PG
+A -> S : Cancel Order
+@enduml

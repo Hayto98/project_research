@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+interface Return {
+  +float duration
+  -int price
+  -boolean code
+  +calculateQuantity()
+  +cancelType()
+  +calculateUpdatedat()
+}
+class Product {
+  +boolean status
+  -double total
+  +double note
+  +float phone
+  #float email
+  +getId()
+  +deleteId()
+  +createCreatedat()
+  +processQuantity()
+}
+abstract class Category {
+  #int price
+  -int duration
+  -double active
+  -float status
+  +updateCreatedat()
+  +getDuration()
+}
+class Order {
+  #float note
+  -float code
+  #Date createdAt
+  -boolean amount
+  +processDescription()
+  +createAddress()
+  +saveType()
+}
+interface Payment {
+  #Date email
+  +double status
+  +boolean code
+  #String createdAt
+  +createActive()
+  +setId()
+  +updateDuration()
+}
+class Shipment {
+  -String quantity
+  +Date active
+  +getTotal()
+  +setCode()
+  +calculateScore()
+  +findCode()
+}
+Order ..> Payment : "0..1"
+Shipment ..|> Category
+Shipment --* Return
+Product ..> Return : "1..*"
+note right of Return : Ecommerce domain
+@enduml

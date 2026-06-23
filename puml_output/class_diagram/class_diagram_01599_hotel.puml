@@ -1,0 +1,41 @@
+@startuml
+skinparam ArrowColor #555555
+class Booking {
+  -double quantity
+  -String email
+  -int price
+  +Date duration
+  +updateLevel()
+}
+interface Room {
+  #Date phone
+  +int duration
+  +float type
+  +cancelDescription()
+  +processTotal()
+  +processPhone()
+  +sendCode()
+}
+abstract class Staff {
+  +float updatedAt
+  #String id
+  -String phone
+  +createPrice()
+  +createAddress()
+  +cancelDescription()
+}
+class CheckIn {
+  -float quantity
+  +Date amount
+  #String email
+  +Date status
+  #String updatedAt
+  +sendCode()
+  +createId()
+  +sendStatus()
+}
+Staff ..> Room : "*"
+Booking --|> Staff
+CheckIn --* Booking
+note right of Booking : Hotel domain
+@enduml

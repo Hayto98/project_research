@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class Invoice {
+  #float note
+  +String description
+  #long amount
+  -double total
+  +updateDuration()
+  +saveAddress()
+  +validateStatus()
+}
+class Reservation {
+  #int active
+  -String total
+  #Date updatedAt
+  +boolean amount
+  +processNote()
+  +calculateEmail()
+  +sendPhone()
+  +sendLevel()
+}
+class CheckIn {
+  #String duration
+  +long type
+  +findDuration()
+  +setDescription()
+}
+abstract class Housekeeping {
+  #String id
+  #long total
+  +findActive()
+  +cancelTotal()
+}
+Invoice --o CheckIn
+CheckIn --> Invoice : "1..*"
+Invoice --> Housekeeping : "1"
+note right of Invoice : Hotel domain
+@enduml

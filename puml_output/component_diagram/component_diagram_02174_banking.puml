@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Beneficiary Service" as C_BeneficiaryService
+component "Loan Service" as C_LoanService
+component "Withdrawal Service" as C_WithdrawalService
+component "Teller Service" as C_TellerService
+component "Deposit Service" as C_DepositService
+database "Banking DB" as DB_banking
+C_BeneficiaryService --> DB_banking
+C_LoanService --> DB_banking
+C_WithdrawalService --> DB_banking
+C_DepositService --> DB_banking
+C_WithdrawalService ..> C_BeneficiaryService : gRPC
+C_DepositService ..> C_WithdrawalService : MQ
+C_LoanService ..> C_DepositService : HTTP
+@enduml

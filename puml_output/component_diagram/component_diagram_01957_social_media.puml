@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+component "Notification Service" as C_NotificationService
+component "Album Service" as C_AlbumService
+component "Profile Service" as C_ProfileService
+component "Follower Service" as C_FollowerService
+component "Group Service" as C_GroupService
+component "Like Service" as C_LikeService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_LikeService --> DB_social_media
+C_NotificationService ..> C_FollowerService : REST
+C_AlbumService ..> C_GroupService : REST
+C_NotificationService ..> C_ProfileService : MQ
+C_NotificationService ..> C_GroupService : HTTP
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class Warehouse {
+  #float updatedAt
+  +float quantity
+  #long id
+  +sendEmail()
+  +findId()
+  +validateAmount()
+  +updateEmail()
+}
+class Depot {
+  #int id
+  #int duration
+  +long amount
+  +cancelPrice()
+  +cancelId()
+  +sendDuration()
+}
+interface Package {
+  -Date duration
+  +int type
+  -float quantity
+  +updateTotal()
+}
+class Route {
+  #int id
+  -long createdAt
+  -boolean note
+  +getStatus()
+  +sendDuration()
+  +updateCode()
+  +setAmount()
+}
+abstract class Driver {
+  #long active
+  -boolean note
+  +processScore()
+  +updateType()
+}
+Package --o Driver
+Route --|> Package
+Depot --|> Package
+note right of Warehouse : Logistics domain
+@enduml

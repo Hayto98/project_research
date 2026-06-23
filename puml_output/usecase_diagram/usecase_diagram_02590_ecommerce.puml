@@ -1,0 +1,20 @@
+@startuml
+
+left to right direction
+actor "Admin" as Admin
+actor "Delivery Service" as DeliveryService
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Write Review" as UC_WriteReview
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Browse Products" as UC_BrowseProducts
+}
+Admin --> UC_AddToCart
+Admin --> UC_WriteReview
+DeliveryService --> UC_BrowseProducts
+PaymentGateway --> UC_ApplyCoupon
+UC_BrowseProducts ..> UC_WriteReview : <<include>>
+@enduml

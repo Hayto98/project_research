@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Account {
+  #boolean description
+  #double total
+  #int duration
+  +cancelId()
+  +cancelName()
+}
+class Interest {
+  -boolean duration
+  +Date code
+  -double type
+  +double id
+  +deleteCreatedat()
+  +saveDescription()
+}
+interface Transaction {
+  #int name
+  #int type
+  #long total
+  -double active
+  +cancelQuantity()
+  +createId()
+  +findScore()
+}
+class Beneficiary {
+  -float name
+  -int email
+  +updateId()
+}
+class Customer {
+  #boolean name
+  -String email
+  +float type
+  +cancelType()
+  +validateType()
+  +cancelPrice()
+  +sendScore()
+}
+class Transfer {
+  +long note
+  -int createdAt
+  -long duration
+  -int amount
+  -String status
+  +getAddress()
+  +saveLevel()
+  +setName()
+  +validateTotal()
+}
+interface Deposit {
+  #float createdAt
+  #float amount
+  +savePrice()
+  +getNote()
+}
+Transfer ..|> Transaction
+Transaction ..> Customer : "*"
+Account --> Interest : "0..1"
+Beneficiary ..|> Customer
+Beneficiary --> Interest : "*"
+note right of Account : Banking domain
+@enduml

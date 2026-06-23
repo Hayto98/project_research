@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+component "Loan Service" as C_LoanService
+component "Interest Service" as C_InterestService
+component "Branch Service" as C_BranchService
+component "Transaction Service" as C_TransactionService
+component "Deposit Service" as C_DepositService
+database "Banking DB" as DB_banking
+C_BranchService --> DB_banking
+C_DepositService --> DB_banking
+C_InterestService ..> C_BranchService : gRPC
+C_LoanService ..> C_DepositService : MQ
+@enduml

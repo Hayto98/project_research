@@ -1,0 +1,69 @@
+@startuml
+skinparam monochrome true
+interface Supplier {
+  -int name
+  +boolean active
+  -long level
+  +createName()
+  +processUpdatedat()
+  +validateCreatedat()
+  +findCreatedat()
+}
+class Customer {
+  -boolean address
+  #int level
+  +int code
+  +setDuration()
+  +deleteQuantity()
+}
+class Product {
+  -Date phone
+  -boolean note
+  +String amount
+  -String total
+  +sendCreatedat()
+}
+abstract class Return {
+  +long status
+  #float score
+  +String code
+  -boolean description
+  -long total
+  +calculateQuantity()
+  +saveActive()
+  +findNote()
+}
+class Wishlist {
+  #double type
+  -double name
+  -double quantity
+  #double price
+  +validateScore()
+  +sendAddress()
+}
+class Review {
+  #double level
+  -Date duration
+  +Date total
+  -double id
+  +boolean code
+  +getDuration()
+  +calculateScore()
+  +processTotal()
+}
+abstract class Invoice {
+  #long updatedAt
+  +boolean quantity
+  +float active
+  -Date score
+  +deleteDescription()
+  +processType()
+}
+Customer --|> Return
+Review --* Supplier
+Customer --|> Review
+Return --o Review
+Customer ..> Product : "1"
+Return --> Supplier : "*"
+note right of Supplier : Ecommerce domain
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Catalog Service" as C_CatalogService
+component "Reservation Service" as C_ReservationService
+component "Branch Service" as C_BranchService
+component "Loan Service" as C_LoanService
+component "Author Service" as C_AuthorService
+database "Library DB" as DB_library
+C_ReservationService --> DB_library
+C_BranchService --> DB_library
+C_LoanService --> DB_library
+C_AuthorService --> DB_library
+C_BranchService ..> C_CatalogService : gRPC
+C_AuthorService ..> C_BranchService : HTTP
+C_LoanService ..> C_ReservationService : REST
+C_BranchService ..> C_ReservationService : REST
+@enduml

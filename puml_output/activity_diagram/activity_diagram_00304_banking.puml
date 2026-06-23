@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+start
+:Apply For Loan;
+:View Statement;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Deposit Money;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Pay Bill;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Withdraw Cash;
+:Block Card;
+stop
+@enduml

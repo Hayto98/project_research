@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing true
+start
+:Book Appointment;
+:Admit Patient;
+:Run Lab Test;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Process Insurance Claim;
+:Issue Prescription;
+:Discharge Patient;
+stop
+@enduml

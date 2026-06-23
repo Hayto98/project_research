@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+[*] --> Active
+Active --> Cancelled : submit
+Cancelled --> Pending : cancel
+Cancelled : entry / log author
+Pending --> Closed : cancel
+Pending : entry / log author
+Closed --> Archived : submit
+Archived --> Delivered : approve
+Active --> Archived : revert
+Delivered --> [*]
+@enduml

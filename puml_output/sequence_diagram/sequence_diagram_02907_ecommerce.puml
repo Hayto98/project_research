@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+entity "Delivery Service" as DS
+entity "Customer" as C
+actor "Admin" as A
+C ->> DS : Checkout
+A -> DS : Cancel Order
+activate DS
+DS --> A : ACK
+deactivate DS
+A -> DS : Write Review
+note over DS : processing write review
+DS --> A : Manage Inventory
+activate A
+A --> DS : ACK
+deactivate A
+A --> DS : Browse Products
+note over DS : processing browse products
+@enduml

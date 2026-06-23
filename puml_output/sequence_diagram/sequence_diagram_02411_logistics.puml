@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+control "Driver" as D
+actor "Customer" as C
+participant "Dispatcher" as D2
+participant "Warehouse Staff" as WS
+D2 --> WS : Assign Route
+note over WS : processing assign route
+C --> WS : Track Shipment
+activate WS
+WS --> C : ACK
+deactivate WS
+D2 -> C : Schedule Pickup
+D2 --> C : Update Inventory
+activate C
+C --> D2 : ACK
+deactivate C
+note over C : processing update inventory
+C --> D2 : Report Issue
+note over D2 : processing report issue
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class Review {
+  +boolean description
+  #boolean price
+  -float total
+  -String active
+  +boolean code
+  +processName()
+}
+class Category {
+  +long quantity
+  +int level
+  +updateTotal()
+  +processTotal()
+  +processAddress()
+  +createNote()
+}
+class Product {
+  -double amount
+  -int phone
+  +updateCreatedat()
+  +sendUpdatedat()
+}
+abstract class Customer {
+  +int score
+  #String phone
+  -double price
+  -String name
+  -int status
+  +calculateType()
+  +sendScore()
+  +setEmail()
+}
+abstract class Warehouse {
+  -double code
+  +long price
+  +Date address
+  #boolean description
+  +saveQuantity()
+  +processAddress()
+}
+Customer --o Category
+Category ..|> Warehouse
+Category --* Customer
+Warehouse ..|> Product
+note right of Review : Ecommerce domain
+@enduml

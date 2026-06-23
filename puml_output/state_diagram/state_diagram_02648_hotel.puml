@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+[*] --> Completed
+Completed --> OnHold : reject
+Completed : entry / log checkout
+OnHold --> Delivered : submit
+OnHold : entry / log checkout
+Delivered --> Active : cancel
+Active --> Created : process
+Created --> Shipped : submit
+Created --> Delivered : revert
+Shipped --> [*]
+@enduml

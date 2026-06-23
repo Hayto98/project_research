@@ -1,0 +1,25 @@
+@startuml
+skinparam defaultFontSize 13
+boundary "Bank Teller" as BT
+entity "ATM" as A
+entity "Branch Manager" as BM
+boundary "Auditor" as A2
+boundary "Account Holder" as AH
+A2 -> A : Pay Bill
+activate A
+A --> A2 : ACK
+deactivate A
+BM -> A2 : Open Account
+activate A2
+A2 --> BM : ACK
+deactivate A2
+A --> BT : Deposit Money
+note over BT : processing deposit money
+BT ->> AH : Withdraw Cash
+activate AH
+AH --> BT : ACK
+deactivate AH
+note over AH : processing withdraw cash
+AH -> A2 : Apply For Loan
+note over A2 : processing apply for loan
+@enduml

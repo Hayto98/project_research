@@ -1,0 +1,33 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+class Tracking {
+  +long code
+  -int id
+  +saveDescription()
+  +updateEmail()
+}
+interface FuelLog {
+  -boolean type
+  #double address
+  +savePrice()
+  +cancelNote()
+}
+class Customer {
+  -Date price
+  -boolean status
+  +updateName()
+}
+abstract class Depot {
+  -float code
+  +long updatedAt
+  +String name
+  +validateId()
+}
+Customer --* Depot
+Tracking ..|> FuelLog
+Depot --> Customer : "1"
+note right of Tracking : Logistics domain
+@enduml

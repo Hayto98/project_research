@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+interface LabTest {
+  -boolean phone
+  #double type
+  +calculateCode()
+  +validateActive()
+  +findAddress()
+  +updateEmail()
+}
+class Diagnosis {
+  #Date total
+  #double active
+  -int quantity
+  +calculateEmail()
+  +calculateTotal()
+  +deleteDescription()
+  +sendAmount()
+}
+class Treatment {
+  #int active
+  +Date description
+  +setType()
+  +processPrice()
+}
+class Hospital {
+  +String name
+  +float status
+  +long address
+  +getAmount()
+  +sendAmount()
+  +validateLevel()
+  +createPhone()
+}
+class Prescription {
+  #boolean name
+  -boolean phone
+  +setEmail()
+  +setPrice()
+}
+class Nurse {
+  +int total
+  +int updatedAt
+  +long address
+  -long email
+  +float code
+  +sendNote()
+}
+Prescription ..> Diagnosis : "*"
+Prescription --> Treatment : "1"
+Treatment --|> Hospital
+Hospital --|> Treatment
+note right of LabTest : Healthcare domain
+@enduml

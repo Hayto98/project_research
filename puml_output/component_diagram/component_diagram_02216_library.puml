@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+component "Author Service" as C_AuthorService
+component "Librarian Service" as C_LibrarianService
+component "Member Service" as C_MemberService
+component "Loan Service" as C_LoanService
+component "Fine Service" as C_FineService
+database "Library DB" as DB_library
+C_LibrarianService --> DB_library
+C_MemberService --> DB_library
+C_LoanService --> DB_library
+C_LibrarianService ..> C_MemberService : gRPC
+C_LibrarianService ..> C_LoanService : HTTP
+@enduml

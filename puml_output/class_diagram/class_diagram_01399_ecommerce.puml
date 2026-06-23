@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+class Coupon {
+  +double level
+  -long updatedAt
+  #float name
+  +Date description
+  +updateQuantity()
+  +sendAmount()
+  +setPrice()
+}
+interface Wishlist {
+  -boolean level
+  #double score
+  -float total
+  -String email
+  +validateAmount()
+}
+interface Category {
+  #double code
+  #boolean name
+  #long duration
+  +saveEmail()
+  +calculateNote()
+  +updateEmail()
+}
+class Order {
+  +int active
+  #long code
+  #boolean createdAt
+  -double name
+  +calculatePrice()
+  +createId()
+}
+Wishlist ..> Coupon : "*"
+Order ..> Coupon : "1..*"
+note right of Coupon : Ecommerce domain
+@enduml

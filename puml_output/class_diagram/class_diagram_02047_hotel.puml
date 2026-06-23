@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+interface Reservation {
+  #int total
+  +double address
+  #float score
+  #String email
+  +findTotal()
+}
+class Payment {
+  #long email
+  +float address
+  -long duration
+  +Date createdAt
+  +int note
+  +updateStatus()
+  +sendName()
+  +sendAmount()
+  +deleteQuantity()
+}
+class Service {
+  +float total
+  +float name
+  -Date updatedAt
+  +processDuration()
+  +findEmail()
+}
+class Booking {
+  #long level
+  +int amount
+  +cancelId()
+  +sendPrice()
+  +calculateName()
+}
+interface Amenity {
+  #double total
+  #Date email
+  -double quantity
+  #int level
+  +setName()
+  +sendStatus()
+  +getScore()
+  +saveDescription()
+}
+Service --o Amenity
+Service ..> Payment : "1"
+Service ..> Reservation : "*"
+Amenity ..|> Booking
+note right of Reservation : Hotel domain
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+[*] --> OnHold
+OnHold --> Pending : confirm
+OnHold : entry / log teller
+Pending --> Processing : approve
+Processing --> Shipped : update
+Shipped --> Completed : cancel
+Completed --> Reviewed : submit
+Completed : entry / log teller
+Reviewed --> [*]
+@enduml

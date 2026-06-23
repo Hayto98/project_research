@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+component "Warehouse Service" as C_WarehouseService
+component "Tracking Service" as C_TrackingService
+component "Shipment Service" as C_ShipmentService
+component "Vehicle Service" as C_VehicleService
+component "FuelLog Service" as C_FuelLogService
+database "Logistics DB" as DB_logistics
+C_TrackingService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_WarehouseService ..> C_FuelLogService : gRPC
+C_ShipmentService ..> C_WarehouseService : MQ
+C_FuelLogService ..> C_TrackingService : REST
+C_ShipmentService ..> C_FuelLogService : REST
+@enduml

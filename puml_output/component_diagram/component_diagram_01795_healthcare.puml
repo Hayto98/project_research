@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Treatment Service" as C_TreatmentService
+component "Patient Service" as C_PatientService
+component "MedicalRecord Service" as C_MedicalRecordService
+component "Doctor Service" as C_DoctorService
+database "Healthcare DB" as DB_healthcare
+C_TreatmentService --> DB_healthcare
+C_MedicalRecordService --> DB_healthcare
+C_DoctorService --> DB_healthcare
+C_MedicalRecordService ..> C_DoctorService : REST
+C_TreatmentService ..> C_DoctorService : REST
+C_MedicalRecordService ..> C_TreatmentService : gRPC
+@enduml

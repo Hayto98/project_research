@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+class Beneficiary {
+  #double phone
+  #double type
+  +boolean email
+  +boolean createdAt
+  -Date duration
+  +sendActive()
+}
+class Transaction {
+  +long code
+  -long status
+  +validateNote()
+  +sendTotal()
+  +setDuration()
+  +cancelDuration()
+}
+class Loan {
+  -String updatedAt
+  -int description
+  #double code
+  #double address
+  +int phone
+  +setUpdatedat()
+  +updatePrice()
+}
+abstract class Withdrawal {
+  -double status
+  #int name
+  +boolean note
+  -int phone
+  #boolean duration
+  +deleteName()
+}
+Withdrawal --|> Beneficiary
+Transaction --> Beneficiary : "1..*"
+note right of Beneficiary : Banking domain
+@enduml

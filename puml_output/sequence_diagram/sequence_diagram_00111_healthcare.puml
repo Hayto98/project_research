@@ -1,0 +1,19 @@
+@startuml
+skinparam defaultFontSize 13
+actor "Patient" as P
+entity "Nurse" as N
+control "Doctor" as D
+actor "Insurance Provider" as IP
+control "Receptionist" as R
+N -> IP : Discharge Patient
+activate IP
+IP --> N : ACK
+deactivate IP
+R ->> D : Run Lab Test
+activate D
+D --> R : ACK
+deactivate D
+IP --> R : Process Insurance Claim
+R --> IP : Issue Prescription
+note over IP : processing issue prescription
+@enduml

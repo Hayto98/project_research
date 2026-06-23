@@ -1,0 +1,32 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+start
+:Track Shipment;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Assign Route;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Deliver Package;
+:Report Issue;
+:Fuel Vehicle;
+:Update Inventory;
+:Schedule Pickup;
+:Load Package;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+stop
+@enduml

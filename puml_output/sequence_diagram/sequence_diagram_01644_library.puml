@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+control "Member" as M
+participant "Admin" as A
+boundary "Librarian" as L
+A -> M : Register Member
+M ->> A : Renew Loan
+note over A : processing renew loan
+M ->> A : Borrow Book
+activate A
+A --> M : ACK
+deactivate A
+L --> A : Pay Fine
+activate A
+A --> L : ACK
+deactivate A
+A ->> L : Search Catalog
+activate L
+L --> A : ACK
+deactivate L
+A -> M : Add New Book
+M --> A : Reserve Book
+activate A
+A --> M : ACK
+deactivate A
+note over A : processing reserve book
+@enduml

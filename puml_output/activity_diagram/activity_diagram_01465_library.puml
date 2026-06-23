@@ -1,0 +1,30 @@
+@startuml
+skinparam monochrome true
+start
+:Reserve Book;
+:Renew Loan;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Pay Fine;
+:Add New Book;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Search Catalog;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Return Book;
+:Borrow Book;
+:Register Member;
+stop
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing true
+component "FuelLog Service" as C_FuelLogService
+component "Package Service" as C_PackageService
+component "Manifest Service" as C_ManifestService
+component "Warehouse Service" as C_WarehouseService
+component "Driver Service" as C_DriverService
+database "Logistics DB" as DB_logistics
+C_PackageService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_DriverService ..> C_WarehouseService : gRPC
+C_DriverService ..> C_ManifestService : MQ
+C_DriverService ..> C_PackageService : gRPC
+C_WarehouseService ..> C_FuelLogService : REST
+@enduml

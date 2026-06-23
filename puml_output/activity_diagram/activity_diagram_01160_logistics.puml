@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+start
+:Deliver Package;
+:Load Package;
+:Assign Route;
+:Schedule Pickup;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Update Inventory;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Track Shipment;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+stop
+@enduml

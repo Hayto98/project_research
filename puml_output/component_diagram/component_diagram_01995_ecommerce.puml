@@ -1,0 +1,13 @@
+@startuml
+skinparam defaultFontSize 13
+component "Return Service" as C_ReturnService
+component "Order Service" as C_OrderService
+component "Review Service" as C_ReviewService
+component "Warehouse Service" as C_WarehouseService
+database "Ecommerce DB" as DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_ReturnService ..> C_WarehouseService : REST
+C_WarehouseService ..> C_ReturnService : gRPC
+@enduml

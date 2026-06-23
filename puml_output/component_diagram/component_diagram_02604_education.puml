@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing true
+component "Department Service" as C_DepartmentService
+component "Attendance Service" as C_AttendanceService
+component "Teacher Service" as C_TeacherService
+component "Assignment Service" as C_AssignmentService
+component "Classroom Service" as C_ClassroomService
+database "Education DB" as DB_education
+C_DepartmentService --> DB_education
+C_AttendanceService --> DB_education
+C_TeacherService --> DB_education
+C_AssignmentService --> DB_education
+C_ClassroomService --> DB_education
+C_ClassroomService ..> C_AttendanceService : gRPC
+C_AttendanceService ..> C_ClassroomService : REST
+@enduml

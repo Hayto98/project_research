@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+start
+:Schedule Pickup;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Fuel Vehicle;
+:Update Inventory;
+:Report Issue;
+:Assign Route;
+:Track Shipment;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Load Package;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Deliver Package;
+stop
+@enduml

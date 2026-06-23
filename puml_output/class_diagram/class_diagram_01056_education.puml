@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+abstract class Attendance {
+  #String description
+  -String phone
+  +float price
+  +boolean total
+  +calculateTotal()
+  +processName()
+}
+class Department {
+  +float type
+  #boolean status
+  #String amount
+  #long description
+  +boolean quantity
+  +deleteId()
+}
+class Enrollment {
+  -Date amount
+  #String type
+  +saveActive()
+  +createTotal()
+}
+abstract class Student {
+  +long name
+  #Date duration
+  +int id
+  +double phone
+  +calculateType()
+  +cancelEmail()
+  +saveNote()
+  +saveScore()
+}
+abstract class Teacher {
+  #double amount
+  #int name
+  -Date email
+  #double type
+  +long id
+  +createActive()
+  +findTotal()
+  +deleteQuantity()
+}
+Teacher --> Department : "1..*"
+Department --> Attendance : "0..1"
+Teacher --|> Student
+Department --> Enrollment : "1..*"
+note right of Attendance : Education domain
+@enduml

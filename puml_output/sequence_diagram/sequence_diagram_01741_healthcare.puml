@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 13
+boundary "Lab Technician" as LT
+actor "Receptionist" as R
+control "Nurse" as N
+LT -> N : Examine Patient
+activate N
+N --> LT : ACK
+deactivate N
+note over N : processing examine patient
+R --> LT : Admit Patient
+activate LT
+LT --> R : ACK
+deactivate LT
+N -> LT : Run Lab Test
+R -> LT : Issue Prescription
+LT -> R : Discharge Patient
+activate R
+R --> LT : ACK
+deactivate R
+note over R : processing discharge patient
+@enduml

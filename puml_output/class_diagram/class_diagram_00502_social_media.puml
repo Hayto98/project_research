@@ -1,0 +1,74 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+abstract class Notification {
+  #long address
+  +String id
+  -double price
+  #double code
+  +double description
+  +processCreatedat()
+  +deleteTotal()
+  +createCreatedat()
+  +updateQuantity()
+}
+abstract class Post {
+  -double price
+  -float phone
+  +updateCreatedat()
+  +setName()
+}
+class Story {
+  -Date note
+  -float price
+  -Date score
+  -boolean description
+  #long active
+  +calculateLevel()
+  +updatePhone()
+}
+class Report {
+  -boolean level
+  -long quantity
+  #long description
+  -float name
+  #Date active
+  +saveDuration()
+  +sendType()
+}
+interface Message {
+  +float id
+  +double quantity
+  -int note
+  +boolean active
+  +deletePrice()
+  +cancelAddress()
+  +createScore()
+  +findAmount()
+}
+class Profile {
+  -String active
+  +Date level
+  #int price
+  +long total
+  -String description
+  +cancelName()
+  +setActive()
+  +cancelPhone()
+}
+class Comment {
+  +int score
+  -long description
+  -int duration
+  #long name
+  #double level
+  +validateLevel()
+}
+Message --> Report : "1"
+Post ..> Story : "0..1"
+Profile --> Comment : "1"
+Comment ..> Report : "1..*"
+note right of Notification : Social Media domain
+@enduml

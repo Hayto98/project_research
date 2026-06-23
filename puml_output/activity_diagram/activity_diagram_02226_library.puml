@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing true
+start
+:Return Book;
+:Add New Book;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Member;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Reserve Book;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Search Catalog;
+:Pay Fine;
+stop
+@enduml

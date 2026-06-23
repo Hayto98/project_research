@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+[*] --> Active
+Active --> Created : reject
+Created --> Closed : confirm
+Closed --> Draft : confirm
+Closed : entry / log service
+Draft --> Processing : process
+Processing --> Delivered : process
+Closed --> Delivered : revert
+Delivered --> [*]
+@enduml

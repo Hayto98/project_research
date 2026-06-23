@@ -1,0 +1,60 @@
+@startuml
+skinparam defaultFontSize 13
+class Tracking {
+  -int score
+  #Date price
+  +String note
+  +updateQuantity()
+  +processCode()
+  +validateScore()
+}
+interface Driver {
+  #String type
+  +int status
+  +findAmount()
+  +cancelScore()
+}
+abstract class DeliveryNote {
+  +double code
+  +int note
+  +cancelCode()
+  +sendActive()
+  +calculateNote()
+  +setUpdatedat()
+}
+class Vehicle {
+  -long duration
+  +long description
+  -boolean updatedAt
+  -long note
+  +validatePrice()
+}
+abstract class Inventory {
+  +int score
+  -double total
+  #String active
+  +getDescription()
+  +createActive()
+}
+class Customer {
+  +int updatedAt
+  +float total
+  +int price
+  -int duration
+  +Date score
+  +findQuantity()
+  +createTotal()
+}
+class Warehouse {
+  #float quantity
+  -int level
+  #String code
+  +calculateDuration()
+  +processAddress()
+}
+Vehicle --o Tracking
+Driver --> DeliveryNote : "0..1"
+Inventory --* Customer
+Warehouse --* Vehicle
+note right of Tracking : Logistics domain
+@enduml

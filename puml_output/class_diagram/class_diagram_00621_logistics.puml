@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+class Manifest {
+  +boolean name
+  -boolean type
+  -float amount
+  -long duration
+  +validatePhone()
+  +findDescription()
+  +sendScore()
+}
+interface Package {
+  +int score
+  #String level
+  -long total
+  -boolean quantity
+  -boolean price
+  +sendTotal()
+  +deleteEmail()
+  +saveCreatedat()
+  +saveLevel()
+}
+class Route {
+  #Date id
+  +boolean level
+  +int phone
+  +validateScore()
+}
+class Shipment {
+  -boolean code
+  -int note
+  #float score
+  +deleteLevel()
+  +validateType()
+  +findCreatedat()
+}
+class Customer {
+  -long type
+  #long phone
+  +processDescription()
+  +saveScore()
+  +findAmount()
+  +setPhone()
+}
+Customer ..> Shipment : "*"
+Route --> Customer : "*"
+Manifest --|> Route
+note right of Manifest : Logistics domain
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+control "Account Holder" as AH
+actor "Auditor" as A
+participant "Branch Manager" as BM
+participant "Bank Teller" as BT
+BM ->> AH : Open Account
+BT -> BM : View Statement
+activate BM
+BM --> BT : ACK
+deactivate BM
+AH --> A : Apply For Loan
+note over A : processing apply for loan
+BM ->> AH : Deposit Money
+activate AH
+AH --> BM : ACK
+deactivate AH
+note over AH : processing deposit money
+BT -> AH : Withdraw Cash
+activate AH
+AH --> BT : ACK
+deactivate AH
+@enduml

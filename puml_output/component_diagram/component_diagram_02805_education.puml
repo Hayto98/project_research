@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Classroom Service" as C_ClassroomService
+component "Department Service" as C_DepartmentService
+component "Student Service" as C_StudentService
+component "Attendance Service" as C_AttendanceService
+component "Assignment Service" as C_AssignmentService
+database "Education DB" as DB_education
+C_StudentService --> DB_education
+C_AttendanceService --> DB_education
+C_AssignmentService --> DB_education
+C_ClassroomService ..> C_AttendanceService : HTTP
+C_ClassroomService ..> C_DepartmentService : REST
+@enduml

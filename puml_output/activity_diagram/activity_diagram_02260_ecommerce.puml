@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+start
+:Manage Inventory;
+:Write Review;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Browse Products;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Apply Coupon;
+:Track Order;
+:Checkout;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Cancel Order;
+stop
+@enduml

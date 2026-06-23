@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+component "Hashtag Service" as C_HashtagService
+component "Comment Service" as C_CommentService
+component "Post Service" as C_PostService
+component "Album Service" as C_AlbumService
+component "Follower Service" as C_FollowerService
+database "Social Media DB" as DB_social_media
+C_HashtagService --> DB_social_media
+C_CommentService --> DB_social_media
+C_PostService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_CommentService ..> C_HashtagService : HTTP
+C_PostService ..> C_CommentService : MQ
+C_PostService ..> C_HashtagService : MQ
+C_AlbumService ..> C_PostService : REST
+@enduml

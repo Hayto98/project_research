@@ -1,0 +1,53 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+class Grade {
+  -String score
+  -String code
+  -double note
+  +saveDescription()
+}
+class Course {
+  -int active
+  -Date code
+  -boolean note
+  +processUpdatedat()
+  +getCode()
+  +saveLevel()
+  +validateEmail()
+}
+interface Classroom {
+  +Date phone
+  +String status
+  +int code
+  +findNote()
+  +calculateQuantity()
+  +calculatePrice()
+}
+class Enrollment {
+  +long email
+  +String type
+  +cancelId()
+}
+interface Schedule {
+  #double phone
+  #boolean note
+  +deleteLevel()
+}
+abstract class Assignment {
+  +double createdAt
+  #Date quantity
+  +long note
+  +long duration
+  -boolean total
+  +calculatePrice()
+  +deleteDuration()
+  +validateTotal()
+  +findCreatedat()
+}
+Course ..|> Grade
+Course --* Assignment
+Classroom --|> Schedule
+Course --|> Classroom
+note right of Grade : Education domain
+@enduml

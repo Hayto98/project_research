@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+component "Payment Service" as C_PaymentService
+component "Category Service" as C_CategoryService
+component "Customer Service" as C_CustomerService
+component "Review Service" as C_ReviewService
+database "Ecommerce DB" as DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_CategoryService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_PaymentService ..> C_ReviewService : gRPC
+C_PaymentService ..> C_CategoryService : gRPC
+@enduml

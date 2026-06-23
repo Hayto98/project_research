@@ -1,0 +1,26 @@
+@startuml
+skinparam defaultFontSize 11
+start
+:Add To Cart;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Cancel Order;
+:Make Payment;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Track Order;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Browse Products;
+stop
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+control "Payment Gateway" as PG
+boundary "Customer" as C
+entity "Admin" as A
+PG --> A : Cancel Order
+activate A
+A --> PG : ACK
+deactivate A
+note over A : processing cancel order
+A -> C : Apply Coupon
+A -> PG : Manage Inventory
+activate PG
+PG --> A : ACK
+deactivate PG
+C --> A : Track Order
+activate A
+A --> C : ACK
+deactivate A
+A -> PG : Checkout
+PG ->> A : Make Payment
+activate A
+A --> PG : ACK
+deactivate A
+A --> PG : Write Review
+@enduml

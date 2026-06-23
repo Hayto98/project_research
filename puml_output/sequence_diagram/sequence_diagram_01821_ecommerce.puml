@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+actor "Payment Gateway" as PG
+actor "Admin" as A
+entity "Customer" as C
+PG --> A : Manage Inventory
+A ->> PG : Cancel Order
+note over PG : processing cancel order
+PG -> C : Track Order
+activate C
+C --> PG : ACK
+deactivate C
+note over C : processing track order
+A --> C : Make Payment
+activate C
+C --> A : ACK
+deactivate C
+@enduml

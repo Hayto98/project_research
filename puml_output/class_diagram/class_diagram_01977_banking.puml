@@ -1,0 +1,67 @@
+@startuml
+skinparam ArrowColor #555555
+abstract class Teller {
+  +double total
+  -int status
+  -String active
+  #float type
+  +long createdAt
+  +findNote()
+}
+interface Customer {
+  +Date active
+  #long id
+  #double total
+  +float type
+  +float name
+  +sendDescription()
+  +createScore()
+}
+class Interest {
+  #float code
+  #float total
+  +Date level
+  +setDuration()
+  +processCreatedat()
+  +createAmount()
+}
+class Loan {
+  #float email
+  #boolean duration
+  #int code
+  +findPhone()
+  +findStatus()
+}
+interface Beneficiary {
+  #boolean createdAt
+  +int id
+  -int code
+  #boolean status
+  +updateTotal()
+  +getCreatedat()
+  +calculateQuantity()
+  +setEmail()
+}
+interface Deposit {
+  -int code
+  +String name
+  +createActive()
+  +updateUpdatedat()
+  +cancelDescription()
+  +calculateAmount()
+}
+class Branch {
+  -Date status
+  -Date description
+  #long id
+  -Date createdAt
+  +processQuantity()
+}
+Beneficiary --o Customer
+Loan ..> Teller : "0..1"
+Branch ..> Loan : "1"
+Customer --|> Deposit
+Deposit ..> Teller : "1"
+Interest ..> Loan : "*"
+note right of Teller : Banking domain
+@enduml

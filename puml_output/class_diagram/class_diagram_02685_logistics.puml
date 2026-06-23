@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class FuelLog {
+  #String total
+  -boolean level
+  +Date duration
+  #float status
+  +cancelLevel()
+}
+class Route {
+  +Date description
+  +boolean total
+  -Date id
+  +Date active
+  +double createdAt
+  +processScore()
+  +deleteStatus()
+  +processCreatedat()
+  +findAmount()
+}
+class Warehouse {
+  #float status
+  -int code
+  +double description
+  #long type
+  -float active
+  +updateUpdatedat()
+}
+abstract class DeliveryNote {
+  -Date duration
+  -long score
+  +float phone
+  #int code
+  +long price
+  +updateId()
+}
+abstract class Customer {
+  +String price
+  -String level
+  +boolean description
+  +createType()
+  +getQuantity()
+  +calculatePrice()
+  +setNote()
+}
+Customer ..|> Route
+FuelLog --> Warehouse : "0..1"
+DeliveryNote ..> Customer : "1"
+note right of FuelLog : Logistics domain
+@enduml

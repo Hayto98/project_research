@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+control "Seller" as S
+control "Delivery Service" as DS
+entity "Admin" as A
+actor "Customer" as C
+DS ->> A : Track Order
+note over A : processing track order
+S -> C : Make Payment
+A -> DS : Add To Cart
+activate DS
+DS --> A : ACK
+deactivate DS
+note over DS : processing add to cart
+DS ->> A : Cancel Order
+activate A
+A --> DS : ACK
+deactivate A
+A -> DS : Browse Products
+activate DS
+DS --> A : ACK
+deactivate DS
+note over DS : processing browse products
+DS ->> A : Apply Coupon
+S --> C : Checkout
+@enduml

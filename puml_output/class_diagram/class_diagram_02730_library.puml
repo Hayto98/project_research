@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+class Renewal {
+  +String score
+  +int quantity
+  +cancelStatus()
+}
+class Book {
+  -String quantity
+  #long status
+  +processCode()
+  +setCreatedat()
+  +sendNote()
+}
+class Reservation {
+  -float active
+  #double description
+  -float name
+  +int id
+  -String note
+  +calculateAmount()
+  +deleteCode()
+  +findId()
+}
+class Catalog {
+  -float price
+  #String description
+  #int quantity
+  -boolean active
+  +int id
+  +savePrice()
+}
+abstract class Shelf {
+  -double price
+  #Date amount
+  +cancelUpdatedat()
+  +updateScore()
+  +sendAddress()
+}
+Reservation --o Shelf
+Renewal --o Book
+Shelf ..> Renewal : "0..1"
+Catalog --* Book
+note right of Renewal : Library domain
+@enduml

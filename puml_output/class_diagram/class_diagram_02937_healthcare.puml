@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+abstract class Appointment {
+  +String duration
+  +String description
+  +long name
+  +findPrice()
+  +deleteScore()
+}
+class Billing {
+  #long score
+  #Date code
+  +int duration
+  -boolean name
+  #String id
+  +sendActive()
+  +setDescription()
+  +updateActive()
+  +setDuration()
+}
+class Treatment {
+  -int note
+  -boolean level
+  #Date amount
+  +cancelAmount()
+  +processActive()
+}
+interface Nurse {
+  -int level
+  -Date quantity
+  +float id
+  +setTotal()
+}
+Nurse --> Billing : "1"
+Nurse ..> Appointment : "*"
+note right of Appointment : Healthcare domain
+@enduml

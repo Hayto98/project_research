@@ -1,0 +1,48 @@
+@startuml
+skinparam ArrowColor #555555
+class Shelf {
+  -boolean phone
+  -int description
+  #Date quantity
+  +sendDescription()
+  +calculateName()
+}
+class Renewal {
+  +float phone
+  #boolean email
+  +boolean amount
+  +updateActive()
+  +saveEmail()
+  +setPhone()
+}
+class Loan {
+  -long id
+  +float active
+  -long email
+  +long level
+  +savePrice()
+  +setStatus()
+}
+class Branch {
+  -String type
+  -String email
+  +Date description
+  -Date code
+  +calculateScore()
+  +validateUpdatedat()
+  +createUpdatedat()
+}
+abstract class Book {
+  +float price
+  +long level
+  #int duration
+  +float total
+  +cancelDescription()
+  +calculateLevel()
+}
+Loan --* Branch
+Branch --o Shelf
+Shelf --> Book : "*"
+Book --> Shelf : "1..*"
+note right of Shelf : Library domain
+@enduml

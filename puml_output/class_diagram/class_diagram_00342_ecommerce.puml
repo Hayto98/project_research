@@ -1,0 +1,64 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Category {
+  +float active
+  +int amount
+  -int quantity
+  -Date name
+  +deleteId()
+  +saveDescription()
+  +deleteName()
+  +calculatePrice()
+}
+class Shipment {
+  #long price
+  -String id
+  +calculateEmail()
+}
+interface Coupon {
+  +String active
+  #int description
+  #double code
+  #int price
+  -float createdAt
+  +findDescription()
+  +updateStatus()
+  +calculateUpdatedat()
+}
+class Cart {
+  +String id
+  +Date price
+  #Date status
+  #long total
+  +calculateQuantity()
+  +setName()
+}
+abstract class Review {
+  #String quantity
+  #long total
+  -float code
+  +setAmount()
+  +updateTotal()
+}
+interface Invoice {
+  +String quantity
+  +boolean address
+  #boolean price
+  +boolean name
+  +getType()
+}
+class Return {
+  #float id
+  +boolean email
+  #Date status
+  +findDuration()
+}
+Invoice ..> Return : "1"
+Cart --o Category
+Review ..> Cart : "1..*"
+Invoice ..> Review : "*"
+Invoice ..> Coupon : "*"
+Category ..|> Invoice
+note right of Category : Ecommerce domain
+@enduml

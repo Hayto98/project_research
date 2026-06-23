@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+left to right direction
+actor "Chef" as Chef
+actor "Guest" as Guest
+rectangle "Hotel System" {
+  usecase "Clean Room" as UC_CleanRoom
+  usecase "Process Payment" as UC_ProcessPayment
+  usecase "Book Room" as UC_BookRoom
+  usecase "Cancel Reservation" as UC_CancelReservation
+  usecase "Check In" as UC_CheckIn
+}
+Chef --> UC_CancelReservation
+Chef --> UC_ProcessPayment
+Chef --> UC_BookRoom
+Guest --> UC_BookRoom
+Guest --> UC_CheckIn
+UC_CancelReservation ..> UC_ProcessPayment : <<extend>>
+@enduml

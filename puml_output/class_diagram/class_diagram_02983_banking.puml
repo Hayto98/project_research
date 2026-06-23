@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Teller {
+  +long code
+  +boolean email
+  +Date updatedAt
+  +cancelEmail()
+}
+abstract class Branch {
+  +Date email
+  +Date level
+  -Date id
+  -long price
+  -String updatedAt
+  +updatePhone()
+  +getStatus()
+}
+abstract class Transaction {
+  -double status
+  #float amount
+  +int active
+  #String total
+  +sendScore()
+  +updateEmail()
+  +setAmount()
+  +findStatus()
+}
+abstract class Withdrawal {
+  #String score
+  -int amount
+  +updateCreatedat()
+  +saveDescription()
+  +updateCreatedat()
+  +updateStatus()
+}
+interface Interest {
+  +double description
+  +String address
+  +cancelType()
+  +deleteAddress()
+  +getTotal()
+  +validateStatus()
+}
+class Transfer {
+  +String total
+  #double quantity
+  #long name
+  #int description
+  +updateAmount()
+  +deleteUpdatedat()
+  +processQuantity()
+  +calculateTotal()
+}
+abstract class Deposit {
+  #Date address
+  +float price
+  #double quantity
+  -double code
+  +cancelActive()
+}
+Interest ..> Teller : "1"
+Transaction --o Teller
+Withdrawal ..> Deposit : "1"
+note right of Teller : Banking domain
+@enduml

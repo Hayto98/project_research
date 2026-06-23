@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+component "Booking Service" as C_BookingService
+component "CheckOut Service" as C_CheckOutService
+component "Amenity Service" as C_AmenityService
+component "Housekeeping Service" as C_HousekeepingService
+database "Hotel DB" as DB_hotel
+C_BookingService --> DB_hotel
+C_HousekeepingService --> DB_hotel
+C_BookingService ..> C_HousekeepingService : REST
+C_HousekeepingService ..> C_CheckOutService : gRPC
+C_CheckOutService ..> C_AmenityService : MQ
+@enduml

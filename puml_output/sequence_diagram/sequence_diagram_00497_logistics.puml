@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+actor "Customer" as C
+participant "Fleet Manager" as FM
+boundary "Driver" as D
+control "Warehouse Staff" as WS
+FM -> C : Assign Route
+WS --> C : Track Shipment
+WS ->> C : Deliver Package
+C --> D : Schedule Pickup
+WS --> C : Fuel Vehicle
+activate C
+C --> WS : ACK
+deactivate C
+D -> FM : Update Inventory
+@enduml

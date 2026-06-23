@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+abstract class Treatment {
+  +float address
+  #boolean score
+  +getLevel()
+}
+abstract class Patient {
+  +float active
+  #boolean score
+  +Date quantity
+  -float email
+  +validateCreatedat()
+  +processPhone()
+  +calculateType()
+}
+interface Hospital {
+  -double code
+  -long createdAt
+  -int address
+  +findPhone()
+  +sendCreatedat()
+  +getDescription()
+  +deleteAmount()
+}
+class Diagnosis {
+  +int type
+  +long createdAt
+  +deleteActive()
+}
+interface Insurance {
+  -double code
+  -int description
+  +findCode()
+}
+class Appointment {
+  +long active
+  -int id
+  -String total
+  +setType()
+  +deleteTotal()
+  +calculateAmount()
+}
+class Nurse {
+  -int createdAt
+  #String total
+  -Date quantity
+  #Date email
+  +setPrice()
+  +getPhone()
+  +createTotal()
+  +setLevel()
+}
+Hospital --o Patient
+Diagnosis --> Insurance : "0..1"
+Patient --* Diagnosis
+Treatment --* Diagnosis
+Diagnosis --o Treatment
+Treatment --|> Patient
+note right of Treatment : Healthcare domain
+@enduml

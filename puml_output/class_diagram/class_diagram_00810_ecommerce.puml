@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+class Payment {
+  +Date quantity
+  #boolean code
+  -Date email
+  #Date active
+  +String phone
+  +calculateTotal()
+}
+class Shipment {
+  +String status
+  +int code
+  +deleteStatus()
+  +findStatus()
+  +cancelDescription()
+}
+interface Category {
+  #double total
+  #boolean phone
+  #String duration
+  #Date email
+  +getQuantity()
+}
+interface Coupon {
+  #long name
+  +String quantity
+  -int address
+  +updateEmail()
+}
+class Wishlist {
+  +String address
+  -boolean description
+  #long active
+  +sendUpdatedat()
+  +sendScore()
+  +setLevel()
+}
+Shipment ..> Category : "1..*"
+Coupon --> Wishlist : "0..1"
+Wishlist --* Shipment
+Shipment --o Wishlist
+note right of Payment : Ecommerce domain
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+[*] --> Active
+Active --> OnHold : submit
+Active : entry / log book
+OnHold --> Approved : confirm
+OnHold : entry / log book
+Approved --> Archived : confirm
+Archived --> Shipped : cancel
+Shipped --> Draft : process
+Active --> Shipped : revert
+Draft --> [*]
+@enduml

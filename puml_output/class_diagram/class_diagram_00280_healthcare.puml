@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+interface Billing {
+  +String price
+  +float quantity
+  -long phone
+  +boolean name
+  -Date level
+  +sendId()
+  +updateDescription()
+  +calculatePhone()
+  +calculateQuantity()
+}
+class Appointment {
+  -boolean updatedAt
+  #boolean price
+  -int type
+  +String quantity
+  -String note
+  +validatePhone()
+}
+class Nurse {
+  #Date duration
+  #float id
+  #String price
+  +double email
+  +saveAddress()
+  +getLevel()
+}
+class MedicalRecord {
+  +int name
+  +Date updatedAt
+  #double duration
+  -double price
+  #long createdAt
+  +setStatus()
+  +setCreatedat()
+  +cancelActive()
+}
+class Prescription {
+  -float duration
+  #Date note
+  -Date price
+  -long email
+  +double createdAt
+  +validatePhone()
+  +processPrice()
+}
+interface Insurance {
+  #long address
+  -int active
+  -int id
+  #long createdAt
+  +cancelStatus()
+  +calculateActive()
+}
+Prescription --|> Nurse
+Billing --o Appointment
+note right of Billing : Healthcare domain
+@enduml

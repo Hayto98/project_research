@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+[*] --> Processing
+Processing --> Delivered : submit
+Processing : entry / log patient
+Delivered --> Created : cancel
+Delivered : entry / log patient
+Created --> Cancelled : cancel
+Cancelled --> Completed : submit
+Cancelled : entry / log patient
+Created --> Delivered : revert
+Completed --> [*]
+@enduml

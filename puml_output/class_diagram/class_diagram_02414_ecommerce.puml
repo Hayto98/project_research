@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Cart {
+  -boolean description
+  +boolean phone
+  -boolean total
+  #int duration
+  +getPrice()
+  +getAddress()
+  +validateActive()
+}
+abstract class Payment {
+  #String phone
+  +double duration
+  -Date level
+  +String price
+  +deleteLevel()
+  +getStatus()
+  +deleteCode()
+}
+class Shipment {
+  +float level
+  +Date description
+  #float total
+  +Date code
+  #long score
+  +updateLevel()
+  +calculateActive()
+  +setCode()
+}
+class Invoice {
+  #boolean email
+  #float duration
+  #long phone
+  +findTotal()
+  +setId()
+  +deleteCreatedat()
+}
+class Return {
+  +int email
+  -long level
+  +Date updatedAt
+  +validateId()
+  +savePrice()
+  +sendAddress()
+}
+Return --|> Invoice
+Cart --o Invoice
+Return --o Cart
+Cart --* Shipment
+note right of Cart : Ecommerce domain
+@enduml

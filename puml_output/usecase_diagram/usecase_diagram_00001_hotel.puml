@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+left to right direction
+actor "Housekeeper" as Housekeeper
+actor "Guest" as Guest
+actor "Receptionist" as Receptionist
+rectangle "Hotel System" {
+  usecase "Check In" as UC_CheckIn
+  usecase "Request Service" as UC_RequestService
+  usecase "Process Payment" as UC_ProcessPayment
+  usecase "Check Out" as UC_CheckOut
+  usecase "Cancel Reservation" as UC_CancelReservation
+  usecase "Book Room" as UC_BookRoom
+  usecase "Order Room Service" as UC_OrderRoomService
+  usecase "Clean Room" as UC_CleanRoom
+}
+Housekeeper --> UC_BookRoom
+Housekeeper --> UC_CheckOut
+Guest --> UC_CheckOut
+Guest --> UC_BookRoom
+Guest --> UC_CheckIn
+Receptionist --> UC_RequestService
+Receptionist --> UC_OrderRoomService
+UC_BookRoom ..|> UC_CancelReservation : <<extend>>
+@enduml

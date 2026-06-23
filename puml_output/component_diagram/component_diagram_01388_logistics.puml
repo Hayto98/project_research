@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+component "Route Service" as C_RouteService
+component "Inventory Service" as C_InventoryService
+component "Shipment Service" as C_ShipmentService
+component "Customer Service" as C_CustomerService
+database "Logistics DB" as DB_logistics
+C_ShipmentService --> DB_logistics
+C_CustomerService --> DB_logistics
+C_ShipmentService ..> C_InventoryService : HTTP
+C_InventoryService ..> C_ShipmentService : MQ
+C_InventoryService ..> C_CustomerService : HTTP
+@enduml

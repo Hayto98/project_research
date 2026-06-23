@@ -1,0 +1,44 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+class Tracking {
+  #int id
+  #int active
+  +processCreatedat()
+}
+class Inventory {
+  +boolean quantity
+  +double note
+  -int phone
+  #double code
+  #String duration
+  +sendEmail()
+  +updateNote()
+  +saveActive()
+  +setTotal()
+}
+interface Package {
+  +boolean code
+  #double name
+  #long id
+  #double note
+  +deleteDuration()
+  +saveActive()
+  +setTotal()
+  +createAddress()
+}
+abstract class DeliveryNote {
+  +String duration
+  +Date code
+  +sendAmount()
+}
+class Driver {
+  -Date active
+  +long total
+  #double email
+  +updatePrice()
+}
+Inventory ..> DeliveryNote : "0..1"
+Package --|> DeliveryNote
+note right of Tracking : Logistics domain
+@enduml

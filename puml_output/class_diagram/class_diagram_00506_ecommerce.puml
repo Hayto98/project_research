@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+class Category {
+  -int score
+  +double total
+  -float description
+  +boolean price
+  -int note
+  +saveName()
+  +getQuantity()
+}
+class Cart {
+  +float code
+  #Date status
+  +sendAmount()
+  +processStatus()
+}
+abstract class Review {
+  #String id
+  -long level
+  #int code
+  +sendCode()
+}
+interface Payment {
+  #double address
+  +Date quantity
+  #long total
+  +sendLevel()
+  +setEmail()
+}
+Review --|> Category
+Review ..|> Payment
+Payment ..|> Cart
+note right of Category : Ecommerce domain
+@enduml

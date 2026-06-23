@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+interface Payment {
+  -Date description
+  #Date id
+  -Date createdAt
+  -int updatedAt
+  +cancelNote()
+  +cancelPrice()
+}
+class Booking {
+  #String total
+  -Date description
+  +validateType()
+  +updateLevel()
+}
+class Reservation {
+  +Date type
+  +float duration
+  +findActive()
+}
+abstract class Guest {
+  +int code
+  #long phone
+  -Date price
+  +cancelEmail()
+  +calculateStatus()
+}
+class Service {
+  #Date quantity
+  #Date email
+  +findCreatedat()
+  +calculateQuantity()
+  +createActive()
+}
+class CheckIn {
+  +String price
+  #Date name
+  #String updatedAt
+  +calculateCode()
+  +validateLevel()
+}
+class Amenity {
+  +long score
+  +float level
+  +int note
+  +Date name
+  #int total
+  +calculateUpdatedat()
+}
+Reservation ..> Booking : "0..1"
+Reservation ..|> Payment
+note right of Payment : Hotel domain
+@enduml

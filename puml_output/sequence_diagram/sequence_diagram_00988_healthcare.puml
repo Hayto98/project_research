@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+control "Lab Technician" as LT
+participant "Doctor" as D
+boundary "Insurance Provider" as IP
+entity "Receptionist" as R
+control "Patient" as P
+P ->> D : Run Lab Test
+note over D : processing run lab test
+LT ->> IP : Examine Patient
+note over IP : processing examine patient
+IP --> P : Update Medical Record
+note over P : processing update medical record
+R --> P : Discharge Patient
+note over P : processing discharge patient
+D ->> R : Admit Patient
+note over R : processing admit patient
+LT --> R : Process Insurance Claim
+activate R
+R --> LT : ACK
+deactivate R
+P --> LT : Issue Prescription
+activate LT
+LT --> P : ACK
+deactivate LT
+@enduml

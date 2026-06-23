@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+interface Tracking {
+  +Date level
+  +Date updatedAt
+  -int duration
+  -int score
+  +processStatus()
+  +calculateDescription()
+  +getScore()
+  +deleteScore()
+}
+abstract class FuelLog {
+  #boolean code
+  -Date active
+  +boolean total
+  +float name
+  +deleteNote()
+}
+abstract class Route {
+  -String updatedAt
+  +double active
+  #String description
+  -Date duration
+  -String quantity
+  +processDuration()
+  +deleteDuration()
+  +calculateAmount()
+  +createPhone()
+}
+class Manifest {
+  #String email
+  +double duration
+  +processActive()
+  +cancelName()
+  +createCode()
+  +setDuration()
+}
+class DeliveryNote {
+  +String address
+  #Date amount
+  -Date name
+  -float phone
+  +cancelActive()
+  +getPhone()
+}
+class Depot {
+  -long type
+  #String note
+  #long description
+  #long code
+  +processName()
+  +saveAddress()
+}
+Route --o FuelLog
+Manifest --|> Tracking
+note right of Tracking : Logistics domain
+@enduml

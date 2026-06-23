@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+class Nurse {
+  #Date createdAt
+  #double score
+  #long description
+  +int address
+  #int status
+  +calculateType()
+  +processNote()
+  +getLevel()
+}
+interface Billing {
+  +Date amount
+  +long type
+  -double level
+  +Date updatedAt
+  +calculateDuration()
+  +cancelStatus()
+  +setStatus()
+  +findPrice()
+}
+abstract class Appointment {
+  +int status
+  +float level
+  +findCreatedat()
+}
+interface Doctor {
+  #String id
+  #String duration
+  +long code
+  +validateQuantity()
+  +updateScore()
+}
+class Ward {
+  #boolean status
+  +int name
+  -double address
+  +Date description
+  #boolean createdAt
+  +updateUpdatedat()
+  +findStatus()
+}
+Doctor --> Nurse : "0..1"
+Doctor --o Appointment
+Appointment --o Ward
+Ward --|> Billing
+note right of Nurse : Healthcare domain
+@enduml

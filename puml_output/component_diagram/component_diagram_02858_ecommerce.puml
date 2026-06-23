@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+component "Warehouse Service" as C_WarehouseService
+component "Coupon Service" as C_CouponService
+component "Product Service" as C_ProductService
+component "Payment Service" as C_PaymentService
+database "Ecommerce DB" as DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_WarehouseService ..> C_CouponService : gRPC
+C_CouponService ..> C_PaymentService : HTTP
+@enduml

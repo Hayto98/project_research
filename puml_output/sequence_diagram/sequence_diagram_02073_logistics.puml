@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+actor "Driver" as D
+actor "Dispatcher" as D2
+control "Customer" as C
+C -> D : Fuel Vehicle
+C --> D : Schedule Pickup
+D --> D2 : Report Issue
+D2 --> D : Load Package
+activate D
+D --> D2 : ACK
+deactivate D
+note over D : processing load package
+C --> D : Update Inventory
+activate D
+D --> C : ACK
+deactivate D
+D2 ->> D : Deliver Package
+@enduml

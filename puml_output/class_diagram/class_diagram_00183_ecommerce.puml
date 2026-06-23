@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+class Invoice {
+  #int createdAt
+  #long email
+  -float note
+  +sendAddress()
+  +findLevel()
+}
+abstract class Return {
+  #String description
+  +Date updatedAt
+  +float address
+  +sendEmail()
+  +createAddress()
+}
+class Cart {
+  +double score
+  #float price
+  -boolean description
+  +boolean duration
+  +cancelScore()
+  +getEmail()
+  +sendEmail()
+  +deleteQuantity()
+}
+abstract class Wishlist {
+  #String address
+  #int createdAt
+  +createLevel()
+  +findActive()
+  +processCreatedat()
+  +deleteActive()
+}
+class Payment {
+  #Date name
+  +double type
+  +createPrice()
+}
+interface Supplier {
+  -Date updatedAt
+  #long score
+  +int note
+  #long type
+  +calculateScore()
+  +cancelScore()
+  +setPhone()
+}
+Invoice --> Payment : "1..*"
+Return --o Payment
+Cart ..|> Invoice
+note right of Invoice : Ecommerce domain
+@enduml

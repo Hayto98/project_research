@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing true
+entity "ATM" as A
+participant "Branch Manager" as BM
+actor "Auditor" as A2
+BM -> A : Withdraw Cash
+A2 --> BM : Deposit Money
+activate BM
+BM --> A2 : ACK
+deactivate BM
+note over BM : processing deposit money
+A -> A2 : Apply For Loan
+A2 ->> A : Open Account
+activate A
+A --> A2 : ACK
+deactivate A
+A --> A2 : View Statement
+BM --> A : Pay Bill
+@enduml

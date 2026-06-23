@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+[*] --> Processing
+Processing --> Draft : process
+Draft --> Cancelled : cancel
+Draft : entry / log billing
+Cancelled --> Completed : submit
+Completed --> Active : reject
+Completed : entry / log billing
+Active --> Completed : revert
+Active --> [*]
+@enduml

@@ -1,0 +1,66 @@
+@startuml
+skinparam defaultFontSize 13
+abstract class Category {
+  -boolean description
+  -boolean quantity
+  +deleteDuration()
+  +setStatus()
+  +findUpdatedat()
+  +processAmount()
+}
+abstract class Customer {
+  -float note
+  #long price
+  +float score
+  +sendAmount()
+  +deleteTotal()
+}
+interface Invoice {
+  #float status
+  #double createdAt
+  #double score
+  +float price
+  +getAddress()
+}
+class Coupon {
+  +int id
+  #float address
+  -float total
+  #boolean type
+  +findDescription()
+  +setUpdatedat()
+  +cancelName()
+}
+abstract class Product {
+  +boolean duration
+  #float address
+  #double id
+  -double active
+  +setQuantity()
+  +setDuration()
+  +sendTotal()
+}
+abstract class Payment {
+  #float price
+  -double amount
+  #double phone
+  +setPhone()
+  +validateId()
+  +getPhone()
+  +sendUpdatedat()
+}
+class Shipment {
+  -Date amount
+  +long status
+  #Date level
+  +createTotal()
+  +calculateActive()
+}
+Product ..|> Category
+Invoice --* Shipment
+Customer ..|> Product
+Product ..|> Customer
+Product --* Coupon
+Shipment --|> Coupon
+note right of Category : Ecommerce domain
+@enduml

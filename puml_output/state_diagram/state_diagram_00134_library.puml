@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+[*] --> Delivered
+Delivered --> Closed : confirm
+Delivered : entry / log catalog
+Closed --> OnHold : submit
+OnHold --> Active : confirm
+OnHold : entry / log catalog
+Active --> Created : reject
+Created --> Rejected : update
+Rejected --> [*]
+@enduml

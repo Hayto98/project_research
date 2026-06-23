@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+entity "Receptionist" as R
+actor "Lab Technician" as LT
+control "Nurse" as N
+LT -> R : Update Medical Record
+LT -> R : Discharge Patient
+R -> N : Book Appointment
+activate N
+N --> R : ACK
+deactivate N
+R --> N : Issue Prescription
+activate N
+N --> R : ACK
+deactivate N
+LT -> R : Run Lab Test
+activate R
+R --> LT : ACK
+deactivate R
+note over R : processing run lab test
+R -> LT : Examine Patient
+@enduml

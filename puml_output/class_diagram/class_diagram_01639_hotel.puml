@@ -1,0 +1,52 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Invoice {
+  #long name
+  +double address
+  -double score
+  +getStatus()
+  +validateNote()
+}
+interface Amenity {
+  +long code
+  +double status
+  +long description
+  +int active
+  +sendName()
+  +sendScore()
+}
+interface Housekeeping {
+  +long active
+  #int name
+  -float amount
+  +deleteAmount()
+  +updateAmount()
+  +findId()
+}
+class CheckOut {
+  +double code
+  -int total
+  #Date price
+  +validateDescription()
+  +createScore()
+}
+interface Restaurant {
+  +double note
+  +long status
+  +validateId()
+}
+interface Guest {
+  +String note
+  #boolean quantity
+  +Date code
+  +deleteStatus()
+}
+Invoice ..> Amenity : "0..1"
+Housekeeping --* Restaurant
+Guest --* CheckOut
+Housekeeping ..|> CheckOut
+Amenity --o Guest
+note right of Invoice : Hotel domain
+@enduml

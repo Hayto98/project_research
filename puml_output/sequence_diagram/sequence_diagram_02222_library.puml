@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+boundary "Member" as M
+control "Librarian" as L
+participant "Admin" as A
+M -> A : Borrow Book
+A ->> L : Register Member
+M ->> L : Return Book
+activate L
+L --> M : ACK
+deactivate L
+M --> A : Reserve Book
+A -> M : Add New Book
+L --> A : Search Catalog
+note over A : processing search catalog
+M ->> A : Pay Fine
+activate A
+A --> M : ACK
+deactivate A
+@enduml

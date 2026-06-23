@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+actor "Member" as M
+control "Admin" as A
+participant "Librarian" as L
+L --> M : Reserve Book
+activate M
+M --> L : ACK
+deactivate M
+M -> A : Register Member
+activate A
+A --> M : ACK
+deactivate A
+L --> A : Return Book
+L -> M : Search Catalog
+activate M
+M --> L : ACK
+deactivate M
+M -> L : Renew Loan
+note over L : processing renew loan
+A --> L : Borrow Book
+activate L
+L --> A : ACK
+deactivate L
+@enduml

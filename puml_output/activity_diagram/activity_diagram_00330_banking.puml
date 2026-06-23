@@ -1,0 +1,29 @@
+@startuml
+skinparam defaultFontSize 13
+start
+:Apply For Loan;
+:Withdraw Cash;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Pay Bill;
+:Open Account;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Block Card;
+:Transfer Funds;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:View Statement;
+stop
+@enduml

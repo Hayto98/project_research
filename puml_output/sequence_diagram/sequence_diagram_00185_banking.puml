@@ -1,0 +1,26 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+boundary "Branch Manager" as BM
+actor "Bank Teller" as BT
+control "ATM" as A
+control "Auditor" as A2
+boundary "Account Holder" as AH
+A2 ->> BM : Apply For Loan
+activate BM
+BM --> A2 : ACK
+deactivate BM
+A2 --> BM : Transfer Funds
+activate BM
+BM --> A2 : ACK
+deactivate BM
+A2 -> BT : Open Account
+A -> BM : Block Card
+note over BM : processing block card
+BM --> AH : Withdraw Cash
+AH -> BM : View Statement
+BT --> A : Pay Bill
+activate A
+A --> BT : ACK
+deactivate A
+@enduml

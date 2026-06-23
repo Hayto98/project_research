@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing true
+start
+:Examine Patient;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Discharge Patient;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Run Lab Test;
+:Admit Patient;
+:Update Medical Record;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+stop
+@enduml

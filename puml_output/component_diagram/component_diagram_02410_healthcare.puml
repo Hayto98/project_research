@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+component "Ward Service" as C_WardService
+component "Billing Service" as C_BillingService
+component "Prescription Service" as C_PrescriptionService
+component "LabTest Service" as C_LabTestService
+database "Healthcare DB" as DB_healthcare
+C_WardService --> DB_healthcare
+C_LabTestService --> DB_healthcare
+C_WardService ..> C_PrescriptionService : HTTP
+C_WardService ..> C_PrescriptionService : gRPC
+C_PrescriptionService ..> C_BillingService : REST
+@enduml

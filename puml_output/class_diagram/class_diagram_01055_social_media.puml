@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+interface Story {
+  #int code
+  +long active
+  +deleteId()
+  +validateTotal()
+  +saveName()
+  +saveEmail()
+}
+interface Report {
+  -float id
+  +int createdAt
+  #Date price
+  +cancelEmail()
+  +processQuantity()
+  +validateName()
+  +saveAddress()
+}
+interface User {
+  +double quantity
+  -float level
+  +double id
+  +boolean code
+  -boolean email
+  +createLevel()
+  +processActive()
+}
+abstract class Profile {
+  -long code
+  #int quantity
+  +saveEmail()
+  +processPhone()
+  +calculatePhone()
+  +getNote()
+}
+interface Notification {
+  #Date phone
+  +double note
+  #String id
+  -long status
+  -Date score
+  +calculateId()
+}
+abstract class Group {
+  +long price
+  -Date amount
+  +boolean level
+  -boolean duration
+  #long score
+  +processName()
+}
+Group ..> User : "*"
+Report ..> Story : "*"
+Story ..> Group : "1"
+Report --* Profile
+note right of Story : Social Media domain
+@enduml

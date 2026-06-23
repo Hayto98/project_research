@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+abstract class Account {
+  +String type
+  +long address
+  #long note
+  +long level
+  -float status
+  +findType()
+}
+interface Customer {
+  -long code
+  +int duration
+  -String updatedAt
+  #boolean email
+  +findCode()
+  +cancelTotal()
+  +saveEmail()
+}
+interface Teller {
+  +double address
+  +float price
+  -float duration
+  +createStatus()
+  +getName()
+  +saveAddress()
+}
+interface Deposit {
+  +float id
+  +int name
+  -Date quantity
+  +calculatePhone()
+}
+class Transfer {
+  +int type
+  +Date total
+  +boolean createdAt
+  +Date active
+  -long note
+  +createTotal()
+  +updateAmount()
+  +processQuantity()
+  +processType()
+}
+abstract class Statement {
+  -int level
+  #float name
+  -Date email
+  +sendName()
+  +calculateId()
+}
+class Beneficiary {
+  #boolean code
+  #int phone
+  +saveEmail()
+  +validateQuantity()
+  +cancelActive()
+}
+Transfer --* Account
+Deposit --o Transfer
+Account --|> Transfer
+Transfer --* Customer
+Customer --|> Statement
+Transfer --> Teller : "1"
+note right of Account : Banking domain
+@enduml

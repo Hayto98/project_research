@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+class Appointment {
+  -int type
+  +int amount
+  +Date note
+  #long createdAt
+  +saveDescription()
+}
+abstract class Patient {
+  #String email
+  -Date duration
+  #Date updatedAt
+  +sendPrice()
+  +findScore()
+  +sendName()
+  +updateQuantity()
+}
+class Prescription {
+  -double duration
+  #boolean address
+  -boolean description
+  -Date createdAt
+  +getLevel()
+  +updateCode()
+  +getStatus()
+}
+class MedicalRecord {
+  #boolean description
+  #Date amount
+  -long phone
+  +cancelId()
+  +calculatePrice()
+}
+class Hospital {
+  -double note
+  +long active
+  +sendCreatedat()
+  +sendDescription()
+  +processDuration()
+  +setStatus()
+}
+Appointment --> MedicalRecord : "*"
+Patient --> Appointment : "0..1"
+Prescription ..|> Hospital
+note right of Appointment : Healthcare domain
+@enduml

@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+abstract class Order {
+  +boolean name
+  #Date id
+  +setDuration()
+  +createQuantity()
+  +processEmail()
+  +calculateAddress()
+}
+abstract class Warehouse {
+  +int createdAt
+  -int note
+  +setType()
+  +getStatus()
+  +deletePhone()
+}
+abstract class Wishlist {
+  #Date score
+  #long note
+  #int type
+  #double name
+  +createDescription()
+  +createName()
+}
+class Review {
+  #String quantity
+  #float id
+  #String type
+  +cancelPhone()
+  +validateCode()
+}
+interface Payment {
+  -float createdAt
+  -Date amount
+  +validateActive()
+  +createName()
+  +validateAmount()
+  +processQuantity()
+}
+abstract class Return {
+  +String name
+  +float id
+  +double total
+  +boolean updatedAt
+  +saveScore()
+  +getUpdatedat()
+  +saveCreatedat()
+  +updateId()
+}
+class Coupon {
+  -String price
+  +boolean level
+  -float code
+  +updateScore()
+}
+Review --o Warehouse
+Review --|> Coupon
+Warehouse ..|> Review
+Review ..> Wishlist : "1"
+Return --o Review
+note right of Order : Ecommerce domain
+@enduml

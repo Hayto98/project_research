@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+class Restaurant {
+  #float amount
+  +long note
+  +long updatedAt
+  #int description
+  +sendTotal()
+  +deleteDescription()
+}
+abstract class CheckIn {
+  -int email
+  #int total
+  +deleteDuration()
+  +updateLevel()
+  +deleteQuantity()
+}
+class Amenity {
+  -String type
+  -Date id
+  +calculateTotal()
+  +createPhone()
+  +updateDescription()
+}
+class Housekeeping {
+  -int name
+  #Date createdAt
+  -long amount
+  #boolean total
+  +findStatus()
+}
+CheckIn ..> Housekeeping : "1"
+CheckIn --|> Restaurant
+note right of Restaurant : Hotel domain
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Author Service" as C_AuthorService
+component "Reservation Service" as C_ReservationService
+component "Librarian Service" as C_LibrarianService
+component "Fine Service" as C_FineService
+component "Shelf Service" as C_ShelfService
+component "Catalog Service" as C_CatalogService
+database "Library DB" as DB_library
+C_AuthorService --> DB_library
+C_ReservationService --> DB_library
+C_FineService --> DB_library
+C_ShelfService --> DB_library
+C_CatalogService --> DB_library
+C_LibrarianService ..> C_ReservationService : MQ
+C_FineService ..> C_ShelfService : HTTP
+C_CatalogService ..> C_ReservationService : HTTP
+C_LibrarianService ..> C_ShelfService : REST
+@enduml

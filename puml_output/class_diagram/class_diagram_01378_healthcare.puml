@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+class Nurse {
+  -long updatedAt
+  +int status
+  #int phone
+  +long active
+  +updateStatus()
+  +findDescription()
+  +calculateAddress()
+  +findType()
+}
+abstract class LabTest {
+  -boolean description
+  -int level
+  #long price
+  #int total
+  #long createdAt
+  +calculateQuantity()
+  +saveCreatedat()
+}
+interface Ward {
+  -boolean active
+  -long amount
+  #int address
+  +float total
+  -String id
+  +findScore()
+}
+interface Patient {
+  #long code
+  -Date phone
+  +deleteActive()
+  +findAddress()
+  +processTotal()
+  +sendAmount()
+}
+interface Hospital {
+  +String price
+  #Date total
+  +String quantity
+  +saveScore()
+  +setEmail()
+  +findNote()
+}
+Hospital ..|> Patient
+Ward ..> Nurse : "0..1"
+Nurse ..> Hospital : "1"
+note right of Nurse : Healthcare domain
+@enduml

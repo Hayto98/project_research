@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+[*] --> Draft
+Draft --> Reviewed : review
+Draft : entry / log message
+Reviewed --> OnHold : process
+Reviewed : entry / log message
+OnHold --> Cancelled : update
+Cancelled --> Rejected : process
+Rejected --> Active : update
+Reviewed --> Active : revert
+Active --> [*]
+@enduml

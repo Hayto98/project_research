@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+start
+:Admit Patient;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Issue Prescription;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Examine Patient;
+:Run Lab Test;
+:Discharge Patient;
+:Book Appointment;
+stop
+@enduml

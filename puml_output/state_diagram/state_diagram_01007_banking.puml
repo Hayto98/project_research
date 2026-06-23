@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+[*] --> OnHold
+OnHold --> Pending : confirm
+Pending --> Cancelled : process
+Pending : entry / log teller
+Cancelled --> Approved : reject
+Cancelled : entry / log teller
+Pending --> OnHold : revert
+Approved --> [*]
+@enduml

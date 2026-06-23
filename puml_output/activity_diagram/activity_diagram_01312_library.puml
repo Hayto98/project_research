@@ -1,0 +1,36 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+start
+:Add New Book;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Search Catalog;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Reserve Book;
+:Register Member;
+:Borrow Book;
+:Renew Loan;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Pay Fine;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Return Book;
+stop
+@enduml

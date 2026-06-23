@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+abstract class FuelLog {
+  #long email
+  #long quantity
+  +Date name
+  +cancelType()
+  +setName()
+  +deleteAddress()
+}
+class Depot {
+  -Date type
+  -Date note
+  +cancelType()
+}
+class Customer {
+  -boolean status
+  #Date address
+  -boolean description
+  #boolean level
+  +int phone
+  +findLevel()
+  +findAddress()
+}
+class Tracking {
+  #Date active
+  #boolean email
+  -String total
+  +calculateName()
+}
+class Route {
+  -long duration
+  -boolean code
+  +long amount
+  #boolean type
+  +String address
+  +findType()
+  +createType()
+  +saveUpdatedat()
+  +getUpdatedat()
+}
+class Shipment {
+  #float phone
+  #Date quantity
+  #Date address
+  +float total
+  +long description
+  +getAddress()
+  +validatePhone()
+  +findLevel()
+}
+class Manifest {
+  -Date level
+  +String address
+  -int id
+  +Date createdAt
+  +createActive()
+}
+Manifest --o Route
+Depot --> Shipment : "0..1"
+Depot --* Customer
+Shipment --> Manifest : "*"
+Route ..|> Manifest
+note right of FuelLog : Logistics domain
+@enduml

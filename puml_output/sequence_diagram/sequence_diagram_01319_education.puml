@@ -1,0 +1,33 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+actor "Registrar" as R
+control "Parent" as P
+boundary "Teacher" as T
+boundary "Librarian" as L
+entity "Admin" as A
+T ->> R : Submit Assignment
+P --> A : Take Attendance
+L --> P : Grade Exam
+activate P
+P --> L : ACK
+deactivate P
+note over P : processing grade exam
+L -> T : Register Student
+activate T
+T --> L : ACK
+deactivate T
+note over T : processing register student
+P -> T : Borrow Book
+activate T
+T --> P : ACK
+deactivate T
+P ->> A : View Schedule
+note over A : processing view schedule
+R -> T : Enroll Course
+activate T
+T --> R : ACK
+deactivate T
+@enduml

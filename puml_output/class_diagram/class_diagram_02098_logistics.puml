@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+class Package {
+  #Date level
+  +long note
+  +getType()
+}
+class DeliveryNote {
+  +boolean code
+  #long address
+  -int type
+  +getCreatedat()
+}
+interface Customer {
+  +float status
+  #long updatedAt
+  +getAddress()
+  +calculatePrice()
+  +cancelType()
+  +saveCreatedat()
+}
+class Driver {
+  #String note
+  -String code
+  -float description
+  -boolean email
+  -double level
+  +processCode()
+}
+interface Inventory {
+  +Date price
+  #long score
+  #float duration
+  #boolean level
+  +boolean createdAt
+  +setDescription()
+  +createDuration()
+}
+DeliveryNote --|> Package
+Customer --* Driver
+Customer ..|> DeliveryNote
+note right of Package : Logistics domain
+@enduml

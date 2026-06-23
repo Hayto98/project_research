@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+boundary "Customer" as C
+boundary "Payment Gateway" as PG
+actor "Admin" as A
+entity "Delivery Service" as DS
+boundary "Seller" as S
+DS -> PG : Browse Products
+note over PG : processing browse products
+C ->> A : Make Payment
+activate A
+A --> C : ACK
+deactivate A
+note over A : processing make payment
+PG -> C : Track Order
+DS -> PG : Checkout
+activate PG
+PG --> DS : ACK
+deactivate PG
+@enduml

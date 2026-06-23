@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+interface Exam {
+  -long quantity
+  +boolean active
+  #Date type
+  -float status
+  +Date total
+  +deleteId()
+}
+interface Enrollment {
+  #int active
+  -String duration
+  #String amount
+  -boolean phone
+  +setCode()
+  +deletePhone()
+  +validateScore()
+}
+class Teacher {
+  +Date duration
+  -Date address
+  +int note
+  -String price
+  +setScore()
+  +processDescription()
+  +sendActive()
+}
+abstract class Book {
+  #Date duration
+  #int createdAt
+  #double description
+  +float total
+  +setId()
+  +deleteDuration()
+  +deleteName()
+}
+abstract class Schedule {
+  -Date email
+  -Date description
+  +findAddress()
+  +updateStatus()
+  +cancelQuantity()
+  +createType()
+}
+Enrollment --* Schedule
+Enrollment --o Exam
+Schedule --* Enrollment
+Book --> Teacher : "0..1"
+note right of Exam : Education domain
+@enduml

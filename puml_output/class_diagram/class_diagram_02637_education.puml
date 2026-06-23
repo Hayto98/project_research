@@ -1,0 +1,47 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+abstract class Attendance {
+  #Date total
+  #Date note
+  +findUpdatedat()
+  +getQuantity()
+  +createAmount()
+}
+class Student {
+  -Date note
+  +String score
+  #double type
+  +processUpdatedat()
+  +findDuration()
+}
+interface Schedule {
+  #Date status
+  -String level
+  #Date name
+  #float address
+  -Date updatedAt
+  +processNote()
+  +findNote()
+  +calculateDescription()
+  +getTotal()
+}
+interface Classroom {
+  #String phone
+  +boolean type
+  -boolean score
+  +String address
+  +double price
+  +cancelName()
+}
+interface Grade {
+  #boolean phone
+  -double quantity
+  +getQuantity()
+  +getEmail()
+}
+Classroom --o Attendance
+Grade --> Schedule : "1..*"
+Grade --o Classroom
+note right of Attendance : Education domain
+@enduml

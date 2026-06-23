@@ -1,0 +1,51 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+abstract class Course {
+  -String total
+  #double id
+  #int quantity
+  #boolean updatedAt
+  +findDuration()
+  +cancelQuantity()
+}
+class Schedule {
+  #double status
+  +Date phone
+  #String createdAt
+  +findId()
+  +cancelId()
+  +getLevel()
+  +calculateNote()
+}
+class Exam {
+  #int score
+  -Date updatedAt
+  +saveStatus()
+  +deleteQuantity()
+}
+interface Classroom {
+  #Date total
+  -int name
+  +String email
+  +getPhone()
+  +createStatus()
+  +setName()
+}
+class Teacher {
+  +long description
+  +float type
+  +getAddress()
+}
+interface Assignment {
+  #float description
+  -boolean updatedAt
+  #float score
+  +sendTotal()
+}
+Teacher ..> Exam : "1..*"
+Exam --|> Teacher
+Course --* Classroom
+Course ..> Assignment : "1"
+note right of Course : Education domain
+@enduml

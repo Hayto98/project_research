@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+entity "Customer" as C
+entity "Admin" as A
+actor "Payment Gateway" as PG
+PG -> C : Manage Inventory
+activate C
+C --> PG : ACK
+deactivate C
+A -> C : Checkout
+PG ->> A : Track Order
+C --> A : Write Review
+activate A
+A --> C : ACK
+deactivate A
+PG --> A : Apply Coupon
+@enduml

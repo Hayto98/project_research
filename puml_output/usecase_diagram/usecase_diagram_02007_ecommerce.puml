@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+left to right direction
+actor "Payment Gateway" as PaymentGateway
+actor "Seller" as Seller
+rectangle "Ecommerce System" {
+  usecase "Write Review" as UC_WriteReview
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Checkout" as UC_Checkout
+  usecase "Make Payment" as UC_MakePayment
+}
+PaymentGateway --> UC_MakePayment
+PaymentGateway --> UC_AddToCart
+PaymentGateway --> UC_BrowseProducts
+Seller --> UC_Checkout
+Seller --> UC_BrowseProducts
+UC_WriteReview ..|> UC_BrowseProducts : <<extend>>
+@enduml

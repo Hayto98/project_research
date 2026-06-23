@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+abstract class Student {
+  #boolean email
+  #double amount
+  +boolean duration
+  #String score
+  +int note
+  +saveNote()
+  +setCreatedat()
+  +updateNote()
+}
+abstract class Enrollment {
+  -String id
+  #int total
+  #String phone
+  +createType()
+}
+interface Schedule {
+  +float createdAt
+  -float total
+  +int id
+  +cancelUpdatedat()
+  +updateNote()
+  +sendScore()
+  +getQuantity()
+}
+class Grade {
+  -int createdAt
+  +float score
+  +float level
+  #int address
+  +updateId()
+}
+class Attendance {
+  #int duration
+  +double price
+  -int type
+  -double phone
+  +getCreatedat()
+  +findNote()
+  +getDescription()
+}
+class Library {
+  +Date price
+  #float total
+  +calculateStatus()
+  +calculateCode()
+  +processScore()
+}
+Schedule ..|> Library
+Attendance --> Library : "1..*"
+Schedule --o Attendance
+Grade ..> Schedule : "*"
+note right of Student : Education domain
+@enduml

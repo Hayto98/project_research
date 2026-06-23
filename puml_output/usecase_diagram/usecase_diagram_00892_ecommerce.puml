@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Admin" as Admin
+rectangle "Ecommerce System" {
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Write Review" as UC_WriteReview
+  usecase "Checkout" as UC_Checkout
+}
+DeliveryService --> UC_Checkout
+DeliveryService --> UC_BrowseProducts
+DeliveryService --> UC_WriteReview
+Admin --> UC_Checkout
+Admin --> UC_BrowseProducts
+UC_Checkout ..> UC_TrackOrder : <<extend>>
+@enduml

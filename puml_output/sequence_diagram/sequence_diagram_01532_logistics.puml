@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+entity "Fleet Manager" as FM
+control "Driver" as D
+participant "Customer" as C
+D -> FM : Update Inventory
+D -> FM : Load Package
+activate FM
+FM --> D : ACK
+deactivate FM
+note over FM : processing load package
+D -> C : Schedule Pickup
+activate C
+C --> D : ACK
+deactivate C
+D --> FM : Assign Route
+activate FM
+FM --> D : ACK
+deactivate FM
+C ->> D : Fuel Vehicle
+C -> D : Deliver Package
+activate D
+D --> C : ACK
+deactivate D
+note over D : processing deliver package
+@enduml

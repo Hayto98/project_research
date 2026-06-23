@@ -1,0 +1,50 @@
+@startuml
+skinparam defaultFontSize 13
+interface Insurance {
+  +boolean status
+  +float address
+  +double updatedAt
+  -Date note
+  #String createdAt
+  +calculateAddress()
+  +sendActive()
+  +saveLevel()
+}
+interface Appointment {
+  -boolean type
+  #int address
+  #float createdAt
+  #boolean duration
+  +validateType()
+}
+class Nurse {
+  #float email
+  +long address
+  -String id
+  +processDescription()
+}
+class Prescription {
+  +Date active
+  +int address
+  #String level
+  +int quantity
+  +calculateName()
+  +updateStatus()
+  +getActive()
+  +sendActive()
+}
+class Hospital {
+  #Date email
+  -int description
+  +int price
+  +setId()
+  +findCode()
+  +setNote()
+  +cancelCode()
+}
+Nurse --* Prescription
+Insurance --> Prescription : "0..1"
+Insurance ..> Nurse : "0..1"
+Appointment --> Hospital : "*"
+note right of Insurance : Healthcare domain
+@enduml

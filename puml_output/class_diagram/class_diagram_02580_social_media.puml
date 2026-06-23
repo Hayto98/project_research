@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+class Notification {
+  #Date note
+  +long id
+  +cancelUpdatedat()
+  +setAmount()
+  +updateDuration()
+  +cancelPrice()
+}
+interface Comment {
+  -boolean code
+  #int updatedAt
+  #int email
+  #float price
+  +validateScore()
+  +createStatus()
+  +saveStatus()
+}
+class User {
+  #boolean updatedAt
+  +double status
+  #Date type
+  +double description
+  +double id
+  +calculateScore()
+}
+interface Group {
+  #int updatedAt
+  +double note
+  #Date level
+  -double description
+  +boolean code
+  +calculateCode()
+}
+class Profile {
+  +double type
+  #long code
+  +validateLevel()
+  +calculateTotal()
+}
+class Report {
+  -boolean address
+  #boolean name
+  -long note
+  -int code
+  +updateNote()
+  +findAddress()
+  +calculateActive()
+}
+class Follower {
+  -String price
+  -String amount
+  +int active
+  +String id
+  +getLevel()
+  +saveLevel()
+}
+Report ..|> Notification
+Group ..> Report : "1..*"
+User --|> Follower
+Comment --o Group
+Profile --* Notification
+note right of Notification : Social Media domain
+@enduml

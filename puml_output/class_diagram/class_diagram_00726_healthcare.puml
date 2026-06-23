@@ -1,0 +1,38 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+interface MedicalRecord {
+  -Date createdAt
+  +double level
+  -int quantity
+  +findUpdatedat()
+  +validateUpdatedat()
+}
+abstract class Treatment {
+  -Date address
+  -Date quantity
+  -double duration
+  -float code
+  -float name
+  +validateTotal()
+  +cancelNote()
+  +saveAddress()
+}
+abstract class Patient {
+  -long phone
+  -long code
+  #String email
+  +cancelAmount()
+}
+class LabTest {
+  -boolean updatedAt
+  -boolean description
+  #String quantity
+  -int total
+  -String type
+  +deleteDuration()
+}
+LabTest --> Patient : "1..*"
+MedicalRecord ..|> Treatment
+note right of MedicalRecord : Healthcare domain
+@enduml

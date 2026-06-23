@@ -1,0 +1,49 @@
+@startuml
+
+abstract class Tracking {
+  -int amount
+  +boolean level
+  #long name
+  +createName()
+  +updatePhone()
+  +updateStatus()
+  +validateScore()
+}
+class Driver {
+  +String phone
+  +long total
+  +String address
+  #long score
+  -long type
+  +setActive()
+}
+class Customer {
+  #int description
+  +Date total
+  +updateLevel()
+  +deleteId()
+  +getPhone()
+}
+abstract class Warehouse {
+  #int createdAt
+  +String phone
+  #double code
+  +float price
+  -double level
+  +findName()
+  +setQuantity()
+  +cancelPrice()
+  +updateEmail()
+}
+abstract class Manifest {
+  -String id
+  #boolean score
+  +findStatus()
+  +createUpdatedat()
+}
+Driver ..> Warehouse : "0..1"
+Customer --* Manifest
+Warehouse --> Tracking : "1..*"
+Manifest ..> Warehouse : "0..1"
+note right of Tracking : Logistics domain
+@enduml

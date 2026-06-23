@@ -1,0 +1,37 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+start
+:Run Lab Test;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Process Insurance Claim;
+:Admit Patient;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Medical Record;
+:Discharge Patient;
+:Examine Patient;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Book Appointment;
+:Issue Prescription;
+stop
+@enduml

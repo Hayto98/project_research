@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class Shelf {
+  #double phone
+  -float address
+  +deleteTotal()
+  +deleteType()
+}
+class Publisher {
+  -long type
+  +long description
+  +Date status
+  +String active
+  +cancelCreatedat()
+  +saveDescription()
+}
+class Fine {
+  #int level
+  #Date score
+  -int email
+  #int price
+  +getPrice()
+}
+interface Librarian {
+  +Date email
+  +Date note
+  #long description
+  +double duration
+  +double address
+  +processScore()
+}
+interface Loan {
+  +Date status
+  -Date type
+  -double price
+  +long name
+  +deleteCode()
+  +setAddress()
+  +createCreatedat()
+}
+Librarian --o Shelf
+Loan --* Fine
+Librarian --* Publisher
+Loan --> Shelf : "1..*"
+note right of Shelf : Library domain
+@enduml

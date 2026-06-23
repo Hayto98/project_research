@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+class Review {
+  +float name
+  +int price
+  -long quantity
+  #String createdAt
+  +processType()
+}
+class Category {
+  -long duration
+  +long description
+  #Date note
+  #Date updatedAt
+  +saveTotal()
+  +processPrice()
+  +cancelStatus()
+}
+abstract class Order {
+  +float status
+  -double type
+  -Date total
+  #String code
+  +sendName()
+  +setPhone()
+}
+class Invoice {
+  -float name
+  #String amount
+  #double id
+  +float type
+  -boolean description
+  +validateStatus()
+}
+class Supplier {
+  -String total
+  +int description
+  -String status
+  -int phone
+  +deleteUpdatedat()
+  +calculateType()
+}
+Supplier --> Category : "1..*"
+Order --|> Invoice
+Invoice --|> Review
+Invoice ..> Category : "*"
+note right of Review : Ecommerce domain
+@enduml

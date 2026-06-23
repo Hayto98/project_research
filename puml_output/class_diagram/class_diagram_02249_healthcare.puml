@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+interface Patient {
+  #double score
+  #Date amount
+  +int total
+  #int name
+  +createEmail()
+  +updateAddress()
+}
+interface MedicalRecord {
+  -Date updatedAt
+  +float type
+  -int name
+  -boolean id
+  +cancelTotal()
+  +cancelId()
+}
+class Nurse {
+  #boolean status
+  +double amount
+  +validateActive()
+  +cancelQuantity()
+  +validateDescription()
+  +processPhone()
+}
+class Diagnosis {
+  #Date phone
+  +long updatedAt
+  +float quantity
+  -long type
+  #float total
+  +calculatePrice()
+}
+abstract class Doctor {
+  +Date description
+  -String duration
+  -double id
+  +findAddress()
+  +processNote()
+  +sendPrice()
+  +findEmail()
+}
+class Treatment {
+  #Date active
+  +double phone
+  #int id
+  +setScore()
+  +processNote()
+}
+class Appointment {
+  -long name
+  #String description
+  #long code
+  -long score
+  #int amount
+  +updateNote()
+  +createAddress()
+}
+Doctor --|> Diagnosis
+MedicalRecord ..> Doctor : "*"
+Nurse ..|> Doctor
+Treatment ..> MedicalRecord : "1..*"
+Treatment --* Patient
+Appointment ..|> Patient
+note right of Patient : Healthcare domain
+@enduml

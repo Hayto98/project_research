@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+interface Teacher {
+  #float score
+  -float name
+  -float createdAt
+  +double updatedAt
+  +updatePrice()
+  +findId()
+}
+class Student {
+  #String note
+  #Date updatedAt
+  -int email
+  +deleteCode()
+  +saveActive()
+}
+abstract class Attendance {
+  +double email
+  -String name
+  +setTotal()
+}
+abstract class Enrollment {
+  -String active
+  -long code
+  +calculateScore()
+}
+class Grade {
+  #String id
+  +int phone
+  #int description
+  -float active
+  -double email
+  +deleteScore()
+  +updateActive()
+}
+Attendance --o Grade
+Student --> Attendance : "1"
+Grade --o Attendance
+Grade ..|> Enrollment
+note right of Teacher : Education domain
+@enduml

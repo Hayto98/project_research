@@ -1,0 +1,30 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+start
+:Share Post;
+:Report Content;
+:Create Post;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Follow User;
+:Comment;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Edit Profile;
+:Like Post;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+stop
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+entity "ATM" as A
+control "Branch Manager" as BM
+participant "Auditor" as A2
+entity "Bank Teller" as BT
+A2 -> BT : Deposit Money
+A --> A2 : Open Account
+activate A2
+A2 --> A : ACK
+deactivate A2
+BM -> A : Pay Bill
+note over A : processing pay bill
+A2 -> BT : Withdraw Cash
+note over BT : processing withdraw cash
+A2 -> BT : Transfer Funds
+BT --> BM : Block Card
+activate BM
+BM --> BT : ACK
+deactivate BM
+@enduml

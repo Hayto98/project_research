@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+[*] --> Completed
+Completed --> Shipped : submit
+Shipped --> Processing : reject
+Shipped : entry / log transfer
+Processing --> OnHold : approve
+Processing : entry / log transfer
+OnHold --> Created : reject
+Created --> Approved : cancel
+Created : entry / log transfer
+Approved --> [*]
+@enduml

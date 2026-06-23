@@ -1,0 +1,19 @@
+@startuml
+skinparam defaultFontSize 11
+actor "Insurance Provider" as IP
+actor "Nurse" as N
+actor "Lab Technician" as LT
+boundary "Patient" as P
+participant "Doctor" as D
+P ->> IP : Admit Patient
+activate IP
+IP --> P : ACK
+deactivate IP
+P --> N : Discharge Patient
+activate N
+N --> P : ACK
+deactivate N
+LT -> IP : Book Appointment
+LT -> N : Run Lab Test
+D ->> P : Update Medical Record
+@enduml

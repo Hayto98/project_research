@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+entity "Delivery Service" as DS
+entity "Admin" as A
+actor "Customer" as C
+DS ->> A : Cancel Order
+activate A
+A --> DS : ACK
+deactivate A
+DS ->> C : Add To Cart
+activate C
+C --> DS : ACK
+deactivate C
+note over C : processing add to cart
+A -> C : Manage Inventory
+A --> C : Write Review
+@enduml

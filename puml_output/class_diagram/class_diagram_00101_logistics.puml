@@ -1,0 +1,58 @@
+@startuml
+skinparam defaultFontSize 11
+class Shipment {
+  #float total
+  #float address
+  +findUpdatedat()
+  +calculateNote()
+  +processNote()
+}
+class Depot {
+  #boolean active
+  #String amount
+  +updateName()
+  +calculateId()
+  +sendTotal()
+}
+class Manifest {
+  -float updatedAt
+  +Date price
+  -float duration
+  +boolean status
+  +int id
+  +calculateAmount()
+}
+interface Inventory {
+  +double price
+  +long description
+  +float duration
+  #double amount
+  +Date quantity
+  +deleteTotal()
+  +deleteAmount()
+  +saveAddress()
+}
+interface FuelLog {
+  #boolean address
+  -float code
+  #long quantity
+  +setName()
+}
+class Package {
+  -String active
+  #double price
+  +getStatus()
+}
+class Driver {
+  +double id
+  +Date level
+  +double quantity
+  +deleteCode()
+  +cancelScore()
+  +validatePhone()
+  +setId()
+}
+Shipment --o Manifest
+Depot ..|> Package
+note right of Shipment : Logistics domain
+@enduml

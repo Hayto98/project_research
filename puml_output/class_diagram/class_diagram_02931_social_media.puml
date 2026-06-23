@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+class Profile {
+  +float level
+  -String email
+  +processPhone()
+  +findCode()
+}
+class Message {
+  +float total
+  +double createdAt
+  #Date duration
+  +sendLevel()
+  +setActive()
+  +getName()
+  +createId()
+}
+abstract class User {
+  +int status
+  +long id
+  -long email
+  +updateLevel()
+}
+interface Hashtag {
+  -int status
+  +boolean id
+  -double price
+  +double level
+  +int active
+  +processCode()
+  +processScore()
+}
+class Post {
+  -boolean id
+  -String createdAt
+  +Date address
+  -String amount
+  +updatePrice()
+}
+abstract class Comment {
+  +double address
+  +String score
+  +int status
+  +findTotal()
+  +validateEmail()
+  +deletePhone()
+}
+abstract class Notification {
+  #String code
+  -int price
+  #long status
+  +updateDescription()
+}
+Post --> Message : "1"
+Comment --o Message
+Notification ..|> Comment
+Message ..> User : "1..*"
+Post ..|> Comment
+note right of Profile : Social Media domain
+@enduml

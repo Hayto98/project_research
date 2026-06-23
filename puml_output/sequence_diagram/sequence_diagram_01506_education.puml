@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+boundary "Parent" as P
+boundary "Student" as S
+control "Registrar" as R
+control "Teacher" as T
+participant "Admin" as A
+P ->> S : View Schedule
+note over S : processing view schedule
+P ->> A : Submit Assignment
+T --> R : Borrow Book
+note over R : processing borrow book
+R -> A : Grade Exam
+activate A
+A --> R : ACK
+deactivate A
+note over A : processing grade exam
+T -> A : Issue Certificate
+A -> T : Enroll Course
+note over T : processing enroll course
+S --> R : Take Attendance
+@enduml

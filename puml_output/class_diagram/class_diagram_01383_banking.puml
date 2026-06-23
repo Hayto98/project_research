@@ -1,0 +1,36 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+abstract class Teller {
+  +float type
+  -boolean id
+  -float duration
+  +double level
+  #long amount
+  +setType()
+  +cancelDuration()
+}
+class Customer {
+  +int price
+  +long score
+  +sendStatus()
+  +validatePhone()
+  +sendDuration()
+}
+class Statement {
+  -String level
+  #long active
+  +double id
+  +validateDuration()
+}
+abstract class Interest {
+  +long total
+  -long name
+  +updateType()
+  +validateActive()
+}
+Interest --> Customer : "*"
+Statement ..> Customer : "1..*"
+Teller --|> Statement
+note right of Teller : Banking domain
+@enduml

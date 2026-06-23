@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+[*] --> Reviewed
+Reviewed --> Cancelled : process
+Cancelled --> Rejected : reject
+Rejected --> OnHold : approve
+OnHold --> Active : update
+Active --> Closed : confirm
+Active : entry / log teller
+Cancelled --> Reviewed : revert
+Closed --> [*]
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+skinparam defaultFontSize 13
+class Invoice {
+  -double note
+  +Date address
+  +boolean amount
+  +sendCode()
+}
+class Restaurant {
+  -String note
+  #float phone
+  #int active
+  +float amount
+  -String score
+  +findType()
+  +findAmount()
+}
+abstract class Reservation {
+  #boolean level
+  +long address
+  #float price
+  +findCreatedat()
+}
+interface Guest {
+  -long active
+  +int note
+  -double level
+  -String description
+  +validateQuantity()
+  +updateScore()
+  +processPhone()
+}
+Restaurant --> Guest : "1..*"
+Guest ..|> Invoice
+note right of Invoice : Hotel domain
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+control "Manager" as M
+control "Guest" as G
+boundary "Chef" as C
+G --> C : Check Out
+activate C
+C --> G : ACK
+deactivate C
+M ->> C : Request Service
+activate C
+C --> M : ACK
+deactivate C
+M ->> C : Clean Room
+activate C
+C --> M : ACK
+deactivate C
+G --> C : Order Room Service
+M ->> C : Cancel Reservation
+G --> C : Check In
+note over C : processing check in
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+start
+:Return Book;
+:Renew Loan;
+:Reserve Book;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Borrow Book;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Pay Fine;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Search Catalog;
+stop
+@enduml

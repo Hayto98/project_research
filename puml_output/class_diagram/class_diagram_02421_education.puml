@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+interface Department {
+  -double name
+  -String note
+  +long price
+  +validateName()
+  +deleteDuration()
+}
+class Student {
+  #Date email
+  #double type
+  +double active
+  +setStatus()
+  +validateScore()
+  +cancelPhone()
+}
+interface Grade {
+  -boolean type
+  -Date level
+  +Date amount
+  -double code
+  -float score
+  +deleteCode()
+}
+class Teacher {
+  +float updatedAt
+  -int code
+  +double phone
+  +boolean email
+  +deleteName()
+  +cancelPrice()
+}
+class Assignment {
+  #Date score
+  -float createdAt
+  #String level
+  +String status
+  -double name
+  +processQuantity()
+  +createAmount()
+}
+abstract class Course {
+  #float updatedAt
+  -int email
+  -double name
+  +deleteDescription()
+  +getName()
+  +updateLevel()
+}
+abstract class Attendance {
+  -boolean updatedAt
+  +double note
+  #float quantity
+  +int type
+  +findAddress()
+}
+Assignment --* Department
+Department --o Course
+Course --|> Department
+Teacher ..|> Course
+Attendance ..> Course : "0..1"
+note right of Department : Education domain
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+participant "Customer" as C
+actor "Driver" as D
+actor "Warehouse Staff" as WS
+boundary "Fleet Manager" as FM
+FM -> C : Load Package
+FM -> C : Track Shipment
+activate C
+C --> FM : ACK
+deactivate C
+note over C : processing track shipment
+C -> D : Assign Route
+activate D
+D --> C : ACK
+deactivate D
+C --> WS : Deliver Package
+activate WS
+WS --> C : ACK
+deactivate WS
+note over WS : processing deliver package
+D ->> C : Update Inventory
+activate C
+C --> D : ACK
+deactivate C
+@enduml

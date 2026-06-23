@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+abstract class Follower {
+  #float type
+  #Date score
+  +processScore()
+}
+class Hashtag {
+  #boolean level
+  #double type
+  -String code
+  #double quantity
+  +validateQuantity()
+  +sendNote()
+  +sendQuantity()
+  +calculateEmail()
+}
+abstract class Comment {
+  -boolean amount
+  #double active
+  +float name
+  +cancelLevel()
+  +cancelScore()
+}
+class Notification {
+  +double phone
+  -double name
+  -int active
+  #double type
+  +deleteCode()
+}
+class Report {
+  -int status
+  #double amount
+  #double price
+  +updateNote()
+  +processEmail()
+}
+Comment --o Notification
+Notification --|> Hashtag
+Notification ..> Follower : "1..*"
+note right of Follower : Social Media domain
+@enduml

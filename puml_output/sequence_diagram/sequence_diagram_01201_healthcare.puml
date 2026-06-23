@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+boundary "Receptionist" as R
+control "Lab Technician" as LT
+actor "Patient" as P
+LT --> P : Process Insurance Claim
+activate P
+P --> LT : ACK
+deactivate P
+LT ->> R : Issue Prescription
+R ->> LT : Discharge Patient
+LT --> R : Update Medical Record
+P ->> R : Book Appointment
+note over R : processing book appointment
+@enduml

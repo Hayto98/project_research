@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+control "Advertiser" as A
+participant "User" as U
+actor "Moderator" as M
+A ->> M : Share Post
+note over M : processing share post
+A --> U : Like Post
+activate U
+U --> A : ACK
+deactivate U
+A ->> U : Comment
+M --> A : Send Message
+activate A
+A --> M : ACK
+deactivate A
+@enduml

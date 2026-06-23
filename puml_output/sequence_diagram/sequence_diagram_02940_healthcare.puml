@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+boundary "Receptionist" as R
+control "Patient" as P
+boundary "Nurse" as N
+P ->> R : Update Medical Record
+activate R
+R --> P : ACK
+deactivate R
+P -> R : Examine Patient
+N -> R : Issue Prescription
+activate R
+R --> N : ACK
+deactivate R
+N --> P : Process Insurance Claim
+@enduml

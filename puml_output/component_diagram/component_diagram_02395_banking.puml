@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Deposit Service" as C_DepositService
+component "Branch Service" as C_BranchService
+component "Customer Service" as C_CustomerService
+component "Beneficiary Service" as C_BeneficiaryService
+database "Banking DB" as DB_banking
+C_DepositService --> DB_banking
+C_BranchService --> DB_banking
+C_DepositService ..> C_BranchService : MQ
+C_BranchService ..> C_CustomerService : HTTP
+@enduml

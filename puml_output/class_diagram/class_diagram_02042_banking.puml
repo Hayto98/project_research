@@ -1,0 +1,50 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class Transaction {
+  -boolean status
+  #long type
+  +String amount
+  +processUpdatedat()
+}
+class Beneficiary {
+  +double active
+  #int createdAt
+  -String note
+  #String description
+  +updateId()
+  +createDescription()
+  +processActive()
+  +cancelDuration()
+}
+class Account {
+  #long amount
+  +int updatedAt
+  +sendNote()
+}
+class Withdrawal {
+  -int quantity
+  -boolean amount
+  #double email
+  #Date phone
+  -long id
+  +cancelType()
+  +getUpdatedat()
+  +cancelDuration()
+  +getScore()
+}
+class Card {
+  -String status
+  +String score
+  +createName()
+  +createName()
+  +createNote()
+  +createName()
+}
+Transaction ..|> Card
+Transaction ..> Beneficiary : "1..*"
+Card ..|> Withdrawal
+Beneficiary ..> Account : "1"
+note right of Transaction : Banking domain
+@enduml

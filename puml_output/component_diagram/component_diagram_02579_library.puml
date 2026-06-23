@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+component "Loan Service" as C_LoanService
+component "Librarian Service" as C_LibrarianService
+component "Reservation Service" as C_ReservationService
+component "Renewal Service" as C_RenewalService
+component "Author Service" as C_AuthorService
+component "Branch Service" as C_BranchService
+component "Publisher Service" as C_PublisherService
+database "Library DB" as DB_library
+C_LoanService --> DB_library
+C_ReservationService --> DB_library
+C_AuthorService --> DB_library
+C_BranchService --> DB_library
+C_PublisherService --> DB_library
+C_ReservationService ..> C_LibrarianService : MQ
+C_RenewalService ..> C_LoanService : MQ
+C_LibrarianService ..> C_BranchService : HTTP
+C_LoanService ..> C_RenewalService : MQ
+C_ReservationService ..> C_LoanService : REST
+@enduml

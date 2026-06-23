@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+class Payment {
+  +Date price
+  #Date updatedAt
+  #double code
+  -int quantity
+  +calculateUpdatedat()
+  +saveEmail()
+  +cancelActive()
+}
+interface Review {
+  #long id
+  -String description
+  +sendStatus()
+  +cancelStatus()
+}
+abstract class Warehouse {
+  -float description
+  #long score
+  -boolean level
+  +saveCode()
+}
+interface Return {
+  +long active
+  -Date duration
+  +cancelDescription()
+}
+class Customer {
+  #int level
+  #long name
+  +boolean id
+  +updateAmount()
+  +getLevel()
+  +getType()
+}
+class Supplier {
+  +long active
+  -Date quantity
+  -double status
+  #double level
+  +deleteActive()
+  +setScore()
+  +findName()
+}
+Review --* Payment
+Payment --> Return : "*"
+Supplier ..|> Payment
+Return --* Customer
+note right of Payment : Ecommerce domain
+@enduml

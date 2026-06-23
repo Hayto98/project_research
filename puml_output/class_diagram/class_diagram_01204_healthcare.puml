@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+interface Nurse {
+  #Date duration
+  -long id
+  +int note
+  #double price
+  +validateUpdatedat()
+  +validateDuration()
+}
+class Insurance {
+  -String type
+  -String updatedAt
+  -String amount
+  +updateAmount()
+  +saveCode()
+}
+interface Prescription {
+  -long updatedAt
+  -boolean price
+  -int duration
+  +cancelId()
+  +validateId()
+  +findType()
+  +processCode()
+}
+class Hospital {
+  #long code
+  +double note
+  #Date score
+  -long email
+  +updateLevel()
+  +cancelEmail()
+}
+Hospital --o Prescription
+Insurance --> Hospital : "0..1"
+Insurance --o Prescription
+note right of Nurse : Healthcare domain
+@enduml

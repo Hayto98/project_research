@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+component "Comment Service" as C_CommentService
+component "Like Service" as C_LikeService
+component "User Service" as C_UserService
+component "Hashtag Service" as C_HashtagService
+component "Message Service" as C_MessageService
+component "Post Service" as C_PostService
+database "Social Media DB" as DB_social_media
+C_CommentService --> DB_social_media
+C_LikeService --> DB_social_media
+C_UserService --> DB_social_media
+C_MessageService --> DB_social_media
+C_PostService --> DB_social_media
+C_CommentService ..> C_PostService : MQ
+C_LikeService ..> C_CommentService : MQ
+@enduml

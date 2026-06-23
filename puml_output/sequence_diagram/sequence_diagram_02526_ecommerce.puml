@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+control "Seller" as S
+entity "Customer" as C
+entity "Admin" as A
+control "Delivery Service" as DS
+boundary "Payment Gateway" as PG
+C ->> DS : Browse Products
+PG --> A : Track Order
+note over A : processing track order
+S -> DS : Cancel Order
+activate DS
+DS --> S : ACK
+deactivate DS
+PG -> A : Write Review
+activate A
+A --> PG : ACK
+deactivate A
+@enduml

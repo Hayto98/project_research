@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+class Shipment {
+  -String address
+  +long updatedAt
+  #Date note
+  -double duration
+  +float total
+  +deleteStatus()
+  +findStatus()
+}
+class Category {
+  -long score
+  #long quantity
+  +String status
+  +deleteName()
+  +createTotal()
+}
+interface Customer {
+  -int price
+  #long amount
+  +getTotal()
+}
+class Return {
+  #float level
+  #int code
+  +long updatedAt
+  -Date status
+  #long id
+  +saveTotal()
+}
+class Review {
+  +boolean price
+  -Date description
+  +int updatedAt
+  +setLevel()
+  +updatePrice()
+  +cancelQuantity()
+  +cancelNote()
+}
+class Order {
+  -String address
+  -int amount
+  +long score
+  -long type
+  +double createdAt
+  +saveNote()
+}
+abstract class Warehouse {
+  +String total
+  +double note
+  +String description
+  #String name
+  +getQuantity()
+  +validateLevel()
+  +findDescription()
+}
+Customer --* Return
+Shipment ..> Customer : "0..1"
+note right of Shipment : Ecommerce domain
+@enduml

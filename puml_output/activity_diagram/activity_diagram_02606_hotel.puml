@@ -1,0 +1,39 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Clean Room;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Order Room Service;
+:Book Room;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Request Service;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Cancel Reservation;
+:Process Payment;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Check In;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+stop
+@enduml

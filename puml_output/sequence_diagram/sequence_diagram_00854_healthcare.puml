@@ -1,0 +1,22 @@
+@startuml
+
+actor "Patient" as P
+actor "Insurance Provider" as IP
+participant "Nurse" as N
+entity "Doctor" as D
+actor "Lab Technician" as LT
+P -> LT : Discharge Patient
+N --> IP : Book Appointment
+activate IP
+IP --> N : ACK
+deactivate IP
+note over IP : processing book appointment
+IP -> N : Process Insurance Claim
+activate N
+N --> IP : ACK
+deactivate N
+N --> LT : Examine Patient
+activate LT
+LT --> N : ACK
+deactivate LT
+@enduml

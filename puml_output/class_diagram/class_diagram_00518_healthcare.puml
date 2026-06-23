@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+class Hospital {
+  -Date createdAt
+  -float status
+  +saveStatus()
+  +deleteDescription()
+  +getAddress()
+  +setDuration()
+}
+abstract class Ward {
+  #float total
+  #double description
+  -Date level
+  #String active
+  +deleteDuration()
+  +cancelAddress()
+  +saveActive()
+}
+interface Patient {
+  +double id
+  +long amount
+  +validateScore()
+}
+class Prescription {
+  -long level
+  -Date code
+  +updateDescription()
+  +sendPrice()
+}
+interface Appointment {
+  #long description
+  #long phone
+  +cancelActive()
+  +cancelScore()
+  +sendActive()
+  +updateLevel()
+}
+Appointment --o Prescription
+Ward --* Patient
+Appointment ..|> Patient
+Hospital --|> Ward
+note right of Hospital : Healthcare domain
+@enduml

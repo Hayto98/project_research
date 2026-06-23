@@ -1,0 +1,74 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+interface Payment {
+  #boolean note
+  #Date price
+  -int description
+  -long email
+  +cancelPhone()
+  +getUpdatedat()
+  +calculateTotal()
+  +createStatus()
+}
+class Wishlist {
+  -long name
+  #double active
+  #boolean total
+  +saveQuantity()
+  +calculateActive()
+}
+class Customer {
+  +boolean updatedAt
+  #double price
+  +setStatus()
+  +createEmail()
+  +createAmount()
+  +updateDescription()
+}
+class Category {
+  +double quantity
+  #Date amount
+  +double description
+  +long note
+  -Date active
+  +createActive()
+  +deleteNote()
+  +createTotal()
+  +getLevel()
+}
+class Return {
+  #int updatedAt
+  #Date amount
+  #boolean email
+  +float address
+  -boolean phone
+  +processNote()
+  +getCode()
+  +cancelDescription()
+  +createCode()
+}
+class Review {
+  #Date address
+  #int amount
+  -float id
+  +boolean code
+  +updateTotal()
+  +updateCode()
+}
+interface Shipment {
+  #int level
+  #int code
+  #boolean description
+  #long address
+  -boolean createdAt
+  +processCreatedat()
+  +updatePhone()
+  +getScore()
+  +updateDuration()
+}
+Category ..> Wishlist : "0..1"
+Category --|> Shipment
+Wishlist --* Payment
+note right of Payment : Ecommerce domain
+@enduml

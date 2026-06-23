@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+abstract class Housekeeping {
+  -int note
+  #long createdAt
+  +long quantity
+  -long email
+  +createCode()
+  +saveLevel()
+  +setAmount()
+}
+abstract class CheckIn {
+  +float active
+  -double updatedAt
+  -double address
+  #String description
+  +saveUpdatedat()
+  +setStatus()
+  +createAmount()
+}
+interface Room {
+  #double address
+  +long total
+  +processTotal()
+  +getNote()
+}
+interface Guest {
+  #float note
+  +long price
+  +validateEmail()
+  +createAmount()
+  +calculateUpdatedat()
+  +saveEmail()
+}
+Guest --> Room : "0..1"
+Housekeeping ..> CheckIn : "1"
+note right of Housekeeping : Hotel domain
+@enduml

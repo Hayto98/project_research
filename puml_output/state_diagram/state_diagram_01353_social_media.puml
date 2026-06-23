@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+[*] --> Active
+Active --> Processing : update
+Active : entry / log follower
+Processing --> Reviewed : submit
+Reviewed --> Created : update
+Created --> Pending : confirm
+Created : entry / log follower
+Pending --> Closed : update
+Active --> Pending : revert
+Closed --> [*]
+@enduml

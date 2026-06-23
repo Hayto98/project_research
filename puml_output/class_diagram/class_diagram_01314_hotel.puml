@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+abstract class CheckIn {
+  -float quantity
+  #long updatedAt
+  +Date level
+  +int type
+  +processName()
+}
+abstract class Restaurant {
+  +double phone
+  -boolean code
+  +int active
+  +boolean name
+  +sendQuantity()
+  +createTotal()
+  +processType()
+}
+abstract class Payment {
+  #String level
+  -double price
+  +processNote()
+  +deleteCode()
+  +updateId()
+}
+class Booking {
+  +long quantity
+  #float id
+  +processQuantity()
+  +findNote()
+}
+Payment ..> CheckIn : "*"
+Payment ..> Restaurant : "*"
+CheckIn ..> Booking : "*"
+note right of CheckIn : Hotel domain
+@enduml

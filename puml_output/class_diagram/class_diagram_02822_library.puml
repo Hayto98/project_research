@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class Author {
+  +double duration
+  -Date description
+  +boolean note
+  +calculateType()
+  +cancelActive()
+  +findUpdatedat()
+}
+interface Librarian {
+  -Date description
+  #boolean score
+  +sendEmail()
+  +validateDescription()
+  +sendId()
+  +updateActive()
+}
+abstract class Loan {
+  -double amount
+  #float level
+  -double description
+  #long address
+  +cancelUpdatedat()
+  +getCode()
+}
+class Renewal {
+  #Date quantity
+  -int code
+  #int description
+  #Date email
+  +validateActive()
+  +getPrice()
+  +createAmount()
+  +findPhone()
+}
+class Catalog {
+  #Date code
+  #double type
+  -int description
+  +cancelDuration()
+  +setPrice()
+}
+abstract class Reservation {
+  -long quantity
+  #long updatedAt
+  #float amount
+  #String active
+  -Date status
+  +deleteId()
+  +cancelAmount()
+  +getDescription()
+}
+Loan --* Catalog
+Librarian --> Author : "0..1"
+Catalog --* Author
+Loan --> Librarian : "1"
+Renewal --|> Loan
+note right of Author : Library domain
+@enduml

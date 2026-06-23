@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Department Service" as C_DepartmentService
+component "Assignment Service" as C_AssignmentService
+component "Schedule Service" as C_ScheduleService
+component "Exam Service" as C_ExamService
+database "Education DB" as DB_education
+C_ScheduleService --> DB_education
+C_ExamService --> DB_education
+C_DepartmentService ..> C_ExamService : HTTP
+C_ScheduleService ..> C_ExamService : MQ
+@enduml

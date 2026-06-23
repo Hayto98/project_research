@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+[*] --> Processing
+Processing --> Draft : cancel
+Processing : entry / log attendance
+Draft --> Pending : update
+Draft : entry / log attendance
+Pending --> OnHold : approve
+OnHold --> Delivered : cancel
+Delivered --> Reviewed : cancel
+Pending --> Processing : revert
+Reviewed --> [*]
+@enduml

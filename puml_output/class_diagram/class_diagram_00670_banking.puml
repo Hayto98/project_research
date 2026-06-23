@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+class Withdrawal {
+  +long quantity
+  +boolean address
+  +boolean score
+  +updatePhone()
+  +deleteType()
+}
+abstract class Account {
+  -boolean description
+  #int name
+  +updateCreatedat()
+  +createPhone()
+  +setAddress()
+}
+class Interest {
+  +int type
+  #int duration
+  +saveAddress()
+  +calculateActive()
+}
+interface Customer {
+  #double type
+  #double status
+  +saveStatus()
+  +deleteEmail()
+  +setEmail()
+}
+class Card {
+  -long type
+  #long address
+  #long createdAt
+  +String email
+  +findPrice()
+  +createLevel()
+  +cancelCode()
+}
+interface Loan {
+  #float address
+  -Date level
+  #String price
+  #int name
+  #long quantity
+  +cancelAddress()
+  +saveId()
+}
+Loan --o Customer
+Loan --|> Withdrawal
+Interest --* Customer
+Customer --> Account : "1..*"
+Withdrawal ..|> Loan
+note right of Withdrawal : Banking domain
+@enduml

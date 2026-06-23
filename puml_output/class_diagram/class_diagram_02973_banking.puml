@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+interface Account {
+  #String name
+  #float amount
+  -Date quantity
+  +processDescription()
+  +findCode()
+}
+interface Beneficiary {
+  -Date createdAt
+  +long email
+  +findNote()
+  +savePrice()
+  +validateActive()
+  +deletePhone()
+}
+interface Transfer {
+  #String createdAt
+  +float price
+  #long status
+  +float amount
+  +calculateNote()
+  +getCreatedat()
+}
+class Deposit {
+  +Date active
+  +double id
+  #String description
+  +deletePrice()
+  +updateNote()
+  +getType()
+}
+class Customer {
+  -float score
+  +Date updatedAt
+  +calculateStatus()
+  +calculateAddress()
+  +validateCode()
+}
+Beneficiary ..|> Deposit
+Transfer --> Beneficiary : "1..*"
+Account --> Beneficiary : "*"
+Account --|> Customer
+note right of Account : Banking domain
+@enduml

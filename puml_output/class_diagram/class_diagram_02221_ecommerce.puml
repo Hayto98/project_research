@@ -1,0 +1,54 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+abstract class Order {
+  +int updatedAt
+  #int status
+  +updateAmount()
+  +getName()
+}
+abstract class Coupon {
+  +Date type
+  #double total
+  #long description
+  +validateAddress()
+  +processLevel()
+  +updateActive()
+}
+class Shipment {
+  -long active
+  #boolean status
+  -long phone
+  #double name
+  -int address
+  +calculateScore()
+}
+abstract class Wishlist {
+  -String level
+  #String phone
+  -String name
+  -boolean price
+  +validateScore()
+  +processPhone()
+  +processDescription()
+}
+interface Invoice {
+  #double type
+  #Date level
+  +int description
+  +getId()
+  +processCreatedat()
+}
+interface Category {
+  #double address
+  +int price
+  +createLevel()
+}
+Shipment --o Wishlist
+Category --|> Shipment
+Order ..> Invoice : "1"
+Shipment --> Invoice : "*"
+Coupon --o Shipment
+note right of Order : Ecommerce domain
+@enduml

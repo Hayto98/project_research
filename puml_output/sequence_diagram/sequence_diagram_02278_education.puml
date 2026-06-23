@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+actor "Registrar" as R
+participant "Teacher" as T
+participant "Student" as S
+boundary "Librarian" as L
+L ->> T : Grade Exam
+note over T : processing grade exam
+R -> L : Take Attendance
+activate L
+L --> R : ACK
+deactivate L
+R --> T : Borrow Book
+L ->> R : Enroll Course
+R -> T : Submit Assignment
+activate T
+T --> R : ACK
+deactivate T
+@enduml

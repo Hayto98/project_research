@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+class Beneficiary {
+  #float duration
+  #int id
+  +getCreatedat()
+  +createAmount()
+  +getAmount()
+  +cancelAmount()
+}
+class Statement {
+  -String amount
+  +String updatedAt
+  #double status
+  #double quantity
+  +findEmail()
+}
+abstract class Transfer {
+  -double quantity
+  +int amount
+  #float email
+  #float total
+  +long type
+  +validateNote()
+  +findAmount()
+  +calculateTotal()
+  +deleteAmount()
+}
+abstract class Teller {
+  #boolean description
+  -float quantity
+  +deleteAddress()
+  +updateDescription()
+}
+class Withdrawal {
+  +int name
+  +double id
+  +sendQuantity()
+}
+interface Interest {
+  -boolean active
+  -boolean address
+  +processActive()
+  +calculateDescription()
+}
+class Deposit {
+  #boolean createdAt
+  -double type
+  #Date description
+  +validateScore()
+  +cancelLevel()
+  +updatePhone()
+}
+Beneficiary ..> Statement : "0..1"
+Interest ..> Statement : "1"
+Withdrawal --> Interest : "0..1"
+note right of Beneficiary : Banking domain
+@enduml

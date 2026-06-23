@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+class Billing {
+  #int status
+  #long total
+  +Date duration
+  +updateScore()
+  +deleteEmail()
+  +sendNote()
+  +createAmount()
+}
+class Treatment {
+  #String code
+  -String status
+  -long name
+  +float email
+  +createPrice()
+  +savePrice()
+  +updateLevel()
+  +cancelTotal()
+}
+interface Patient {
+  #double updatedAt
+  -int score
+  #String id
+  #int note
+  +int duration
+  +deleteScore()
+}
+class Hospital {
+  -long price
+  #float total
+  +String name
+  -boolean address
+  -long type
+  +validateDescription()
+  +setEmail()
+  +deleteTotal()
+}
+interface Prescription {
+  +long status
+  #int price
+  +double id
+  #Date note
+  -long total
+  +validatePrice()
+}
+Billing --* Prescription
+Hospital --|> Treatment
+Patient --> Treatment : "1..*"
+note right of Billing : Healthcare domain
+@enduml

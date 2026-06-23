@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+component "Transfer Service" as C_TransferService
+component "Withdrawal Service" as C_WithdrawalService
+component "Teller Service" as C_TellerService
+component "Customer Service" as C_CustomerService
+component "Account Service" as C_AccountService
+database "Banking DB" as DB_banking
+C_TransferService --> DB_banking
+C_TellerService --> DB_banking
+C_CustomerService --> DB_banking
+C_AccountService --> DB_banking
+C_TellerService ..> C_WithdrawalService : HTTP
+C_TellerService ..> C_WithdrawalService : gRPC
+@enduml

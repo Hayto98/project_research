@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+abstract class Warehouse {
+  -String name
+  #float createdAt
+  #float price
+  #float amount
+  +saveScore()
+  +deleteTotal()
+  +sendStatus()
+  +saveCreatedat()
+}
+class Invoice {
+  +String active
+  +boolean total
+  -Date description
+  #double phone
+  -int status
+  +saveCreatedat()
+  +setScore()
+}
+class Shipment {
+  #long total
+  #Date address
+  #double level
+  +cancelPhone()
+  +deleteTotal()
+  +validateQuantity()
+  +createLevel()
+}
+abstract class Product {
+  +boolean amount
+  #int note
+  +calculatePhone()
+}
+abstract class Coupon {
+  -boolean updatedAt
+  #double level
+  +cancelPhone()
+  +findLevel()
+}
+class Cart {
+  #String phone
+  -float updatedAt
+  +calculateType()
+  +validateCode()
+  +createDescription()
+}
+Coupon --> Invoice : "1"
+Product --> Warehouse : "1"
+Warehouse --* Product
+Invoice --> Coupon : "*"
+note right of Warehouse : Ecommerce domain
+@enduml

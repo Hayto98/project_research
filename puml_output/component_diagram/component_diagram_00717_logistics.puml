@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Route Service" as C_RouteService
+component "Shipment Service" as C_ShipmentService
+component "Depot Service" as C_DepotService
+component "Customer Service" as C_CustomerService
+database "Logistics DB" as DB_logistics
+C_DeliveryNoteService --> DB_logistics
+C_RouteService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_DepotService --> DB_logistics
+C_CustomerService --> DB_logistics
+C_RouteService ..> C_CustomerService : gRPC
+C_ShipmentService ..> C_DepotService : REST
+C_DeliveryNoteService ..> C_CustomerService : HTTP
+@enduml

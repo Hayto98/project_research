@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+component "Booking Service" as C_BookingService
+component "CheckIn Service" as C_CheckInService
+component "CheckOut Service" as C_CheckOutService
+component "Room Service" as C_RoomService
+component "Reservation Service" as C_ReservationService
+component "Service Service" as C_ServiceService
+database "Hotel DB" as DB_hotel
+C_BookingService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_RoomService --> DB_hotel
+C_ServiceService --> DB_hotel
+C_CheckInService ..> C_CheckOutService : REST
+C_ReservationService ..> C_RoomService : HTTP
+@enduml

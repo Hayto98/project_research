@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+[*] --> Active
+Active --> Delivered : reject
+Active : entry / log album
+Delivered --> Completed : update
+Delivered : entry / log album
+Completed --> Closed : submit
+Closed --> OnHold : submit
+Closed : entry / log album
+OnHold --> Archived : update
+Archived --> [*]
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing true
+component "Report Service" as C_ReportService
+component "Hashtag Service" as C_HashtagService
+component "User Service" as C_UserService
+component "Group Service" as C_GroupService
+component "Profile Service" as C_ProfileService
+component "Notification Service" as C_NotificationService
+component "Album Service" as C_AlbumService
+database "Social Media DB" as DB_social_media
+C_HashtagService --> DB_social_media
+C_UserService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_ProfileService ..> C_NotificationService : REST
+C_NotificationService ..> C_HashtagService : gRPC
+C_HashtagService ..> C_AlbumService : REST
+C_HashtagService ..> C_ReportService : MQ
+C_UserService ..> C_AlbumService : REST
+@enduml

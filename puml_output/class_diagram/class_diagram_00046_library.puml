@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing true
+class Member {
+  -boolean status
+  +float type
+  +saveEmail()
+}
+class Publisher {
+  #String email
+  #float note
+  +processPrice()
+  +processCode()
+  +cancelCode()
+}
+class Renewal {
+  +Date amount
+  #Date price
+  #boolean code
+  +float quantity
+  +setScore()
+}
+class Reservation {
+  -boolean score
+  -double name
+  -Date active
+  #double type
+  +cancelActive()
+  +calculateCreatedat()
+  +sendDescription()
+  +validatePrice()
+}
+interface Book {
+  #long id
+  #long price
+  +boolean createdAt
+  -float address
+  +getActive()
+  +createActive()
+}
+Reservation --> Renewal : "0..1"
+Renewal ..> Book : "1..*"
+note right of Member : Library domain
+@enduml

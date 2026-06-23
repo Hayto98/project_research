@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 13
+boundary "Nurse" as N
+actor "Receptionist" as R
+entity "Lab Technician" as LT
+LT --> N : Admit Patient
+R ->> N : Issue Prescription
+R ->> N : Discharge Patient
+activate N
+N --> R : ACK
+deactivate N
+note over N : processing discharge patient
+N ->> R : Update Medical Record
+activate R
+R --> N : ACK
+deactivate R
+@enduml

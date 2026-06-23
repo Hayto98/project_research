@@ -1,0 +1,59 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+interface Enrollment {
+  -String email
+  +boolean duration
+  +boolean updatedAt
+  +saveDuration()
+  +saveActive()
+  +calculateNote()
+  +calculateActive()
+}
+class Book {
+  #double updatedAt
+  +boolean type
+  -double active
+  #String price
+  +calculateScore()
+  +processUpdatedat()
+  +saveAddress()
+}
+class Assignment {
+  -boolean amount
+  #long id
+  -long name
+  +findEmail()
+  +saveEmail()
+  +calculateType()
+  +saveCreatedat()
+}
+class Grade {
+  -Date createdAt
+  #Date id
+  -int level
+  +setCode()
+}
+class Classroom {
+  #long name
+  #long status
+  +sendId()
+  +processId()
+  +validateDescription()
+}
+abstract class Exam {
+  -String id
+  #long status
+  #String note
+  +int address
+  +double createdAt
+  +updateId()
+  +calculateUpdatedat()
+  +getDescription()
+  +sendDuration()
+}
+Classroom ..|> Book
+Grade ..|> Enrollment
+Exam --> Grade : "*"
+note right of Enrollment : Education domain
+@enduml

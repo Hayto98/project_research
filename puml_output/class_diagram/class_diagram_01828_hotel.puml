@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+abstract class Payment {
+  -Date address
+  +String name
+  -float type
+  -boolean duration
+  -boolean active
+  +sendTotal()
+  +validateAmount()
+  +saveTotal()
+}
+class Booking {
+  #String level
+  -boolean id
+  #int note
+  #float amount
+  -double score
+  +saveActive()
+  +sendDuration()
+  +updateId()
+  +getStatus()
+}
+class Room {
+  #long type
+  -long email
+  #String createdAt
+  +saveCreatedat()
+  +saveNote()
+  +processUpdatedat()
+  +findQuantity()
+}
+class Invoice {
+  -double amount
+  -long quantity
+  #String address
+  +sendDescription()
+}
+class Amenity {
+  -int amount
+  +Date note
+  +Date updatedAt
+  +calculateAddress()
+  +findCode()
+}
+class Staff {
+  +int status
+  #Date address
+  #boolean createdAt
+  #long email
+  +validateNote()
+  +savePhone()
+  +validateDuration()
+  +validateActive()
+}
+Amenity --* Room
+Booking --|> Amenity
+Room --* Invoice
+note right of Payment : Hotel domain
+@enduml

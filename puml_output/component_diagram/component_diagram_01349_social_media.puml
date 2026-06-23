@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Message Service" as C_MessageService
+component "Group Service" as C_GroupService
+component "Comment Service" as C_CommentService
+component "Follower Service" as C_FollowerService
+component "Profile Service" as C_ProfileService
+component "Post Service" as C_PostService
+database "Social Media DB" as DB_social_media
+C_MessageService --> DB_social_media
+C_GroupService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_MessageService ..> C_PostService : REST
+C_CommentService ..> C_FollowerService : HTTP
+C_MessageService ..> C_GroupService : gRPC
+C_PostService ..> C_CommentService : REST
+@enduml

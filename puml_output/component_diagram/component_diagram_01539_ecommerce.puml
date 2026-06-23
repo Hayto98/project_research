@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Warehouse Service" as C_WarehouseService
+component "Order Service" as C_OrderService
+component "Review Service" as C_ReviewService
+component "Cart Service" as C_CartService
+database "Ecommerce DB" as DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_CartService --> DB_ecommerce
+C_CartService ..> C_OrderService : HTTP
+C_ReviewService ..> C_OrderService : REST
+@enduml

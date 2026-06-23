@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+class Route {
+  #Date score
+  +double status
+  +cancelDuration()
+  +cancelPhone()
+  +setType()
+  +createAddress()
+}
+class Package {
+  -int email
+  #long amount
+  +saveEmail()
+}
+class Warehouse {
+  +double score
+  #float updatedAt
+  #String quantity
+  +sendTotal()
+  +getCode()
+}
+abstract class Shipment {
+  #Date total
+  #float address
+  -int price
+  +saveActive()
+}
+class FuelLog {
+  -int duration
+  +long status
+  +double type
+  +double code
+  +getId()
+}
+class Tracking {
+  -float active
+  +boolean note
+  +long total
+  +setAmount()
+  +cancelCode()
+  +deleteEmail()
+  +sendEmail()
+}
+abstract class Vehicle {
+  +float total
+  #String phone
+  +getStatus()
+}
+FuelLog --|> Warehouse
+Vehicle ..> FuelLog : "1"
+Tracking --|> Warehouse
+note right of Route : Logistics domain
+@enduml

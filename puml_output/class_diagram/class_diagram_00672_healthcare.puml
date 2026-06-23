@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+abstract class Doctor {
+  +double note
+  -boolean duration
+  #Date level
+  -long id
+  +double score
+  +validateEmail()
+  +findId()
+}
+class Billing {
+  #int type
+  +boolean id
+  +int active
+  +int score
+  +calculateScore()
+  +setScore()
+}
+interface MedicalRecord {
+  -double score
+  #String price
+  #float type
+  +deleteType()
+  +deleteActive()
+}
+abstract class Insurance {
+  #Date duration
+  +long address
+  -double level
+  +setScore()
+  +findUpdatedat()
+}
+class Hospital {
+  +double amount
+  -boolean quantity
+  #long type
+  #boolean level
+  -Date address
+  +validateEmail()
+  +cancelDescription()
+}
+class Prescription {
+  -float duration
+  -long price
+  #long type
+  -int status
+  #long id
+  +sendName()
+  +calculateDescription()
+}
+interface Diagnosis {
+  +long createdAt
+  -double updatedAt
+  +calculateAddress()
+  +deleteNote()
+  +cancelPhone()
+  +cancelEmail()
+}
+MedicalRecord --o Prescription
+MedicalRecord --o Hospital
+Prescription ..> Hospital : "1"
+Prescription ..> Doctor : "*"
+note right of Doctor : Healthcare domain
+@enduml

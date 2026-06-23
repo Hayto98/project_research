@@ -1,0 +1,67 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+interface Payment {
+  #String type
+  +String email
+  +float id
+  +Date updatedAt
+  -Date duration
+  +updateDuration()
+  +cancelAddress()
+  +validateType()
+  +createUpdatedat()
+}
+abstract class Order {
+  +Date updatedAt
+  #Date score
+  -String id
+  +validateType()
+}
+class Warehouse {
+  +Date createdAt
+  -int id
+  +int status
+  +updateType()
+  +updateTotal()
+  +updateName()
+}
+interface Return {
+  #long duration
+  #Date price
+  #int note
+  -boolean name
+  +validateCreatedat()
+}
+abstract class Shipment {
+  -float type
+  #String name
+  +calculateLevel()
+  +findNote()
+  +validateDescription()
+}
+interface Review {
+  -int note
+  #Date total
+  +saveTotal()
+  +setScore()
+  +saveNote()
+  +deleteTotal()
+}
+class Supplier {
+  +Date level
+  -String total
+  +long type
+  #Date name
+  +float description
+  +sendAddress()
+  +createStatus()
+  +processCreatedat()
+  +sendTotal()
+}
+Payment --> Supplier : "1..*"
+Warehouse ..> Return : "*"
+Review ..|> Payment
+note right of Payment : Ecommerce domain
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+start
+:Search Catalog;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Renew Loan;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Member;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Pay Fine;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Reserve Book;
+:Add New Book;
+:Return Book;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+stop
+@enduml

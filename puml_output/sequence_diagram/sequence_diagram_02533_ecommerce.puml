@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+control "Admin" as A
+actor "Delivery Service" as DS
+boundary "Payment Gateway" as PG
+DS ->> A : Cancel Order
+PG ->> A : Track Order
+PG ->> DS : Apply Coupon
+activate DS
+DS --> PG : ACK
+deactivate DS
+note over DS : processing apply coupon
+DS --> A : Checkout
+activate A
+A --> DS : ACK
+deactivate A
+note over A : processing checkout
+A -> PG : Browse Products
+activate PG
+PG --> A : ACK
+deactivate PG
+@enduml

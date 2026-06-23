@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+entity "Patient" as P
+boundary "Nurse" as N
+entity "Doctor" as D
+boundary "Insurance Provider" as IP
+N -> P : Process Insurance Claim
+activate P
+P --> N : ACK
+deactivate P
+P ->> N : Examine Patient
+activate N
+N --> P : ACK
+deactivate N
+P --> IP : Book Appointment
+activate IP
+IP --> P : ACK
+deactivate IP
+IP --> N : Discharge Patient
+D ->> N : Admit Patient
+activate N
+N --> D : ACK
+deactivate N
+@enduml

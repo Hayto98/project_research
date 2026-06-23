@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Customer Service" as C_CustomerService
+component "Vehicle Service" as C_VehicleService
+component "Tracking Service" as C_TrackingService
+component "Route Service" as C_RouteService
+component "Package Service" as C_PackageService
+component "Shipment Service" as C_ShipmentService
+component "Depot Service" as C_DepotService
+database "Logistics DB" as DB_logistics
+C_CustomerService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_RouteService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_DepotService --> DB_logistics
+C_ShipmentService ..> C_PackageService : REST
+C_RouteService ..> C_DepotService : REST
+C_RouteService ..> C_ShipmentService : HTTP
+C_DepotService ..> C_ShipmentService : REST
+C_VehicleService ..> C_ShipmentService : gRPC
+@enduml

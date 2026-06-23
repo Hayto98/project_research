@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+[*] --> Pending
+Pending --> OnHold : reject
+Pending : entry / log branch
+OnHold --> Active : cancel
+Active --> Processing : cancel
+Active : entry / log branch
+Processing --> Draft : approve
+Draft --> Approved : approve
+Processing --> OnHold : revert
+Approved --> [*]
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+[*] --> Created
+Created --> OnHold : process
+OnHold --> Processing : cancel
+Processing --> Archived : confirm
+Processing : entry / log patient
+Archived --> Rejected : update
+Rejected --> Draft : confirm
+Rejected : entry / log patient
+Processing --> Draft : revert
+Draft --> [*]
+@enduml

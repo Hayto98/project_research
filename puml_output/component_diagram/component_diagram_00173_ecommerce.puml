@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Shipment Service" as C_ShipmentService
+component "Category Service" as C_CategoryService
+component "Coupon Service" as C_CouponService
+component "Review Service" as C_ReviewService
+component "Return Service" as C_ReturnService
+component "Wishlist Service" as C_WishlistService
+database "Ecommerce DB" as DB_ecommerce
+C_CategoryService --> DB_ecommerce
+C_CategoryService ..> C_CouponService : HTTP
+C_CouponService ..> C_ReviewService : HTTP
+C_ReturnService ..> C_ReviewService : HTTP
+C_ReviewService ..> C_ReturnService : gRPC
+C_CategoryService ..> C_CouponService : REST
+@enduml

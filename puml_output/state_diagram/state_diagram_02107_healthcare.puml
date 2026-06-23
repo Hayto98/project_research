@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+[*] --> Rejected
+Rejected --> Completed : process
+Completed --> Cancelled : approve
+Completed : entry / log doctor
+Cancelled --> OnHold : approve
+OnHold --> Created : approve
+Created --> OnHold : revert
+Created --> [*]
+@enduml

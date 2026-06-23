@@ -1,0 +1,53 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+interface Service {
+  -Date level
+  #float status
+  #int quantity
+  #double note
+  #float type
+  +sendQuantity()
+  +setActive()
+  +deleteCode()
+  +processTotal()
+}
+abstract class Payment {
+  +Date updatedAt
+  #boolean email
+  #Date active
+  -String name
+  #String address
+  +saveDuration()
+  +getEmail()
+}
+class Housekeeping {
+  +double amount
+  #boolean quantity
+  +long type
+  +updateNote()
+  +deleteUpdatedat()
+  +saveLevel()
+}
+class Staff {
+  +boolean quantity
+  +float description
+  +calculateQuantity()
+  +createAmount()
+  +updateScore()
+  +updateAmount()
+}
+abstract class CheckIn {
+  #float createdAt
+  -String email
+  -float score
+  +sendId()
+  +createLevel()
+  +saveStatus()
+}
+Payment --o Service
+CheckIn --o Service
+Payment ..> CheckIn : "1..*"
+note right of Service : Hotel domain
+@enduml

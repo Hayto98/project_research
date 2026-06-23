@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+[*] --> OnHold
+OnHold --> Rejected : cancel
+Rejected --> Archived : process
+Archived --> Created : approve
+Archived : entry / log vehicle
+Created --> Delivered : review
+Delivered --> Processing : reject
+Processing --> OnHold : revert
+Processing --> [*]
+@enduml

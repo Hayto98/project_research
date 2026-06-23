@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Author Service" as C_AuthorService
+component "Loan Service" as C_LoanService
+component "Librarian Service" as C_LibrarianService
+component "Catalog Service" as C_CatalogService
+component "Reservation Service" as C_ReservationService
+database "Library DB" as DB_library
+C_AuthorService --> DB_library
+C_LibrarianService --> DB_library
+C_CatalogService --> DB_library
+C_ReservationService --> DB_library
+C_AuthorService ..> C_LoanService : MQ
+C_LoanService ..> C_ReservationService : gRPC
+C_AuthorService ..> C_CatalogService : REST
+C_LoanService ..> C_LibrarianService : HTTP
+@enduml

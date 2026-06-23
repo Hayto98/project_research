@@ -1,0 +1,47 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+class Service {
+  -double duration
+  +Date address
+  +setScore()
+}
+class Amenity {
+  #float note
+  -Date level
+  -boolean code
+  +float score
+  #long duration
+  +deleteLevel()
+  +sendCreatedat()
+}
+interface Reservation {
+  +int duration
+  -boolean note
+  -String active
+  +updateEmail()
+  +cancelActive()
+}
+interface Staff {
+  #boolean status
+  #int description
+  -String address
+  #Date score
+  +boolean phone
+  +sendPrice()
+  +sendScore()
+  +saveActive()
+}
+class Housekeeping {
+  -double score
+  #boolean updatedAt
+  +updateEmail()
+  +findId()
+  +calculateActive()
+}
+Reservation --|> Service
+Staff ..> Amenity : "1..*"
+Service ..|> Staff
+Housekeeping ..|> Service
+note right of Service : Hotel domain
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing true
+participant "Delivery Service" as DS
+entity "Seller" as S
+entity "Customer" as C
+actor "Payment Gateway" as PG
+participant "Admin" as A
+A ->> PG : Cancel Order
+activate PG
+PG --> A : ACK
+deactivate PG
+DS --> C : Browse Products
+activate C
+C --> DS : ACK
+deactivate C
+note over C : processing browse products
+C -> DS : Write Review
+A ->> S : Add To Cart
+activate S
+S --> A : ACK
+deactivate S
+@enduml

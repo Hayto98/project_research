@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+interface Diagnosis {
+  +double status
+  +long createdAt
+  +Date type
+  -double price
+  +float address
+  +processCode()
+  +getActive()
+  +setAddress()
+  +getScore()
+}
+class Patient {
+  +boolean note
+  -Date score
+  -long price
+  #int code
+  #boolean id
+  +processEmail()
+  +sendId()
+}
+abstract class Appointment {
+  -long name
+  -double score
+  -boolean id
+  +findScore()
+}
+class Hospital {
+  -double updatedAt
+  -boolean name
+  #int type
+  +boolean description
+  +int note
+  +setActive()
+  +processScore()
+}
+class Billing {
+  #float score
+  #double amount
+  +updateStatus()
+}
+class Nurse {
+  +Date type
+  #Date total
+  +saveEmail()
+  +findName()
+}
+Hospital --* Nurse
+Appointment --> Nurse : "1..*"
+Hospital ..|> Diagnosis
+Hospital --|> Patient
+Billing ..|> Appointment
+note right of Diagnosis : Healthcare domain
+@enduml

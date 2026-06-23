@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+component "FuelLog Service" as C_FuelLogService
+component "Inventory Service" as C_InventoryService
+component "Shipment Service" as C_ShipmentService
+component "Customer Service" as C_CustomerService
+database "Logistics DB" as DB_logistics
+C_InventoryService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_CustomerService --> DB_logistics
+C_ShipmentService ..> C_CustomerService : gRPC
+C_FuelLogService ..> C_InventoryService : gRPC
+C_InventoryService ..> C_FuelLogService : MQ
+@enduml

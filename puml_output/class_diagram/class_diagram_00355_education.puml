@@ -1,0 +1,59 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Enrollment {
+  -long score
+  -long price
+  #boolean level
+  #String total
+  +Date quantity
+  +findActive()
+}
+class Teacher {
+  +Date address
+  +double updatedAt
+  #float total
+  +calculateTotal()
+}
+class Assignment {
+  #double type
+  +Date email
+  -boolean id
+  +Date level
+  +deleteStatus()
+}
+abstract class Book {
+  #boolean type
+  #float price
+  #Date quantity
+  -long note
+  -boolean active
+  +updateAddress()
+  +deleteName()
+}
+class Course {
+  #boolean level
+  +double duration
+  #String name
+  -Date phone
+  +getCode()
+  +validateAddress()
+  +saveQuantity()
+  +processPrice()
+}
+class Schedule {
+  +Date email
+  -String description
+  -float score
+  +double duration
+  +saveName()
+  +getStatus()
+  +updatePrice()
+}
+Assignment --> Course : "1..*"
+Course --* Schedule
+Teacher --> Enrollment : "*"
+Book --> Course : "1..*"
+note right of Enrollment : Education domain
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+component "Manifest Service" as C_ManifestService
+component "Package Service" as C_PackageService
+component "Tracking Service" as C_TrackingService
+component "DeliveryNote Service" as C_DeliveryNoteService
+database "Logistics DB" as DB_logistics
+C_ManifestService --> DB_logistics
+C_PackageService --> DB_logistics
+C_DeliveryNoteService --> DB_logistics
+C_DeliveryNoteService ..> C_TrackingService : HTTP
+C_ManifestService ..> C_TrackingService : MQ
+C_DeliveryNoteService ..> C_PackageService : MQ
+@enduml

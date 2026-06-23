@@ -1,0 +1,18 @@
+@startuml
+skinparam defaultFontSize 13
+component "Appointment Service" as C_AppointmentService
+component "Nurse Service" as C_NurseService
+component "Diagnosis Service" as C_DiagnosisService
+component "MedicalRecord Service" as C_MedicalRecordService
+component "Insurance Service" as C_InsuranceService
+database "Healthcare DB" as DB_healthcare
+C_AppointmentService --> DB_healthcare
+C_NurseService --> DB_healthcare
+C_DiagnosisService --> DB_healthcare
+C_MedicalRecordService --> DB_healthcare
+C_InsuranceService --> DB_healthcare
+C_InsuranceService ..> C_AppointmentService : REST
+C_NurseService ..> C_MedicalRecordService : MQ
+C_MedicalRecordService ..> C_DiagnosisService : REST
+C_MedicalRecordService ..> C_DiagnosisService : HTTP
+@enduml

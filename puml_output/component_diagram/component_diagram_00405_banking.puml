@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+component "Branch Service" as C_BranchService
+component "Transfer Service" as C_TransferService
+component "Withdrawal Service" as C_WithdrawalService
+component "Transaction Service" as C_TransactionService
+database "Banking DB" as DB_banking
+C_TransferService --> DB_banking
+C_WithdrawalService --> DB_banking
+C_TransactionService --> DB_banking
+C_WithdrawalService ..> C_TransferService : HTTP
+C_WithdrawalService ..> C_TransferService : MQ
+@enduml

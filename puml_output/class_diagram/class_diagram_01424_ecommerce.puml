@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+class Wishlist {
+  +boolean amount
+  +double total
+  +validatePrice()
+  +saveStatus()
+  +validateQuantity()
+}
+class Order {
+  -float createdAt
+  -String type
+  +int amount
+  +float score
+  +updateLevel()
+  +calculateNote()
+  +calculateEmail()
+}
+abstract class Payment {
+  #double price
+  -float active
+  -double updatedAt
+  #float address
+  +calculateLevel()
+  +validateAddress()
+}
+interface Review {
+  #boolean active
+  -boolean address
+  -boolean createdAt
+  #float price
+  -String email
+  +calculateLevel()
+  +setCode()
+}
+Review --> Order : "1..*"
+Wishlist --> Order : "*"
+note right of Wishlist : Ecommerce domain
+@enduml

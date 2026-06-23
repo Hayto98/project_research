@@ -1,0 +1,28 @@
+@startuml
+skinparam defaultFontSize 11
+start
+:Follow User;
+:Report Content;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Create Post;
+:Edit Profile;
+:Like Post;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Send Message;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Comment;
+stop
+@enduml

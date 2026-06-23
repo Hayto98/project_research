@@ -1,0 +1,28 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+left to right direction
+actor "Guest" as Guest
+actor "Receptionist" as Receptionist
+actor "Housekeeper" as Housekeeper
+actor "Chef" as Chef
+rectangle "Hotel System" {
+  usecase "Check In" as UC_CheckIn
+  usecase "Clean Room" as UC_CleanRoom
+  usecase "Process Payment" as UC_ProcessPayment
+  usecase "Book Room" as UC_BookRoom
+  usecase "Check Out" as UC_CheckOut
+  usecase "Order Room Service" as UC_OrderRoomService
+}
+Guest --> UC_CleanRoom
+Guest --> UC_CheckIn
+Receptionist --> UC_CleanRoom
+Receptionist --> UC_BookRoom
+Receptionist --> UC_CheckIn
+Housekeeper --> UC_CheckIn
+Housekeeper --> UC_CheckOut
+Chef --> UC_OrderRoomService
+Chef --> UC_CleanRoom
+Chef --> UC_ProcessPayment
+@enduml

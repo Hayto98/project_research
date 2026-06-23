@@ -1,0 +1,54 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Order {
+  +String quantity
+  #double type
+  +int status
+  -String note
+  +findDuration()
+  +deleteAddress()
+  +setNote()
+}
+abstract class Wishlist {
+  -String price
+  +boolean status
+  -String amount
+  +Date note
+  -boolean id
+  +calculateDescription()
+  +updateType()
+  +deleteTotal()
+}
+class Shipment {
+  #Date email
+  -float total
+  +findType()
+}
+class Invoice {
+  +int total
+  -Date active
+  +long price
+  -int phone
+  +calculateCreatedat()
+  +createCreatedat()
+}
+class Return {
+  +boolean email
+  +double code
+  +getStatus()
+}
+abstract class Payment {
+  -String code
+  -String type
+  +Date price
+  -Date name
+  +deleteScore()
+  +deleteNote()
+}
+Wishlist ..|> Invoice
+Invoice ..|> Order
+Shipment ..|> Order
+Payment --|> Return
+note right of Order : Ecommerce domain
+@enduml

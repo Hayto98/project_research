@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+boundary "Branch Manager" as BM
+actor "Account Holder" as AH
+control "Bank Teller" as BT
+actor "ATM" as A
+AH -> BT : Deposit Money
+activate BT
+BT --> AH : ACK
+deactivate BT
+BT ->> AH : Transfer Funds
+activate AH
+AH --> BT : ACK
+deactivate AH
+BT -> BM : Withdraw Cash
+A -> AH : Pay Bill
+note over AH : processing pay bill
+@enduml

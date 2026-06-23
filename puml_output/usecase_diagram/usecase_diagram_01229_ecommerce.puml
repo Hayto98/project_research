@@ -1,0 +1,19 @@
+@startuml
+skinparam defaultFontSize 13
+left to right direction
+actor "Payment Gateway" as PaymentGateway
+actor "Delivery Service" as DeliveryService
+rectangle "Ecommerce System" {
+  usecase "Checkout" as UC_Checkout
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Write Review" as UC_WriteReview
+}
+PaymentGateway --> UC_WriteReview
+PaymentGateway --> UC_ManageInventory
+DeliveryService --> UC_WriteReview
+DeliveryService --> UC_MakePayment
+@enduml

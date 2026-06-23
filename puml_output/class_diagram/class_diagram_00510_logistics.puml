@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+class Shipment {
+  -long price
+  +long active
+  #Date level
+  +getStatus()
+  +calculateAmount()
+}
+class FuelLog {
+  +int code
+  +Date updatedAt
+  #String id
+  +String createdAt
+  +boolean active
+  +getDuration()
+  +getActive()
+}
+interface Driver {
+  +boolean id
+  +String duration
+  +findType()
+  +sendPhone()
+  +findEmail()
+}
+interface Manifest {
+  +boolean id
+  #long amount
+  +saveCode()
+  +updateQuantity()
+}
+class Route {
+  #double name
+  +String address
+  #long type
+  -double quantity
+  #long status
+  +deleteQuantity()
+}
+Manifest --o Route
+Driver ..> Manifest : "1"
+Manifest --> FuelLog : "1"
+note right of Shipment : Logistics domain
+@enduml

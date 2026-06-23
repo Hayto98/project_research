@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Return {
+  -boolean price
+  +boolean id
+  #long code
+  +long type
+  +calculateCreatedat()
+  +processType()
+  +validateScore()
+  +findStatus()
+}
+abstract class Shipment {
+  -int quantity
+  +float updatedAt
+  +float code
+  -double total
+  +processScore()
+  +deleteType()
+}
+abstract class Cart {
+  -long quantity
+  #Date amount
+  #boolean phone
+  +int level
+  #String email
+  +cancelNote()
+  +findEmail()
+  +saveAmount()
+  +calculateName()
+}
+class Invoice {
+  +Date phone
+  +double updatedAt
+  #String status
+  +updateTotal()
+}
+class Category {
+  -Date level
+  -int score
+  +findCode()
+}
+class Customer {
+  -int quantity
+  -String createdAt
+  -float duration
+  -String name
+  +updateScore()
+  +calculateId()
+}
+class Order {
+  -float score
+  -int email
+  #String duration
+  -double phone
+  +saveStatus()
+  +getCode()
+}
+Order --|> Shipment
+Customer --o Shipment
+Shipment ..> Return : "1..*"
+note right of Return : Ecommerce domain
+@enduml

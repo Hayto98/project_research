@@ -1,0 +1,48 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+class Customer {
+  +long note
+  -Date address
+  #long updatedAt
+  +sendName()
+  +calculateId()
+  +processTotal()
+}
+interface Transaction {
+  +Date level
+  #double updatedAt
+  #float total
+  +findScore()
+  +saveType()
+  +validateNote()
+}
+class Teller {
+  +long email
+  -Date address
+  #Date description
+  +int name
+  +Date updatedAt
+  +sendDescription()
+  +sendName()
+}
+interface Transfer {
+  +float updatedAt
+  -Date code
+  #String address
+  +long active
+  #float description
+  +findCreatedat()
+}
+class Branch {
+  -String address
+  -String createdAt
+  #boolean id
+  +saveCreatedat()
+  +findPrice()
+  +findQuantity()
+}
+Teller ..> Transfer : "1"
+Transaction --* Branch
+note right of Customer : Banking domain
+@enduml

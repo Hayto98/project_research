@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+[*] --> Reviewed
+Reviewed --> Shipped : reject
+Shipped --> Created : review
+Shipped : entry / log library
+Created --> Rejected : approve
+Rejected --> Archived : review
+Rejected : entry / log library
+Archived --> Active : review
+Active --> Reviewed : revert
+Active --> [*]
+@enduml

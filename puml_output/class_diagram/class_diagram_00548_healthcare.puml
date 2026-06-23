@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+interface Treatment {
+  #Date total
+  -long note
+  -int status
+  #Date id
+  -int address
+  +createPhone()
+  +updateEmail()
+  +deleteEmail()
+  +cancelEmail()
+}
+interface Prescription {
+  -String level
+  -boolean description
+  +deleteAmount()
+  +setQuantity()
+}
+interface Patient {
+  +float score
+  #float total
+  +long code
+  #int address
+  +updatePrice()
+}
+class Billing {
+  #float address
+  +String duration
+  -float createdAt
+  +setPhone()
+  +sendPhone()
+  +setScore()
+}
+class Hospital {
+  +Date createdAt
+  #String note
+  -int updatedAt
+  #double type
+  #double quantity
+  +processUpdatedat()
+  +createUpdatedat()
+  +updateNote()
+}
+Patient --o Treatment
+Hospital --* Billing
+Prescription --o Treatment
+Hospital --|> Prescription
+note right of Treatment : Healthcare domain
+@enduml

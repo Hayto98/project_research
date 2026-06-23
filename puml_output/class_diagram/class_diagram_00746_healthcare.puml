@@ -1,0 +1,46 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+interface Ward {
+  +double active
+  +String createdAt
+  -long duration
+  +float id
+  +double phone
+  +deleteScore()
+  +deleteDescription()
+  +getQuantity()
+}
+class Prescription {
+  +double code
+  #String description
+  -int price
+  +cancelId()
+  +deleteQuantity()
+  +createName()
+  +findScore()
+}
+class Billing {
+  -long score
+  #int email
+  -String createdAt
+  +float status
+  +String updatedAt
+  +setId()
+  +calculateDescription()
+}
+interface Doctor {
+  #long quantity
+  -int score
+  -Date price
+  #Date code
+  +double email
+  +calculateScore()
+  +deleteActive()
+}
+Ward ..> Billing : "1..*"
+Billing --o Doctor
+Billing ..|> Prescription
+note right of Ward : Healthcare domain
+@enduml

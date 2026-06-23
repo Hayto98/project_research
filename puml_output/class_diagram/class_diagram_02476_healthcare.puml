@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Ward {
+  #String id
+  #int score
+  +Date name
+  -boolean status
+  +Date phone
+  +processUpdatedat()
+  +saveScore()
+  +setCode()
+}
+class Appointment {
+  -Date updatedAt
+  -String active
+  #long description
+  +validateStatus()
+  +setDuration()
+}
+class Nurse {
+  +String address
+  #float note
+  #float status
+  #double price
+  +long quantity
+  +processName()
+  +getNote()
+  +validateDuration()
+  +sendLevel()
+}
+class Insurance {
+  #String code
+  #int type
+  +getUpdatedat()
+  +sendCreatedat()
+  +getScore()
+}
+class Patient {
+  +float active
+  -long address
+  #Date email
+  +int total
+  +updateDescription()
+}
+interface MedicalRecord {
+  -Date duration
+  +int note
+  +long score
+  #Date name
+  +cancelUpdatedat()
+}
+class Billing {
+  #boolean email
+  -long level
+  +setCode()
+  +createQuantity()
+}
+Nurse --> Insurance : "0..1"
+MedicalRecord --> Insurance : "0..1"
+Billing ..|> MedicalRecord
+Ward ..> Appointment : "0..1"
+Patient --|> MedicalRecord
+note right of Ward : Healthcare domain
+@enduml

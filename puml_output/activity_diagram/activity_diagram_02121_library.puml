@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+start
+:Reserve Book;
+:Search Catalog;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Add New Book;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Pay Fine;
+:Return Book;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+stop
+@enduml

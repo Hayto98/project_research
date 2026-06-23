@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+participant "Customer" as C
+boundary "Seller" as S
+control "Delivery Service" as DS
+boundary "Admin" as A
+DS ->> C : Add To Cart
+C ->> A : Cancel Order
+activate A
+A --> C : ACK
+deactivate A
+note over A : processing cancel order
+A -> C : Manage Inventory
+C ->> A : Checkout
+C ->> DS : Browse Products
+DS --> C : Track Order
+activate C
+C --> DS : ACK
+deactivate C
+DS ->> A : Apply Coupon
+@enduml

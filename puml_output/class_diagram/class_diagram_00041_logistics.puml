@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+class FuelLog {
+  +String description
+  -Date email
+  +processQuantity()
+  +saveCreatedat()
+}
+abstract class Shipment {
+  #int total
+  +String address
+  +String status
+  #Date name
+  +long note
+  +sendId()
+  +sendName()
+  +processId()
+}
+class Manifest {
+  +double quantity
+  #Date address
+  +boolean level
+  #long code
+  +float status
+  +validateAmount()
+}
+class Warehouse {
+  -int note
+  +double code
+  #Date email
+  #long score
+  +long description
+  +processTotal()
+  +sendNote()
+  +saveId()
+  +calculateStatus()
+}
+Warehouse --> FuelLog : "*"
+Manifest --|> Warehouse
+Shipment ..|> Manifest
+note right of FuelLog : Logistics domain
+@enduml

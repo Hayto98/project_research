@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing true
+actor "Insurance Provider" as IP
+control "Doctor" as D
+entity "Lab Technician" as LT
+boundary "Receptionist" as R
+boundary "Patient" as P
+D ->> LT : Admit Patient
+IP -> LT : Issue Prescription
+IP -> R : Discharge Patient
+IP ->> LT : Update Medical Record
+note over LT : processing update medical record
+LT --> R : Run Lab Test
+D ->> P : Book Appointment
+@enduml

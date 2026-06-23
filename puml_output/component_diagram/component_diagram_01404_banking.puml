@@ -1,0 +1,14 @@
+@startuml
+skinparam ArrowColor #555555
+component "Transfer Service" as C_TransferService
+component "Loan Service" as C_LoanService
+component "Account Service" as C_AccountService
+component "Card Service" as C_CardService
+component "Withdrawal Service" as C_WithdrawalService
+database "Banking DB" as DB_banking
+C_TransferService --> DB_banking
+C_LoanService --> DB_banking
+C_AccountService --> DB_banking
+C_TransferService ..> C_WithdrawalService : REST
+C_CardService ..> C_AccountService : gRPC
+@enduml

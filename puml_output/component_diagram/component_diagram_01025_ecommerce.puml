@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+component "Order Service" as C_OrderService
+component "Payment Service" as C_PaymentService
+component "Review Service" as C_ReviewService
+component "Wishlist Service" as C_WishlistService
+database "Ecommerce DB" as DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_OrderService ..> C_WishlistService : MQ
+C_PaymentService ..> C_OrderService : MQ
+C_OrderService ..> C_ReviewService : MQ
+@enduml

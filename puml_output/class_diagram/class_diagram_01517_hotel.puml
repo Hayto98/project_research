@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+class Payment {
+  -float total
+  +double status
+  -double updatedAt
+  +calculateNote()
+  +saveStatus()
+  +processCreatedat()
+  +getUpdatedat()
+}
+class Reservation {
+  #Date type
+  #int score
+  #String total
+  +float email
+  +updateLevel()
+  +calculateDuration()
+  +getPrice()
+}
+class Restaurant {
+  +long score
+  #Date type
+  +processDuration()
+}
+class CheckIn {
+  -boolean code
+  #double quantity
+  -long price
+  +getAmount()
+  +processAddress()
+}
+class Housekeeping {
+  -Date active
+  #float id
+  #int phone
+  +findPhone()
+  +updateEmail()
+  +updateStatus()
+  +updateAmount()
+}
+interface Booking {
+  -long total
+  -double name
+  +int description
+  #double code
+  #double level
+  +cancelEmail()
+}
+class Staff {
+  -long total
+  #Date amount
+  #float description
+  +setUpdatedat()
+  +updatePhone()
+  +deleteNote()
+}
+Staff ..> CheckIn : "1..*"
+Reservation --o Booking
+CheckIn --* Booking
+Restaurant --o Staff
+Restaurant --o Booking
+Payment --o Housekeeping
+note right of Payment : Hotel domain
+@enduml

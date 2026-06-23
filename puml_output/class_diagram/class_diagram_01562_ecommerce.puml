@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+class Review {
+  +boolean type
+  +boolean createdAt
+  +String phone
+  +double score
+  +long description
+  +createPrice()
+  +createPhone()
+}
+class Supplier {
+  #Date createdAt
+  #int level
+  +updateTotal()
+  +sendId()
+  +processPhone()
+  +cancelAddress()
+}
+class Cart {
+  +long quantity
+  -float duration
+  #int score
+  +updateQuantity()
+  +cancelCode()
+  +getPrice()
+}
+class Order {
+  -long phone
+  #String name
+  #long level
+  +processPrice()
+  +validateLevel()
+  +deleteStatus()
+  +sendName()
+}
+class Warehouse {
+  #float total
+  -float address
+  -String note
+  +int duration
+  +calculateAmount()
+  +processDuration()
+}
+abstract class Invoice {
+  -boolean quantity
+  +int level
+  +double score
+  -long address
+  +int createdAt
+  +sendCode()
+  +sendDuration()
+}
+Invoice ..> Review : "1..*"
+Cart ..|> Warehouse
+Supplier --> Cart : "0..1"
+note right of Review : Ecommerce domain
+@enduml

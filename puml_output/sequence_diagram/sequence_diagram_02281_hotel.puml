@@ -1,0 +1,30 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+participant "Receptionist" as R
+entity "Guest" as G
+participant "Manager" as M
+R -> G : Book Room
+activate G
+G --> R : ACK
+deactivate G
+note over G : processing book room
+M -> G : Check In
+activate G
+G --> M : ACK
+deactivate G
+G --> M : Request Service
+note over M : processing request service
+G -> R : Order Room Service
+note over R : processing order room service
+G --> R : Clean Room
+activate R
+R --> G : ACK
+deactivate R
+M --> R : Process Payment
+activate R
+R --> M : ACK
+deactivate R
+note over R : processing process payment
+@enduml

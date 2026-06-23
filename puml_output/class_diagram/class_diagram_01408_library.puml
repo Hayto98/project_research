@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+class Publisher {
+  -boolean id
+  -String address
+  #double email
+  #long createdAt
+  -double status
+  +deleteLevel()
+}
+abstract class Shelf {
+  #int status
+  +int active
+  +validateAddress()
+  +getLevel()
+  +processScore()
+  +updateStatus()
+}
+class Fine {
+  #String type
+  -String note
+  +saveId()
+  +updateCode()
+  +createAmount()
+}
+class Renewal {
+  -double type
+  +float name
+  -Date active
+  +int phone
+  -int updatedAt
+  +cancelLevel()
+}
+class Author {
+  -Date code
+  +int type
+  -int email
+  #int address
+  +cancelDuration()
+}
+Renewal --> Publisher : "1..*"
+Publisher --> Fine : "0..1"
+Shelf --|> Publisher
+note right of Publisher : Library domain
+@enduml

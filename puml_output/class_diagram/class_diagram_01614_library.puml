@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+class Branch {
+  +int quantity
+  #int phone
+  +deleteStatus()
+  +getDescription()
+}
+abstract class Author {
+  +boolean id
+  +float score
+  -long updatedAt
+  +getAddress()
+}
+class Librarian {
+  -long id
+  -String code
+  +float note
+  -long updatedAt
+  +cancelNote()
+  +findCode()
+  +updateCode()
+}
+interface Member {
+  #String score
+  #long address
+  +createCode()
+  +calculateQuantity()
+}
+class Renewal {
+  #double quantity
+  -float note
+  +double type
+  +createDuration()
+  +processAddress()
+  +cancelTotal()
+  +getPrice()
+}
+class Reservation {
+  #long createdAt
+  +double duration
+  +findLevel()
+  +updateAddress()
+  +processPrice()
+  +validateNote()
+}
+class Fine {
+  +double type
+  -int name
+  +float code
+  +saveEmail()
+  +setType()
+}
+Renewal ..> Fine : "*"
+Reservation --> Author : "*"
+Branch ..|> Librarian
+Member --o Librarian
+Renewal --|> Author
+note right of Branch : Library domain
+@enduml

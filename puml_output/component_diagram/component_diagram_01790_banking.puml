@@ -1,0 +1,17 @@
+@startuml
+
+component "Account Service" as C_AccountService
+component "Transfer Service" as C_TransferService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Interest Service" as C_InterestService
+component "Deposit Service" as C_DepositService
+database "Banking DB" as DB_banking
+C_AccountService --> DB_banking
+C_TransferService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_InterestService --> DB_banking
+C_DepositService --> DB_banking
+C_TransferService ..> C_DepositService : HTTP
+C_DepositService ..> C_TransferService : gRPC
+C_AccountService ..> C_BeneficiaryService : HTTP
+@enduml

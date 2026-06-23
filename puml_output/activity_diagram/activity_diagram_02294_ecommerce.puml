@@ -1,0 +1,44 @@
+@startuml
+
+start
+:Cancel Order;
+:Apply Coupon;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Add To Cart;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Manage Inventory;
+:Write Review;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Make Payment;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Browse Products;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+stop
+@enduml

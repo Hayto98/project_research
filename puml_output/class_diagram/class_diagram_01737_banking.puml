@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Card {
+  -long note
+  -float createdAt
+  +Date description
+  -double status
+  #double active
+  +deleteNote()
+  +setStatus()
+  +processQuantity()
+}
+class Customer {
+  +String note
+  +int code
+  +createStatus()
+  +calculateQuantity()
+}
+abstract class Statement {
+  +boolean id
+  +int type
+  +int duration
+  #boolean level
+  +createTotal()
+}
+class Beneficiary {
+  +String createdAt
+  #double note
+  +int status
+  -double duration
+  +calculatePhone()
+  +findId()
+}
+class Transfer {
+  +boolean quantity
+  -float amount
+  +createCreatedat()
+  +createUpdatedat()
+}
+Statement ..> Card : "1..*"
+Beneficiary --|> Statement
+Transfer --> Beneficiary : "0..1"
+note right of Card : Banking domain
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+component "Follower Service" as C_FollowerService
+component "Report Service" as C_ReportService
+component "Group Service" as C_GroupService
+component "Story Service" as C_StoryService
+database "Social Media DB" as DB_social_media
+C_FollowerService --> DB_social_media
+C_StoryService --> DB_social_media
+C_GroupService ..> C_ReportService : HTTP
+C_ReportService ..> C_GroupService : MQ
+@enduml

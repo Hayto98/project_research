@@ -1,0 +1,20 @@
+@startuml
+skinparam defaultFontSize 11
+control "Customer" as C
+participant "Delivery Service" as DS
+participant "Payment Gateway" as PG
+DS -> PG : Browse Products
+C -> PG : Cancel Order
+activate PG
+PG --> C : ACK
+deactivate PG
+note over PG : processing cancel order
+DS --> PG : Checkout
+activate PG
+PG --> DS : ACK
+deactivate PG
+PG ->> DS : Apply Coupon
+PG ->> C : Add To Cart
+C --> DS : Write Review
+C ->> DS : Manage Inventory
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+component "Package Service" as C_PackageService
+component "Tracking Service" as C_TrackingService
+component "Inventory Service" as C_InventoryService
+component "Vehicle Service" as C_VehicleService
+database "Logistics DB" as DB_logistics
+C_PackageService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_InventoryService --> DB_logistics
+C_InventoryService ..> C_PackageService : gRPC
+C_InventoryService ..> C_TrackingService : HTTP
+C_TrackingService ..> C_PackageService : REST
+@enduml

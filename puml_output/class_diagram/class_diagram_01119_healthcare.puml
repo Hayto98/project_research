@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+abstract class LabTest {
+  +String note
+  +float score
+  +findActive()
+}
+class Prescription {
+  #Date updatedAt
+  +double type
+  +sendPhone()
+  +setCreatedat()
+  +processAddress()
+}
+class Billing {
+  -long address
+  -long amount
+  -float id
+  -boolean score
+  +findAmount()
+  +calculateEmail()
+}
+interface Appointment {
+  +Date status
+  #float note
+  +float address
+  #boolean phone
+  -String createdAt
+  +calculateAmount()
+  +processNote()
+  +validateAddress()
+}
+class Ward {
+  #int level
+  -String note
+  +Date id
+  -long phone
+  +Date quantity
+  +calculateScore()
+  +cancelAmount()
+}
+abstract class Diagnosis {
+  -String type
+  #String updatedAt
+  +boolean name
+  #String total
+  +cancelName()
+  +cancelEmail()
+  +processTotal()
+}
+class Hospital {
+  +long updatedAt
+  #float amount
+  -float status
+  -Date id
+  +findCode()
+  +validateDescription()
+  +cancelPrice()
+}
+Hospital --* Diagnosis
+LabTest ..> Diagnosis : "1..*"
+Hospital --* Appointment
+Ward --* LabTest
+Billing ..|> Appointment
+Prescription ..|> Ward
+note right of LabTest : Healthcare domain
+@enduml

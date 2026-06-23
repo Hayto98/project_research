@@ -1,0 +1,59 @@
+@startuml
+skinparam monochrome true
+abstract class Billing {
+  +long total
+  #int quantity
+  +sendUpdatedat()
+  +saveDuration()
+  +createPhone()
+  +sendStatus()
+}
+abstract class Prescription {
+  +int duration
+  +double address
+  #double status
+  -long price
+  +updateName()
+  +cancelPhone()
+  +deletePrice()
+}
+interface MedicalRecord {
+  #double total
+  +double note
+  +String email
+  #boolean id
+  +Date status
+  +saveDuration()
+}
+class Diagnosis {
+  -Date updatedAt
+  +Date id
+  -boolean amount
+  +setId()
+  +getActive()
+}
+class LabTest {
+  +int total
+  +boolean note
+  +saveName()
+}
+class Appointment {
+  #String createdAt
+  #double email
+  +int amount
+  #boolean active
+  +cancelScore()
+  +calculateId()
+}
+interface Hospital {
+  +double status
+  -long level
+  +createAmount()
+  +validateStatus()
+  +sendQuantity()
+}
+LabTest ..> Diagnosis : "*"
+LabTest --* MedicalRecord
+MedicalRecord --|> Appointment
+note right of Billing : Healthcare domain
+@enduml

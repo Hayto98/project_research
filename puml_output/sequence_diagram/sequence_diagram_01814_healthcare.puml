@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+entity "Receptionist" as R
+participant "Patient" as P
+participant "Insurance Provider" as IP
+actor "Doctor" as D
+P --> D : Run Lab Test
+P ->> R : Examine Patient
+P --> R : Book Appointment
+P -> D : Update Medical Record
+activate D
+D --> P : ACK
+deactivate D
+D -> IP : Admit Patient
+D -> P : Issue Prescription
+activate P
+P --> D : ACK
+deactivate P
+P --> R : Discharge Patient
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+interface Author {
+  -boolean email
+  +int total
+  #float amount
+  #Date price
+  +float quantity
+  +setDuration()
+}
+abstract class Member {
+  +long email
+  +float amount
+  #int quantity
+  +long status
+  +findStatus()
+  +findNote()
+  +calculateNote()
+  +processEmail()
+}
+class Publisher {
+  +long description
+  +double updatedAt
+  +setName()
+  +createDescription()
+}
+interface Book {
+  -double id
+  -long type
+  +deleteTotal()
+}
+class Reservation {
+  +int status
+  #int price
+  -int amount
+  #Date email
+  +validateTotal()
+  +setDuration()
+}
+Reservation --|> Publisher
+Reservation --|> Author
+Reservation --* Book
+Book ..|> Publisher
+note right of Author : Library domain
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing true
+left to right direction
+actor "Fleet Manager" as FleetManager
+actor "Dispatcher" as Dispatcher
+rectangle "Logistics System" {
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Schedule Pickup" as UC_SchedulePickup
+  usecase "Update Inventory" as UC_UpdateInventory
+}
+FleetManager --> UC_SchedulePickup
+FleetManager --> UC_LoadPackage
+Dispatcher --> UC_AssignRoute
+UC_SchedulePickup ..> UC_LoadPackage : <<extend>>
+@enduml

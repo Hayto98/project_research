@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+start
+:Issue Prescription;
+:Examine Patient;
+:Admit Patient;
+:Run Lab Test;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Medical Record;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Discharge Patient;
+stop
+@enduml

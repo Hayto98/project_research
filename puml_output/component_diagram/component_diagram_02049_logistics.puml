@@ -1,0 +1,12 @@
+@startuml
+
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Customer Service" as C_CustomerService
+component "Route Service" as C_RouteService
+component "Inventory Service" as C_InventoryService
+database "Logistics DB" as DB_logistics
+C_InventoryService --> DB_logistics
+C_DeliveryNoteService ..> C_InventoryService : HTTP
+C_CustomerService ..> C_DeliveryNoteService : HTTP
+C_DeliveryNoteService ..> C_RouteService : HTTP
+@enduml

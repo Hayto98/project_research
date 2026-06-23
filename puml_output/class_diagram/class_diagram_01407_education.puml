@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+interface Attendance {
+  #long name
+  -boolean code
+  +int amount
+  +long total
+  -Date quantity
+  +updateEmail()
+}
+abstract class Book {
+  -String quantity
+  -boolean price
+  -Date description
+  +float updatedAt
+  #double active
+  +saveAddress()
+  +calculateDuration()
+}
+abstract class Schedule {
+  -long score
+  +Date name
+  +boolean note
+  +cancelStatus()
+  +calculateTotal()
+  +setActive()
+}
+interface Student {
+  #boolean note
+  #long amount
+  #String code
+  #double status
+  +getAmount()
+  +createActive()
+  +sendTotal()
+  +calculateDescription()
+}
+class Exam {
+  +int createdAt
+  #Date score
+  -double description
+  #boolean active
+  +float phone
+  +sendAmount()
+  +createScore()
+}
+Exam --|> Attendance
+Exam ..|> Student
+Attendance --|> Schedule
+Attendance --> Book : "0..1"
+note right of Attendance : Education domain
+@enduml

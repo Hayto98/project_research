@@ -1,0 +1,28 @@
+@startuml
+skinparam monochrome true
+left to right direction
+actor "Doctor" as Doctor
+actor "Patient" as Patient
+actor "Nurse" as Nurse
+actor "Lab Technician" as LabTechnician
+rectangle "Healthcare System" {
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Book Appointment" as UC_BookAppointment
+  usecase "Examine Patient" as UC_ExaminePatient
+  usecase "Update Medical Record" as UC_UpdateMedicalRecord
+  usecase "Run Lab Test" as UC_RunLabTest
+}
+Doctor --> UC_RunLabTest
+Doctor --> UC_ProcessInsuranceClaim
+Doctor --> UC_IssuePrescription
+Patient --> UC_ProcessInsuranceClaim
+Nurse --> UC_DischargePatient
+Nurse --> UC_ExaminePatient
+Nurse --> UC_AdmitPatient
+LabTechnician --> UC_DischargePatient
+LabTechnician --> UC_UpdateMedicalRecord
+UC_BookAppointment ..|> UC_IssuePrescription : <<include>>
+@enduml

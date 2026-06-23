@@ -1,0 +1,59 @@
+@startuml
+
+abstract class Staff {
+  -int active
+  +boolean createdAt
+  -float description
+  #Date price
+  +sendDescription()
+  +deleteName()
+  +calculateId()
+  +validateName()
+}
+class Room {
+  #boolean updatedAt
+  -double total
+  +calculateName()
+  +processPrice()
+}
+class Service {
+  -long total
+  -boolean email
+  +boolean type
+  +calculateStatus()
+}
+interface Payment {
+  #int level
+  -Date id
+  +getDescription()
+  +setTotal()
+}
+class Restaurant {
+  -int name
+  -float active
+  #boolean level
+  +sendNote()
+}
+abstract class Guest {
+  -double name
+  +float phone
+  +double address
+  -long description
+  +updateId()
+  +createPhone()
+}
+abstract class Housekeeping {
+  #Date level
+  -String active
+  +findAddress()
+  +deleteAddress()
+  +getAmount()
+  +updateCode()
+}
+Room --* Guest
+Service --> Staff : "*"
+Housekeeping --|> Guest
+Restaurant --o Housekeeping
+Restaurant ..|> Service
+note right of Staff : Hotel domain
+@enduml

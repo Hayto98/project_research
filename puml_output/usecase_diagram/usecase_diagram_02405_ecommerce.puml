@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Admin" as Admin
+actor "Payment Gateway" as PaymentGateway
+actor "Seller" as Seller
+rectangle "Ecommerce System" {
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Checkout" as UC_Checkout
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Write Review" as UC_WriteReview
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Make Payment" as UC_MakePayment
+}
+DeliveryService --> UC_ApplyCoupon
+DeliveryService --> UC_TrackOrder
+Admin --> UC_Checkout
+PaymentGateway --> UC_Checkout
+PaymentGateway --> UC_BrowseProducts
+PaymentGateway --> UC_TrackOrder
+Seller --> UC_CancelOrder
+Seller --> UC_Checkout
+Seller --> UC_ApplyCoupon
+UC_CancelOrder ..|> UC_TrackOrder : <<extend>>
+@enduml

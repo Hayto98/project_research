@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+interface Customer {
+  +double createdAt
+  +float price
+  #float status
+  #double description
+  +deleteLevel()
+  +validateNote()
+  +deleteAmount()
+}
+interface Package {
+  +boolean email
+  #Date quantity
+  -Date level
+  +boolean type
+  +updateCreatedat()
+  +sendPrice()
+  +sendLevel()
+}
+interface Warehouse {
+  -boolean note
+  -Date code
+  +createActive()
+  +getDuration()
+  +sendType()
+}
+class Inventory {
+  +int total
+  -int id
+  +findCode()
+  +getActive()
+  +deleteStatus()
+}
+Inventory --|> Package
+Warehouse ..> Package : "1"
+note right of Customer : Logistics domain
+@enduml

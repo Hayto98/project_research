@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+boundary "Manager" as M
+boundary "Housekeeper" as H
+participant "Guest" as G
+control "Chef" as C
+entity "Receptionist" as R
+C ->> M : Clean Room
+note over M : processing clean room
+G ->> M : Process Payment
+R --> G : Check In
+M --> G : Book Room
+activate G
+G --> M : ACK
+deactivate G
+H --> C : Request Service
+activate C
+C --> H : ACK
+deactivate C
+C ->> G : Check Out
+@enduml

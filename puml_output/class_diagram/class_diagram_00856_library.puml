@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+abstract class Branch {
+  #float price
+  +float updatedAt
+  #double id
+  +long phone
+  +String note
+  +cancelCode()
+  +deleteAmount()
+}
+abstract class Fine {
+  #float level
+  -float name
+  -double note
+  +Date total
+  +saveDescription()
+}
+interface Reservation {
+  -String total
+  #int amount
+  +processDuration()
+  +saveType()
+}
+class Shelf {
+  #float createdAt
+  -float address
+  -Date id
+  +findCode()
+  +validateTotal()
+  +processQuantity()
+}
+Shelf ..> Fine : "0..1"
+Fine ..|> Reservation
+note right of Branch : Library domain
+@enduml

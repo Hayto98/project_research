@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+abstract class Deposit {
+  -boolean phone
+  -double code
+  +findScore()
+  +processCreatedat()
+  +calculateAmount()
+  +calculateAddress()
+}
+class Beneficiary {
+  #boolean updatedAt
+  +double quantity
+  -double code
+  -double createdAt
+  +saveScore()
+}
+abstract class Interest {
+  -boolean duration
+  -String note
+  -String level
+  +calculateDescription()
+  +createLevel()
+  +getActive()
+}
+abstract class Account {
+  -int amount
+  #double code
+  +sendQuantity()
+  +createScore()
+  +sendDescription()
+}
+class Withdrawal {
+  #int amount
+  -boolean total
+  +cancelUpdatedat()
+  +createCode()
+}
+interface Statement {
+  -float name
+  +int phone
+  -double duration
+  +createQuantity()
+  +calculateAmount()
+  +findQuantity()
+}
+class Branch {
+  #float level
+  +double name
+  +long score
+  -Date createdAt
+  +validateNote()
+  +createEmail()
+}
+Branch --o Deposit
+Statement ..|> Withdrawal
+Branch --> Statement : "*"
+note right of Deposit : Banking domain
+@enduml

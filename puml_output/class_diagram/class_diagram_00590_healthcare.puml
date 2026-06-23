@@ -1,0 +1,57 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class Doctor {
+  +Date email
+  +Date phone
+  -String level
+  +float price
+  +updateTotal()
+}
+interface Nurse {
+  #boolean code
+  +boolean quantity
+  +saveId()
+  +getTotal()
+  +saveCreatedat()
+  +validatePrice()
+}
+class Patient {
+  #int amount
+  #String level
+  +String phone
+  #double duration
+  +createNote()
+}
+class Hospital {
+  -int id
+  -long active
+  -Date email
+  -int duration
+  +boolean amount
+  +findQuantity()
+  +sendName()
+}
+interface Treatment {
+  #float duration
+  -float phone
+  +findTotal()
+  +updateId()
+  +cancelType()
+}
+class Appointment {
+  -String status
+  #double price
+  #boolean active
+  +double note
+  +updateDuration()
+  +getName()
+  +cancelCode()
+  +sendCode()
+}
+Appointment ..> Nurse : "1..*"
+Doctor ..|> Treatment
+Nurse ..|> Doctor
+note right of Doctor : Healthcare domain
+@enduml

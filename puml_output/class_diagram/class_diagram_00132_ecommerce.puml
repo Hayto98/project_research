@@ -1,0 +1,56 @@
+@startuml
+skinparam ArrowColor #555555
+class Payment {
+  -Date email
+  -String name
+  +double amount
+  -Date active
+  +updateName()
+  +updateNote()
+  +sendStatus()
+}
+class Product {
+  +String amount
+  +String price
+  -long total
+  +sendActive()
+  +getNote()
+  +findPrice()
+}
+class Warehouse {
+  #String type
+  +int email
+  +double createdAt
+  +getAmount()
+  +createAmount()
+  +processDescription()
+}
+abstract class Return {
+  #int active
+  -float note
+  +long duration
+  +validateCode()
+  +cancelAddress()
+}
+class Invoice {
+  #Date duration
+  +double id
+  #float createdAt
+  +updateQuantity()
+  +calculateScore()
+  +getCreatedat()
+}
+abstract class Order {
+  +String createdAt
+  -long updatedAt
+  #Date amount
+  +int price
+  +validateDuration()
+  +validateDescription()
+}
+Invoice --|> Warehouse
+Invoice --> Return : "1..*"
+Return --o Warehouse
+Payment ..> Invoice : "*"
+note right of Payment : Ecommerce domain
+@enduml

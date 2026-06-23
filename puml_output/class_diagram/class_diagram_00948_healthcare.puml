@@ -1,0 +1,68 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+interface Appointment {
+  #String updatedAt
+  #boolean amount
+  +boolean type
+  #Date createdAt
+  +deleteTotal()
+  +findCode()
+  +processUpdatedat()
+  +cancelStatus()
+}
+class Prescription {
+  -boolean amount
+  +boolean quantity
+  +long status
+  -int description
+  +long createdAt
+  +cancelAddress()
+}
+abstract class Doctor {
+  -int createdAt
+  #String total
+  +cancelAddress()
+  +processId()
+  +deleteLevel()
+  +findActive()
+}
+class Diagnosis {
+  #double name
+  -long price
+  #double status
+  +saveUpdatedat()
+  +getType()
+  +calculateId()
+  +calculateType()
+}
+class Insurance {
+  +boolean address
+  #int active
+  +createName()
+  +calculatePhone()
+  +calculateDescription()
+}
+class MedicalRecord {
+  #String score
+  -int level
+  +Date amount
+  +deleteUpdatedat()
+  +saveEmail()
+}
+class Ward {
+  -boolean description
+  +double id
+  +setUpdatedat()
+  +deleteCreatedat()
+  +findAddress()
+}
+MedicalRecord --* Doctor
+Ward ..|> Insurance
+Prescription ..|> Doctor
+MedicalRecord ..|> Insurance
+Doctor ..> Prescription : "1"
+Doctor --|> Insurance
+note right of Appointment : Healthcare domain
+@enduml

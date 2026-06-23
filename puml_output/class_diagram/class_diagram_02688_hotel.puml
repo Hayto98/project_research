@@ -1,0 +1,46 @@
+@startuml
+skinparam defaultFontSize 11
+class Room {
+  #long price
+  #float description
+  #float level
+  +processType()
+  +processNote()
+}
+interface Restaurant {
+  -Date code
+  +Date updatedAt
+  +getId()
+  +processScore()
+  +sendCode()
+}
+class CheckOut {
+  +String type
+  #Date email
+  +sendAddress()
+}
+class Invoice {
+  #Date phone
+  -Date type
+  +float amount
+  +Date email
+  -Date level
+  +cancelName()
+  +deletePhone()
+  +calculatePrice()
+  +findScore()
+}
+class Amenity {
+  #double status
+  #boolean quantity
+  +processDescription()
+  +cancelLevel()
+  +saveEmail()
+  +cancelUpdatedat()
+}
+Room --> CheckOut : "1..*"
+Invoice ..|> Room
+Restaurant --* Amenity
+CheckOut ..|> Room
+note right of Room : Hotel domain
+@enduml

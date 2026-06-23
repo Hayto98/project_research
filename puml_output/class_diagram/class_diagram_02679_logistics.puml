@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+class Driver {
+  #double phone
+  -long id
+  +createType()
+  +saveActive()
+  +updateEmail()
+}
+class Depot {
+  #float price
+  +double total
+  -Date duration
+  +long note
+  #double updatedAt
+  +processDescription()
+  +processType()
+}
+abstract class Inventory {
+  +Date description
+  -boolean quantity
+  #long price
+  -boolean phone
+  +calculateTotal()
+  +validateLevel()
+  +processPhone()
+  +sendName()
+}
+interface Manifest {
+  #boolean email
+  #int id
+  +double address
+  +createName()
+  +cancelDescription()
+}
+abstract class Route {
+  #int note
+  -String quantity
+  -String address
+  +float createdAt
+  +findPrice()
+  +createAmount()
+  +findId()
+}
+Manifest ..|> Driver
+Depot --|> Inventory
+Depot ..> Driver : "1"
+Route --> Inventory : "0..1"
+note right of Driver : Logistics domain
+@enduml

@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+class Cart {
+  +int duration
+  +double price
+  #String createdAt
+  +processDescription()
+}
+class Invoice {
+  #Date id
+  #Date createdAt
+  +long status
+  +Date note
+  #long email
+  +setType()
+}
+class Product {
+  -int phone
+  #String createdAt
+  #float name
+  +int updatedAt
+  +savePrice()
+  +updateTotal()
+}
+class Return {
+  +long amount
+  -float address
+  +boolean name
+  +double id
+  -Date price
+  +findDuration()
+  +deleteAddress()
+  +sendScore()
+}
+class Review {
+  +boolean level
+  +int status
+  +float id
+  -double description
+  -String active
+  +findLevel()
+  +deleteScore()
+  +getType()
+  +setScore()
+}
+interface Order {
+  -String active
+  +double updatedAt
+  +String name
+  +findId()
+  +createUpdatedat()
+  +calculateName()
+}
+interface Customer {
+  +String description
+  #float total
+  -long type
+  #double active
+  +saveActive()
+  +calculateDuration()
+  +validateCreatedat()
+}
+Return ..> Product : "0..1"
+Invoice --|> Order
+Order --|> Cart
+Cart ..> Review : "0..1"
+note right of Cart : Ecommerce domain
+@enduml

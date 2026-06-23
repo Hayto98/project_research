@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+interface Restaurant {
+  +int email
+  #int phone
+  +setType()
+  +validateAddress()
+  +sendAmount()
+}
+interface Housekeeping {
+  +Date score
+  #String id
+  +processDuration()
+  +processName()
+  +calculateAmount()
+  +findLevel()
+}
+class Reservation {
+  #long duration
+  -double name
+  +findName()
+  +calculateDuration()
+  +saveAmount()
+  +processPrice()
+}
+abstract class CheckOut {
+  -Date score
+  +float name
+  +calculateAmount()
+}
+class Staff {
+  +long createdAt
+  -int quantity
+  -double code
+  #float price
+  -long level
+  +sendCreatedat()
+  +setStatus()
+  +cancelEmail()
+  +createCode()
+}
+abstract class Payment {
+  -double code
+  #double email
+  +int phone
+  -int id
+  +setName()
+  +deleteType()
+}
+class CheckIn {
+  -boolean description
+  +String score
+  +Date price
+  -int note
+  +cancelAddress()
+}
+Restaurant ..|> CheckOut
+Payment --* Restaurant
+CheckIn --o Restaurant
+Payment --* Staff
+Housekeeping --* CheckIn
+note right of Restaurant : Hotel domain
+@enduml

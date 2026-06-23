@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+abstract class Inventory {
+  +int name
+  #double active
+  #Date status
+  #Date type
+  +getId()
+  +saveAddress()
+  +saveQuantity()
+}
+class Tracking {
+  -int note
+  #long active
+  +getDuration()
+  +calculateCode()
+}
+class Depot {
+  #int total
+  #Date level
+  #String status
+  #long description
+  +cancelPhone()
+  +sendDescription()
+  +createId()
+  +sendAddress()
+}
+interface Warehouse {
+  -double description
+  -String code
+  -Date createdAt
+  +double price
+  +int name
+  +findEmail()
+}
+interface Vehicle {
+  -long address
+  -float createdAt
+  -String updatedAt
+  #Date amount
+  -float name
+  +calculateNote()
+  +sendType()
+}
+interface Driver {
+  -int type
+  -boolean active
+  -float description
+  +Date address
+  +validateLevel()
+  +updateCreatedat()
+}
+Warehouse ..> Driver : "*"
+Depot --|> Vehicle
+Depot --* Tracking
+Driver --o Inventory
+note right of Inventory : Logistics domain
+@enduml

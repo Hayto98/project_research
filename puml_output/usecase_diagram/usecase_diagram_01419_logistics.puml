@@ -1,0 +1,32 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+left to right direction
+actor "Dispatcher" as Dispatcher
+actor "Warehouse Staff" as WarehouseStaff
+actor "Driver" as Driver
+actor "Customer" as Customer
+rectangle "Logistics System" {
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Schedule Pickup" as UC_SchedulePickup
+}
+Dispatcher --> UC_LoadPackage
+Dispatcher --> UC_ReportIssue
+WarehouseStaff --> UC_SchedulePickup
+WarehouseStaff --> UC_LoadPackage
+WarehouseStaff --> UC_AssignRoute
+Driver --> UC_ReportIssue
+Driver --> UC_LoadPackage
+Customer --> UC_ReportIssue
+Customer --> UC_LoadPackage
+Customer --> UC_DeliverPackage
+UC_LoadPackage ..|> UC_AssignRoute : <<extend>>
+@enduml

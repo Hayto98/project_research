@@ -1,0 +1,20 @@
+@startuml
+
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Customer" as Customer
+rectangle "Ecommerce System" {
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Checkout" as UC_Checkout
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Write Review" as UC_WriteReview
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Browse Products" as UC_BrowseProducts
+}
+DeliveryService --> UC_CancelOrder
+DeliveryService --> UC_BrowseProducts
+DeliveryService --> UC_MakePayment
+Customer --> UC_Checkout
+Customer --> UC_MakePayment
+UC_BrowseProducts ..|> UC_WriteReview : <<include>>
+@enduml

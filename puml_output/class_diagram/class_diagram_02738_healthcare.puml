@@ -1,0 +1,57 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Hospital {
+  -String active
+  -float code
+  +int total
+  #double score
+  -String price
+  +deleteUpdatedat()
+  +processCode()
+  +validateActive()
+  +savePhone()
+}
+abstract class Appointment {
+  +double quantity
+  #int createdAt
+  -float phone
+  -int address
+  +getActive()
+  +getDuration()
+}
+class MedicalRecord {
+  #Date name
+  #long quantity
+  -int note
+  #String active
+  +saveLevel()
+  +deleteUpdatedat()
+}
+class Ward {
+  #double type
+  #boolean note
+  +boolean id
+  #String phone
+  +sendQuantity()
+  +sendScore()
+}
+abstract class LabTest {
+  +int active
+  #Date note
+  +deleteNote()
+  +processActive()
+}
+abstract class Insurance {
+  +boolean email
+  #int createdAt
+  #String total
+  #boolean code
+  +updateQuantity()
+}
+Ward ..|> Hospital
+LabTest --> MedicalRecord : "1..*"
+MedicalRecord ..|> Ward
+Appointment --* Hospital
+note right of Hospital : Healthcare domain
+@enduml

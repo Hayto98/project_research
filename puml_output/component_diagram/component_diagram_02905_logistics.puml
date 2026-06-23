@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Package Service" as C_PackageService
+component "Manifest Service" as C_ManifestService
+component "Driver Service" as C_DriverService
+component "Depot Service" as C_DepotService
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Warehouse Service" as C_WarehouseService
+database "Logistics DB" as DB_logistics
+C_PackageService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_DepotService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_DepotService ..> C_DriverService : MQ
+C_DeliveryNoteService ..> C_DepotService : MQ
+C_ManifestService ..> C_DeliveryNoteService : gRPC
+C_PackageService ..> C_DriverService : MQ
+C_DepotService ..> C_DeliveryNoteService : gRPC
+@enduml

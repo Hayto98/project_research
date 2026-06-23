@@ -1,0 +1,60 @@
+@startuml
+skinparam shadowing true
+abstract class Member {
+  +int note
+  -float duration
+  #int description
+  -long active
+  +deleteLevel()
+}
+abstract class Reservation {
+  +long status
+  +Date quantity
+  +setType()
+  +sendId()
+}
+class Catalog {
+  #float price
+  #boolean total
+  -float amount
+  +calculateTotal()
+}
+interface Librarian {
+  +Date duration
+  +Date price
+  +validateQuantity()
+}
+interface Book {
+  -double address
+  #float note
+  -String amount
+  +long price
+  +updateName()
+  +deleteCreatedat()
+  +getId()
+  +calculateTotal()
+}
+interface Loan {
+  #Date createdAt
+  #float updatedAt
+  +long email
+  #long description
+  +calculateQuantity()
+  +calculateEmail()
+  +createCode()
+  +findUpdatedat()
+}
+class Author {
+  +float email
+  #long price
+  +int quantity
+  #float id
+  +cancelName()
+  +sendTotal()
+  +cancelPhone()
+}
+Author --* Reservation
+Loan --o Reservation
+Reservation --o Librarian
+note right of Member : Library domain
+@enduml

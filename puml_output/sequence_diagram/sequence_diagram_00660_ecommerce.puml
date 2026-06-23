@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+actor "Admin" as A
+actor "Payment Gateway" as PG
+participant "Seller" as S
+actor "Delivery Service" as DS
+boundary "Customer" as C
+A -> S : Checkout
+activate S
+S --> A : ACK
+deactivate S
+A --> S : Make Payment
+activate S
+S --> A : ACK
+deactivate S
+S ->> C : Add To Cart
+A --> S : Manage Inventory
+activate S
+S --> A : ACK
+deactivate S
+DS ->> C : Cancel Order
+activate C
+C --> DS : ACK
+deactivate C
+@enduml

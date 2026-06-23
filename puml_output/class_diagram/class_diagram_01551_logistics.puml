@@ -1,0 +1,40 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Inventory {
+  #boolean total
+  +int description
+  +boolean note
+  +validateAmount()
+  +validateTotal()
+  +setPhone()
+}
+class Route {
+  #double active
+  +double amount
+  +String description
+  +getName()
+  +setQuantity()
+  +sendAddress()
+  +setPhone()
+}
+abstract class Warehouse {
+  -Date total
+  -int address
+  -String createdAt
+  +validateType()
+}
+class Shipment {
+  +double active
+  -float quantity
+  +Date amount
+  #String price
+  +findName()
+  +cancelUpdatedat()
+}
+Shipment --* Route
+Shipment --* Warehouse
+Inventory ..|> Route
+note right of Inventory : Logistics domain
+@enduml

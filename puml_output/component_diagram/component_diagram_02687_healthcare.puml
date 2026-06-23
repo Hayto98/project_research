@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+component "Ward Service" as C_WardService
+component "Prescription Service" as C_PrescriptionService
+component "Diagnosis Service" as C_DiagnosisService
+component "Nurse Service" as C_NurseService
+database "Healthcare DB" as DB_healthcare
+C_WardService --> DB_healthcare
+C_DiagnosisService --> DB_healthcare
+C_WardService ..> C_PrescriptionService : gRPC
+C_NurseService ..> C_DiagnosisService : gRPC
+C_NurseService ..> C_DiagnosisService : MQ
+@enduml

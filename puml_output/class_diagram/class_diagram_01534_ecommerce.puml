@@ -1,0 +1,65 @@
+@startuml
+skinparam ArrowColor #555555
+class Shipment {
+  #boolean score
+  #Date active
+  #double total
+  #float email
+  -String status
+  +getActive()
+}
+abstract class Cart {
+  +String type
+  #long duration
+  +Date amount
+  -boolean note
+  +getNote()
+}
+class Warehouse {
+  +Date createdAt
+  #int active
+  #String level
+  +boolean price
+  +deleteDescription()
+  +validateNote()
+}
+class Return {
+  -String phone
+  +float code
+  +findDescription()
+  +updateType()
+  +findDescription()
+}
+interface Payment {
+  -String id
+  #Date name
+  -int description
+  +Date total
+  +int type
+  +calculateStatus()
+}
+class Wishlist {
+  #int status
+  +String createdAt
+  +Date phone
+  +findActive()
+  +getType()
+  +sendScore()
+  +saveLevel()
+}
+class Coupon {
+  -double active
+  +long name
+  #long createdAt
+  +float duration
+  -boolean code
+  +calculateScore()
+  +createEmail()
+  +setId()
+}
+Cart ..|> Warehouse
+Shipment ..|> Cart
+Return --o Payment
+Coupon --* Warehouse
+note right of Shipment : Ecommerce domain
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+start
+:Transfer Funds;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Withdraw Cash;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Apply For Loan;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Block Card;
+:View Statement;
+:Pay Bill;
+:Deposit Money;
+stop
+@enduml

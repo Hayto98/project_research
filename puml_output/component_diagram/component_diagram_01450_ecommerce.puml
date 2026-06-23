@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Shipment Service" as C_ShipmentService
+component "Return Service" as C_ReturnService
+component "Wishlist Service" as C_WishlistService
+component "Review Service" as C_ReviewService
+database "Ecommerce DB" as DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_ReviewService ..> C_WishlistService : MQ
+C_ShipmentService ..> C_ReviewService : MQ
+C_ShipmentService ..> C_ReviewService : gRPC
+@enduml

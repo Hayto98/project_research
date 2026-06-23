@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+[*] --> Pending
+Pending --> Reviewed : process
+Reviewed --> Shipped : review
+Reviewed : entry / log withdrawal
+Shipped --> OnHold : cancel
+OnHold --> Closed : reject
+Closed --> Draft : review
+Closed --> Pending : revert
+Draft --> [*]
+@enduml

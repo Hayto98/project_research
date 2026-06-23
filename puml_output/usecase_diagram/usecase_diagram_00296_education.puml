@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+left to right direction
+actor "Admin" as Admin
+actor "Teacher" as Teacher
+actor "Student" as Student
+rectangle "Education System" {
+  usecase "Issue Certificate" as UC_IssueCertificate
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "View Schedule" as UC_ViewSchedule
+  usecase "Register Student" as UC_RegisterStudent
+  usecase "Borrow Book" as UC_BorrowBook
+}
+Admin --> UC_RegisterStudent
+Admin --> UC_TakeAttendance
+Admin --> UC_EnrollCourse
+Teacher --> UC_EnrollCourse
+Teacher --> UC_TakeAttendance
+Teacher --> UC_ViewSchedule
+Student --> UC_GradeExam
+Student --> UC_BorrowBook
+Student --> UC_ViewSchedule
+UC_RegisterStudent ..|> UC_ViewSchedule : <<include>>
+@enduml

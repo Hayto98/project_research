@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+control "Dispatcher" as D
+control "Driver" as D2
+entity "Customer" as C
+D ->> C : Deliver Package
+activate C
+C --> D : ACK
+deactivate C
+C -> D2 : Assign Route
+note over D2 : processing assign route
+C ->> D : Schedule Pickup
+activate D
+D --> C : ACK
+deactivate D
+D2 ->> D : Fuel Vehicle
+activate D
+D --> D2 : ACK
+deactivate D
+C --> D : Update Inventory
+activate D
+D --> C : ACK
+deactivate D
+D --> C : Report Issue
+activate C
+C --> D : ACK
+deactivate C
+@enduml

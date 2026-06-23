@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+abstract class Customer {
+  #String active
+  -double name
+  +cancelEmail()
+  +processUpdatedat()
+}
+abstract class Teller {
+  #long quantity
+  +int duration
+  -boolean amount
+  #float email
+  +double phone
+  +processStatus()
+  +createScore()
+}
+interface Loan {
+  #String status
+  #int phone
+  +float email
+  +cancelEmail()
+  +getTotal()
+  +sendUpdatedat()
+  +saveType()
+}
+class Account {
+  #double code
+  -String phone
+  +long level
+  +int name
+  +sendPhone()
+  +findStatus()
+  +saveCreatedat()
+}
+class Beneficiary {
+  +double amount
+  +Date createdAt
+  +updateTotal()
+  +updateCode()
+}
+abstract class Interest {
+  #float quantity
+  -double description
+  +double code
+  +sendCreatedat()
+  +deleteUpdatedat()
+  +sendNote()
+  +updateDuration()
+}
+Account --> Beneficiary : "1..*"
+Beneficiary ..> Account : "1..*"
+Loan --|> Account
+Interest ..|> Loan
+note right of Customer : Banking domain
+@enduml

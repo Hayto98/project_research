@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Invoice {
+  -long type
+  #long name
+  #boolean total
+  +validateTotal()
+}
+interface Housekeeping {
+  -double updatedAt
+  #float amount
+  #float duration
+  +saveTotal()
+  +createStatus()
+  +sendAddress()
+}
+class Amenity {
+  -boolean description
+  +int type
+  +double duration
+  -double updatedAt
+  +long id
+  +getPrice()
+}
+interface CheckIn {
+  #String level
+  #long updatedAt
+  #int active
+  -long createdAt
+  #double score
+  +deleteNote()
+  +deleteScore()
+  +setId()
+}
+class Payment {
+  +double createdAt
+  #Date updatedAt
+  #float duration
+  +Date active
+  +double status
+  +saveAddress()
+}
+class Staff {
+  #Date total
+  -long price
+  #boolean id
+  #String status
+  -int updatedAt
+  +findActive()
+  +deleteCreatedat()
+}
+Invoice --> CheckIn : "1..*"
+CheckIn --|> Staff
+Housekeeping --o Staff
+note right of Invoice : Hotel domain
+@enduml

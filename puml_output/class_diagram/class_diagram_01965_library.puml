@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+class Shelf {
+  +Date active
+  -float updatedAt
+  #boolean id
+  #float email
+  +boolean level
+  +getEmail()
+  +updateId()
+  +validateType()
+  +cancelName()
+}
+abstract class Reservation {
+  -int code
+  -String type
+  -int active
+  +validateScore()
+  +setScore()
+  +validateAddress()
+}
+class Book {
+  +double description
+  #int score
+  +validateUpdatedat()
+}
+abstract class Branch {
+  -double total
+  #int status
+  +boolean code
+  +deleteAmount()
+  +processCode()
+  +deleteQuantity()
+}
+class Author {
+  #double type
+  -int code
+  +float price
+  #float active
+  -long amount
+  +sendPhone()
+  +setTotal()
+  +createName()
+  +cancelStatus()
+}
+interface Loan {
+  #String quantity
+  #Date id
+  +updateDescription()
+  +updateCreatedat()
+}
+interface Fine {
+  -Date note
+  -int updatedAt
+  #int name
+  #String amount
+  +saveType()
+  +createAmount()
+  +validateId()
+}
+Branch ..> Reservation : "0..1"
+Fine ..> Book : "1"
+Branch ..> Author : "1..*"
+Shelf --* Branch
+Shelf --o Reservation
+Fine ..|> Branch
+note right of Shelf : Library domain
+@enduml

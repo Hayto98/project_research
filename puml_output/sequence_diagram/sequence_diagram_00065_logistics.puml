@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing true
+control "Dispatcher" as D
+control "Fleet Manager" as FM
+participant "Warehouse Staff" as WS
+D -> FM : Update Inventory
+D --> WS : Assign Route
+WS -> FM : Fuel Vehicle
+activate FM
+FM --> WS : ACK
+deactivate FM
+FM -> D : Track Shipment
+note over D : processing track shipment
+FM --> D : Schedule Pickup
+D ->> WS : Report Issue
+@enduml

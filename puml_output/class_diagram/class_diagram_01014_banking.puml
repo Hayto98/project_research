@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+abstract class Interest {
+  +boolean note
+  #int level
+  +cancelNote()
+  +createId()
+}
+class Branch {
+  +double code
+  +Date duration
+  +processEmail()
+  +calculateDescription()
+  +processAmount()
+}
+class Transfer {
+  +Date duration
+  +double active
+  #String type
+  #String name
+  #float address
+  +findScore()
+}
+class Transaction {
+  -double price
+  +float code
+  #long createdAt
+  +Date quantity
+  +savePrice()
+  +getTotal()
+}
+class Card {
+  +boolean status
+  #int amount
+  #String quantity
+  +sendPhone()
+  +deleteQuantity()
+  +validateStatus()
+}
+abstract class Statement {
+  #String id
+  -Date active
+  #long level
+  -float address
+  +Date code
+  +setAddress()
+  +findQuantity()
+  +deleteName()
+  +findDuration()
+}
+class Account {
+  -Date note
+  #long duration
+  #String description
+  -double updatedAt
+  -float email
+  +deleteUpdatedat()
+}
+Interest --> Account : "1"
+Statement --|> Card
+Account --* Transfer
+Card ..|> Statement
+Card --o Interest
+note right of Interest : Banking domain
+@enduml

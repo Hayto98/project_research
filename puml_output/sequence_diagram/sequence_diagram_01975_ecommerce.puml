@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+control "Admin" as A
+participant "Customer" as C
+control "Payment Gateway" as PG
+entity "Delivery Service" as DS
+A --> PG : Add To Cart
+activate PG
+PG --> A : ACK
+deactivate PG
+note over PG : processing add to cart
+A -> C : Checkout
+note over C : processing checkout
+A --> DS : Apply Coupon
+note over DS : processing apply coupon
+C -> PG : Manage Inventory
+activate PG
+PG --> C : ACK
+deactivate PG
+C ->> A : Browse Products
+@enduml

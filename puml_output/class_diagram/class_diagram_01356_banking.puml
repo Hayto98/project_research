@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+abstract class Customer {
+  -long quantity
+  -int createdAt
+  -String email
+  #long status
+  -float total
+  +saveStatus()
+}
+interface Statement {
+  +Date active
+  #boolean total
+  +Date price
+  +saveStatus()
+}
+class Transfer {
+  +String status
+  #String type
+  #float duration
+  #String phone
+  -long amount
+  +createPhone()
+  +setCode()
+  +processAmount()
+}
+interface Account {
+  -String score
+  -String name
+  #float amount
+  +sendPrice()
+  +updateAddress()
+}
+class Withdrawal {
+  #Date active
+  #boolean quantity
+  -String name
+  +cancelUpdatedat()
+  +processEmail()
+  +sendEmail()
+  +sendAmount()
+}
+class Card {
+  +String status
+  +float email
+  +updateScore()
+}
+Account --> Transfer : "1"
+Transfer --o Statement
+Withdrawal --o Customer
+note right of Customer : Banking domain
+@enduml

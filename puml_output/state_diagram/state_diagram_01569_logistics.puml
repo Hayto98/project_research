@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+[*] --> Approved
+Approved --> Cancelled : reject
+Approved : entry / log depot
+Cancelled --> OnHold : update
+OnHold --> Completed : approve
+Completed --> Closed : approve
+Closed --> Processing : review
+Approved --> Processing : revert
+Processing --> [*]
+@enduml

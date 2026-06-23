@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+participant "Doctor" as D
+entity "Receptionist" as R
+entity "Insurance Provider" as IP
+entity "Patient" as P
+P -> IP : Update Medical Record
+note over IP : processing update medical record
+R ->> D : Book Appointment
+note over D : processing book appointment
+IP --> P : Discharge Patient
+P --> R : Process Insurance Claim
+activate R
+R --> P : ACK
+deactivate R
+P --> D : Examine Patient
+note over D : processing examine patient
+IP -> P : Issue Prescription
+activate P
+P --> IP : ACK
+deactivate P
+@enduml

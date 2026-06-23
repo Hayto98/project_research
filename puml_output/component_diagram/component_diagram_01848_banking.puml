@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+component "Withdrawal Service" as C_WithdrawalService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Customer Service" as C_CustomerService
+component "Account Service" as C_AccountService
+component "Deposit Service" as C_DepositService
+component "Transaction Service" as C_TransactionService
+database "Banking DB" as DB_banking
+C_WithdrawalService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_CustomerService --> DB_banking
+C_AccountService --> DB_banking
+C_TransactionService --> DB_banking
+C_TransactionService ..> C_WithdrawalService : HTTP
+C_CustomerService ..> C_DepositService : HTTP
+@enduml

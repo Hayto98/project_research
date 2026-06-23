@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+abstract class Category {
+  -int updatedAt
+  +Date quantity
+  +deleteNote()
+  +savePrice()
+}
+interface Coupon {
+  #float phone
+  #int description
+  #boolean quantity
+  #boolean createdAt
+  +createLevel()
+  +setDuration()
+  +getScore()
+}
+interface Shipment {
+  +boolean createdAt
+  +float type
+  +double code
+  +getLevel()
+  +cancelAmount()
+}
+class Wishlist {
+  -Date status
+  +Date email
+  -boolean score
+  #long level
+  +findQuantity()
+  +findScore()
+  +calculateType()
+}
+class Payment {
+  #int price
+  #long id
+  -int description
+  +Date type
+  -float active
+  +setId()
+  +cancelEmail()
+  +deleteCode()
+  +findAmount()
+}
+class Return {
+  +int code
+  +long active
+  -boolean duration
+  +deleteName()
+}
+Payment --* Shipment
+Shipment --* Return
+Shipment --> Payment : "0..1"
+note right of Category : Ecommerce domain
+@enduml

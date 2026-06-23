@@ -1,0 +1,45 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class CheckOut {
+  -float email
+  -long name
+  -Date total
+  #long code
+  +createActive()
+}
+abstract class Booking {
+  #int level
+  -String score
+  +sendDuration()
+  +processDescription()
+  +getPhone()
+  +validateNote()
+}
+class Guest {
+  +Date updatedAt
+  #long price
+  +float note
+  +sendCode()
+  +sendActive()
+}
+class Service {
+  -boolean duration
+  #boolean address
+  +findPhone()
+}
+class Amenity {
+  -boolean quantity
+  -double updatedAt
+  #long createdAt
+  +String score
+  +deletePhone()
+  +createDescription()
+  +deleteLevel()
+}
+Guest ..> Service : "1..*"
+CheckOut --|> Booking
+Guest --o CheckOut
+Service ..|> Booking
+note right of CheckOut : Hotel domain
+@enduml

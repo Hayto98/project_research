@@ -1,0 +1,20 @@
+@startuml
+skinparam defaultFontSize 11
+component "Supplier Service" as C_SupplierService
+component "Warehouse Service" as C_WarehouseService
+component "Review Service" as C_ReviewService
+component "Payment Service" as C_PaymentService
+component "Product Service" as C_ProductService
+component "Customer Service" as C_CustomerService
+component "Shipment Service" as C_ShipmentService
+database "Ecommerce DB" as DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_PaymentService ..> C_ReviewService : HTTP
+C_CustomerService ..> C_SupplierService : MQ
+C_CustomerService ..> C_SupplierService : MQ
+@enduml

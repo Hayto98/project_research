@@ -1,0 +1,50 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Payment {
+  -Date email
+  +float id
+  #float total
+  +double type
+  +cancelScore()
+  +cancelPhone()
+}
+class Reservation {
+  #boolean price
+  +long total
+  +calculateAmount()
+}
+class Service {
+  -int createdAt
+  #double total
+  -Date name
+  #float description
+  +createName()
+  +saveDuration()
+  +findDescription()
+  +createCreatedat()
+}
+class Invoice {
+  #long amount
+  -boolean code
+  -Date active
+  +Date level
+  #long id
+  +deleteId()
+}
+class Housekeeping {
+  +double description
+  -boolean phone
+  +deleteQuantity()
+  +setStatus()
+}
+interface Restaurant {
+  #double description
+  -int id
+  +findTotal()
+}
+Payment --> Service : "0..1"
+Housekeeping --> Payment : "0..1"
+Housekeeping --> Reservation : "*"
+note right of Payment : Hotel domain
+@enduml

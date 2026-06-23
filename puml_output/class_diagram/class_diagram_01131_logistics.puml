@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+abstract class Warehouse {
+  +String duration
+  +int code
+  #float email
+  -float quantity
+  #long price
+  +cancelId()
+  +deleteType()
+}
+abstract class Customer {
+  #int address
+  #String email
+  #String code
+  +setLevel()
+  +findEmail()
+  +getNote()
+  +processActive()
+}
+abstract class Package {
+  +double total
+  #double email
+  -double duration
+  #int updatedAt
+  +updateDescription()
+  +setAddress()
+  +deleteCreatedat()
+}
+abstract class Driver {
+  #float duration
+  #int description
+  -int address
+  #float status
+  +saveStatus()
+}
+class Tracking {
+  +boolean note
+  +boolean name
+  +setScore()
+}
+class Vehicle {
+  +String address
+  -float duration
+  -int total
+  -int level
+  +updateUpdatedat()
+}
+class FuelLog {
+  -double status
+  #String email
+  +calculateNote()
+}
+Warehouse ..> Vehicle : "1..*"
+FuelLog --> Customer : "1"
+Vehicle --* Customer
+note right of Warehouse : Logistics domain
+@enduml

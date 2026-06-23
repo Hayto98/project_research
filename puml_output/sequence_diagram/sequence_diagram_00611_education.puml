@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+control "Student" as S
+boundary "Registrar" as R
+control "Parent" as P
+control "Teacher" as T
+actor "Librarian" as L
+T ->> R : Submit Assignment
+S -> T : Borrow Book
+note over T : processing borrow book
+L --> S : Issue Certificate
+activate S
+S --> L : ACK
+deactivate S
+P ->> L : Register Student
+R ->> T : View Schedule
+R -> P : Grade Exam
+@enduml

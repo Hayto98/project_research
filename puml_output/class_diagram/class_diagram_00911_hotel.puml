@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+class Booking {
+  +String status
+  #float price
+  #float score
+  -float quantity
+  #int email
+  +findType()
+  +getPhone()
+}
+class Invoice {
+  +boolean address
+  +long duration
+  -boolean note
+  #double quantity
+  +deleteAddress()
+  +calculateCode()
+  +createCode()
+}
+abstract class Amenity {
+  -float createdAt
+  #boolean email
+  +cancelAddress()
+  +validateType()
+  +getCode()
+}
+class Room {
+  -String code
+  +float description
+  +int name
+  +sendDuration()
+  +cancelNote()
+  +setUpdatedat()
+}
+class Payment {
+  +double id
+  #boolean quantity
+  +cancelType()
+  +updateType()
+  +processCode()
+  +calculateDuration()
+}
+abstract class Restaurant {
+  +boolean level
+  -String score
+  +int id
+  +boolean address
+  +processPrice()
+}
+class CheckIn {
+  +String note
+  -float total
+  -int status
+  +processCode()
+}
+Booking ..|> Room
+Booking ..> Invoice : "0..1"
+CheckIn --> Payment : "1"
+Booking --* Amenity
+note right of Booking : Hotel domain
+@enduml

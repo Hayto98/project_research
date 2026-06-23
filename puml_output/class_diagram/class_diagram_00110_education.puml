@@ -1,0 +1,42 @@
+@startuml
+skinparam ArrowColor #555555
+class Attendance {
+  +String id
+  +float description
+  #float updatedAt
+  +sendAmount()
+  +updateNote()
+  +validatePhone()
+}
+interface Classroom {
+  #long level
+  #boolean name
+  +validateScore()
+  +cancelCreatedat()
+  +processId()
+}
+abstract class Course {
+  +double type
+  +boolean duration
+  -Date description
+  #int code
+  -long score
+  +sendActive()
+  +createCode()
+  +validateQuantity()
+}
+class Department {
+  +float status
+  #String createdAt
+  -String duration
+  #double name
+  +findCode()
+  +cancelAddress()
+  +findTotal()
+  +setAddress()
+}
+Attendance ..|> Department
+Attendance --* Course
+Course --> Classroom : "1..*"
+note right of Attendance : Education domain
+@enduml

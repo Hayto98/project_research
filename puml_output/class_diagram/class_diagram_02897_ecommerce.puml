@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+abstract class Review {
+  +double phone
+  -double description
+  +setType()
+  +sendId()
+  +updateId()
+}
+class Category {
+  +double type
+  +boolean active
+  +double updatedAt
+  +validatePrice()
+  +cancelStatus()
+}
+class Coupon {
+  +int level
+  +float email
+  +processAmount()
+  +sendTotal()
+  +processDuration()
+  +createPhone()
+}
+class Shipment {
+  -float updatedAt
+  +boolean level
+  +long active
+  #int note
+  +findTotal()
+  +validateAmount()
+  +processPhone()
+}
+interface Supplier {
+  #double description
+  -double quantity
+  -int active
+  +findQuantity()
+  +setQuantity()
+}
+class Warehouse {
+  +int score
+  -String type
+  +double email
+  +int active
+  +sendQuantity()
+  +createLevel()
+  +deleteCode()
+  +saveActive()
+}
+abstract class Product {
+  +double active
+  -double price
+  +saveCreatedat()
+  +setName()
+  +setQuantity()
+  +updateEmail()
+}
+Category --* Review
+Review --o Category
+Review ..|> Supplier
+Supplier ..> Category : "1"
+Category --* Coupon
+note right of Review : Ecommerce domain
+@enduml

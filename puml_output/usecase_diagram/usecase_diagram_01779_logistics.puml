@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+left to right direction
+actor "Driver" as Driver
+actor "Fleet Manager" as FleetManager
+actor "Warehouse Staff" as WarehouseStaff
+rectangle "Logistics System" {
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Schedule Pickup" as UC_SchedulePickup
+}
+Driver --> UC_FuelVehicle
+Driver --> UC_TrackShipment
+Driver --> UC_SchedulePickup
+FleetManager --> UC_FuelVehicle
+WarehouseStaff --> UC_DeliverPackage
+WarehouseStaff --> UC_AssignRoute
+WarehouseStaff --> UC_FuelVehicle
+UC_FuelVehicle ..|> UC_DeliverPackage : <<extend>>
+@enduml

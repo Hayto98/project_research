@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+component "Payment Service" as C_PaymentService
+component "Customer Service" as C_CustomerService
+component "Category Service" as C_CategoryService
+component "Invoice Service" as C_InvoiceService
+component "Supplier Service" as C_SupplierService
+database "Ecommerce DB" as DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_CategoryService --> DB_ecommerce
+C_CustomerService ..> C_PaymentService : gRPC
+C_SupplierService ..> C_InvoiceService : MQ
+C_CustomerService ..> C_InvoiceService : REST
+@enduml

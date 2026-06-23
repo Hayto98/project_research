@@ -1,0 +1,36 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+start
+:Update Inventory;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Fuel Vehicle;
+:Assign Route;
+:Deliver Package;
+:Track Shipment;
+:Report Issue;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Schedule Pickup;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+stop
+@enduml

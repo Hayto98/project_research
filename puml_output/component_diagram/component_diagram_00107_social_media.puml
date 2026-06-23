@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+component "Comment Service" as C_CommentService
+component "Message Service" as C_MessageService
+component "Follower Service" as C_FollowerService
+component "Hashtag Service" as C_HashtagService
+component "Story Service" as C_StoryService
+component "Post Service" as C_PostService
+component "Notification Service" as C_NotificationService
+database "Social Media DB" as DB_social_media
+C_FollowerService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_StoryService --> DB_social_media
+C_PostService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_StoryService ..> C_PostService : HTTP
+C_CommentService ..> C_PostService : HTTP
+@enduml

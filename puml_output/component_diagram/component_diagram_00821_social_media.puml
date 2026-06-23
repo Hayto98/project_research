@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+component "Notification Service" as C_NotificationService
+component "Profile Service" as C_ProfileService
+component "Message Service" as C_MessageService
+component "Follower Service" as C_FollowerService
+component "Report Service" as C_ReportService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_MessageService --> DB_social_media
+C_ReportService --> DB_social_media
+C_MessageService ..> C_ReportService : MQ
+C_ProfileService ..> C_NotificationService : HTTP
+@enduml

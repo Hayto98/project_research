@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+entity "Delivery Service" as DS
+control "Seller" as S
+participant "Customer" as C
+control "Payment Gateway" as PG
+DS ->> PG : Track Order
+activate PG
+PG --> DS : ACK
+deactivate PG
+DS ->> PG : Add To Cart
+note over PG : processing add to cart
+DS -> S : Manage Inventory
+DS -> S : Checkout
+note over S : processing checkout
+@enduml

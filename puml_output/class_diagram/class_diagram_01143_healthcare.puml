@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+interface MedicalRecord {
+  +double price
+  -double quantity
+  -int duration
+  #long code
+  +deleteScore()
+  +setDescription()
+  +deleteNote()
+}
+abstract class Appointment {
+  +int description
+  -boolean updatedAt
+  +boolean email
+  #Date price
+  +boolean total
+  +deleteType()
+  +createTotal()
+}
+class Billing {
+  +long createdAt
+  #double phone
+  +processPrice()
+  +calculateQuantity()
+  +findNote()
+  +saveActive()
+}
+abstract class Prescription {
+  +boolean address
+  -String score
+  +createLevel()
+  +processDescription()
+  +validateScore()
+  +processUpdatedat()
+}
+Billing --|> Prescription
+Prescription --> MedicalRecord : "0..1"
+note right of MedicalRecord : Healthcare domain
+@enduml

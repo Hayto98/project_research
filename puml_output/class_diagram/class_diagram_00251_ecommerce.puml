@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Review {
+  -String phone
+  -float status
+  +Date description
+  #String price
+  +getDescription()
+}
+class Payment {
+  #boolean status
+  -String note
+  +int quantity
+  #int code
+  -float duration
+  +createName()
+  +setActive()
+  +deleteActive()
+}
+interface Product {
+  -boolean active
+  #double updatedAt
+  -long status
+  +cancelPrice()
+  +deleteStatus()
+  +getScore()
+}
+class Warehouse {
+  -int type
+  -float code
+  +long score
+  +float description
+  +validateId()
+  +updateActive()
+}
+class Cart {
+  +long createdAt
+  -boolean active
+  -String price
+  +boolean updatedAt
+  -long phone
+  +savePrice()
+}
+Payment --o Warehouse
+Warehouse ..|> Review
+Payment --> Cart : "1..*"
+Review --|> Payment
+note right of Review : Ecommerce domain
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+class Depot {
+  +String price
+  #long email
+  +Date status
+  +long id
+  #long active
+  +processDuration()
+  +getCreatedat()
+  +sendDescription()
+  +calculateDescription()
+}
+class Driver {
+  #double total
+  #double id
+  +Date description
+  +saveAmount()
+}
+class DeliveryNote {
+  -Date note
+  #boolean score
+  -double quantity
+  +boolean price
+  +sendName()
+  +saveLevel()
+}
+abstract class Warehouse {
+  -long updatedAt
+  +boolean note
+  #boolean description
+  -String total
+  #float phone
+  +createActive()
+}
+class Customer {
+  #String amount
+  +String name
+  +findDuration()
+  +setId()
+  +updateTotal()
+}
+interface Vehicle {
+  -float score
+  -String address
+  +setQuantity()
+  +saveUpdatedat()
+  +createDescription()
+}
+DeliveryNote --o Vehicle
+Driver --o DeliveryNote
+Customer --> Depot : "1"
+Warehouse --> Depot : "1"
+DeliveryNote --> Depot : "1..*"
+note right of Depot : Logistics domain
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+interface Deposit {
+  #float email
+  -long note
+  +float total
+  -int phone
+  +calculateId()
+}
+interface Withdrawal {
+  -String type
+  -long note
+  -Date quantity
+  +String phone
+  +cancelEmail()
+  +cancelStatus()
+  +deleteId()
+}
+class Branch {
+  -Date score
+  #float total
+  +findQuantity()
+  +findType()
+  +updateId()
+}
+abstract class Loan {
+  -boolean total
+  +boolean updatedAt
+  +validateCreatedat()
+  +deleteActive()
+}
+class Account {
+  -float duration
+  +String quantity
+  +long note
+  -boolean email
+  -String updatedAt
+  +findCreatedat()
+  +calculateUpdatedat()
+  +findPrice()
+}
+Branch --* Deposit
+Account --* Branch
+Withdrawal --* Deposit
+note right of Deposit : Banking domain
+@enduml

@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+class Vehicle {
+  +Date quantity
+  -long score
+  #double price
+  +float type
+  +getId()
+  +createLevel()
+}
+class Customer {
+  +Date total
+  -Date quantity
+  #String description
+  +Date updatedAt
+  -String score
+  +findActive()
+  +deleteLevel()
+  +calculateAddress()
+}
+abstract class Inventory {
+  #float address
+  -String type
+  #String code
+  +findDuration()
+  +updateScore()
+}
+abstract class Tracking {
+  #long address
+  #float name
+  -Date type
+  -long duration
+  #Date description
+  +setScore()
+  +validateQuantity()
+}
+class Depot {
+  -int createdAt
+  +boolean phone
+  +calculateActive()
+  +deleteStatus()
+  +updateActive()
+  +calculateCode()
+}
+class Shipment {
+  +long note
+  -String level
+  #boolean address
+  #int description
+  +createDescription()
+  +setDuration()
+  +createPrice()
+}
+class Route {
+  +float id
+  #Date code
+  -String quantity
+  #int phone
+  +saveNote()
+}
+Shipment --> Inventory : "1..*"
+Shipment --* Depot
+Customer ..|> Tracking
+Vehicle ..> Inventory : "1..*"
+Depot --* Route
+note right of Vehicle : Logistics domain
+@enduml

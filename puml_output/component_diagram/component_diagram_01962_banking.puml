@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+component "Transfer Service" as C_TransferService
+component "Statement Service" as C_StatementService
+component "Account Service" as C_AccountService
+component "Customer Service" as C_CustomerService
+database "Banking DB" as DB_banking
+C_TransferService --> DB_banking
+C_AccountService --> DB_banking
+C_TransferService ..> C_StatementService : REST
+C_StatementService ..> C_AccountService : HTTP
+C_StatementService ..> C_CustomerService : HTTP
+@enduml

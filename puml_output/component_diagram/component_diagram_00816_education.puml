@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Library Service" as C_LibraryService
+component "Teacher Service" as C_TeacherService
+component "Enrollment Service" as C_EnrollmentService
+component "Department Service" as C_DepartmentService
+component "Book Service" as C_BookService
+database "Education DB" as DB_education
+C_LibraryService --> DB_education
+C_TeacherService --> DB_education
+C_EnrollmentService --> DB_education
+C_DepartmentService --> DB_education
+C_BookService --> DB_education
+C_TeacherService ..> C_BookService : HTTP
+C_DepartmentService ..> C_BookService : HTTP
+C_DepartmentService ..> C_EnrollmentService : MQ
+C_BookService ..> C_TeacherService : gRPC
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+interface Branch {
+  +float email
+  -String id
+  +long active
+  #boolean status
+  +sendNote()
+}
+class Transaction {
+  +float code
+  +double type
+  #String total
+  +cancelCode()
+}
+class Card {
+  +long total
+  #int name
+  #String duration
+  +cancelDuration()
+  +setQuantity()
+  +findAddress()
+  +calculateEmail()
+}
+class Transfer {
+  #float email
+  #String level
+  #String description
+  +Date code
+  +setNote()
+  +processTotal()
+}
+Transfer --> Branch : "0..1"
+Branch --> Transaction : "0..1"
+note right of Branch : Banking domain
+@enduml

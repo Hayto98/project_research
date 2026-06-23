@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+boundary "Guest" as G
+control "Housekeeper" as H
+entity "Chef" as C
+entity "Receptionist" as R
+entity "Manager" as M
+C ->> H : Check Out
+H --> R : Check In
+note over R : processing check in
+G --> H : Process Payment
+G --> M : Request Service
+H --> C : Order Room Service
+H ->> C : Book Room
+C ->> H : Cancel Reservation
+activate H
+H --> C : ACK
+deactivate H
+@enduml

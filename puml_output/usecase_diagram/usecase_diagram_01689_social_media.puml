@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+left to right direction
+actor "User" as User
+actor "Admin" as Admin
+actor "Advertiser" as Advertiser
+actor "Moderator" as Moderator
+rectangle "Social Media System" {
+  usecase "Follow User" as UC_FollowUser
+  usecase "Like Post" as UC_LikePost
+  usecase "Comment" as UC_Comment
+  usecase "Send Message" as UC_SendMessage
+  usecase "Create Post" as UC_CreatePost
+  usecase "Share Post" as UC_SharePost
+  usecase "Report Content" as UC_ReportContent
+}
+User --> UC_ReportContent
+Admin --> UC_SendMessage
+Advertiser --> UC_Comment
+Advertiser --> UC_SharePost
+Moderator --> UC_SendMessage
+Moderator --> UC_SharePost
+UC_SharePost ..|> UC_FollowUser : <<extend>>
+@enduml

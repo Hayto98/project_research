@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Publisher {
+  -Date level
+  +float code
+  #int status
+  #Date total
+  -int id
+  +processTotal()
+}
+class Fine {
+  -double phone
+  #String note
+  -float level
+  -float type
+  +double createdAt
+  +processPhone()
+  +sendName()
+}
+class Catalog {
+  +float email
+  +Date id
+  #double price
+  #float total
+  +validateId()
+  +findType()
+  +sendDescription()
+  +updateQuantity()
+}
+class Book {
+  #String level
+  #long price
+  +createTotal()
+  +saveLevel()
+  +processPrice()
+}
+class Member {
+  -int id
+  -double email
+  +boolean active
+  +float total
+  +sendCreatedat()
+}
+class Loan {
+  +Date note
+  #Date type
+  +float updatedAt
+  +double id
+  #Date phone
+  +processName()
+  +findActive()
+  +findPrice()
+  +deleteId()
+}
+Member --|> Fine
+Publisher --> Catalog : "0..1"
+Fine --> Member : "1..*"
+note right of Publisher : Library domain
+@enduml

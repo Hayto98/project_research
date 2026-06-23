@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+abstract class Amenity {
+  #long description
+  -Date id
+  +savePrice()
+  +processType()
+  +createNote()
+  +createDuration()
+}
+class Payment {
+  -int price
+  #long name
+  -int status
+  +sendCode()
+}
+abstract class Staff {
+  +double quantity
+  #boolean createdAt
+  #int type
+  -boolean name
+  +boolean code
+  +calculateType()
+  +getCreatedat()
+  +sendName()
+}
+interface Restaurant {
+  +String createdAt
+  -long price
+  +updatePhone()
+  +createEmail()
+}
+class Reservation {
+  #int score
+  #boolean duration
+  #long type
+  -long updatedAt
+  +validateType()
+  +processType()
+  +getName()
+  +deleteDuration()
+}
+class CheckOut {
+  -double level
+  +boolean email
+  +setTotal()
+  +sendName()
+  +createStatus()
+  +validateQuantity()
+}
+Reservation ..> Amenity : "0..1"
+CheckOut ..|> Reservation
+Payment --o Restaurant
+note right of Amenity : Hotel domain
+@enduml

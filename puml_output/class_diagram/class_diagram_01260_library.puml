@@ -1,0 +1,65 @@
+@startuml
+skinparam shadowing true
+abstract class Reservation {
+  #double phone
+  #long active
+  #String level
+  #boolean price
+  +getPhone()
+  +processPhone()
+  +validateDuration()
+}
+abstract class Member {
+  #long type
+  #Date id
+  +float updatedAt
+  +calculateDuration()
+  +findScore()
+  +processDuration()
+  +sendStatus()
+}
+class Loan {
+  -long price
+  -double createdAt
+  #Date address
+  +saveCode()
+}
+class Librarian {
+  #long address
+  #int total
+  +double phone
+  +getUpdatedat()
+}
+abstract class Catalog {
+  -float updatedAt
+  -int createdAt
+  +Date phone
+  -Date id
+  +findAddress()
+  +getDuration()
+  +getId()
+  +createActive()
+}
+interface Shelf {
+  -float updatedAt
+  -long quantity
+  -int address
+  +deleteEmail()
+  +cancelNote()
+  +updateUpdatedat()
+}
+interface Fine {
+  +long amount
+  -boolean name
+  -long createdAt
+  -int active
+  +updateLevel()
+}
+Fine --o Member
+Reservation ..|> Librarian
+Shelf ..> Librarian : "1"
+Member --> Loan : "1..*"
+Loan --* Catalog
+Reservation --|> Shelf
+note right of Reservation : Library domain
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+skinparam defaultFontSize 11
+left to right direction
+actor "Receptionist" as Receptionist
+actor "Chef" as Chef
+actor "Housekeeper" as Housekeeper
+actor "Guest" as Guest
+rectangle "Hotel System" {
+  usecase "Process Payment" as UC_ProcessPayment
+  usecase "Check In" as UC_CheckIn
+  usecase "Request Service" as UC_RequestService
+  usecase "Book Room" as UC_BookRoom
+  usecase "Clean Room" as UC_CleanRoom
+  usecase "Cancel Reservation" as UC_CancelReservation
+  usecase "Check Out" as UC_CheckOut
+}
+Receptionist --> UC_CheckIn
+Receptionist --> UC_RequestService
+Receptionist --> UC_CleanRoom
+Chef --> UC_CheckOut
+Chef --> UC_CheckIn
+Housekeeper --> UC_BookRoom
+Housekeeper --> UC_CancelReservation
+Guest --> UC_BookRoom
+UC_CheckOut ..> UC_CleanRoom : <<extend>>
+@enduml

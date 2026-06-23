@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+participant "Chef" as C
+actor "Manager" as M
+participant "Housekeeper" as H
+entity "Guest" as G
+H -> M : Process Payment
+activate M
+M --> H : ACK
+deactivate M
+M --> G : Book Room
+H -> M : Check Out
+note over M : processing check out
+C ->> G : Cancel Reservation
+activate G
+G --> C : ACK
+deactivate G
+M ->> H : Request Service
+M -> G : Order Room Service
+note over G : processing order room service
+@enduml

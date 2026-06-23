@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+interface Shipment {
+  #String quantity
+  #int active
+  -String address
+  +long duration
+  -double type
+  +cancelType()
+  +deleteStatus()
+}
+interface Payment {
+  #String description
+  +Date id
+  +validateNote()
+}
+interface Warehouse {
+  +String total
+  #boolean amount
+  -double description
+  +long createdAt
+  +String note
+  +sendAddress()
+}
+interface Invoice {
+  -float createdAt
+  +int status
+  #String note
+  -Date email
+  +int address
+  +getLevel()
+  +validateAddress()
+  +cancelQuantity()
+}
+class Coupon {
+  -float id
+  -boolean level
+  +updateName()
+  +saveCode()
+  +cancelId()
+  +createNote()
+}
+class Category {
+  #long address
+  -float phone
+  +String description
+  +long id
+  +calculateDescription()
+  +updateTotal()
+}
+Shipment --* Payment
+Shipment --* Coupon
+Payment --|> Category
+Coupon --o Warehouse
+Category --> Shipment : "0..1"
+note right of Shipment : Ecommerce domain
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+abstract class DeliveryNote {
+  -float level
+  +long updatedAt
+  #float code
+  -double quantity
+  +findPhone()
+  +cancelId()
+  +deleteActive()
+}
+class Manifest {
+  +double phone
+  #long type
+  +cancelPhone()
+  +saveLevel()
+}
+class Warehouse {
+  #long total
+  +String description
+  +validateAmount()
+  +updateActive()
+  +setDescription()
+}
+abstract class Package {
+  #int total
+  +long score
+  +int price
+  +boolean code
+  +processUpdatedat()
+  +getId()
+  +validateTotal()
+}
+abstract class FuelLog {
+  #int description
+  #String quantity
+  +int price
+  -boolean address
+  #Date createdAt
+  +calculateEmail()
+  +sendNote()
+  +cancelDescription()
+}
+class Customer {
+  -double amount
+  #double type
+  +float quantity
+  +sendCreatedat()
+  +updateAddress()
+  +getCode()
+}
+Customer ..> Package : "0..1"
+FuelLog ..|> Manifest
+Package --|> Manifest
+FuelLog --|> DeliveryNote
+note right of DeliveryNote : Logistics domain
+@enduml

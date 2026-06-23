@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Customer Service" as C_CustomerService
+component "Manifest Service" as C_ManifestService
+component "Package Service" as C_PackageService
+component "Warehouse Service" as C_WarehouseService
+component "DeliveryNote Service" as C_DeliveryNoteService
+database "Logistics DB" as DB_logistics
+C_CustomerService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_CustomerService ..> C_ManifestService : gRPC
+C_CustomerService ..> C_PackageService : gRPC
+C_PackageService ..> C_ManifestService : HTTP
+@enduml

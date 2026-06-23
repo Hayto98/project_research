@@ -1,0 +1,65 @@
+@startuml
+
+class Branch {
+  #float id
+  #float active
+  #boolean amount
+  +int level
+  +sendType()
+}
+interface Fine {
+  #long active
+  #double id
+  +String duration
+  #String total
+  +calculateNote()
+  +updateActive()
+  +saveType()
+  +saveQuantity()
+}
+abstract class Librarian {
+  +Date duration
+  #String quantity
+  -String total
+  +float note
+  +findActive()
+  +cancelId()
+  +calculateQuantity()
+}
+class Shelf {
+  +Date updatedAt
+  #int duration
+  #boolean total
+  +double note
+  #double id
+  +calculateCreatedat()
+  +calculateActive()
+}
+class Renewal {
+  +boolean score
+  +int updatedAt
+  -long code
+  +deleteStatus()
+}
+class Loan {
+  -long address
+  +String id
+  +calculateStatus()
+  +validateScore()
+  +getEmail()
+}
+class Author {
+  +Date duration
+  -Date active
+  -String type
+  +long address
+  +sendPhone()
+  +setId()
+}
+Renewal ..|> Fine
+Branch ..> Loan : "1..*"
+Author ..> Shelf : "0..1"
+Fine --* Shelf
+Author ..|> Branch
+note right of Branch : Library domain
+@enduml

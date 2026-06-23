@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing true
+left to right direction
+actor "Chef" as Chef
+actor "Guest" as Guest
+rectangle "Hotel System" {
+  usecase "Book Room" as UC_BookRoom
+  usecase "Process Payment" as UC_ProcessPayment
+  usecase "Request Service" as UC_RequestService
+  usecase "Clean Room" as UC_CleanRoom
+  usecase "Check Out" as UC_CheckOut
+}
+Chef --> UC_CheckOut
+Chef --> UC_ProcessPayment
+Guest --> UC_CleanRoom
+Guest --> UC_RequestService
+UC_RequestService ..> UC_ProcessPayment : <<extend>>
+@enduml

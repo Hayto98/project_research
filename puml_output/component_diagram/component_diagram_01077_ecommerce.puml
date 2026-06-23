@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Payment Service" as C_PaymentService
+component "Warehouse Service" as C_WarehouseService
+component "Product Service" as C_ProductService
+component "Invoice Service" as C_InvoiceService
+component "Wishlist Service" as C_WishlistService
+database "Ecommerce DB" as DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_WishlistService ..> C_WarehouseService : gRPC
+C_ProductService ..> C_InvoiceService : gRPC
+C_WishlistService ..> C_InvoiceService : MQ
+@enduml

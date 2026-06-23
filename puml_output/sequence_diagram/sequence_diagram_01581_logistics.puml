@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+actor "Warehouse Staff" as WS
+entity "Fleet Manager" as FM
+boundary "Driver" as D
+entity "Dispatcher" as D2
+D2 -> D : Deliver Package
+note over D : processing deliver package
+WS ->> FM : Report Issue
+activate FM
+FM --> WS : ACK
+deactivate FM
+FM --> D : Schedule Pickup
+FM --> D2 : Fuel Vehicle
+WS -> FM : Track Shipment
+activate FM
+FM --> WS : ACK
+deactivate FM
+@enduml

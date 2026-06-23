@@ -1,0 +1,62 @@
+@startuml
+skinparam defaultFontSize 11
+class Author {
+  +int note
+  #int total
+  +boolean address
+  #float phone
+  -String type
+  +sendScore()
+  +deleteName()
+  +createEmail()
+  +getQuantity()
+}
+class Fine {
+  +long type
+  -boolean total
+  #float amount
+  -double quantity
+  +saveLevel()
+  +findScore()
+  +saveAmount()
+  +saveName()
+}
+abstract class Shelf {
+  -boolean active
+  -float total
+  #boolean address
+  -long updatedAt
+  +double type
+  +calculateName()
+  +getEmail()
+  +validateDuration()
+  +cancelScore()
+}
+abstract class Renewal {
+  +boolean description
+  -Date createdAt
+  +sendTotal()
+  +sendDuration()
+  +cancelStatus()
+  +deleteNote()
+}
+class Publisher {
+  -boolean phone
+  +double updatedAt
+  +boolean id
+  +cancelPrice()
+  +cancelUpdatedat()
+  +getDescription()
+}
+abstract class Reservation {
+  +long type
+  #String code
+  +createCode()
+}
+Renewal ..> Publisher : "1"
+Publisher ..> Reservation : "0..1"
+Shelf --* Publisher
+Fine --o Shelf
+Reservation --|> Shelf
+note right of Author : Library domain
+@enduml

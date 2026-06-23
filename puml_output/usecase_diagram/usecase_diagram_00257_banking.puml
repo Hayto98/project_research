@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+left to right direction
+actor "Bank Teller" as BankTeller
+actor "Account Holder" as AccountHolder
+actor "ATM" as ATM
+rectangle "Banking System" {
+  usecase "Apply For Loan" as UC_ApplyForLoan
+  usecase "Block Card" as UC_BlockCard
+  usecase "Transfer Funds" as UC_TransferFunds
+  usecase "Open Account" as UC_OpenAccount
+  usecase "Withdraw Cash" as UC_WithdrawCash
+  usecase "Deposit Money" as UC_DepositMoney
+  usecase "Pay Bill" as UC_PayBill
+  usecase "View Statement" as UC_ViewStatement
+}
+BankTeller --> UC_ApplyForLoan
+BankTeller --> UC_TransferFunds
+AccountHolder --> UC_ViewStatement
+AccountHolder --> UC_DepositMoney
+AccountHolder --> UC_PayBill
+ATM --> UC_OpenAccount
+ATM --> UC_PayBill
+ATM --> UC_ApplyForLoan
+UC_ApplyForLoan ..|> UC_DepositMoney : <<extend>>
+@enduml

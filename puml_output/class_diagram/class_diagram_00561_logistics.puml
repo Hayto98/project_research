@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+abstract class Tracking {
+  +boolean status
+  +Date total
+  #float createdAt
+  +processPhone()
+}
+abstract class Manifest {
+  -Date id
+  #double description
+  +boolean phone
+  +double amount
+  -boolean duration
+  +deleteQuantity()
+  +cancelDuration()
+  +deletePhone()
+  +saveLevel()
+}
+class Route {
+  +Date phone
+  -long score
+  +long description
+  +findAmount()
+  +findDescription()
+}
+class Shipment {
+  -long id
+  -Date email
+  +validateActive()
+}
+interface Depot {
+  +String note
+  #Date code
+  #boolean quantity
+  +double updatedAt
+  +createType()
+  +processLevel()
+  +updateNote()
+  +deleteLevel()
+}
+Route --o Manifest
+Route ..|> Shipment
+Depot --o Shipment
+note right of Tracking : Logistics domain
+@enduml

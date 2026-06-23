@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+component "Post Service" as C_PostService
+component "Comment Service" as C_CommentService
+component "Story Service" as C_StoryService
+component "Group Service" as C_GroupService
+database "Social Media DB" as DB_social_media
+C_PostService --> DB_social_media
+C_StoryService --> DB_social_media
+C_GroupService --> DB_social_media
+C_CommentService ..> C_StoryService : MQ
+C_PostService ..> C_CommentService : REST
+@enduml

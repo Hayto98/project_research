@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+start
+:Update Inventory;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Schedule Pickup;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Deliver Package;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Report Issue;
+:Assign Route;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Fuel Vehicle;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Track Shipment;
+:Load Package;
+stop
+@enduml

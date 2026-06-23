@@ -1,0 +1,71 @@
+@startuml
+skinparam monochrome true
+class Prescription {
+  -double score
+  +boolean amount
+  -int status
+  #boolean name
+  +float createdAt
+  +setActive()
+  +saveType()
+  +setPrice()
+}
+interface Patient {
+  -boolean total
+  +boolean quantity
+  +Date amount
+  -long score
+  +findCreatedat()
+  +findId()
+  +sendPrice()
+}
+interface Doctor {
+  -int createdAt
+  -String amount
+  +float duration
+  +boolean code
+  +cancelCreatedat()
+  +saveCode()
+}
+class Insurance {
+  #float level
+  +Date id
+  +Date email
+  #int active
+  -long quantity
+  +cancelTotal()
+  +updateAmount()
+  +saveScore()
+  +sendNote()
+}
+abstract class Treatment {
+  -long address
+  #double active
+  #double type
+  +sendAddress()
+}
+interface Billing {
+  #int phone
+  +int status
+  #String updatedAt
+  +String name
+  +cancelCreatedat()
+  +updateDuration()
+  +cancelCode()
+}
+class Hospital {
+  -String name
+  -int price
+  +Date duration
+  +int type
+  +setAmount()
+  +setLevel()
+}
+Hospital ..|> Prescription
+Prescription ..> Insurance : "0..1"
+Doctor ..> Insurance : "1..*"
+Hospital --|> Billing
+Billing --> Doctor : "1"
+Billing --|> Patient
+note right of Prescription : Healthcare domain
+@enduml

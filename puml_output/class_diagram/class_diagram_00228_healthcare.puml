@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class Nurse {
+  +Date quantity
+  #int description
+  -Date duration
+  +validateDescription()
+}
+class Insurance {
+  +boolean level
+  #float score
+  #int note
+  +validateName()
+  +sendAmount()
+  +createActive()
+}
+class Billing {
+  -String active
+  +String amount
+  +float price
+  -long updatedAt
+  +int status
+  +findTotal()
+  +saveLevel()
+  +validateNote()
+  +processCreatedat()
+}
+class Prescription {
+  +long status
+  +int duration
+  +sendEmail()
+  +getActive()
+  +createPrice()
+}
+interface Appointment {
+  #float description
+  #boolean quantity
+  #Date active
+  +processEmail()
+}
+class Diagnosis {
+  #int code
+  -String price
+  #int type
+  +validateDuration()
+  +createUpdatedat()
+}
+interface Treatment {
+  +boolean level
+  #boolean duration
+  +setDuration()
+  +validateLevel()
+  +cancelDuration()
+  +setPhone()
+}
+Insurance --o Prescription
+Diagnosis --> Billing : "1"
+Treatment --> Diagnosis : "1"
+Nurse --o Insurance
+Nurse --* Billing
+Diagnosis --> Nurse : "*"
+note right of Nurse : Healthcare domain
+@enduml

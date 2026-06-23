@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+left to right direction
+actor "Account Holder" as AccountHolder
+actor "Bank Teller" as BankTeller
+rectangle "Banking System" {
+  usecase "Apply For Loan" as UC_ApplyForLoan
+  usecase "Withdraw Cash" as UC_WithdrawCash
+  usecase "Deposit Money" as UC_DepositMoney
+  usecase "Block Card" as UC_BlockCard
+  usecase "Transfer Funds" as UC_TransferFunds
+}
+AccountHolder --> UC_ApplyForLoan
+BankTeller --> UC_ApplyForLoan
+BankTeller --> UC_BlockCard
+UC_TransferFunds ..> UC_DepositMoney : <<extend>>
+@enduml

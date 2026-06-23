@@ -1,0 +1,51 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class Treatment {
+  +float createdAt
+  -float address
+  #double price
+  -Date quantity
+  +saveScore()
+  +savePhone()
+  +setPhone()
+}
+abstract class LabTest {
+  -double level
+  -double type
+  #String quantity
+  +updateAddress()
+  +findStatus()
+  +findPhone()
+  +updateDescription()
+}
+class Diagnosis {
+  +boolean status
+  +String total
+  #long quantity
+  #boolean email
+  +saveType()
+  +calculateTotal()
+  +setAddress()
+}
+class Prescription {
+  #Date address
+  +boolean duration
+  +boolean email
+  +float level
+  +double score
+  +cancelType()
+}
+class Appointment {
+  -double createdAt
+  -float id
+  #boolean code
+  +cancelEmail()
+  +deleteScore()
+}
+Prescription ..> Treatment : "1..*"
+Prescription --|> LabTest
+LabTest --* Appointment
+note right of Treatment : Healthcare domain
+@enduml

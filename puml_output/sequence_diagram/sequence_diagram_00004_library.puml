@@ -1,0 +1,34 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+control "Admin" as A
+actor "Member" as M
+boundary "Librarian" as L
+M ->> A : Search Catalog
+activate A
+A --> M : ACK
+deactivate A
+L -> M : Add New Book
+activate M
+M --> L : ACK
+deactivate M
+A --> M : Return Book
+activate M
+M --> A : ACK
+deactivate M
+L --> A : Reserve Book
+activate A
+A --> L : ACK
+deactivate A
+L -> M : Borrow Book
+activate M
+M --> L : ACK
+deactivate M
+A ->> M : Pay Fine
+activate M
+M --> A : ACK
+deactivate M
+note over M : processing pay fine
+@enduml

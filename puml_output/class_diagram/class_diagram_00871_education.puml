@@ -1,0 +1,72 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+abstract class Exam {
+  #String price
+  +int level
+  +boolean description
+  +int code
+  +getTotal()
+  +calculateType()
+}
+class Grade {
+  #double phone
+  +Date duration
+  #Date level
+  #boolean price
+  #long active
+  +getActive()
+}
+class Book {
+  +long active
+  #String phone
+  +boolean level
+  -float code
+  #String total
+  +getType()
+  +createAmount()
+}
+class Library {
+  -int score
+  -Date id
+  #String status
+  +processName()
+  +updateScore()
+  +cancelCreatedat()
+}
+abstract class Attendance {
+  +Date quantity
+  #String address
+  -int duration
+  #double score
+  +int total
+  +createUpdatedat()
+  +updateName()
+  +validateNote()
+}
+abstract class Schedule {
+  -double phone
+  -int createdAt
+  -float email
+  #Date id
+  +getCreatedat()
+  +saveDescription()
+  +sendPrice()
+}
+class Enrollment {
+  +long price
+  -String quantity
+  +int phone
+  +float type
+  +createQuantity()
+}
+Schedule ..|> Book
+Attendance --o Exam
+Exam --* Library
+Exam --> Attendance : "0..1"
+Grade ..> Exam : "1"
+Library --* Attendance
+note right of Exam : Education domain
+@enduml

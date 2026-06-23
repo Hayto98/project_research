@@ -1,0 +1,58 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+abstract class Post {
+  +float note
+  -long total
+  +float address
+  #String code
+  +createCode()
+  +validatePrice()
+  +saveUpdatedat()
+  +findName()
+}
+class Report {
+  +boolean type
+  -String status
+  +Date code
+  -String level
+  +setQuantity()
+}
+class Like {
+  #String status
+  #int quantity
+  -float email
+  +boolean updatedAt
+  +cancelEmail()
+  +cancelName()
+  +validateDescription()
+  +calculateEmail()
+}
+abstract class Album {
+  -float price
+  +boolean amount
+  +calculateAmount()
+  +processDescription()
+  +validateUpdatedat()
+}
+class Notification {
+  -String id
+  -double phone
+  #boolean note
+  #boolean address
+  +getCreatedat()
+  +cancelLevel()
+}
+interface Profile {
+  #long price
+  +String active
+  #double type
+  +calculateDescription()
+}
+Notification --|> Like
+Like --|> Profile
+Notification --|> Album
+Album --o Like
+Album ..|> Notification
+note right of Post : Social Media domain
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+control "Patient" as P
+actor "Lab Technician" as LT
+boundary "Nurse" as N
+actor "Doctor" as D
+P --> N : Discharge Patient
+D ->> LT : Run Lab Test
+P ->> D : Update Medical Record
+activate D
+D --> P : ACK
+deactivate D
+D ->> P : Examine Patient
+note over P : processing examine patient
+@enduml

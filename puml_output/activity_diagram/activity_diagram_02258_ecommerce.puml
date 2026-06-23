@@ -1,0 +1,34 @@
+@startuml
+
+start
+:Cancel Order;
+:Make Payment;
+:Write Review;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Track Order;
+:Browse Products;
+:Apply Coupon;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Manage Inventory;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Checkout;
+stop
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+skinparam defaultFontSize 11
+class Wishlist {
+  +String code
+  -int note
+  #float price
+  #float active
+  +cancelCreatedat()
+  +calculateScore()
+  +validateType()
+  +validatePrice()
+}
+class Cart {
+  -Date updatedAt
+  -String note
+  #String type
+  +createId()
+  +processPrice()
+  +updatePrice()
+}
+class Review {
+  -long description
+  #String total
+  +boolean address
+  #boolean status
+  +String type
+  +createScore()
+}
+class Order {
+  +Date duration
+  #int price
+  +processAddress()
+  +getUpdatedat()
+}
+class Payment {
+  #double level
+  #Date createdAt
+  #float address
+  +deleteLevel()
+  +validateLevel()
+  +updateStatus()
+  +deleteAddress()
+}
+Cart ..|> Review
+Payment ..|> Cart
+Payment --|> Wishlist
+note right of Wishlist : Ecommerce domain
+@enduml

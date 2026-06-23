@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Shipment {
+  -Date type
+  +long createdAt
+  +cancelEmail()
+  +sendUpdatedat()
+}
+class Coupon {
+  +double note
+  #boolean quantity
+  +int total
+  #long description
+  +setDuration()
+  +calculateNote()
+  +deleteCode()
+  +setType()
+}
+abstract class Cart {
+  #boolean duration
+  #String amount
+  #long active
+  #double description
+  +createScore()
+  +validateScore()
+  +updateNote()
+}
+class Product {
+  +String address
+  -double quantity
+  +long note
+  +getAmount()
+  +calculateQuantity()
+  +validateCode()
+}
+class Invoice {
+  +String status
+  #String email
+  +int quantity
+  -long phone
+  +int note
+  +createLevel()
+  +setEmail()
+  +createType()
+}
+Cart ..> Coupon : "1"
+Product ..> Coupon : "*"
+Product ..|> Cart
+note right of Shipment : Ecommerce domain
+@enduml

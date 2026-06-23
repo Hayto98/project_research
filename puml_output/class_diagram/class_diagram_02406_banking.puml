@@ -1,0 +1,60 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Account {
+  -boolean type
+  -long code
+  +int email
+  -long price
+  +double phone
+  +findScore()
+  +getCreatedat()
+}
+class Withdrawal {
+  -int code
+  +String active
+  +String quantity
+  -Date id
+  +int total
+  +saveUpdatedat()
+  +sendUpdatedat()
+}
+class Teller {
+  #String active
+  -String duration
+  -String email
+  +processCode()
+}
+abstract class Transaction {
+  -double type
+  +float price
+  #float level
+  +boolean score
+  #String note
+  +validateUpdatedat()
+  +getPrice()
+}
+class Branch {
+  -Date status
+  #boolean quantity
+  +String score
+  #long type
+  +double description
+  +cancelAddress()
+  +cancelStatus()
+  +cancelAmount()
+}
+abstract class Customer {
+  #Date address
+  +int quantity
+  #long active
+  +updateDuration()
+  +cancelUpdatedat()
+  +findScore()
+  +sendQuantity()
+}
+Branch ..|> Withdrawal
+Teller --* Branch
+Teller --o Transaction
+note right of Account : Banking domain
+@enduml

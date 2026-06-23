@@ -1,0 +1,23 @@
+@startuml
+
+start
+:Deliver Package;
+:Report Issue;
+:Schedule Pickup;
+:Load Package;
+:Track Shipment;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Assign Route;
+:Update Inventory;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+stop
+@enduml

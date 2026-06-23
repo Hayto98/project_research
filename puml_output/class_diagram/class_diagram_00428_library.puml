@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class Renewal {
+  #float description
+  +Date score
+  #float address
+  +findType()
+  +setCode()
+}
+class Loan {
+  #int duration
+  #double note
+  -double code
+  +float status
+  -double amount
+  +validateLevel()
+  +getPhone()
+  +processQuantity()
+}
+interface Branch {
+  +long status
+  -int amount
+  +saveEmail()
+}
+interface Publisher {
+  #long price
+  #int score
+  -String phone
+  #boolean email
+  +getLevel()
+  +setDuration()
+  +createStatus()
+  +saveUpdatedat()
+}
+Publisher --o Branch
+Loan --* Publisher
+Publisher ..> Renewal : "*"
+note right of Renewal : Library domain
+@enduml

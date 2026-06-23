@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+control "Customer" as C
+boundary "Delivery Service" as DS
+actor "Payment Gateway" as PG
+entity "Admin" as A
+boundary "Seller" as S
+PG --> DS : Browse Products
+C --> PG : Track Order
+activate PG
+PG --> C : ACK
+deactivate PG
+note over PG : processing track order
+A -> PG : Checkout
+A --> PG : Make Payment
+S --> PG : Write Review
+PG -> DS : Apply Coupon
+note over DS : processing apply coupon
+DS --> C : Add To Cart
+@enduml

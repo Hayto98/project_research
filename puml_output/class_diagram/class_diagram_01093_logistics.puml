@@ -1,0 +1,67 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class FuelLog {
+  #float phone
+  +int level
+  #long total
+  +String createdAt
+  +int address
+  +processEmail()
+  +updatePrice()
+}
+class Shipment {
+  #int updatedAt
+  #float price
+  +String amount
+  -String active
+  -boolean createdAt
+  +setUpdatedat()
+  +cancelCreatedat()
+  +cancelStatus()
+  +cancelTotal()
+}
+abstract class Customer {
+  +String address
+  -Date createdAt
+  +double phone
+  -String code
+  +String description
+  +findId()
+  +saveUpdatedat()
+  +saveCreatedat()
+}
+class Manifest {
+  -long name
+  +float type
+  #int phone
+  +boolean quantity
+  #float status
+  +getLevel()
+}
+class Route {
+  -float duration
+  -float status
+  -double address
+  -long code
+  +cancelActive()
+  +sendUpdatedat()
+  +calculateLevel()
+}
+class Vehicle {
+  +boolean email
+  -double code
+  +boolean note
+  #double quantity
+  +getUpdatedat()
+  +getType()
+  +cancelLevel()
+}
+Manifest --> Vehicle : "*"
+Route --> Customer : "*"
+Route --* Shipment
+Manifest ..|> FuelLog
+Customer --|> Vehicle
+note right of FuelLog : Logistics domain
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+left to right direction
+actor "Account Holder" as AccountHolder
+actor "ATM" as ATM
+actor "Auditor" as Auditor
+actor "Branch Manager" as BranchManager
+rectangle "Banking System" {
+  usecase "Block Card" as UC_BlockCard
+  usecase "Open Account" as UC_OpenAccount
+  usecase "Transfer Funds" as UC_TransferFunds
+  usecase "Withdraw Cash" as UC_WithdrawCash
+  usecase "Deposit Money" as UC_DepositMoney
+  usecase "View Statement" as UC_ViewStatement
+}
+AccountHolder --> UC_TransferFunds
+AccountHolder --> UC_BlockCard
+ATM --> UC_TransferFunds
+Auditor --> UC_BlockCard
+Auditor --> UC_DepositMoney
+BranchManager --> UC_DepositMoney
+UC_DepositMoney ..> UC_ViewStatement : <<include>>
+@enduml

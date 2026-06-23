@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+interface Route {
+  #long createdAt
+  -long amount
+  +float price
+  +processEmail()
+  +createCode()
+}
+interface Driver {
+  -boolean status
+  #long name
+  +sendPhone()
+  +cancelDuration()
+}
+class FuelLog {
+  #boolean active
+  +float createdAt
+  +findAmount()
+  +cancelType()
+  +processPrice()
+  +getId()
+}
+interface Vehicle {
+  +long name
+  +long note
+  #int type
+  +float total
+  +deleteLevel()
+  +deleteCreatedat()
+}
+interface Depot {
+  #boolean email
+  #boolean amount
+  #int duration
+  -float createdAt
+  +sendLevel()
+  +deleteTotal()
+  +deleteTotal()
+}
+class Customer {
+  #float email
+  #Date quantity
+  #long note
+  +boolean code
+  +saveNote()
+  +sendPhone()
+}
+Vehicle ..> Customer : "0..1"
+Route --o Depot
+Route ..|> Customer
+FuelLog --o Vehicle
+note right of Route : Logistics domain
+@enduml

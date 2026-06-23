@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+class Inventory {
+  #String active
+  +float id
+  +cancelScore()
+  +createActive()
+  +createUpdatedat()
+}
+interface Manifest {
+  #String name
+  -double type
+  +deleteAddress()
+  +processCreatedat()
+  +getStatus()
+}
+class Customer {
+  +boolean level
+  #int code
+  +float active
+  #long id
+  -int quantity
+  +saveAmount()
+  +calculateAmount()
+}
+class Tracking {
+  #long total
+  +double id
+  +long level
+  -String updatedAt
+  -double status
+  +createDuration()
+  +validateStatus()
+}
+Tracking ..|> Customer
+Customer ..> Inventory : "*"
+Manifest --* Tracking
+note right of Inventory : Logistics domain
+@enduml

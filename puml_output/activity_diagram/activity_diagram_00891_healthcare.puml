@@ -1,0 +1,38 @@
+@startuml
+skinparam shadowing true
+start
+:Update Medical Record;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Process Insurance Claim;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Book Appointment;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Discharge Patient;
+:Issue Prescription;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+stop
+@enduml

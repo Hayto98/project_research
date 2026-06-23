@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+[*] --> OnHold
+OnHold --> Closed : update
+OnHold : entry / log restaurant
+Closed --> Active : update
+Active --> Reviewed : cancel
+Active : entry / log restaurant
+Reviewed --> Rejected : submit
+Reviewed : entry / log restaurant
+Reviewed --> Rejected : revert
+Rejected --> [*]
+@enduml

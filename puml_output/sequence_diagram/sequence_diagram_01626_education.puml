@@ -1,0 +1,26 @@
+@startuml
+skinparam ArrowColor #555555
+control "Librarian" as L
+boundary "Parent" as P
+participant "Registrar" as R
+entity "Admin" as A
+boundary "Teacher" as T
+R -> P : Grade Exam
+activate P
+P --> R : ACK
+deactivate P
+note over P : processing grade exam
+P ->> R : Register Student
+R -> L : Take Attendance
+P --> L : Issue Certificate
+activate L
+L --> P : ACK
+deactivate L
+note over L : processing issue certificate
+P --> R : Enroll Course
+note over R : processing enroll course
+L -> T : View Schedule
+activate T
+T --> L : ACK
+deactivate T
+@enduml

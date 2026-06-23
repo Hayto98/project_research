@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Album Service" as C_AlbumService
+component "Post Service" as C_PostService
+component "Profile Service" as C_ProfileService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_AlbumService --> DB_social_media
+C_HashtagService ..> C_AlbumService : REST
+C_HashtagService ..> C_ProfileService : HTTP
+C_HashtagService ..> C_PostService : MQ
+@enduml

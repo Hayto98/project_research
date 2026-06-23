@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+component "Fine Service" as C_FineService
+component "Librarian Service" as C_LibrarianService
+component "Publisher Service" as C_PublisherService
+component "Book Service" as C_BookService
+component "Author Service" as C_AuthorService
+database "Library DB" as DB_library
+C_LibrarianService --> DB_library
+C_PublisherService --> DB_library
+C_BookService --> DB_library
+C_AuthorService --> DB_library
+C_FineService ..> C_BookService : MQ
+C_LibrarianService ..> C_AuthorService : gRPC
+C_BookService ..> C_PublisherService : gRPC
+C_BookService ..> C_PublisherService : REST
+@enduml

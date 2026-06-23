@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+[*] --> Processing
+Processing --> Archived : approve
+Archived --> OnHold : approve
+OnHold --> Approved : approve
+OnHold : entry / log fine
+Approved --> Pending : reject
+Pending --> Closed : update
+Pending : entry / log fine
+Archived --> Processing : revert
+Closed --> [*]
+@enduml

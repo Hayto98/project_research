@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+participant "Admin" as A
+actor "Seller" as S
+actor "Customer" as C
+participant "Payment Gateway" as PG
+S ->> PG : Manage Inventory
+activate PG
+PG --> S : ACK
+deactivate PG
+S ->> A : Add To Cart
+PG ->> S : Track Order
+note over S : processing track order
+PG --> C : Apply Coupon
+C ->> A : Checkout
+activate A
+A --> C : ACK
+deactivate A
+S ->> C : Make Payment
+@enduml

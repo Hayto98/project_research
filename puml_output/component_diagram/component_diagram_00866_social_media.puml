@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Story Service" as C_StoryService
+component "Album Service" as C_AlbumService
+component "User Service" as C_UserService
+component "Follower Service" as C_FollowerService
+component "Post Service" as C_PostService
+component "Message Service" as C_MessageService
+database "Social Media DB" as DB_social_media
+C_AlbumService --> DB_social_media
+C_UserService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_PostService --> DB_social_media
+C_MessageService --> DB_social_media
+C_AlbumService ..> C_FollowerService : gRPC
+C_StoryService ..> C_UserService : gRPC
+C_FollowerService ..> C_StoryService : REST
+@enduml

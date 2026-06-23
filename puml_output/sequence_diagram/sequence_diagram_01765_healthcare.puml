@@ -1,0 +1,23 @@
+@startuml
+skinparam defaultFontSize 13
+participant "Receptionist" as R
+entity "Insurance Provider" as IP
+entity "Lab Technician" as LT
+control "Nurse" as N
+actor "Doctor" as D
+LT --> R : Discharge Patient
+D -> R : Process Insurance Claim
+activate R
+R --> D : ACK
+deactivate R
+D --> N : Run Lab Test
+D ->> N : Update Medical Record
+activate N
+N --> D : ACK
+deactivate N
+D ->> R : Book Appointment
+activate R
+R --> D : ACK
+deactivate R
+D ->> N : Examine Patient
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+control "Member" as M
+entity "Librarian" as L
+actor "Admin" as A
+L ->> M : Reserve Book
+note over M : processing reserve book
+A ->> L : Register Member
+L -> M : Renew Loan
+activate M
+M --> L : ACK
+deactivate M
+M -> L : Return Book
+activate L
+L --> M : ACK
+deactivate L
+A ->> M : Add New Book
+activate M
+M --> A : ACK
+deactivate M
+@enduml

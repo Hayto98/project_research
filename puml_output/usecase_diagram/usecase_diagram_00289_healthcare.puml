@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+left to right direction
+actor "Patient" as Patient
+actor "Lab Technician" as LabTechnician
+actor "Doctor" as Doctor
+actor "Insurance Provider" as InsuranceProvider
+rectangle "Healthcare System" {
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Run Lab Test" as UC_RunLabTest
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Examine Patient" as UC_ExaminePatient
+  usecase "Discharge Patient" as UC_DischargePatient
+}
+Patient --> UC_DischargePatient
+LabTechnician --> UC_RunLabTest
+LabTechnician --> UC_DischargePatient
+Doctor --> UC_AdmitPatient
+Doctor --> UC_ProcessInsuranceClaim
+InsuranceProvider --> UC_ExaminePatient
+UC_AdmitPatient ..|> UC_ProcessInsuranceClaim : <<include>>
+@enduml

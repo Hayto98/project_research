@@ -1,0 +1,62 @@
+@startuml
+skinparam ArrowColor #555555
+class Coupon {
+  -boolean status
+  -Date level
+  -long note
+  -String quantity
+  +setAmount()
+  +getDescription()
+}
+interface Order {
+  +boolean score
+  +boolean quantity
+  -String price
+  -String code
+  -String phone
+  +getDuration()
+}
+class Customer {
+  +double quantity
+  -String level
+  -boolean total
+  #int active
+  #int code
+  +validateDuration()
+  +calculateLevel()
+  +saveQuantity()
+}
+class Product {
+  #int address
+  -String updatedAt
+  #Date email
+  +updateId()
+  +processLevel()
+  +sendName()
+  +setType()
+}
+interface Supplier {
+  #Date email
+  -long id
+  +double name
+  -Date price
+  -int total
+  +savePhone()
+  +processLevel()
+  +updateAmount()
+}
+interface Wishlist {
+  #int name
+  #double address
+  +long phone
+  +validateNote()
+  +cancelDuration()
+  +findAddress()
+  +sendType()
+}
+Product --> Supplier : "0..1"
+Wishlist ..> Product : "1..*"
+Customer --* Order
+Product --|> Customer
+note right of Coupon : Ecommerce domain
+@enduml

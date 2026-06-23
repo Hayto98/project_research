@@ -1,0 +1,34 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+start
+:Track Shipment;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Schedule Pickup;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Deliver Package;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Load Package;
+:Fuel Vehicle;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Inventory;
+:Report Issue;
+stop
+@enduml

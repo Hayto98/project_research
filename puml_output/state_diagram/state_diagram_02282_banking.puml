@@ -1,0 +1,13 @@
+@startuml
+
+[*] --> Approved
+Approved --> OnHold : process
+OnHold --> Processing : reject
+OnHold : entry / log interest
+Processing --> Pending : cancel
+Pending --> Draft : reject
+Draft --> Created : approve
+Draft : entry / log interest
+Approved --> Processing : revert
+Created --> [*]
+@enduml

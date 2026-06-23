@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+actor "Receptionist" as R
+actor "Insurance Provider" as IP
+boundary "Patient" as P
+P --> R : Discharge Patient
+R -> IP : Update Medical Record
+R -> IP : Admit Patient
+activate IP
+IP --> R : ACK
+deactivate IP
+P ->> IP : Book Appointment
+activate IP
+IP --> P : ACK
+deactivate IP
+@enduml

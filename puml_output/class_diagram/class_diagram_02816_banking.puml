@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+class Card {
+  -double status
+  #double total
+  #long score
+  +createName()
+  +updateDescription()
+  +findScore()
+}
+class Transaction {
+  #boolean level
+  -String phone
+  +String type
+  +setAddress()
+}
+class Interest {
+  #float code
+  -long amount
+  +cancelId()
+  +calculateEmail()
+  +createPhone()
+  +processAmount()
+}
+abstract class Transfer {
+  +int updatedAt
+  +String note
+  +setAddress()
+}
+abstract class Loan {
+  -boolean note
+  +Date phone
+  +cancelQuantity()
+  +createActive()
+  +sendNote()
+}
+Interest --|> Loan
+Loan --> Card : "1..*"
+Card --* Interest
+Transaction --|> Loan
+note right of Card : Banking domain
+@enduml

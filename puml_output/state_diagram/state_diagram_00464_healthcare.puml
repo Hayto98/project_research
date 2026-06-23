@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+[*] --> Draft
+Draft --> Created : reject
+Draft : entry / log medicalrecord
+Created --> Active : cancel
+Created : entry / log medicalrecord
+Active --> Approved : update
+Approved --> Archived : cancel
+Approved : entry / log medicalrecord
+Approved --> Created : revert
+Archived --> [*]
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+abstract class Category {
+  -Date code
+  #String email
+  -Date phone
+  +float score
+  +deleteDescription()
+  +sendPrice()
+  +cancelActive()
+}
+class Invoice {
+  #float status
+  +boolean score
+  +getAmount()
+}
+abstract class Warehouse {
+  #String description
+  -int createdAt
+  +double active
+  -Date price
+  #boolean phone
+  +calculateScore()
+  +createAddress()
+}
+class Customer {
+  +String active
+  #Date id
+  +long description
+  +deleteId()
+  +saveType()
+  +cancelCreatedat()
+}
+class Supplier {
+  #long amount
+  -long phone
+  #float code
+  +createId()
+  +validatePhone()
+  +calculateNote()
+  +setEmail()
+}
+Supplier --* Warehouse
+Category ..> Customer : "1"
+Invoice --o Warehouse
+Warehouse --o Customer
+note right of Category : Ecommerce domain
+@enduml

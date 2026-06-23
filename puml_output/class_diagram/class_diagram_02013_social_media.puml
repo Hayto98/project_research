@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Report {
+  +String duration
+  -float phone
+  #long amount
+  +long score
+  +sendActive()
+  +saveId()
+  +updateNote()
+  +updateType()
+}
+class Group {
+  #long updatedAt
+  -float name
+  +deleteEmail()
+  +findScore()
+  +updatePrice()
+}
+interface Album {
+  +int address
+  +boolean type
+  #boolean note
+  +getDuration()
+}
+class Profile {
+  #double active
+  -int name
+  +getCreatedat()
+}
+class Comment {
+  -boolean score
+  #boolean description
+  #float address
+  +saveStatus()
+  +cancelActive()
+  +cancelId()
+  +findAddress()
+}
+class Follower {
+  #String score
+  -long address
+  -String code
+  +int updatedAt
+  +cancelCode()
+  +sendStatus()
+  +updateScore()
+  +getPhone()
+}
+Comment --o Follower
+Follower --* Comment
+Album --> Follower : "0..1"
+Profile ..|> Group
+Report --* Group
+note right of Report : Social Media domain
+@enduml

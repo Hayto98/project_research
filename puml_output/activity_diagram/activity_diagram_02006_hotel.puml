@@ -1,0 +1,33 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+start
+:Check In;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Clean Room;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Process Payment;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Request Service;
+:Book Room;
+:Order Room Service;
+stop
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+[*] --> Archived
+Archived --> Processing : reject
+Processing --> Shipped : process
+Shipped --> Pending : process
+Shipped : entry / log product
+Pending --> Closed : process
+Closed --> Created : submit
+Closed : entry / log product
+Created --> Shipped : revert
+Created --> [*]
+@enduml

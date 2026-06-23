@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+abstract class Withdrawal {
+  +float active
+  #long type
+  -boolean id
+  -boolean name
+  +cancelUpdatedat()
+  +sendQuantity()
+}
+class Card {
+  #long name
+  -int quantity
+  #int total
+  +int phone
+  +saveUpdatedat()
+  +getDuration()
+}
+interface Interest {
+  #double note
+  -float createdAt
+  +float id
+  -long price
+  +calculateAddress()
+  +saveCreatedat()
+  +cancelStatus()
+  +deleteAmount()
+}
+interface Beneficiary {
+  +double quantity
+  -String status
+  +boolean amount
+  +validateName()
+  +getTotal()
+  +saveNote()
+  +saveEmail()
+}
+Beneficiary --> Interest : "0..1"
+Withdrawal --* Beneficiary
+Interest --o Card
+note right of Withdrawal : Banking domain
+@enduml

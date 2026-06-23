@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+abstract class Invoice {
+  +double email
+  #float createdAt
+  -boolean updatedAt
+  -int level
+  +createType()
+  +cancelPrice()
+  +processPhone()
+  +deletePrice()
+}
+class CheckOut {
+  -double price
+  #long description
+  +setPrice()
+}
+abstract class Booking {
+  #boolean email
+  +int code
+  +calculateLevel()
+  +sendDuration()
+  +processAmount()
+}
+class Guest {
+  +double type
+  #Date id
+  +Date address
+  #Date level
+  +calculateScore()
+  +updateLevel()
+}
+interface Room {
+  #long email
+  -String id
+  #String code
+  +sendNote()
+}
+class Housekeeping {
+  -String phone
+  +float address
+  +Date score
+  -boolean id
+  #boolean level
+  +updateStatus()
+  +updatePhone()
+  +createScore()
+  +processAmount()
+}
+Invoice --o CheckOut
+Room --* Guest
+Booking ..> Invoice : "1"
+Invoice --o Room
+Housekeeping ..|> Invoice
+note right of Invoice : Hotel domain
+@enduml

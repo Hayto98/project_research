@@ -1,0 +1,13 @@
+@startuml
+skinparam ArrowColor #555555
+component "Member Service" as C_MemberService
+component "Author Service" as C_AuthorService
+component "Book Service" as C_BookService
+component "Reservation Service" as C_ReservationService
+database "Library DB" as DB_library
+C_BookService --> DB_library
+C_ReservationService --> DB_library
+C_BookService ..> C_ReservationService : gRPC
+C_AuthorService ..> C_BookService : gRPC
+C_AuthorService ..> C_MemberService : MQ
+@enduml

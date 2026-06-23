@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+entity "Dispatcher" as D
+boundary "Customer" as C
+participant "Warehouse Staff" as WS
+WS ->> D : Load Package
+activate D
+D --> WS : ACK
+deactivate D
+D ->> C : Deliver Package
+D --> WS : Track Shipment
+note over WS : processing track shipment
+C -> WS : Schedule Pickup
+activate WS
+WS --> C : ACK
+deactivate WS
+C ->> WS : Assign Route
+activate WS
+WS --> C : ACK
+deactivate WS
+@enduml

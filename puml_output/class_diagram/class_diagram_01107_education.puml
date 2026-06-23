@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Grade {
+  +double score
+  #Date duration
+  +cancelLevel()
+  +updateTotal()
+}
+class Course {
+  #long name
+  +int active
+  -String createdAt
+  +calculateId()
+  +processUpdatedat()
+  +cancelLevel()
+}
+abstract class Assignment {
+  -double name
+  #boolean status
+  +float duration
+  #String total
+  +cancelNote()
+  +sendEmail()
+}
+class Schedule {
+  +float amount
+  #String address
+  -Date type
+  +getTotal()
+  +calculateNote()
+}
+abstract class Department {
+  -int description
+  #double address
+  -Date duration
+  #double quantity
+  -int phone
+  +deletePrice()
+  +getQuantity()
+  +createName()
+}
+Department --> Grade : "0..1"
+Schedule --* Assignment
+Grade ..> Course : "*"
+Course --|> Schedule
+note right of Grade : Education domain
+@enduml

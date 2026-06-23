@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+[*] --> Approved
+Approved --> Processing : process
+Processing --> Rejected : approve
+Processing : entry / log return
+Rejected --> Reviewed : approve
+Reviewed --> Draft : cancel
+Draft --> Created : submit
+Rejected --> Created : revert
+Created --> [*]
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+boundary "Receptionist" as R
+actor "Manager" as M
+boundary "Guest" as G
+entity "Housekeeper" as H
+boundary "Chef" as C
+G -> C : Request Service
+H --> R : Book Room
+R ->> G : Cancel Reservation
+activate G
+G --> R : ACK
+deactivate G
+C ->> G : Process Payment
+G -> H : Check In
+activate H
+H --> G : ACK
+deactivate H
+M --> G : Check Out
+activate G
+G --> M : ACK
+deactivate G
+@enduml

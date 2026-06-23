@@ -1,0 +1,46 @@
+@startuml
+skinparam defaultFontSize 11
+class Attendance {
+  -double level
+  #float note
+  -long status
+  #float duration
+  +processCode()
+  +getStatus()
+  +getAddress()
+}
+class Grade {
+  +long amount
+  +double code
+  #double id
+  +deleteAmount()
+  +deleteType()
+  +updateTotal()
+}
+class Department {
+  -int active
+  -boolean note
+  +deleteTotal()
+  +cancelId()
+}
+abstract class Library {
+  +int active
+  #long type
+  +saveDescription()
+  +getQuantity()
+  +setTotal()
+}
+class Enrollment {
+  +float score
+  -boolean amount
+  +long address
+  #int createdAt
+  +double id
+  +getLevel()
+  +findScore()
+}
+Enrollment --|> Library
+Enrollment --> Grade : "0..1"
+Grade ..|> Attendance
+note right of Attendance : Education domain
+@enduml

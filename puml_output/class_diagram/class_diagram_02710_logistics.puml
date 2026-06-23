@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+abstract class Depot {
+  -String active
+  #boolean code
+  #float address
+  -Date id
+  +updateType()
+}
+interface Vehicle {
+  #Date quantity
+  +float status
+  +sendTotal()
+  +deleteActive()
+  +createPhone()
+}
+class Shipment {
+  -double quantity
+  -Date id
+  -boolean createdAt
+  -double note
+  +int email
+  +calculateCode()
+  +cancelPhone()
+}
+class Warehouse {
+  +long quantity
+  +String description
+  +String duration
+  +boolean address
+  +setNote()
+  +setTotal()
+}
+class Manifest {
+  +long code
+  +String id
+  -int amount
+  -long price
+  +createTotal()
+  +createAmount()
+  +setCode()
+}
+abstract class Route {
+  #boolean duration
+  +Date quantity
+  #boolean email
+  #double id
+  +deletePrice()
+  +deleteLevel()
+  +updateCode()
+}
+Shipment ..> Vehicle : "1"
+Shipment --o Depot
+Vehicle ..|> Shipment
+Depot --* Vehicle
+note right of Depot : Logistics domain
+@enduml

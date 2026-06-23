@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+component "Depot Service" as C_DepotService
+component "Manifest Service" as C_ManifestService
+component "FuelLog Service" as C_FuelLogService
+component "Route Service" as C_RouteService
+component "Warehouse Service" as C_WarehouseService
+database "Logistics DB" as DB_logistics
+C_ManifestService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_DepotService ..> C_ManifestService : MQ
+C_ManifestService ..> C_DepotService : MQ
+C_DepotService ..> C_RouteService : MQ
+@enduml

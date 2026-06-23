@@ -1,0 +1,50 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Vehicle {
+  -boolean amount
+  +long name
+  #boolean total
+  #double score
+  +saveId()
+  +cancelEmail()
+  +saveCode()
+}
+abstract class Warehouse {
+  +double phone
+  #boolean amount
+  -boolean type
+  +sendEmail()
+  +findCode()
+}
+abstract class Driver {
+  -Date updatedAt
+  +long description
+  #long createdAt
+  #double active
+  #boolean price
+  +createQuantity()
+  +saveLevel()
+  +saveAddress()
+}
+interface Inventory {
+  +Date quantity
+  #double createdAt
+  -boolean duration
+  -long description
+  +calculateNote()
+  +sendPrice()
+  +createStatus()
+  +createPhone()
+}
+abstract class Customer {
+  -int address
+  #float updatedAt
+  +validateTotal()
+  +saveLevel()
+}
+Inventory --o Warehouse
+Vehicle ..> Driver : "1..*"
+Warehouse ..> Customer : "0..1"
+note right of Vehicle : Logistics domain
+@enduml

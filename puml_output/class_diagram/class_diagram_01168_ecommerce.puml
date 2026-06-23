@@ -1,0 +1,67 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class Invoice {
+  +int status
+  #int code
+  +getType()
+  +setActive()
+  +sendType()
+}
+class Customer {
+  +String active
+  +String email
+  #long type
+  +double phone
+  +setAmount()
+}
+abstract class Supplier {
+  #long name
+  #double email
+  -String createdAt
+  +float address
+  +findScore()
+  +processEmail()
+}
+abstract class Category {
+  -String email
+  #boolean id
+  #int total
+  -int level
+  +double updatedAt
+  +createActive()
+  +saveAddress()
+}
+class Payment {
+  -boolean active
+  -float email
+  +Date price
+  #int duration
+  +sendTotal()
+  +createNote()
+  +deleteActive()
+}
+abstract class Return {
+  -int level
+  +String createdAt
+  #float type
+  -int address
+  +deleteStatus()
+  +cancelUpdatedat()
+  +setTotal()
+}
+class Order {
+  #long createdAt
+  +String score
+  -boolean active
+  +long updatedAt
+  +double status
+  +validateScore()
+  +calculateUpdatedat()
+}
+Return --> Payment : "1..*"
+Category ..|> Supplier
+Supplier --o Category
+note right of Invoice : Ecommerce domain
+@enduml

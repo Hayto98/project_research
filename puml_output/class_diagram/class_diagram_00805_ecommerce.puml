@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+class Cart {
+  +String type
+  #String id
+  #float name
+  -long code
+  +calculateTotal()
+  +createQuantity()
+  +getUpdatedat()
+  +validateStatus()
+}
+abstract class Coupon {
+  #String address
+  -boolean price
+  #float phone
+  +sendDescription()
+  +savePrice()
+  +calculateDuration()
+  +getCode()
+}
+class Invoice {
+  -double type
+  #Date total
+  -float note
+  +long updatedAt
+  +String email
+  +saveLevel()
+  +setId()
+  +cancelDescription()
+}
+class Return {
+  +double updatedAt
+  #double phone
+  +validatePrice()
+  +validateTotal()
+  +cancelPhone()
+  +validateName()
+}
+Cart ..> Return : "1"
+Invoice --|> Return
+note right of Cart : Ecommerce domain
+@enduml

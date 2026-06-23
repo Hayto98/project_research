@@ -1,0 +1,35 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+start
+:Pay Bill;
+:Open Account;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Withdraw Cash;
+:Transfer Funds;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Block Card;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Apply For Loan;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+stop
+@enduml

@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+abstract class Catalog {
+  +boolean quantity
+  -float note
+  #double updatedAt
+  +validateLevel()
+  +getCode()
+  +deleteCreatedat()
+  +cancelScore()
+}
+abstract class Reservation {
+  #float type
+  +boolean updatedAt
+  #String note
+  -double duration
+  +cancelScore()
+}
+class Fine {
+  -Date id
+  +long amount
+  #String phone
+  +cancelQuantity()
+  +sendStatus()
+  +sendDescription()
+  +setAmount()
+}
+class Librarian {
+  +float level
+  +boolean active
+  +Date duration
+  +int phone
+  +saveStatus()
+}
+class Publisher {
+  +float address
+  -boolean updatedAt
+  +double total
+  #String createdAt
+  #double score
+  +cancelDescription()
+  +validatePrice()
+}
+interface Member {
+  #float price
+  -boolean note
+  -float description
+  #long active
+  +setTotal()
+  +setScore()
+}
+class Renewal {
+  #String level
+  +float phone
+  +double type
+  -String code
+  +setStatus()
+  +sendScore()
+}
+Reservation --> Member : "0..1"
+Renewal --o Publisher
+Member --|> Fine
+Catalog --* Fine
+note right of Catalog : Library domain
+@enduml

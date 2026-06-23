@@ -1,0 +1,14 @@
+@startuml
+skinparam ArrowColor #555555
+component "Guest Service" as C_GuestService
+component "Reservation Service" as C_ReservationService
+component "Service Service" as C_ServiceService
+component "CheckOut Service" as C_CheckOutService
+database "Hotel DB" as DB_hotel
+C_GuestService --> DB_hotel
+C_ReservationService --> DB_hotel
+C_ServiceService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_ReservationService ..> C_GuestService : REST
+C_GuestService ..> C_ReservationService : gRPC
+@enduml

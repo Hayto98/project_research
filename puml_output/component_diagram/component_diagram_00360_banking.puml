@@ -1,0 +1,19 @@
+@startuml
+skinparam ArrowColor #555555
+component "Teller Service" as C_TellerService
+component "Deposit Service" as C_DepositService
+component "Transfer Service" as C_TransferService
+component "Withdrawal Service" as C_WithdrawalService
+component "Statement Service" as C_StatementService
+component "Branch Service" as C_BranchService
+database "Banking DB" as DB_banking
+C_DepositService --> DB_banking
+C_TransferService --> DB_banking
+C_WithdrawalService --> DB_banking
+C_BranchService --> DB_banking
+C_TellerService ..> C_BranchService : gRPC
+C_StatementService ..> C_TellerService : REST
+C_TransferService ..> C_TellerService : HTTP
+C_TellerService ..> C_StatementService : REST
+C_WithdrawalService ..> C_TellerService : gRPC
+@enduml

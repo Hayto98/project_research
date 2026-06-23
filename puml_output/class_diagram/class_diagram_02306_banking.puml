@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+interface Card {
+  #int active
+  #boolean updatedAt
+  #int type
+  -long description
+  +saveCode()
+  +getDuration()
+}
+abstract class Transfer {
+  +int email
+  +long total
+  #Date level
+  +setQuantity()
+  +cancelAddress()
+  +cancelDuration()
+}
+class Statement {
+  #Date amount
+  -float total
+  +createName()
+  +deleteName()
+  +createDescription()
+}
+class Withdrawal {
+  -long code
+  -int address
+  +Date score
+  -boolean quantity
+  -boolean type
+  +setStatus()
+  +createDescription()
+}
+class Account {
+  -int address
+  +Date level
+  +String note
+  -double description
+  +boolean score
+  +deletePhone()
+  +cancelDescription()
+}
+class Teller {
+  +boolean updatedAt
+  #int note
+  #float quantity
+  #Date createdAt
+  #String score
+  +findQuantity()
+  +findAddress()
+  +deleteEmail()
+}
+Transfer --o Withdrawal
+Withdrawal --* Transfer
+Transfer ..|> Teller
+Statement --|> Teller
+Teller --> Transfer : "1"
+note right of Card : Banking domain
+@enduml

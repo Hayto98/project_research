@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+boundary "Lab Technician" as LT
+participant "Doctor" as D
+participant "Insurance Provider" as IP
+participant "Receptionist" as R
+LT --> R : Admit Patient
+activate R
+R --> LT : ACK
+deactivate R
+note over R : processing admit patient
+R -> D : Book Appointment
+LT -> D : Update Medical Record
+activate D
+D --> LT : ACK
+deactivate D
+IP -> R : Examine Patient
+@enduml

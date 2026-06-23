@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+component "Customer Service" as C_CustomerService
+component "Cart Service" as C_CartService
+component "Wishlist Service" as C_WishlistService
+component "Warehouse Service" as C_WarehouseService
+component "Order Service" as C_OrderService
+component "Coupon Service" as C_CouponService
+database "Ecommerce DB" as DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_WarehouseService ..> C_CartService : HTTP
+C_CartService ..> C_OrderService : HTTP
+C_CustomerService ..> C_WishlistService : REST
+@enduml

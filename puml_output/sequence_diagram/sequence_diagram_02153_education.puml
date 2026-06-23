@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+actor "Registrar" as R
+control "Librarian" as L
+boundary "Admin" as A
+L --> R : Take Attendance
+activate R
+R --> L : ACK
+deactivate R
+L --> R : Enroll Course
+note over R : processing enroll course
+A ->> L : Submit Assignment
+activate L
+L --> A : ACK
+deactivate L
+note over L : processing submit assignment
+L ->> A : Borrow Book
+note over A : processing borrow book
+L --> R : Register Student
+A --> L : View Schedule
+activate L
+L --> A : ACK
+deactivate L
+note over L : processing view schedule
+@enduml

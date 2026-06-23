@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+component "Enrollment Service" as C_EnrollmentService
+component "Course Service" as C_CourseService
+component "Teacher Service" as C_TeacherService
+component "Department Service" as C_DepartmentService
+component "Schedule Service" as C_ScheduleService
+component "Exam Service" as C_ExamService
+database "Education DB" as DB_education
+C_EnrollmentService --> DB_education
+C_CourseService --> DB_education
+C_ScheduleService --> DB_education
+C_ExamService --> DB_education
+C_CourseService ..> C_TeacherService : HTTP
+C_TeacherService ..> C_ExamService : REST
+C_DepartmentService ..> C_TeacherService : gRPC
+@enduml

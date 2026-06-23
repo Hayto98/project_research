@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+class Review {
+  #Date score
+  -String description
+  #long status
+  -int price
+  -int updatedAt
+  +createScore()
+  +getQuantity()
+  +calculateActive()
+}
+class Coupon {
+  +boolean level
+  +String id
+  -double duration
+  #long active
+  -Date name
+  +getName()
+}
+interface Cart {
+  -String phone
+  +long amount
+  -boolean duration
+  -int quantity
+  +createPhone()
+  +deleteDescription()
+  +validateStatus()
+  +sendName()
+}
+class Return {
+  #double id
+  +float level
+  +cancelPrice()
+}
+class Product {
+  +long updatedAt
+  -double phone
+  +int code
+  #long description
+  #int createdAt
+  +findStatus()
+  +calculateDescription()
+}
+class Supplier {
+  #int name
+  +boolean code
+  +long address
+  #int createdAt
+  +findEmail()
+}
+Return ..|> Coupon
+Cart ..|> Review
+Product --|> Cart
+Return ..> Review : "1"
+note right of Review : Ecommerce domain
+@enduml

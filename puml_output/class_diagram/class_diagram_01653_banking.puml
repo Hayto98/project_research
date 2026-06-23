@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+interface Card {
+  -boolean type
+  -float description
+  -int total
+  +updatePrice()
+  +cancelEmail()
+  +calculateCode()
+  +createPrice()
+}
+interface Statement {
+  -double amount
+  #int description
+  -double id
+  +sendScore()
+  +processCreatedat()
+}
+class Interest {
+  +long description
+  +boolean status
+  +double type
+  +int duration
+  -float price
+  +createUpdatedat()
+  +processDescription()
+}
+interface Teller {
+  +Date address
+  -String quantity
+  #Date description
+  +double createdAt
+  +calculateTotal()
+  +sendPrice()
+}
+class Transfer {
+  -float createdAt
+  #float price
+  +calculateAmount()
+}
+interface Withdrawal {
+  -String price
+  #int note
+  +String type
+  #float description
+  +boolean phone
+  +updateId()
+  +calculateEmail()
+  +validateStatus()
+  +calculateEmail()
+}
+Transfer ..|> Teller
+Card --o Teller
+Card --o Statement
+note right of Card : Banking domain
+@enduml

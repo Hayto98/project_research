@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+abstract class Prescription {
+  +int level
+  -boolean total
+  -boolean amount
+  -Date address
+  +updateStatus()
+  +sendType()
+  +deleteScore()
+}
+class Appointment {
+  -float description
+  -String duration
+  #boolean name
+  +createId()
+  +createLevel()
+  +createStatus()
+  +findCode()
+}
+class Billing {
+  -String quantity
+  +float active
+  +double score
+  #long note
+  +float createdAt
+  +saveCode()
+}
+interface Insurance {
+  -boolean total
+  +Date level
+  -float active
+  +boolean status
+  +deleteCreatedat()
+  +getId()
+  +setQuantity()
+  +sendDuration()
+}
+class Patient {
+  +double phone
+  -boolean score
+  #String updatedAt
+  #int duration
+  +sendEmail()
+  +validateCode()
+  +validateId()
+}
+interface Nurse {
+  #float status
+  #String email
+  +boolean code
+  +createScore()
+  +updateName()
+}
+Insurance --* Nurse
+Patient --|> Appointment
+Prescription --> Insurance : "1..*"
+note right of Prescription : Healthcare domain
+@enduml

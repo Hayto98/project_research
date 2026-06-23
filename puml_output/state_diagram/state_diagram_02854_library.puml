@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+[*] --> Delivered
+Delivered --> Cancelled : process
+Delivered : entry / log librarian
+Cancelled --> Processing : process
+Processing --> Pending : cancel
+Pending --> Active : update
+Pending : entry / log librarian
+Active --> Completed : process
+Completed --> [*]
+@enduml

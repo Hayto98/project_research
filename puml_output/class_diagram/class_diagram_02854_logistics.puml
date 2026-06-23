@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+class Manifest {
+  #Date phone
+  +String duration
+  #float name
+  #String active
+  +validateType()
+  +sendUpdatedat()
+  +updateAddress()
+}
+abstract class Shipment {
+  -float score
+  #int phone
+  #Date amount
+  +setStatus()
+}
+interface Inventory {
+  -float description
+  +boolean level
+  +processStatus()
+  +createStatus()
+}
+class Driver {
+  #boolean description
+  #int status
+  #double price
+  +calculateCreatedat()
+}
+class DeliveryNote {
+  +String description
+  -int status
+  +findNote()
+  +processTotal()
+  +saveAmount()
+}
+Shipment --> Inventory : "0..1"
+DeliveryNote ..> Shipment : "*"
+note right of Manifest : Logistics domain
+@enduml

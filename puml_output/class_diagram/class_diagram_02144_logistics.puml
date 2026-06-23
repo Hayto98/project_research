@@ -1,0 +1,45 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Shipment {
+  #String note
+  #long status
+  +long email
+  +deleteDuration()
+}
+class Route {
+  -Date address
+  +String status
+  +Date level
+  +saveDescription()
+  +deleteAddress()
+  +setEmail()
+  +validateDescription()
+}
+class FuelLog {
+  #long createdAt
+  -boolean price
+  +double type
+  -long amount
+  +calculateScore()
+  +createPhone()
+  +processAddress()
+}
+abstract class Depot {
+  #Date code
+  -long phone
+  +getScore()
+  +sendActive()
+  +processScore()
+}
+abstract class Customer {
+  +Date id
+  -String type
+  +calculateDescription()
+}
+FuelLog --o Customer
+Route ..|> Customer
+Depot --o Route
+note right of Shipment : Logistics domain
+@enduml

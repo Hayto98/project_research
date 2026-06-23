@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+left to right direction
+actor "Seller" as Seller
+actor "Customer" as Customer
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Write Review" as UC_WriteReview
+  usecase "Checkout" as UC_Checkout
+}
+Seller --> UC_BrowseProducts
+Seller --> UC_WriteReview
+Customer --> UC_BrowseProducts
+Customer --> UC_Checkout
+PaymentGateway --> UC_AddToCart
+PaymentGateway --> UC_TrackOrder
+UC_BrowseProducts ..|> UC_MakePayment : <<extend>>
+@enduml

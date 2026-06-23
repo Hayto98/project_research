@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+interface Ward {
+  -double code
+  -Date active
+  +setStatus()
+  +setId()
+}
+class Appointment {
+  -Date quantity
+  +int duration
+  +deleteQuantity()
+  +sendType()
+}
+class Billing {
+  -int note
+  -float status
+  -int description
+  +sendAmount()
+  +setDuration()
+  +cancelAddress()
+}
+class Diagnosis {
+  -long duration
+  -float price
+  -float description
+  +findName()
+  +updateUpdatedat()
+  +createNote()
+  +findCode()
+}
+abstract class Doctor {
+  +double phone
+  -double total
+  -Date updatedAt
+  #boolean address
+  #long description
+  +getTotal()
+  +updateUpdatedat()
+}
+Appointment --> Ward : "1..*"
+Doctor ..> Billing : "0..1"
+Doctor ..|> Ward
+Appointment --* Doctor
+note right of Ward : Healthcare domain
+@enduml

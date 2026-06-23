@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+[*] --> Completed
+Completed --> Rejected : approve
+Rejected --> OnHold : reject
+Rejected : entry / log medicalrecord
+OnHold --> Delivered : reject
+Delivered --> Active : process
+Rejected --> OnHold : revert
+Active --> [*]
+@enduml

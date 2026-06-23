@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+entity "Admin" as A
+control "Payment Gateway" as PG
+control "Delivery Service" as DS
+control "Customer" as C
+actor "Seller" as S
+C --> DS : Make Payment
+activate DS
+DS --> C : ACK
+deactivate DS
+note over DS : processing make payment
+S --> PG : Track Order
+activate PG
+PG --> S : ACK
+deactivate PG
+note over PG : processing track order
+PG ->> C : Add To Cart
+activate C
+C --> PG : ACK
+deactivate C
+DS --> C : Manage Inventory
+C --> S : Cancel Order
+@enduml

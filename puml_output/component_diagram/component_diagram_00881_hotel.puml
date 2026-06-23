@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing true
+component "Reservation Service" as C_ReservationService
+component "Amenity Service" as C_AmenityService
+component "Booking Service" as C_BookingService
+component "Housekeeping Service" as C_HousekeepingService
+component "Invoice Service" as C_InvoiceService
+component "Room Service" as C_RoomService
+component "Restaurant Service" as C_RestaurantService
+database "Hotel DB" as DB_hotel
+C_HousekeepingService --> DB_hotel
+C_InvoiceService --> DB_hotel
+C_RestaurantService ..> C_InvoiceService : gRPC
+C_InvoiceService ..> C_ReservationService : gRPC
+C_RoomService ..> C_BookingService : HTTP
+C_RoomService ..> C_BookingService : MQ
+C_HousekeepingService ..> C_InvoiceService : HTTP
+C_RoomService ..> C_InvoiceService : gRPC
+@enduml

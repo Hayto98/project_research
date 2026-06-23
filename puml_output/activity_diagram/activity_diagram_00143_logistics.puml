@@ -1,0 +1,27 @@
+@startuml
+skinparam defaultFontSize 13
+start
+:Track Shipment;
+:Update Inventory;
+:Deliver Package;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Report Issue;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Load Package;
+stop
+@enduml

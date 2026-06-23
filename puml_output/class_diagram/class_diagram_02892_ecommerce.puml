@@ -1,0 +1,65 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Category {
+  -Date updatedAt
+  +Date code
+  +saveDescription()
+}
+abstract class Order {
+  #String quantity
+  +Date price
+  #int createdAt
+  +calculateDescription()
+  +getAmount()
+  +sendTotal()
+}
+class Warehouse {
+  -long description
+  -float amount
+  +float name
+  -double email
+  -float code
+  +createAddress()
+  +setCode()
+}
+interface Wishlist {
+  #float status
+  -int type
+  #Date address
+  +validateNote()
+  +deleteName()
+  +processDuration()
+}
+interface Invoice {
+  -String description
+  -float phone
+  +double amount
+  +getStatus()
+  +setScore()
+  +processPhone()
+  +createPrice()
+}
+abstract class Shipment {
+  #double score
+  -boolean amount
+  #long phone
+  #float code
+  #int status
+  +deleteStatus()
+}
+class Cart {
+  +double code
+  -boolean active
+  -int quantity
+  -Date description
+  +updateName()
+  +calculateAddress()
+  +getName()
+}
+Category --> Invoice : "*"
+Category --|> Order
+Category --|> Cart
+Shipment ..|> Warehouse
+note right of Category : Ecommerce domain
+@enduml

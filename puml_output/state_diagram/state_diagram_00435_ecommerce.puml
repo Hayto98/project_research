@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+[*] --> Completed
+Completed --> Processing : update
+Processing --> Shipped : process
+Shipped --> Reviewed : review
+Reviewed --> Active : cancel
+Reviewed : entry / log supplier
+Active --> OnHold : reject
+Shipped --> OnHold : revert
+OnHold --> [*]
+@enduml

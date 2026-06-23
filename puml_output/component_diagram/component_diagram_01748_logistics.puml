@@ -1,0 +1,19 @@
+@startuml
+skinparam defaultFontSize 11
+component "Manifest Service" as C_ManifestService
+component "Shipment Service" as C_ShipmentService
+component "Customer Service" as C_CustomerService
+component "Vehicle Service" as C_VehicleService
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Warehouse Service" as C_WarehouseService
+database "Logistics DB" as DB_logistics
+C_ManifestService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_CustomerService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_DeliveryNoteService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_VehicleService ..> C_WarehouseService : HTTP
+C_VehicleService ..> C_ManifestService : gRPC
+C_ShipmentService ..> C_DeliveryNoteService : HTTP
+@enduml

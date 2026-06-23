@@ -1,0 +1,56 @@
+@startuml
+skinparam defaultFontSize 13
+abstract class Manifest {
+  #float email
+  #long active
+  #long description
+  #Date status
+  +saveId()
+  +processTotal()
+}
+abstract class Tracking {
+  +boolean id
+  #int active
+  #long level
+  #String code
+  +Date type
+  +saveAddress()
+  +deleteEmail()
+  +findId()
+}
+abstract class Shipment {
+  -boolean level
+  -double address
+  +deleteActive()
+  +validateName()
+  +validateNote()
+}
+class Driver {
+  -double status
+  #double address
+  #long code
+  +String note
+  +sendCode()
+  +calculateActive()
+  +createQuantity()
+  +saveAmount()
+}
+abstract class Customer {
+  +double id
+  #int description
+  +setActive()
+}
+interface Inventory {
+  +double address
+  +Date duration
+  +double name
+  +long code
+  +getType()
+  +validateCode()
+}
+Shipment --* Driver
+Driver ..> Tracking : "1"
+Tracking ..|> Inventory
+Inventory ..|> Shipment
+note right of Manifest : Logistics domain
+@enduml

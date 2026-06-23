@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Invoice {
+  +Date price
+  -float quantity
+  +int description
+  +int code
+  #float level
+  +setDescription()
+  +cancelScore()
+  +setType()
+}
+class Reservation {
+  +double type
+  +long createdAt
+  #float level
+  +updateScore()
+  +setCode()
+  +sendScore()
+}
+abstract class CheckOut {
+  -float updatedAt
+  +Date address
+  -int duration
+  +updateNote()
+  +saveUpdatedat()
+}
+interface Restaurant {
+  -long amount
+  +String score
+  -boolean id
+  #double name
+  +getType()
+  +validateQuantity()
+  +findAddress()
+}
+Invoice ..> Reservation : "*"
+Reservation --> Restaurant : "1"
+Restaurant --* Invoice
+note right of Invoice : Hotel domain
+@enduml

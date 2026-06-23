@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing true
+actor "Patient" as P
+control "Lab Technician" as LT
+participant "Insurance Provider" as IP
+P -> LT : Process Insurance Claim
+IP --> LT : Admit Patient
+P -> IP : Book Appointment
+note over IP : processing book appointment
+IP --> P : Examine Patient
+activate P
+P --> IP : ACK
+deactivate P
+LT -> P : Update Medical Record
+activate P
+P --> LT : ACK
+deactivate P
+@enduml

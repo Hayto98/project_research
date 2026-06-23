@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+[*] --> Delivered
+Delivered --> Rejected : update
+Delivered : entry / log prescription
+Rejected --> Active : review
+Active --> Created : update
+Created --> Completed : reject
+Completed --> Shipped : review
+Completed : entry / log prescription
+Active --> Completed : revert
+Shipped --> [*]
+@enduml

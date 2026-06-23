@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+left to right direction
+actor "Seller" as Seller
+actor "Delivery Service" as DeliveryService
+actor "Payment Gateway" as PaymentGateway
+actor "Admin" as Admin
+rectangle "Ecommerce System" {
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Write Review" as UC_WriteReview
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Checkout" as UC_Checkout
+}
+Seller --> UC_TrackOrder
+Seller --> UC_MakePayment
+DeliveryService --> UC_Checkout
+DeliveryService --> UC_BrowseProducts
+PaymentGateway --> UC_AddToCart
+Admin --> UC_TrackOrder
+UC_AddToCart ..|> UC_WriteReview : <<extend>>
+@enduml

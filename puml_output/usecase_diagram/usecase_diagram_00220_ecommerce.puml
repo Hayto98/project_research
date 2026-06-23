@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+left to right direction
+actor "Payment Gateway" as PaymentGateway
+actor "Seller" as Seller
+actor "Admin" as Admin
+actor "Customer" as Customer
+rectangle "Ecommerce System" {
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Checkout" as UC_Checkout
+  usecase "Manage Inventory" as UC_ManageInventory
+}
+PaymentGateway --> UC_TrackOrder
+PaymentGateway --> UC_AddToCart
+PaymentGateway --> UC_BrowseProducts
+Seller --> UC_Checkout
+Admin --> UC_AddToCart
+Admin --> UC_ManageInventory
+Admin --> UC_BrowseProducts
+Customer --> UC_MakePayment
+Customer --> UC_BrowseProducts
+Customer --> UC_Checkout
+UC_Checkout ..|> UC_ManageInventory : <<extend>>
+@enduml

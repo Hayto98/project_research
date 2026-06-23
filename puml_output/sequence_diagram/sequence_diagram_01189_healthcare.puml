@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+control "Nurse" as N
+entity "Insurance Provider" as IP
+participant "Receptionist" as R
+N --> R : Discharge Patient
+R -> IP : Process Insurance Claim
+activate IP
+IP --> R : ACK
+deactivate IP
+note over IP : processing process insurance claim
+R --> N : Examine Patient
+activate N
+N --> R : ACK
+deactivate N
+IP ->> R : Issue Prescription
+note over R : processing issue prescription
+@enduml

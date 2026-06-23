@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+class Ward {
+  -boolean id
+  #long price
+  +boolean phone
+  -double code
+  +getCreatedat()
+}
+abstract class Doctor {
+  #String level
+  +int updatedAt
+  +validateId()
+  +getStatus()
+  +deleteCode()
+  +createPhone()
+}
+interface Prescription {
+  -int createdAt
+  -Date total
+  -float description
+  #Date note
+  +deleteDuration()
+}
+interface Hospital {
+  #boolean note
+  -boolean code
+  +String total
+  +Date duration
+  -int address
+  +validateTotal()
+  +calculatePhone()
+}
+class Appointment {
+  +double address
+  -boolean name
+  +long price
+  +findQuantity()
+  +updateTotal()
+}
+abstract class Diagnosis {
+  #float level
+  -double updatedAt
+  -Date name
+  +boolean createdAt
+  -float active
+  +createPrice()
+  +processQuantity()
+}
+interface MedicalRecord {
+  -int description
+  -Date name
+  +calculateDescription()
+  +findPrice()
+}
+MedicalRecord ..> Prescription : "0..1"
+Diagnosis --* Hospital
+Diagnosis --> Prescription : "0..1"
+Hospital --o Ward
+Appointment ..|> Diagnosis
+note right of Ward : Healthcare domain
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Wishlist {
+  +String level
+  +Date id
+  +int updatedAt
+  -double quantity
+  #float total
+  +calculateDescription()
+}
+abstract class Supplier {
+  -double status
+  -String total
+  +sendActive()
+  +getTotal()
+  +deleteEmail()
+  +updateCode()
+}
+interface Cart {
+  +String active
+  -long level
+  #int status
+  -double address
+  -double email
+  +sendUpdatedat()
+}
+abstract class Warehouse {
+  -long note
+  +String updatedAt
+  -float address
+  -float status
+  +float duration
+  +findAddress()
+}
+Supplier --o Cart
+Supplier ..|> Wishlist
+Warehouse --* Wishlist
+note right of Wishlist : Ecommerce domain
+@enduml

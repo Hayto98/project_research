@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Route {
+  +int code
+  #int quantity
+  +updateNote()
+  +sendLevel()
+  +sendAmount()
+  +savePrice()
+}
+class Driver {
+  #String email
+  +long duration
+  +long createdAt
+  +int address
+  #String phone
+  +calculateType()
+  +processId()
+  +calculateAmount()
+}
+class Warehouse {
+  +boolean level
+  #long quantity
+  #float code
+  +boolean score
+  +deleteTotal()
+  +validateScore()
+}
+class Customer {
+  +boolean level
+  #long updatedAt
+  +calculateName()
+  +calculateScore()
+  +processName()
+  +getDescription()
+}
+class Inventory {
+  #int description
+  +int name
+  #long price
+  #int active
+  -String createdAt
+  +saveNote()
+}
+class DeliveryNote {
+  -String description
+  +double id
+  #boolean level
+  +int duration
+  +findNote()
+  +updateQuantity()
+  +processAmount()
+  +saveDuration()
+}
+Customer --> Warehouse : "1..*"
+Customer --> Route : "0..1"
+DeliveryNote ..> Customer : "*"
+Inventory ..> Route : "*"
+Warehouse --> Route : "0..1"
+note right of Route : Logistics domain
+@enduml

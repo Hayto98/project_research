@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+interface Payment {
+  +double name
+  -double total
+  #long createdAt
+  #long level
+  +boolean active
+  +setScore()
+  +sendCreatedat()
+  +calculateAmount()
+}
+abstract class Review {
+  -boolean score
+  -long level
+  -long code
+  +double address
+  -boolean note
+  +cancelAddress()
+  +saveEmail()
+}
+class Category {
+  -Date name
+  +int code
+  -String duration
+  -int score
+  +saveId()
+  +updateDescription()
+  +processNote()
+}
+interface Return {
+  #int email
+  +double score
+  +double note
+  +findNote()
+  +updateCreatedat()
+  +findAddress()
+}
+abstract class Warehouse {
+  -long name
+  -String type
+  #float code
+  +saveQuantity()
+  +calculateCode()
+  +saveStatus()
+  +findName()
+}
+interface Customer {
+  +int total
+  #Date name
+  #int description
+  +processQuantity()
+}
+Review ..> Category : "*"
+Payment ..> Review : "1..*"
+Review --* Return
+note right of Payment : Ecommerce domain
+@enduml

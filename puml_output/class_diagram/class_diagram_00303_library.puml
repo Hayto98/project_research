@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+abstract class Reservation {
+  #boolean address
+  #float score
+  -float total
+  +getCreatedat()
+  +getPrice()
+  +saveName()
+}
+abstract class Book {
+  -long name
+  -int type
+  -float createdAt
+  -boolean score
+  +calculateQuantity()
+  +sendId()
+  +getId()
+}
+class Branch {
+  +String updatedAt
+  #long createdAt
+  +deletePrice()
+  +saveCode()
+  +processAmount()
+  +validateQuantity()
+}
+class Publisher {
+  #String type
+  #boolean name
+  +sendCreatedat()
+  +deleteQuantity()
+  +getId()
+  +createQuantity()
+}
+abstract class Loan {
+  +int createdAt
+  -double note
+  +findType()
+  +deleteUpdatedat()
+  +processPrice()
+}
+abstract class Librarian {
+  -float level
+  +long note
+  #int phone
+  #double description
+  -double status
+  +saveLevel()
+  +processScore()
+}
+Reservation --|> Publisher
+Loan ..|> Reservation
+Reservation --> Loan : "0..1"
+Book --> Librarian : "1..*"
+note right of Reservation : Library domain
+@enduml

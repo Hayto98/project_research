@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Room {
+  +long amount
+  #int updatedAt
+  +Date price
+  +deleteScore()
+  +updateDuration()
+}
+interface Payment {
+  +double address
+  +double level
+  +double status
+  +savePhone()
+  +setStatus()
+}
+interface Invoice {
+  -long description
+  #boolean id
+  #float active
+  +findEmail()
+  +setNote()
+  +calculateScore()
+  +deleteDuration()
+}
+class Housekeeping {
+  -float status
+  +int type
+  #double price
+  +long quantity
+  +saveStatus()
+  +getTotal()
+}
+abstract class CheckOut {
+  -Date status
+  -int updatedAt
+  -long name
+  +boolean price
+  -boolean score
+  +validateLevel()
+  +updateCode()
+  +setCreatedat()
+}
+Payment --|> Housekeeping
+Invoice --o Room
+Room ..> Invoice : "*"
+CheckOut --* Payment
+note right of Room : Hotel domain
+@enduml

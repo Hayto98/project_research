@@ -1,0 +1,62 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Library {
+  +float note
+  +Date id
+  -boolean amount
+  +savePhone()
+  +deleteScore()
+  +calculateScore()
+  +cancelPhone()
+}
+class Classroom {
+  -int email
+  +boolean name
+  -int updatedAt
+  +validatePhone()
+}
+class Attendance {
+  #Date updatedAt
+  -String note
+  +getDescription()
+}
+interface Enrollment {
+  #double status
+  #int total
+  -boolean address
+  +setPhone()
+}
+interface Assignment {
+  +String score
+  +String quantity
+  -float status
+  -float email
+  +Date name
+  +deleteName()
+  +saveQuantity()
+}
+class Grade {
+  +double price
+  #double amount
+  +Date email
+  +findLevel()
+  +deleteTotal()
+  +cancelLevel()
+}
+interface Student {
+  +Date code
+  #Date type
+  #long quantity
+  +calculateActive()
+  +deleteNote()
+  +getCode()
+}
+Attendance ..> Library : "1"
+Student ..|> Attendance
+Library --* Assignment
+Student --> Classroom : "1"
+Enrollment --|> Library
+Enrollment --> Grade : "0..1"
+note right of Library : Education domain
+@enduml

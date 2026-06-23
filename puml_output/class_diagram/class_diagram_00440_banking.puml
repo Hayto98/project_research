@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+class Statement {
+  -float note
+  #double updatedAt
+  +calculateAmount()
+}
+abstract class Branch {
+  -String price
+  -float duration
+  +setAddress()
+  +createId()
+  +calculateScore()
+  +sendCreatedat()
+}
+class Loan {
+  #String price
+  +long type
+  +float description
+  +double quantity
+  +String phone
+  +deleteAmount()
+  +setEmail()
+  +cancelNote()
+}
+interface Deposit {
+  #long phone
+  #int quantity
+  +double updatedAt
+  -double name
+  +findStatus()
+}
+abstract class Transaction {
+  +String id
+  #int score
+  -long duration
+  -float updatedAt
+  -long createdAt
+  +createDescription()
+}
+Statement --> Branch : "*"
+Branch ..|> Transaction
+Loan ..|> Branch
+Deposit ..> Statement : "0..1"
+note right of Statement : Banking domain
+@enduml

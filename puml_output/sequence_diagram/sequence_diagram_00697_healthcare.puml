@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+control "Lab Technician" as LT
+control "Insurance Provider" as IP
+participant "Patient" as P
+control "Nurse" as N
+IP ->> P : Discharge Patient
+activate P
+P --> IP : ACK
+deactivate P
+N --> LT : Book Appointment
+activate LT
+LT --> N : ACK
+deactivate LT
+note over LT : processing book appointment
+IP ->> LT : Admit Patient
+P -> LT : Examine Patient
+note over LT : processing examine patient
+IP -> LT : Issue Prescription
+activate LT
+LT --> IP : ACK
+deactivate LT
+P --> N : Process Insurance Claim
+note over N : processing process insurance claim
+@enduml

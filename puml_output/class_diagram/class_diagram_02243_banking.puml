@@ -1,0 +1,44 @@
+@startuml
+skinparam defaultFontSize 11
+class Transfer {
+  +String total
+  #double description
+  +cancelType()
+}
+interface Card {
+  +long level
+  #Date quantity
+  +processType()
+  +validateName()
+}
+interface Teller {
+  +long phone
+  +double level
+  +long code
+  -float total
+  +float amount
+  +findType()
+}
+class Beneficiary {
+  +float active
+  #Date quantity
+  +setTotal()
+  +createActive()
+  +setDuration()
+}
+class Interest {
+  #int total
+  +double duration
+  +validateId()
+  +calculateEmail()
+}
+interface Branch {
+  #int email
+  #int level
+  +processEmail()
+}
+Card --o Transfer
+Beneficiary --* Transfer
+Teller --o Card
+note right of Transfer : Banking domain
+@enduml

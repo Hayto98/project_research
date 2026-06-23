@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+actor "Customer" as C
+participant "Driver" as D
+control "Warehouse Staff" as WS
+control "Dispatcher" as D2
+D2 --> D : Assign Route
+note over D : processing assign route
+D --> WS : Track Shipment
+WS --> D : Update Inventory
+D2 -> C : Report Issue
+activate C
+C --> D2 : ACK
+deactivate C
+D --> WS : Schedule Pickup
+activate WS
+WS --> D : ACK
+deactivate WS
+@enduml

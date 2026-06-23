@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+boundary "Warehouse Staff" as WS
+boundary "Driver" as D
+control "Dispatcher" as D2
+boundary "Customer" as C
+WS -> D2 : Report Issue
+note over D2 : processing report issue
+D -> D2 : Assign Route
+activate D2
+D2 --> D : ACK
+deactivate D2
+D2 --> C : Load Package
+activate C
+C --> D2 : ACK
+deactivate C
+D -> C : Schedule Pickup
+@enduml

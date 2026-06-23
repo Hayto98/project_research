@@ -1,0 +1,62 @@
+@startuml
+skinparam monochrome true
+class Shipment {
+  #Date quantity
+  -int phone
+  -float status
+  #Date code
+  +calculateAmount()
+}
+class Warehouse {
+  #Date address
+  -Date phone
+  +Date type
+  -int level
+  +boolean name
+  +cancelNote()
+}
+class Cart {
+  -Date note
+  -int createdAt
+  +int total
+  +getAddress()
+  +deleteNote()
+  +sendDescription()
+}
+class Payment {
+  +int level
+  #int note
+  #int amount
+  +updateName()
+}
+class Supplier {
+  +String updatedAt
+  #boolean code
+  +String id
+  #Date status
+  -long price
+  +validateName()
+  +getPrice()
+}
+abstract class Coupon {
+  #String type
+  -Date email
+  #int phone
+  -float address
+  +validateScore()
+  +processNote()
+  +validateDescription()
+}
+class Review {
+  #int duration
+  -double quantity
+  +updateCreatedat()
+  +cancelAddress()
+}
+Shipment --|> Warehouse
+Supplier --> Coupon : "0..1"
+Warehouse ..> Shipment : "1..*"
+Payment --* Cart
+Shipment ..> Payment : "*"
+note right of Shipment : Ecommerce domain
+@enduml

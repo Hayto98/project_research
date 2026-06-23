@@ -1,0 +1,69 @@
+@startuml
+skinparam defaultFontSize 11
+abstract class Beneficiary {
+  +long phone
+  -boolean name
+  +findActive()
+  +calculateAddress()
+  +calculateScore()
+}
+class Branch {
+  -long name
+  +float quantity
+  -double email
+  +processDescription()
+  +validateDuration()
+}
+class Withdrawal {
+  #long score
+  +boolean price
+  #Date level
+  +int status
+  #float type
+  +calculateStatus()
+  +findPhone()
+  +getDescription()
+}
+class Interest {
+  -float type
+  #String name
+  +double duration
+  +String total
+  -Date address
+  +findActive()
+  +createPrice()
+}
+interface Customer {
+  #int note
+  #long score
+  #String quantity
+  +calculateName()
+  +setCode()
+  +findStatus()
+  +cancelPhone()
+}
+interface Statement {
+  -String type
+  -long id
+  #long score
+  +int note
+  -boolean description
+  +validateType()
+  +findAddress()
+}
+interface Transaction {
+  -int name
+  +String note
+  -int price
+  -boolean code
+  +processName()
+  +validateStatus()
+}
+Beneficiary --> Customer : "1"
+Withdrawal --* Transaction
+Transaction --> Customer : "0..1"
+Withdrawal ..> Interest : "1..*"
+Branch --> Interest : "1"
+Customer --|> Interest
+note right of Beneficiary : Banking domain
+@enduml

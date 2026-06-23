@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+component "Driver Service" as C_DriverService
+component "Vehicle Service" as C_VehicleService
+component "Shipment Service" as C_ShipmentService
+component "Inventory Service" as C_InventoryService
+component "Warehouse Service" as C_WarehouseService
+database "Logistics DB" as DB_logistics
+C_DriverService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_DriverService ..> C_VehicleService : MQ
+C_ShipmentService ..> C_VehicleService : MQ
+@enduml

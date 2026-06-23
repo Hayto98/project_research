@@ -1,0 +1,27 @@
+@startuml
+
+start
+:Track Shipment;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Fuel Vehicle;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Schedule Pickup;
+:Report Issue;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Deliver Package;
+stop
+@enduml

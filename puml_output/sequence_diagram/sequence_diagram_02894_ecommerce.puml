@@ -1,0 +1,19 @@
+@startuml
+
+boundary "Customer" as C
+entity "Payment Gateway" as PG
+boundary "Admin" as A
+entity "Delivery Service" as DS
+entity "Seller" as S
+PG --> DS : Apply Coupon
+note over DS : processing apply coupon
+PG -> S : Write Review
+activate S
+S --> PG : ACK
+deactivate S
+DS -> C : Manage Inventory
+PG --> DS : Make Payment
+activate DS
+DS --> PG : ACK
+deactivate DS
+@enduml

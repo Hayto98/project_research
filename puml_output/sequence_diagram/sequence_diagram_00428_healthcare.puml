@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+boundary "Insurance Provider" as IP
+entity "Nurse" as N
+entity "Lab Technician" as LT
+participant "Doctor" as D
+LT --> N : Examine Patient
+activate N
+N --> LT : ACK
+deactivate N
+LT ->> N : Admit Patient
+LT ->> IP : Run Lab Test
+activate IP
+IP --> LT : ACK
+deactivate IP
+D -> N : Update Medical Record
+D -> N : Discharge Patient
+activate N
+N --> D : ACK
+deactivate N
+@enduml

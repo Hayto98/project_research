@@ -1,0 +1,19 @@
+@startuml
+
+control "Manager" as M
+entity "Guest" as G
+participant "Receptionist" as R
+entity "Housekeeper" as H
+entity "Chef" as C
+H --> R : Check In
+C -> R : Clean Room
+G -> H : Cancel Reservation
+activate H
+H --> G : ACK
+deactivate H
+G --> C : Process Payment
+activate C
+C --> G : ACK
+deactivate C
+C -> M : Order Room Service
+@enduml

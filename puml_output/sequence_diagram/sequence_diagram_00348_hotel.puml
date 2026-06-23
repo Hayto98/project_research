@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+actor "Chef" as C
+control "Manager" as M
+boundary "Receptionist" as R
+M --> C : Request Service
+activate C
+C --> M : ACK
+deactivate C
+C ->> R : Cancel Reservation
+R --> M : Process Payment
+activate M
+M --> R : ACK
+deactivate M
+C -> R : Clean Room
+activate R
+R --> C : ACK
+deactivate R
+C -> M : Check Out
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+start
+:Assign Route;
+:Report Issue;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Schedule Pickup;
+:Fuel Vehicle;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Update Inventory;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Track Shipment;
+:Deliver Package;
+stop
+@enduml

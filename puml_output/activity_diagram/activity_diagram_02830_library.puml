@@ -1,0 +1,37 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+start
+:Pay Fine;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Member;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Borrow Book;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Reserve Book;
+:Search Catalog;
+:Add New Book;
+:Renew Loan;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Return Book;
+stop
+@enduml

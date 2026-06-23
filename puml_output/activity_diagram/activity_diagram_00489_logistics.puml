@@ -1,0 +1,34 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+start
+:Update Inventory;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Report Issue;
+:Assign Route;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Fuel Vehicle;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Load Package;
+:Schedule Pickup;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+stop
+@enduml

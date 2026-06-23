@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+boundary "Customer" as C
+boundary "Dispatcher" as D
+actor "Warehouse Staff" as WS
+boundary "Fleet Manager" as FM
+D --> WS : Load Package
+D ->> WS : Report Issue
+C -> WS : Schedule Pickup
+note over WS : processing schedule pickup
+D -> C : Assign Route
+activate C
+C --> D : ACK
+deactivate C
+C -> FM : Deliver Package
+activate FM
+FM --> C : ACK
+deactivate FM
+D -> WS : Update Inventory
+@enduml

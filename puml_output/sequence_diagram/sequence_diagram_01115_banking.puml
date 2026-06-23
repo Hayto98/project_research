@@ -1,0 +1,31 @@
+@startuml
+
+actor "Auditor" as A
+boundary "ATM" as A2
+control "Branch Manager" as BM
+entity "Bank Teller" as BT
+control "Account Holder" as AH
+BT -> AH : Block Card
+BT -> A : Open Account
+activate A
+A --> BT : ACK
+deactivate A
+A2 -> A : Pay Bill
+activate A
+A --> A2 : ACK
+deactivate A
+AH --> A2 : View Statement
+activate A2
+A2 --> AH : ACK
+deactivate A2
+note over A2 : processing view statement
+A -> A2 : Transfer Funds
+AH ->> A : Withdraw Cash
+activate A
+A --> AH : ACK
+deactivate A
+A2 ->> BT : Apply For Loan
+activate BT
+BT --> A2 : ACK
+deactivate BT
+@enduml

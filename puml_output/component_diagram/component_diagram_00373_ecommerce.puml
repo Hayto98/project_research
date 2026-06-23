@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+component "Warehouse Service" as C_WarehouseService
+component "Wishlist Service" as C_WishlistService
+component "Return Service" as C_ReturnService
+component "Cart Service" as C_CartService
+database "Ecommerce DB" as DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_ReturnService ..> C_WarehouseService : MQ
+C_ReturnService ..> C_WishlistService : MQ
+C_ReturnService ..> C_WishlistService : gRPC
+@enduml

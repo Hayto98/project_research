@@ -1,0 +1,19 @@
+@startuml
+skinparam defaultFontSize 11
+component "Package Service" as C_PackageService
+component "Shipment Service" as C_ShipmentService
+component "FuelLog Service" as C_FuelLogService
+component "Manifest Service" as C_ManifestService
+component "Vehicle Service" as C_VehicleService
+component "Customer Service" as C_CustomerService
+database "Logistics DB" as DB_logistics
+C_PackageService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_CustomerService --> DB_logistics
+C_ShipmentService ..> C_PackageService : gRPC
+C_CustomerService ..> C_PackageService : REST
+C_VehicleService ..> C_PackageService : HTTP
+C_FuelLogService ..> C_ShipmentService : MQ
+C_CustomerService ..> C_FuelLogService : gRPC
+@enduml

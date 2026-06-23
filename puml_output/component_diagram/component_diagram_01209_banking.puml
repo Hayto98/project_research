@@ -1,0 +1,17 @@
+@startuml
+
+component "Transaction Service" as C_TransactionService
+component "Transfer Service" as C_TransferService
+component "Withdrawal Service" as C_WithdrawalService
+component "Customer Service" as C_CustomerService
+component "Deposit Service" as C_DepositService
+component "Beneficiary Service" as C_BeneficiaryService
+database "Banking DB" as DB_banking
+C_WithdrawalService --> DB_banking
+C_CustomerService --> DB_banking
+C_WithdrawalService ..> C_DepositService : REST
+C_TransferService ..> C_TransactionService : MQ
+C_TransactionService ..> C_DepositService : HTTP
+C_TransferService ..> C_CustomerService : REST
+C_WithdrawalService ..> C_DepositService : MQ
+@enduml

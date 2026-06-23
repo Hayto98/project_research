@@ -1,0 +1,39 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+interface Restaurant {
+  +long total
+  #float name
+  #int active
+  +cancelStatus()
+  +validateStatus()
+  +sendPhone()
+}
+interface Guest {
+  -boolean note
+  -boolean phone
+  +Date active
+  -float amount
+  #int total
+  +findPhone()
+  +getQuantity()
+  +cancelLevel()
+}
+abstract class CheckIn {
+  +long note
+  +String code
+  -double id
+  +updateCode()
+}
+class CheckOut {
+  #boolean id
+  #double phone
+  +float type
+  +getId()
+  +findAddress()
+}
+CheckOut --o CheckIn
+Restaurant --> Guest : "1..*"
+Restaurant --o CheckOut
+note right of Restaurant : Hotel domain
+@enduml

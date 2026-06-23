@@ -1,0 +1,57 @@
+@startuml
+skinparam defaultFontSize 11
+interface Service {
+  #int status
+  +int name
+  +String email
+  +float level
+  +deleteScore()
+}
+class Restaurant {
+  +String active
+  -String type
+  +float createdAt
+  +float price
+  +findPrice()
+  +createCode()
+  +validateName()
+  +setDuration()
+}
+class Housekeeping {
+  -double active
+  +int updatedAt
+  #boolean code
+  +processTotal()
+  +calculateQuantity()
+  +getCreatedat()
+}
+interface Amenity {
+  -String description
+  -int price
+  #float address
+  -int phone
+  -float updatedAt
+  +saveTotal()
+}
+class Invoice {
+  +float status
+  -double updatedAt
+  +int name
+  #float description
+  +String level
+  +cancelPrice()
+  +deleteNote()
+}
+class Reservation {
+  -long quantity
+  +Date active
+  +findLevel()
+  +setUpdatedat()
+  +findAmount()
+}
+Reservation --o Amenity
+Invoice --|> Housekeeping
+Amenity ..> Reservation : "*"
+Housekeeping --* Invoice
+note right of Service : Hotel domain
+@enduml

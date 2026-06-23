@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class Treatment {
+  -Date amount
+  +Date createdAt
+  -Date email
+  +sendActive()
+}
+class Billing {
+  #int address
+  -int duration
+  +sendAmount()
+  +updateTotal()
+  +getDescription()
+}
+class Diagnosis {
+  #boolean email
+  +float total
+  #int address
+  +double name
+  #String phone
+  +createUpdatedat()
+  +createQuantity()
+  +cancelNote()
+  +updatePrice()
+}
+class LabTest {
+  -double id
+  #String phone
+  +calculateUpdatedat()
+  +deletePhone()
+  +validateLevel()
+}
+interface Doctor {
+  -float score
+  -double createdAt
+  #int email
+  +String address
+  +validateAddress()
+  +sendPrice()
+  +createDuration()
+  +deletePhone()
+}
+abstract class Nurse {
+  +float level
+  +boolean code
+  #boolean status
+  +getQuantity()
+  +setStatus()
+  +cancelPhone()
+}
+class Insurance {
+  +float address
+  #float price
+  +cancelQuantity()
+  +findTotal()
+}
+Insurance --|> Nurse
+Billing ..|> LabTest
+Doctor --o LabTest
+Doctor ..|> Insurance
+note right of Treatment : Healthcare domain
+@enduml

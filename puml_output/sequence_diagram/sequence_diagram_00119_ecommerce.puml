@@ -1,0 +1,32 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+entity "Seller" as S
+participant "Admin" as A
+control "Customer" as C
+S ->> C : Manage Inventory
+activate C
+C --> S : ACK
+deactivate C
+note over C : processing manage inventory
+S -> C : Write Review
+A --> S : Track Order
+activate S
+S --> A : ACK
+deactivate S
+note over S : processing track order
+S --> A : Checkout
+note over A : processing checkout
+A -> S : Apply Coupon
+activate S
+S --> A : ACK
+deactivate S
+S --> C : Cancel Order
+activate C
+C --> S : ACK
+deactivate C
+note over C : processing cancel order
+A --> S : Browse Products
+@enduml

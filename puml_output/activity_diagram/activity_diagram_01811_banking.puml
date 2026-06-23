@@ -1,0 +1,40 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+start
+:Deposit Money;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Open Account;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Block Card;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Withdraw Cash;
+:Transfer Funds;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:View Statement;
+:Apply For Loan;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+stop
+@enduml

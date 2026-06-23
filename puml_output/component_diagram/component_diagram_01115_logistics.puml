@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+component "Package Service" as C_PackageService
+component "Vehicle Service" as C_VehicleService
+component "Driver Service" as C_DriverService
+component "Depot Service" as C_DepotService
+database "Logistics DB" as DB_logistics
+C_PackageService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_VehicleService ..> C_DepotService : gRPC
+C_DepotService ..> C_VehicleService : gRPC
+@enduml

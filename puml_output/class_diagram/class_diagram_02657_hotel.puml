@@ -1,0 +1,39 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+abstract class Housekeeping {
+  #int price
+  #Date address
+  +saveDuration()
+}
+class Room {
+  #long phone
+  -float address
+  +int amount
+  #Date name
+  +createDuration()
+  +updateTotal()
+  +validateName()
+}
+class Payment {
+  +int code
+  #long createdAt
+  -boolean note
+  -float address
+  +Date name
+  +cancelAmount()
+  +findAmount()
+  +setAmount()
+  +findUpdatedat()
+}
+abstract class Invoice {
+  #long updatedAt
+  #float total
+  +deleteNote()
+}
+Invoice --> Housekeeping : "*"
+Housekeeping --> Invoice : "0..1"
+Payment --> Room : "1"
+note right of Housekeeping : Hotel domain
+@enduml

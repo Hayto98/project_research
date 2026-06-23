@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+participant "Doctor" as D
+actor "Nurse" as N
+entity "Patient" as P
+actor "Insurance Provider" as IP
+participant "Receptionist" as R
+P ->> D : Run Lab Test
+R -> D : Update Medical Record
+activate D
+D --> R : ACK
+deactivate D
+N ->> D : Process Insurance Claim
+activate D
+D --> N : ACK
+deactivate D
+note over D : processing process insurance claim
+R ->> D : Book Appointment
+R -> N : Issue Prescription
+N ->> P : Examine Patient
+@enduml

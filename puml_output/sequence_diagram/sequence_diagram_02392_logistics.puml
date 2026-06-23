@@ -1,0 +1,30 @@
+@startuml
+skinparam defaultFontSize 13
+actor "Dispatcher" as D
+control "Fleet Manager" as FM
+actor "Customer" as C
+D -> C : Update Inventory
+activate C
+C --> D : ACK
+deactivate C
+FM ->> C : Report Issue
+activate C
+C --> FM : ACK
+deactivate C
+D -> FM : Fuel Vehicle
+activate FM
+FM --> D : ACK
+deactivate FM
+note over FM : processing fuel vehicle
+C -> D : Assign Route
+activate D
+D --> C : ACK
+deactivate D
+FM -> D : Load Package
+activate D
+D --> FM : ACK
+deactivate D
+FM -> D : Schedule Pickup
+note over D : processing schedule pickup
+D --> C : Track Shipment
+@enduml

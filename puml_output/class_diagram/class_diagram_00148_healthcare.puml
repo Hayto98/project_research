@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+interface Nurse {
+  +float createdAt
+  -long code
+  +long quantity
+  #double id
+  +sendScore()
+}
+interface Billing {
+  -float address
+  +String level
+  +deleteEmail()
+  +setActive()
+}
+class Appointment {
+  #long total
+  #int price
+  +long description
+  +cancelEmail()
+}
+class Patient {
+  +float score
+  +float createdAt
+  +sendNote()
+  +setAmount()
+  +setQuantity()
+  +cancelPhone()
+}
+interface Insurance {
+  +Date code
+  #boolean updatedAt
+  #double type
+  +processName()
+}
+interface Doctor {
+  #boolean address
+  -int id
+  +updatePrice()
+  +processName()
+  +createCreatedat()
+  +getDuration()
+}
+class LabTest {
+  +long amount
+  -float score
+  +findQuantity()
+  +sendAmount()
+  +cancelStatus()
+}
+Nurse ..|> Appointment
+Insurance --o Billing
+Appointment --|> Doctor
+Insurance ..|> Nurse
+Patient --|> LabTest
+note right of Nurse : Healthcare domain
+@enduml

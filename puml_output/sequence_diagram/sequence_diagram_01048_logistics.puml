@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+boundary "Customer" as C
+control "Driver" as D
+control "Fleet Manager" as FM
+C --> FM : Track Shipment
+activate FM
+FM --> C : ACK
+deactivate FM
+D --> FM : Update Inventory
+activate FM
+FM --> D : ACK
+deactivate FM
+C --> FM : Assign Route
+activate FM
+FM --> C : ACK
+deactivate FM
+C --> D : Fuel Vehicle
+note over D : processing fuel vehicle
+FM --> D : Schedule Pickup
+@enduml

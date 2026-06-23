@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+interface Order {
+  -int active
+  #boolean amount
+  #int code
+  +validateTotal()
+}
+class Cart {
+  -long createdAt
+  #float phone
+  #float code
+  #Date total
+  +validateCode()
+  +saveQuantity()
+  +cancelDuration()
+}
+abstract class Review {
+  -Date createdAt
+  #String amount
+  +setNote()
+  +validatePhone()
+  +createStatus()
+}
+class Wishlist {
+  #float updatedAt
+  #int score
+  +int code
+  +String duration
+  +createLevel()
+  +sendActive()
+  +calculateNote()
+  +processUpdatedat()
+}
+abstract class Invoice {
+  -String address
+  -boolean level
+  #int updatedAt
+  #Date type
+  +boolean description
+  +deleteType()
+  +sendStatus()
+  +processCreatedat()
+}
+abstract class Shipment {
+  +int code
+  -String active
+  #double note
+  -boolean type
+  +long email
+  +processScore()
+  +saveDuration()
+  +validateCode()
+  +cancelNote()
+}
+Invoice --o Order
+Invoice --* Review
+Cart --> Invoice : "*"
+note right of Order : Ecommerce domain
+@enduml

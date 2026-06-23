@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Customer Service" as C_CustomerService
+component "Coupon Service" as C_CouponService
+component "Invoice Service" as C_InvoiceService
+component "Wishlist Service" as C_WishlistService
+component "Order Service" as C_OrderService
+database "Ecommerce DB" as DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_CustomerService ..> C_InvoiceService : MQ
+C_CouponService ..> C_OrderService : HTTP
+@enduml

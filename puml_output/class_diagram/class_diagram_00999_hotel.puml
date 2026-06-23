@@ -1,0 +1,45 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+class Reservation {
+  -String quantity
+  -int email
+  #String type
+  -Date status
+  +validateStatus()
+  +deleteLevel()
+  +setType()
+  +saveCreatedat()
+}
+interface Staff {
+  -boolean email
+  #Date phone
+  #double updatedAt
+  -Date total
+  +saveQuantity()
+}
+interface Amenity {
+  -long type
+  -boolean duration
+  -float quantity
+  #Date score
+  #Date name
+  +calculateNote()
+  +cancelNote()
+  +findUpdatedat()
+  +getId()
+}
+abstract class Payment {
+  #int updatedAt
+  -long code
+  +int phone
+  +validateQuantity()
+  +cancelActive()
+  +updateQuantity()
+  +calculateStatus()
+}
+Payment ..|> Reservation
+Reservation --* Payment
+Amenity --> Staff : "0..1"
+note right of Reservation : Hotel domain
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+component "Shipment Service" as C_ShipmentService
+component "Depot Service" as C_DepotService
+component "Driver Service" as C_DriverService
+component "Package Service" as C_PackageService
+component "Vehicle Service" as C_VehicleService
+database "Logistics DB" as DB_logistics
+C_PackageService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_ShipmentService ..> C_DriverService : REST
+C_PackageService ..> C_VehicleService : MQ
+@enduml

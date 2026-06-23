@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+[*] --> Processing
+Processing --> Draft : approve
+Processing : entry / log coupon
+Draft --> Rejected : reject
+Draft : entry / log coupon
+Rejected --> OnHold : submit
+OnHold --> Archived : approve
+OnHold : entry / log coupon
+Archived --> Approved : confirm
+Processing --> Archived : revert
+Approved --> [*]
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+class Account {
+  #float type
+  #String score
+  #Date email
+  +double quantity
+  +findName()
+  +validateUpdatedat()
+  +setId()
+}
+abstract class Customer {
+  -String id
+  #int active
+  #long code
+  +updateCode()
+  +processLevel()
+}
+interface Beneficiary {
+  #Date name
+  -double duration
+  -long code
+  -boolean note
+  -String active
+  +sendPrice()
+}
+interface Interest {
+  +String updatedAt
+  #Date amount
+  +Date phone
+  -Date email
+  -int price
+  +createScore()
+  +deleteNote()
+}
+class Deposit {
+  -double id
+  +Date name
+  +boolean amount
+  #float code
+  -boolean score
+  +createType()
+}
+interface Card {
+  #int score
+  #String amount
+  +Date price
+  +String name
+  +validateDuration()
+  +calculateUpdatedat()
+  +setUpdatedat()
+  +cancelDescription()
+}
+Card --* Account
+Customer --|> Account
+Customer ..> Interest : "1..*"
+Account --o Interest
+Account --* Customer
+note right of Account : Banking domain
+@enduml

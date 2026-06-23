@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+left to right direction
+actor "Driver" as Driver
+actor "Customer" as Customer
+actor "Fleet Manager" as FleetManager
+actor "Dispatcher" as Dispatcher
+rectangle "Logistics System" {
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+}
+Driver --> UC_FuelVehicle
+Driver --> UC_DeliverPackage
+Driver --> UC_TrackShipment
+Customer --> UC_DeliverPackage
+Customer --> UC_ReportIssue
+FleetManager --> UC_ReportIssue
+FleetManager --> UC_UpdateInventory
+FleetManager --> UC_FuelVehicle
+Dispatcher --> UC_UpdateInventory
+Dispatcher --> UC_DeliverPackage
+Dispatcher --> UC_ReportIssue
+UC_ReportIssue ..|> UC_DeliverPackage : <<extend>>
+@enduml

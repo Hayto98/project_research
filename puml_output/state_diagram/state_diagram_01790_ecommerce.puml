@@ -1,0 +1,13 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+[*] --> Processing
+Processing --> Delivered : process
+Delivered --> Draft : cancel
+Draft --> Completed : reject
+Completed --> Reviewed : process
+Reviewed --> Rejected : update
+Processing --> Reviewed : revert
+Rejected --> [*]
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+[*] --> OnHold
+OnHold --> Shipped : reject
+OnHold : entry / log guest
+Shipped --> Delivered : update
+Delivered --> Reviewed : process
+Reviewed --> Archived : reject
+Archived --> Processing : review
+Processing --> [*]
+@enduml

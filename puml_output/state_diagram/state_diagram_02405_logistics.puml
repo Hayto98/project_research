@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+[*] --> Delivered
+Delivered --> Pending : review
+Delivered : entry / log inventory
+Pending --> Active : confirm
+Pending : entry / log inventory
+Active --> Processing : confirm
+Processing --> Archived : submit
+Processing : entry / log inventory
+Archived --> Reviewed : reject
+Active --> Pending : revert
+Reviewed --> [*]
+@enduml

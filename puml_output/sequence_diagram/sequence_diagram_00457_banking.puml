@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+participant "Bank Teller" as BT
+control "Account Holder" as AH
+actor "Auditor" as A
+actor "Branch Manager" as BM
+control "ATM" as A2
+A ->> AH : Apply For Loan
+activate AH
+AH --> A : ACK
+deactivate AH
+A2 ->> AH : Transfer Funds
+activate AH
+AH --> A2 : ACK
+deactivate AH
+note over AH : processing transfer funds
+A2 -> BT : Pay Bill
+activate BT
+BT --> A2 : ACK
+deactivate BT
+AH -> A : Withdraw Cash
+activate A
+A --> AH : ACK
+deactivate A
+A ->> BM : Deposit Money
+@enduml

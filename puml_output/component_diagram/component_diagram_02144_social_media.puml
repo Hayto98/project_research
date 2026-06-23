@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+component "Profile Service" as C_ProfileService
+component "Story Service" as C_StoryService
+component "User Service" as C_UserService
+component "Message Service" as C_MessageService
+database "Social Media DB" as DB_social_media
+C_ProfileService --> DB_social_media
+C_StoryService --> DB_social_media
+C_UserService --> DB_social_media
+C_MessageService --> DB_social_media
+C_StoryService ..> C_UserService : HTTP
+C_MessageService ..> C_UserService : gRPC
+@enduml

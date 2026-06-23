@@ -1,0 +1,46 @@
+@startuml
+
+class Housekeeping {
+  -float createdAt
+  #boolean price
+  #double code
+  +processScore()
+  +createNote()
+  +saveEmail()
+}
+class Reservation {
+  #long total
+  #float active
+  +findId()
+}
+class Room {
+  -String active
+  #int duration
+  #long createdAt
+  #float id
+  +processDuration()
+}
+class Service {
+  #boolean createdAt
+  +boolean note
+  +long duration
+  +findCreatedat()
+  +getLevel()
+}
+class Payment {
+  #long updatedAt
+  -boolean score
+  +setScore()
+  +validateStatus()
+}
+interface Invoice {
+  +long id
+  -int type
+  +createActive()
+  +getDuration()
+  +validateStatus()
+}
+Invoice --|> Reservation
+Payment ..> Service : "*"
+note right of Housekeeping : Hotel domain
+@enduml

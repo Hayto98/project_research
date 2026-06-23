@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+class MedicalRecord {
+  #long quantity
+  -float duration
+  +deleteType()
+  +sendDescription()
+  +cancelTotal()
+  +cancelLevel()
+}
+abstract class Nurse {
+  #int phone
+  #Date email
+  +validateActive()
+  +saveName()
+}
+class Prescription {
+  +int email
+  +double active
+  -Date name
+  +findTotal()
+  +deletePhone()
+}
+interface Ward {
+  #long status
+  +double level
+  +double name
+  +long email
+  #Date code
+  +deleteTotal()
+  +validateId()
+  +findLevel()
+}
+class Treatment {
+  +float type
+  -String updatedAt
+  #boolean note
+  #Date status
+  +setStatus()
+  +deleteId()
+}
+MedicalRecord ..> Treatment : "1..*"
+Treatment --o MedicalRecord
+note right of MedicalRecord : Healthcare domain
+@enduml

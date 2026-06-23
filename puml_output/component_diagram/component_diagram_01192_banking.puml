@@ -1,0 +1,15 @@
+@startuml
+
+component "Withdrawal Service" as C_WithdrawalService
+component "Transfer Service" as C_TransferService
+component "Teller Service" as C_TellerService
+component "Customer Service" as C_CustomerService
+database "Banking DB" as DB_banking
+C_WithdrawalService --> DB_banking
+C_TransferService --> DB_banking
+C_TellerService --> DB_banking
+C_CustomerService --> DB_banking
+C_CustomerService ..> C_WithdrawalService : MQ
+C_CustomerService ..> C_TransferService : HTTP
+C_TellerService ..> C_TransferService : HTTP
+@enduml

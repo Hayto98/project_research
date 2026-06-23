@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+component "Like Service" as C_LikeService
+component "Report Service" as C_ReportService
+component "Hashtag Service" as C_HashtagService
+component "Post Service" as C_PostService
+database "Social Media DB" as DB_social_media
+C_LikeService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_PostService ..> C_ReportService : gRPC
+C_HashtagService ..> C_PostService : gRPC
+C_LikeService ..> C_HashtagService : HTTP
+@enduml

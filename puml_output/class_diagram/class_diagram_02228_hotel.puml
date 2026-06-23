@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Guest {
+  -long duration
+  #String level
+  -String active
+  #float id
+  +updatePrice()
+}
+class Payment {
+  -int note
+  #int createdAt
+  +String updatedAt
+  -String code
+  -String status
+  +setType()
+  +processLevel()
+  +updateNote()
+  +processName()
+}
+class Invoice {
+  -int quantity
+  #boolean phone
+  #float id
+  #Date createdAt
+  +deleteDuration()
+  +calculateQuantity()
+  +setCreatedat()
+  +saveName()
+}
+interface CheckOut {
+  +boolean quantity
+  -float active
+  +createAmount()
+}
+abstract class Booking {
+  +float description
+  -double name
+  #Date price
+  +double email
+  +saveCreatedat()
+  +validateUpdatedat()
+  +setTotal()
+}
+Invoice --> Payment : "0..1"
+Booking --> Payment : "1..*"
+Invoice --|> Booking
+note right of Guest : Hotel domain
+@enduml

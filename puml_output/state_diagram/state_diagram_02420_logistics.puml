@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+[*] --> Completed
+Completed --> Pending : approve
+Pending --> Rejected : approve
+Pending : entry / log customer
+Rejected --> Delivered : submit
+Delivered --> Active : update
+Active --> Draft : reject
+Active : entry / log customer
+Completed --> Draft : revert
+Draft --> [*]
+@enduml

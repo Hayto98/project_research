@@ -1,0 +1,70 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Attendance {
+  -Date phone
+  +double code
+  +calculateUpdatedat()
+  +setAmount()
+  +sendDuration()
+  +sendQuantity()
+}
+class Department {
+  +boolean quantity
+  #Date total
+  +setAddress()
+}
+class Course {
+  #String total
+  -String note
+  -Date description
+  +createPrice()
+  +findNote()
+  +findLevel()
+  +validateQuantity()
+}
+abstract class Exam {
+  #String active
+  +float id
+  +float code
+  #long duration
+  #float total
+  +saveType()
+  +validateActive()
+  +updateDescription()
+  +cancelLevel()
+}
+class Grade {
+  -String duration
+  #float price
+  -float type
+  #String quantity
+  -long address
+  +saveType()
+  +processNote()
+}
+interface Teacher {
+  #boolean address
+  #float price
+  +Date updatedAt
+  #int code
+  +processStatus()
+  +processCode()
+}
+interface Enrollment {
+  +boolean amount
+  -int updatedAt
+  #float address
+  #double id
+  +findDescription()
+  +setDuration()
+  +getAmount()
+}
+Enrollment ..> Grade : "0..1"
+Grade ..> Attendance : "1..*"
+Exam ..> Department : "0..1"
+Department --> Enrollment : "0..1"
+Teacher --o Course
+note right of Attendance : Education domain
+@enduml

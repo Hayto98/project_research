@@ -1,0 +1,47 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+abstract class Service {
+  -String address
+  -float quantity
+  -int id
+  +processCode()
+}
+abstract class Amenity {
+  #Date email
+  #double price
+  +calculateCreatedat()
+}
+abstract class CheckOut {
+  #String id
+  -int type
+  -String createdAt
+  +createCode()
+  +validateDescription()
+  +processId()
+}
+abstract class Housekeeping {
+  #int price
+  -boolean createdAt
+  +cancelLevel()
+}
+abstract class Reservation {
+  #int active
+  -String description
+  +int code
+  +getCreatedat()
+}
+class Room {
+  #Date quantity
+  +double code
+  #float phone
+  +cancelLevel()
+  +sendEmail()
+}
+Housekeeping ..> Amenity : "1"
+Housekeeping --* Room
+Amenity --> Housekeeping : "1..*"
+CheckOut --|> Reservation
+note right of Service : Hotel domain
+@enduml

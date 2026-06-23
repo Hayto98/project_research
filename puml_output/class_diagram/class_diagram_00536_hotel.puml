@@ -1,0 +1,63 @@
+@startuml
+skinparam shadowing true
+class CheckOut {
+  -long phone
+  #int code
+  -String duration
+  +findPhone()
+  +setDuration()
+}
+class Restaurant {
+  #boolean createdAt
+  -int code
+  +boolean score
+  -float address
+  #double active
+  +updateQuantity()
+  +getNote()
+}
+class Amenity {
+  +int price
+  +int name
+  #long updatedAt
+  +sendUpdatedat()
+  +findActive()
+}
+class Reservation {
+  -boolean description
+  #float total
+  #boolean score
+  -float type
+  +validateCreatedat()
+}
+interface Housekeeping {
+  -double phone
+  -long code
+  -long quantity
+  -Date price
+  #boolean description
+  +deleteNote()
+  +deleteTotal()
+}
+abstract class Booking {
+  -Date total
+  -long address
+  +double note
+  +saveScore()
+}
+interface Room {
+  #Date active
+  #boolean id
+  -String description
+  +updateActive()
+  +findCode()
+  +calculateId()
+  +saveLevel()
+}
+Reservation --> Room : "0..1"
+Restaurant --* Reservation
+CheckOut --|> Room
+Amenity --|> Housekeeping
+Restaurant --* Amenity
+note right of CheckOut : Hotel domain
+@enduml

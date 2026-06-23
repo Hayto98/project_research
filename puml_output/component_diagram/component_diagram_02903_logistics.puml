@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+component "Route Service" as C_RouteService
+component "FuelLog Service" as C_FuelLogService
+component "Driver Service" as C_DriverService
+component "Vehicle Service" as C_VehicleService
+database "Logistics DB" as DB_logistics
+C_RouteService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_DriverService --> DB_logistics
+C_VehicleService --> DB_logistics
+C_VehicleService ..> C_RouteService : MQ
+C_RouteService ..> C_VehicleService : REST
+C_RouteService ..> C_FuelLogService : gRPC
+@enduml

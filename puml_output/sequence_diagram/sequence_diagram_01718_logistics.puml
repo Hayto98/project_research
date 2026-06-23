@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+entity "Warehouse Staff" as WS
+participant "Driver" as D
+boundary "Customer" as C
+boundary "Fleet Manager" as FM
+WS -> FM : Update Inventory
+C ->> FM : Report Issue
+activate FM
+FM --> C : ACK
+deactivate FM
+FM ->> C : Schedule Pickup
+FM ->> D : Deliver Package
+C -> FM : Assign Route
+activate FM
+FM --> C : ACK
+deactivate FM
+FM -> C : Fuel Vehicle
+FM -> C : Track Shipment
+activate C
+C --> FM : ACK
+deactivate C
+@enduml

@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+interface Transaction {
+  #int phone
+  #float status
+  +saveScore()
+  +saveTotal()
+  +validateCreatedat()
+}
+class Transfer {
+  #long name
+  #float type
+  -Date id
+  +double price
+  +sendUpdatedat()
+  +sendName()
+  +validateDescription()
+}
+class Beneficiary {
+  +Date price
+  -boolean duration
+  #double quantity
+  +updateType()
+  +saveNote()
+}
+class Customer {
+  -boolean description
+  #String type
+  -Date total
+  #int updatedAt
+  +processDuration()
+  +validateTotal()
+  +findAddress()
+}
+abstract class Deposit {
+  #int note
+  +boolean name
+  #float price
+  #String updatedAt
+  +sendPrice()
+  +calculateNote()
+  +findActive()
+}
+interface Teller {
+  #Date quantity
+  +Date id
+  +setCode()
+}
+class Statement {
+  #long id
+  +double duration
+  -boolean level
+  -float price
+  #Date note
+  +calculateScore()
+  +updateDuration()
+  +sendScore()
+}
+Transaction --o Teller
+Statement ..> Transfer : "1..*"
+Transaction --> Statement : "0..1"
+Teller --o Customer
+note right of Transaction : Banking domain
+@enduml

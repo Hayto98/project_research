@@ -1,0 +1,59 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Depot {
+  +boolean level
+  +long amount
+  -boolean type
+  -int quantity
+  +Date createdAt
+  +findDescription()
+  +updateTotal()
+}
+class Manifest {
+  #int score
+  -double phone
+  -boolean quantity
+  #int description
+  +setType()
+  +findScore()
+}
+abstract class Driver {
+  +int status
+  -String total
+  -long address
+  -int description
+  -boolean score
+  +getNote()
+}
+class Warehouse {
+  +float quantity
+  +double total
+  -boolean phone
+  #boolean name
+  +boolean type
+  +calculateStatus()
+  +saveAddress()
+}
+class Package {
+  #float name
+  #Date phone
+  +float email
+  #String note
+  +validateAmount()
+}
+class DeliveryNote {
+  +float description
+  +int score
+  +sendCreatedat()
+  +getLevel()
+  +getActive()
+  +setDuration()
+}
+DeliveryNote --o Package
+Manifest ..|> Package
+Manifest --|> Depot
+Warehouse --|> Package
+Manifest ..> DeliveryNote : "1"
+note right of Depot : Logistics domain
+@enduml

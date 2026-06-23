@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+boundary "User" as U
+participant "Admin" as A
+actor "Moderator" as M
+A ->> M : Create Post
+A --> U : Send Message
+note over U : processing send message
+U --> M : Follow User
+M -> U : Comment
+note over U : processing comment
+A --> U : Report Content
+activate U
+U --> A : ACK
+deactivate U
+@enduml

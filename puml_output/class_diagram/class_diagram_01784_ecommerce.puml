@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+interface Shipment {
+  +long status
+  +long active
+  +deleteNote()
+  +findDescription()
+  +findCreatedat()
+}
+class Invoice {
+  +double status
+  +long description
+  #Date amount
+  #boolean price
+  +getNote()
+  +createAddress()
+  +validateCode()
+  +calculateType()
+}
+interface Cart {
+  #Date status
+  +Date id
+  +validateQuantity()
+  +sendCreatedat()
+}
+class Wishlist {
+  -int quantity
+  -double type
+  -float id
+  +Date name
+  +createLevel()
+  +updateQuantity()
+}
+interface Customer {
+  +Date total
+  -float price
+  -String createdAt
+  #boolean type
+  +validateName()
+  +createLevel()
+  +processActive()
+}
+class Payment {
+  -boolean code
+  +long phone
+  +setAddress()
+  +getPrice()
+  +setPrice()
+}
+Wishlist --o Payment
+Invoice ..> Payment : "1..*"
+note right of Shipment : Ecommerce domain
+@enduml

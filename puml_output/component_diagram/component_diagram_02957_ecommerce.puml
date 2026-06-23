@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Invoice Service" as C_InvoiceService
+component "Wishlist Service" as C_WishlistService
+component "Warehouse Service" as C_WarehouseService
+component "Return Service" as C_ReturnService
+database "Ecommerce DB" as DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_WarehouseService ..> C_ReturnService : REST
+C_WarehouseService ..> C_ReturnService : MQ
+@enduml

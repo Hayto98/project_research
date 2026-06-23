@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+actor "Driver" as D
+control "Fleet Manager" as FM
+participant "Customer" as C
+D -> C : Update Inventory
+activate C
+C --> D : ACK
+deactivate C
+D ->> C : Assign Route
+D -> FM : Report Issue
+C --> FM : Track Shipment
+C -> FM : Fuel Vehicle
+activate FM
+FM --> C : ACK
+deactivate FM
+D ->> FM : Schedule Pickup
+@enduml

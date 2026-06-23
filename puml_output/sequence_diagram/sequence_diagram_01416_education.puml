@@ -1,0 +1,32 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+actor "Parent" as P
+actor "Librarian" as L
+entity "Teacher" as T
+boundary "Student" as S
+participant "Registrar" as R
+S ->> R : Register Student
+activate R
+R --> S : ACK
+deactivate R
+S -> R : Issue Certificate
+activate R
+R --> S : ACK
+deactivate R
+L -> T : Submit Assignment
+activate T
+T --> L : ACK
+deactivate T
+S -> T : Take Attendance
+activate T
+T --> S : ACK
+deactivate T
+note over T : processing take attendance
+L -> T : View Schedule
+P --> L : Grade Exam
+activate L
+L --> P : ACK
+deactivate L
+note over L : processing grade exam
+@enduml

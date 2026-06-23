@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing true
+boundary "Chef" as C
+actor "Receptionist" as R
+entity "Housekeeper" as H
+entity "Manager" as M
+entity "Guest" as G
+M --> C : Order Room Service
+M -> G : Book Room
+activate G
+G --> M : ACK
+deactivate G
+note over G : processing book room
+G -> H : Process Payment
+activate H
+H --> G : ACK
+deactivate H
+R --> C : Cancel Reservation
+activate C
+C --> R : ACK
+deactivate C
+H ->> C : Clean Room
+activate C
+C --> H : ACK
+deactivate C
+@enduml

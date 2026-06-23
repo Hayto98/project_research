@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+boundary "Admin" as A
+boundary "Seller" as S
+participant "Customer" as C
+C -> A : Apply Coupon
+S ->> A : Make Payment
+note over A : processing make payment
+S --> C : Cancel Order
+activate C
+C --> S : ACK
+deactivate C
+note over C : processing cancel order
+A ->> C : Write Review
+C --> A : Add To Cart
+S --> A : Browse Products
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing true
+control "Patient" as P
+entity "Receptionist" as R
+control "Lab Technician" as LT
+actor "Doctor" as D
+R --> LT : Discharge Patient
+R -> LT : Update Medical Record
+R --> P : Examine Patient
+note over P : processing examine patient
+D -> P : Process Insurance Claim
+activate P
+P --> D : ACK
+deactivate P
+@enduml

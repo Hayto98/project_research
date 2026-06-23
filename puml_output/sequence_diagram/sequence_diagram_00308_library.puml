@@ -1,0 +1,28 @@
+@startuml
+skinparam defaultFontSize 11
+actor "Admin" as A
+participant "Librarian" as L
+boundary "Member" as M
+L ->> M : Register Member
+activate M
+M --> L : ACK
+deactivate M
+A -> L : Pay Fine
+activate L
+L --> A : ACK
+deactivate L
+L --> A : Return Book
+activate A
+A --> L : ACK
+deactivate A
+A ->> L : Reserve Book
+A -> L : Borrow Book
+activate L
+L --> A : ACK
+deactivate L
+A --> L : Search Catalog
+activate L
+L --> A : ACK
+deactivate L
+note over L : processing search catalog
+@enduml

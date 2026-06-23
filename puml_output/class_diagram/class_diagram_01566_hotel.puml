@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+class Service {
+  -String phone
+  +int description
+  #float id
+  +getPrice()
+  +updateStatus()
+}
+class Room {
+  -float quantity
+  +Date level
+  -Date amount
+  +calculateDuration()
+  +updateDescription()
+  +setNote()
+}
+class CheckOut {
+  -Date quantity
+  -long total
+  +validateLevel()
+  +validateDuration()
+  +getLevel()
+  +calculateQuantity()
+}
+interface Amenity {
+  +String type
+  -double description
+  #float createdAt
+  #boolean note
+  #String quantity
+  +processActive()
+  +calculateName()
+}
+interface Housekeeping {
+  +Date name
+  #long createdAt
+  #double phone
+  -long description
+  -long address
+  +sendName()
+}
+abstract class Payment {
+  +Date email
+  -Date phone
+  +Date name
+  +setLevel()
+  +updatePrice()
+  +sendCreatedat()
+}
+CheckOut --> Amenity : "1"
+Room --> CheckOut : "0..1"
+Amenity --> Service : "1..*"
+note right of Service : Hotel domain
+@enduml

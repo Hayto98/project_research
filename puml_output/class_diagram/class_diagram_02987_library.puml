@@ -1,0 +1,68 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+interface Renewal {
+  +int email
+  -long phone
+  +int name
+  +updateAmount()
+  +setAddress()
+  +processCode()
+  +createAmount()
+}
+interface Member {
+  #float note
+  #double duration
+  +createActive()
+}
+interface Fine {
+  #boolean status
+  #double createdAt
+  +int id
+  #boolean quantity
+  +calculateDescription()
+  +validateStatus()
+  +validateName()
+}
+interface Publisher {
+  +double duration
+  -double address
+  +double createdAt
+  +updateScore()
+  +setAddress()
+}
+abstract class Librarian {
+  +double total
+  +float quantity
+  -String score
+  #long note
+  +sendEmail()
+  +getDuration()
+  +sendScore()
+  +validateScore()
+}
+class Reservation {
+  #int name
+  #double note
+  +calculatePhone()
+  +createName()
+  +processCreatedat()
+}
+interface Loan {
+  +Date score
+  #Date phone
+  +String createdAt
+  -double description
+  -float id
+  +createCreatedat()
+  +deleteType()
+  +calculateActive()
+  +sendPrice()
+}
+Member --* Librarian
+Fine ..> Member : "1"
+Fine --* Renewal
+Renewal --o Fine
+note right of Renewal : Library domain
+@enduml

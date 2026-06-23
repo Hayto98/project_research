@@ -1,0 +1,12 @@
+@startuml
+skinparam monochrome true
+component "Prescription Service" as C_PrescriptionService
+component "Ward Service" as C_WardService
+component "Insurance Service" as C_InsuranceService
+component "Treatment Service" as C_TreatmentService
+database "Healthcare DB" as DB_healthcare
+C_TreatmentService --> DB_healthcare
+C_WardService ..> C_PrescriptionService : HTTP
+C_PrescriptionService ..> C_WardService : gRPC
+C_InsuranceService ..> C_WardService : gRPC
+@enduml

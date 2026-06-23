@@ -1,0 +1,25 @@
+@startuml
+skinparam defaultFontSize 13
+start
+:Return Book;
+:Borrow Book;
+:Register Member;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Renew Loan;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Reserve Book;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+stop
+@enduml

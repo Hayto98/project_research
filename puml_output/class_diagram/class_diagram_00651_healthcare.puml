@@ -1,0 +1,41 @@
+@startuml
+skinparam defaultFontSize 13
+class Nurse {
+  #int id
+  +int description
+  +sendPrice()
+}
+abstract class Diagnosis {
+  #long note
+  +boolean name
+  +float id
+  +double duration
+  +getQuantity()
+  +deleteUpdatedat()
+  +saveDescription()
+  +deleteEmail()
+}
+interface MedicalRecord {
+  #long email
+  #double quantity
+  -boolean description
+  #int address
+  +validateId()
+  +processUpdatedat()
+  +getName()
+}
+abstract class Insurance {
+  #int quantity
+  #float name
+  -Date createdAt
+  +double price
+  +getName()
+  +sendScore()
+  +validateScore()
+  +validateActive()
+}
+Insurance ..> MedicalRecord : "1"
+MedicalRecord ..|> Insurance
+Nurse ..|> Diagnosis
+note right of Nurse : Healthcare domain
+@enduml

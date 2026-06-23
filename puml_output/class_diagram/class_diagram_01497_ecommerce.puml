@@ -1,0 +1,64 @@
+@startuml
+skinparam shadowing true
+class Cart {
+  #String updatedAt
+  +Date score
+  +savePrice()
+  +createStatus()
+  +processUpdatedat()
+  +saveNote()
+}
+abstract class Category {
+  +double id
+  +int duration
+  +cancelName()
+}
+class Return {
+  #String duration
+  +int level
+  +createName()
+  +deletePhone()
+  +calculateName()
+}
+abstract class Review {
+  #double name
+  #Date amount
+  +createAddress()
+  +createName()
+  +calculateAmount()
+  +processQuantity()
+}
+class Shipment {
+  #boolean name
+  +int note
+  #boolean duration
+  +boolean level
+  +getTotal()
+}
+class Warehouse {
+  #String code
+  -int email
+  -long price
+  +String type
+  #Date id
+  +createId()
+  +updateDescription()
+}
+interface Invoice {
+  +Date email
+  #String createdAt
+  +long total
+  -String amount
+  +calculatePrice()
+  +calculateDuration()
+  +findUpdatedat()
+  +saveNote()
+}
+Shipment --> Invoice : "1..*"
+Cart --|> Invoice
+Review --> Shipment : "1..*"
+Review ..|> Invoice
+Warehouse --* Shipment
+Category --|> Cart
+note right of Cart : Ecommerce domain
+@enduml

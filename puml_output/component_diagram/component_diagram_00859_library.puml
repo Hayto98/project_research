@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Member Service" as C_MemberService
+component "Author Service" as C_AuthorService
+component "Reservation Service" as C_ReservationService
+component "Book Service" as C_BookService
+database "Library DB" as DB_library
+C_AuthorService --> DB_library
+C_ReservationService --> DB_library
+C_BookService --> DB_library
+C_ReservationService ..> C_AuthorService : MQ
+C_BookService ..> C_AuthorService : REST
+C_BookService ..> C_AuthorService : MQ
+@enduml

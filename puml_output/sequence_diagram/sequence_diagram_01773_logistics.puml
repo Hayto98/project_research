@@ -1,0 +1,24 @@
+@startuml
+skinparam ArrowColor #555555
+entity "Driver" as D
+participant "Dispatcher" as D2
+entity "Warehouse Staff" as WS
+D2 --> WS : Report Issue
+D -> D2 : Deliver Package
+note over D2 : processing deliver package
+D2 --> WS : Schedule Pickup
+D ->> D2 : Update Inventory
+D -> D2 : Load Package
+activate D2
+D2 --> D : ACK
+deactivate D2
+D -> D2 : Fuel Vehicle
+activate D2
+D2 --> D : ACK
+deactivate D2
+D2 --> D : Track Shipment
+activate D
+D --> D2 : ACK
+deactivate D
+note over D : processing track shipment
+@enduml

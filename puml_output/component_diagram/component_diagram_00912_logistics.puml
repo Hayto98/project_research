@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Manifest Service" as C_ManifestService
+component "Warehouse Service" as C_WarehouseService
+component "FuelLog Service" as C_FuelLogService
+component "Inventory Service" as C_InventoryService
+database "Logistics DB" as DB_logistics
+C_WarehouseService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_InventoryService --> DB_logistics
+C_ManifestService ..> C_WarehouseService : MQ
+C_FuelLogService ..> C_ManifestService : HTTP
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+interface Payment {
+  +int amount
+  #String code
+  +int id
+  -boolean type
+  -float email
+  +getAddress()
+  +validateEmail()
+}
+class Housekeeping {
+  +Date price
+  +Date type
+  #double note
+  +validateScore()
+}
+class Service {
+  -int total
+  #double type
+  +processAddress()
+  +calculateId()
+  +deleteDescription()
+  +sendPhone()
+}
+class Guest {
+  +int price
+  +double quantity
+  +String status
+  +processCreatedat()
+  +deleteLevel()
+  +saveDescription()
+  +processPhone()
+}
+Payment --* Guest
+Service ..> Guest : "0..1"
+Guest --* Housekeeping
+note right of Payment : Hotel domain
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+[*] --> Draft
+Draft --> Archived : process
+Archived --> Created : cancel
+Created --> OnHold : cancel
+OnHold --> Shipped : update
+OnHold : entry / log manifest
+Shipped --> Processing : process
+Shipped : entry / log manifest
+Draft --> Processing : revert
+Processing --> [*]
+@enduml

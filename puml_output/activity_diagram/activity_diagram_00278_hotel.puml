@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+start
+:Process Payment;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Clean Room;
+:Book Room;
+:Check In;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Request Service;
+stop
+@enduml

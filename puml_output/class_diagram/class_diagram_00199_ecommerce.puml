@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+interface Shipment {
+  +boolean level
+  #float code
+  -double status
+  +sendActive()
+}
+class Payment {
+  +int phone
+  -float score
+  #float quantity
+  -boolean code
+  +cancelActive()
+  +saveStatus()
+  +processType()
+  +saveDuration()
+}
+class Wishlist {
+  +float quantity
+  #String price
+  +getLevel()
+  +findDescription()
+  +createStatus()
+}
+class Supplier {
+  -int price
+  -boolean score
+  +calculateUpdatedat()
+  +createDuration()
+}
+abstract class Return {
+  #int total
+  -int type
+  -double address
+  +String email
+  -float quantity
+  +calculateId()
+}
+Wishlist --|> Supplier
+Supplier --|> Shipment
+Payment --* Wishlist
+Return --o Supplier
+note right of Shipment : Ecommerce domain
+@enduml

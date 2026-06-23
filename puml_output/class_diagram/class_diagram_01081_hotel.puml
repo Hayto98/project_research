@@ -1,0 +1,71 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+abstract class CheckIn {
+  #Date level
+  #String total
+  -String createdAt
+  +String email
+  +long score
+  +findScore()
+}
+abstract class Restaurant {
+  +int duration
+  -boolean quantity
+  +float address
+  #int active
+  +boolean description
+  +saveCreatedat()
+  +validateEmail()
+  +validateDuration()
+  +validateId()
+}
+class Staff {
+  #Date updatedAt
+  #Date amount
+  -boolean note
+  +validatePhone()
+  +validateTotal()
+}
+interface Service {
+  +double email
+  -Date level
+  #String description
+  -boolean quantity
+  +sendCode()
+  +setNote()
+  +saveAmount()
+  +validateDescription()
+}
+class Booking {
+  +boolean description
+  -float code
+  #boolean active
+  #double type
+  #float id
+  +sendDuration()
+  +findDescription()
+  +sendAmount()
+  +cancelAmount()
+}
+interface Invoice {
+  #Date active
+  -double name
+  +saveLevel()
+  +findScore()
+}
+class Reservation {
+  +float duration
+  -long updatedAt
+  -float description
+  #String code
+  +cancelNote()
+  +deleteActive()
+  +validateTotal()
+}
+CheckIn ..> Reservation : "0..1"
+Reservation --* Booking
+Booking ..> Reservation : "1"
+note right of CheckIn : Hotel domain
+@enduml

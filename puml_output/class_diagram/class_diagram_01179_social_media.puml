@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+class Notification {
+  +long total
+  -Date price
+  +sendCreatedat()
+  +cancelDuration()
+  +updatePhone()
+  +createEmail()
+}
+abstract class Message {
+  -float amount
+  +int total
+  +boolean duration
+  +double active
+  #Date description
+  +validateAmount()
+  +getType()
+}
+class Post {
+  +String note
+  -float status
+  +getActive()
+}
+abstract class Hashtag {
+  -int createdAt
+  #Date note
+  -double id
+  #double score
+  -long amount
+  +sendId()
+  +calculateDuration()
+}
+abstract class Album {
+  -double description
+  +double amount
+  +calculateActive()
+  +setAddress()
+  +sendName()
+}
+class Follower {
+  -Date note
+  -boolean status
+  -long level
+  +saveDescription()
+  +getEmail()
+  +findAddress()
+}
+Notification --|> Hashtag
+Hashtag ..> Post : "0..1"
+Hashtag --* Follower
+Post --|> Follower
+note right of Notification : Social Media domain
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing true
+[*] --> Rejected
+Rejected --> Active : process
+Rejected : entry / log customer
+Active --> Shipped : reject
+Shipped --> Cancelled : reject
+Shipped : entry / log customer
+Cancelled --> Closed : submit
+Cancelled : entry / log customer
+Closed --> Created : reject
+Closed : entry / log customer
+Created --> [*]
+@enduml

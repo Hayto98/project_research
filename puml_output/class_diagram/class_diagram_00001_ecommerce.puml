@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class Supplier {
+  #String amount
+  #boolean address
+  -Date quantity
+  +double description
+  +validateUpdatedat()
+}
+class Shipment {
+  +String total
+  #long quantity
+  +calculatePrice()
+}
+class Category {
+  +String note
+  #int total
+  -Date type
+  #double code
+  #float amount
+  +deleteStatus()
+  +createPrice()
+}
+abstract class Coupon {
+  -String duration
+  -boolean type
+  #String score
+  +float updatedAt
+  +deleteTotal()
+  +sendUpdatedat()
+  +createStatus()
+}
+class Return {
+  -int active
+  +long score
+  #boolean code
+  -double type
+  #Date note
+  +processActive()
+  +setType()
+  +validateCode()
+}
+Shipment ..> Supplier : "0..1"
+Category --> Return : "1..*"
+note right of Supplier : Ecommerce domain
+@enduml

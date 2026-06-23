@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+left to right direction
+actor "Account Holder" as AccountHolder
+actor "Branch Manager" as BranchManager
+actor "Bank Teller" as BankTeller
+rectangle "Banking System" {
+  usecase "Deposit Money" as UC_DepositMoney
+  usecase "Apply For Loan" as UC_ApplyForLoan
+  usecase "Pay Bill" as UC_PayBill
+  usecase "Withdraw Cash" as UC_WithdrawCash
+  usecase "Transfer Funds" as UC_TransferFunds
+  usecase "Open Account" as UC_OpenAccount
+}
+AccountHolder --> UC_PayBill
+AccountHolder --> UC_TransferFunds
+BranchManager --> UC_OpenAccount
+BranchManager --> UC_TransferFunds
+BankTeller --> UC_TransferFunds
+BankTeller --> UC_PayBill
+BankTeller --> UC_WithdrawCash
+UC_WithdrawCash ..|> UC_ApplyForLoan : <<include>>
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+interface Housekeeping {
+  +long level
+  #double total
+  +updateScore()
+  +processAddress()
+}
+abstract class Booking {
+  +boolean updatedAt
+  +Date phone
+  -boolean name
+  #Date score
+  +Date code
+  +setUpdatedat()
+  +setCreatedat()
+  +cancelScore()
+  +getAmount()
+}
+class Invoice {
+  #long code
+  -boolean description
+  #double address
+  -long amount
+  +deleteDescription()
+  +validateCode()
+}
+interface Room {
+  +Date code
+  +String updatedAt
+  -int duration
+  #Date id
+  +validateEmail()
+}
+Booking --o Housekeeping
+Housekeeping --> Room : "1..*"
+Housekeeping ..> Invoice : "*"
+note right of Housekeeping : Hotel domain
+@enduml

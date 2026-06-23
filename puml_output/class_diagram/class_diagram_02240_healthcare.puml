@@ -1,0 +1,36 @@
+@startuml
+skinparam ArrowColor #555555
+abstract class Ward {
+  +String duration
+  #double level
+  +findScore()
+  +saveQuantity()
+}
+abstract class Prescription {
+  #boolean name
+  #float phone
+  -boolean duration
+  +updateScore()
+  +calculateName()
+  +createCode()
+}
+interface Doctor {
+  -double createdAt
+  +Date description
+  +Date score
+  +updateCode()
+}
+class Hospital {
+  #int quantity
+  -long id
+  +Date price
+  +int email
+  +saveNote()
+  +createStatus()
+  +validateName()
+}
+Ward ..|> Doctor
+Hospital --o Doctor
+Hospital ..> Ward : "*"
+note right of Ward : Healthcare domain
+@enduml

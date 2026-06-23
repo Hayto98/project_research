@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class Publisher {
+  -float updatedAt
+  -Date amount
+  #Date type
+  +double duration
+  +cancelScore()
+  +saveAddress()
+}
+interface Reservation {
+  #long email
+  +int quantity
+  +processCreatedat()
+  +cancelNote()
+  +setTotal()
+}
+class Catalog {
+  -long id
+  +boolean code
+  -Date updatedAt
+  #long phone
+  #Date name
+  +processType()
+}
+class Fine {
+  -long address
+  #int code
+  -boolean active
+  +createStatus()
+  +setName()
+  +updateEmail()
+}
+interface Book {
+  +String score
+  #float quantity
+  +setNote()
+  +validateName()
+  +getDescription()
+}
+Book ..> Publisher : "0..1"
+Catalog --o Book
+Book ..> Catalog : "*"
+Book --* Reservation
+note right of Publisher : Library domain
+@enduml

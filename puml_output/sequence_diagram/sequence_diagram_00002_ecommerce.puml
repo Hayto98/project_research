@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+entity "Customer" as C
+actor "Payment Gateway" as PG
+participant "Seller" as S
+entity "Admin" as A
+participant "Delivery Service" as DS
+C ->> A : Add To Cart
+note over A : processing add to cart
+PG -> DS : Manage Inventory
+activate DS
+DS --> PG : ACK
+deactivate DS
+DS --> PG : Write Review
+activate PG
+PG --> DS : ACK
+deactivate PG
+PG ->> A : Track Order
+activate A
+A --> PG : ACK
+deactivate A
+note over A : processing track order
+A --> C : Make Payment
+note over C : processing make payment
+@enduml

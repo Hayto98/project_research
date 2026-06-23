@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+[*] --> Draft
+Draft --> Pending : reject
+Draft : entry / log follower
+Pending --> Active : cancel
+Pending : entry / log follower
+Active --> Completed : process
+Active : entry / log follower
+Completed --> Archived : submit
+Archived --> Created : review
+Created --> [*]
+@enduml

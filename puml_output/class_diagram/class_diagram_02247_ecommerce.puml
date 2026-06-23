@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+interface Payment {
+  -double updatedAt
+  #long code
+  -Date description
+  -long type
+  -long id
+  +sendQuantity()
+  +savePhone()
+  +calculateScore()
+}
+abstract class Product {
+  -Date name
+  #String description
+  -boolean quantity
+  #double status
+  #String address
+  +saveStatus()
+  +createPhone()
+}
+class Wishlist {
+  +long score
+  +double phone
+  #boolean level
+  +saveAmount()
+  +saveCode()
+  +getScore()
+}
+class Review {
+  -long price
+  -String updatedAt
+  +float code
+  +cancelUpdatedat()
+  +saveAmount()
+  +validateCode()
+  +cancelCreatedat()
+}
+class Coupon {
+  -float duration
+  +long name
+  #float status
+  +saveId()
+  +saveNote()
+}
+class Return {
+  -Date email
+  #double status
+  +deleteAmount()
+  +getCode()
+}
+class Warehouse {
+  -Date address
+  #int email
+  +findAmount()
+}
+Wishlist --* Coupon
+Wishlist ..|> Review
+Payment --* Coupon
+Product --o Coupon
+Wishlist ..> Payment : "1..*"
+note right of Payment : Ecommerce domain
+@enduml

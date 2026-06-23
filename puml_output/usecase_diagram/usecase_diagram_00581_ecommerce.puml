@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+left to right direction
+actor "Admin" as Admin
+actor "Seller" as Seller
+actor "Customer" as Customer
+actor "Delivery Service" as DeliveryService
+rectangle "Ecommerce System" {
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Checkout" as UC_Checkout
+  usecase "Write Review" as UC_WriteReview
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Manage Inventory" as UC_ManageInventory
+}
+Admin --> UC_CancelOrder
+Admin --> UC_Checkout
+Seller --> UC_ApplyCoupon
+Seller --> UC_ManageInventory
+Seller --> UC_CancelOrder
+Customer --> UC_Checkout
+Customer --> UC_AddToCart
+Customer --> UC_TrackOrder
+DeliveryService --> UC_TrackOrder
+@enduml

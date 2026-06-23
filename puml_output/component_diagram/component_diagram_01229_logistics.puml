@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+component "FuelLog Service" as C_FuelLogService
+component "Shipment Service" as C_ShipmentService
+component "Route Service" as C_RouteService
+component "Depot Service" as C_DepotService
+component "Package Service" as C_PackageService
+database "Logistics DB" as DB_logistics
+C_FuelLogService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_DepotService --> DB_logistics
+C_PackageService --> DB_logistics
+C_DepotService ..> C_ShipmentService : HTTP
+C_PackageService ..> C_ShipmentService : HTTP
+C_RouteService ..> C_DepotService : REST
+C_ShipmentService ..> C_DepotService : HTTP
+@enduml

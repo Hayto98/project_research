@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+interface Report {
+  +boolean price
+  -long updatedAt
+  #long note
+  +cancelCode()
+  +validateActive()
+  +deleteStatus()
+}
+abstract class Follower {
+  +double code
+  -int id
+  +calculateEmail()
+  +getName()
+  +calculateDuration()
+}
+interface Story {
+  +float type
+  +Date email
+  +getId()
+}
+interface Group {
+  +double quantity
+  -long address
+  -double name
+  +int duration
+  #String updatedAt
+  +saveEmail()
+  +calculateDuration()
+  +deleteTotal()
+  +deleteNote()
+}
+interface Notification {
+  -long address
+  #int active
+  +int code
+  +cancelActive()
+  +getTotal()
+}
+interface Like {
+  #int name
+  +long price
+  +sendAddress()
+  +processQuantity()
+}
+Story --* Notification
+Notification --* Story
+Follower --o Report
+Group --|> Follower
+note right of Report : Social Media domain
+@enduml

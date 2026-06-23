@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+class Booking {
+  +boolean note
+  +String score
+  #boolean active
+  +boolean duration
+  +String email
+  +setTotal()
+  +validateCode()
+  +getId()
+  +sendDescription()
+}
+abstract class Restaurant {
+  -boolean createdAt
+  -int active
+  +double phone
+  +processAmount()
+  +deleteCode()
+  +saveDescription()
+  +sendTotal()
+}
+class Invoice {
+  -Date level
+  #Date email
+  +Date description
+  #Date quantity
+  +setName()
+  +processPhone()
+}
+class Staff {
+  -Date address
+  -long price
+  #int description
+  #Date amount
+  +setCode()
+  +findAddress()
+}
+Staff --o Booking
+Restaurant ..> Invoice : "1..*"
+note right of Booking : Hotel domain
+@enduml

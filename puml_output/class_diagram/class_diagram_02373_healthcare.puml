@@ -1,0 +1,55 @@
+@startuml
+skinparam defaultFontSize 11
+abstract class Patient {
+  +int phone
+  +boolean note
+  #int id
+  +processPhone()
+}
+abstract class Treatment {
+  -long id
+  -boolean address
+  #double active
+  +deleteQuantity()
+  +updateDuration()
+  +saveDescription()
+  +validateType()
+}
+interface Diagnosis {
+  #double updatedAt
+  +float name
+  +calculateScore()
+  +validateTotal()
+}
+class Prescription {
+  +int code
+  -int address
+  +createQuantity()
+  +getDescription()
+  +updatePhone()
+  +processName()
+}
+abstract class Hospital {
+  +long level
+  -boolean quantity
+  +deleteAddress()
+}
+abstract class Appointment {
+  #double amount
+  #double createdAt
+  +String score
+  -long total
+  +processAddress()
+  +updateType()
+  +updateName()
+}
+interface MedicalRecord {
+  -boolean level
+  -Date updatedAt
+  +sendDuration()
+  +getAddress()
+}
+MedicalRecord --> Hospital : "1..*"
+Appointment ..> Treatment : "1"
+note right of Patient : Healthcare domain
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+[*] --> Completed
+Completed --> Delivered : reject
+Completed : entry / log housekeeping
+Delivered --> Draft : cancel
+Delivered : entry / log housekeeping
+Draft --> Shipped : process
+Shipped --> Reviewed : approve
+Reviewed --> Created : review
+Completed --> Draft : revert
+Created --> [*]
+@enduml

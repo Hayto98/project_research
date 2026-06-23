@@ -1,0 +1,36 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+start
+:Process Payment;
+:Order Room Service;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Request Service;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Check Out;
+:Cancel Reservation;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Book Room;
+:Clean Room;
+:Check In;
+stop
+@enduml

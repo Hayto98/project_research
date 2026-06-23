@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+abstract class Transaction {
+  -double code
+  +double active
+  -Date total
+  +Date description
+  +cancelTotal()
+  +findCreatedat()
+}
+interface Customer {
+  #int createdAt
+  +int note
+  -Date address
+  -long code
+  #String updatedAt
+  +createPhone()
+}
+interface Account {
+  -int level
+  #double active
+  +String updatedAt
+  +String phone
+  #String address
+  +setDescription()
+}
+class Teller {
+  #Date address
+  #Date status
+  +validateNote()
+}
+class Withdrawal {
+  -int amount
+  #boolean duration
+  +setEmail()
+}
+class Deposit {
+  +int status
+  #Date description
+  -Date address
+  +int id
+  +setStatus()
+  +updateQuantity()
+  +getDuration()
+  +cancelCode()
+}
+Customer --> Teller : "1..*"
+Transaction ..> Withdrawal : "*"
+note right of Transaction : Banking domain
+@enduml

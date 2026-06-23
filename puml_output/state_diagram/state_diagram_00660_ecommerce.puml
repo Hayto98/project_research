@@ -1,0 +1,14 @@
+@startuml
+
+[*] --> Cancelled
+Cancelled --> Rejected : confirm
+Cancelled : entry / log review
+Rejected --> Active : reject
+Active --> Shipped : confirm
+Active : entry / log review
+Shipped --> Created : cancel
+Shipped : entry / log review
+Created --> Reviewed : reject
+Created --> Cancelled : revert
+Reviewed --> [*]
+@enduml

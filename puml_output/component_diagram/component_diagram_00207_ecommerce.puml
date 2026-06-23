@@ -1,0 +1,15 @@
+@startuml
+
+component "Order Service" as C_OrderService
+component "Product Service" as C_ProductService
+component "Shipment Service" as C_ShipmentService
+component "Wishlist Service" as C_WishlistService
+component "Supplier Service" as C_SupplierService
+database "Ecommerce DB" as DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ProductService ..> C_ShipmentService : MQ
+C_WishlistService ..> C_ProductService : REST
+@enduml

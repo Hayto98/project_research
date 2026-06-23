@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+interface Renewal {
+  -Date price
+  +double level
+  +double description
+  +float updatedAt
+  +Date score
+  +getPhone()
+  +createDescription()
+}
+class Reservation {
+  +Date level
+  -String updatedAt
+  +Date email
+  -boolean phone
+  +cancelPrice()
+  +calculateStatus()
+}
+class Book {
+  #double level
+  +Date code
+  +float address
+  +cancelDuration()
+  +saveEmail()
+  +calculateId()
+}
+abstract class Fine {
+  +float amount
+  -boolean type
+  +deleteType()
+  +deleteStatus()
+  +validateDuration()
+  +deleteDescription()
+}
+interface Loan {
+  -float status
+  #float createdAt
+  +findTotal()
+  +saveQuantity()
+}
+class Branch {
+  #float name
+  -Date status
+  -double phone
+  +setDescription()
+  +deleteAddress()
+  +getPrice()
+  +findCode()
+}
+Branch --* Fine
+Book ..|> Loan
+Renewal ..|> Reservation
+Loan --o Branch
+note right of Renewal : Library domain
+@enduml

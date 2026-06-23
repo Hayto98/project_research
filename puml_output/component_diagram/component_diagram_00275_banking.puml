@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+component "Card Service" as C_CardService
+component "Teller Service" as C_TellerService
+component "Deposit Service" as C_DepositService
+component "Transaction Service" as C_TransactionService
+component "Statement Service" as C_StatementService
+database "Banking DB" as DB_banking
+C_CardService --> DB_banking
+C_TellerService --> DB_banking
+C_DepositService --> DB_banking
+C_TransactionService --> DB_banking
+C_StatementService --> DB_banking
+C_DepositService ..> C_TellerService : gRPC
+C_CardService ..> C_DepositService : gRPC
+C_TellerService ..> C_StatementService : REST
+@enduml

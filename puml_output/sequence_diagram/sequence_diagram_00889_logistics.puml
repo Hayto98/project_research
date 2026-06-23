@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+entity "Fleet Manager" as FM
+entity "Warehouse Staff" as WS
+control "Driver" as D
+actor "Customer" as C
+C ->> WS : Assign Route
+FM -> WS : Fuel Vehicle
+note over WS : processing fuel vehicle
+D ->> C : Track Shipment
+activate C
+C --> D : ACK
+deactivate C
+note over C : processing track shipment
+WS ->> FM : Load Package
+activate FM
+FM --> WS : ACK
+deactivate FM
+C -> WS : Schedule Pickup
+activate WS
+WS --> C : ACK
+deactivate WS
+note over WS : processing schedule pickup
+@enduml

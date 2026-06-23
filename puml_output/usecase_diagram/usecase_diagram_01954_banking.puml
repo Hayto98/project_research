@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 13
+left to right direction
+actor "Bank Teller" as BankTeller
+actor "ATM" as ATM
+actor "Account Holder" as AccountHolder
+rectangle "Banking System" {
+  usecase "Open Account" as UC_OpenAccount
+  usecase "Withdraw Cash" as UC_WithdrawCash
+  usecase "Pay Bill" as UC_PayBill
+  usecase "Apply For Loan" as UC_ApplyForLoan
+  usecase "Block Card" as UC_BlockCard
+  usecase "Deposit Money" as UC_DepositMoney
+}
+BankTeller --> UC_BlockCard
+BankTeller --> UC_ApplyForLoan
+ATM --> UC_ApplyForLoan
+ATM --> UC_BlockCard
+AccountHolder --> UC_BlockCard
+AccountHolder --> UC_ApplyForLoan
+UC_PayBill ..> UC_OpenAccount : <<include>>
+@enduml

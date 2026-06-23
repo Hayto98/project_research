@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+abstract class Return {
+  #double status
+  +float address
+  -boolean amount
+  #double score
+  +float price
+  +cancelDescription()
+  +findTotal()
+}
+interface Customer {
+  -Date active
+  +String level
+  +Date type
+  #Date total
+  +cancelPrice()
+}
+class Invoice {
+  +String name
+  +String duration
+  -Date phone
+  -String updatedAt
+  +int createdAt
+  +deleteNote()
+}
+class Order {
+  -int type
+  -float active
+  -String name
+  -long description
+  +findNote()
+  +findPrice()
+  +calculateUpdatedat()
+}
+interface Payment {
+  -double address
+  -String price
+  +createDescription()
+  +saveLevel()
+}
+interface Supplier {
+  -String name
+  -double id
+  +createTotal()
+  +setType()
+  +updateDuration()
+  +findDescription()
+}
+Payment --> Supplier : "1..*"
+Order ..|> Payment
+Payment --o Return
+Payment ..|> Order
+note right of Return : Ecommerce domain
+@enduml

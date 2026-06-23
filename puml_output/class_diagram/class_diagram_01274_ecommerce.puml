@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+class Shipment {
+  -boolean email
+  -float createdAt
+  +getId()
+  +validateDuration()
+}
+class Cart {
+  +Date duration
+  -boolean status
+  +Date note
+  -long createdAt
+  +long quantity
+  +createAmount()
+  +saveCreatedat()
+}
+interface Return {
+  -float quantity
+  #String updatedAt
+  +saveAddress()
+  +calculateTotal()
+}
+class Coupon {
+  -String name
+  -long id
+  +calculateActive()
+  +saveDuration()
+}
+interface Payment {
+  -int note
+  +double id
+  +boolean duration
+  -String level
+  +calculateQuantity()
+  +deleteType()
+  +saveType()
+  +findName()
+}
+Payment ..> Cart : "1..*"
+Cart --> Return : "1"
+Shipment --|> Cart
+Shipment --* Return
+note right of Shipment : Ecommerce domain
+@enduml

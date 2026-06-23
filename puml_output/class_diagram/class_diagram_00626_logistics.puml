@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class Tracking {
+  +boolean email
+  #long name
+  #double note
+  +getAmount()
+}
+class Vehicle {
+  -float total
+  #Date score
+  #String level
+  #String updatedAt
+  #boolean type
+  +findDuration()
+  +saveLevel()
+  +updateLevel()
+}
+class Customer {
+  #boolean phone
+  #Date email
+  +String level
+  #double code
+  +saveAmount()
+}
+interface Manifest {
+  #boolean active
+  #String name
+  +double level
+  +calculateAmount()
+}
+class Package {
+  #long score
+  -double type
+  +long note
+  +float amount
+  +double updatedAt
+  +deleteQuantity()
+}
+interface DeliveryNote {
+  -String phone
+  -double createdAt
+  #double code
+  #int email
+  +calculateCode()
+  +cancelPrice()
+}
+Package --* Manifest
+Manifest --|> Tracking
+Tracking --> Vehicle : "*"
+Package ..|> Customer
+note right of Tracking : Logistics domain
+@enduml

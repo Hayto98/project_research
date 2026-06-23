@@ -1,0 +1,72 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+interface Statement {
+  -boolean email
+  -String total
+  +int id
+  -Date code
+  +calculateDuration()
+  +sendEmail()
+}
+class Transfer {
+  +float phone
+  -Date description
+  -String id
+  -String code
+  #int price
+  +findScore()
+  +findAddress()
+  +findPhone()
+  +saveNote()
+}
+class Deposit {
+  -float active
+  +long amount
+  +String phone
+  +validateDescription()
+}
+class Loan {
+  -long description
+  #Date phone
+  #long amount
+  -int updatedAt
+  +sendCreatedat()
+  +setId()
+  +validateNote()
+}
+class Withdrawal {
+  +float price
+  +int id
+  -Date type
+  -Date createdAt
+  +long address
+  +updateName()
+  +setType()
+}
+abstract class Transaction {
+  -Date email
+  +Date level
+  -boolean score
+  +String status
+  +saveNote()
+}
+abstract class Account {
+  #long level
+  +Date email
+  -int createdAt
+  -Date address
+  #boolean score
+  +calculateQuantity()
+  +updateCreatedat()
+  +validateAddress()
+}
+Withdrawal --o Transfer
+Transfer ..|> Transaction
+Statement --* Withdrawal
+Deposit --> Account : "0..1"
+Loan --> Deposit : "*"
+note right of Statement : Banking domain
+@enduml

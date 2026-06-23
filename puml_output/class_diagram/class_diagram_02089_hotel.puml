@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+class Invoice {
+  -int address
+  -long score
+  +setStatus()
+  +sendAmount()
+}
+class Staff {
+  #int description
+  #boolean duration
+  +long email
+  #double level
+  +validateDuration()
+  +createUpdatedat()
+}
+abstract class Amenity {
+  -Date id
+  +Date price
+  +sendAmount()
+  +saveScore()
+}
+class Restaurant {
+  -int level
+  -boolean updatedAt
+  +findCreatedat()
+  +processScore()
+  +calculateNote()
+  +calculatePhone()
+}
+interface CheckIn {
+  +double quantity
+  -double duration
+  #int amount
+  +String note
+  +boolean updatedAt
+  +sendActive()
+  +setPrice()
+}
+interface CheckOut {
+  -double createdAt
+  +boolean name
+  #float address
+  #int score
+  -float duration
+  +setDuration()
+  +calculateType()
+  +findDuration()
+  +setType()
+}
+Amenity --* CheckOut
+Restaurant --* CheckOut
+CheckIn --|> Amenity
+CheckOut --|> Invoice
+Amenity ..> Restaurant : "0..1"
+note right of Invoice : Hotel domain
+@enduml

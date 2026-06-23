@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+actor "Dispatcher" as D
+entity "Warehouse Staff" as WS
+participant "Customer" as C
+actor "Driver" as D2
+WS --> D : Schedule Pickup
+activate D
+D --> WS : ACK
+deactivate D
+D2 --> C : Assign Route
+activate C
+C --> D2 : ACK
+deactivate C
+D2 --> C : Load Package
+activate C
+C --> D2 : ACK
+deactivate C
+D2 -> WS : Deliver Package
+note over WS : processing deliver package
+@enduml

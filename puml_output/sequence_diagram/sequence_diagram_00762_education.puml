@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing true
+entity "Parent" as P
+control "Librarian" as L
+boundary "Admin" as A
+L -> P : View Schedule
+activate P
+P --> L : ACK
+deactivate P
+A ->> L : Borrow Book
+L -> A : Register Student
+activate A
+A --> L : ACK
+deactivate A
+note over A : processing register student
+A ->> L : Issue Certificate
+activate L
+L --> A : ACK
+deactivate L
+L -> A : Grade Exam
+note over A : processing grade exam
+@enduml

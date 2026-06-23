@@ -1,0 +1,21 @@
+@startuml
+skinparam ArrowColor #555555
+control "Dispatcher" as D
+control "Fleet Manager" as FM
+actor "Customer" as C
+control "Warehouse Staff" as WS
+C --> WS : Report Issue
+note over WS : processing report issue
+C --> D : Track Shipment
+activate D
+D --> C : ACK
+deactivate D
+WS ->> C : Load Package
+activate C
+C --> WS : ACK
+deactivate C
+D -> C : Assign Route
+activate C
+C --> D : ACK
+deactivate C
+@enduml

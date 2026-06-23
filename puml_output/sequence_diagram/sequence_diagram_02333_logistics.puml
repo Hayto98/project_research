@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+control "Warehouse Staff" as WS
+participant "Fleet Manager" as FM
+boundary "Driver" as D
+actor "Customer" as C
+FM -> WS : Report Issue
+activate WS
+WS --> FM : ACK
+deactivate WS
+D -> WS : Track Shipment
+activate WS
+WS --> D : ACK
+deactivate WS
+FM ->> C : Fuel Vehicle
+activate C
+C --> FM : ACK
+deactivate C
+WS -> FM : Update Inventory
+C -> D : Assign Route
+note over D : processing assign route
+WS --> FM : Schedule Pickup
+WS -> C : Load Package
+note over C : processing load package
+@enduml

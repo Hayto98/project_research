@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+left to right direction
+actor "Warehouse Staff" as WarehouseStaff
+actor "Customer" as Customer
+rectangle "Logistics System" {
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Schedule Pickup" as UC_SchedulePickup
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Load Package" as UC_LoadPackage
+}
+WarehouseStaff --> UC_FuelVehicle
+WarehouseStaff --> UC_SchedulePickup
+WarehouseStaff --> UC_LoadPackage
+Customer --> UC_SchedulePickup
+UC_ReportIssue ..> UC_FuelVehicle : <<include>>
+@enduml

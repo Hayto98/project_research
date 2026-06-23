@@ -1,0 +1,65 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+abstract class Payment {
+  +double duration
+  #String address
+  #String score
+  +deleteCode()
+  +setActive()
+  +saveAddress()
+}
+interface Coupon {
+  #float level
+  #boolean address
+  +calculateQuantity()
+  +createId()
+}
+interface Category {
+  -String amount
+  -float code
+  #long email
+  +findCode()
+  +processPhone()
+}
+abstract class Order {
+  +boolean duration
+  +Date price
+  -long phone
+  #String description
+  +Date id
+  +setPrice()
+  +sendPhone()
+}
+abstract class Warehouse {
+  +int code
+  -float total
+  #double createdAt
+  #String updatedAt
+  +updateActive()
+}
+class Return {
+  #float score
+  -long total
+  #float createdAt
+  -double email
+  #long address
+  +createType()
+  +calculateLevel()
+}
+interface Invoice {
+  +boolean note
+  -long total
+  -double phone
+  +String updatedAt
+  -int quantity
+  +sendPrice()
+  +sendDescription()
+  +saveScore()
+}
+Category ..> Coupon : "1..*"
+Payment ..> Order : "1"
+Coupon --* Invoice
+Payment --o Invoice
+note right of Payment : Ecommerce domain
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+skinparam shadowing true
+start
+:Assign Route;
+:Report Issue;
+:Fuel Vehicle;
+:Update Inventory;
+:Schedule Pickup;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Load Package;
+:Track Shipment;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Deliver Package;
+stop
+@enduml

@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+class Branch {
+  +boolean price
+  +Date amount
+  #int note
+  +deletePrice()
+  +getAddress()
+  +findDescription()
+}
+class Catalog {
+  -double type
+  +Date name
+  #int code
+  +Date level
+  +processDuration()
+  +calculateAmount()
+}
+abstract class Loan {
+  +Date total
+  -boolean duration
+  +long updatedAt
+  +double type
+  -int createdAt
+  +calculateDescription()
+  +getEmail()
+}
+abstract class Member {
+  -String quantity
+  #float amount
+  #int createdAt
+  +long name
+  #double code
+  +validateScore()
+  +processScore()
+}
+class Librarian {
+  +int total
+  -int updatedAt
+  +updatePhone()
+}
+abstract class Renewal {
+  #double description
+  -boolean duration
+  -int score
+  +float id
+  +cancelDescription()
+  +processUpdatedat()
+  +createLevel()
+  +processNote()
+}
+interface Fine {
+  -float id
+  #int createdAt
+  +String name
+  +sendId()
+}
+Catalog ..|> Fine
+Branch --|> Librarian
+Branch --* Loan
+Member --|> Branch
+Loan --* Renewal
+note right of Branch : Library domain
+@enduml

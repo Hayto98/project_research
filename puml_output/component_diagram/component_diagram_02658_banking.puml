@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+component "Deposit Service" as C_DepositService
+component "Teller Service" as C_TellerService
+component "Interest Service" as C_InterestService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Withdrawal Service" as C_WithdrawalService
+component "Customer Service" as C_CustomerService
+database "Banking DB" as DB_banking
+C_DepositService --> DB_banking
+C_TellerService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_CustomerService --> DB_banking
+C_DepositService ..> C_BeneficiaryService : REST
+C_WithdrawalService ..> C_InterestService : REST
+C_WithdrawalService ..> C_BeneficiaryService : gRPC
+@enduml

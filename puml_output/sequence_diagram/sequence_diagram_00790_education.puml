@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontSize 11
+actor "Admin" as A
+control "Librarian" as L
+boundary "Teacher" as T
+participant "Student" as S
+S ->> A : Register Student
+activate A
+A --> S : ACK
+deactivate A
+S ->> T : Borrow Book
+note over T : processing borrow book
+A -> S : Take Attendance
+S --> A : Enroll Course
+T ->> A : Grade Exam
+T ->> A : Issue Certificate
+activate A
+A --> T : ACK
+deactivate A
+A -> S : Submit Assignment
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+[*] --> Processing
+Processing --> Draft : confirm
+Processing : entry / log coupon
+Draft --> Shipped : reject
+Draft : entry / log coupon
+Shipped --> OnHold : submit
+Shipped : entry / log coupon
+Processing --> OnHold : revert
+OnHold --> [*]
+@enduml

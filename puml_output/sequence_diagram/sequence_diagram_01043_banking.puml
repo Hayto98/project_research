@@ -1,0 +1,20 @@
+@startuml
+skinparam ArrowColor #555555
+entity "ATM" as A
+boundary "Branch Manager" as BM
+control "Account Holder" as AH
+boundary "Bank Teller" as BT
+control "Auditor" as A2
+BM ->> A : View Statement
+A --> BM : Pay Bill
+A -> A2 : Apply For Loan
+activate A2
+A2 --> A : ACK
+deactivate A2
+A2 --> BM : Deposit Money
+BM ->> BT : Withdraw Cash
+AH --> BT : Open Account
+activate BT
+BT --> AH : ACK
+deactivate BT
+@enduml

@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Notification {
+  #long active
+  +String email
+  -long code
+  +double phone
+  +validateCode()
+  +setDuration()
+  +setScore()
+}
+class Group {
+  -float code
+  #long updatedAt
+  +long email
+  #float duration
+  #long address
+  +sendPrice()
+}
+abstract class Message {
+  +double type
+  -float duration
+  -float email
+  -boolean amount
+  -float name
+  +findLevel()
+  +createAddress()
+  +validateScore()
+  +sendTotal()
+}
+class Report {
+  #int type
+  -long duration
+  -long name
+  #boolean note
+  +Date level
+  +sendLevel()
+  +calculateScore()
+  +findPhone()
+  +getId()
+}
+class Story {
+  -String quantity
+  -boolean note
+  #Date email
+  +deleteStatus()
+  +cancelId()
+  +getName()
+}
+class Profile {
+  +int phone
+  +long price
+  #boolean updatedAt
+  -boolean status
+  +float address
+  +updateCreatedat()
+}
+Message --o Profile
+Group ..|> Story
+Message --o Notification
+Message --o Group
+Profile --o Notification
+note right of Notification : Social Media domain
+@enduml

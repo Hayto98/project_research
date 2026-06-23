@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+actor "Warehouse Staff" as WarehouseStaff
+actor "Driver" as Driver
+actor "Fleet Manager" as FleetManager
+rectangle "Logistics System" {
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Report Issue" as UC_ReportIssue
+  usecase "Track Shipment" as UC_TrackShipment
+}
+WarehouseStaff --> UC_FuelVehicle
+WarehouseStaff --> UC_TrackShipment
+Driver --> UC_UpdateInventory
+FleetManager --> UC_TrackShipment
+FleetManager --> UC_FuelVehicle
+UC_ReportIssue ..|> UC_FuelVehicle : <<include>>
+@enduml

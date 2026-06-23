@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+abstract class Customer {
+  -long updatedAt
+  -int status
+  +float code
+  +String type
+  +createUpdatedat()
+  +findScore()
+}
+class Transaction {
+  -long updatedAt
+  -String email
+  +deleteUpdatedat()
+  +savePrice()
+  +findPrice()
+}
+class Branch {
+  +long id
+  -Date description
+  -double address
+  +findActive()
+  +calculatePrice()
+  +validatePhone()
+  +deleteQuantity()
+}
+abstract class Card {
+  -String status
+  #int type
+  -float code
+  +savePrice()
+}
+class Teller {
+  +float name
+  -int description
+  +boolean updatedAt
+  #double phone
+  +saveDuration()
+  +setAddress()
+  +calculateType()
+}
+class Statement {
+  -long description
+  -long total
+  +createActive()
+  +updateDuration()
+  +getActive()
+  +cancelAmount()
+}
+Statement --|> Card
+Teller --* Transaction
+Teller ..> Statement : "0..1"
+Branch --o Statement
+Card --* Customer
+note right of Customer : Banking domain
+@enduml

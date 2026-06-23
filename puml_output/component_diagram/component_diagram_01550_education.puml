@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Grade Service" as C_GradeService
+component "Assignment Service" as C_AssignmentService
+component "Classroom Service" as C_ClassroomService
+component "Teacher Service" as C_TeacherService
+component "Course Service" as C_CourseService
+database "Education DB" as DB_education
+C_GradeService --> DB_education
+C_AssignmentService --> DB_education
+C_TeacherService --> DB_education
+C_CourseService --> DB_education
+C_ClassroomService ..> C_CourseService : MQ
+C_ClassroomService ..> C_TeacherService : gRPC
+C_TeacherService ..> C_CourseService : gRPC
+C_ClassroomService ..> C_AssignmentService : MQ
+@enduml

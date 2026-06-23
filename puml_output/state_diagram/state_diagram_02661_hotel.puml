@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+[*] --> Pending
+Pending --> Processing : update
+Processing --> Cancelled : approve
+Cancelled --> OnHold : process
+OnHold --> Closed : cancel
+Closed --> Approved : update
+Closed : entry / log payment
+Processing --> Approved : revert
+Approved --> [*]
+@enduml

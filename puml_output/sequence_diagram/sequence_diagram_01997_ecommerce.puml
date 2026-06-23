@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+actor "Customer" as C
+actor "Admin" as A
+control "Delivery Service" as DS
+DS --> C : Browse Products
+note over C : processing browse products
+C -> A : Cancel Order
+A ->> DS : Apply Coupon
+activate DS
+DS --> A : ACK
+deactivate DS
+note over DS : processing apply coupon
+DS -> A : Checkout
+note over A : processing checkout
+@enduml

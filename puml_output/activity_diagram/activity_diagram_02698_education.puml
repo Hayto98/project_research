@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+start
+:View Schedule;
+:Borrow Book;
+:Issue Certificate;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Student;
+:Grade Exam;
+:Enroll Course;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Take Attendance;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Submit Assignment;
+stop
+@enduml

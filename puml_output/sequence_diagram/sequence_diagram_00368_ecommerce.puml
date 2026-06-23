@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+actor "Payment Gateway" as PG
+participant "Delivery Service" as DS
+actor "Customer" as C
+boundary "Seller" as S
+PG -> C : Checkout
+note over C : processing checkout
+DS --> C : Apply Coupon
+activate C
+C --> DS : ACK
+deactivate C
+DS --> C : Browse Products
+note over C : processing browse products
+PG --> DS : Cancel Order
+activate DS
+DS --> PG : ACK
+deactivate DS
+S -> DS : Write Review
+PG ->> S : Manage Inventory
+DS ->> S : Track Order
+@enduml

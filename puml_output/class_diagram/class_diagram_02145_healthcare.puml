@@ -1,0 +1,66 @@
+@startuml
+skinparam defaultFontSize 11
+class Ward {
+  +long updatedAt
+  -Date status
+  #int phone
+  +long type
+  #int amount
+  +cancelScore()
+  +calculateId()
+  +findNote()
+}
+interface Billing {
+  #int type
+  +int active
+  -String name
+  -boolean email
+  +Date id
+  +updateEmail()
+  +processLevel()
+  +processName()
+}
+abstract class MedicalRecord {
+  -double phone
+  -boolean email
+  +sendId()
+  +calculateStatus()
+  +deleteId()
+  +setScore()
+}
+class LabTest {
+  #Date quantity
+  #int note
+  -Date createdAt
+  +validateUpdatedat()
+  +updateTotal()
+  +updateUpdatedat()
+}
+interface Nurse {
+  +long description
+  #int status
+  -String id
+  +sendAddress()
+}
+class Doctor {
+  #float code
+  +long email
+  +getName()
+}
+interface Prescription {
+  -float duration
+  -float quantity
+  +float address
+  -boolean code
+  -Date email
+  +validateTotal()
+  +processCreatedat()
+}
+Doctor --* LabTest
+LabTest --> MedicalRecord : "1"
+Prescription ..> Ward : "1"
+Doctor ..> Prescription : "0..1"
+Billing --> Nurse : "1"
+Ward --|> Nurse
+note right of Ward : Healthcare domain
+@enduml

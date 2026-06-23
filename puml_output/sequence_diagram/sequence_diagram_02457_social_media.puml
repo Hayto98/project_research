@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+actor "Moderator" as M
+participant "User" as U
+participant "Admin" as A
+boundary "Advertiser" as A2
+M ->> A : Like Post
+A --> U : Create Post
+note over U : processing create post
+U --> A : Share Post
+activate A
+A --> U : ACK
+deactivate A
+A -> M : Report Content
+note over M : processing report content
+@enduml

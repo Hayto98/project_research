@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+interface Notification {
+  +long description
+  +Date price
+  #int code
+  +float type
+  #int active
+  +saveScore()
+}
+class Comment {
+  #Date note
+  #double id
+  -long code
+  #float type
+  +sendUpdatedat()
+}
+interface Post {
+  -float updatedAt
+  -float price
+  -boolean amount
+  -Date name
+  +validateNote()
+}
+class Hashtag {
+  -String description
+  -double code
+  -double status
+  +saveAmount()
+  +findDescription()
+  +validateDuration()
+  +getStatus()
+}
+class Group {
+  -float active
+  +boolean updatedAt
+  +float total
+  +long amount
+  #Date address
+  +createId()
+}
+Hashtag --> Group : "0..1"
+Post ..> Notification : "*"
+Post --o Comment
+note right of Notification : Social Media domain
+@enduml

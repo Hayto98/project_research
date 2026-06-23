@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Statement Service" as C_StatementService
+component "Customer Service" as C_CustomerService
+component "Card Service" as C_CardService
+component "Deposit Service" as C_DepositService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Account Service" as C_AccountService
+database "Banking DB" as DB_banking
+C_StatementService --> DB_banking
+C_CustomerService --> DB_banking
+C_DepositService --> DB_banking
+C_BeneficiaryService ..> C_StatementService : HTTP
+C_StatementService ..> C_CustomerService : gRPC
+C_StatementService ..> C_CardService : MQ
+@enduml

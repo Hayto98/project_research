@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Supplier Service" as C_SupplierService
+component "Shipment Service" as C_ShipmentService
+component "Order Service" as C_OrderService
+component "Cart Service" as C_CartService
+component "Category Service" as C_CategoryService
+component "Warehouse Service" as C_WarehouseService
+database "Ecommerce DB" as DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_CategoryService --> DB_ecommerce
+C_OrderService ..> C_SupplierService : HTTP
+C_ShipmentService ..> C_WarehouseService : MQ
+C_WarehouseService ..> C_SupplierService : REST
+C_OrderService ..> C_WarehouseService : REST
+@enduml

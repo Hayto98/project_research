@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+component "Notification Service" as C_NotificationService
+component "Post Service" as C_PostService
+component "User Service" as C_UserService
+component "Like Service" as C_LikeService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_UserService --> DB_social_media
+C_LikeService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_NotificationService ..> C_HashtagService : REST
+C_UserService ..> C_HashtagService : gRPC
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing true
+component "Exam Service" as C_ExamService
+component "Grade Service" as C_GradeService
+component "Book Service" as C_BookService
+component "Attendance Service" as C_AttendanceService
+database "Education DB" as DB_education
+C_ExamService --> DB_education
+C_GradeService --> DB_education
+C_BookService --> DB_education
+C_AttendanceService --> DB_education
+C_AttendanceService ..> C_BookService : HTTP
+C_AttendanceService ..> C_GradeService : gRPC
+C_ExamService ..> C_GradeService : HTTP
+@enduml

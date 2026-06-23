@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+left to right direction
+actor "Customer" as Customer
+actor "Driver" as Driver
+actor "Warehouse Staff" as WarehouseStaff
+actor "Fleet Manager" as FleetManager
+rectangle "Logistics System" {
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Deliver Package" as UC_DeliverPackage
+  usecase "Report Issue" as UC_ReportIssue
+}
+Customer --> UC_DeliverPackage
+Customer --> UC_ReportIssue
+Driver --> UC_TrackShipment
+WarehouseStaff --> UC_ReportIssue
+WarehouseStaff --> UC_UpdateInventory
+WarehouseStaff --> UC_AssignRoute
+FleetManager --> UC_UpdateInventory
+UC_AssignRoute ..> UC_LoadPackage : <<include>>
+@enduml

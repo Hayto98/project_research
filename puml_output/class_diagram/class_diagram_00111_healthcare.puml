@@ -1,0 +1,54 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+interface Insurance {
+  +Date createdAt
+  -Date note
+  #Date status
+  #long price
+  +deleteType()
+  +validateId()
+  +getActive()
+}
+class Hospital {
+  #double duration
+  +float amount
+  +float total
+  +sendId()
+}
+class Nurse {
+  +String phone
+  -String description
+  +long status
+  +float level
+  -String amount
+  +updateDescription()
+  +cancelPhone()
+  +createEmail()
+  +deleteName()
+}
+abstract class Prescription {
+  #long createdAt
+  #long email
+  #long level
+  +setLevel()
+  +saveAmount()
+  +saveCode()
+  +updateScore()
+}
+class Doctor {
+  +String quantity
+  -boolean type
+  +calculateDescription()
+  +updateActive()
+}
+class Diagnosis {
+  -boolean description
+  +double price
+  +deleteCreatedat()
+}
+Diagnosis ..|> Prescription
+Diagnosis ..> Nurse : "*"
+note right of Insurance : Healthcare domain
+@enduml

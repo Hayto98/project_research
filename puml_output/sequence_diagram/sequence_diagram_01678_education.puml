@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+entity "Admin" as A
+control "Librarian" as L
+control "Registrar" as R
+entity "Student" as S
+actor "Teacher" as T
+T ->> S : View Schedule
+activate S
+S --> T : ACK
+deactivate S
+R -> S : Issue Certificate
+S -> L : Submit Assignment
+activate L
+L --> S : ACK
+deactivate L
+L ->> R : Grade Exam
+note over R : processing grade exam
+A ->> R : Take Attendance
+T -> R : Register Student
+activate R
+R --> T : ACK
+deactivate R
+@enduml

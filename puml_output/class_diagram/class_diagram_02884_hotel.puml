@@ -1,0 +1,43 @@
+@startuml
+skinparam defaultFontSize 13
+abstract class Booking {
+  -String phone
+  +double description
+  -float price
+  -Date amount
+  +int level
+  +createAddress()
+  +cancelStatus()
+}
+class Staff {
+  #long email
+  #float amount
+  -double phone
+  +findEmail()
+}
+class Restaurant {
+  #long name
+  -float level
+  +int active
+  +calculateQuantity()
+  +validateAddress()
+}
+class Service {
+  +boolean note
+  #Date id
+  -long email
+  +cancelDuration()
+}
+class Guest {
+  -Date price
+  -int address
+  -int updatedAt
+  +int note
+  +cancelPrice()
+}
+Booking --> Restaurant : "1"
+Service ..|> Booking
+Restaurant --> Service : "*"
+Guest --|> Booking
+note right of Booking : Hotel domain
+@enduml

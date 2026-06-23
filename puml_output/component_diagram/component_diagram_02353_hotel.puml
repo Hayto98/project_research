@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Staff Service" as C_StaffService
+component "Payment Service" as C_PaymentService
+component "Invoice Service" as C_InvoiceService
+component "Room Service" as C_RoomService
+database "Hotel DB" as DB_hotel
+C_StaffService --> DB_hotel
+C_PaymentService --> DB_hotel
+C_RoomService --> DB_hotel
+C_InvoiceService ..> C_PaymentService : gRPC
+C_StaffService ..> C_RoomService : gRPC
+@enduml

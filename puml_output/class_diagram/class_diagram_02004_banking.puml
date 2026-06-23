@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Teller {
+  #String price
+  #long description
+  #long status
+  -boolean quantity
+  +saveActive()
+  +updateDescription()
+  +calculateLevel()
+  +calculateNote()
+}
+class Deposit {
+  -Date id
+  +boolean active
+  #float status
+  -int price
+  +calculatePrice()
+  +sendId()
+  +setPrice()
+  +cancelId()
+}
+class Loan {
+  -String email
+  #boolean updatedAt
+  #float total
+  #String phone
+  #Date name
+  +updateName()
+  +findCode()
+  +validateQuantity()
+}
+class Branch {
+  +Date note
+  -long id
+  +int amount
+  +deleteScore()
+  +deleteStatus()
+  +validateAmount()
+  +createTotal()
+}
+Loan --o Teller
+Loan --* Branch
+Deposit --o Teller
+note right of Teller : Banking domain
+@enduml

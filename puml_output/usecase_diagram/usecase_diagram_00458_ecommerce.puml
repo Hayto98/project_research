@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Admin" as Admin
+actor "Seller" as Seller
+rectangle "Ecommerce System" {
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Track Order" as UC_TrackOrder
+}
+DeliveryService --> UC_ApplyCoupon
+Admin --> UC_BrowseProducts
+Admin --> UC_ApplyCoupon
+Admin --> UC_MakePayment
+Seller --> UC_BrowseProducts
+UC_CancelOrder ..|> UC_BrowseProducts : <<extend>>
+@enduml

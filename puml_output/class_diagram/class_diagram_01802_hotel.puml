@@ -1,0 +1,65 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+interface Housekeeping {
+  -String id
+  #float score
+  +createActive()
+  +findType()
+}
+class Room {
+  -String phone
+  +float type
+  +sendCode()
+  +deletePhone()
+  +getNote()
+  +createId()
+}
+abstract class Invoice {
+  #boolean code
+  -double status
+  -double level
+  +sendPhone()
+  +findQuantity()
+  +updateScore()
+  +validateAddress()
+}
+interface CheckIn {
+  +Date id
+  -Date price
+  +sendUpdatedat()
+  +findDuration()
+  +getNote()
+}
+class Reservation {
+  +boolean name
+  +Date total
+  #double duration
+  -long note
+  +double description
+  +getType()
+  +calculateQuantity()
+  +sendActive()
+}
+interface Restaurant {
+  -boolean active
+  +String email
+  +String code
+  +double amount
+  +long name
+  +findPrice()
+  +saveLevel()
+}
+class CheckOut {
+  #long score
+  #boolean total
+  #Date active
+  -long price
+  +calculateNote()
+}
+Room ..> Housekeeping : "0..1"
+Housekeeping --o Reservation
+CheckOut ..> Housekeeping : "1..*"
+Invoice --o Restaurant
+note right of Housekeeping : Hotel domain
+@enduml

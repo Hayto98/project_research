@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+interface Book {
+  #Date description
+  +int status
+  +validateScore()
+  +createStatus()
+  +deleteScore()
+  +sendDescription()
+}
+interface Course {
+  -String code
+  #double active
+  +cancelDuration()
+  +findStatus()
+}
+interface Library {
+  -double amount
+  -String active
+  +processQuantity()
+  +createUpdatedat()
+  +createPhone()
+}
+interface Teacher {
+  -long type
+  +double quantity
+  -boolean total
+  +updateAmount()
+}
+abstract class Exam {
+  #float duration
+  +Date score
+  -int address
+  +sendPhone()
+}
+Exam --> Library : "0..1"
+Book ..|> Exam
+Library --* Exam
+Course --o Library
+note right of Book : Education domain
+@enduml

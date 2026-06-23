@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+left to right direction
+actor "Member" as Member
+actor "Admin" as Admin
+actor "Librarian" as Librarian
+rectangle "Library System" {
+  usecase "Pay Fine" as UC_PayFine
+  usecase "Return Book" as UC_ReturnBook
+  usecase "Register Member" as UC_RegisterMember
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Reserve Book" as UC_ReserveBook
+}
+Member --> UC_RegisterMember
+Member --> UC_BorrowBook
+Admin --> UC_RegisterMember
+Admin --> UC_ReserveBook
+Admin --> UC_ReturnBook
+Librarian --> UC_ReserveBook
+UC_ReserveBook ..|> UC_BorrowBook : <<include>>
+@enduml

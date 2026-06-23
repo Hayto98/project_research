@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+start
+:Issue Certificate;
+:Register Student;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Borrow Book;
+:Submit Assignment;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:View Schedule;
+:Grade Exam;
+stop
+@enduml

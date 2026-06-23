@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+left to right direction
+actor "Admin" as Admin
+actor "Member" as Member
+actor "Librarian" as Librarian
+rectangle "Library System" {
+  usecase "Pay Fine" as UC_PayFine
+  usecase "Add New Book" as UC_AddNewBook
+  usecase "Renew Loan" as UC_RenewLoan
+  usecase "Reserve Book" as UC_ReserveBook
+  usecase "Borrow Book" as UC_BorrowBook
+}
+Admin --> UC_AddNewBook
+Admin --> UC_BorrowBook
+Member --> UC_PayFine
+Member --> UC_AddNewBook
+Librarian --> UC_AddNewBook
+Librarian --> UC_BorrowBook
+Librarian --> UC_RenewLoan
+UC_ReserveBook ..|> UC_RenewLoan : <<extend>>
+@enduml

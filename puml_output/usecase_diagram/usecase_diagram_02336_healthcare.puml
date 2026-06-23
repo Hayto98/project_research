@@ -1,0 +1,26 @@
+@startuml
+
+left to right direction
+actor "Doctor" as Doctor
+actor "Nurse" as Nurse
+actor "Receptionist" as Receptionist
+actor "Lab Technician" as LabTechnician
+rectangle "Healthcare System" {
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Update Medical Record" as UC_UpdateMedicalRecord
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Examine Patient" as UC_ExaminePatient
+}
+Doctor --> UC_IssuePrescription
+Doctor --> UC_DischargePatient
+Doctor --> UC_ExaminePatient
+Nurse --> UC_IssuePrescription
+Nurse --> UC_DischargePatient
+Receptionist --> UC_AdmitPatient
+Receptionist --> UC_ProcessInsuranceClaim
+LabTechnician --> UC_UpdateMedicalRecord
+LabTechnician --> UC_AdmitPatient
+UC_AdmitPatient ..> UC_ExaminePatient : <<include>>
+@enduml

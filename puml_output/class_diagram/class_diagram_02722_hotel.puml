@@ -1,0 +1,55 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Housekeeping {
+  -double phone
+  -double price
+  #double description
+  #long amount
+  #int address
+  +saveId()
+  +setType()
+  +validateDuration()
+  +deletePrice()
+}
+class Amenity {
+  +long status
+  +float duration
+  +float code
+  +findAmount()
+  +processDescription()
+  +getNote()
+}
+interface CheckOut {
+  +float amount
+  +double createdAt
+  +processPhone()
+  +calculateCreatedat()
+  +processCreatedat()
+  +processAddress()
+}
+interface Service {
+  #boolean status
+  #long email
+  -String createdAt
+  +validateId()
+  +validateCreatedat()
+  +deleteCode()
+  +createNote()
+}
+class Reservation {
+  +String duration
+  #int note
+  +boolean email
+  +float name
+  +updateActive()
+  +sendLevel()
+  +saveName()
+  +createActive()
+}
+Reservation --* Service
+Amenity ..|> CheckOut
+Amenity --> Service : "*"
+Housekeeping ..|> Reservation
+note right of Housekeeping : Hotel domain
+@enduml

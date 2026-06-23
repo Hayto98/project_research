@@ -1,0 +1,51 @@
+@startuml
+skinparam monochrome true
+class DeliveryNote {
+  #int amount
+  #boolean total
+  +float address
+  +setDescription()
+}
+interface Inventory {
+  -String status
+  #int quantity
+  +cancelDescription()
+  +setName()
+  +createCode()
+}
+interface Driver {
+  -float active
+  -boolean phone
+  +sendQuantity()
+  +saveType()
+  +calculateDuration()
+}
+interface Vehicle {
+  #float phone
+  +long name
+  #float level
+  #float code
+  +float type
+  +setScore()
+  +calculateAmount()
+  +calculateLevel()
+}
+abstract class Tracking {
+  -Date total
+  +boolean duration
+  +deleteQuantity()
+  +setTotal()
+}
+interface Customer {
+  -boolean phone
+  #long quantity
+  +updateTotal()
+  +findScore()
+  +calculateScore()
+}
+Vehicle --* Inventory
+Customer --> DeliveryNote : "0..1"
+Vehicle --|> DeliveryNote
+Vehicle ..|> Driver
+note right of DeliveryNote : Logistics domain
+@enduml

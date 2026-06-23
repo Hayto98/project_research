@@ -1,0 +1,27 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Examine Patient;
+:Update Medical Record;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Admit Patient;
+:Issue Prescription;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Book Appointment;
+stop
+@enduml

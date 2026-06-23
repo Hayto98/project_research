@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+[*] --> Draft
+Draft --> Delivered : submit
+Draft : entry / log order
+Delivered --> OnHold : update
+Delivered : entry / log order
+OnHold --> Shipped : reject
+Shipped --> Processing : reject
+Processing --> Archived : confirm
+Draft --> OnHold : revert
+Archived --> [*]
+@enduml

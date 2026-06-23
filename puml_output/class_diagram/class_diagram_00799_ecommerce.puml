@@ -1,0 +1,77 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+class Supplier {
+  -boolean active
+  #Date price
+  -String name
+  -long level
+  #String updatedAt
+  +validateDuration()
+}
+class Order {
+  #boolean active
+  #long type
+  #String amount
+  +long level
+  -String createdAt
+  +createNote()
+  +deleteType()
+  +updatePrice()
+  +validatePrice()
+}
+abstract class Product {
+  #Date score
+  -float amount
+  #int type
+  -String quantity
+  #float name
+  +validateActive()
+  +processUpdatedat()
+}
+interface Category {
+  -int amount
+  #Date type
+  #Date status
+  +float score
+  +getActive()
+}
+class Invoice {
+  +double description
+  +double score
+  -String createdAt
+  #String name
+  +String updatedAt
+  +createId()
+  +deleteAddress()
+  +calculateDuration()
+  +cancelEmail()
+}
+class Coupon {
+  +long description
+  +long code
+  +Date status
+  +Date type
+  +validateCreatedat()
+  +setTotal()
+  +findScore()
+  +findType()
+}
+class Payment {
+  #String phone
+  +String createdAt
+  -long id
+  -int active
+  +setLevel()
+  +saveCreatedat()
+  +setCode()
+  +savePhone()
+}
+Invoice ..|> Payment
+Payment --|> Order
+Supplier --|> Product
+Order --|> Payment
+note right of Supplier : Ecommerce domain
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Warehouse Service" as C_WarehouseService
+component "Depot Service" as C_DepotService
+component "Tracking Service" as C_TrackingService
+component "Manifest Service" as C_ManifestService
+database "Logistics DB" as DB_logistics
+C_WarehouseService --> DB_logistics
+C_DepotService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_TrackingService ..> C_WarehouseService : gRPC
+C_TrackingService ..> C_WarehouseService : gRPC
+C_ManifestService ..> C_WarehouseService : HTTP
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+class Coupon {
+  -boolean note
+  #long address
+  -String createdAt
+  +Date duration
+  #float active
+  +sendAddress()
+  +processPrice()
+  +processQuantity()
+}
+interface Cart {
+  +Date name
+  +long amount
+  +cancelPrice()
+  +findId()
+  +findLevel()
+}
+class Wishlist {
+  +boolean name
+  +float duration
+  #float total
+  -double id
+  +int level
+  +getPrice()
+  +getPrice()
+}
+class Payment {
+  +long note
+  -Date score
+  +Date active
+  +createNote()
+}
+Cart ..> Payment : "*"
+Coupon --|> Payment
+note right of Coupon : Ecommerce domain
+@enduml

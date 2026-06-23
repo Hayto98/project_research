@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Beneficiary Service" as C_BeneficiaryService
+component "Account Service" as C_AccountService
+component "Card Service" as C_CardService
+component "Statement Service" as C_StatementService
+component "Transfer Service" as C_TransferService
+component "Branch Service" as C_BranchService
+database "Banking DB" as DB_banking
+C_CardService --> DB_banking
+C_StatementService --> DB_banking
+C_BranchService ..> C_CardService : REST
+C_StatementService ..> C_CardService : HTTP
+@enduml

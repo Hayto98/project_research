@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+component "Deposit Service" as C_DepositService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Withdrawal Service" as C_WithdrawalService
+component "Branch Service" as C_BranchService
+component "Card Service" as C_CardService
+database "Banking DB" as DB_banking
+C_BranchService --> DB_banking
+C_CardService --> DB_banking
+C_DepositService ..> C_WithdrawalService : MQ
+C_CardService ..> C_DepositService : HTTP
+C_BranchService ..> C_WithdrawalService : REST
+C_WithdrawalService ..> C_DepositService : gRPC
+@enduml

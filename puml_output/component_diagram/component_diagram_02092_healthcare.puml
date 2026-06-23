@@ -1,0 +1,17 @@
+@startuml
+skinparam ArrowColor #555555
+component "Prescription Service" as C_PrescriptionService
+component "Patient Service" as C_PatientService
+component "Hospital Service" as C_HospitalService
+component "Treatment Service" as C_TreatmentService
+component "Ward Service" as C_WardService
+database "Healthcare DB" as DB_healthcare
+C_PrescriptionService --> DB_healthcare
+C_PatientService --> DB_healthcare
+C_HospitalService --> DB_healthcare
+C_TreatmentService --> DB_healthcare
+C_WardService --> DB_healthcare
+C_PrescriptionService ..> C_WardService : MQ
+C_PrescriptionService ..> C_PatientService : MQ
+C_HospitalService ..> C_WardService : MQ
+@enduml

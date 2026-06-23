@@ -1,0 +1,67 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+interface Treatment {
+  #String note
+  -String level
+  #long name
+  +validateUpdatedat()
+}
+class MedicalRecord {
+  +boolean address
+  #float quantity
+  #String level
+  +getActive()
+  +createStatus()
+  +saveTotal()
+}
+abstract class Prescription {
+  +int duration
+  +double amount
+  +processType()
+  +getType()
+}
+abstract class Appointment {
+  +int quantity
+  #int email
+  -double note
+  -String name
+  +deleteUpdatedat()
+  +setCreatedat()
+  +getDescription()
+  +setDuration()
+}
+class Patient {
+  #Date total
+  +boolean duration
+  -long email
+  +boolean note
+  #float description
+  +processCode()
+  +findType()
+  +deleteAddress()
+  +validateStatus()
+}
+interface Insurance {
+  #int level
+  +float name
+  #Date price
+  +validateEmail()
+  +processStatus()
+}
+class Diagnosis {
+  -double email
+  -String price
+  -Date total
+  +saveAmount()
+  +processEmail()
+  +savePrice()
+  +processPrice()
+}
+Diagnosis --|> Appointment
+Diagnosis --> MedicalRecord : "0..1"
+Treatment ..|> MedicalRecord
+MedicalRecord --* Diagnosis
+note right of Treatment : Healthcare domain
+@enduml

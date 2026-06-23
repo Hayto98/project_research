@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+component "Like Service" as C_LikeService
+component "Group Service" as C_GroupService
+component "Hashtag Service" as C_HashtagService
+component "User Service" as C_UserService
+component "Notification Service" as C_NotificationService
+component "Post Service" as C_PostService
+database "Social Media DB" as DB_social_media
+C_LikeService --> DB_social_media
+C_GroupService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_UserService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_PostService --> DB_social_media
+C_UserService ..> C_GroupService : MQ
+C_NotificationService ..> C_HashtagService : MQ
+@enduml

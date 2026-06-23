@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+start
+:Return Book;
+:Borrow Book;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Add New Book;
+:Pay Fine;
+:Renew Loan;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+stop
+@enduml

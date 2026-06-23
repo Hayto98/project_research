@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+abstract class Billing {
+  -double type
+  #float total
+  +Date duration
+  +float score
+  +updateNote()
+  +sendStatus()
+  +findPrice()
+  +calculateAmount()
+}
+interface MedicalRecord {
+  +String updatedAt
+  +String quantity
+  #int amount
+  +deleteEmail()
+}
+class Insurance {
+  #double score
+  #Date amount
+  +updateId()
+  +getDuration()
+  +getTotal()
+}
+class Diagnosis {
+  -long code
+  +boolean status
+  +deleteCode()
+  +sendCreatedat()
+  +setAmount()
+}
+abstract class Hospital {
+  #boolean name
+  -float updatedAt
+  +String status
+  -float phone
+  +double price
+  +sendLevel()
+  +cancelId()
+  +validateQuantity()
+}
+interface Prescription {
+  +long note
+  +float total
+  +Date level
+  +sendId()
+}
+Diagnosis --o MedicalRecord
+Hospital --* MedicalRecord
+MedicalRecord ..> Billing : "0..1"
+Insurance --|> Diagnosis
+Prescription --> Billing : "*"
+note right of Billing : Healthcare domain
+@enduml

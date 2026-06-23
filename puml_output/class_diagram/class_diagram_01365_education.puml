@@ -1,0 +1,63 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Grade {
+  -double total
+  #int amount
+  +calculateScore()
+  +updateCreatedat()
+}
+interface Classroom {
+  #long address
+  +Date id
+  #Date duration
+  -long price
+  +calculateType()
+  +cancelActive()
+  +processPrice()
+}
+interface Course {
+  -boolean email
+  #boolean id
+  -long total
+  -Date code
+  +String score
+  +deleteDescription()
+}
+interface Exam {
+  #float address
+  +float createdAt
+  #float score
+  +sendCode()
+  +getDuration()
+  +cancelLevel()
+}
+class Assignment {
+  +double createdAt
+  #double email
+  +long level
+  +createAmount()
+  +updatePrice()
+}
+class Student {
+  #long name
+  #String email
+  +sendCode()
+  +updateCreatedat()
+}
+class Attendance {
+  +float price
+  -String phone
+  #String name
+  +saveNote()
+  +findDescription()
+  +setDescription()
+}
+Course --> Exam : "0..1"
+Course ..> Student : "1"
+Classroom --* Attendance
+Course ..> Grade : "*"
+Grade --|> Assignment
+Classroom --o Exam
+note right of Grade : Education domain
+@enduml

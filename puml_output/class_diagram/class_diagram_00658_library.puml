@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+abstract class Reservation {
+  #boolean type
+  -int id
+  -String address
+  #Date name
+  +createUpdatedat()
+  +cancelType()
+  +validateTotal()
+  +findCode()
+}
+interface Fine {
+  #float note
+  +int name
+  -double createdAt
+  -long id
+  +processDescription()
+}
+class Member {
+  #long amount
+  #float address
+  +updatePhone()
+  +calculateNote()
+}
+class Author {
+  -float address
+  -Date type
+  +getScore()
+  +createUpdatedat()
+}
+class Renewal {
+  -Date total
+  -long address
+  #String updatedAt
+  +int email
+  -Date description
+  +calculateQuantity()
+  +findDescription()
+  +deleteAmount()
+  +sendQuantity()
+}
+class Publisher {
+  #boolean active
+  -Date email
+  +findNote()
+  +getPhone()
+  +findTotal()
+}
+Publisher ..|> Reservation
+Publisher --> Member : "*"
+Reservation --* Fine
+Fine --|> Publisher
+note right of Reservation : Library domain
+@enduml

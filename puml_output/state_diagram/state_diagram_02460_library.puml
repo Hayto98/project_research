@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+[*] --> Processing
+Processing --> Active : confirm
+Processing : entry / log loan
+Active --> Reviewed : confirm
+Reviewed --> Created : process
+Created --> OnHold : update
+Created : entry / log loan
+Reviewed --> Created : revert
+OnHold --> [*]
+@enduml

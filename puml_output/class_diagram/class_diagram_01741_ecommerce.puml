@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+interface Shipment {
+  -int createdAt
+  +Date quantity
+  +double total
+  #Date address
+  +setNote()
+  +findActive()
+  +cancelUpdatedat()
+  +setNote()
+}
+class Warehouse {
+  +boolean id
+  +float active
+  #long quantity
+  +updateEmail()
+}
+abstract class Category {
+  #String amount
+  -double quantity
+  #double email
+  +long updatedAt
+  +deleteCreatedat()
+  +saveDescription()
+  +findQuantity()
+}
+abstract class Return {
+  #Date description
+  +float total
+  #float code
+  +findQuantity()
+  +setLevel()
+  +getType()
+}
+abstract class Order {
+  #String address
+  #boolean total
+  -long level
+  #Date note
+  +calculateLevel()
+  +calculateActive()
+  +updateScore()
+  +calculatePrice()
+}
+class Wishlist {
+  +double description
+  #boolean code
+  +long phone
+  +validateDuration()
+  +cancelEmail()
+  +getName()
+  +deleteAddress()
+}
+Order --* Category
+Category --* Shipment
+Warehouse ..> Shipment : "1"
+Wishlist ..> Return : "1..*"
+Order --o Shipment
+note right of Shipment : Ecommerce domain
+@enduml

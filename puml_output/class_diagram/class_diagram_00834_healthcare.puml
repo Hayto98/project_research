@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+abstract class Hospital {
+  #long status
+  #int phone
+  #String note
+  +processId()
+  +createCode()
+}
+interface Billing {
+  +float phone
+  #float quantity
+  -int duration
+  #long active
+  -Date amount
+  +processPhone()
+  +updateType()
+}
+abstract class Doctor {
+  -long id
+  +String code
+  #String phone
+  -float name
+  #String note
+  +deleteId()
+  +processScore()
+}
+class Ward {
+  #Date type
+  -int name
+  -long price
+  +processStatus()
+  +findDuration()
+  +updateTotal()
+}
+Doctor ..> Ward : "*"
+Hospital --> Doctor : "1..*"
+note right of Hospital : Healthcare domain
+@enduml

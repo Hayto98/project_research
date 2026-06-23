@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+class Invoice {
+  #String score
+  #String level
+  +getUpdatedat()
+}
+class Coupon {
+  #Date name
+  -double level
+  +Date code
+  -long active
+  +calculateStatus()
+}
+class Supplier {
+  +double level
+  -Date updatedAt
+  -float price
+  #long code
+  +calculateId()
+}
+class Wishlist {
+  -double level
+  -float code
+  -long description
+  +getCode()
+  +createPrice()
+  +validateUpdatedat()
+  +createStatus()
+}
+class Order {
+  +boolean code
+  #String email
+  +float status
+  -long note
+  #boolean createdAt
+  +updateId()
+  +getCode()
+  +setAddress()
+}
+class Payment {
+  -float code
+  #boolean score
+  #int id
+  #float quantity
+  +getPrice()
+  +deleteType()
+  +getQuantity()
+  +updateId()
+}
+Payment ..|> Wishlist
+Invoice --* Order
+Invoice --o Supplier
+Supplier --|> Wishlist
+Invoice --|> Coupon
+note right of Invoice : Ecommerce domain
+@enduml

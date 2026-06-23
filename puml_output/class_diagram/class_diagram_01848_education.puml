@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Grade {
+  #Date active
+  #long type
+  +long amount
+  +sendQuantity()
+  +deleteQuantity()
+  +validateLevel()
+}
+interface Exam {
+  +double total
+  #double status
+  #long address
+  +cancelDuration()
+  +deleteStatus()
+  +setDuration()
+  +getStatus()
+}
+interface Library {
+  -long amount
+  -boolean level
+  +saveAddress()
+  +setId()
+  +processUpdatedat()
+}
+class Student {
+  #String email
+  #double address
+  +getEmail()
+  +findScore()
+}
+class Assignment {
+  +String active
+  +String note
+  +findUpdatedat()
+}
+Student --o Assignment
+Library --|> Grade
+Library ..> Exam : "0..1"
+Exam --* Student
+note right of Grade : Education domain
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+participant "Warehouse Staff" as WS
+entity "Customer" as C
+boundary "Dispatcher" as D
+participant "Fleet Manager" as FM
+control "Driver" as D2
+D2 ->> D : Update Inventory
+C --> WS : Track Shipment
+activate WS
+WS --> C : ACK
+deactivate WS
+FM ->> D2 : Assign Route
+activate D2
+D2 --> FM : ACK
+deactivate D2
+WS ->> D2 : Schedule Pickup
+note over D2 : processing schedule pickup
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+class Card {
+  +double code
+  #int note
+  +processDuration()
+  +validateId()
+  +cancelQuantity()
+  +cancelPhone()
+}
+class Loan {
+  #float code
+  #long createdAt
+  -long level
+  +calculateType()
+  +cancelNote()
+  +cancelPhone()
+}
+abstract class Branch {
+  #double address
+  +int type
+  +getTotal()
+  +calculateActive()
+  +updateTotal()
+  +validateName()
+}
+class Transfer {
+  #String description
+  +String address
+  -String phone
+  +cancelTotal()
+  +saveName()
+}
+Transfer --> Branch : "1"
+Card ..> Branch : "1..*"
+note right of Card : Banking domain
+@enduml

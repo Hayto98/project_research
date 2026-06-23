@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+component "Appointment Service" as C_AppointmentService
+component "MedicalRecord Service" as C_MedicalRecordService
+component "Doctor Service" as C_DoctorService
+component "Hospital Service" as C_HospitalService
+component "Billing Service" as C_BillingService
+component "Ward Service" as C_WardService
+component "Nurse Service" as C_NurseService
+database "Healthcare DB" as DB_healthcare
+C_AppointmentService --> DB_healthcare
+C_MedicalRecordService --> DB_healthcare
+C_DoctorService --> DB_healthcare
+C_HospitalService --> DB_healthcare
+C_BillingService --> DB_healthcare
+C_NurseService --> DB_healthcare
+C_BillingService ..> C_NurseService : REST
+C_WardService ..> C_MedicalRecordService : MQ
+@enduml

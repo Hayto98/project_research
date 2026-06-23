@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+component "Transaction Service" as C_TransactionService
+component "Deposit Service" as C_DepositService
+component "Branch Service" as C_BranchService
+component "Beneficiary Service" as C_BeneficiaryService
+database "Banking DB" as DB_banking
+C_TransactionService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_DepositService ..> C_BeneficiaryService : gRPC
+C_TransactionService ..> C_BeneficiaryService : HTTP
+@enduml

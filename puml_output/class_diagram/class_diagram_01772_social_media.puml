@@ -1,0 +1,42 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Message {
+  +int createdAt
+  +double updatedAt
+  +createEmail()
+  +sendPrice()
+  +processCode()
+}
+class Profile {
+  +String code
+  #float total
+  +validateType()
+  +findId()
+}
+abstract class Story {
+  +boolean note
+  +Date name
+  +float id
+  #int updatedAt
+  +deleteTotal()
+}
+class Hashtag {
+  +double active
+  #double duration
+  +double price
+  +findName()
+  +validateType()
+}
+class Comment {
+  #Date duration
+  -long code
+  +saveScore()
+  +getDuration()
+}
+Profile --o Story
+Hashtag --> Message : "1..*"
+Message ..> Comment : "1..*"
+note right of Message : Social Media domain
+@enduml

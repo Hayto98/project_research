@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+[*] --> Reviewed
+Reviewed --> Cancelled : reject
+Cancelled --> Closed : process
+Closed --> Processing : approve
+Processing --> OnHold : reject
+Processing : entry / log booking
+OnHold --> Rejected : review
+OnHold --> Reviewed : revert
+Rejected --> [*]
+@enduml

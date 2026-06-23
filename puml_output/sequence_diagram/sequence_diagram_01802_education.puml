@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+entity "Student" as S
+control "Librarian" as L
+boundary "Parent" as P
+boundary "Teacher" as T
+S -> P : View Schedule
+activate P
+P --> S : ACK
+deactivate P
+P -> L : Register Student
+T --> S : Grade Exam
+activate S
+S --> T : ACK
+deactivate S
+note over S : processing grade exam
+S --> T : Borrow Book
+L -> T : Take Attendance
+activate T
+T --> L : ACK
+deactivate T
+note over T : processing take attendance
+T -> L : Issue Certificate
+@enduml

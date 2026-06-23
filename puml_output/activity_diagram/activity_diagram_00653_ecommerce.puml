@@ -1,0 +1,36 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+start
+:Add To Cart;
+:Checkout;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Manage Inventory;
+:Track Order;
+fork
+:notify system;
+fork again
+:log action;
+end fork
+:Browse Products;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Write Review;
+:Apply Coupon;
+:Cancel Order;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+stop
+@enduml

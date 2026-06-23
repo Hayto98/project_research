@@ -1,0 +1,18 @@
+@startuml
+
+component "CheckOut Service" as C_CheckOutService
+component "Service Service" as C_ServiceService
+component "Booking Service" as C_BookingService
+component "Payment Service" as C_PaymentService
+component "Invoice Service" as C_InvoiceService
+component "Reservation Service" as C_ReservationService
+component "Guest Service" as C_GuestService
+database "Hotel DB" as DB_hotel
+C_CheckOutService --> DB_hotel
+C_PaymentService --> DB_hotel
+C_ServiceService ..> C_BookingService : REST
+C_CheckOutService ..> C_ServiceService : MQ
+C_CheckOutService ..> C_ServiceService : MQ
+C_ReservationService ..> C_InvoiceService : REST
+C_ServiceService ..> C_ReservationService : REST
+@enduml

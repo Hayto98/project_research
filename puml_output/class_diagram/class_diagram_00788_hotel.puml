@@ -1,0 +1,68 @@
+@startuml
+skinparam monochrome true
+class Payment {
+  +long duration
+  +String price
+  #float id
+  +int quantity
+  +processPrice()
+  +processLevel()
+  +createCreatedat()
+  +setAddress()
+}
+interface Room {
+  +String type
+  #long note
+  +processAmount()
+  +updateEmail()
+}
+class CheckIn {
+  -double code
+  #Date name
+  #int status
+  #String email
+  +cancelAmount()
+  +setTotal()
+  +sendNote()
+  +saveCreatedat()
+}
+class Housekeeping {
+  -long email
+  #boolean phone
+  -double note
+  +Date address
+  -double score
+  +getNote()
+  +findCode()
+}
+abstract class Restaurant {
+  +Date type
+  #double status
+  +int description
+  #float score
+  +int email
+  +setDescription()
+  +getNote()
+  +processDescription()
+  +getTotal()
+}
+class Service {
+  +int id
+  +float amount
+  +int type
+  +saveLevel()
+  +deleteNote()
+}
+abstract class Amenity {
+  -float email
+  #String level
+  -long note
+  +deleteUpdatedat()
+}
+Amenity --o Room
+Amenity --* Payment
+Service --|> Room
+CheckIn --o Payment
+CheckIn --* Room
+note right of Payment : Hotel domain
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Message Service" as C_MessageService
+component "Report Service" as C_ReportService
+component "Comment Service" as C_CommentService
+component "Group Service" as C_GroupService
+component "Like Service" as C_LikeService
+component "User Service" as C_UserService
+component "Follower Service" as C_FollowerService
+database "Social Media DB" as DB_social_media
+C_MessageService --> DB_social_media
+C_ReportService --> DB_social_media
+C_CommentService --> DB_social_media
+C_LikeService --> DB_social_media
+C_UserService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_UserService ..> C_MessageService : REST
+C_FollowerService ..> C_MessageService : REST
+C_GroupService ..> C_ReportService : REST
+C_LikeService ..> C_FollowerService : REST
+@enduml

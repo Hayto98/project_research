@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class Order {
+  -float type
+  +boolean note
+  #String id
+  +boolean updatedAt
+  -boolean email
+  +savePrice()
+}
+class Product {
+  #String level
+  #float createdAt
+  -Date amount
+  +calculateTotal()
+  +updateType()
+  +getNote()
+}
+interface Payment {
+  +Date active
+  -float phone
+  #Date code
+  #int type
+  #float note
+  +validateTotal()
+  +calculateActive()
+}
+class Shipment {
+  #long level
+  -double score
+  -int name
+  +createLevel()
+  +calculateScore()
+  +updateType()
+}
+abstract class Warehouse {
+  +long status
+  +double phone
+  -Date createdAt
+  +validateAddress()
+}
+class Return {
+  +float score
+  +int phone
+  +sendPhone()
+}
+interface Review {
+  -double status
+  -long price
+  #long phone
+  -String quantity
+  +createStatus()
+  +deleteCreatedat()
+  +saveTotal()
+  +findAmount()
+}
+Review --|> Order
+Product --* Return
+Shipment ..|> Warehouse
+note right of Order : Ecommerce domain
+@enduml

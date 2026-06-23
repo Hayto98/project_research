@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+control "Dispatcher" as D
+control "Customer" as C
+control "Driver" as D2
+D --> D2 : Schedule Pickup
+D ->> D2 : Track Shipment
+D2 ->> D : Fuel Vehicle
+D -> D2 : Update Inventory
+D --> C : Load Package
+activate C
+C --> D : ACK
+deactivate C
+C ->> D : Assign Route
+activate D
+D --> C : ACK
+deactivate D
+@enduml

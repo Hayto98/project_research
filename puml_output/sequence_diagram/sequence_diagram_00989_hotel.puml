@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+actor "Receptionist" as R
+entity "Guest" as G
+control "Manager" as M
+G -> M : Book Room
+G -> M : Check In
+activate M
+M --> G : ACK
+deactivate M
+G -> R : Cancel Reservation
+G -> R : Clean Room
+R ->> M : Process Payment
+R --> G : Check Out
+R ->> G : Order Room Service
+activate G
+G --> R : ACK
+deactivate G
+note over G : processing order room service
+@enduml

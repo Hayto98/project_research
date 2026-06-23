@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing true
+left to right direction
+actor "Librarian" as Librarian
+actor "Admin" as Admin
+actor "Member" as Member
+rectangle "Library System" {
+  usecase "Register Member" as UC_RegisterMember
+  usecase "Reserve Book" as UC_ReserveBook
+  usecase "Renew Loan" as UC_RenewLoan
+  usecase "Pay Fine" as UC_PayFine
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Search Catalog" as UC_SearchCatalog
+}
+Librarian --> UC_RenewLoan
+Librarian --> UC_RegisterMember
+Admin --> UC_PayFine
+Member --> UC_RegisterMember
+Member --> UC_BorrowBook
+Member --> UC_SearchCatalog
+UC_ReserveBook ..> UC_RegisterMember : <<extend>>
+@enduml

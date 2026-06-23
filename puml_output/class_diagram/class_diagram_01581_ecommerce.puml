@@ -1,0 +1,50 @@
+@startuml
+skinparam shadowing true
+class Product {
+  +double email
+  +int id
+  +float address
+  +boolean note
+  +boolean duration
+  +calculateAmount()
+  +updateDuration()
+  +updateType()
+}
+class Payment {
+  +int level
+  -String score
+  +float amount
+  +getStatus()
+  +processNote()
+  +deleteScore()
+}
+abstract class Coupon {
+  #boolean email
+  #long status
+  #long description
+  +Date quantity
+  +sendPhone()
+  +updateNote()
+}
+abstract class Category {
+  -Date level
+  #int status
+  #long type
+  #int active
+  +String address
+  +findLevel()
+  +getAmount()
+}
+interface Invoice {
+  -long description
+  -boolean createdAt
+  #double quantity
+  #double updatedAt
+  -Date status
+  +processNote()
+  +sendStatus()
+}
+Coupon ..> Invoice : "*"
+Product --> Category : "1..*"
+note right of Product : Ecommerce domain
+@enduml

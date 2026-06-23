@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+interface Patient {
+  -double name
+  #int note
+  #double type
+  -boolean price
+  +calculateStatus()
+}
+class Insurance {
+  #float updatedAt
+  +long total
+  #boolean price
+  +updateLevel()
+  +processPhone()
+  +savePhone()
+  +calculateDescription()
+}
+interface MedicalRecord {
+  -double status
+  #boolean createdAt
+  #int updatedAt
+  #double total
+  +int note
+  +getAddress()
+  +sendPrice()
+  +sendNote()
+}
+class Prescription {
+  -double description
+  -boolean email
+  -float status
+  +findDescription()
+  +setPrice()
+  +setEmail()
+}
+abstract class Diagnosis {
+  #double id
+  +double status
+  +getCreatedat()
+  +processActive()
+  +updateScore()
+  +saveEmail()
+}
+abstract class Appointment {
+  +String score
+  +int type
+  -int description
+  #float status
+  -double total
+  +findDuration()
+  +cancelId()
+  +saveDescription()
+}
+class Treatment {
+  +float phone
+  +Date duration
+  -String description
+  +long type
+  #int active
+  +calculateScore()
+  +processStatus()
+}
+Insurance --|> MedicalRecord
+Diagnosis --> MedicalRecord : "1"
+Insurance --* Appointment
+note right of Patient : Healthcare domain
+@enduml

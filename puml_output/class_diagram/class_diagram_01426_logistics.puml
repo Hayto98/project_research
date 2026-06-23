@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+abstract class Vehicle {
+  +int createdAt
+  -String amount
+  -long note
+  +float score
+  +savePhone()
+  +sendName()
+  +calculateAddress()
+  +calculateScore()
+}
+class Shipment {
+  -String phone
+  -long duration
+  +Date description
+  +long createdAt
+  +int price
+  +getId()
+}
+class Package {
+  +double price
+  #long active
+  +double updatedAt
+  #float id
+  +float email
+  +updateLevel()
+  +getEmail()
+  +findAmount()
+  +getPrice()
+}
+class Route {
+  -double quantity
+  #int status
+  +updatePhone()
+}
+class Manifest {
+  -Date quantity
+  #Date price
+  #Date id
+  +float type
+  #Date note
+  +findQuantity()
+}
+Route ..> Vehicle : "0..1"
+Route ..|> Package
+Shipment ..> Route : "*"
+Route --o Manifest
+note right of Vehicle : Logistics domain
+@enduml

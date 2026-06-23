@@ -1,0 +1,47 @@
+@startuml
+
+interface Inventory {
+  +boolean email
+  -long status
+  -float quantity
+  +int createdAt
+  #long score
+  +findType()
+  +findAddress()
+  +findLevel()
+  +deleteCode()
+}
+interface Warehouse {
+  #int description
+  -long code
+  +deleteType()
+  +getAddress()
+  +deleteCode()
+}
+class Vehicle {
+  -Date price
+  -long score
+  +validatePrice()
+  +findPhone()
+  +processNote()
+  +createStatus()
+}
+abstract class Tracking {
+  +float description
+  -String createdAt
+  +processEmail()
+  +processName()
+  +calculateName()
+}
+class Route {
+  +double note
+  #long score
+  -float email
+  +cancelEmail()
+}
+Vehicle --> Inventory : "*"
+Inventory --> Warehouse : "0..1"
+Tracking ..|> Route
+Route --* Warehouse
+note right of Inventory : Logistics domain
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+[*] --> Closed
+Closed --> Rejected : reject
+Closed : entry / log message
+Rejected --> Processing : update
+Processing --> Archived : reject
+Archived --> Draft : approve
+Archived : entry / log message
+Draft --> Reviewed : reject
+Closed --> Processing : revert
+Reviewed --> [*]
+@enduml

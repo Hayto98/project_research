@@ -1,0 +1,24 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+start
+:Cancel Reservation;
+:Process Payment;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Request Service;
+:Check Out;
+:Check In;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Book Room;
+stop
+@enduml

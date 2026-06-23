@@ -1,0 +1,64 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Account {
+  -long price
+  +long quantity
+  +boolean address
+  -String code
+  +processType()
+  +findNote()
+  +sendEmail()
+}
+class Interest {
+  -long createdAt
+  +int amount
+  #float email
+  #long description
+  #long active
+  +getScore()
+}
+interface Transaction {
+  #double type
+  +float code
+  +boolean description
+  #double amount
+  +deleteNote()
+}
+class Customer {
+  -int duration
+  -boolean description
+  +saveQuantity()
+  +cancelStatus()
+}
+class Withdrawal {
+  #double description
+  #String amount
+  #int id
+  -long code
+  +updateEmail()
+  +setName()
+  +createId()
+}
+interface Statement {
+  -Date name
+  #String email
+  #boolean quantity
+  -double score
+  -long phone
+  +calculateAmount()
+  +getActive()
+}
+interface Beneficiary {
+  +double id
+  #int quantity
+  #int status
+  +validateScore()
+}
+Statement --> Customer : "1..*"
+Customer --* Statement
+Account ..> Withdrawal : "1"
+Statement --|> Account
+Beneficiary ..> Account : "1..*"
+note right of Account : Banking domain
+@enduml

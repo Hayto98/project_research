@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+[*] --> Active
+Active --> Processing : reject
+Active : entry / log catalog
+Processing --> Rejected : update
+Processing : entry / log catalog
+Rejected --> OnHold : process
+OnHold --> Closed : confirm
+OnHold : entry / log catalog
+Processing --> Active : revert
+Closed --> [*]
+@enduml

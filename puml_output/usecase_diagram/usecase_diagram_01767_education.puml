@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 11
+left to right direction
+actor "Student" as Student
+actor "Librarian" as Librarian
+actor "Admin" as Admin
+actor "Parent" as Parent
+rectangle "Education System" {
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Register Student" as UC_RegisterStudent
+}
+Student --> UC_TakeAttendance
+Student --> UC_GradeExam
+Librarian --> UC_TakeAttendance
+Admin --> UC_EnrollCourse
+Parent --> UC_TakeAttendance
+UC_SubmitAssignment ..|> UC_BorrowBook : <<extend>>
+@enduml

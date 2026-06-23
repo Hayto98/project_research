@@ -1,0 +1,18 @@
+@startuml
+skinparam defaultFontSize 11
+entity "Doctor" as D
+entity "Patient" as P
+control "Nurse" as N
+N --> P : Book Appointment
+note over P : processing book appointment
+P --> D : Examine Patient
+activate D
+D --> P : ACK
+deactivate D
+P ->> N : Update Medical Record
+P -> D : Admit Patient
+activate D
+D --> P : ACK
+deactivate D
+D --> N : Run Lab Test
+@enduml

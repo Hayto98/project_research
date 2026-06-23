@@ -1,0 +1,25 @@
+@startuml
+skinparam ArrowColor #555555
+actor "Doctor" as D
+participant "Patient" as P
+actor "Insurance Provider" as IP
+P --> D : Issue Prescription
+activate D
+D --> P : ACK
+deactivate D
+note over D : processing issue prescription
+D --> P : Discharge Patient
+P -> IP : Run Lab Test
+activate IP
+IP --> P : ACK
+deactivate IP
+P -> D : Process Insurance Claim
+activate D
+D --> P : ACK
+deactivate D
+D -> P : Book Appointment
+activate P
+P --> D : ACK
+deactivate P
+D -> IP : Examine Patient
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+component "Review Service" as C_ReviewService
+component "Coupon Service" as C_CouponService
+component "Warehouse Service" as C_WarehouseService
+component "Supplier Service" as C_SupplierService
+database "Ecommerce DB" as DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_ReviewService ..> C_WarehouseService : MQ
+C_SupplierService ..> C_CouponService : MQ
+@enduml

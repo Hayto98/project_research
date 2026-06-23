@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+left to right direction
+actor "Receptionist" as Receptionist
+actor "Patient" as Patient
+rectangle "Healthcare System" {
+  usecase "Run Lab Test" as UC_RunLabTest
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Examine Patient" as UC_ExaminePatient
+}
+Receptionist --> UC_IssuePrescription
+Receptionist --> UC_AdmitPatient
+Receptionist --> UC_ExaminePatient
+Patient --> UC_IssuePrescription
+UC_ExaminePatient ..|> UC_AdmitPatient : <<extend>>
+@enduml

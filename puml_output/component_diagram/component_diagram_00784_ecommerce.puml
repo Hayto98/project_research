@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+component "Wishlist Service" as C_WishlistService
+component "Return Service" as C_ReturnService
+component "Order Service" as C_OrderService
+component "Cart Service" as C_CartService
+component "Shipment Service" as C_ShipmentService
+component "Review Service" as C_ReviewService
+database "Ecommerce DB" as DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_OrderService ..> C_WishlistService : gRPC
+C_ReturnService ..> C_ReviewService : gRPC
+C_OrderService ..> C_CartService : REST
+C_ReturnService ..> C_WishlistService : gRPC
+@enduml

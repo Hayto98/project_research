@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+boundary "Guest" as G
+entity "Housekeeper" as H
+control "Receptionist" as R
+R -> H : Check Out
+G ->> R : Cancel Reservation
+R ->> H : Request Service
+H -> R : Book Room
+R -> H : Check In
+activate H
+H --> R : ACK
+deactivate H
+H -> G : Process Payment
+note over G : processing process payment
+@enduml

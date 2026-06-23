@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class FuelLog {
+  +float duration
+  +Date name
+  +double email
+  +calculateNote()
+  +validatePhone()
+}
+interface DeliveryNote {
+  -boolean amount
+  #Date email
+  +double updatedAt
+  +getNote()
+  +setEmail()
+}
+class Customer {
+  -double phone
+  #float status
+  +updatePrice()
+  +createStatus()
+}
+class Tracking {
+  #String note
+  -int status
+  -Date score
+  +sendCreatedat()
+  +saveUpdatedat()
+  +getTotal()
+  +findDescription()
+}
+class Inventory {
+  -double phone
+  -Date description
+  +String name
+  +cancelAmount()
+}
+interface Vehicle {
+  +long description
+  +int total
+  #boolean code
+  -long phone
+  +calculateDuration()
+}
+Customer ..> Vehicle : "1..*"
+Tracking --|> DeliveryNote
+Tracking --> Customer : "1"
+DeliveryNote ..> Customer : "0..1"
+Vehicle --o Inventory
+note right of FuelLog : Logistics domain
+@enduml

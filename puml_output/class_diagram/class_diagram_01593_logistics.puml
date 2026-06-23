@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+abstract class Customer {
+  +Date id
+  -int description
+  -String email
+  -Date phone
+  +saveScore()
+  +updateTotal()
+  +validateScore()
+  +calculatePhone()
+}
+abstract class Shipment {
+  +double name
+  #double level
+  #String total
+  -boolean status
+  #boolean phone
+  +validateUpdatedat()
+  +processTotal()
+}
+class Manifest {
+  +int code
+  -int description
+  +validateTotal()
+  +calculateLevel()
+  +validatePhone()
+  +sendPrice()
+}
+class DeliveryNote {
+  -long score
+  +Date updatedAt
+  +findName()
+  +updatePrice()
+  +setEmail()
+  +findTotal()
+}
+class Inventory {
+  -String amount
+  #long code
+  #boolean active
+  +validateScore()
+  +validateCode()
+  +updateNote()
+  +deleteStatus()
+}
+interface Package {
+  #int description
+  -float amount
+  +double name
+  +processStatus()
+  +saveAmount()
+  +findNote()
+}
+DeliveryNote ..> Customer : "*"
+Customer --> DeliveryNote : "1"
+Shipment ..|> DeliveryNote
+Customer ..|> Inventory
+note right of Customer : Logistics domain
+@enduml

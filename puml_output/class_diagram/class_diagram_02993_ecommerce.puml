@@ -1,0 +1,66 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+interface Product {
+  #float total
+  +double code
+  #Date score
+  #float name
+  +calculatePhone()
+}
+class Coupon {
+  +int address
+  +long score
+  +float price
+  #long note
+  +saveCode()
+  +getEmail()
+  +deletePrice()
+}
+class Order {
+  +double type
+  +int status
+  +sendStatus()
+  +findType()
+  +saveUpdatedat()
+  +findCode()
+}
+interface Return {
+  +int phone
+  +double price
+  -long note
+  +int active
+  #long type
+  +saveId()
+}
+abstract class Warehouse {
+  +String duration
+  +float note
+  -Date status
+  #float total
+  +processAddress()
+}
+class Supplier {
+  #long quantity
+  +double phone
+  #Date level
+  +createDescription()
+  +updateQuantity()
+  +updateAddress()
+}
+class Review {
+  +String price
+  #String createdAt
+  #int score
+  #float quantity
+  +validateActive()
+}
+Product --|> Coupon
+Coupon --|> Product
+Product --o Review
+Product --|> Order
+Coupon --|> Order
+Coupon --* Return
+note right of Product : Ecommerce domain
+@enduml

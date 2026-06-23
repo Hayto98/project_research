@@ -1,0 +1,69 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class Statement {
+  #boolean id
+  -double total
+  #Date level
+  +createCode()
+  +cancelStatus()
+  +calculateScore()
+}
+interface Transfer {
+  +Date updatedAt
+  -float id
+  +long score
+  -long level
+  +processDescription()
+  +processTotal()
+  +getEmail()
+  +processPrice()
+}
+class Teller {
+  +String duration
+  -float address
+  -int active
+  +validateQuantity()
+}
+class Account {
+  +String createdAt
+  #float score
+  +boolean active
+  #long code
+  #int note
+  +saveType()
+}
+class Customer {
+  -boolean score
+  -long active
+  -double total
+  -boolean status
+  -long note
+  +saveCreatedat()
+}
+class Branch {
+  -boolean code
+  +String level
+  #float price
+  -long email
+  +findQuantity()
+  +sendDescription()
+  +updateUpdatedat()
+  +validateDuration()
+}
+interface Loan {
+  +long createdAt
+  -float note
+  +createLevel()
+  +setUpdatedat()
+  +validateScore()
+  +processCode()
+}
+Transfer --o Statement
+Account ..> Branch : "0..1"
+Branch ..> Transfer : "0..1"
+Customer --> Branch : "0..1"
+Branch --> Loan : "*"
+note right of Statement : Banking domain
+@enduml

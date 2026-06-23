@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam shadowing true
+class Driver {
+  #long updatedAt
+  #long type
+  -float id
+  +sendAddress()
+}
+abstract class Shipment {
+  +Date active
+  #boolean code
+  #int name
+  +calculateCode()
+  +findTotal()
+}
+interface Warehouse {
+  -boolean status
+  #String name
+  +long email
+  -String score
+  #Date quantity
+  +saveDescription()
+}
+abstract class Tracking {
+  #float type
+  +float phone
+  -float note
+  -boolean email
+  +sendQuantity()
+}
+class DeliveryNote {
+  #float email
+  #String type
+  +sendDuration()
+}
+class Manifest {
+  #double quantity
+  #long amount
+  +updateId()
+  +validateCreatedat()
+  +findTotal()
+}
+class Depot {
+  +int description
+  +boolean address
+  +Date score
+  +cancelCode()
+}
+Driver ..|> DeliveryNote
+Warehouse ..|> Shipment
+Depot --o Shipment
+note right of Driver : Logistics domain
+@enduml

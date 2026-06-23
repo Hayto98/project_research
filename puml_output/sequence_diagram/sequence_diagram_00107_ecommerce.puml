@@ -1,0 +1,22 @@
+@startuml
+
+actor "Customer" as C
+participant "Seller" as S
+boundary "Delivery Service" as DS
+entity "Payment Gateway" as PG
+S ->> DS : Cancel Order
+PG --> DS : Browse Products
+activate DS
+DS --> PG : ACK
+deactivate DS
+note over DS : processing browse products
+C ->> PG : Checkout
+PG --> S : Add To Cart
+activate S
+S --> PG : ACK
+deactivate S
+note over S : processing add to cart
+S --> DS : Manage Inventory
+DS ->> PG : Apply Coupon
+note over PG : processing apply coupon
+@enduml

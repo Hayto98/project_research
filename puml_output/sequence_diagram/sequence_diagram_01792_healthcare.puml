@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+control "Patient" as P
+participant "Nurse" as N
+actor "Doctor" as D
+control "Insurance Provider" as IP
+P -> N : Admit Patient
+note over N : processing admit patient
+N ->> P : Issue Prescription
+activate P
+P --> N : ACK
+deactivate P
+P ->> IP : Examine Patient
+activate IP
+IP --> P : ACK
+deactivate IP
+N -> P : Process Insurance Claim
+@enduml

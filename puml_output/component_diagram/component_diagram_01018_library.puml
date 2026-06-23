@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+component "Book Service" as C_BookService
+component "Loan Service" as C_LoanService
+component "Catalog Service" as C_CatalogService
+component "Reservation Service" as C_ReservationService
+database "Library DB" as DB_library
+C_BookService --> DB_library
+C_LoanService --> DB_library
+C_CatalogService --> DB_library
+C_ReservationService --> DB_library
+C_ReservationService ..> C_LoanService : HTTP
+C_CatalogService ..> C_LoanService : MQ
+C_BookService ..> C_CatalogService : gRPC
+@enduml

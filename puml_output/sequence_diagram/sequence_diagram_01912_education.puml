@@ -1,0 +1,31 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+actor "Registrar" as R
+control "Teacher" as T
+participant "Librarian" as L
+R -> L : Enroll Course
+note over L : processing enroll course
+R ->> L : Grade Exam
+activate L
+L --> R : ACK
+deactivate L
+R --> L : Issue Certificate
+activate L
+L --> R : ACK
+deactivate L
+T --> R : Submit Assignment
+activate R
+R --> T : ACK
+deactivate R
+T ->> L : View Schedule
+activate L
+L --> T : ACK
+deactivate L
+note over L : processing view schedule
+L -> R : Take Attendance
+activate R
+R --> L : ACK
+deactivate R
+T --> L : Register Student
+@enduml

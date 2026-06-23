@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+interface Wishlist {
+  +long name
+  +int code
+  +long duration
+  +int price
+  +savePrice()
+}
+abstract class Payment {
+  -String description
+  #String score
+  -double name
+  -long active
+  -int type
+  +saveNote()
+}
+class Invoice {
+  -long name
+  -int code
+  +cancelDescription()
+  +saveDuration()
+  +createAddress()
+  +getDuration()
+}
+class Order {
+  -boolean id
+  -Date status
+  +String phone
+  #Date type
+  +validatePhone()
+  +savePrice()
+  +processDescription()
+}
+class Customer {
+  #long updatedAt
+  -int address
+  +double status
+  #long price
+  -double level
+  +cancelActive()
+}
+class Shipment {
+  +String phone
+  #Date duration
+  +sendActive()
+  +processDescription()
+}
+interface Cart {
+  +Date type
+  +long duration
+  #double email
+  #int address
+  +long description
+  +cancelActive()
+  +saveCode()
+  +deleteType()
+  +calculateDescription()
+}
+Wishlist --> Cart : "1"
+Payment --|> Order
+Wishlist --> Payment : "0..1"
+note right of Wishlist : Ecommerce domain
+@enduml

@@ -1,0 +1,73 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+class Cart {
+  #float duration
+  +long name
+  #int phone
+  +deletePhone()
+  +findStatus()
+  +setDescription()
+  +createName()
+}
+class Invoice {
+  +long score
+  +float price
+  #long active
+  +validateScore()
+  +savePrice()
+  +findActive()
+  +cancelName()
+}
+class Order {
+  +float score
+  -long phone
+  +float level
+  +sendDuration()
+  +processAmount()
+  +calculateLevel()
+}
+abstract class Return {
+  -float price
+  -String status
+  +Date type
+  -Date phone
+  +cancelPrice()
+  +cancelPhone()
+  +deleteDescription()
+  +calculateAddress()
+}
+abstract class Supplier {
+  -boolean createdAt
+  #Date status
+  -double note
+  +long duration
+  -double amount
+  +findLevel()
+  +createScore()
+  +sendEmail()
+  +saveDescription()
+}
+interface Warehouse {
+  #long active
+  -boolean email
+  -int duration
+  +long amount
+  #float status
+  +updateAmount()
+}
+class Shipment {
+  -float note
+  -String quantity
+  +deleteActive()
+  +setNote()
+  +deleteEmail()
+}
+Supplier --o Return
+Supplier --o Order
+Order --o Warehouse
+Order --> Return : "0..1"
+note right of Cart : Ecommerce domain
+@enduml

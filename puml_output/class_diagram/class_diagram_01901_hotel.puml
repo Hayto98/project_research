@@ -1,0 +1,49 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class Staff {
+  +boolean score
+  -long status
+  #String quantity
+  -double name
+  +getDuration()
+  +validateDescription()
+  +cancelPhone()
+  +validateNote()
+}
+interface Reservation {
+  -int quantity
+  -int updatedAt
+  #long name
+  +validateDescription()
+  +calculatePrice()
+  +deletePhone()
+}
+class CheckOut {
+  +Date score
+  #String email
+  +processId()
+  +cancelStatus()
+  +savePrice()
+}
+class Booking {
+  -Date email
+  #boolean description
+  +String price
+  #float code
+  +validateDuration()
+}
+interface Payment {
+  #int id
+  -int email
+  #boolean status
+  -long level
+  +processStatus()
+  +findCreatedat()
+}
+Booking ..> Reservation : "1..*"
+CheckOut --|> Booking
+Reservation ..> Payment : "1..*"
+note right of Staff : Hotel domain
+@enduml

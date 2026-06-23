@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+participant "Customer" as C
+actor "Payment Gateway" as PG
+entity "Delivery Service" as DS
+entity "Seller" as S
+PG -> S : Track Order
+activate S
+S --> PG : ACK
+deactivate S
+DS ->> C : Cancel Order
+note over C : processing cancel order
+PG -> C : Make Payment
+DS ->> C : Browse Products
+C ->> DS : Checkout
+S -> PG : Apply Coupon
+activate PG
+PG --> S : ACK
+deactivate PG
+C ->> S : Write Review
+activate S
+S --> C : ACK
+deactivate S
+@enduml

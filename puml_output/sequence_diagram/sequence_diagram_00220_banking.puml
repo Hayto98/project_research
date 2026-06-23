@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+entity "ATM" as A
+entity "Branch Manager" as BM
+participant "Auditor" as A2
+BM -> A2 : View Statement
+BM --> A2 : Pay Bill
+activate A2
+A2 --> BM : ACK
+deactivate A2
+BM -> A : Transfer Funds
+A2 ->> BM : Deposit Money
+activate BM
+BM --> A2 : ACK
+deactivate BM
+note over BM : processing deposit money
+BM -> A2 : Withdraw Cash
+A2 -> A : Block Card
+@enduml

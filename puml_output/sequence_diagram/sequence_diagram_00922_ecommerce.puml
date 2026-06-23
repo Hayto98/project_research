@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+boundary "Seller" as S
+actor "Customer" as C
+actor "Delivery Service" as DS
+DS ->> S : Checkout
+S --> DS : Cancel Order
+C ->> S : Manage Inventory
+activate S
+S --> C : ACK
+deactivate S
+DS ->> C : Write Review
+activate C
+C --> DS : ACK
+deactivate C
+S --> DS : Add To Cart
+note over DS : processing add to cart
+@enduml

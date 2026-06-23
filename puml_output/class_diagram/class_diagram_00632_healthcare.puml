@@ -1,0 +1,57 @@
+@startuml
+skinparam shadowing true
+class Prescription {
+  #Date createdAt
+  +Date total
+  +sendId()
+}
+interface Billing {
+  -double phone
+  +float active
+  +Date type
+  #int status
+  +deleteActive()
+  +sendTotal()
+  +setNote()
+}
+class Appointment {
+  #float phone
+  +Date active
+  -int description
+  +boolean price
+  #int type
+  +processEmail()
+  +validatePrice()
+  +deleteLevel()
+  +getCreatedat()
+}
+class Hospital {
+  +boolean type
+  +float name
+  #int updatedAt
+  #long amount
+  #long code
+  +createAmount()
+  +calculateDuration()
+  +sendPhone()
+  +getName()
+}
+class Insurance {
+  #boolean status
+  -Date email
+  -int amount
+  +saveId()
+  +getEmail()
+  +findPhone()
+}
+class Nurse {
+  +float name
+  #double duration
+  +setPrice()
+  +cancelPhone()
+}
+Nurse --> Prescription : "0..1"
+Insurance --|> Billing
+Insurance --o Prescription
+note right of Prescription : Healthcare domain
+@enduml

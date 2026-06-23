@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+[*] --> Shipped
+Shipped --> Closed : reject
+Shipped : entry / log transaction
+Closed --> Archived : approve
+Archived --> Completed : update
+Completed --> Pending : review
+Pending --> Active : cancel
+Archived --> Completed : revert
+Active --> [*]
+@enduml

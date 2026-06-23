@@ -1,0 +1,46 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class Cart {
+  +long active
+  #Date code
+  +String price
+  -Date name
+  +updateAddress()
+  +cancelPhone()
+}
+class Return {
+  #long name
+  -String phone
+  -long active
+  -float type
+  +long duration
+  +saveEmail()
+  +processLevel()
+}
+class Customer {
+  -long createdAt
+  #String type
+  +String duration
+  +findCode()
+}
+class Payment {
+  #int total
+  +Date description
+  #double updatedAt
+  +boolean duration
+  #String code
+  +saveAmount()
+}
+class Order {
+  -long active
+  +float amount
+  +updateDescription()
+}
+Customer --* Return
+Return --> Payment : "1"
+Payment --* Customer
+note right of Cart : Ecommerce domain
+@enduml

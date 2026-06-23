@@ -1,0 +1,12 @@
+@startuml
+skinparam ArrowColor #555555
+[*] --> Shipped
+Shipped --> Closed : submit
+Shipped : entry / log publisher
+Closed --> Cancelled : process
+Cancelled --> Created : confirm
+Cancelled : entry / log publisher
+Created --> OnHold : confirm
+OnHold --> Shipped : revert
+OnHold --> [*]
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+[*] --> Archived
+Archived --> Reviewed : approve
+Archived : entry / log booking
+Reviewed --> OnHold : reject
+OnHold --> Cancelled : process
+Cancelled --> Pending : reject
+Pending --> Closed : process
+Reviewed --> Pending : revert
+Closed --> [*]
+@enduml

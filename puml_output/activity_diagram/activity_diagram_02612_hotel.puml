@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+start
+:Process Payment;
+:Order Room Service;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Clean Room;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Book Room;
+:Check Out;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Check In;
+stop
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+class Tracking {
+  -float address
+  #boolean name
+  -int total
+  +Date amount
+  +long phone
+  +validateQuantity()
+  +saveScore()
+}
+class Manifest {
+  #int updatedAt
+  -Date total
+  #float phone
+  +findScore()
+  +cancelTotal()
+}
+class DeliveryNote {
+  +float amount
+  #float id
+  #float createdAt
+  +String code
+  +boolean address
+  +updateQuantity()
+  +setPrice()
+  +calculateAddress()
+}
+interface Shipment {
+  #double id
+  #int price
+  #long score
+  +sendActive()
+  +createStatus()
+  +deleteAmount()
+  +processActive()
+}
+interface Package {
+  -long phone
+  #boolean price
+  +cancelDuration()
+}
+Tracking --|> DeliveryNote
+Manifest ..> DeliveryNote : "0..1"
+note right of Tracking : Logistics domain
+@enduml

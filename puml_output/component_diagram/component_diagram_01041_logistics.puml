@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+component "Vehicle Service" as C_VehicleService
+component "Customer Service" as C_CustomerService
+component "Inventory Service" as C_InventoryService
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Driver Service" as C_DriverService
+database "Logistics DB" as DB_logistics
+C_VehicleService --> DB_logistics
+C_DeliveryNoteService --> DB_logistics
+C_DriverService --> DB_logistics
+C_CustomerService ..> C_DriverService : REST
+C_InventoryService ..> C_VehicleService : HTTP
+C_VehicleService ..> C_CustomerService : MQ
+C_InventoryService ..> C_CustomerService : REST
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+control "Librarian" as L
+participant "Student" as S
+entity "Admin" as A
+participant "Teacher" as T
+L ->> A : View Schedule
+activate A
+A --> L : ACK
+deactivate A
+A --> L : Take Attendance
+activate L
+L --> A : ACK
+deactivate L
+note over L : processing take attendance
+S ->> L : Enroll Course
+activate L
+L --> S : ACK
+deactivate L
+T -> A : Register Student
+note over A : processing register student
+@enduml

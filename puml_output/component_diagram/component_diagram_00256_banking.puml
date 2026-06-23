@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+component "Statement Service" as C_StatementService
+component "Deposit Service" as C_DepositService
+component "Transaction Service" as C_TransactionService
+component "Teller Service" as C_TellerService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Transfer Service" as C_TransferService
+component "Card Service" as C_CardService
+database "Banking DB" as DB_banking
+C_StatementService --> DB_banking
+C_TransactionService --> DB_banking
+C_TellerService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_CardService --> DB_banking
+C_StatementService ..> C_TellerService : MQ
+C_TellerService ..> C_TransactionService : HTTP
+C_BeneficiaryService ..> C_TransactionService : MQ
+C_CardService ..> C_BeneficiaryService : MQ
+C_TransactionService ..> C_BeneficiaryService : HTTP
+C_TransactionService ..> C_StatementService : MQ
+@enduml

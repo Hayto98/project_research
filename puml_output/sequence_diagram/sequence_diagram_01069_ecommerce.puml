@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+control "Payment Gateway" as PG
+participant "Admin" as A
+boundary "Customer" as C
+A -> C : Browse Products
+note over C : processing browse products
+PG --> C : Checkout
+PG --> C : Manage Inventory
+C ->> PG : Apply Coupon
+C -> PG : Cancel Order
+A -> PG : Make Payment
+activate PG
+PG --> A : ACK
+deactivate PG
+note over PG : processing make payment
+A --> PG : Track Order
+note over PG : processing track order
+@enduml

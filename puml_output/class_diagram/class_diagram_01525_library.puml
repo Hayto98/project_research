@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+interface Reservation {
+  #double total
+  -float score
+  +createPrice()
+  +findPhone()
+}
+interface Shelf {
+  #boolean amount
+  #float duration
+  +float phone
+  #boolean type
+  +int id
+  +createAddress()
+  +savePhone()
+}
+class Fine {
+  #long active
+  +long phone
+  #boolean total
+  +setStatus()
+}
+class Renewal {
+  +Date note
+  #boolean type
+  +setEmail()
+  +processScore()
+  +deleteAddress()
+  +getCreatedat()
+}
+class Librarian {
+  +String address
+  +int active
+  -float level
+  +processId()
+}
+interface Catalog {
+  #boolean email
+  #long name
+  #float total
+  +validateDescription()
+  +saveCreatedat()
+  +validateAddress()
+  +processQuantity()
+}
+class Publisher {
+  #float level
+  #Date type
+  +sendTotal()
+  +updateScore()
+  +processCreatedat()
+  +setPhone()
+}
+Reservation ..> Renewal : "1"
+Librarian --|> Shelf
+Librarian --* Publisher
+Catalog --> Librarian : "0..1"
+Renewal --> Librarian : "*"
+note right of Reservation : Library domain
+@enduml

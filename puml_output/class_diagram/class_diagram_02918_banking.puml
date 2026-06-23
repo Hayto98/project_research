@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+class Branch {
+  #Date code
+  #Date updatedAt
+  #String quantity
+  +processDescription()
+}
+interface Statement {
+  #float total
+  #String updatedAt
+  +int name
+  +float id
+  +calculateEmail()
+  +getAmount()
+  +processStatus()
+  +saveLevel()
+}
+abstract class Withdrawal {
+  #long updatedAt
+  #double score
+  +processType()
+  +processEmail()
+  +processActive()
+}
+class Beneficiary {
+  -long createdAt
+  +long type
+  -float duration
+  +deleteQuantity()
+}
+class Transfer {
+  +String total
+  -String amount
+  -boolean createdAt
+  +int code
+  +getNote()
+  +saveAmount()
+  +cancelCreatedat()
+  +validatePrice()
+}
+Withdrawal --> Statement : "1..*"
+Beneficiary --* Transfer
+Branch --> Withdrawal : "0..1"
+note right of Branch : Banking domain
+@enduml

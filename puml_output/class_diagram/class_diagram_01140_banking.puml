@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+class Withdrawal {
+  #String active
+  #int total
+  #boolean status
+  #int note
+  +cancelDescription()
+  +findQuantity()
+  +deleteAmount()
+  +sendUpdatedat()
+}
+abstract class Card {
+  -int type
+  +int quantity
+  -float duration
+  +validateUpdatedat()
+  +deleteLevel()
+  +processDuration()
+}
+interface Customer {
+  #int status
+  #int id
+  +calculateName()
+  +calculateActive()
+  +cancelDescription()
+}
+abstract class Beneficiary {
+  #String score
+  -int phone
+  #long status
+  -int quantity
+  +setNote()
+}
+interface Teller {
+  -String code
+  -int price
+  -long amount
+  -int status
+  +createQuantity()
+  +validateTotal()
+  +findId()
+}
+abstract class Deposit {
+  #Date amount
+  +String status
+  +deleteTotal()
+  +getLevel()
+}
+class Branch {
+  +boolean active
+  -float level
+  +long price
+  +deleteAddress()
+  +validateLevel()
+  +calculateNote()
+  +updatePrice()
+}
+Card ..|> Withdrawal
+Withdrawal --|> Beneficiary
+Branch --o Beneficiary
+Customer --|> Card
+Teller ..> Card : "*"
+note right of Withdrawal : Banking domain
+@enduml

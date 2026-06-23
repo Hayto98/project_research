@@ -1,0 +1,21 @@
+@startuml
+
+left to right direction
+actor "Librarian" as Librarian
+actor "Parent" as Parent
+actor "Teacher" as Teacher
+rectangle "Education System" {
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Register Student" as UC_RegisterStudent
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "View Schedule" as UC_ViewSchedule
+  usecase "Issue Certificate" as UC_IssueCertificate
+}
+Librarian --> UC_IssueCertificate
+Librarian --> UC_GradeExam
+Librarian --> UC_BorrowBook
+Parent --> UC_ViewSchedule
+Teacher --> UC_GradeExam
+UC_TakeAttendance ..|> UC_ViewSchedule : <<extend>>
+@enduml

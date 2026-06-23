@@ -1,0 +1,42 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Branch {
+  +long level
+  +String description
+  +sendUpdatedat()
+  +getName()
+  +calculateCreatedat()
+}
+interface Renewal {
+  +float total
+  -int type
+  +getId()
+  +cancelCreatedat()
+  +createDescription()
+  +updateLevel()
+}
+class Reservation {
+  +int active
+  #double duration
+  +long note
+  #long email
+  +cancelEmail()
+  +processEmail()
+  +updateQuantity()
+  +processAddress()
+}
+interface Author {
+  #boolean id
+  #String code
+  #Date total
+  -long description
+  -String address
+  +getName()
+}
+Branch --> Reservation : "0..1"
+Author ..|> Reservation
+note right of Branch : Library domain
+@enduml

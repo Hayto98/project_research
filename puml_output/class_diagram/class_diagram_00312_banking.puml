@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+class Transaction {
+  #float email
+  +Date status
+  -boolean id
+  +cancelQuantity()
+  +processPrice()
+}
+interface Interest {
+  +boolean score
+  #double price
+  -boolean phone
+  #int type
+  +String address
+  +setDuration()
+}
+interface Withdrawal {
+  +boolean quantity
+  -double phone
+  +float createdAt
+  +String duration
+  +deleteQuantity()
+  +validateDescription()
+}
+abstract class Deposit {
+  +double updatedAt
+  +float description
+  +createEmail()
+  +sendLevel()
+}
+Deposit --* Withdrawal
+Deposit ..|> Transaction
+Interest ..|> Withdrawal
+note right of Transaction : Banking domain
+@enduml

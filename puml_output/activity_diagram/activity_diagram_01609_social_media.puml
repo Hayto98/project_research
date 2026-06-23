@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+start
+:Create Post;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Share Post;
+:Edit Profile;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Send Message;
+fork
+:notify admin;
+fork again
+:log change;
+end fork
+:Follow User;
+:Comment;
+:Like Post;
+:Report Content;
+stop
+@enduml

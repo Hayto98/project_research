@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+class Attendance {
+  +int level
+  #int code
+  +Date phone
+  +deleteCode()
+  +saveDescription()
+  +sendEmail()
+}
+interface Classroom {
+  -double description
+  +double id
+  #float createdAt
+  -String quantity
+  #double updatedAt
+  +setEmail()
+  +createStatus()
+  +getDuration()
+}
+abstract class Schedule {
+  +float description
+  +boolean email
+  +double status
+  #long amount
+  -boolean address
+  +processEmail()
+  +createName()
+}
+interface Department {
+  +long phone
+  #long description
+  +saveQuantity()
+}
+interface Exam {
+  -long address
+  +String id
+  #float updatedAt
+  +boolean total
+  #double amount
+  +sendNote()
+  +createUpdatedat()
+}
+Schedule --o Classroom
+Schedule --|> Attendance
+Attendance --|> Classroom
+Schedule ..> Department : "1"
+note right of Attendance : Education domain
+@enduml

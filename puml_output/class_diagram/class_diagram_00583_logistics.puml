@@ -1,0 +1,67 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class DeliveryNote {
+  +Date score
+  +float duration
+  +long quantity
+  +float note
+  #long email
+  +deleteActive()
+  +calculateUpdatedat()
+  +processEmail()
+}
+class Tracking {
+  -float price
+  #float note
+  -int phone
+  +String id
+  +validatePhone()
+}
+interface Package {
+  -float createdAt
+  #long phone
+  +createTotal()
+}
+class FuelLog {
+  #float level
+  +long phone
+  -String quantity
+  +String name
+  +deleteCreatedat()
+  +calculateId()
+  +cancelCreatedat()
+  +getScore()
+}
+interface Vehicle {
+  -boolean updatedAt
+  -double price
+  +deleteActive()
+  +sendUpdatedat()
+}
+class Depot {
+  #int level
+  #float status
+  #int address
+  #long email
+  -Date note
+  +calculateAmount()
+  +updatePhone()
+  +saveScore()
+}
+class Manifest {
+  +boolean amount
+  +String type
+  -int note
+  #float createdAt
+  #boolean id
+  +sendCreatedat()
+}
+Manifest --> Tracking : "*"
+Tracking --|> FuelLog
+DeliveryNote ..> Manifest : "1..*"
+DeliveryNote --* Depot
+Manifest ..|> Depot
+Vehicle --* Tracking
+note right of DeliveryNote : Logistics domain
+@enduml

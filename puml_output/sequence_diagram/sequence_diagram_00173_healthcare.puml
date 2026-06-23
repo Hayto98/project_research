@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+control "Receptionist" as R
+control "Doctor" as D
+boundary "Patient" as P
+control "Insurance Provider" as IP
+P ->> R : Admit Patient
+IP --> D : Discharge Patient
+activate D
+D --> IP : ACK
+deactivate D
+P -> IP : Update Medical Record
+activate IP
+IP --> P : ACK
+deactivate IP
+note over IP : processing update medical record
+IP --> R : Issue Prescription
+note over R : processing issue prescription
+@enduml

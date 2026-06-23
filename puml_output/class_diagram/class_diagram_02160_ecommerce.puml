@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+abstract class Order {
+  +boolean status
+  #Date address
+  -float createdAt
+  +float duration
+  +sendQuantity()
+  +createId()
+  +calculateAddress()
+}
+class Warehouse {
+  +long description
+  #float updatedAt
+  -float type
+  -float createdAt
+  +boolean total
+  +updateDescription()
+  +createName()
+  +deleteName()
+  +setPhone()
+}
+class Review {
+  +String createdAt
+  +double type
+  #boolean quantity
+  -Date status
+  -Date active
+  +createAddress()
+}
+class Supplier {
+  #float id
+  #long status
+  +sendPrice()
+  +sendDuration()
+  +cancelType()
+}
+abstract class Invoice {
+  #Date level
+  #float description
+  +sendStatus()
+  +cancelId()
+  +processQuantity()
+}
+abstract class Payment {
+  -double quantity
+  #boolean id
+  -long code
+  +getAmount()
+}
+class Coupon {
+  #Date id
+  #Date email
+  +String score
+  +validateDescription()
+}
+Payment --> Order : "*"
+Warehouse ..|> Supplier
+Invoice --|> Coupon
+Supplier --|> Coupon
+note right of Order : Ecommerce domain
+@enduml

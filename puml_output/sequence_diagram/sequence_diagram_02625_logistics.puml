@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+control "Dispatcher" as D
+boundary "Customer" as C
+actor "Driver" as D2
+entity "Warehouse Staff" as WS
+WS ->> D2 : Update Inventory
+activate D2
+D2 --> WS : ACK
+deactivate D2
+C --> D : Load Package
+WS ->> C : Schedule Pickup
+activate C
+C --> WS : ACK
+deactivate C
+WS --> D2 : Track Shipment
+activate D2
+D2 --> WS : ACK
+deactivate D2
+D -> WS : Deliver Package
+activate WS
+WS --> D : ACK
+deactivate WS
+@enduml

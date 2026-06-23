@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+component "LabTest Service" as C_LabTestService
+component "Billing Service" as C_BillingService
+component "MedicalRecord Service" as C_MedicalRecordService
+component "Nurse Service" as C_NurseService
+database "Healthcare DB" as DB_healthcare
+C_LabTestService --> DB_healthcare
+C_BillingService --> DB_healthcare
+C_MedicalRecordService --> DB_healthcare
+C_MedicalRecordService ..> C_BillingService : gRPC
+C_NurseService ..> C_LabTestService : REST
+@enduml

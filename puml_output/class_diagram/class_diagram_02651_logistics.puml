@@ -1,0 +1,58 @@
+@startuml
+skinparam defaultFontSize 11
+class Shipment {
+  -Date updatedAt
+  +float amount
+  +double active
+  +double status
+  +saveDuration()
+}
+abstract class FuelLog {
+  #float id
+  -double total
+  +String active
+  +int createdAt
+  +updateCreatedat()
+}
+abstract class Warehouse {
+  -String duration
+  +String note
+  +validateTotal()
+  +findActive()
+  +setNote()
+  +getName()
+}
+class Route {
+  -int code
+  +String level
+  +double note
+  +calculateCode()
+  +validateType()
+  +sendScore()
+}
+interface Driver {
+  #long score
+  -boolean level
+  #float name
+  +float price
+  +findName()
+  +saveName()
+}
+class Manifest {
+  +int phone
+  -long total
+  +updatePhone()
+}
+class Package {
+  #Date total
+  #float description
+  #float id
+  +setEmail()
+  +updateType()
+  +calculateStatus()
+  +saveEmail()
+}
+Route ..> FuelLog : "1..*"
+Shipment --* Driver
+note right of Shipment : Logistics domain
+@enduml

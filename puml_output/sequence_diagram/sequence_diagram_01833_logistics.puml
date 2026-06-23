@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+boundary "Dispatcher" as D
+boundary "Warehouse Staff" as WS
+control "Driver" as D2
+WS -> D : Fuel Vehicle
+D --> WS : Deliver Package
+WS ->> D2 : Assign Route
+D --> WS : Schedule Pickup
+activate WS
+WS --> D : ACK
+deactivate WS
+note over WS : processing schedule pickup
+D2 --> D : Update Inventory
+activate D
+D --> D2 : ACK
+deactivate D
+WS --> D2 : Load Package
+D2 --> WS : Track Shipment
+@enduml

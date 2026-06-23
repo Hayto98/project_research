@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Service Service" as C_ServiceService
+component "Amenity Service" as C_AmenityService
+component "Booking Service" as C_BookingService
+component "CheckOut Service" as C_CheckOutService
+component "Housekeeping Service" as C_HousekeepingService
+database "Hotel DB" as DB_hotel
+C_ServiceService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_CheckOutService ..> C_AmenityService : HTTP
+C_BookingService ..> C_ServiceService : gRPC
+@enduml

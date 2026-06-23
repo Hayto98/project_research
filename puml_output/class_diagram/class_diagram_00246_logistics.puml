@@ -1,0 +1,70 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+abstract class FuelLog {
+  +float quantity
+  +boolean name
+  #boolean id
+  +cancelPrice()
+  +validateTotal()
+}
+class DeliveryNote {
+  -long level
+  -int score
+  +String quantity
+  +sendType()
+  +createPhone()
+  +calculateCreatedat()
+}
+abstract class Package {
+  #int updatedAt
+  #long amount
+  #int quantity
+  -long type
+  #String name
+  +cancelDuration()
+}
+interface Warehouse {
+  +boolean active
+  +boolean description
+  +calculateName()
+  +findAddress()
+  +processActive()
+}
+class Customer {
+  -boolean updatedAt
+  -Date duration
+  +long description
+  -long level
+  #int active
+  +sendLevel()
+  +getPhone()
+  +findPhone()
+  +findType()
+}
+class Manifest {
+  -Date duration
+  -Date description
+  -int createdAt
+  #float phone
+  +boolean status
+  +processDescription()
+  +processLevel()
+  +calculateDuration()
+  +processPhone()
+}
+interface Driver {
+  -int status
+  +boolean name
+  #float description
+  +getQuantity()
+  +savePrice()
+  +updateEmail()
+}
+Manifest --> DeliveryNote : "1..*"
+Driver --|> Package
+DeliveryNote --|> Manifest
+Package --* Warehouse
+note right of FuelLog : Logistics domain
+@enduml

@@ -1,0 +1,56 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+interface Restaurant {
+  +Date quantity
+  +double address
+  -long score
+  +int price
+  +cancelEmail()
+  +saveCode()
+}
+class CheckIn {
+  +boolean phone
+  +String status
+  +boolean note
+  +updateDuration()
+  +calculateCode()
+  +cancelPhone()
+}
+abstract class CheckOut {
+  +double address
+  -boolean phone
+  #boolean score
+  +setNote()
+}
+class Amenity {
+  #boolean level
+  #double price
+  -String amount
+  #boolean updatedAt
+  +updateType()
+}
+abstract class Guest {
+  +String type
+  -boolean score
+  #int description
+  #int note
+  +int total
+  +validateScore()
+  +validateTotal()
+}
+class Payment {
+  +long description
+  -double id
+  +float score
+  +findAmount()
+  +deletePrice()
+  +processAmount()
+  +getId()
+}
+Amenity --> Guest : "1..*"
+CheckOut --o Amenity
+CheckIn ..|> Payment
+note right of Restaurant : Hotel domain
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+component "Shelf Service" as C_ShelfService
+component "Book Service" as C_BookService
+component "Branch Service" as C_BranchService
+component "Publisher Service" as C_PublisherService
+component "Member Service" as C_MemberService
+database "Library DB" as DB_library
+C_ShelfService --> DB_library
+C_BookService --> DB_library
+C_PublisherService --> DB_library
+C_MemberService --> DB_library
+C_MemberService ..> C_PublisherService : MQ
+C_ShelfService ..> C_MemberService : HTTP
+@enduml

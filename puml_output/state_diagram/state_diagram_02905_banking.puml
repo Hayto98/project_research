@@ -1,0 +1,11 @@
+@startuml
+skinparam ArrowColor #555555
+[*] --> Draft
+Draft --> Processing : reject
+Processing --> Approved : update
+Processing : entry / log deposit
+Approved --> Shipped : reject
+Shipped --> OnHold : cancel
+Approved --> Processing : revert
+OnHold --> [*]
+@enduml

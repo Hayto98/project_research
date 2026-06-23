@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+abstract class Account {
+  #Date price
+  +double phone
+  +processScore()
+  +sendCreatedat()
+  +saveType()
+  +createStatus()
+}
+interface Withdrawal {
+  #long price
+  #Date code
+  -boolean note
+  +int quantity
+  #Date level
+  +getUpdatedat()
+  +validateId()
+  +sendStatus()
+}
+interface Transfer {
+  #double note
+  #String code
+  #String type
+  #int price
+  +deleteScore()
+  +findPrice()
+  +cancelQuantity()
+}
+class Transaction {
+  +Date updatedAt
+  #boolean createdAt
+  -int email
+  +calculateLevel()
+}
+interface Interest {
+  +double name
+  +Date code
+  -int active
+  +validateTotal()
+  +sendName()
+  +createAmount()
+  +createDescription()
+}
+interface Statement {
+  #boolean email
+  +int score
+  +boolean level
+  +findStatus()
+  +processEmail()
+}
+Interest ..|> Withdrawal
+Withdrawal --* Transaction
+Statement --* Account
+note right of Account : Banking domain
+@enduml

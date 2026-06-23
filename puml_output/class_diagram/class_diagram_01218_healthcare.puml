@@ -1,0 +1,49 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Diagnosis {
+  -int amount
+  +Date name
+  #float score
+  +createEmail()
+}
+interface LabTest {
+  -float note
+  +float duration
+  +float active
+  -float amount
+  +deleteEmail()
+  +sendId()
+}
+abstract class Treatment {
+  +boolean price
+  +long score
+  +validateCode()
+  +sendScore()
+  +processDuration()
+}
+class Doctor {
+  +boolean note
+  -float total
+  #boolean createdAt
+  +updateDuration()
+  +updateDescription()
+  +setType()
+  +processCode()
+}
+interface Prescription {
+  #Date quantity
+  #int type
+  -boolean price
+  +double code
+  +calculateName()
+  +setUpdatedat()
+  +validateId()
+  +setDescription()
+}
+Diagnosis --o Prescription
+Prescription --* Treatment
+Prescription ..> Diagnosis : "1..*"
+Doctor --|> Prescription
+note right of Diagnosis : Healthcare domain
+@enduml

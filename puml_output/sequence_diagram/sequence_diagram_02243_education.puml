@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+entity "Registrar" as R
+actor "Student" as S
+boundary "Librarian" as L
+control "Admin" as A
+L --> A : Submit Assignment
+note over A : processing submit assignment
+L --> A : Grade Exam
+S --> L : Enroll Course
+A -> S : Borrow Book
+R --> L : Take Attendance
+activate L
+L --> R : ACK
+deactivate L
+note over L : processing take attendance
+R -> L : View Schedule
+activate L
+L --> R : ACK
+deactivate L
+@enduml

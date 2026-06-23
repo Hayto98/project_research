@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+abstract class Shipment {
+  #String status
+  +String score
+  +findActive()
+}
+interface Customer {
+  +long total
+  -String description
+  +long code
+  #boolean quantity
+  +cancelPrice()
+  +cancelNote()
+}
+interface Manifest {
+  -boolean email
+  #float code
+  +String level
+  +cancelPrice()
+  +getDuration()
+}
+interface Warehouse {
+  #int email
+  #boolean price
+  +long total
+  #Date phone
+  +sendLevel()
+}
+interface Route {
+  #boolean name
+  #Date duration
+  #float price
+  #String phone
+  +getPhone()
+}
+Manifest ..|> Customer
+Shipment --o Manifest
+Customer ..> Manifest : "0..1"
+Warehouse --> Shipment : "*"
+note right of Shipment : Logistics domain
+@enduml

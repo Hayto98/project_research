@@ -1,0 +1,50 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+abstract class Billing {
+  +int address
+  +String active
+  +float price
+  +createName()
+  +cancelQuantity()
+}
+class MedicalRecord {
+  -boolean amount
+  +boolean price
+  #String description
+  #String active
+  +double total
+  +findPrice()
+  +findQuantity()
+  +validateAmount()
+  +calculateCode()
+}
+interface Patient {
+  +long note
+  +long name
+  +processType()
+  +createPhone()
+}
+class Hospital {
+  #double phone
+  +double score
+  +sendPhone()
+  +calculateDescription()
+  +setNote()
+  +findLevel()
+}
+abstract class LabTest {
+  +Date duration
+  #String createdAt
+  -String description
+  +sendActive()
+  +setNote()
+  +saveName()
+}
+MedicalRecord --* Patient
+Billing --> LabTest : "1..*"
+Patient --* MedicalRecord
+Patient ..> Hospital : "0..1"
+note right of Billing : Healthcare domain
+@enduml

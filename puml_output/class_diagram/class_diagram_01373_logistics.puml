@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+class Shipment {
+  #Date address
+  #float price
+  #String status
+  +long updatedAt
+  +int total
+  +getStatus()
+}
+class Tracking {
+  +double quantity
+  -boolean phone
+  #long status
+  +cancelId()
+  +deletePrice()
+  +setUpdatedat()
+}
+abstract class Package {
+  -Date createdAt
+  -float note
+  -int price
+  +float total
+  #Date quantity
+  +setType()
+}
+abstract class Route {
+  -long amount
+  -Date updatedAt
+  #String score
+  +setDescription()
+  +calculateActive()
+}
+abstract class Customer {
+  #Date status
+  -String total
+  +processStatus()
+  +calculateCreatedat()
+  +cancelAddress()
+}
+class Vehicle {
+  #int level
+  -long status
+  +String id
+  +sendQuantity()
+  +setTotal()
+  +deleteTotal()
+  +createActive()
+}
+Shipment --o Route
+Customer --> Vehicle : "1"
+Package ..> Vehicle : "0..1"
+Vehicle --> Customer : "1"
+Route --o Package
+note right of Shipment : Logistics domain
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+participant "Customer" as C
+actor "Seller" as S
+participant "Payment Gateway" as PG
+C ->> S : Cancel Order
+C --> S : Make Payment
+activate S
+S --> C : ACK
+deactivate S
+S --> PG : Apply Coupon
+activate PG
+PG --> S : ACK
+deactivate PG
+S ->> PG : Manage Inventory
+note over PG : processing manage inventory
+S ->> C : Add To Cart
+note over C : processing add to cart
+@enduml

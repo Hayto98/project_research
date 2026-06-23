@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+control "Housekeeper" as H
+control "Guest" as G
+control "Receptionist" as R
+control "Chef" as C
+actor "Manager" as M
+M --> C : Book Room
+note over C : processing book room
+M ->> R : Cancel Reservation
+activate R
+R --> M : ACK
+deactivate R
+G -> M : Check Out
+M -> G : Check In
+R -> G : Order Room Service
+C ->> G : Process Payment
+note over G : processing process payment
+M -> C : Clean Room
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+skinparam monochrome true
+[*] --> Approved
+Approved --> Processing : update
+Approved : entry / log shipment
+Processing --> Pending : confirm
+Pending --> Cancelled : reject
+Pending : entry / log shipment
+Cancelled --> Completed : update
+Approved --> Cancelled : revert
+Completed --> [*]
+@enduml

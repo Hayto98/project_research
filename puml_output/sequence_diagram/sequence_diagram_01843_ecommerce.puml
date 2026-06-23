@@ -1,0 +1,18 @@
+@startuml
+skinparam defaultFontSize 11
+actor "Payment Gateway" as PG
+entity "Admin" as A
+boundary "Delivery Service" as DS
+DS ->> PG : Apply Coupon
+note over PG : processing apply coupon
+A --> PG : Track Order
+A --> DS : Make Payment
+A -> DS : Cancel Order
+activate DS
+DS --> A : ACK
+deactivate DS
+note over DS : processing cancel order
+PG -> DS : Add To Cart
+PG --> A : Browse Products
+PG -> DS : Write Review
+@enduml

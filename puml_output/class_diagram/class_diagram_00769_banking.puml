@@ -1,0 +1,47 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Account {
+  #Date id
+  -double level
+  +setPrice()
+  +processDescription()
+}
+class Statement {
+  #String code
+  +long status
+  +String score
+  +long quantity
+  +cancelStatus()
+  +updateCreatedat()
+}
+abstract class Branch {
+  -double type
+  -boolean note
+  #int score
+  +double quantity
+  +float amount
+  +deleteType()
+  +cancelName()
+}
+class Customer {
+  #double createdAt
+  -float id
+  #String level
+  #int type
+  +setLevel()
+  +saveStatus()
+}
+interface Withdrawal {
+  -long id
+  -int status
+  -int code
+  -long note
+  +createNote()
+}
+Customer --o Branch
+Account --> Customer : "1"
+note right of Account : Banking domain
+@enduml

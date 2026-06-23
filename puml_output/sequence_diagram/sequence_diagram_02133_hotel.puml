@@ -1,0 +1,18 @@
+@startuml
+skinparam defaultFontSize 11
+actor "Guest" as G
+entity "Manager" as M
+control "Chef" as C
+boundary "Housekeeper" as H
+H --> C : Order Room Service
+M --> C : Book Room
+note over C : processing book room
+H ->> G : Check Out
+activate G
+G --> H : ACK
+deactivate G
+C ->> M : Request Service
+activate M
+M --> C : ACK
+deactivate M
+@enduml

@@ -1,0 +1,73 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+class Statement {
+  +long active
+  +int code
+  +deleteTotal()
+  +validateName()
+  +calculateAddress()
+}
+class Teller {
+  -float note
+  #long level
+  +long quantity
+  +saveNote()
+  +updateAmount()
+}
+class Loan {
+  #double score
+  +boolean note
+  -int quantity
+  -Date createdAt
+  +updatePhone()
+  +deleteScore()
+  +createUpdatedat()
+  +setPrice()
+}
+interface Transaction {
+  -String email
+  +float price
+  #int createdAt
+  -int address
+  +deleteType()
+  +processQuantity()
+  +sendNote()
+  +processQuantity()
+}
+class Withdrawal {
+  +boolean note
+  #long code
+  +int level
+  +findType()
+  +processActive()
+  +updateLevel()
+  +deleteTotal()
+}
+abstract class Customer {
+  +double name
+  -float price
+  +int level
+  +getId()
+  +validateStatus()
+  +getDuration()
+}
+interface Deposit {
+  +int address
+  +double status
+  #String description
+  +int updatedAt
+  +saveId()
+  +sendType()
+  +processUpdatedat()
+}
+Teller --> Loan : "1..*"
+Statement --|> Transaction
+Loan --* Statement
+Transaction --|> Deposit
+Transaction ..> Loan : "*"
+Deposit --|> Teller
+note right of Statement : Banking domain
+@enduml

@@ -1,0 +1,59 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Statement {
+  #float name
+  #float amount
+  +Date duration
+  +processLevel()
+  +createDuration()
+  +createUpdatedat()
+}
+interface Transfer {
+  -Date score
+  +boolean updatedAt
+  +Date duration
+  +double description
+  +deleteNote()
+}
+class Beneficiary {
+  #float status
+  #long email
+  #boolean duration
+  +cancelActive()
+  +findNote()
+}
+class Withdrawal {
+  #int address
+  -int type
+  +float quantity
+  +double phone
+  +String price
+  +validateEmail()
+  +findDescription()
+  +cancelCode()
+}
+interface Interest {
+  -long status
+  +float id
+  +createStatus()
+  +sendId()
+  +createScore()
+  +processTotal()
+}
+class Loan {
+  #long email
+  -boolean active
+  #Date name
+  +setPrice()
+  +cancelTotal()
+  +cancelAddress()
+  +createDuration()
+}
+Interest --|> Transfer
+Transfer ..> Beneficiary : "1..*"
+Loan --|> Beneficiary
+Withdrawal --o Statement
+Beneficiary --> Interest : "0..1"
+note right of Statement : Banking domain
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Treatment {
+  +double total
+  -double price
+  -float name
+  #String description
+  +float active
+  +updateNote()
+  +saveNote()
+}
+class Diagnosis {
+  -int note
+  -boolean active
+  +String name
+  +updateDuration()
+  +sendTotal()
+  +setAddress()
+}
+abstract class Billing {
+  +double price
+  +int level
+  +Date active
+  #long code
+  #double status
+  +validateName()
+}
+class Patient {
+  -long updatedAt
+  #int note
+  -Date active
+  -double total
+  #Date status
+  +findEmail()
+  +findAmount()
+  +calculateTotal()
+}
+Diagnosis --> Billing : "1"
+Billing ..> Treatment : "1"
+note right of Treatment : Healthcare domain
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Loan Service" as C_LoanService
+component "Card Service" as C_CardService
+component "Statement Service" as C_StatementService
+component "Account Service" as C_AccountService
+component "Teller Service" as C_TellerService
+database "Banking DB" as DB_banking
+C_LoanService --> DB_banking
+C_StatementService ..> C_TellerService : MQ
+C_TellerService ..> C_CardService : REST
+C_LoanService ..> C_AccountService : HTTP
+C_LoanService ..> C_CardService : gRPC
+@enduml

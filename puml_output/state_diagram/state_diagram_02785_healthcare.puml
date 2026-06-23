@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+[*] --> Processing
+Processing --> Cancelled : approve
+Cancelled --> OnHold : approve
+Cancelled : entry / log diagnosis
+OnHold --> Rejected : confirm
+OnHold : entry / log diagnosis
+Rejected --> Pending : process
+Pending --> Created : review
+Created --> [*]
+@enduml

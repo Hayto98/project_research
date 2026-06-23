@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+class Library {
+  #int total
+  +int code
+  +Date email
+  +float quantity
+  +processLevel()
+  +saveDescription()
+  +createCreatedat()
+  +findActive()
+}
+abstract class Enrollment {
+  #boolean address
+  +Date id
+  +updateDescription()
+}
+interface Classroom {
+  +float total
+  +float level
+  -float type
+  -double score
+  +Date address
+  +saveAddress()
+}
+interface Department {
+  +double score
+  #double type
+  -float email
+  +saveAddress()
+  +processStatus()
+  +processDescription()
+  +sendDescription()
+}
+abstract class Teacher {
+  +float score
+  #long duration
+  +boolean type
+  +processScore()
+  +findType()
+  +setDuration()
+  +saveTotal()
+}
+Classroom ..|> Department
+Enrollment --|> Department
+Library ..> Classroom : "1"
+Teacher --> Department : "1"
+note right of Library : Education domain
+@enduml

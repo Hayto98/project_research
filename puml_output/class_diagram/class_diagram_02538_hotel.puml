@@ -1,0 +1,41 @@
+@startuml
+skinparam monochrome true
+class Housekeeping {
+  #String createdAt
+  -String name
+  -boolean id
+  +cancelDuration()
+  +sendDuration()
+}
+interface CheckIn {
+  -boolean email
+  #boolean phone
+  -double note
+  -long quantity
+  +createStatus()
+  +deleteActive()
+}
+abstract class Invoice {
+  -boolean createdAt
+  +long price
+  +updatePrice()
+  +setAmount()
+  +saveId()
+  +calculateAmount()
+}
+interface Service {
+  -Date name
+  -boolean quantity
+  #String duration
+  #double amount
+  -double price
+  +saveType()
+}
+class CheckOut {
+  #boolean createdAt
+  -float description
+  +getAmount()
+}
+Housekeeping ..> CheckOut : "1..*"
+note right of Housekeeping : Hotel domain
+@enduml

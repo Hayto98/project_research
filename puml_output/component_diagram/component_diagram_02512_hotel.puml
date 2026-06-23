@@ -1,0 +1,15 @@
+@startuml
+skinparam ArrowColor #555555
+component "Restaurant Service" as C_RestaurantService
+component "Amenity Service" as C_AmenityService
+component "Invoice Service" as C_InvoiceService
+component "CheckOut Service" as C_CheckOutService
+database "Hotel DB" as DB_hotel
+C_RestaurantService --> DB_hotel
+C_AmenityService --> DB_hotel
+C_InvoiceService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_RestaurantService ..> C_AmenityService : gRPC
+C_CheckOutService ..> C_AmenityService : MQ
+C_RestaurantService ..> C_InvoiceService : gRPC
+@enduml

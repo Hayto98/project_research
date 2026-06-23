@@ -1,0 +1,49 @@
+@startuml
+
+class Product {
+  #boolean active
+  +float amount
+  +getScore()
+}
+class Review {
+  #Date status
+  +int duration
+  +long code
+  +int price
+  +Date type
+  +cancelStatus()
+  +calculateUpdatedat()
+}
+class Order {
+  -double createdAt
+  +float email
+  -float active
+  -String total
+  #boolean quantity
+  +cancelCreatedat()
+  +getNote()
+}
+class Warehouse {
+  +float score
+  +boolean createdAt
+  +deleteQuantity()
+}
+abstract class Shipment {
+  +boolean price
+  -int email
+  +processStatus()
+}
+class Wishlist {
+  -double amount
+  -boolean email
+  #Date active
+  +sendId()
+  +processNote()
+}
+Warehouse --* Shipment
+Warehouse --o Order
+Review --|> Shipment
+Wishlist --> Shipment : "1..*"
+Shipment --* Product
+note right of Product : Ecommerce domain
+@enduml

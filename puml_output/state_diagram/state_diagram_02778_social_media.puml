@@ -1,0 +1,13 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+[*] --> Pending
+Pending --> Processing : process
+Pending : entry / log message
+Processing --> Cancelled : approve
+Processing : entry / log message
+Cancelled --> Created : update
+Created --> Completed : approve
+Created : entry / log message
+Completed --> [*]
+@enduml

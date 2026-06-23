@@ -1,0 +1,65 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+interface Renewal {
+  +long createdAt
+  #int type
+  -boolean active
+  #double name
+  -int note
+  +findCode()
+}
+class Librarian {
+  -float address
+  +int status
+  -Date createdAt
+  +validateTotal()
+  +sendAmount()
+  +findNote()
+}
+abstract class Branch {
+  -Date score
+  -float name
+  +processEmail()
+  +validateCode()
+  +validateName()
+}
+interface Loan {
+  #String id
+  -Date score
+  +createQuantity()
+  +sendCreatedat()
+  +validatePrice()
+  +processPhone()
+}
+class Member {
+  #long type
+  #double address
+  -double duration
+  -boolean total
+  +updatePrice()
+}
+class Publisher {
+  #float createdAt
+  -String amount
+  +getNote()
+  +getCreatedat()
+  +createName()
+}
+class Catalog {
+  -int address
+  +int score
+  +Date price
+  +boolean description
+  +findActive()
+  +saveDuration()
+  +deleteActive()
+  +updateType()
+}
+Member --> Publisher : "1"
+Loan --o Branch
+Renewal --|> Member
+Publisher --|> Branch
+Renewal --* Librarian
+note right of Renewal : Library domain
+@enduml

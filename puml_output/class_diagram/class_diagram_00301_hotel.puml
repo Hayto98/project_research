@@ -1,0 +1,36 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+abstract class Staff {
+  +String duration
+  -String quantity
+  +createDescription()
+  +findName()
+}
+class Amenity {
+  -Date total
+  -int code
+  +String price
+  +cancelNote()
+}
+abstract class Reservation {
+  -boolean code
+  +long total
+  +setId()
+}
+abstract class Payment {
+  #Date email
+  +float score
+  +String active
+  +boolean status
+  +validateId()
+  +updateAmount()
+  +cancelCode()
+}
+Payment ..> Staff : "*"
+Payment --* Reservation
+Reservation ..> Amenity : "1..*"
+note right of Staff : Hotel domain
+@enduml

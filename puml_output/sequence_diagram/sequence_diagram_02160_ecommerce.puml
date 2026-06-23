@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+boundary "Admin" as A
+boundary "Seller" as S
+actor "Customer" as C
+actor "Delivery Service" as DS
+A -> C : Write Review
+activate C
+C --> A : ACK
+deactivate C
+S -> C : Add To Cart
+activate C
+C --> S : ACK
+deactivate C
+note over C : processing add to cart
+A -> C : Manage Inventory
+DS -> C : Apply Coupon
+activate C
+C --> DS : ACK
+deactivate C
+S ->> A : Make Payment
+activate A
+A --> S : ACK
+deactivate A
+C -> A : Track Order
+S -> A : Browse Products
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam ArrowColor #555555
+left to right direction
+actor "Delivery Service" as DeliveryService
+actor "Payment Gateway" as PaymentGateway
+rectangle "Ecommerce System" {
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Checkout" as UC_Checkout
+  usecase "Make Payment" as UC_MakePayment
+  usecase "Track Order" as UC_TrackOrder
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Cancel Order" as UC_CancelOrder
+}
+DeliveryService --> UC_MakePayment
+DeliveryService --> UC_ManageInventory
+DeliveryService --> UC_AddToCart
+PaymentGateway --> UC_TrackOrder
+UC_ApplyCoupon ..|> UC_TrackOrder : <<include>>
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+control "Admin" as A
+participant "Payment Gateway" as PG
+actor "Seller" as S
+A ->> PG : Checkout
+activate PG
+PG --> A : ACK
+deactivate PG
+A ->> PG : Apply Coupon
+PG -> S : Write Review
+A --> PG : Browse Products
+A --> S : Add To Cart
+S --> A : Make Payment
+A --> PG : Cancel Order
+activate PG
+PG --> A : ACK
+deactivate PG
+note over PG : processing cancel order
+@enduml

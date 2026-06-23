@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+abstract class Staff {
+  +long email
+  +int code
+  +long createdAt
+  -long total
+  +findActive()
+}
+abstract class Restaurant {
+  -String email
+  #Date description
+  +long address
+  -float code
+  +calculateTotal()
+  +setQuantity()
+}
+interface Guest {
+  #String quantity
+  #String active
+  #long name
+  +createPhone()
+  +setId()
+}
+class CheckIn {
+  +Date email
+  +Date type
+  +processScore()
+}
+class Booking {
+  +int status
+  #long quantity
+  -Date phone
+  +processTotal()
+}
+abstract class Amenity {
+  #float total
+  -String code
+  +long status
+  +getStatus()
+  +findDuration()
+  +cancelDescription()
+}
+Restaurant ..> Guest : "*"
+CheckIn --> Amenity : "1..*"
+CheckIn ..> Restaurant : "1"
+note right of Staff : Hotel domain
+@enduml

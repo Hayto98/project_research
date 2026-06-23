@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+interface Coupon {
+  #float level
+  -int quantity
+  +String duration
+  +calculateName()
+  +validateTotal()
+  +calculateAmount()
+}
+interface Category {
+  #float note
+  +double duration
+  #Date id
+  -Date address
+  +updateDuration()
+  +calculateAddress()
+  +saveCreatedat()
+  +cancelNote()
+}
+interface Customer {
+  +float note
+  #Date level
+  +cancelActive()
+  +calculateAddress()
+  +processScore()
+  +calculateTotal()
+}
+interface Review {
+  #String createdAt
+  +double total
+  +int updatedAt
+  #int type
+  +getStatus()
+  +getNote()
+}
+class Order {
+  +String id
+  -boolean amount
+  -long note
+  +float description
+  +getTotal()
+  +createQuantity()
+  +getDuration()
+}
+Category --o Coupon
+Review ..|> Order
+note right of Coupon : Ecommerce domain
+@enduml

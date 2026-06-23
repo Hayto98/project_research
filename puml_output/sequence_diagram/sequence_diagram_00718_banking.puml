@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+actor "ATM" as A
+entity "Account Holder" as AH
+entity "Bank Teller" as BT
+A ->> AH : Transfer Funds
+activate AH
+AH --> A : ACK
+deactivate AH
+AH ->> BT : Apply For Loan
+activate BT
+BT --> AH : ACK
+deactivate BT
+AH ->> A : View Statement
+note over A : processing view statement
+A --> AH : Deposit Money
+activate AH
+AH --> A : ACK
+deactivate AH
+AH -> A : Withdraw Cash
+AH ->> A : Block Card
+@enduml

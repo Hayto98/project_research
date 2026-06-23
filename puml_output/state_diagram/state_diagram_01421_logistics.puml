@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+[*] --> Pending
+Pending --> Delivered : confirm
+Delivered --> Shipped : confirm
+Delivered : entry / log package
+Shipped --> Draft : reject
+Draft --> Active : reject
+Delivered --> Draft : revert
+Active --> [*]
+@enduml

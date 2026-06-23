@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class Warehouse {
+  -float quantity
+  #boolean score
+  -String email
+  -float address
+  +validateLevel()
+  +getLevel()
+  +processDescription()
+  +saveDescription()
+}
+interface Shipment {
+  +double id
+  -float price
+  #int email
+  #double updatedAt
+  +validateQuantity()
+  +validateStatus()
+}
+interface Invoice {
+  #String createdAt
+  #float amount
+  -Date id
+  +setQuantity()
+}
+interface Supplier {
+  #float createdAt
+  -double address
+  -float name
+  +double id
+  +getAmount()
+  +findEmail()
+  +processActive()
+}
+interface Customer {
+  #float total
+  #float description
+  +long phone
+  -float type
+  +findPrice()
+  +cancelTotal()
+}
+class Category {
+  -int price
+  -String createdAt
+  +deleteUpdatedat()
+  +getEmail()
+  +deleteDescription()
+}
+abstract class Coupon {
+  +long name
+  +Date total
+  +getDescription()
+  +saveAmount()
+  +saveAmount()
+}
+Category ..|> Invoice
+Category --|> Coupon
+Shipment ..> Customer : "0..1"
+Customer --> Warehouse : "*"
+Warehouse ..> Coupon : "*"
+Supplier ..|> Warehouse
+note right of Warehouse : Ecommerce domain
+@enduml

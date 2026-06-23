@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Inventory Service" as C_InventoryService
+component "Tracking Service" as C_TrackingService
+component "Shipment Service" as C_ShipmentService
+component "Package Service" as C_PackageService
+component "Manifest Service" as C_ManifestService
+component "Vehicle Service" as C_VehicleService
+database "Logistics DB" as DB_logistics
+C_InventoryService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_TrackingService ..> C_ShipmentService : HTTP
+C_InventoryService ..> C_ManifestService : MQ
+@enduml

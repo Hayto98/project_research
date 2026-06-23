@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+actor "Student" as S
+boundary "Librarian" as L
+control "Parent" as P
+actor "Admin" as A
+control "Teacher" as T
+S --> L : Take Attendance
+activate L
+L --> S : ACK
+deactivate L
+S -> T : Register Student
+activate T
+T --> S : ACK
+deactivate T
+A ->> L : View Schedule
+L -> P : Enroll Course
+activate P
+P --> L : ACK
+deactivate P
+note over P : processing enroll course
+L ->> S : Grade Exam
+@enduml

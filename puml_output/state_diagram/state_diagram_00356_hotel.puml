@@ -1,0 +1,12 @@
+@startuml
+skinparam defaultFontSize 11
+[*] --> OnHold
+OnHold --> Shipped : update
+OnHold : entry / log checkout
+Shipped --> Rejected : reject
+Rejected --> Processing : approve
+Processing --> Cancelled : submit
+Cancelled --> Pending : review
+Rejected --> Shipped : revert
+Pending --> [*]
+@enduml

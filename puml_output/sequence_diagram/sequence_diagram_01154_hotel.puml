@@ -1,0 +1,34 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+entity "Housekeeper" as H
+entity "Receptionist" as R
+participant "Guest" as G
+boundary "Manager" as M
+boundary "Chef" as C
+C --> M : Check In
+note over M : processing check in
+R --> M : Clean Room
+activate M
+M --> R : ACK
+deactivate M
+G --> H : Process Payment
+activate H
+H --> G : ACK
+deactivate H
+note over H : processing process payment
+C --> M : Cancel Reservation
+activate M
+M --> C : ACK
+deactivate M
+G -> H : Book Room
+activate H
+H --> G : ACK
+deactivate H
+R ->> G : Check Out
+activate G
+G --> R : ACK
+deactivate G
+R --> M : Order Room Service
+@enduml

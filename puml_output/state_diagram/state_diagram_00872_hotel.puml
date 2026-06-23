@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+[*] --> Approved
+Approved --> Created : reject
+Approved : entry / log payment
+Created --> Cancelled : cancel
+Cancelled --> Active : submit
+Active --> OnHold : reject
+Active : entry / log payment
+Created --> OnHold : revert
+OnHold --> [*]
+@enduml

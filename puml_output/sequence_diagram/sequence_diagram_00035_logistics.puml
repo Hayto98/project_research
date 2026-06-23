@@ -1,0 +1,16 @@
+@startuml
+skinparam defaultFontSize 11
+control "Customer" as C
+entity "Driver" as D
+control "Fleet Manager" as FM
+boundary "Warehouse Staff" as WS
+C ->> WS : Update Inventory
+WS ->> D : Track Shipment
+activate D
+D --> WS : ACK
+deactivate D
+WS -> C : Schedule Pickup
+note over C : processing schedule pickup
+C ->> D : Deliver Package
+note over D : processing deliver package
+@enduml

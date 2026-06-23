@@ -1,0 +1,75 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+class Customer {
+  #Date address
+  +int updatedAt
+  +deleteLevel()
+  +sendType()
+  +processId()
+  +cancelScore()
+}
+class Interest {
+  +Date description
+  +boolean active
+  #int createdAt
+  -String type
+  +calculateQuantity()
+  +calculateEmail()
+}
+abstract class Deposit {
+  #String duration
+  +long updatedAt
+  #long createdAt
+  +setAmount()
+  +sendName()
+  +saveTotal()
+  +processScore()
+}
+abstract class Branch {
+  -double duration
+  -double createdAt
+  +boolean email
+  #int address
+  -double price
+  +updateCreatedat()
+  +getCode()
+  +processCreatedat()
+  +processCreatedat()
+}
+class Teller {
+  +double price
+  #float amount
+  +calculateType()
+  +deleteName()
+  +cancelLevel()
+}
+class Transaction {
+  -boolean duration
+  -int updatedAt
+  #int quantity
+  +double email
+  +double score
+  +getNote()
+  +setUpdatedat()
+  +getDescription()
+  +getCode()
+}
+class Withdrawal {
+  -Date updatedAt
+  -double type
+  #long score
+  -boolean id
+  +cancelQuantity()
+  +calculateAddress()
+}
+Branch --* Teller
+Teller --> Customer : "*"
+Withdrawal ..> Transaction : "1..*"
+Branch --o Deposit
+Teller --|> Branch
+Withdrawal ..> Branch : "1"
+note right of Customer : Banking domain
+@enduml

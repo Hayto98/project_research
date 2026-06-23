@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+component "Author Service" as C_AuthorService
+component "Librarian Service" as C_LibrarianService
+component "Loan Service" as C_LoanService
+component "Publisher Service" as C_PublisherService
+database "Library DB" as DB_library
+C_AuthorService --> DB_library
+C_LibrarianService --> DB_library
+C_LoanService --> DB_library
+C_PublisherService --> DB_library
+C_LoanService ..> C_LibrarianService : MQ
+C_LoanService ..> C_PublisherService : gRPC
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+actor "Dispatcher" as D
+control "Warehouse Staff" as WS
+boundary "Driver" as D2
+D ->> WS : Track Shipment
+D2 ->> D : Deliver Package
+D --> D2 : Schedule Pickup
+note over D2 : processing schedule pickup
+D -> WS : Assign Route
+D -> D2 : Fuel Vehicle
+note over D2 : processing fuel vehicle
+WS -> D : Load Package
+note over D : processing load package
+D2 ->> D : Report Issue
+@enduml

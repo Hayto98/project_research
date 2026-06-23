@@ -1,0 +1,43 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+abstract class Billing {
+  +float price
+  -boolean updatedAt
+  +deleteDescription()
+  +saveStatus()
+  +calculateLevel()
+}
+interface MedicalRecord {
+  -long updatedAt
+  #int price
+  +calculateCode()
+}
+class Doctor {
+  -int status
+  +float description
+  #Date phone
+  +deleteLevel()
+  +deleteStatus()
+  +findCode()
+}
+class Diagnosis {
+  -long level
+  +String phone
+  #String address
+  +validateLevel()
+}
+class Treatment {
+  +long id
+  #boolean description
+  -long address
+  +sendPhone()
+  +calculateActive()
+  +getDescription()
+  +getNote()
+}
+Diagnosis ..> Treatment : "1"
+Doctor ..|> MedicalRecord
+Treatment --> Doctor : "0..1"
+note right of Billing : Healthcare domain
+@enduml

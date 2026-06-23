@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Order {
+  #Date description
+  #int amount
+  +processAddress()
+  +findAmount()
+  +saveLevel()
+}
+class Return {
+  -float price
+  +Date quantity
+  -float email
+  #boolean duration
+  -String active
+  +saveAddress()
+  +findAddress()
+  +createScore()
+}
+interface Payment {
+  -long id
+  +double amount
+  +int note
+  -boolean phone
+  +getActive()
+}
+interface Supplier {
+  -double id
+  +long code
+  +findScore()
+  +deleteQuantity()
+  +sendStatus()
+}
+class Customer {
+  -Date createdAt
+  #Date level
+  +processStatus()
+}
+Customer ..> Supplier : "0..1"
+Order ..|> Customer
+note right of Order : Ecommerce domain
+@enduml

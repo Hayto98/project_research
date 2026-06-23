@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+component "Order Service" as C_OrderService
+component "Invoice Service" as C_InvoiceService
+component "Payment Service" as C_PaymentService
+component "Product Service" as C_ProductService
+component "Customer Service" as C_CustomerService
+database "Ecommerce DB" as DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_OrderService ..> C_ProductService : HTTP
+C_CustomerService ..> C_OrderService : REST
+C_ProductService ..> C_PaymentService : MQ
+C_OrderService ..> C_InvoiceService : MQ
+@enduml

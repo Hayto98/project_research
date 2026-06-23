@@ -1,0 +1,16 @@
+@startuml
+skinparam defaultFontSize 13
+[*] --> Cancelled
+Cancelled --> Delivered : confirm
+Cancelled : entry / log review
+Delivered --> OnHold : review
+Delivered : entry / log review
+OnHold --> Shipped : approve
+OnHold : entry / log review
+Shipped --> Active : approve
+Shipped : entry / log review
+Active --> Created : update
+Active : entry / log review
+Created --> OnHold : revert
+Created --> [*]
+@enduml

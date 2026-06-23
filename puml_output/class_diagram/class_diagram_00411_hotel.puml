@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+class Housekeeping {
+  #long status
+  #int description
+  +String price
+  +String id
+  +deleteAddress()
+  +cancelDescription()
+  +validateDuration()
+  +saveId()
+}
+class Payment {
+  #float quantity
+  +double id
+  +float name
+  +setPrice()
+}
+class Service {
+  #boolean updatedAt
+  -float name
+  +processDuration()
+  +saveTotal()
+  +getDuration()
+}
+abstract class Invoice {
+  -float code
+  -String price
+  +int status
+  +updateName()
+}
+Housekeeping ..|> Service
+Service --* Invoice
+Invoice --|> Housekeeping
+note right of Housekeeping : Hotel domain
+@enduml

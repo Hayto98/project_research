@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Notification {
+  #boolean amount
+  -String name
+  #long quantity
+  +deleteTotal()
+  +getCreatedat()
+}
+class Post {
+  +double createdAt
+  -int note
+  #Date duration
+  -double amount
+  +updateTotal()
+  +sendEmail()
+  +createDescription()
+}
+class Like {
+  #double type
+  #boolean total
+  +long updatedAt
+  #int level
+  +updateScore()
+  +deleteEmail()
+}
+class Profile {
+  #float status
+  -double score
+  #Date amount
+  -Date active
+  +findStatus()
+}
+abstract class Group {
+  #String name
+  -long score
+  #float status
+  +int quantity
+  +deleteDuration()
+  +validateEmail()
+  +saveType()
+  +sendLevel()
+}
+class Album {
+  -Date description
+  -float note
+  +deletePhone()
+  +calculateNote()
+  +sendLevel()
+}
+Group --> Like : "1..*"
+Album ..|> Notification
+Album --* Group
+Group --* Post
+note right of Notification : Social Media domain
+@enduml

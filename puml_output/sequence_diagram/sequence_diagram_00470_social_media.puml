@@ -1,0 +1,19 @@
+@startuml
+
+boundary "Advertiser" as A
+entity "User" as U
+control "Moderator" as M
+A -> U : Comment
+activate U
+U --> A : ACK
+deactivate U
+U --> M : Send Message
+note over M : processing send message
+A --> U : Like Post
+activate U
+U --> A : ACK
+deactivate U
+M -> A : Follow User
+note over A : processing follow user
+M ->> U : Report Content
+@enduml

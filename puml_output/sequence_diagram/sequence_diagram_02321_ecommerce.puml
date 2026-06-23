@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+participant "Payment Gateway" as PG
+control "Delivery Service" as DS
+control "Customer" as C
+actor "Admin" as A
+PG -> C : Track Order
+note over C : processing track order
+C -> PG : Write Review
+C -> A : Checkout
+A -> DS : Add To Cart
+DS --> A : Manage Inventory
+activate A
+A --> DS : ACK
+deactivate A
+note over A : processing manage inventory
+C --> A : Cancel Order
+activate A
+A --> C : ACK
+deactivate A
+A -> PG : Apply Coupon
+activate PG
+PG --> A : ACK
+deactivate PG
+@enduml

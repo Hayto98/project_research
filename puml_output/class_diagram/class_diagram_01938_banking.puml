@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+abstract class Customer {
+  +boolean updatedAt
+  #Date email
+  +boolean total
+  -float score
+  +boolean status
+  +createTotal()
+  +setPrice()
+  +setId()
+}
+abstract class Deposit {
+  #int type
+  -boolean description
+  +calculatePrice()
+  +processEmail()
+  +cancelCreatedat()
+}
+class Beneficiary {
+  -Date amount
+  -Date quantity
+  +Date status
+  -double score
+  #String createdAt
+  +updateDuration()
+  +sendLevel()
+  +calculateScore()
+  +findAddress()
+}
+abstract class Teller {
+  +Date status
+  #String id
+  #Date code
+  #int total
+  +float description
+  +saveDescription()
+  +validateAddress()
+}
+class Withdrawal {
+  -long code
+  -float type
+  -Date active
+  #String price
+  +sendScore()
+}
+Withdrawal ..> Deposit : "*"
+Beneficiary ..> Teller : "1..*"
+Customer --|> Beneficiary
+Withdrawal --* Customer
+note right of Customer : Banking domain
+@enduml

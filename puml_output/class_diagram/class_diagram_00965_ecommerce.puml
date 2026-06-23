@@ -1,0 +1,60 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+interface Order {
+  #float price
+  -boolean id
+  +saveType()
+  +setDescription()
+  +updateDescription()
+  +calculateLevel()
+}
+class Product {
+  +String updatedAt
+  +int total
+  -double status
+  +saveCreatedat()
+}
+interface Shipment {
+  -long type
+  -long code
+  +long active
+  +processStatus()
+  +saveLevel()
+  +validateCode()
+}
+class Warehouse {
+  -boolean score
+  +String status
+  +saveQuantity()
+  +createId()
+  +findPrice()
+  +validateTotal()
+}
+class Cart {
+  +long status
+  -int code
+  +createDescription()
+}
+class Invoice {
+  +float name
+  -String type
+  +int description
+  +sendScore()
+  +createCreatedat()
+  +getTotal()
+}
+class Return {
+  +String quantity
+  -int email
+  +calculateId()
+}
+Order --|> Warehouse
+Product ..|> Invoice
+Return ..|> Cart
+Warehouse --> Invoice : "1"
+Order --* Invoice
+Warehouse --o Shipment
+note right of Order : Ecommerce domain
+@enduml

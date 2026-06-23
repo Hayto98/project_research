@@ -1,0 +1,48 @@
+@startuml
+
+class Appointment {
+  +Date status
+  -boolean email
+  #boolean code
+  +validateActive()
+  +deleteCreatedat()
+  +findLevel()
+}
+class Hospital {
+  +long quantity
+  #Date price
+  #boolean updatedAt
+  +sendActive()
+  +createScore()
+  +findQuantity()
+  +deleteName()
+}
+abstract class Nurse {
+  -boolean address
+  +boolean quantity
+  +saveLevel()
+  +validateAddress()
+  +updateId()
+}
+interface MedicalRecord {
+  +double phone
+  -String code
+  #String duration
+  #boolean updatedAt
+  #long level
+  +setStatus()
+}
+class Ward {
+  +boolean note
+  -Date quantity
+  -Date phone
+  +processType()
+  +updateScore()
+  +findTotal()
+}
+MedicalRecord ..> Nurse : "0..1"
+Nurse --o Hospital
+Hospital --* Nurse
+MedicalRecord --* Ward
+note right of Appointment : Healthcare domain
+@enduml

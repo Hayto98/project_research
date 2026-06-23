@@ -1,0 +1,67 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+abstract class CheckIn {
+  -String description
+  -int status
+  #boolean amount
+  #double duration
+  +validateDescription()
+  +saveQuantity()
+  +setScore()
+}
+class Restaurant {
+  #int createdAt
+  -String phone
+  +deleteCode()
+  +processStatus()
+  +processPrice()
+  +getDescription()
+}
+class Room {
+  #boolean email
+  -long score
+  +boolean active
+  +calculateDescription()
+  +calculateAmount()
+  +getUpdatedat()
+}
+class Payment {
+  -double description
+  #int id
+  +float address
+  #boolean updatedAt
+  +calculatePrice()
+  +cancelLevel()
+}
+abstract class Booking {
+  +String name
+  #double level
+  -String id
+  #double updatedAt
+  +findId()
+  +createEmail()
+  +validateQuantity()
+}
+interface Guest {
+  #double note
+  -boolean address
+  -Date duration
+  +saveQuantity()
+}
+interface Staff {
+  -boolean quantity
+  +Date amount
+  #boolean price
+  +Date name
+  -float updatedAt
+  +calculatePhone()
+}
+Guest --> Room : "1..*"
+CheckIn --* Staff
+Booking --* CheckIn
+CheckIn --|> Payment
+Booking --o Payment
+Payment ..> Room : "1..*"
+note right of CheckIn : Hotel domain
+@enduml

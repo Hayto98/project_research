@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+actor "Lab Technician" as LT
+participant "Receptionist" as R
+actor "Doctor" as D
+D --> LT : Update Medical Record
+R --> D : Discharge Patient
+activate D
+D --> R : ACK
+deactivate D
+LT --> D : Issue Prescription
+LT ->> D : Run Lab Test
+activate D
+D --> LT : ACK
+deactivate D
+D -> LT : Process Insurance Claim
+activate LT
+LT --> D : ACK
+deactivate LT
+@enduml

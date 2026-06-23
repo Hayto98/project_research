@@ -1,0 +1,61 @@
+@startuml
+skinparam ArrowColor #555555
+class Supplier {
+  +long total
+  -float id
+  +saveNote()
+  +sendEmail()
+  +validateQuantity()
+  +updateId()
+}
+abstract class Payment {
+  +float level
+  #Date active
+  #int price
+  -Date type
+  +int code
+  +deleteScore()
+  +sendScore()
+  +savePrice()
+}
+interface Coupon {
+  +boolean createdAt
+  #boolean price
+  +Date updatedAt
+  +calculateDescription()
+  +saveName()
+  +findAmount()
+  +deleteCode()
+}
+abstract class Order {
+  +double name
+  +long active
+  +float amount
+  #double type
+  +setAmount()
+  +validateQuantity()
+  +updateQuantity()
+  +setEmail()
+}
+interface Warehouse {
+  -int address
+  +float status
+  +boolean price
+  #int quantity
+  +createPhone()
+}
+abstract class Customer {
+  #float name
+  -String level
+  #boolean type
+  +cancelStatus()
+  +validateAmount()
+  +validateDescription()
+  +saveAmount()
+}
+Coupon --> Supplier : "1..*"
+Supplier ..|> Payment
+Supplier --* Warehouse
+Supplier --|> Customer
+note right of Supplier : Ecommerce domain
+@enduml

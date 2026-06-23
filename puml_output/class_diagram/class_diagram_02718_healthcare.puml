@@ -1,0 +1,56 @@
+@startuml
+skinparam monochrome true
+class MedicalRecord {
+  +Date code
+  -boolean name
+  +deleteAmount()
+  +calculateDescription()
+  +setAddress()
+  +saveType()
+}
+class Doctor {
+  -String active
+  #long id
+  #long updatedAt
+  +int address
+  #float score
+  +processQuantity()
+  +updateLevel()
+}
+interface Treatment {
+  +long createdAt
+  +boolean status
+  +double quantity
+  #float name
+  +long id
+  +createScore()
+  +deleteAddress()
+}
+class Insurance {
+  #boolean address
+  +boolean id
+  +deleteDescription()
+  +createId()
+  +validateEmail()
+}
+class Billing {
+  +double code
+  +int quantity
+  #String price
+  +String score
+  +processType()
+  +sendQuantity()
+}
+abstract class Prescription {
+  #boolean duration
+  #double description
+  +float email
+  +validateActive()
+  +sendName()
+  +getDuration()
+}
+Doctor ..> Insurance : "1"
+Billing --* Doctor
+Insurance --o Billing
+note right of MedicalRecord : Healthcare domain
+@enduml

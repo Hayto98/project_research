@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+participant "Insurance Provider" as IP
+control "Receptionist" as R
+entity "Nurse" as N
+entity "Patient" as P
+IP -> N : Update Medical Record
+activate N
+N --> IP : ACK
+deactivate N
+N ->> P : Discharge Patient
+R -> P : Admit Patient
+activate P
+P --> R : ACK
+deactivate P
+R ->> IP : Book Appointment
+activate IP
+IP --> R : ACK
+deactivate IP
+@enduml

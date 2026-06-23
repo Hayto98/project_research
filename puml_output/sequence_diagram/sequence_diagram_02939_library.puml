@@ -1,0 +1,28 @@
+@startuml
+skinparam shadowing true
+participant "Librarian" as L
+boundary "Member" as M
+boundary "Admin" as A
+A -> M : Borrow Book
+M --> L : Pay Fine
+activate L
+L --> M : ACK
+deactivate L
+note over L : processing pay fine
+M -> L : Reserve Book
+activate L
+L --> M : ACK
+deactivate L
+L -> M : Renew Loan
+activate M
+M --> L : ACK
+deactivate M
+note over M : processing renew loan
+A --> L : Add New Book
+activate L
+L --> A : ACK
+deactivate L
+L --> M : Register Member
+L ->> M : Return Book
+note over M : processing return book
+@enduml

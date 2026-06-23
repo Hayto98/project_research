@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+class Payment {
+  +float amount
+  +boolean email
+  #float level
+  +long quantity
+  -double id
+  +sendDuration()
+  +createStatus()
+}
+class Order {
+  +String updatedAt
+  -Date score
+  #String duration
+  +double amount
+  +createQuantity()
+  +processDuration()
+  +deleteEmail()
+}
+abstract class Supplier {
+  -int status
+  #long description
+  -Date updatedAt
+  #String phone
+  +validateType()
+  +sendDuration()
+  +validateLevel()
+  +setAmount()
+}
+class Invoice {
+  +boolean status
+  #Date updatedAt
+  +processActive()
+  +createTotal()
+  +getEmail()
+}
+class Coupon {
+  +long quantity
+  +int name
+  +sendType()
+  +updateDuration()
+  +processAmount()
+  +getStatus()
+}
+class Category {
+  +boolean createdAt
+  -double description
+  -boolean active
+  +validateAmount()
+  +setCreatedat()
+  +sendCreatedat()
+}
+Category ..> Coupon : "1..*"
+Order ..|> Supplier
+Payment --> Coupon : "1"
+Coupon --> Payment : "0..1"
+note right of Payment : Ecommerce domain
+@enduml

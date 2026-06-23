@@ -1,0 +1,35 @@
+@startuml
+skinparam ArrowColor #555555
+interface Enrollment {
+  #long active
+  #float duration
+  -double id
+  #double createdAt
+  +findNote()
+  +validateScore()
+}
+abstract class Department {
+  #boolean active
+  -Date createdAt
+  +int status
+  +findStatus()
+}
+abstract class Classroom {
+  -String id
+  +String code
+  #float price
+  +Date phone
+  +updateCode()
+}
+interface Schedule {
+  +double status
+  +boolean type
+  -boolean name
+  +double createdAt
+  +updateCode()
+}
+Classroom --o Schedule
+Classroom --* Enrollment
+Enrollment --o Department
+note right of Enrollment : Education domain
+@enduml

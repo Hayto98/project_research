@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+interface Diagnosis {
+  -int phone
+  #Date note
+  +deleteType()
+  +setCreatedat()
+  +cancelQuantity()
+}
+interface Prescription {
+  +int total
+  #float level
+  +setScore()
+  +processId()
+  +updateDuration()
+  +findLevel()
+}
+interface Billing {
+  #boolean updatedAt
+  #int name
+  #float type
+  -int createdAt
+  +validateLevel()
+  +deleteCreatedat()
+  +getQuantity()
+}
+interface Doctor {
+  #Date level
+  #Date quantity
+  +Date email
+  +double total
+  -long address
+  +cancelNote()
+  +sendId()
+}
+class Hospital {
+  +Date address
+  #double status
+  +boolean active
+  +sendLevel()
+  +sendStatus()
+  +setAmount()
+  +sendEmail()
+}
+Prescription ..> Diagnosis : "1"
+Diagnosis --> Prescription : "1"
+Hospital ..|> Prescription
+note right of Diagnosis : Healthcare domain
+@enduml

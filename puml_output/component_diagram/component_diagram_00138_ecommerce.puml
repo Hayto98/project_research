@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+component "Product Service" as C_ProductService
+component "Return Service" as C_ReturnService
+component "Supplier Service" as C_SupplierService
+component "Cart Service" as C_CartService
+database "Ecommerce DB" as DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_CartService --> DB_ecommerce
+C_SupplierService ..> C_ReturnService : MQ
+C_SupplierService ..> C_ProductService : HTTP
+@enduml

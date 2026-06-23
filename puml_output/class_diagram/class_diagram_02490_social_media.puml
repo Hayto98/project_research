@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+abstract class Album {
+  #String updatedAt
+  +String duration
+  +double price
+  -int quantity
+  +float name
+  +createPhone()
+}
+abstract class Notification {
+  -float active
+  #long address
+  #float price
+  -Date description
+  +saveDescription()
+  +getLevel()
+  +calculateQuantity()
+  +createEmail()
+}
+class Comment {
+  #int active
+  +String email
+  +calculateScore()
+}
+class Like {
+  #long address
+  #long active
+  +cancelScore()
+  +saveUpdatedat()
+}
+class Profile {
+  +long updatedAt
+  -long phone
+  #long id
+  #int type
+  #boolean address
+  +updateLevel()
+  +updateStatus()
+}
+abstract class Hashtag {
+  #long type
+  #int level
+  #long name
+  +saveUpdatedat()
+  +sendActive()
+  +findPhone()
+}
+Comment --* Profile
+Comment --* Notification
+Hashtag ..> Notification : "1"
+note right of Album : Social Media domain
+@enduml

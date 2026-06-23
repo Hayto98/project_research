@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+interface Amenity {
+  #String phone
+  +Date address
+  -double type
+  -long duration
+  +setScore()
+}
+interface CheckIn {
+  +double email
+  #long updatedAt
+  #int createdAt
+  #int amount
+  +getQuantity()
+  +getDuration()
+}
+class Invoice {
+  +int email
+  +double address
+  -float code
+  +processQuantity()
+}
+class Reservation {
+  #long quantity
+  #long amount
+  #boolean id
+  +long address
+  +double duration
+  +deleteCode()
+  +setPhone()
+  +sendQuantity()
+}
+class Guest {
+  -Date name
+  +float active
+  #float note
+  -boolean duration
+  +deleteType()
+  +updateDuration()
+  +deleteQuantity()
+}
+CheckIn --> Amenity : "*"
+CheckIn --> Invoice : "0..1"
+Amenity ..|> Reservation
+note right of Amenity : Hotel domain
+@enduml

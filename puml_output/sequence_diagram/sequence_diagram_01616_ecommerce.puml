@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+actor "Customer" as C
+actor "Seller" as S
+participant "Payment Gateway" as PG
+C -> PG : Manage Inventory
+note over PG : processing manage inventory
+S --> C : Browse Products
+C --> PG : Write Review
+activate PG
+PG --> C : ACK
+deactivate PG
+S --> C : Add To Cart
+PG ->> C : Track Order
+PG ->> C : Cancel Order
+activate C
+C --> PG : ACK
+deactivate C
+C --> PG : Checkout
+@enduml

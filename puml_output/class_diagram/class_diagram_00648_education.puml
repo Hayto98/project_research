@@ -1,0 +1,73 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Schedule {
+  +double quantity
+  #double phone
+  -float address
+  +String amount
+  -int total
+  +saveUpdatedat()
+  +validateQuantity()
+}
+interface Attendance {
+  +long total
+  -String score
+  +Date amount
+  #Date price
+  +sendCreatedat()
+  +updateLevel()
+}
+class Classroom {
+  -boolean level
+  -String quantity
+  -double address
+  #long price
+  +deleteNote()
+}
+interface Grade {
+  #long amount
+  -float description
+  +long email
+  #boolean price
+  #float updatedAt
+  +calculateUpdatedat()
+  +updateCode()
+  +sendCreatedat()
+  +findDuration()
+}
+abstract class Assignment {
+  -double active
+  #float phone
+  +String email
+  -float note
+  -boolean level
+  +processNote()
+  +saveNote()
+  +sendDescription()
+  +calculateId()
+}
+class Book {
+  -long quantity
+  -boolean name
+  -Date amount
+  #int updatedAt
+  +deleteDescription()
+  +cancelTotal()
+  +processType()
+}
+interface Teacher {
+  #int quantity
+  #double status
+  -double note
+  #boolean phone
+  +createId()
+}
+Assignment --|> Book
+Assignment --|> Attendance
+Assignment --o Schedule
+Classroom --|> Assignment
+Assignment --> Teacher : "*"
+Grade ..> Teacher : "*"
+note right of Schedule : Education domain
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+interface Statement {
+  #long updatedAt
+  #boolean note
+  #float amount
+  -Date status
+  +validateTotal()
+  +cancelAddress()
+}
+abstract class Account {
+  -int code
+  -Date updatedAt
+  #boolean note
+  +sendLevel()
+  +createTotal()
+}
+interface Transaction {
+  -int description
+  -long score
+  -String phone
+  -double level
+  +getQuantity()
+  +createCreatedat()
+  +processDuration()
+}
+class Withdrawal {
+  #long note
+  +boolean description
+  -int id
+  +calculateType()
+  +getType()
+}
+class Customer {
+  +String code
+  -int name
+  +int note
+  #int email
+  +float type
+  +savePhone()
+  +deletePhone()
+  +updateStatus()
+  +cancelTotal()
+}
+class Card {
+  #long score
+  -String status
+  #int total
+  #long updatedAt
+  +deleteEmail()
+  +calculateNote()
+}
+Withdrawal ..> Customer : "1..*"
+Card ..> Statement : "1..*"
+Statement ..> Customer : "*"
+Withdrawal --> Transaction : "1..*"
+Transaction ..> Card : "0..1"
+note right of Statement : Banking domain
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+class Route {
+  -boolean quantity
+  #String name
+  +updateQuantity()
+  +cancelCode()
+  +sendQuantity()
+  +validatePhone()
+}
+abstract class Inventory {
+  +float code
+  #double phone
+  +deleteAddress()
+}
+class Shipment {
+  #String amount
+  #int description
+  -String total
+  +int duration
+  +saveAmount()
+}
+abstract class Manifest {
+  #float id
+  #float name
+  +findTotal()
+  +validatePrice()
+}
+Inventory --> Shipment : "1..*"
+Route ..> Inventory : "*"
+Inventory --* Route
+note right of Route : Logistics domain
+@enduml

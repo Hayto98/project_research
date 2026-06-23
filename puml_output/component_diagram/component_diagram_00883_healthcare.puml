@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+component "LabTest Service" as C_LabTestService
+component "Hospital Service" as C_HospitalService
+component "Billing Service" as C_BillingService
+component "Appointment Service" as C_AppointmentService
+component "Diagnosis Service" as C_DiagnosisService
+database "Healthcare DB" as DB_healthcare
+C_LabTestService --> DB_healthcare
+C_BillingService --> DB_healthcare
+C_AppointmentService --> DB_healthcare
+C_BillingService ..> C_DiagnosisService : REST
+C_LabTestService ..> C_HospitalService : MQ
+@enduml

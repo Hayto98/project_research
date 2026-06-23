@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+start
+:Like Post;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Follow User;
+:Create Post;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Report Content;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Edit Profile;
+stop
+@enduml

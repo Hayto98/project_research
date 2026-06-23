@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+participant "Lab Technician" as LT
+control "Nurse" as N
+control "Receptionist" as R
+R -> LT : Update Medical Record
+activate LT
+LT --> R : ACK
+deactivate LT
+N -> LT : Discharge Patient
+activate LT
+LT --> N : ACK
+deactivate LT
+note over LT : processing discharge patient
+R -> LT : Run Lab Test
+N -> R : Process Insurance Claim
+activate R
+R --> N : ACK
+deactivate R
+N -> LT : Examine Patient
+@enduml

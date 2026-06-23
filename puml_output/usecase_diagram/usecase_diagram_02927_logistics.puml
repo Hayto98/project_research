@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+left to right direction
+actor "Fleet Manager" as FleetManager
+actor "Dispatcher" as Dispatcher
+actor "Driver" as Driver
+actor "Customer" as Customer
+rectangle "Logistics System" {
+  usecase "Assign Route" as UC_AssignRoute
+  usecase "Fuel Vehicle" as UC_FuelVehicle
+  usecase "Update Inventory" as UC_UpdateInventory
+  usecase "Load Package" as UC_LoadPackage
+  usecase "Track Shipment" as UC_TrackShipment
+  usecase "Schedule Pickup" as UC_SchedulePickup
+}
+FleetManager --> UC_LoadPackage
+Dispatcher --> UC_TrackShipment
+Dispatcher --> UC_AssignRoute
+Driver --> UC_TrackShipment
+Customer --> UC_SchedulePickup
+Customer --> UC_FuelVehicle
+Customer --> UC_UpdateInventory
+UC_UpdateInventory ..> UC_AssignRoute : <<include>>
+@enduml

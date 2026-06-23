@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+entity "Delivery Service" as DS
+control "Seller" as S
+boundary "Customer" as C
+S --> C : Track Order
+note over C : processing track order
+DS --> S : Cancel Order
+activate S
+S --> DS : ACK
+deactivate S
+DS ->> S : Browse Products
+S -> C : Apply Coupon
+S ->> C : Write Review
+note over C : processing write review
+DS ->> S : Manage Inventory
+note over S : processing manage inventory
+@enduml

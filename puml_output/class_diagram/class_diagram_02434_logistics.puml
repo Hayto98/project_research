@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class Depot {
+  +Date phone
+  -String total
+  #int quantity
+  +validatePrice()
+  +deleteScore()
+  +cancelDuration()
+}
+class Customer {
+  #String address
+  +float updatedAt
+  #float duration
+  #Date price
+  +findQuantity()
+  +deleteActive()
+}
+class Package {
+  -long quantity
+  +float createdAt
+  +float level
+  -int score
+  +Date code
+  +processQuantity()
+}
+class Driver {
+  +double address
+  -float active
+  +validateActive()
+}
+abstract class Tracking {
+  -String price
+  -boolean note
+  -boolean id
+  -long duration
+  +getDescription()
+}
+interface Route {
+  -float duration
+  +boolean phone
+  -Date description
+  #int quantity
+  +processAmount()
+  +updatePhone()
+  +calculateActive()
+}
+Route --* Customer
+Package ..|> Driver
+Driver --> Tracking : "1"
+Customer --> Package : "1"
+note right of Depot : Logistics domain
+@enduml

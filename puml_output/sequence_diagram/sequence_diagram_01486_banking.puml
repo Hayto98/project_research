@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+participant "Branch Manager" as BM
+actor "Account Holder" as AH
+boundary "Auditor" as A
+A --> AH : View Statement
+note over AH : processing view statement
+A -> BM : Open Account
+activate BM
+BM --> A : ACK
+deactivate BM
+BM ->> AH : Pay Bill
+activate AH
+AH --> BM : ACK
+deactivate AH
+BM --> A : Transfer Funds
+activate A
+A --> BM : ACK
+deactivate A
+BM ->> A : Withdraw Cash
+activate A
+A --> BM : ACK
+deactivate A
+@enduml

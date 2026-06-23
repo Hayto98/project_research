@@ -1,0 +1,17 @@
+@startuml
+
+control "Nurse" as N
+participant "Patient" as P
+entity "Doctor" as D
+participant "Lab Technician" as LT
+D ->> N : Run Lab Test
+N --> P : Admit Patient
+P -> LT : Examine Patient
+LT --> N : Discharge Patient
+activate N
+N --> LT : ACK
+deactivate N
+P --> N : Book Appointment
+D ->> LT : Issue Prescription
+note over LT : processing issue prescription
+@enduml

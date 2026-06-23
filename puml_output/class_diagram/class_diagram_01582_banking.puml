@@ -1,0 +1,58 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+abstract class Transfer {
+  +float amount
+  -float description
+  -double type
+  #Date total
+  +saveName()
+  +sendName()
+  +updateQuantity()
+  +findDuration()
+}
+class Customer {
+  +String amount
+  +Date email
+  -double name
+  +String phone
+  +boolean score
+  +findActive()
+}
+abstract class Transaction {
+  -boolean id
+  -int status
+  -int quantity
+  +cancelCreatedat()
+}
+class Statement {
+  -int active
+  +int amount
+  +Date name
+  +updateCreatedat()
+  +cancelAmount()
+  +processEmail()
+}
+class Deposit {
+  +long status
+  -int score
+  +boolean price
+  -boolean createdAt
+  +calculatePrice()
+  +createAddress()
+}
+class Card {
+  -double phone
+  #double createdAt
+  +String description
+  +findLevel()
+  +deleteType()
+  +sendName()
+}
+Customer --> Transfer : "0..1"
+Transaction --o Statement
+Customer --o Transaction
+Transfer ..|> Card
+Transaction ..|> Card
+note right of Transfer : Banking domain
+@enduml

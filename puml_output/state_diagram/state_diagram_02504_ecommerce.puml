@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+[*] --> Delivered
+Delivered --> Active : review
+Delivered : entry / log warehouse
+Active --> Completed : reject
+Completed --> Processing : submit
+Completed : entry / log warehouse
+Processing --> Shipped : reject
+Shipped --> Draft : cancel
+Shipped : entry / log warehouse
+Draft --> [*]
+@enduml

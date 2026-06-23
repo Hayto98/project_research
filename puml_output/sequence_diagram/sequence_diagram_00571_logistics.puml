@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+participant "Fleet Manager" as FM
+actor "Customer" as C
+entity "Warehouse Staff" as WS
+FM ->> WS : Track Shipment
+activate WS
+WS --> FM : ACK
+deactivate WS
+WS ->> FM : Report Issue
+activate FM
+FM --> WS : ACK
+deactivate FM
+FM ->> WS : Deliver Package
+note over WS : processing deliver package
+WS --> FM : Assign Route
+C -> FM : Update Inventory
+activate FM
+FM --> C : ACK
+deactivate FM
+@enduml

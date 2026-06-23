@@ -1,0 +1,52 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+abstract class Shipment {
+  +long total
+  #int email
+  +String createdAt
+  +createName()
+  +getName()
+}
+interface Supplier {
+  -boolean quantity
+  -Date type
+  -String email
+  +long score
+  +updateType()
+  +deleteActive()
+  +getScore()
+  +cancelId()
+}
+class Order {
+  +Date note
+  -long active
+  +processType()
+}
+class Coupon {
+  -int type
+  #double email
+  -int amount
+  +saveDuration()
+  +calculateQuantity()
+  +findEmail()
+}
+class Cart {
+  -long quantity
+  -int description
+  #float code
+  -long status
+  +setDescription()
+  +processCreatedat()
+}
+class Payment {
+  +long price
+  +String level
+  +findDuration()
+}
+Cart ..|> Supplier
+Shipment --* Coupon
+Order --o Shipment
+note right of Shipment : Ecommerce domain
+@enduml

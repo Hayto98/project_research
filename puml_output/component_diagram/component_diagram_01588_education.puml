@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+component "Enrollment Service" as C_EnrollmentService
+component "Teacher Service" as C_TeacherService
+component "Book Service" as C_BookService
+component "Student Service" as C_StudentService
+component "Assignment Service" as C_AssignmentService
+component "Course Service" as C_CourseService
+database "Education DB" as DB_education
+C_BookService --> DB_education
+C_StudentService --> DB_education
+C_CourseService --> DB_education
+C_TeacherService ..> C_BookService : REST
+C_EnrollmentService ..> C_TeacherService : gRPC
+C_StudentService ..> C_EnrollmentService : gRPC
+C_AssignmentService ..> C_BookService : MQ
+@enduml

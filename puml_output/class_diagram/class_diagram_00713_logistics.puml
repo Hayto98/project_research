@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+interface Tracking {
+  -boolean address
+  +Date id
+  -Date code
+  +findPrice()
+}
+abstract class Manifest {
+  +double code
+  -float active
+  +sendPhone()
+  +getName()
+}
+abstract class Driver {
+  +float type
+  #float code
+  #double note
+  -float level
+  -String updatedAt
+  +saveDuration()
+}
+class Route {
+  #long total
+  #double status
+  +createActive()
+  +cancelCode()
+  +calculateEmail()
+}
+interface DeliveryNote {
+  -long type
+  #double createdAt
+  +cancelDescription()
+  +sendType()
+}
+class Package {
+  #int score
+  -double updatedAt
+  +float description
+  +processName()
+  +deleteAddress()
+  +saveName()
+}
+class FuelLog {
+  +double quantity
+  +boolean score
+  #Date id
+  +setDuration()
+}
+Tracking --> Driver : "*"
+Tracking --|> Manifest
+note right of Tracking : Logistics domain
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+abstract class Patient {
+  +boolean active
+  #float score
+  +processCreatedat()
+  +processPrice()
+}
+class Nurse {
+  #String amount
+  +int duration
+  -int type
+  -long code
+  -Date status
+  +validatePrice()
+}
+class Hospital {
+  #String active
+  #double createdAt
+  -double duration
+  -double status
+  -String name
+  +validateCode()
+  +createTotal()
+  +setDuration()
+  +setUpdatedat()
+}
+class Insurance {
+  +long price
+  +Date phone
+  #int total
+  +getPrice()
+}
+abstract class Billing {
+  -float code
+  -int id
+  #boolean note
+  #float phone
+  -String status
+  +createPrice()
+}
+abstract class Treatment {
+  #Date updatedAt
+  +String quantity
+  -long name
+  -String createdAt
+  #long total
+  +createLevel()
+  +calculateEmail()
+}
+Treatment --|> Patient
+Patient --> Hospital : "0..1"
+Nurse --o Insurance
+Hospital --o Patient
+note right of Patient : Healthcare domain
+@enduml

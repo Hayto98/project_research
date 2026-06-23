@@ -1,0 +1,37 @@
+@startuml
+skinparam monochrome true
+abstract class Booking {
+  +boolean total
+  #int createdAt
+  -String type
+  +long phone
+  -int name
+  +findPhone()
+}
+abstract class Housekeeping {
+  -double level
+  -boolean status
+  +saveActive()
+}
+abstract class Service {
+  #float active
+  #float quantity
+  #String phone
+  +createType()
+  +findId()
+  +cancelName()
+}
+interface CheckIn {
+  -Date updatedAt
+  -Date quantity
+  +double description
+  +Date score
+  +validateTotal()
+  +cancelType()
+  +createPrice()
+}
+Housekeeping --o Booking
+Housekeeping ..> CheckIn : "*"
+CheckIn --> Booking : "*"
+note right of Booking : Hotel domain
+@enduml

@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Booking {
+  #double amount
+  +int description
+  -double score
+  #String quantity
+  -long email
+  +updateType()
+  +validateDuration()
+  +calculateQuantity()
+}
+class Staff {
+  +double code
+  -boolean duration
+  -String phone
+  +deleteType()
+}
+abstract class Room {
+  -boolean updatedAt
+  -double code
+  +double address
+  -double description
+  +boolean id
+  +findQuantity()
+  +deleteType()
+}
+class CheckOut {
+  #Date status
+  +boolean quantity
+  +long id
+  +createNote()
+}
+class CheckIn {
+  #float code
+  +String name
+  +sendActive()
+  +getName()
+  +setName()
+  +processDuration()
+}
+interface Reservation {
+  -String score
+  +boolean level
+  #float active
+  +boolean total
+  +processQuantity()
+  +createUpdatedat()
+  +updatePrice()
+  +validateNote()
+}
+CheckIn --* Reservation
+CheckOut --|> Staff
+Room --> Booking : "1..*"
+CheckOut ..|> CheckIn
+Room ..> Reservation : "*"
+note right of Booking : Hotel domain
+@enduml

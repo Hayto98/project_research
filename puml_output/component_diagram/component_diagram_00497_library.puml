@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Author Service" as C_AuthorService
+component "Publisher Service" as C_PublisherService
+component "Renewal Service" as C_RenewalService
+component "Shelf Service" as C_ShelfService
+component "Catalog Service" as C_CatalogService
+component "Book Service" as C_BookService
+database "Library DB" as DB_library
+C_AuthorService --> DB_library
+C_PublisherService --> DB_library
+C_ShelfService --> DB_library
+C_CatalogService --> DB_library
+C_BookService --> DB_library
+C_PublisherService ..> C_CatalogService : MQ
+C_RenewalService ..> C_AuthorService : REST
+C_RenewalService ..> C_ShelfService : REST
+C_AuthorService ..> C_ShelfService : HTTP
+@enduml

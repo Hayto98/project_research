@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+class Review {
+  -boolean createdAt
+  #double phone
+  #String amount
+  #Date active
+  #long id
+  +validateStatus()
+  +validateCode()
+  +validateStatus()
+}
+abstract class Wishlist {
+  -long active
+  -boolean price
+  +findLevel()
+  +processPrice()
+  +updateName()
+  +processUpdatedat()
+}
+class Cart {
+  +long createdAt
+  -int quantity
+  #boolean code
+  +boolean total
+  +processAddress()
+  +cancelQuantity()
+  +calculateId()
+}
+class Order {
+  -int duration
+  #long status
+  +Date address
+  +savePrice()
+}
+class Customer {
+  +Date total
+  +float type
+  #int id
+  +cancelEmail()
+}
+Order --o Review
+Wishlist ..> Customer : "0..1"
+Cart ..> Wishlist : "1..*"
+note right of Review : Ecommerce domain
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+actor "Parent" as P
+boundary "Admin" as A
+actor "Teacher" as T
+A --> T : Issue Certificate
+activate T
+T --> A : ACK
+deactivate T
+note over T : processing issue certificate
+P -> T : Register Student
+activate T
+T --> P : ACK
+deactivate T
+A ->> P : View Schedule
+activate P
+P --> A : ACK
+deactivate P
+T ->> A : Borrow Book
+activate A
+A --> T : ACK
+deactivate A
+@enduml

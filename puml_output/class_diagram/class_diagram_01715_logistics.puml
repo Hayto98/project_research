@@ -1,0 +1,56 @@
+@startuml
+skinparam ArrowColor #555555
+class Package {
+  #double address
+  -String price
+  -boolean updatedAt
+  +createTotal()
+  +createDescription()
+  +deleteActive()
+  +setTotal()
+}
+interface Shipment {
+  #long level
+  +long amount
+  +String email
+  +getDuration()
+}
+interface Customer {
+  -boolean updatedAt
+  -int createdAt
+  -String note
+  +getAmount()
+}
+abstract class Inventory {
+  +double updatedAt
+  +boolean level
+  +int active
+  +deleteActive()
+  +sendEmail()
+  +validateNote()
+  +updateType()
+}
+class FuelLog {
+  -long amount
+  +Date status
+  #long phone
+  +long quantity
+  +findDuration()
+  +createQuantity()
+  +setEmail()
+  +setCreatedat()
+}
+interface Depot {
+  #double level
+  #long phone
+  +String name
+  #String score
+  +updatePrice()
+  +getNote()
+  +createActive()
+}
+Customer --> Package : "1"
+Shipment ..|> FuelLog
+Depot --o FuelLog
+note right of Package : Logistics domain
+@enduml

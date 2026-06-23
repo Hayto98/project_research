@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+abstract class Transfer {
+  -int type
+  #int score
+  -double description
+  +setId()
+}
+abstract class Transaction {
+  +long active
+  -float createdAt
+  #int name
+  -boolean total
+  +sendDescription()
+}
+class Branch {
+  #long amount
+  -Date updatedAt
+  -boolean name
+  #float email
+  #String quantity
+  +sendType()
+  +updateScore()
+}
+class Withdrawal {
+  -int type
+  #int status
+  +boolean note
+  +getScore()
+  +calculateDescription()
+}
+interface Interest {
+  -long address
+  -long status
+  -int type
+  +setAddress()
+}
+class Beneficiary {
+  +long score
+  #String phone
+  -Date id
+  +calculateStatus()
+}
+abstract class Teller {
+  -Date amount
+  -String createdAt
+  +String code
+  #String address
+  #float price
+  +deleteDuration()
+  +validatePhone()
+}
+Transfer ..> Interest : "0..1"
+Withdrawal ..> Interest : "1"
+note right of Transfer : Banking domain
+@enduml

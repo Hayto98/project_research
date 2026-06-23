@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 11
+actor "Admin" as A
+boundary "Customer" as C
+entity "Delivery Service" as DS
+actor "Seller" as S
+entity "Payment Gateway" as PG
+PG ->> A : Cancel Order
+A ->> DS : Browse Products
+note over DS : processing browse products
+A -> DS : Apply Coupon
+C ->> A : Checkout
+S --> DS : Write Review
+activate DS
+DS --> S : ACK
+deactivate DS
+@enduml

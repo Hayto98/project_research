@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+component "Customer Service" as C_CustomerService
+component "Inventory Service" as C_InventoryService
+component "Route Service" as C_RouteService
+component "FuelLog Service" as C_FuelLogService
+database "Logistics DB" as DB_logistics
+C_CustomerService --> DB_logistics
+C_RouteService --> DB_logistics
+C_FuelLogService --> DB_logistics
+C_FuelLogService ..> C_CustomerService : gRPC
+C_CustomerService ..> C_InventoryService : MQ
+C_RouteService ..> C_InventoryService : REST
+@enduml

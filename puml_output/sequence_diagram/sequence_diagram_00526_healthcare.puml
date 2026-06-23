@@ -1,0 +1,27 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+boundary "Patient" as P
+boundary "Doctor" as D
+entity "Nurse" as N
+entity "Receptionist" as R
+actor "Lab Technician" as LT
+N ->> R : Examine Patient
+note over R : processing examine patient
+N ->> R : Update Medical Record
+LT -> R : Process Insurance Claim
+D --> P : Run Lab Test
+activate P
+P --> D : ACK
+deactivate P
+N --> P : Admit Patient
+activate P
+P --> N : ACK
+deactivate P
+D ->> R : Discharge Patient
+note over R : processing discharge patient
+N -> P : Book Appointment
+activate P
+P --> N : ACK
+deactivate P
+@enduml

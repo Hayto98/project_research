@@ -1,0 +1,73 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+class Service {
+  +int description
+  #long createdAt
+  +saveType()
+  +cancelEmail()
+  +findQuantity()
+}
+class CheckIn {
+  +int active
+  #int price
+  #Date status
+  #Date createdAt
+  +double email
+  +findAmount()
+  +processScore()
+  +createName()
+}
+class CheckOut {
+  -boolean active
+  -int quantity
+  +int description
+  -float total
+  #double score
+  +processStatus()
+  +updateDuration()
+  +calculateAddress()
+  +cancelActive()
+}
+interface Invoice {
+  #boolean type
+  +Date name
+  +processDescription()
+  +updateLevel()
+  +sendCode()
+  +getCode()
+}
+class Housekeeping {
+  +String quantity
+  +int code
+  +updatePrice()
+}
+class Restaurant {
+  #double price
+  #int type
+  #Date updatedAt
+  +float total
+  +calculateNote()
+  +deleteId()
+  +setDuration()
+  +updatePhone()
+}
+class Guest {
+  #int updatedAt
+  +int createdAt
+  #Date quantity
+  +Date status
+  +setActive()
+  +processScore()
+  +deletePrice()
+  +createStatus()
+}
+Guest --|> CheckOut
+Invoice --* CheckIn
+Housekeeping --* CheckIn
+Guest --o Service
+Restaurant ..> CheckIn : "*"
+note right of Service : Hotel domain
+@enduml

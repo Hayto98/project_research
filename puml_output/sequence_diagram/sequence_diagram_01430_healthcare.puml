@@ -1,0 +1,25 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+control "Patient" as P
+control "Nurse" as N
+boundary "Insurance Provider" as IP
+control "Lab Technician" as LT
+LT ->> IP : Update Medical Record
+note over IP : processing update medical record
+P -> LT : Issue Prescription
+activate LT
+LT --> P : ACK
+deactivate LT
+P ->> N : Examine Patient
+activate N
+N --> P : ACK
+deactivate N
+LT ->> IP : Discharge Patient
+IP --> P : Run Lab Test
+P --> IP : Process Insurance Claim
+activate IP
+IP --> P : ACK
+deactivate IP
+@enduml

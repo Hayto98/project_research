@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+start
+:Issue Prescription;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Run Lab Test;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Discharge Patient;
+:Examine Patient;
+:Process Insurance Claim;
+stop
+@enduml

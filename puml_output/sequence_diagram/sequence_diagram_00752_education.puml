@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing true
+control "Student" as S
+entity "Parent" as P
+participant "Teacher" as T
+actor "Registrar" as R
+actor "Admin" as A
+A ->> T : Issue Certificate
+activate T
+T --> A : ACK
+deactivate T
+S --> P : View Schedule
+note over P : processing view schedule
+S ->> P : Borrow Book
+activate P
+P --> S : ACK
+deactivate P
+note over P : processing borrow book
+T --> S : Submit Assignment
+P ->> R : Take Attendance
+activate R
+R --> P : ACK
+deactivate R
+A ->> T : Grade Exam
+note over T : processing grade exam
+@enduml

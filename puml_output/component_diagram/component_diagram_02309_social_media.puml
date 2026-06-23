@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+component "Follower Service" as C_FollowerService
+component "Album Service" as C_AlbumService
+component "Post Service" as C_PostService
+component "Group Service" as C_GroupService
+component "Report Service" as C_ReportService
+database "Social Media DB" as DB_social_media
+C_AlbumService --> DB_social_media
+C_ReportService --> DB_social_media
+C_PostService ..> C_FollowerService : HTTP
+C_GroupService ..> C_AlbumService : HTTP
+C_AlbumService ..> C_PostService : REST
+@enduml

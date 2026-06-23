@@ -1,0 +1,33 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+actor "Fleet Manager" as FM
+entity "Driver" as D
+boundary "Dispatcher" as D2
+D2 -> FM : Deliver Package
+activate FM
+FM --> D2 : ACK
+deactivate FM
+note over FM : processing deliver package
+D -> D2 : Load Package
+activate D2
+D2 --> D : ACK
+deactivate D2
+D --> FM : Schedule Pickup
+activate FM
+FM --> D : ACK
+deactivate FM
+FM ->> D2 : Update Inventory
+D2 -> D : Assign Route
+activate D
+D --> D2 : ACK
+deactivate D
+FM -> D2 : Fuel Vehicle
+activate D2
+D2 --> FM : ACK
+deactivate D2
+D2 -> FM : Track Shipment
+activate FM
+FM --> D2 : ACK
+deactivate FM
+@enduml

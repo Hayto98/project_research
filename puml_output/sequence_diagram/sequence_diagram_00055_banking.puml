@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+participant "Account Holder" as AH
+boundary "ATM" as A
+actor "Bank Teller" as BT
+AH --> BT : Pay Bill
+activate BT
+BT --> AH : ACK
+deactivate BT
+BT ->> A : Withdraw Cash
+activate A
+A --> BT : ACK
+deactivate A
+BT ->> AH : Open Account
+note over AH : processing open account
+A --> AH : Transfer Funds
+activate AH
+AH --> A : ACK
+deactivate AH
+@enduml

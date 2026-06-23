@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+[*] --> Rejected
+Rejected --> Processing : approve
+Processing --> Archived : reject
+Processing : entry / log student
+Archived --> Approved : update
+Approved --> Closed : reject
+Closed --> OnHold : approve
+Closed : entry / log student
+Closed --> Processing : revert
+OnHold --> [*]
+@enduml

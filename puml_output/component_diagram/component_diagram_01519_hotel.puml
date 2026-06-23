@@ -1,0 +1,14 @@
+@startuml
+skinparam defaultFontSize 13
+component "CheckIn Service" as C_CheckInService
+component "Service Service" as C_ServiceService
+component "Invoice Service" as C_InvoiceService
+component "CheckOut Service" as C_CheckOutService
+component "Payment Service" as C_PaymentService
+database "Hotel DB" as DB_hotel
+C_ServiceService --> DB_hotel
+C_CheckOutService --> DB_hotel
+C_PaymentService --> DB_hotel
+C_CheckOutService ..> C_CheckInService : MQ
+C_InvoiceService ..> C_CheckInService : HTTP
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+control "Librarian" as L
+participant "Member" as M
+entity "Admin" as A
+L -> M : Reserve Book
+A ->> M : Renew Loan
+activate M
+M --> A : ACK
+deactivate M
+note over M : processing renew loan
+M -> L : Search Catalog
+activate L
+L --> M : ACK
+deactivate L
+A -> L : Borrow Book
+activate L
+L --> A : ACK
+deactivate L
+L ->> M : Add New Book
+activate M
+M --> L : ACK
+deactivate M
+M ->> A : Return Book
+activate A
+A --> M : ACK
+deactivate A
+L --> M : Pay Fine
+activate M
+M --> L : ACK
+deactivate M
+note over M : processing pay fine
+@enduml

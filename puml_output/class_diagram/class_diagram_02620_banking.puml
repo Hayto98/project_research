@@ -1,0 +1,48 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+interface Card {
+  -double active
+  -boolean phone
+  -boolean email
+  #String price
+  +getTotal()
+  +calculateUpdatedat()
+}
+class Loan {
+  +float score
+  +boolean total
+  #double price
+  +int name
+  -boolean address
+  +createId()
+  +cancelUpdatedat()
+  +deleteActive()
+  +deleteQuantity()
+}
+class Statement {
+  +int level
+  #int description
+  +setLevel()
+  +updatePrice()
+}
+class Customer {
+  #Date address
+  +float amount
+  -int phone
+  +sendCreatedat()
+}
+class Withdrawal {
+  #double quantity
+  -String id
+  #float status
+  +createPrice()
+  +sendNote()
+}
+Statement --> Customer : "0..1"
+Customer ..|> Statement
+Statement ..> Loan : "*"
+note right of Card : Banking domain
+@enduml

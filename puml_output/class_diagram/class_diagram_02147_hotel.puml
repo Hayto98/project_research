@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+class Housekeeping {
+  +boolean level
+  -boolean code
+  +processDuration()
+  +saveLevel()
+  +saveCode()
+}
+class Booking {
+  -long price
+  +String description
+  +String name
+  +int score
+  +cancelAmount()
+  +saveType()
+  +saveAddress()
+  +createType()
+}
+abstract class Invoice {
+  -Date total
+  +Date email
+  +cancelPrice()
+  +updatePrice()
+}
+class Amenity {
+  #long address
+  +long duration
+  +boolean active
+  #long description
+  #int phone
+  +calculateEmail()
+  +sendEmail()
+  +getNote()
+  +setName()
+}
+interface CheckOut {
+  +String note
+  #boolean active
+  +boolean duration
+  +cancelPhone()
+  +cancelDescription()
+}
+Amenity ..> Invoice : "*"
+Amenity --o Booking
+note right of Housekeeping : Hotel domain
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+
+[*] --> Cancelled
+Cancelled --> Active : update
+Cancelled : entry / log billing
+Active --> Delivered : submit
+Delivered --> Created : process
+Delivered : entry / log billing
+Created --> OnHold : reject
+Created : entry / log billing
+Active --> OnHold : revert
+OnHold --> [*]
+@enduml

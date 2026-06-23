@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+component "Room Service" as C_RoomService
+component "Housekeeping Service" as C_HousekeepingService
+component "Reservation Service" as C_ReservationService
+component "Guest Service" as C_GuestService
+database "Hotel DB" as DB_hotel
+C_ReservationService --> DB_hotel
+C_GuestService ..> C_HousekeepingService : gRPC
+C_HousekeepingService ..> C_RoomService : HTTP
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Order Service" as C_OrderService
+component "Shipment Service" as C_ShipmentService
+component "Review Service" as C_ReviewService
+component "Coupon Service" as C_CouponService
+database "Ecommerce DB" as DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_ShipmentService ..> C_ReviewService : MQ
+C_ReviewService ..> C_ShipmentService : gRPC
+C_CouponService ..> C_OrderService : MQ
+@enduml

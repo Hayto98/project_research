@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+boundary "Housekeeper" as H
+entity "Guest" as G
+participant "Manager" as M
+entity "Receptionist" as R
+boundary "Chef" as C
+M -> C : Cancel Reservation
+note over C : processing cancel reservation
+C -> M : Order Room Service
+C ->> R : Book Room
+note over R : processing book room
+G -> H : Check Out
+H ->> C : Process Payment
+@enduml

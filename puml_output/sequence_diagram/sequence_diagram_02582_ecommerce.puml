@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+actor "Customer" as C
+control "Admin" as A
+participant "Seller" as S
+entity "Delivery Service" as DS
+participant "Payment Gateway" as PG
+PG --> DS : Checkout
+S -> A : Track Order
+note over A : processing track order
+PG --> C : Write Review
+activate C
+C --> PG : ACK
+deactivate C
+DS -> C : Cancel Order
+@enduml

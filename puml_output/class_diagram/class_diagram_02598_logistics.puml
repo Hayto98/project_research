@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+class Customer {
+  +float description
+  -String quantity
+  +boolean email
+  +saveQuantity()
+  +setActive()
+  +calculateAddress()
+  +saveNote()
+}
+class DeliveryNote {
+  -String id
+  #int phone
+  +boolean status
+  +setCreatedat()
+}
+interface Warehouse {
+  -String level
+  #String updatedAt
+  +saveDuration()
+}
+class Package {
+  #int code
+  #int score
+  #boolean phone
+  #Date note
+  +validateDuration()
+  +calculateStatus()
+}
+Warehouse --* Package
+Customer --o DeliveryNote
+DeliveryNote --* Package
+note right of Customer : Logistics domain
+@enduml

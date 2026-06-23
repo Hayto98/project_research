@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+class FuelLog {
+  -String level
+  +float note
+  +boolean duration
+  +createEmail()
+}
+class Vehicle {
+  +String name
+  +long active
+  +int amount
+  +long createdAt
+  +getLevel()
+  +findAddress()
+  +processPhone()
+  +createAddress()
+}
+abstract class Depot {
+  +String address
+  -long name
+  #boolean level
+  +cancelTotal()
+}
+abstract class Route {
+  #int score
+  -double duration
+  +double id
+  +saveType()
+  +updateAmount()
+}
+FuelLog ..|> Vehicle
+Vehicle ..> Depot : "1..*"
+Route --|> Vehicle
+note right of FuelLog : Logistics domain
+@enduml

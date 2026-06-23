@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+abstract class Guest {
+  #int description
+  #int code
+  +getAmount()
+  +findUpdatedat()
+}
+abstract class Payment {
+  -boolean duration
+  +Date status
+  +long level
+  -Date active
+  +findAddress()
+  +calculateCreatedat()
+}
+interface Restaurant {
+  -float active
+  +int amount
+  +long duration
+  +long email
+  +String score
+  +setStatus()
+}
+class Invoice {
+  +boolean name
+  #long price
+  #Date level
+  +saveDuration()
+  +processCreatedat()
+}
+Restaurant --|> Invoice
+Payment --* Guest
+Invoice ..> Restaurant : "*"
+note right of Guest : Hotel domain
+@enduml

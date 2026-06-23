@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+interface Catalog {
+  -boolean level
+  #Date description
+  +deleteEmail()
+  +updateName()
+  +findAddress()
+  +getStatus()
+}
+class Reservation {
+  #int status
+  -int note
+  -boolean updatedAt
+  +validateAddress()
+  +calculateStatus()
+  +setUpdatedat()
+  +processType()
+}
+interface Book {
+  -Date code
+  -boolean level
+  +String duration
+  #Date quantity
+  +cancelDescription()
+  +updateDuration()
+  +cancelQuantity()
+}
+interface Renewal {
+  +float quantity
+  #boolean duration
+  #long phone
+  -String type
+  +sendId()
+}
+class Librarian {
+  +int id
+  +boolean description
+  -double total
+  #long quantity
+  +long note
+  +getId()
+}
+class Loan {
+  +float note
+  #int id
+  #boolean level
+  -float duration
+  #int email
+  +cancelLevel()
+}
+Loan --o Librarian
+Renewal ..> Loan : "0..1"
+Catalog --o Librarian
+Librarian ..|> Renewal
+Loan --o Renewal
+note right of Catalog : Library domain
+@enduml

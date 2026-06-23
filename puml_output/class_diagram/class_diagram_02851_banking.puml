@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class Transaction {
+  -long level
+  -Date id
+  +Date note
+  -boolean name
+  +String phone
+  +deleteScore()
+  +validateNote()
+}
+abstract class Account {
+  +Date active
+  -double total
+  -Date address
+  +double createdAt
+  +cancelTotal()
+  +processDescription()
+}
+interface Teller {
+  #boolean id
+  +String price
+  +saveLevel()
+  +findCode()
+  +cancelAddress()
+  +findActive()
+}
+class Statement {
+  +double name
+  -int status
+  #double phone
+  +updateType()
+  +getPrice()
+  +updateNote()
+}
+class Beneficiary {
+  #float quantity
+  #float score
+  +getId()
+  +validateAddress()
+  +deleteQuantity()
+}
+Beneficiary ..|> Account
+Account --* Transaction
+Statement --> Beneficiary : "*"
+note right of Transaction : Banking domain
+@enduml

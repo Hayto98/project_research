@@ -1,0 +1,63 @@
+@startuml
+skinparam monochrome true
+class Booking {
+  #float phone
+  #boolean code
+  #double active
+  -boolean description
+  +sendPrice()
+  +processCreatedat()
+}
+class Room {
+  #double total
+  +boolean duration
+  #long active
+  +boolean status
+  +getTotal()
+}
+class CheckOut {
+  +long duration
+  #float name
+  +saveAddress()
+  +findId()
+  +processQuantity()
+}
+abstract class Service {
+  +float phone
+  -int createdAt
+  -int duration
+  +Date id
+  +validatePrice()
+}
+interface Amenity {
+  -float amount
+  #int status
+  -double score
+  #Date updatedAt
+  #boolean description
+  +processUpdatedat()
+  +getId()
+}
+abstract class Restaurant {
+  -Date price
+  -double phone
+  +getCode()
+  +sendDuration()
+  +sendScore()
+}
+interface Housekeeping {
+  #long active
+  -Date price
+  -Date duration
+  -double phone
+  -Date type
+  +deleteStatus()
+  +sendScore()
+}
+CheckOut ..|> Service
+Booking ..> Restaurant : "1"
+Restaurant --|> Room
+Room --o Housekeeping
+Room ..> Service : "0..1"
+note right of Booking : Hotel domain
+@enduml

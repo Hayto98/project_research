@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+component "Shelf Service" as C_ShelfService
+component "Catalog Service" as C_CatalogService
+component "Renewal Service" as C_RenewalService
+component "Fine Service" as C_FineService
+database "Library DB" as DB_library
+C_ShelfService --> DB_library
+C_RenewalService --> DB_library
+C_FineService --> DB_library
+C_ShelfService ..> C_FineService : HTTP
+C_FineService ..> C_ShelfService : REST
+C_ShelfService ..> C_CatalogService : MQ
+@enduml

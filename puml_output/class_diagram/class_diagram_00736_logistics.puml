@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+abstract class Inventory {
+  #long amount
+  #boolean email
+  #String quantity
+  +boolean description
+  +float updatedAt
+  +calculateLevel()
+  +validateEmail()
+  +setAddress()
+}
+class Customer {
+  #boolean description
+  #float code
+  +float active
+  -int duration
+  -int address
+  +processLevel()
+}
+class Package {
+  +float createdAt
+  -String address
+  -long status
+  +float amount
+  +updateType()
+  +sendAddress()
+}
+abstract class Route {
+  -boolean quantity
+  #float score
+  #float price
+  #Date total
+  +validateCreatedat()
+  +createUpdatedat()
+  +findDuration()
+  +calculateActive()
+}
+class DeliveryNote {
+  -double score
+  #long description
+  +float phone
+  +double address
+  #float email
+  +sendAmount()
+  +processTotal()
+  +createStatus()
+}
+Customer ..|> DeliveryNote
+DeliveryNote --* Route
+Inventory --o Route
+note right of Inventory : Logistics domain
+@enduml

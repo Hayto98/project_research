@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Fine Service" as C_FineService
+component "Book Service" as C_BookService
+component "Catalog Service" as C_CatalogService
+component "Member Service" as C_MemberService
+component "Loan Service" as C_LoanService
+database "Library DB" as DB_library
+C_FineService --> DB_library
+C_BookService --> DB_library
+C_CatalogService --> DB_library
+C_MemberService --> DB_library
+C_MemberService ..> C_FineService : HTTP
+C_CatalogService ..> C_MemberService : MQ
+@enduml

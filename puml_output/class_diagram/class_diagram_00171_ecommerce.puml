@@ -1,0 +1,39 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+abstract class Payment {
+  -boolean note
+  #long total
+  +updateEmail()
+  +sendCode()
+  +processEmail()
+  +calculatePhone()
+}
+class Cart {
+  +Date id
+  #boolean active
+  +calculateName()
+  +findAmount()
+  +processName()
+  +validatePrice()
+}
+interface Warehouse {
+  #int status
+  +String note
+  +saveAddress()
+}
+class Review {
+  +boolean id
+  #String email
+  -boolean quantity
+  +boolean name
+  +float level
+  +cancelScore()
+  +getCode()
+  +sendPrice()
+  +getQuantity()
+}
+Review --|> Warehouse
+Payment --o Review
+note right of Payment : Ecommerce domain
+@enduml

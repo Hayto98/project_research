@@ -1,0 +1,44 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class Invoice {
+  +Date total
+  -long price
+  -double type
+  #int active
+  +float id
+  +validateTotal()
+  +saveNote()
+  +findCode()
+}
+abstract class Review {
+  #float total
+  +long phone
+  #long status
+  +findActive()
+  +processScore()
+  +getDescription()
+  +processStatus()
+}
+interface Return {
+  +double score
+  +Date duration
+  -Date address
+  #int total
+  -float level
+  +cancelPrice()
+  +sendEmail()
+}
+abstract class Cart {
+  -Date email
+  -float duration
+  +validateTotal()
+  +getStatus()
+  +saveNote()
+}
+Cart --* Invoice
+Return ..> Invoice : "0..1"
+Review --o Cart
+note right of Invoice : Ecommerce domain
+@enduml

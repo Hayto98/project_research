@@ -1,0 +1,17 @@
+@startuml
+
+component "Customer Service" as C_CustomerService
+component "Shipment Service" as C_ShipmentService
+component "Depot Service" as C_DepotService
+component "Tracking Service" as C_TrackingService
+component "Route Service" as C_RouteService
+component "Inventory Service" as C_InventoryService
+database "Logistics DB" as DB_logistics
+C_DepotService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_InventoryService --> DB_logistics
+C_RouteService ..> C_InventoryService : REST
+C_InventoryService ..> C_DepotService : gRPC
+C_DepotService ..> C_CustomerService : MQ
+C_DepotService ..> C_CustomerService : gRPC
+@enduml

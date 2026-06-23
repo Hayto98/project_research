@@ -1,0 +1,42 @@
+@startuml
+skinparam monochrome true
+interface Reservation {
+  -int quantity
+  +String code
+  -double status
+  #Date level
+  +processName()
+  +findAmount()
+  +processActive()
+  +processQuantity()
+}
+class Loan {
+  -boolean address
+  -int price
+  -double note
+  +int amount
+  +calculateId()
+  +processActive()
+  +validateTotal()
+  +findLevel()
+}
+interface Branch {
+  #int description
+  +int updatedAt
+  -long score
+  -Date id
+  +Date note
+  +sendName()
+}
+class Author {
+  -int total
+  +String level
+  #float status
+  +int address
+  +sendNote()
+}
+Loan ..> Author : "*"
+Author ..|> Branch
+Branch ..> Loan : "1..*"
+note right of Reservation : Library domain
+@enduml

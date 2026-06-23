@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+start
+:Open Account;
+:Pay Bill;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Deposit Money;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Transfer Funds;
+:Apply For Loan;
+:Block Card;
+stop
+@enduml

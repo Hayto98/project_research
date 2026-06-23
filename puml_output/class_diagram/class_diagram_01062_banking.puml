@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+class Customer {
+  #Date code
+  -Date type
+  +Date price
+  -Date level
+  +boolean duration
+  +deleteActive()
+  +calculateId()
+  +deleteName()
+  +saveDuration()
+}
+abstract class Beneficiary {
+  +Date createdAt
+  #Date level
+  -double status
+  +deleteTotal()
+  +saveTotal()
+}
+abstract class Account {
+  #long createdAt
+  #boolean code
+  +setQuantity()
+}
+class Withdrawal {
+  #Date status
+  #int score
+  #String id
+  +cancelType()
+  +findName()
+}
+class Transaction {
+  #int duration
+  -float score
+  -boolean active
+  #double note
+  +Date updatedAt
+  +findType()
+}
+class Teller {
+  -float score
+  -String price
+  +Date status
+  -float phone
+  +updateName()
+}
+interface Loan {
+  +long price
+  +Date amount
+  -double status
+  +saveName()
+  +validateUpdatedat()
+  +sendDuration()
+  +validateId()
+}
+Beneficiary --* Withdrawal
+Customer --> Teller : "0..1"
+Beneficiary --|> Loan
+Beneficiary ..> Account : "*"
+Teller ..|> Beneficiary
+note right of Customer : Banking domain
+@enduml

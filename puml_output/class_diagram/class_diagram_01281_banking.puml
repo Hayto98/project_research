@@ -1,0 +1,48 @@
+@startuml
+skinparam defaultFontSize 13
+class Beneficiary {
+  #String address
+  #Date amount
+  -int phone
+  -double code
+  +calculateQuantity()
+}
+class Loan {
+  +String total
+  +String phone
+  -boolean active
+  +validateName()
+  +validateDescription()
+  +findPhone()
+}
+interface Deposit {
+  +double quantity
+  -float score
+  +float description
+  +processDuration()
+  +cancelPhone()
+  +findId()
+  +saveScore()
+}
+abstract class Statement {
+  +long total
+  +String code
+  -long name
+  +findTotal()
+  +sendStatus()
+  +updateAddress()
+  +findUpdatedat()
+}
+class Withdrawal {
+  #double email
+  #String score
+  -long duration
+  +String price
+  +double createdAt
+  +setDescription()
+}
+Beneficiary --> Withdrawal : "1..*"
+Statement --|> Deposit
+Deposit --o Statement
+note right of Beneficiary : Banking domain
+@enduml

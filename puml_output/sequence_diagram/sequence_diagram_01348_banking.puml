@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+boundary "ATM" as A
+actor "Account Holder" as AH
+boundary "Bank Teller" as BT
+A --> BT : Pay Bill
+activate BT
+BT --> A : ACK
+deactivate BT
+note over BT : processing pay bill
+AH -> BT : Deposit Money
+AH --> A : Withdraw Cash
+A ->> AH : Transfer Funds
+note over AH : processing transfer funds
+BT --> A : View Statement
+note over A : processing view statement
+A --> AH : Open Account
+@enduml

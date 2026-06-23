@@ -1,0 +1,65 @@
+@startuml
+skinparam ArrowColor #555555
+interface Prescription {
+  -double active
+  #String note
+  +String type
+  #double id
+  +cancelCode()
+  +cancelId()
+  +processUpdatedat()
+}
+interface LabTest {
+  -String active
+  -Date email
+  -float duration
+  +savePrice()
+  +cancelActive()
+  +findAddress()
+  +calculateStatus()
+}
+interface Hospital {
+  #String price
+  #Date score
+  -long amount
+  #int level
+  +setCode()
+  +saveType()
+  +validateQuantity()
+}
+class Nurse {
+  -int id
+  #Date phone
+  -long address
+  +sendUpdatedat()
+  +getNote()
+}
+class Diagnosis {
+  +double level
+  +long name
+  -long code
+  +saveDescription()
+  +deleteScore()
+  +cancelTotal()
+}
+interface Treatment {
+  +int id
+  -float email
+  +int createdAt
+  +updateQuantity()
+  +processCreatedat()
+  +updatePhone()
+}
+interface Doctor {
+  +boolean active
+  -int address
+  +calculateQuantity()
+  +cancelScore()
+  +createEmail()
+}
+Hospital --o LabTest
+Nurse --|> Diagnosis
+Doctor --* Diagnosis
+Prescription --o Diagnosis
+note right of Prescription : Healthcare domain
+@enduml

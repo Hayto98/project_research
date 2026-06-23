@@ -1,0 +1,68 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+interface Album {
+  -double updatedAt
+  +int description
+  #double status
+  +String quantity
+  +validateAddress()
+  +processCode()
+}
+class Comment {
+  #boolean email
+  +float status
+  #boolean amount
+  -long level
+  +createId()
+  +processAmount()
+  +processLevel()
+  +calculateStatus()
+}
+class Like {
+  #long createdAt
+  +float active
+  #int name
+  -float status
+  +cancelActive()
+}
+interface Story {
+  -int createdAt
+  -Date duration
+  +updateType()
+  +findId()
+  +createNote()
+}
+abstract class Hashtag {
+  -float createdAt
+  #boolean score
+  +String description
+  -float active
+  +getQuantity()
+}
+class Post {
+  -String total
+  -long note
+  #Date duration
+  +setTotal()
+  +getId()
+  +calculateDuration()
+  +calculatePrice()
+}
+class Follower {
+  -boolean type
+  +Date amount
+  +long code
+  -float total
+  -String email
+  +updateLevel()
+  +updateDuration()
+}
+Follower --* Post
+Comment --* Hashtag
+Like ..> Follower : "1..*"
+Comment --|> Follower
+Post --|> Follower
+Follower ..|> Comment
+note right of Album : Social Media domain
+@enduml

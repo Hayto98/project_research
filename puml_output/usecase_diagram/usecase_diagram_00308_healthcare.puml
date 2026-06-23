@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+left to right direction
+actor "Doctor" as Doctor
+actor "Nurse" as Nurse
+actor "Receptionist" as Receptionist
+actor "Patient" as Patient
+rectangle "Healthcare System" {
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Examine Patient" as UC_ExaminePatient
+  usecase "Run Lab Test" as UC_RunLabTest
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+}
+Doctor --> UC_ExaminePatient
+Doctor --> UC_ProcessInsuranceClaim
+Nurse --> UC_ProcessInsuranceClaim
+Nurse --> UC_RunLabTest
+Receptionist --> UC_RunLabTest
+Patient --> UC_IssuePrescription
+Patient --> UC_ProcessInsuranceClaim
+UC_ProcessInsuranceClaim ..> UC_IssuePrescription : <<extend>>
+@enduml

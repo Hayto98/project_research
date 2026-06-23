@@ -1,0 +1,52 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+interface Notification {
+  +Date total
+  #float status
+  +String phone
+  -boolean level
+  #double createdAt
+  +findLevel()
+  +validateLevel()
+  +setCreatedat()
+  +processLevel()
+}
+abstract class Story {
+  #Date id
+  #long amount
+  +String active
+  -float phone
+  +long updatedAt
+  +cancelPhone()
+}
+class Group {
+  #String updatedAt
+  +Date name
+  +double duration
+  -float description
+  +validateStatus()
+  +cancelDescription()
+  +sendTotal()
+  +sendDuration()
+}
+class Follower {
+  #float level
+  +boolean address
+  #boolean amount
+  -long quantity
+  +sendQuantity()
+  +processStatus()
+  +deleteLevel()
+}
+interface Comment {
+  #String note
+  +double id
+  +getCreatedat()
+}
+Notification ..> Follower : "0..1"
+Group ..|> Story
+Comment --> Group : "0..1"
+note right of Notification : Social Media domain
+@enduml

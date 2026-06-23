@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+boundary "Manager" as M
+actor "Receptionist" as R
+actor "Guest" as G
+M ->> G : Order Room Service
+R --> G : Request Service
+G ->> R : Clean Room
+activate R
+R --> G : ACK
+deactivate R
+G -> M : Check In
+M --> R : Book Room
+M --> R : Process Payment
+activate R
+R --> M : ACK
+deactivate R
+note over R : processing process payment
+G -> M : Cancel Reservation
+activate M
+M --> G : ACK
+deactivate M
+note over M : processing cancel reservation
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+[*] --> Pending
+Pending --> OnHold : process
+OnHold --> Approved : confirm
+Approved --> Reviewed : update
+Approved : entry / log classroom
+Reviewed --> Processing : reject
+Processing --> OnHold : revert
+Processing --> [*]
+@enduml

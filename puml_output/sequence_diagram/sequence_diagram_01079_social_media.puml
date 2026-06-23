@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+boundary "Moderator" as M
+actor "Admin" as A
+entity "User" as U
+control "Advertiser" as A2
+A2 ->> M : Send Message
+A2 -> M : Edit Profile
+activate M
+M --> A2 : ACK
+deactivate M
+note over M : processing edit profile
+A -> U : Follow User
+activate U
+U --> A : ACK
+deactivate U
+A2 ->> M : Report Content
+activate M
+M --> A2 : ACK
+deactivate M
+note over M : processing report content
+A2 ->> M : Create Post
+activate M
+M --> A2 : ACK
+deactivate M
+@enduml

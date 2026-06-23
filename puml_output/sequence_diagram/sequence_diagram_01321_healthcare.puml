@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+entity "Nurse" as N
+actor "Doctor" as D
+entity "Patient" as P
+control "Receptionist" as R
+N --> R : Process Insurance Claim
+note over R : processing process insurance claim
+D --> R : Discharge Patient
+D --> R : Book Appointment
+note over R : processing book appointment
+N --> P : Update Medical Record
+activate P
+P --> N : ACK
+deactivate P
+N ->> R : Admit Patient
+note over R : processing admit patient
+D -> N : Issue Prescription
+note over N : processing issue prescription
+@enduml

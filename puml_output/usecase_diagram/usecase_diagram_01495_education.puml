@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+left to right direction
+actor "Admin" as Admin
+actor "Registrar" as Registrar
+rectangle "Education System" {
+  usecase "View Schedule" as UC_ViewSchedule
+  usecase "Take Attendance" as UC_TakeAttendance
+  usecase "Register Student" as UC_RegisterStudent
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Borrow Book" as UC_BorrowBook
+}
+Admin --> UC_EnrollCourse
+Admin --> UC_BorrowBook
+Admin --> UC_ViewSchedule
+Registrar --> UC_BorrowBook
+Registrar --> UC_RegisterStudent
+Registrar --> UC_EnrollCourse
+UC_TakeAttendance ..> UC_BorrowBook : <<extend>>
+@enduml

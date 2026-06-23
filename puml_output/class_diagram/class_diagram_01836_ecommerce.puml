@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+interface Customer {
+  -String duration
+  #long updatedAt
+  -Date description
+  +updateName()
+  +saveTotal()
+  +setQuantity()
+  +processCode()
+}
+class Supplier {
+  #long status
+  -long active
+  -double quantity
+  -long id
+  +sendUpdatedat()
+  +processCreatedat()
+}
+class Payment {
+  +long address
+  +int id
+  #double level
+  -Date quantity
+  +updateScore()
+  +sendAmount()
+}
+class Return {
+  #boolean level
+  +boolean price
+  +boolean score
+  +getType()
+  +getType()
+  +updateType()
+}
+class Shipment {
+  +double id
+  +String price
+  +String updatedAt
+  +getDescription()
+  +updateDuration()
+  +setCreatedat()
+  +updateQuantity()
+}
+interface Category {
+  -String code
+  #double type
+  +getLevel()
+}
+interface Invoice {
+  #String note
+  #Date address
+  #double code
+  +deleteAddress()
+  +setAddress()
+  +calculateCode()
+  +processScore()
+}
+Category ..|> Customer
+Category --> Return : "1"
+Customer --o Return
+Supplier ..> Invoice : "*"
+Invoice --o Shipment
+Shipment --o Payment
+note right of Customer : Ecommerce domain
+@enduml

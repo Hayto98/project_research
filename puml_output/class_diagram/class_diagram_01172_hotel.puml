@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+class Restaurant {
+  +Date type
+  +boolean level
+  #boolean createdAt
+  #long address
+  +deleteDescription()
+}
+class Staff {
+  #float createdAt
+  #boolean quantity
+  +float amount
+  +String id
+  +saveScore()
+  +validateStatus()
+  +findName()
+  +calculatePrice()
+}
+abstract class CheckIn {
+  -Date updatedAt
+  #String level
+  +Date name
+  +updatePrice()
+  +getDuration()
+  +validateDuration()
+  +createTotal()
+}
+class Payment {
+  #String name
+  #String address
+  +validateLevel()
+  +saveAddress()
+  +deleteTotal()
+}
+interface CheckOut {
+  +Date score
+  +Date name
+  +saveEmail()
+}
+class Room {
+  #boolean description
+  #float duration
+  #String level
+  #double active
+  -Date id
+  +validateNote()
+  +findActive()
+}
+CheckIn --|> CheckOut
+Room --o Staff
+Restaurant --o Payment
+note right of Restaurant : Hotel domain
+@enduml

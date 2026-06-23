@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+component "Teacher Service" as C_TeacherService
+component "Department Service" as C_DepartmentService
+component "Course Service" as C_CourseService
+component "Assignment Service" as C_AssignmentService
+component "Classroom Service" as C_ClassroomService
+database "Education DB" as DB_education
+C_TeacherService --> DB_education
+C_CourseService --> DB_education
+C_AssignmentService --> DB_education
+C_CourseService ..> C_TeacherService : gRPC
+C_DepartmentService ..> C_CourseService : HTTP
+C_TeacherService ..> C_AssignmentService : MQ
+@enduml

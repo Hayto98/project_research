@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+class Shipment {
+  #double createdAt
+  -float score
+  +createDuration()
+  +deleteAmount()
+}
+abstract class Depot {
+  -double amount
+  #float score
+  +int quantity
+  +updateDuration()
+  +sendEmail()
+}
+interface DeliveryNote {
+  #String note
+  #String code
+  -Date address
+  +processUpdatedat()
+}
+class Manifest {
+  -int phone
+  +boolean name
+  -Date quantity
+  #boolean email
+  -float level
+  +processActive()
+  +findCode()
+}
+class Warehouse {
+  +Date address
+  -boolean score
+  +float id
+  #double email
+  #Date level
+  +sendQuantity()
+}
+interface FuelLog {
+  #long name
+  +Date quantity
+  #boolean address
+  -double email
+  +getLevel()
+  +calculateAddress()
+}
+abstract class Inventory {
+  #double updatedAt
+  +double description
+  -long type
+  +setLevel()
+}
+FuelLog --o Depot
+Inventory --o Shipment
+Depot --* DeliveryNote
+note right of Shipment : Logistics domain
+@enduml

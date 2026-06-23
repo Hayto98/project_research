@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+component "Interest Service" as C_InterestService
+component "Teller Service" as C_TellerService
+component "Transaction Service" as C_TransactionService
+component "Beneficiary Service" as C_BeneficiaryService
+database "Banking DB" as DB_banking
+C_InterestService --> DB_banking
+C_TellerService --> DB_banking
+C_TransactionService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_BeneficiaryService ..> C_TransactionService : HTTP
+C_TransactionService ..> C_TellerService : gRPC
+@enduml

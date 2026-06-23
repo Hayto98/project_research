@@ -1,0 +1,39 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class Appointment {
+  -long level
+  #Date active
+  #float note
+  +long duration
+  +int quantity
+  +deletePhone()
+  +calculateScore()
+}
+class LabTest {
+  #double quantity
+  -String createdAt
+  #boolean type
+  +long score
+  +boolean id
+  +cancelAddress()
+}
+class Patient {
+  +boolean active
+  +int code
+  #long type
+  +cancelActive()
+  +sendUpdatedat()
+}
+abstract class Insurance {
+  -boolean amount
+  #boolean phone
+  -double type
+  +calculateUpdatedat()
+}
+Patient ..> Insurance : "0..1"
+Insurance ..> LabTest : "1..*"
+Appointment --|> Insurance
+note right of Appointment : Healthcare domain
+@enduml

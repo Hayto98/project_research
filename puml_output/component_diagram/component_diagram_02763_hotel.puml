@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+component "Amenity Service" as C_AmenityService
+component "Payment Service" as C_PaymentService
+component "CheckOut Service" as C_CheckOutService
+component "CheckIn Service" as C_CheckInService
+database "Hotel DB" as DB_hotel
+C_AmenityService --> DB_hotel
+C_AmenityService ..> C_CheckInService : MQ
+C_AmenityService ..> C_CheckOutService : gRPC
+@enduml

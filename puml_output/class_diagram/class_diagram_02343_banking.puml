@@ -1,0 +1,69 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+class Statement {
+  +boolean phone
+  +String email
+  -float description
+  #boolean name
+  +processLevel()
+}
+class Card {
+  #long email
+  +double type
+  +setAmount()
+}
+class Deposit {
+  -double amount
+  -float score
+  +int type
+  +double phone
+  +findStatus()
+  +processNote()
+  +updateId()
+  +createCode()
+}
+class Beneficiary {
+  +double name
+  #String email
+  +double status
+  +createActive()
+  +calculateId()
+  +sendAddress()
+  +validateScore()
+}
+abstract class Account {
+  #double amount
+  -boolean code
+  -int score
+  +float status
+  -double id
+  +validateName()
+  +deleteId()
+}
+class Teller {
+  -long score
+  #boolean level
+  +calculateLevel()
+  +getCode()
+  +updateQuantity()
+  +findActive()
+}
+interface Transaction {
+  +Date amount
+  -long address
+  +float id
+  #String code
+  #float active
+  +validateEmail()
+  +validateStatus()
+  +getPrice()
+}
+Account --o Card
+Card ..> Transaction : "1"
+Statement ..|> Account
+Statement --|> Teller
+note right of Statement : Banking domain
+@enduml

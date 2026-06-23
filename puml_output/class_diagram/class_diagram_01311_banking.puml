@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+interface Beneficiary {
+  +String id
+  +Date createdAt
+  +int type
+  -Date phone
+  +deletePrice()
+  +findLevel()
+  +cancelPrice()
+}
+class Transfer {
+  +boolean address
+  #boolean total
+  +String duration
+  #boolean note
+  #float phone
+  +updateId()
+  +processName()
+  +deleteDuration()
+  +deleteCode()
+}
+class Interest {
+  #boolean total
+  +double address
+  -String amount
+  +sendName()
+  +getQuantity()
+  +calculateType()
+  +cancelId()
+}
+class Customer {
+  -double updatedAt
+  +long phone
+  +String id
+  -int score
+  +processQuantity()
+  +deleteActive()
+  +processPrice()
+  +processStatus()
+}
+abstract class Statement {
+  #float level
+  +String email
+  +updateUpdatedat()
+  +updateCode()
+}
+abstract class Branch {
+  -int type
+  #int description
+  #Date amount
+  +processLevel()
+}
+interface Loan {
+  -double updatedAt
+  #boolean note
+  +double status
+  #String createdAt
+  -String score
+  +cancelScore()
+}
+Interest ..|> Statement
+Loan --> Transfer : "1..*"
+Branch --* Interest
+Branch ..> Beneficiary : "*"
+note right of Beneficiary : Banking domain
+@enduml

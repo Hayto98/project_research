@@ -1,0 +1,38 @@
+@startuml
+skinparam shadowing true
+class CheckIn {
+  +float code
+  +int price
+  +validateQuantity()
+  +validateScore()
+}
+abstract class Restaurant {
+  +boolean total
+  #boolean description
+  #float name
+  +cancelCreatedat()
+  +validateAmount()
+  +validatePrice()
+}
+class Room {
+  +Date address
+  +Date price
+  -String id
+  #Date active
+  +String score
+  +validateLevel()
+  +setQuantity()
+  +calculateEmail()
+}
+interface CheckOut {
+  -boolean duration
+  -float total
+  +long code
+  +saveQuantity()
+  +calculateCode()
+}
+Restaurant ..> CheckOut : "0..1"
+CheckOut --* Room
+Restaurant --> CheckIn : "1"
+note right of CheckIn : Hotel domain
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+class Housekeeping {
+  -float type
+  +long description
+  -double total
+  +saveActive()
+  +findAddress()
+  +sendEmail()
+}
+abstract class CheckIn {
+  -float code
+  #long type
+  #double updatedAt
+  -double duration
+  +deletePrice()
+  +updateDuration()
+}
+abstract class Booking {
+  +long code
+  #Date status
+  +updateDuration()
+  +sendPrice()
+  +sendEmail()
+}
+interface Staff {
+  +Date quantity
+  +long score
+  +updateNote()
+  +deleteLevel()
+  +cancelType()
+  +setDuration()
+}
+class Payment {
+  #int level
+  +Date active
+  #float duration
+  #Date status
+  -double createdAt
+  +saveCode()
+  +sendQuantity()
+  +calculateActive()
+}
+Booking ..|> CheckIn
+Payment --> Staff : "0..1"
+note right of Housekeeping : Hotel domain
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+left to right direction
+actor "Receptionist" as Receptionist
+actor "Nurse" as Nurse
+rectangle "Healthcare System" {
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Run Lab Test" as UC_RunLabTest
+  usecase "Examine Patient" as UC_ExaminePatient
+  usecase "Issue Prescription" as UC_IssuePrescription
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Book Appointment" as UC_BookAppointment
+}
+Receptionist --> UC_DischargePatient
+Receptionist --> UC_AdmitPatient
+Nurse --> UC_RunLabTest
+Nurse --> UC_ProcessInsuranceClaim
+Nurse --> UC_IssuePrescription
+UC_IssuePrescription ..> UC_BookAppointment : <<include>>
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+boundary "Admin" as A
+actor "Student" as S
+participant "Parent" as P
+control "Teacher" as T
+S ->> P : Register Student
+P --> S : Submit Assignment
+T --> S : View Schedule
+S -> T : Take Attendance
+activate T
+T --> S : ACK
+deactivate T
+S ->> P : Borrow Book
+activate P
+P --> S : ACK
+deactivate P
+A --> T : Grade Exam
+activate T
+T --> A : ACK
+deactivate T
+@enduml

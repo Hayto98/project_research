@@ -1,0 +1,68 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+interface Customer {
+  -int createdAt
+  +String email
+  #double total
+  #float quantity
+  +setActive()
+  +saveActive()
+  +cancelDuration()
+  +calculateCode()
+}
+class Shipment {
+  +String createdAt
+  -long code
+  -String note
+  +createUpdatedat()
+  +processCreatedat()
+}
+class Category {
+  +long createdAt
+  -Date code
+  +int amount
+  #Date phone
+  +createNote()
+  +cancelCode()
+}
+class Order {
+  #float price
+  #Date level
+  +findPrice()
+  +createStatus()
+  +calculateName()
+  +cancelAmount()
+}
+class Invoice {
+  #float name
+  #Date phone
+  +float status
+  #int price
+  #boolean code
+  +updateCreatedat()
+}
+abstract class Coupon {
+  -int id
+  #int code
+  #long price
+  +calculatePhone()
+  +validateEmail()
+  +calculateAddress()
+  +findName()
+}
+class Wishlist {
+  -float level
+  #String address
+  #double name
+  +int active
+  #float total
+  +sendTotal()
+}
+Order --* Coupon
+Customer --> Wishlist : "*"
+Order --o Customer
+note right of Customer : Ecommerce domain
+@enduml

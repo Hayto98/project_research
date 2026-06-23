@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Album Service" as C_AlbumService
+component "Hashtag Service" as C_HashtagService
+component "Like Service" as C_LikeService
+component "Post Service" as C_PostService
+component "Report Service" as C_ReportService
+database "Social Media DB" as DB_social_media
+C_AlbumService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_ReportService --> DB_social_media
+C_AlbumService ..> C_HashtagService : HTTP
+C_ReportService ..> C_PostService : gRPC
+C_HashtagService ..> C_PostService : gRPC
+@enduml

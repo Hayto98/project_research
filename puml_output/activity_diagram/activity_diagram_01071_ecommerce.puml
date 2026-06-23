@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+start
+:Cancel Order;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Checkout;
+:Apply Coupon;
+fork
+:notify system;
+fork again
+:log change;
+end fork
+:Browse Products;
+:Manage Inventory;
+:Add To Cart;
+:Track Order;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Write Review;
+stop
+@enduml

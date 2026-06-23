@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+component "Return Service" as C_ReturnService
+component "Wishlist Service" as C_WishlistService
+component "Review Service" as C_ReviewService
+component "Category Service" as C_CategoryService
+component "Supplier Service" as C_SupplierService
+database "Ecommerce DB" as DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_SupplierService --> DB_ecommerce
+C_ReviewService ..> C_WishlistService : REST
+C_CategoryService ..> C_WishlistService : gRPC
+@enduml

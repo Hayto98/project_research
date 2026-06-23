@@ -1,0 +1,42 @@
+@startuml
+skinparam ArrowColor #555555
+interface Route {
+  #String address
+  +float updatedAt
+  +double name
+  +sendCreatedat()
+  +saveQuantity()
+  +saveScore()
+}
+class DeliveryNote {
+  #double quantity
+  -String createdAt
+  #int email
+  -int note
+  -boolean price
+  +processTotal()
+  +findDuration()
+}
+abstract class Warehouse {
+  +double description
+  +long code
+  +float name
+  #long createdAt
+  -Date address
+  +processStatus()
+  +setDescription()
+  +deleteQuantity()
+}
+abstract class Shipment {
+  #Date price
+  -float name
+  +int level
+  +getTotal()
+  +getDuration()
+  +sendAmount()
+}
+DeliveryNote --o Route
+DeliveryNote ..> Shipment : "1..*"
+Warehouse ..|> Route
+note right of Route : Logistics domain
+@enduml

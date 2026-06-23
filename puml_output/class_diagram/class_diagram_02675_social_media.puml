@@ -1,0 +1,43 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+abstract class Message {
+  +float score
+  #boolean type
+  -boolean createdAt
+  +calculateActive()
+  +updateCode()
+  +cancelType()
+  +validateQuantity()
+}
+class Like {
+  +boolean amount
+  +int active
+  +updateStatus()
+}
+abstract class Post {
+  #long active
+  #String email
+  +int status
+  -int note
+  +setType()
+  +updateAmount()
+  +calculateNote()
+}
+class Notification {
+  +int code
+  +String score
+  #String createdAt
+  -int updatedAt
+  +float description
+  +processActive()
+  +deleteScore()
+  +processId()
+}
+Post ..> Notification : "1..*"
+Like --o Post
+Like ..|> Notification
+note right of Message : Social Media domain
+@enduml

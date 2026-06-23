@@ -1,0 +1,18 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Profile Service" as C_ProfileService
+component "Hashtag Service" as C_HashtagService
+component "Like Service" as C_LikeService
+component "Story Service" as C_StoryService
+component "Album Service" as C_AlbumService
+database "Social Media DB" as DB_social_media
+C_ProfileService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_StoryService --> DB_social_media
+C_AlbumService --> DB_social_media
+C_LikeService ..> C_AlbumService : HTTP
+C_StoryService ..> C_LikeService : gRPC
+C_AlbumService ..> C_ProfileService : MQ
+C_AlbumService ..> C_LikeService : REST
+@enduml

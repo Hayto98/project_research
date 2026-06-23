@@ -1,0 +1,31 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+control "Lab Technician" as LT
+actor "Doctor" as D
+boundary "Insurance Provider" as IP
+control "Nurse" as N
+IP -> N : Discharge Patient
+activate N
+N --> IP : ACK
+deactivate N
+IP ->> LT : Update Medical Record
+activate LT
+LT --> IP : ACK
+deactivate LT
+IP ->> D : Run Lab Test
+N ->> D : Examine Patient
+activate D
+D --> N : ACK
+deactivate D
+IP ->> LT : Admit Patient
+activate LT
+LT --> IP : ACK
+deactivate LT
+N ->> LT : Issue Prescription
+activate LT
+LT --> N : ACK
+deactivate LT
+@enduml

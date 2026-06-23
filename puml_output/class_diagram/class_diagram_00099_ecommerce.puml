@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Category {
+  +String amount
+  -String active
+  #long name
+  +updateCreatedat()
+  +calculateAmount()
+}
+class Wishlist {
+  +float code
+  +int note
+  #long createdAt
+  +cancelDuration()
+}
+class Supplier {
+  #float active
+  #float description
+  -boolean duration
+  +validatePrice()
+  +deleteCreatedat()
+  +findAddress()
+  +sendNote()
+}
+class Review {
+  #int price
+  -float code
+  #int address
+  +setPrice()
+  +cancelName()
+  +calculateCreatedat()
+}
+class Shipment {
+  -int id
+  +String status
+  +boolean total
+  +long phone
+  +cancelPrice()
+}
+abstract class Customer {
+  #int email
+  -Date id
+  +Date address
+  +cancelCode()
+  +createCreatedat()
+  +setType()
+}
+Supplier ..> Shipment : "*"
+Review --> Wishlist : "1..*"
+Wishlist ..|> Supplier
+Customer ..> Supplier : "*"
+Shipment --> Supplier : "1..*"
+note right of Category : Ecommerce domain
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+component "Cart Service" as C_CartService
+component "Coupon Service" as C_CouponService
+component "Wishlist Service" as C_WishlistService
+component "Customer Service" as C_CustomerService
+database "Ecommerce DB" as DB_ecommerce
+C_CartService --> DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_CustomerService ..> C_CartService : REST
+C_WishlistService ..> C_CustomerService : MQ
+@enduml

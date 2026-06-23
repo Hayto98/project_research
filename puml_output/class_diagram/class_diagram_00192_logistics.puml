@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+class DeliveryNote {
+  -float note
+  -float updatedAt
+  +float description
+  +processLevel()
+  +setStatus()
+  +updateId()
+}
+class Package {
+  #boolean email
+  #boolean type
+  #boolean address
+  +long status
+  +createAddress()
+  +setScore()
+}
+abstract class Route {
+  #double createdAt
+  -float amount
+  -long duration
+  -boolean level
+  -float price
+  +findLevel()
+  +validateActive()
+  +findPrice()
+  +cancelActive()
+}
+class Vehicle {
+  +boolean createdAt
+  -float amount
+  -int phone
+  -int score
+  #boolean address
+  +findLevel()
+}
+class FuelLog {
+  #String score
+  -String email
+  +saveId()
+  +deleteTotal()
+}
+class Depot {
+  #Date address
+  +Date note
+  +int code
+  #long status
+  +setCode()
+}
+Depot --> Vehicle : "0..1"
+Package ..> DeliveryNote : "1..*"
+Package --* Vehicle
+note right of DeliveryNote : Logistics domain
+@enduml

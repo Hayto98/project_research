@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+boundary "Warehouse Staff" as WS
+control "Customer" as C
+participant "Dispatcher" as D
+WS --> D : Update Inventory
+activate D
+D --> WS : ACK
+deactivate D
+C --> WS : Load Package
+activate WS
+WS --> C : ACK
+deactivate WS
+C --> WS : Deliver Package
+WS --> D : Fuel Vehicle
+note over D : processing fuel vehicle
+C ->> D : Track Shipment
+@enduml

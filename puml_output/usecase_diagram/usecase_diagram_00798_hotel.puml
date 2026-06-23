@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+left to right direction
+actor "Guest" as Guest
+actor "Manager" as Manager
+rectangle "Hotel System" {
+  usecase "Process Payment" as UC_ProcessPayment
+  usecase "Check Out" as UC_CheckOut
+  usecase "Request Service" as UC_RequestService
+  usecase "Clean Room" as UC_CleanRoom
+  usecase "Cancel Reservation" as UC_CancelReservation
+}
+Guest --> UC_CleanRoom
+Guest --> UC_CheckOut
+Manager --> UC_CheckOut
+UC_CancelReservation ..|> UC_CleanRoom : <<include>>
+@enduml

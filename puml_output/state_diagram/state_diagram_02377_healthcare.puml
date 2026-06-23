@@ -1,0 +1,12 @@
+@startuml
+
+[*] --> Processing
+Processing --> Pending : reject
+Processing : entry / log medicalrecord
+Pending --> Active : confirm
+Pending : entry / log medicalrecord
+Active --> Delivered : confirm
+Active : entry / log medicalrecord
+Delivered --> Active : revert
+Delivered --> [*]
+@enduml

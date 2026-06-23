@@ -1,0 +1,24 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+left to right direction
+actor "Seller" as Seller
+actor "Payment Gateway" as PaymentGateway
+actor "Customer" as Customer
+rectangle "Ecommerce System" {
+  usecase "Cancel Order" as UC_CancelOrder
+  usecase "Apply Coupon" as UC_ApplyCoupon
+  usecase "Manage Inventory" as UC_ManageInventory
+  usecase "Add To Cart" as UC_AddToCart
+  usecase "Browse Products" as UC_BrowseProducts
+  usecase "Write Review" as UC_WriteReview
+}
+Seller --> UC_BrowseProducts
+PaymentGateway --> UC_BrowseProducts
+Customer --> UC_ApplyCoupon
+Customer --> UC_ManageInventory
+Customer --> UC_CancelOrder
+UC_WriteReview ..|> UC_ApplyCoupon : <<extend>>
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+interface Teller {
+  +double name
+  #boolean createdAt
+  -double type
+  -long updatedAt
+  #Date price
+  +getCreatedat()
+}
+abstract class Loan {
+  +float active
+  +double name
+  +int note
+  +float total
+  -long id
+  +calculateName()
+  +saveId()
+}
+class Account {
+  +int name
+  #int type
+  +processDuration()
+  +setEmail()
+  +getActive()
+}
+abstract class Customer {
+  #int total
+  #double id
+  #boolean code
+  +createCode()
+  +findStatus()
+  +createScore()
+}
+interface Transaction {
+  +String phone
+  -boolean address
+  +findEmail()
+  +validateScore()
+}
+Transaction --o Loan
+Teller ..|> Customer
+Customer ..|> Transaction
+Account --o Customer
+note right of Teller : Banking domain
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+[*] --> Closed
+Closed --> Processing : reject
+Processing --> Rejected : reject
+Rejected --> Created : submit
+Created --> Active : confirm
+Active --> Pending : update
+Closed --> Active : revert
+Pending --> [*]
+@enduml

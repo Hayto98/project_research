@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing true
+[*] --> Shipped
+Shipped --> Processing : update
+Shipped : entry / log nurse
+Processing --> Pending : cancel
+Pending --> Delivered : approve
+Delivered --> Cancelled : reject
+Cancelled --> Completed : reject
+Cancelled : entry / log nurse
+Pending --> Processing : revert
+Completed --> [*]
+@enduml

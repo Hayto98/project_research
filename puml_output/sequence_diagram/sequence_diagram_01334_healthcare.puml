@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+participant "Patient" as P
+actor "Doctor" as D
+entity "Receptionist" as R
+participant "Lab Technician" as LT
+LT -> D : Discharge Patient
+D -> LT : Admit Patient
+activate LT
+LT --> D : ACK
+deactivate LT
+P -> D : Run Lab Test
+activate D
+D --> P : ACK
+deactivate D
+D ->> R : Examine Patient
+R -> D : Update Medical Record
+note over D : processing update medical record
+@enduml

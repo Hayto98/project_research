@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Message Service" as C_MessageService
+component "Story Service" as C_StoryService
+component "Follower Service" as C_FollowerService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_StoryService --> DB_social_media
+C_FollowerService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_StoryService ..> C_FollowerService : MQ
+C_StoryService ..> C_HashtagService : MQ
+C_StoryService ..> C_MessageService : gRPC
+@enduml

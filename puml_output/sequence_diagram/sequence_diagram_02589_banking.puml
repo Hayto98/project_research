@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam shadowing true
+entity "Branch Manager" as BM
+entity "Account Holder" as AH
+participant "Auditor" as A
+BM -> A : Block Card
+A ->> BM : Pay Bill
+activate BM
+BM --> A : ACK
+deactivate BM
+AH -> BM : Transfer Funds
+activate BM
+BM --> AH : ACK
+deactivate BM
+A -> BM : Withdraw Cash
+AH ->> BM : Deposit Money
+note over BM : processing deposit money
+@enduml

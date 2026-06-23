@@ -1,0 +1,40 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+abstract class Shelf {
+  #boolean type
+  +long level
+  -String duration
+  +updatePrice()
+  +setNote()
+  +findId()
+}
+interface Branch {
+  #long price
+  #Date updatedAt
+  #int amount
+  +findDuration()
+  +sendQuantity()
+}
+interface Librarian {
+  -double name
+  +int note
+  +String type
+  +updateTotal()
+  +cancelName()
+  +sendEmail()
+}
+abstract class Reservation {
+  -Date quantity
+  #Date amount
+  #long createdAt
+  +sendId()
+  +createPrice()
+  +setAmount()
+}
+Librarian --o Reservation
+Branch --o Shelf
+Reservation ..|> Shelf
+note right of Shelf : Library domain
+@enduml

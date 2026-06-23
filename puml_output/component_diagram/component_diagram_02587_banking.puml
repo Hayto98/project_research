@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+component "Statement Service" as C_StatementService
+component "Card Service" as C_CardService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Branch Service" as C_BranchService
+database "Banking DB" as DB_banking
+C_StatementService --> DB_banking
+C_CardService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_BranchService --> DB_banking
+C_BranchService ..> C_StatementService : REST
+C_StatementService ..> C_BranchService : REST
+@enduml

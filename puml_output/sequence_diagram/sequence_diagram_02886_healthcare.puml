@@ -1,0 +1,34 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+participant "Receptionist" as R
+control "Patient" as P
+actor "Doctor" as D
+control "Nurse" as N
+P -> N : Run Lab Test
+activate N
+N --> P : ACK
+deactivate N
+R -> N : Examine Patient
+D --> N : Update Medical Record
+activate N
+N --> D : ACK
+deactivate N
+R --> P : Admit Patient
+activate P
+P --> R : ACK
+deactivate P
+note over P : processing admit patient
+D -> R : Issue Prescription
+activate R
+R --> D : ACK
+deactivate R
+note over R : processing issue prescription
+R ->> P : Book Appointment
+activate P
+P --> R : ACK
+deactivate P
+note over P : processing book appointment
+@enduml

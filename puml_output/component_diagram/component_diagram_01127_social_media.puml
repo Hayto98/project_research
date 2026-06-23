@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+component "Post Service" as C_PostService
+component "Notification Service" as C_NotificationService
+component "Message Service" as C_MessageService
+component "Group Service" as C_GroupService
+component "User Service" as C_UserService
+component "Like Service" as C_LikeService
+database "Social Media DB" as DB_social_media
+C_PostService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_MessageService --> DB_social_media
+C_UserService --> DB_social_media
+C_LikeService --> DB_social_media
+C_LikeService ..> C_UserService : HTTP
+C_PostService ..> C_MessageService : gRPC
+C_PostService ..> C_MessageService : MQ
+@enduml

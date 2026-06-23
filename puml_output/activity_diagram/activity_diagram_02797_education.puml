@@ -1,0 +1,29 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+start
+:Enroll Course;
+:Borrow Book;
+fork
+:notify user;
+fork again
+:log change;
+end fork
+:Grade Exam;
+:Submit Assignment;
+:Take Attendance;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:View Schedule;
+fork
+:notify system;
+fork again
+:log event;
+end fork
+stop
+@enduml

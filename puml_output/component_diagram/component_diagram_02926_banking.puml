@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+component "Customer Service" as C_CustomerService
+component "Card Service" as C_CardService
+component "Account Service" as C_AccountService
+component "Withdrawal Service" as C_WithdrawalService
+component "Transaction Service" as C_TransactionService
+database "Banking DB" as DB_banking
+C_CustomerService --> DB_banking
+C_AccountService --> DB_banking
+C_TransactionService --> DB_banking
+C_CardService ..> C_CustomerService : HTTP
+C_CardService ..> C_CustomerService : HTTP
+C_AccountService ..> C_WithdrawalService : gRPC
+@enduml

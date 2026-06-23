@@ -1,0 +1,60 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Book {
+  #String total
+  +float type
+  -long amount
+  +float id
+  -long level
+  +validateDescription()
+  +cancelPrice()
+  +getActive()
+  +findPrice()
+}
+class Department {
+  +String code
+  -Date quantity
+  +float amount
+  +sendCode()
+  +sendQuantity()
+  +validateId()
+}
+class Exam {
+  -float active
+  #String id
+  -String type
+  +processCreatedat()
+  +validateQuantity()
+  +setDescription()
+}
+class Library {
+  +long quantity
+  +long description
+  -float level
+  +setQuantity()
+  +createName()
+  +deleteCode()
+}
+class Teacher {
+  #int note
+  -int name
+  #Date status
+  #int email
+  +sendType()
+  +calculateLevel()
+}
+class Enrollment {
+  +boolean updatedAt
+  +float total
+  +findNote()
+  +updateNote()
+}
+Teacher ..> Book : "0..1"
+Department ..|> Exam
+Enrollment ..> Library : "*"
+Enrollment --|> Department
+note right of Book : Education domain
+@enduml

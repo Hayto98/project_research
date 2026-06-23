@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+abstract class Cart {
+  +String status
+  +double email
+  #int active
+  +Date address
+  +updateAmount()
+  +findEmail()
+  +updatePhone()
+}
+class Return {
+  #double type
+  -double updatedAt
+  #String level
+  #String phone
+  +sendDescription()
+}
+class Order {
+  -double note
+  +Date level
+  +updateStatus()
+  +createDescription()
+  +createLevel()
+  +calculateLevel()
+}
+class Coupon {
+  -boolean code
+  -double updatedAt
+  +setNote()
+  +saveNote()
+}
+interface Warehouse {
+  -double status
+  -String email
+  #float createdAt
+  -String type
+  #float total
+  +calculateAddress()
+  +updateNote()
+  +validateNote()
+}
+abstract class Supplier {
+  -Date address
+  +boolean email
+  -boolean note
+  +setScore()
+  +getTotal()
+  +createLevel()
+}
+interface Customer {
+  -double updatedAt
+  #String quantity
+  +boolean total
+  +boolean description
+  +setLevel()
+  +saveLevel()
+  +processCreatedat()
+  +getType()
+}
+Warehouse ..|> Supplier
+Cart --|> Customer
+Return --|> Cart
+Supplier --|> Cart
+Coupon --o Warehouse
+Warehouse --* Return
+note right of Cart : Ecommerce domain
+@enduml

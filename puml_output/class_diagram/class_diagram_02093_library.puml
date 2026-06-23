@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+class Librarian {
+  -int phone
+  #double duration
+  #boolean description
+  #long level
+  +calculateType()
+}
+interface Reservation {
+  +String email
+  #int amount
+  #float id
+  +createCode()
+  +validateLevel()
+  +sendName()
+  +getStatus()
+}
+abstract class Shelf {
+  +String total
+  #double name
+  #int description
+  #boolean quantity
+  +findEmail()
+  +cancelStatus()
+}
+interface Author {
+  #Date email
+  -boolean name
+  +boolean total
+  -String updatedAt
+  -String status
+  +updatePhone()
+  +saveLevel()
+  +deleteLevel()
+}
+class Renewal {
+  #double price
+  +String address
+  -int status
+  +double phone
+  +createLevel()
+}
+class Member {
+  -int email
+  #boolean score
+  #Date note
+  #float phone
+  +getScore()
+  +cancelNote()
+  +cancelPhone()
+  +calculateName()
+}
+class Fine {
+  #boolean updatedAt
+  -String quantity
+  +String level
+  +deleteDuration()
+}
+Fine --* Renewal
+Shelf --> Renewal : "*"
+Renewal --|> Reservation
+Librarian --|> Renewal
+Fine --> Shelf : "0..1"
+Librarian --* Member
+note right of Librarian : Library domain
+@enduml

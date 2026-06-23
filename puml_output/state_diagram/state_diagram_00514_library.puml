@@ -1,0 +1,14 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+[*] --> Delivered
+Delivered --> Completed : process
+Completed --> Shipped : process
+Completed : entry / log librarian
+Shipped --> Reviewed : approve
+Shipped : entry / log librarian
+Reviewed --> Cancelled : review
+Reviewed : entry / log librarian
+Cancelled --> Shipped : revert
+Cancelled --> [*]
+@enduml

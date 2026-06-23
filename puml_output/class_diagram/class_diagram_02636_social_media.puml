@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+interface Comment {
+  -boolean price
+  +boolean name
+  +saveStatus()
+}
+class Follower {
+  -Date active
+  -double quantity
+  -boolean note
+  +setUpdatedat()
+}
+class Like {
+  -Date note
+  #float phone
+  #boolean score
+  +findQuantity()
+  +saveId()
+  +findEmail()
+}
+class User {
+  +double note
+  #int createdAt
+  +float duration
+  +updateActive()
+  +getQuantity()
+}
+abstract class Report {
+  -double note
+  +int id
+  +Date code
+  #double createdAt
+  +validatePhone()
+  +findName()
+  +processQuantity()
+}
+class Hashtag {
+  +float type
+  -Date createdAt
+  #int note
+  +deleteId()
+}
+class Message {
+  -double status
+  #long total
+  -double type
+  +sendLevel()
+  +sendType()
+  +sendName()
+  +cancelNote()
+}
+Follower --o Hashtag
+Comment --o Report
+Report --> Message : "*"
+Hashtag ..> Like : "1..*"
+Comment --* Message
+Comment --o Hashtag
+note right of Comment : Social Media domain
+@enduml

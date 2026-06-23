@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing true
+abstract class Insurance {
+  #Date createdAt
+  +float level
+  -Date total
+  +float code
+  +findScore()
+  +setCode()
+  +processActive()
+  +updatePrice()
+}
+interface Diagnosis {
+  #boolean level
+  #int note
+  -int name
+  #float address
+  -int status
+  +findEmail()
+  +setPrice()
+}
+interface Treatment {
+  -boolean type
+  +double total
+  +validateId()
+}
+interface Patient {
+  #double total
+  -String level
+  +String address
+  #long note
+  +findCreatedat()
+}
+Patient ..> Insurance : "0..1"
+Insurance --> Diagnosis : "1"
+note right of Insurance : Healthcare domain
+@enduml

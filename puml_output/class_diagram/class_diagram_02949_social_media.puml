@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+interface Notification {
+  #boolean address
+  +int email
+  +long note
+  #String total
+  +validateEmail()
+  +calculateUpdatedat()
+  +processCreatedat()
+}
+abstract class Hashtag {
+  +float email
+  #Date name
+  #Date createdAt
+  -String price
+  +double address
+  +setAmount()
+  +validateId()
+}
+interface Group {
+  +float type
+  -Date phone
+  +saveAmount()
+}
+interface User {
+  -float active
+  #int level
+  -float status
+  -double email
+  +saveCreatedat()
+}
+class Report {
+  +String email
+  -double description
+  -long status
+  +setDescription()
+}
+abstract class Like {
+  +String createdAt
+  #int amount
+  +createQuantity()
+  +updateEmail()
+  +deleteQuantity()
+  +updateId()
+}
+interface Comment {
+  #long price
+  +Date score
+  #boolean id
+  +float duration
+  +calculateName()
+  +updatePrice()
+  +saveStatus()
+}
+Like --> User : "0..1"
+Hashtag --o Group
+Comment --o Notification
+Comment ..> Report : "0..1"
+Like --o Hashtag
+note right of Notification : Social Media domain
+@enduml

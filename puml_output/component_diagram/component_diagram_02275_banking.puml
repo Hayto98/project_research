@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+component "Statement Service" as C_StatementService
+component "Teller Service" as C_TellerService
+component "Account Service" as C_AccountService
+component "Card Service" as C_CardService
+database "Banking DB" as DB_banking
+C_AccountService --> DB_banking
+C_CardService --> DB_banking
+C_StatementService ..> C_AccountService : HTTP
+C_AccountService ..> C_StatementService : HTTP
+@enduml

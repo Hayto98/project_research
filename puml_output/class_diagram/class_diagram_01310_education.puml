@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+abstract class Schedule {
+  +int duration
+  -Date description
+  +validateTotal()
+}
+abstract class Book {
+  -Date note
+  #int id
+  +int active
+  -float updatedAt
+  +long createdAt
+  +calculateQuantity()
+  +sendTotal()
+  +setAmount()
+  +deleteTotal()
+}
+abstract class Exam {
+  #int createdAt
+  -Date amount
+  +int total
+  +float phone
+  -long description
+  +calculateQuantity()
+  +cancelType()
+}
+interface Classroom {
+  #double score
+  -int duration
+  +float note
+  #Date total
+  +String phone
+  +deleteDuration()
+  +findId()
+}
+class Student {
+  +boolean type
+  #long total
+  +deleteTotal()
+  +findAmount()
+}
+class Attendance {
+  #float score
+  -Date note
+  +cancelId()
+}
+Student --* Exam
+Student ..> Book : "0..1"
+Classroom --|> Student
+note right of Schedule : Education domain
+@enduml

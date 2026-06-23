@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+[*] --> Shipped
+Shipped --> Created : reject
+Shipped : entry / log reservation
+Created --> Reviewed : submit
+Created : entry / log reservation
+Reviewed --> Completed : update
+Completed --> Processing : submit
+Completed : entry / log reservation
+Completed --> Created : revert
+Processing --> [*]
+@enduml

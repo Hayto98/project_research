@@ -1,0 +1,30 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+start
+:Request Service;
+:Order Room Service;
+if (success?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Check Out;
+:Cancel Reservation;
+:Check In;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Clean Room;
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Book Room;
+stop
+@enduml

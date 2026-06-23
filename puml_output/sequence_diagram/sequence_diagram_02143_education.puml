@@ -1,0 +1,21 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+actor "Student" as S
+boundary "Registrar" as R
+actor "Teacher" as T
+participant "Admin" as A
+A --> R : Enroll Course
+activate R
+R --> A : ACK
+deactivate R
+note over R : processing enroll course
+R ->> S : Take Attendance
+R ->> A : Grade Exam
+activate A
+A --> R : ACK
+deactivate A
+A -> R : Register Student
+note over R : processing register student
+R --> S : Issue Certificate
+@enduml

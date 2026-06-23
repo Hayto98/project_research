@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+participant "Admin" as A
+participant "Customer" as C
+participant "Delivery Service" as DS
+boundary "Payment Gateway" as PG
+PG ->> DS : Add To Cart
+activate DS
+DS --> PG : ACK
+deactivate DS
+DS --> PG : Track Order
+C --> DS : Write Review
+A -> DS : Checkout
+C ->> PG : Apply Coupon
+PG --> A : Browse Products
+activate A
+A --> PG : ACK
+deactivate A
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Transaction Service" as C_TransactionService
+component "Account Service" as C_AccountService
+component "Withdrawal Service" as C_WithdrawalService
+component "Interest Service" as C_InterestService
+component "Statement Service" as C_StatementService
+component "Branch Service" as C_BranchService
+component "Teller Service" as C_TellerService
+database "Banking DB" as DB_banking
+C_TransactionService --> DB_banking
+C_AccountService --> DB_banking
+C_InterestService --> DB_banking
+C_StatementService --> DB_banking
+C_TellerService --> DB_banking
+C_TellerService ..> C_WithdrawalService : REST
+C_TransactionService ..> C_BranchService : MQ
+C_BranchService ..> C_AccountService : gRPC
+C_StatementService ..> C_InterestService : REST
+C_StatementService ..> C_BranchService : gRPC
+C_AccountService ..> C_StatementService : gRPC
+@enduml

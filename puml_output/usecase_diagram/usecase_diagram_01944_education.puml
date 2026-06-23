@@ -1,0 +1,23 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+left to right direction
+actor "Teacher" as Teacher
+actor "Registrar" as Registrar
+actor "Librarian" as Librarian
+rectangle "Education System" {
+  usecase "Enroll Course" as UC_EnrollCourse
+  usecase "Issue Certificate" as UC_IssueCertificate
+  usecase "View Schedule" as UC_ViewSchedule
+  usecase "Borrow Book" as UC_BorrowBook
+  usecase "Grade Exam" as UC_GradeExam
+  usecase "Submit Assignment" as UC_SubmitAssignment
+  usecase "Register Student" as UC_RegisterStudent
+}
+Teacher --> UC_RegisterStudent
+Teacher --> UC_GradeExam
+Registrar --> UC_GradeExam
+Registrar --> UC_EnrollCourse
+Librarian --> UC_SubmitAssignment
+UC_RegisterStudent ..> UC_GradeExam : <<include>>
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+abstract class Restaurant {
+  #boolean phone
+  #boolean quantity
+  -int duration
+  +float status
+  +deleteType()
+  +cancelLevel()
+  +setTotal()
+}
+interface CheckIn {
+  +double duration
+  +String phone
+  +Date quantity
+  -int total
+  +saveUpdatedat()
+  +cancelDescription()
+}
+class Service {
+  #Date duration
+  #String amount
+  #float email
+  +Date name
+  -long total
+  +getStatus()
+}
+interface Amenity {
+  #boolean createdAt
+  #int duration
+  #float description
+  -double name
+  +setName()
+}
+Service --|> CheckIn
+CheckIn --* Restaurant
+Restaurant --|> CheckIn
+note right of Restaurant : Hotel domain
+@enduml

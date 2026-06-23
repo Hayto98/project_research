@@ -1,0 +1,68 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Story {
+  +String score
+  -float address
+  -Date quantity
+  +updateTotal()
+  +deletePrice()
+  +getActive()
+  +createEmail()
+}
+class Group {
+  -Date active
+  +String status
+  #float name
+  -double price
+  -boolean address
+  +processScore()
+  +findEmail()
+  +findDuration()
+  +updateDuration()
+}
+class Message {
+  +String updatedAt
+  +boolean price
+  +String description
+  -boolean name
+  -boolean code
+  +deleteEmail()
+}
+abstract class Report {
+  -Date address
+  +float price
+  +updateName()
+}
+class Follower {
+  #long email
+  -String phone
+  +calculateDuration()
+  +calculateStatus()
+}
+interface Profile {
+  -long id
+  -int level
+  +double phone
+  +saveNote()
+  +updateType()
+  +validateDescription()
+}
+interface Like {
+  #double type
+  #boolean createdAt
+  +boolean amount
+  +Date description
+  #float total
+  +calculateDuration()
+  +cancelType()
+}
+Group --* Message
+Like --|> Story
+Follower ..> Story : "1..*"
+Group --* Follower
+Story ..|> Group
+Follower --|> Report
+note right of Story : Social Media domain
+@enduml

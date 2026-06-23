@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+[*] --> OnHold
+OnHold --> Archived : reject
+OnHold : entry / log deposit
+Archived --> Pending : submit
+Pending --> Approved : review
+Approved --> Closed : submit
+Approved : entry / log deposit
+Closed --> Rejected : cancel
+Closed --> Archived : revert
+Rejected --> [*]
+@enduml

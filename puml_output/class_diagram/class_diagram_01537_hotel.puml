@@ -1,0 +1,55 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+class Room {
+  #int level
+  #int note
+  +long active
+  +cancelName()
+  +calculateCode()
+  +cancelEmail()
+  +findQuantity()
+}
+interface Payment {
+  -long email
+  #int note
+  #double price
+  #int updatedAt
+  +deleteAddress()
+  +deleteActive()
+  +getType()
+  +processCode()
+}
+interface Booking {
+  -double status
+  -Date amount
+  #long quantity
+  +int phone
+  +savePhone()
+  +createLevel()
+  +saveActive()
+}
+abstract class Invoice {
+  -double duration
+  -double level
+  +setEmail()
+  +validateStatus()
+  +calculatePhone()
+  +saveEmail()
+}
+interface Restaurant {
+  -int type
+  +float createdAt
+  -Date duration
+  +boolean code
+  +createStatus()
+  +getDescription()
+  +cancelNote()
+}
+Payment --* Invoice
+Booking ..|> Room
+Room --* Invoice
+Invoice ..|> Payment
+note right of Room : Hotel domain
+@enduml

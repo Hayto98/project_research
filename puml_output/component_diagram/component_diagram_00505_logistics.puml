@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+component "Package Service" as C_PackageService
+component "Shipment Service" as C_ShipmentService
+component "Tracking Service" as C_TrackingService
+component "Manifest Service" as C_ManifestService
+component "Depot Service" as C_DepotService
+component "DeliveryNote Service" as C_DeliveryNoteService
+component "Warehouse Service" as C_WarehouseService
+database "Logistics DB" as DB_logistics
+C_PackageService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_DepotService --> DB_logistics
+C_DeliveryNoteService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_TrackingService ..> C_PackageService : REST
+C_PackageService ..> C_ShipmentService : REST
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+interface Supplier {
+  -boolean description
+  #double status
+  +getTotal()
+  +createQuantity()
+}
+class Wishlist {
+  #String name
+  #long status
+  -long score
+  #long total
+  +calculateCreatedat()
+}
+class Warehouse {
+  +long active
+  -Date amount
+  #String quantity
+  -int total
+  #long description
+  +findDescription()
+  +findType()
+  +createStatus()
+  +deleteType()
+}
+class Invoice {
+  +String phone
+  #String address
+  #int total
+  #boolean id
+  +setNote()
+}
+Wishlist --* Warehouse
+Invoice --> Warehouse : "1"
+Warehouse ..> Wishlist : "1"
+note right of Supplier : Ecommerce domain
+@enduml

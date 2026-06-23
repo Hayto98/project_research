@@ -1,0 +1,27 @@
+@startuml
+skinparam shadowing true
+participant "Customer" as C
+entity "Warehouse Staff" as WS
+participant "Fleet Manager" as FM
+actor "Dispatcher" as D
+actor "Driver" as D2
+WS ->> C : Track Shipment
+activate C
+C --> WS : ACK
+deactivate C
+WS -> D2 : Deliver Package
+activate D2
+D2 --> WS : ACK
+deactivate D2
+note over D2 : processing deliver package
+FM ->> D : Fuel Vehicle
+activate D
+D --> FM : ACK
+deactivate D
+WS ->> C : Assign Route
+activate C
+C --> WS : ACK
+deactivate C
+note over C : processing assign route
+D --> FM : Load Package
+@enduml

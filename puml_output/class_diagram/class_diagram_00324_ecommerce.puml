@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+class Product {
+  -String quantity
+  +String email
+  -double description
+  +Date note
+  -String type
+  +createName()
+}
+class Return {
+  +Date total
+  -Date address
+  +validateCode()
+}
+abstract class Review {
+  #String status
+  +long amount
+  +deleteStatus()
+}
+abstract class Category {
+  -boolean id
+  -float description
+  -double address
+  -String amount
+  +sendScore()
+}
+interface Payment {
+  -Date type
+  +Date address
+  +float code
+  -String phone
+  -float id
+  +cancelType()
+  +cancelEmail()
+  +validateNote()
+}
+class Shipment {
+  +long quantity
+  -String description
+  -double score
+  -int updatedAt
+  #boolean phone
+  +createStatus()
+  +cancelEmail()
+}
+class Wishlist {
+  #String name
+  -double score
+  +int note
+  #float phone
+  +updateStatus()
+  +processQuantity()
+  +deleteAmount()
+  +sendNote()
+}
+Category ..> Wishlist : "0..1"
+Payment ..> Product : "1..*"
+Return ..|> Product
+Category --|> Product
+note right of Product : Ecommerce domain
+@enduml

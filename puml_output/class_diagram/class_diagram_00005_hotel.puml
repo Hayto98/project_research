@@ -1,0 +1,46 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Payment {
+  +boolean type
+  +float status
+  -float name
+  #long price
+  +updateDuration()
+}
+class Amenity {
+  +float total
+  -int createdAt
+  #double address
+  +updateDuration()
+  +sendPrice()
+}
+abstract class Room {
+  #Date phone
+  +double code
+  -int score
+  +calculateAddress()
+  +cancelAmount()
+}
+class Housekeeping {
+  -double address
+  #boolean level
+  +Date phone
+  -boolean updatedAt
+  +int active
+  +deleteEmail()
+  +deleteDescription()
+}
+class CheckIn {
+  -float note
+  #int active
+  #int updatedAt
+  +float score
+  +validateId()
+  +validateDuration()
+}
+CheckIn --> Housekeeping : "1"
+Room ..|> CheckIn
+Payment ..> CheckIn : "1..*"
+note right of Payment : Hotel domain
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+abstract class Customer {
+  +float id
+  -int description
+  +cancelPrice()
+  +cancelUpdatedat()
+}
+interface Return {
+  +boolean active
+  +long total
+  #int price
+  +String score
+  +cancelStatus()
+  +processId()
+  +updateType()
+  +deleteNote()
+}
+class Product {
+  #long quantity
+  #boolean id
+  +Date active
+  -String duration
+  +String note
+  +updatePrice()
+  +getCode()
+  +setName()
+  +saveType()
+}
+abstract class Coupon {
+  #long score
+  -String address
+  -double phone
+  +processScore()
+  +createCreatedat()
+}
+class Shipment {
+  -float createdAt
+  #long status
+  -float price
+  +deleteScore()
+}
+class Warehouse {
+  +long email
+  -String updatedAt
+  +double phone
+  #boolean quantity
+  +Date createdAt
+  +cancelScore()
+}
+Customer ..> Shipment : "*"
+Return --> Coupon : "*"
+note right of Customer : Ecommerce domain
+@enduml

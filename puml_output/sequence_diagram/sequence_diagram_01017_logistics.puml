@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+participant "Driver" as D
+participant "Dispatcher" as D2
+entity "Warehouse Staff" as WS
+boundary "Fleet Manager" as FM
+FM --> D2 : Report Issue
+activate D2
+D2 --> FM : ACK
+deactivate D2
+D --> D2 : Schedule Pickup
+activate D2
+D2 --> D : ACK
+deactivate D2
+note over D2 : processing schedule pickup
+FM ->> D2 : Assign Route
+activate D2
+D2 --> FM : ACK
+deactivate D2
+note over D2 : processing assign route
+D --> FM : Fuel Vehicle
+activate FM
+FM --> D : ACK
+deactivate FM
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+
+abstract class Shelf {
+  +float createdAt
+  #float total
+  -Date phone
+  +updateDuration()
+  +validateName()
+  +validatePrice()
+  +createDescription()
+}
+interface Member {
+  #int id
+  -long updatedAt
+  +float score
+  +sendScore()
+  +sendAddress()
+}
+abstract class Loan {
+  -double active
+  -Date id
+  +long code
+  -Date quantity
+  +boolean address
+  +updatePrice()
+  +calculateNote()
+}
+interface Publisher {
+  -int createdAt
+  -String address
+  -float id
+  #int code
+  +calculateQuantity()
+  +updateScore()
+  +validatePrice()
+  +cancelDescription()
+}
+Shelf ..|> Publisher
+Publisher ..> Member : "1..*"
+Member --> Shelf : "1"
+note right of Shelf : Library domain
+@enduml

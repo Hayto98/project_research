@@ -1,0 +1,22 @@
+@startuml
+skinparam shadowing true
+entity "Dispatcher" as D
+control "Customer" as C
+actor "Fleet Manager" as FM
+FM --> C : Fuel Vehicle
+activate C
+C --> FM : ACK
+deactivate C
+note over C : processing fuel vehicle
+FM -> C : Report Issue
+activate C
+C --> FM : ACK
+deactivate C
+C ->> D : Load Package
+D --> FM : Update Inventory
+activate FM
+FM --> D : ACK
+deactivate FM
+D --> C : Track Shipment
+D ->> C : Assign Route
+@enduml

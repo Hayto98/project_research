@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+class Invoice {
+  +Date amount
+  +boolean id
+  +boolean score
+  +updateStatus()
+}
+class Housekeeping {
+  +boolean quantity
+  -long address
+  #String description
+  +double code
+  -boolean status
+  +findNote()
+  +calculateAddress()
+  +sendNote()
+}
+abstract class Restaurant {
+  #int total
+  -boolean address
+  +findActive()
+  +saveType()
+  +calculatePrice()
+}
+class Payment {
+  +boolean price
+  -float note
+  +getAmount()
+  +deleteCreatedat()
+  +deleteActive()
+}
+Restaurant --> Payment : "*"
+Invoice ..|> Restaurant
+note right of Invoice : Hotel domain
+@enduml

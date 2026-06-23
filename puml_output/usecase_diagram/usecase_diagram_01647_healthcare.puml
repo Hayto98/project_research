@@ -1,0 +1,20 @@
+@startuml
+skinparam shadowing true
+left to right direction
+actor "Lab Technician" as LabTechnician
+actor "Patient" as Patient
+rectangle "Healthcare System" {
+  usecase "Admit Patient" as UC_AdmitPatient
+  usecase "Run Lab Test" as UC_RunLabTest
+  usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
+  usecase "Discharge Patient" as UC_DischargePatient
+  usecase "Update Medical Record" as UC_UpdateMedicalRecord
+  usecase "Book Appointment" as UC_BookAppointment
+}
+LabTechnician --> UC_ProcessInsuranceClaim
+LabTechnician --> UC_UpdateMedicalRecord
+Patient --> UC_BookAppointment
+Patient --> UC_RunLabTest
+Patient --> UC_ProcessInsuranceClaim
+UC_UpdateMedicalRecord ..> UC_ProcessInsuranceClaim : <<extend>>
+@enduml

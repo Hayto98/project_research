@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+component "Return Service" as C_ReturnService
+component "Order Service" as C_OrderService
+component "Review Service" as C_ReviewService
+component "Shipment Service" as C_ShipmentService
+component "Customer Service" as C_CustomerService
+database "Ecommerce DB" as DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_CustomerService ..> C_OrderService : HTTP
+C_OrderService ..> C_ReviewService : MQ
+C_ReturnService ..> C_OrderService : REST
+C_CustomerService ..> C_ReturnService : gRPC
+@enduml

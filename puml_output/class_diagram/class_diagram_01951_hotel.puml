@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam shadowing true
+class Housekeeping {
+  #double createdAt
+  #int phone
+  -long score
+  -int updatedAt
+  +createDescription()
+  +deleteAmount()
+  +updateTotal()
+  +processAmount()
+}
+abstract class Reservation {
+  #String duration
+  +long phone
+  -Date description
+  -int type
+  +deleteLevel()
+  +calculateAddress()
+  +getPhone()
+  +getAddress()
+}
+abstract class Restaurant {
+  +Date name
+  -String duration
+  #int address
+  #float id
+  +updateNote()
+  +calculatePhone()
+  +getAmount()
+}
+abstract class CheckOut {
+  -int type
+  #String active
+  +processCode()
+  +validateTotal()
+  +cancelDuration()
+}
+abstract class Payment {
+  -boolean updatedAt
+  #double code
+  +createDescription()
+  +findActive()
+  +validateEmail()
+  +calculateEmail()
+}
+Restaurant --|> Payment
+CheckOut ..> Housekeeping : "1"
+Restaurant --> Reservation : "1..*"
+note right of Housekeeping : Hotel domain
+@enduml

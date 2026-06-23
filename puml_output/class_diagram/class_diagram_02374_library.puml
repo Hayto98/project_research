@@ -1,0 +1,62 @@
+@startuml
+skinparam defaultFontSize 13
+class Catalog {
+  -long address
+  -boolean level
+  +cancelDescription()
+}
+class Shelf {
+  +long name
+  -Date score
+  +createNote()
+}
+class Publisher {
+  +double phone
+  +int price
+  #Date status
+  -Date address
+  +processTotal()
+  +cancelLevel()
+  +cancelTotal()
+  +findId()
+}
+class Fine {
+  +double quantity
+  +float type
+  -int code
+  +boolean amount
+  +getId()
+}
+class Book {
+  -double address
+  +float phone
+  -String id
+  +Date level
+  +sendAddress()
+  +calculateId()
+  +setStatus()
+}
+class Loan {
+  #String email
+  #boolean note
+  -String price
+  +boolean duration
+  +sendDuration()
+  +cancelEmail()
+  +findActive()
+  +saveUpdatedat()
+}
+interface Renewal {
+  +boolean price
+  #double total
+  #Date duration
+  +setStatus()
+  +getUpdatedat()
+}
+Fine --* Renewal
+Fine --o Book
+Shelf --o Book
+Book ..> Publisher : "0..1"
+Book --> Fine : "0..1"
+note right of Catalog : Library domain
+@enduml

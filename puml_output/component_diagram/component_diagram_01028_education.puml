@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam defaultFontSize 11
+component "Department Service" as C_DepartmentService
+component "Exam Service" as C_ExamService
+component "Teacher Service" as C_TeacherService
+component "Library Service" as C_LibraryService
+component "Course Service" as C_CourseService
+component "Book Service" as C_BookService
+component "Assignment Service" as C_AssignmentService
+database "Education DB" as DB_education
+C_DepartmentService --> DB_education
+C_ExamService --> DB_education
+C_LibraryService --> DB_education
+C_CourseService --> DB_education
+C_BookService --> DB_education
+C_AssignmentService --> DB_education
+C_BookService ..> C_ExamService : REST
+C_ExamService ..> C_DepartmentService : gRPC
+C_BookService ..> C_DepartmentService : MQ
+C_TeacherService ..> C_CourseService : gRPC
+C_BookService ..> C_ExamService : gRPC
+C_BookService ..> C_ExamService : HTTP
+@enduml

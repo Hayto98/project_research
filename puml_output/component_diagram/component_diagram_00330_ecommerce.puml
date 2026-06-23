@@ -1,0 +1,18 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Return Service" as C_ReturnService
+component "Invoice Service" as C_InvoiceService
+component "Supplier Service" as C_SupplierService
+component "Customer Service" as C_CustomerService
+component "Payment Service" as C_PaymentService
+component "Review Service" as C_ReviewService
+component "Cart Service" as C_CartService
+database "Ecommerce DB" as DB_ecommerce
+C_ReturnService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_PaymentService --> DB_ecommerce
+C_CartService ..> C_ReviewService : MQ
+C_SupplierService ..> C_InvoiceService : HTTP
+@enduml

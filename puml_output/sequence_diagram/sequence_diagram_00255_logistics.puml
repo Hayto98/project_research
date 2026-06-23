@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 11
+actor "Fleet Manager" as FM
+actor "Warehouse Staff" as WS
+entity "Driver" as D
+FM --> D : Schedule Pickup
+note over D : processing schedule pickup
+FM --> WS : Assign Route
+WS -> D : Track Shipment
+note over D : processing track shipment
+FM -> D : Fuel Vehicle
+note over D : processing fuel vehicle
+FM --> WS : Report Issue
+activate WS
+WS --> FM : ACK
+deactivate WS
+D --> WS : Update Inventory
+D --> FM : Deliver Package
+@enduml

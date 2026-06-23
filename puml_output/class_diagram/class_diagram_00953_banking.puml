@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+class Withdrawal {
+  -double price
+  -Date type
+  -long id
+  +sendName()
+  +findPrice()
+  +processType()
+  +sendAddress()
+}
+class Statement {
+  #Date id
+  #float amount
+  -double updatedAt
+  +sendTotal()
+  +updateId()
+  +getQuantity()
+  +cancelName()
+}
+interface Card {
+  #boolean createdAt
+  -Date active
+  +calculateCode()
+  +deleteLevel()
+}
+class Beneficiary {
+  -boolean address
+  #boolean amount
+  #String email
+  -double level
+  +sendPhone()
+  +createCode()
+}
+interface Teller {
+  -String createdAt
+  -float duration
+  +deleteId()
+}
+abstract class Loan {
+  +String email
+  #Date total
+  +cancelAmount()
+}
+class Branch {
+  -Date score
+  #int address
+  +Date description
+  +validateDuration()
+  +getUpdatedat()
+  +getDuration()
+}
+Loan --> Teller : "1..*"
+Beneficiary ..> Statement : "1..*"
+Loan --> Beneficiary : "*"
+Card --> Statement : "1"
+note right of Withdrawal : Banking domain
+@enduml

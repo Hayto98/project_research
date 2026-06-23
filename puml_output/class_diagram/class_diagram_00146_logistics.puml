@@ -1,0 +1,51 @@
+@startuml
+skinparam shadowing true
+interface Shipment {
+  +double code
+  -double note
+  #String active
+  +Date id
+  +deleteLevel()
+}
+abstract class Tracking {
+  +boolean id
+  +boolean type
+  #String updatedAt
+  -float note
+  +calculateAddress()
+  +calculateStatus()
+}
+abstract class Manifest {
+  +double price
+  +float note
+  +int status
+  +Date id
+  -Date duration
+  +calculateCode()
+}
+interface FuelLog {
+  +Date score
+  #double note
+  #Date createdAt
+  +int price
+  +boolean level
+  +getCode()
+  +processLevel()
+  +createPrice()
+  +saveActive()
+}
+interface Driver {
+  #Date price
+  +double email
+  +double code
+  +boolean phone
+  +saveQuantity()
+  +processAmount()
+  +cancelType()
+  +validateLevel()
+}
+Shipment --o Manifest
+Manifest --* Driver
+Manifest --> Shipment : "0..1"
+note right of Shipment : Logistics domain
+@enduml

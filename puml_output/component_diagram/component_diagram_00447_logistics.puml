@@ -1,0 +1,17 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+component "FuelLog Service" as C_FuelLogService
+component "Warehouse Service" as C_WarehouseService
+component "Route Service" as C_RouteService
+component "Tracking Service" as C_TrackingService
+database "Logistics DB" as DB_logistics
+C_WarehouseService --> DB_logistics
+C_RouteService --> DB_logistics
+C_TrackingService --> DB_logistics
+C_TrackingService ..> C_RouteService : REST
+C_WarehouseService ..> C_FuelLogService : MQ
+C_WarehouseService ..> C_RouteService : REST
+@enduml

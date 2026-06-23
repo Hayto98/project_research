@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+interface Hospital {
+  +long updatedAt
+  #float type
+  #double duration
+  +boolean id
+  +float status
+  +findLevel()
+  +calculateType()
+  +sendPrice()
+}
+class Ward {
+  #long score
+  +long level
+  #Date createdAt
+  #double address
+  +sendEmail()
+}
+class Billing {
+  -boolean address
+  +double duration
+  +float createdAt
+  +String phone
+  #long score
+  +calculateAddress()
+  +findStatus()
+  +createId()
+  +validateActive()
+}
+interface LabTest {
+  #double duration
+  +Date name
+  -boolean createdAt
+  -Date quantity
+  +findId()
+  +validateTotal()
+  +sendEmail()
+}
+class Appointment {
+  +String active
+  #long createdAt
+  -boolean address
+  -int total
+  #int type
+  +validateStatus()
+  +findDescription()
+  +cancelCode()
+  +saveQuantity()
+}
+class Diagnosis {
+  #int createdAt
+  -double active
+  #int code
+  #Date updatedAt
+  #Date id
+  +saveLevel()
+}
+LabTest ..|> Appointment
+Hospital --|> Billing
+Appointment ..> Diagnosis : "1..*"
+note right of Hospital : Healthcare domain
+@enduml

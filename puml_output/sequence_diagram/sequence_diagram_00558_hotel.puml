@@ -1,0 +1,20 @@
+@startuml
+skinparam defaultFontSize 13
+participant "Receptionist" as R
+actor "Manager" as M
+participant "Chef" as C
+entity "Guest" as G
+C ->> M : Order Room Service
+activate M
+M --> C : ACK
+deactivate M
+M --> G : Check In
+activate G
+G --> M : ACK
+deactivate G
+R ->> C : Process Payment
+R ->> G : Cancel Reservation
+activate G
+G --> R : ACK
+deactivate G
+@enduml

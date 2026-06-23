@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+abstract class Review {
+  -String duration
+  #Date updatedAt
+  #boolean quantity
+  +sendQuantity()
+}
+class Category {
+  #int code
+  #long note
+  #String id
+  +validatePrice()
+  +createUpdatedat()
+  +processCode()
+  +getDescription()
+}
+abstract class Order {
+  #float active
+  -float description
+  +findCode()
+  +createCode()
+  +getId()
+}
+interface Customer {
+  -Date type
+  #float id
+  +saveCode()
+  +updateAddress()
+  +updateStatus()
+  +calculateUpdatedat()
+}
+class Coupon {
+  +float name
+  #float amount
+  +createPhone()
+  +cancelPhone()
+}
+class Wishlist {
+  +double updatedAt
+  -float name
+  +Date score
+  +float active
+  #int duration
+  +findActive()
+  +updatePrice()
+  +getCreatedat()
+}
+class Shipment {
+  #double address
+  -boolean duration
+  +getCode()
+  +deleteTotal()
+  +processStatus()
+}
+Review --o Shipment
+Coupon --> Customer : "1"
+Review --|> Customer
+Review ..> Order : "1..*"
+Wishlist --o Customer
+Customer ..|> Category
+note right of Review : Ecommerce domain
+@enduml

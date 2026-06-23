@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+class Return {
+  -double status
+  #String updatedAt
+  #long email
+  -String quantity
+  +createAddress()
+  +saveAddress()
+  +setId()
+}
+class Invoice {
+  #boolean updatedAt
+  +double phone
+  -boolean email
+  #Date duration
+  +setCreatedat()
+  +setEmail()
+}
+abstract class Supplier {
+  +double description
+  #int name
+  #Date status
+  #Date type
+  +float active
+  +calculateUpdatedat()
+  +sendActive()
+}
+class Coupon {
+  +String id
+  #boolean address
+  +setCreatedat()
+}
+class Shipment {
+  #double createdAt
+  +String phone
+  #Date price
+  #int name
+  +Date email
+  +updateTotal()
+  +setDescription()
+  +updateId()
+}
+abstract class Wishlist {
+  +double duration
+  -long total
+  #float note
+  +sendNote()
+  +updateUpdatedat()
+  +calculateAddress()
+}
+class Payment {
+  +Date code
+  -boolean name
+  -String type
+  #float quantity
+  #Date duration
+  +calculateLevel()
+}
+Invoice ..|> Wishlist
+Invoice --* Shipment
+Shipment --o Invoice
+Payment --> Coupon : "1..*"
+note right of Return : Ecommerce domain
+@enduml

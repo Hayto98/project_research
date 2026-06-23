@@ -1,0 +1,22 @@
+@startuml
+skinparam monochrome true
+entity "Auditor" as A
+boundary "Account Holder" as AH
+boundary "ATM" as A2
+participant "Bank Teller" as BT
+entity "Branch Manager" as BM
+BT ->> A : Deposit Money
+note over A : processing deposit money
+BM --> A2 : Withdraw Cash
+activate A2
+A2 --> BM : ACK
+deactivate A2
+BM ->> A2 : Pay Bill
+BT ->> AH : Open Account
+activate AH
+AH --> BT : ACK
+deactivate AH
+note over AH : processing open account
+BM ->> A2 : Apply For Loan
+BM -> A2 : Block Card
+@enduml

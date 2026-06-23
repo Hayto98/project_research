@@ -1,0 +1,45 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Withdrawal {
+  #float quantity
+  #long note
+  +saveQuantity()
+}
+class Customer {
+  -int updatedAt
+  -float address
+  +double score
+  -float phone
+  -boolean email
+  +createEmail()
+  +processEmail()
+  +setCreatedat()
+  +saveDuration()
+}
+interface Transaction {
+  #int total
+  #float description
+  -float duration
+  +double updatedAt
+  +float id
+  +createEmail()
+}
+abstract class Statement {
+  +String description
+  #int address
+  #boolean name
+  -double total
+  +saveName()
+}
+class Branch {
+  -long createdAt
+  +Date id
+  +validateTotal()
+  +validateDescription()
+}
+Branch --> Customer : "*"
+Withdrawal --|> Statement
+Branch --> Transaction : "1"
+note right of Withdrawal : Banking domain
+@enduml

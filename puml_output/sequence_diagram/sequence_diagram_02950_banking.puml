@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+participant "Branch Manager" as BM
+participant "Auditor" as A
+actor "Bank Teller" as BT
+BT ->> A : View Statement
+activate A
+A --> BT : ACK
+deactivate A
+BT -> A : Pay Bill
+activate A
+A --> BT : ACK
+deactivate A
+note over A : processing pay bill
+A ->> BT : Open Account
+activate BT
+BT --> A : ACK
+deactivate BT
+note over BT : processing open account
+BT ->> A : Withdraw Cash
+BM --> A : Deposit Money
+activate A
+A --> BM : ACK
+deactivate A
+A ->> BM : Apply For Loan
+note over BM : processing apply for loan
+@enduml

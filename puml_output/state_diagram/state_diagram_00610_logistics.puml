@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+[*] --> Closed
+Closed --> OnHold : cancel
+OnHold --> Active : cancel
+Active --> Shipped : process
+Shipped --> Cancelled : process
+Shipped : entry / log deliverynote
+OnHold --> Shipped : revert
+Cancelled --> [*]
+@enduml

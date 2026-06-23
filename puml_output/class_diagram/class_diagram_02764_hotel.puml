@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+abstract class Reservation {
+  +int quantity
+  -String updatedAt
+  +String amount
+  +String createdAt
+  #double note
+  +getPrice()
+  +cancelTotal()
+  +setStatus()
+}
+class Restaurant {
+  -boolean email
+  #double address
+  +sendStatus()
+}
+class CheckOut {
+  #int quantity
+  #float active
+  #double name
+  #int email
+  +deleteId()
+  +findAmount()
+  +getNote()
+  +setStatus()
+}
+abstract class Booking {
+  -boolean note
+  #float active
+  +boolean address
+  #long score
+  -String quantity
+  +findAmount()
+}
+class Staff {
+  -String level
+  #float status
+  +sendDuration()
+  +processQuantity()
+  +calculateAmount()
+  +createUpdatedat()
+}
+Staff --o CheckOut
+Restaurant ..> CheckOut : "1..*"
+Restaurant ..|> Booking
+note right of Reservation : Hotel domain
+@enduml

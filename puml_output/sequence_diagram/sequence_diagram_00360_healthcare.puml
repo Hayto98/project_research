@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+control "Patient" as P
+control "Doctor" as D
+actor "Nurse" as N
+P --> N : Admit Patient
+P --> N : Book Appointment
+activate N
+N --> P : ACK
+deactivate N
+N -> P : Discharge Patient
+activate P
+P --> N : ACK
+deactivate P
+note over P : processing discharge patient
+P -> N : Examine Patient
+N -> P : Update Medical Record
+@enduml

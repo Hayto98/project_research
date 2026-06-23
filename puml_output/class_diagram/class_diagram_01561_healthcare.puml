@@ -1,0 +1,57 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+class Insurance {
+  #float duration
+  #double email
+  +boolean createdAt
+  #double status
+  +getUpdatedat()
+}
+abstract class Hospital {
+  -String createdAt
+  #Date id
+  +int quantity
+  -float level
+  +int email
+  +cancelCode()
+}
+class Billing {
+  #float active
+  #Date status
+  -int price
+  +long amount
+  +getTotal()
+}
+class Prescription {
+  #double updatedAt
+  +String type
+  +cancelStatus()
+}
+class Patient {
+  #boolean updatedAt
+  #long phone
+  #int address
+  #int active
+  +Date level
+  +deleteDescription()
+}
+interface Treatment {
+  #long name
+  -Date updatedAt
+  +long status
+  #boolean duration
+  #boolean amount
+  +getName()
+  +deleteId()
+  +saveCode()
+  +updateName()
+}
+Hospital ..|> Prescription
+Prescription --|> Hospital
+Billing --> Patient : "1..*"
+Patient --* Insurance
+note right of Insurance : Healthcare domain
+@enduml

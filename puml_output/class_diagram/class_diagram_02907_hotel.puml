@@ -1,0 +1,53 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+class Invoice {
+  -long level
+  +int type
+  #int name
+  #long email
+  +createEmail()
+}
+abstract class Guest {
+  +int phone
+  -float active
+  -float email
+  +findCreatedat()
+  +setCreatedat()
+}
+class Amenity {
+  #double total
+  +boolean level
+  +sendDescription()
+  +processStatus()
+  +processAddress()
+  +calculateUpdatedat()
+}
+class Room {
+  #long note
+  #long quantity
+  +String active
+  -double level
+  +setCreatedat()
+}
+class Housekeeping {
+  #String quantity
+  +String phone
+  -int code
+  +setDuration()
+  +validateLevel()
+}
+class CheckIn {
+  +String active
+  +String duration
+  +sendName()
+  +processType()
+  +sendQuantity()
+  +findEmail()
+}
+CheckIn --|> Housekeeping
+Housekeeping --> Invoice : "1..*"
+Invoice --o Amenity
+note right of Invoice : Hotel domain
+@enduml

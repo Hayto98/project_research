@@ -1,0 +1,18 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+participant "Lab Technician" as LT
+boundary "Insurance Provider" as IP
+entity "Patient" as P
+IP -> LT : Admit Patient
+P ->> LT : Process Insurance Claim
+note over LT : processing process insurance claim
+LT --> IP : Issue Prescription
+activate IP
+IP --> LT : ACK
+deactivate IP
+IP ->> P : Update Medical Record
+LT ->> IP : Book Appointment
+@enduml

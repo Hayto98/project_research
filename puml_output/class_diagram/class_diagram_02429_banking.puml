@@ -1,0 +1,59 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+abstract class Loan {
+  -boolean total
+  +Date id
+  +double type
+  +setDuration()
+}
+abstract class Statement {
+  -Date code
+  +long createdAt
+  -int amount
+  +boolean total
+  +saveId()
+}
+class Teller {
+  +double total
+  #int quantity
+  +findAmount()
+}
+class Branch {
+  #Date status
+  -long createdAt
+  #long updatedAt
+  +calculateActive()
+}
+interface Beneficiary {
+  #float active
+  #double address
+  #int updatedAt
+  +setAmount()
+}
+interface Card {
+  -double level
+  #float price
+  #float duration
+  +boolean createdAt
+  #double updatedAt
+  +setScore()
+  +cancelPhone()
+  +getStatus()
+  +createNote()
+}
+class Customer {
+  -String note
+  +Date status
+  -long address
+  +boolean phone
+  -String description
+  +findName()
+  +createStatus()
+}
+Customer --* Teller
+Beneficiary ..|> Loan
+Customer ..> Branch : "1..*"
+note right of Loan : Banking domain
+@enduml

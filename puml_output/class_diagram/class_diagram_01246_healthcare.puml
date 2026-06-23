@@ -1,0 +1,63 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+interface MedicalRecord {
+  #Date description
+  +long type
+  +getDescription()
+  +validateQuantity()
+  +findId()
+}
+abstract class Insurance {
+  -boolean duration
+  -boolean name
+  +processCreatedat()
+  +updateCreatedat()
+}
+class Billing {
+  +float address
+  +Date type
+  +float score
+  #Date amount
+  +sendAddress()
+}
+interface Treatment {
+  -float updatedAt
+  #String duration
+  +Date active
+  #String score
+  +float type
+  +updateTotal()
+  +validateName()
+  +setName()
+}
+class Hospital {
+  -boolean duration
+  #String type
+  +deleteCode()
+}
+abstract class Ward {
+  #Date note
+  +double address
+  +sendCode()
+  +findQuantity()
+}
+abstract class Patient {
+  #double address
+  +long createdAt
+  #String code
+  -boolean description
+  -int name
+  +saveQuantity()
+  +setTotal()
+  +createAmount()
+  +createId()
+}
+Hospital --> MedicalRecord : "0..1"
+Treatment --|> Insurance
+Treatment --> Hospital : "1"
+MedicalRecord ..|> Hospital
+Ward --> Insurance : "1..*"
+note right of MedicalRecord : Healthcare domain
+@enduml

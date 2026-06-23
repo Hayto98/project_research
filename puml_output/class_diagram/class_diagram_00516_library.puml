@@ -1,0 +1,60 @@
+@startuml
+skinparam shadowing true
+class Branch {
+  #String description
+  #float amount
+  +String type
+  -long updatedAt
+  +float duration
+  +sendName()
+}
+class Fine {
+  +int description
+  #boolean active
+  -float phone
+  +setType()
+  +validateDuration()
+}
+abstract class Shelf {
+  -float total
+  -boolean name
+  +setDescription()
+}
+abstract class Author {
+  +int active
+  #double id
+  +double createdAt
+  +validateTotal()
+}
+class Librarian {
+  +double duration
+  -Date active
+  +int createdAt
+  -double id
+  +Date price
+  +validateAmount()
+}
+interface Catalog {
+  #float active
+  #boolean updatedAt
+  +long id
+  #double name
+  +createActive()
+  +updateNote()
+}
+abstract class Publisher {
+  #float updatedAt
+  #long address
+  #boolean total
+  +float email
+  +processDescription()
+  +validateEmail()
+}
+Fine ..> Catalog : "1..*"
+Publisher --o Author
+Shelf --o Author
+Fine --> Shelf : "*"
+Branch --o Shelf
+Branch ..|> Author
+note right of Branch : Library domain
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam shadowing true
+component "Course Service" as C_CourseService
+component "Schedule Service" as C_ScheduleService
+component "Classroom Service" as C_ClassroomService
+component "Exam Service" as C_ExamService
+component "Library Service" as C_LibraryService
+database "Education DB" as DB_education
+C_CourseService --> DB_education
+C_ScheduleService --> DB_education
+C_ClassroomService --> DB_education
+C_ExamService --> DB_education
+C_LibraryService ..> C_CourseService : MQ
+C_LibraryService ..> C_ExamService : REST
+C_CourseService ..> C_LibraryService : MQ
+@enduml

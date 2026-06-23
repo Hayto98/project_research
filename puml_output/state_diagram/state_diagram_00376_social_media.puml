@@ -1,0 +1,11 @@
+@startuml
+skinparam monochrome true
+[*] --> Archived
+Archived --> Processing : process
+Processing --> OnHold : submit
+OnHold --> Completed : cancel
+Completed --> Shipped : confirm
+Completed : entry / log follower
+OnHold --> Shipped : revert
+Shipped --> [*]
+@enduml

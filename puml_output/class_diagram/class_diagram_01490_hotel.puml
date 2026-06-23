@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+abstract class Housekeeping {
+  +long type
+  #float email
+  #Date duration
+  -int quantity
+  -boolean status
+  +getCode()
+  +createActive()
+  +sendNote()
+}
+interface Payment {
+  #float type
+  +int id
+  -boolean address
+  +validateEmail()
+}
+interface Reservation {
+  -boolean createdAt
+  #int active
+  #float phone
+  +updatePhone()
+  +processName()
+}
+class Booking {
+  #String active
+  +boolean level
+  +long address
+  +saveDescription()
+  +calculateEmail()
+  +calculateType()
+  +createQuantity()
+}
+class Restaurant {
+  +int phone
+  #String note
+  #boolean name
+  -float type
+  #long description
+  +getLevel()
+  +setTotal()
+}
+Payment ..> Restaurant : "1..*"
+Booking ..> Housekeeping : "0..1"
+Booking --> Restaurant : "0..1"
+note right of Housekeeping : Hotel domain
+@enduml

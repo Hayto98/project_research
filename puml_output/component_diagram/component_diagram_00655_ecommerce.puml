@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing true
+component "Order Service" as C_OrderService
+component "Wishlist Service" as C_WishlistService
+component "Cart Service" as C_CartService
+component "Invoice Service" as C_InvoiceService
+component "Customer Service" as C_CustomerService
+component "Review Service" as C_ReviewService
+database "Ecommerce DB" as DB_ecommerce
+C_OrderService --> DB_ecommerce
+C_WishlistService --> DB_ecommerce
+C_InvoiceService --> DB_ecommerce
+C_CustomerService --> DB_ecommerce
+C_ReviewService --> DB_ecommerce
+C_CustomerService ..> C_OrderService : REST
+C_OrderService ..> C_CustomerService : gRPC
+C_OrderService ..> C_ReviewService : gRPC
+C_ReviewService ..> C_CustomerService : MQ
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+class Doctor {
+  -boolean createdAt
+  -Date phone
+  +double quantity
+  #double id
+  +boolean active
+  +validateTotal()
+  +findPhone()
+  +deleteName()
+}
+class Insurance {
+  #String status
+  +double active
+  -String code
+  +String score
+  -float total
+  +validatePhone()
+}
+class Treatment {
+  #double email
+  +String status
+  #Date amount
+  -float note
+  +long id
+  +createCode()
+  +calculateType()
+  +saveAmount()
+  +findEmail()
+}
+abstract class Appointment {
+  #long code
+  #long duration
+  -int description
+  -int level
+  #boolean address
+  +sendAddress()
+  +createPrice()
+  +createStatus()
+}
+class LabTest {
+  +Date level
+  #String id
+  +createCode()
+}
+Appointment --> Treatment : "1"
+Appointment --* Doctor
+Doctor ..|> Treatment
+Insurance --o Treatment
+note right of Doctor : Healthcare domain
+@enduml

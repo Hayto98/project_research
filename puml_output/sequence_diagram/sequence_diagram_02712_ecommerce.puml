@@ -1,0 +1,28 @@
+@startuml
+skinparam defaultFontSize 13
+entity "Seller" as S
+actor "Customer" as C
+boundary "Payment Gateway" as PG
+boundary "Admin" as A
+boundary "Delivery Service" as DS
+A ->> DS : Make Payment
+activate DS
+DS --> A : ACK
+deactivate DS
+S --> PG : Checkout
+activate PG
+PG --> S : ACK
+deactivate PG
+DS ->> S : Cancel Order
+activate S
+S --> DS : ACK
+deactivate S
+C ->> DS : Manage Inventory
+activate DS
+DS --> C : ACK
+deactivate DS
+S -> C : Write Review
+activate C
+C --> S : ACK
+deactivate C
+@enduml

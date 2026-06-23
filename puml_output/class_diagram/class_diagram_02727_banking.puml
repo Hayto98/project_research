@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+interface Branch {
+  +boolean price
+  #String note
+  +getCode()
+  +calculateType()
+  +cancelType()
+}
+class Account {
+  #String amount
+  +long phone
+  +saveAddress()
+  +savePhone()
+  +saveDescription()
+  +validateType()
+}
+class Deposit {
+  -float note
+  -boolean description
+  #float createdAt
+  -boolean name
+  +deleteCode()
+  +findQuantity()
+  +sendEmail()
+}
+abstract class Teller {
+  -long description
+  -float type
+  +boolean name
+  +String createdAt
+  #boolean email
+  +setTotal()
+}
+class Customer {
+  #long active
+  #double address
+  +setPhone()
+  +updateAddress()
+  +createEmail()
+  +sendAddress()
+}
+class Transfer {
+  +int name
+  #boolean score
+  #long duration
+  +processNote()
+  +createAmount()
+}
+class Statement {
+  #String total
+  +int id
+  #Date score
+  +deleteDuration()
+  +updateActive()
+  +sendPhone()
+  +cancelAddress()
+}
+Deposit ..> Statement : "1"
+Teller --|> Account
+Transfer ..> Teller : "1..*"
+Branch --o Account
+note right of Branch : Banking domain
+@enduml

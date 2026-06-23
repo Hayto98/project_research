@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+interface Prescription {
+  -float score
+  #String status
+  -Date note
+  -float phone
+  #int level
+  +createNote()
+  +cancelAddress()
+}
+abstract class Diagnosis {
+  +long id
+  +long name
+  -Date price
+  +long createdAt
+  +deleteId()
+  +deleteActive()
+  +validateType()
+  +sendPhone()
+}
+abstract class Hospital {
+  -Date active
+  +float createdAt
+  +saveCreatedat()
+}
+abstract class Patient {
+  #boolean note
+  -boolean phone
+  #String score
+  +updatePhone()
+  +sendScore()
+  +saveScore()
+  +sendEmail()
+}
+interface Billing {
+  -String code
+  +int total
+  +createStatus()
+  +setCreatedat()
+}
+interface Treatment {
+  #double quantity
+  +double note
+  #long updatedAt
+  +saveType()
+  +setScore()
+  +saveType()
+  +validateTotal()
+}
+Hospital ..|> Patient
+Diagnosis --> Billing : "*"
+Billing --* Diagnosis
+note right of Prescription : Healthcare domain
+@enduml

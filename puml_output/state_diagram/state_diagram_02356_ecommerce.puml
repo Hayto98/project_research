@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 11
+[*] --> Cancelled
+Cancelled --> Delivered : submit
+Cancelled : entry / log warehouse
+Delivered --> Draft : approve
+Draft --> Archived : process
+Archived --> Processing : update
+Archived : entry / log warehouse
+Processing --> Active : update
+Processing --> Archived : revert
+Active --> [*]
+@enduml

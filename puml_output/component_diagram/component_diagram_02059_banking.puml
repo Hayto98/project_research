@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+component "Transfer Service" as C_TransferService
+component "Transaction Service" as C_TransactionService
+component "Customer Service" as C_CustomerService
+component "Beneficiary Service" as C_BeneficiaryService
+component "Withdrawal Service" as C_WithdrawalService
+component "Branch Service" as C_BranchService
+component "Interest Service" as C_InterestService
+database "Banking DB" as DB_banking
+C_TransferService --> DB_banking
+C_TransactionService --> DB_banking
+C_CustomerService --> DB_banking
+C_BeneficiaryService --> DB_banking
+C_WithdrawalService --> DB_banking
+C_BranchService --> DB_banking
+C_InterestService --> DB_banking
+C_TransactionService ..> C_BranchService : gRPC
+C_TransactionService ..> C_CustomerService : MQ
+C_BranchService ..> C_InterestService : REST
+C_BranchService ..> C_InterestService : gRPC
+C_BranchService ..> C_WithdrawalService : REST
+C_WithdrawalService ..> C_InterestService : HTTP
+@enduml

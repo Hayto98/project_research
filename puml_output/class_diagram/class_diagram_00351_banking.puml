@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+interface Card {
+  -boolean note
+  -int address
+  #float description
+  -boolean code
+  -double type
+  +updateScore()
+}
+class Deposit {
+  +double id
+  +int address
+  #boolean updatedAt
+  +Date note
+  +getActive()
+}
+interface Statement {
+  +String updatedAt
+  #int name
+  +long code
+  -float level
+  +setQuantity()
+  +saveEmail()
+  +cancelCode()
+  +findPrice()
+}
+abstract class Teller {
+  +Date active
+  -String score
+  +Date createdAt
+  +double name
+  #float note
+  +createTotal()
+  +getQuantity()
+}
+interface Customer {
+  -boolean address
+  #boolean email
+  -long total
+  #double amount
+  +String score
+  +validateCode()
+  +sendType()
+}
+Customer ..> Statement : "*"
+Teller --|> Statement
+note right of Card : Banking domain
+@enduml

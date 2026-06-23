@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+boundary "Chef" as C
+participant "Receptionist" as R
+participant "Manager" as M
+C --> M : Request Service
+note over M : processing request service
+M --> C : Order Room Service
+R -> C : Book Room
+activate C
+C --> R : ACK
+deactivate C
+R --> C : Check Out
+R ->> C : Process Payment
+activate C
+C --> R : ACK
+deactivate C
+@enduml

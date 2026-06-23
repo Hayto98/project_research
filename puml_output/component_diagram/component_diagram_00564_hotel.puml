@@ -1,0 +1,12 @@
+@startuml
+skinparam monochrome true
+component "Booking Service" as C_BookingService
+component "Room Service" as C_RoomService
+component "Staff Service" as C_StaffService
+component "CheckIn Service" as C_CheckInService
+database "Hotel DB" as DB_hotel
+C_BookingService --> DB_hotel
+C_StaffService --> DB_hotel
+C_RoomService ..> C_StaffService : MQ
+C_BookingService ..> C_RoomService : REST
+@enduml

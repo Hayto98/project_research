@@ -1,0 +1,27 @@
+@startuml
+skinparam ArrowColor #555555
+start
+:Process Payment;
+if (valid?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log event;
+end fork
+:Clean Room;
+:Check In;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Request Service;
+:Check Out;
+stop
+@enduml

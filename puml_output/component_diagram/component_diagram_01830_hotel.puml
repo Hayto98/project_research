@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+component "Service Service" as C_ServiceService
+component "Reservation Service" as C_ReservationService
+component "Housekeeping Service" as C_HousekeepingService
+component "Restaurant Service" as C_RestaurantService
+component "Guest Service" as C_GuestService
+database "Hotel DB" as DB_hotel
+C_ReservationService --> DB_hotel
+C_HousekeepingService --> DB_hotel
+C_RestaurantService --> DB_hotel
+C_GuestService --> DB_hotel
+C_HousekeepingService ..> C_ReservationService : MQ
+C_ServiceService ..> C_RestaurantService : MQ
+C_RestaurantService ..> C_ReservationService : MQ
+C_ServiceService ..> C_ReservationService : HTTP
+@enduml

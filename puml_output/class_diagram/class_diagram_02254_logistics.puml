@@ -1,0 +1,76 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class Tracking {
+  +long status
+  +String amount
+  +long id
+  -int name
+  +setAmount()
+  +findTotal()
+  +calculateCreatedat()
+  +calculateCode()
+}
+class Driver {
+  #long price
+  +Date updatedAt
+  +findName()
+  +sendStatus()
+  +createId()
+  +deleteLevel()
+}
+class Shipment {
+  #String updatedAt
+  #int quantity
+  +float type
+  -double score
+  +deleteDescription()
+  +getDuration()
+  +updateType()
+}
+class Route {
+  -boolean amount
+  #boolean score
+  -double level
+  -String updatedAt
+  #long note
+  +getEmail()
+  +findId()
+  +createQuantity()
+}
+interface DeliveryNote {
+  #String description
+  #long status
+  -double level
+  -Date id
+  -double email
+  +getAddress()
+  +processTotal()
+}
+abstract class Inventory {
+  +float type
+  #boolean level
+  -double description
+  -String duration
+  +int price
+  +createAmount()
+  +calculateDuration()
+}
+class Package {
+  +float duration
+  -String active
+  -String type
+  +findEmail()
+  +deleteAddress()
+  +validateEmail()
+  +cancelAmount()
+}
+Shipment ..> DeliveryNote : "*"
+Shipment ..|> Inventory
+Driver ..> Shipment : "1"
+Package --o Inventory
+Tracking --> DeliveryNote : "1..*"
+note right of Tracking : Logistics domain
+@enduml

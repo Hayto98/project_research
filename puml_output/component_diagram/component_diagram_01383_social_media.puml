@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Post Service" as C_PostService
+component "Notification Service" as C_NotificationService
+component "Profile Service" as C_ProfileService
+component "Follower Service" as C_FollowerService
+database "Social Media DB" as DB_social_media
+C_PostService --> DB_social_media
+C_NotificationService --> DB_social_media
+C_ProfileService --> DB_social_media
+C_ProfileService ..> C_FollowerService : MQ
+C_NotificationService ..> C_FollowerService : HTTP
+@enduml

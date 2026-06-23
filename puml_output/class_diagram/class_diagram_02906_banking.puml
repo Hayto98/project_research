@@ -1,0 +1,54 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam shadowing true
+class Beneficiary {
+  +Date email
+  +double code
+  +setDuration()
+  +sendAmount()
+  +deleteType()
+  +findNote()
+}
+class Loan {
+  -boolean description
+  #float score
+  +calculateType()
+  +validateDuration()
+}
+interface Teller {
+  -double name
+  +String price
+  +cancelAddress()
+  +getQuantity()
+}
+class Transfer {
+  +float name
+  -Date address
+  -long note
+  +getType()
+}
+interface Deposit {
+  #float total
+  -double note
+  -Date phone
+  -Date active
+  #boolean code
+  +updatePrice()
+  +deleteDescription()
+  +sendType()
+  +saveNote()
+}
+interface Interest {
+  +float note
+  #long createdAt
+  +calculateTotal()
+}
+Loan --> Interest : "1..*"
+Teller --|> Beneficiary
+Beneficiary --> Loan : "0..1"
+Teller --* Interest
+Teller ..|> Deposit
+note right of Beneficiary : Banking domain
+@enduml

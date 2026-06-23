@@ -1,0 +1,12 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+[*] --> Completed
+Completed --> Active : cancel
+Completed : entry / log warehouse
+Active --> OnHold : process
+OnHold --> Shipped : approve
+OnHold : entry / log warehouse
+Active --> Completed : revert
+Shipped --> [*]
+@enduml

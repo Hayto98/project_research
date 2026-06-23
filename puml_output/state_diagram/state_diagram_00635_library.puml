@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+[*] --> Closed
+Closed --> Processing : update
+Processing --> Pending : approve
+Processing : entry / log author
+Pending --> OnHold : review
+OnHold --> Reviewed : process
+Reviewed --> Archived : update
+Reviewed : entry / log author
+Reviewed --> Archived : revert
+Archived --> [*]
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam shadowing true
+boundary "Registrar" as R
+participant "Librarian" as L
+participant "Teacher" as T
+entity "Parent" as P
+participant "Student" as S
+R ->> L : Register Student
+L --> R : Enroll Course
+activate R
+R --> L : ACK
+deactivate R
+L ->> S : Grade Exam
+activate S
+S --> L : ACK
+deactivate S
+T ->> S : Take Attendance
+note over S : processing take attendance
+R -> S : View Schedule
+P -> T : Borrow Book
+@enduml

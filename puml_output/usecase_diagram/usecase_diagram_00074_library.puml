@@ -1,0 +1,19 @@
+@startuml
+skinparam ArrowColor #555555
+left to right direction
+actor "Admin" as Admin
+actor "Librarian" as Librarian
+rectangle "Library System" {
+  usecase "Reserve Book" as UC_ReserveBook
+  usecase "Pay Fine" as UC_PayFine
+  usecase "Search Catalog" as UC_SearchCatalog
+  usecase "Return Book" as UC_ReturnBook
+  usecase "Register Member" as UC_RegisterMember
+  usecase "Renew Loan" as UC_RenewLoan
+}
+Admin --> UC_ReserveBook
+Admin --> UC_SearchCatalog
+Admin --> UC_PayFine
+Librarian --> UC_ReserveBook
+UC_RegisterMember ..|> UC_ReturnBook : <<include>>
+@enduml

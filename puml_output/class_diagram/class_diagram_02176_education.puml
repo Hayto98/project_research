@@ -1,0 +1,67 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+class Library {
+  #Date updatedAt
+  #long price
+  +updateName()
+  +updateEmail()
+  +sendDuration()
+}
+abstract class Course {
+  #long duration
+  #long price
+  +getEmail()
+  +deleteActive()
+  +sendPrice()
+}
+class Attendance {
+  +float active
+  #long note
+  -Date duration
+  +cancelPrice()
+  +saveTotal()
+  +createAddress()
+}
+class Teacher {
+  #boolean name
+  #long phone
+  -float id
+  -int duration
+  -float address
+  +calculateScore()
+}
+abstract class Schedule {
+  -boolean active
+  +int phone
+  +double total
+  +validateId()
+}
+class Enrollment {
+  -String price
+  +boolean createdAt
+  +saveDescription()
+  +saveLevel()
+  +saveStatus()
+}
+interface Classroom {
+  -String total
+  -long quantity
+  -String phone
+  -String code
+  -float price
+  +sendCreatedat()
+  +updateEmail()
+  +saveId()
+  +validateScore()
+}
+Attendance ..|> Classroom
+Teacher --> Course : "1..*"
+Classroom --> Course : "*"
+Enrollment --|> Teacher
+Schedule ..|> Course
+Teacher --|> Schedule
+note right of Library : Education domain
+@enduml

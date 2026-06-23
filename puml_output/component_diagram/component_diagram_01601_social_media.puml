@@ -1,0 +1,19 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+component "Notification Service" as C_NotificationService
+component "Post Service" as C_PostService
+component "User Service" as C_UserService
+component "Story Service" as C_StoryService
+component "Hashtag Service" as C_HashtagService
+database "Social Media DB" as DB_social_media
+C_NotificationService --> DB_social_media
+C_UserService --> DB_social_media
+C_StoryService --> DB_social_media
+C_HashtagService --> DB_social_media
+C_HashtagService ..> C_PostService : REST
+C_UserService ..> C_StoryService : gRPC
+C_PostService ..> C_StoryService : gRPC
+C_HashtagService ..> C_PostService : gRPC
+@enduml

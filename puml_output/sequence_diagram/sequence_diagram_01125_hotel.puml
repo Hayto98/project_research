@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam defaultFontSize 13
+control "Chef" as C
+control "Housekeeper" as H
+boundary "Guest" as G
+entity "Manager" as M
+entity "Receptionist" as R
+R --> C : Clean Room
+activate C
+C --> R : ACK
+deactivate C
+note over C : processing clean room
+R -> M : Check Out
+G ->> M : Process Payment
+activate M
+M --> G : ACK
+deactivate M
+M ->> H : Check In
+activate H
+H --> M : ACK
+deactivate H
+H ->> C : Order Room Service
+@enduml

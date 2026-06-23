@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+interface Depot {
+  -int id
+  #Date description
+  +setCode()
+  +processPrice()
+  +validateStatus()
+}
+interface DeliveryNote {
+  +double address
+  #float level
+  #long id
+  #Date price
+  +getScore()
+}
+interface Warehouse {
+  +int amount
+  -long status
+  +setType()
+  +sendNote()
+}
+class Customer {
+  -Date quantity
+  -long updatedAt
+  -boolean id
+  -String total
+  +getType()
+  +validateEmail()
+  +findPhone()
+}
+abstract class FuelLog {
+  #boolean type
+  +Date active
+  #String score
+  +setPhone()
+  +saveAmount()
+  +deletePrice()
+}
+class Route {
+  -long level
+  -String address
+  +cancelActive()
+  +sendDescription()
+  +updateStatus()
+  +updateLevel()
+}
+Depot --o DeliveryNote
+Customer --* Depot
+Depot --> FuelLog : "1"
+FuelLog --> Depot : "0..1"
+Customer --* Warehouse
+note right of Depot : Logistics domain
+@enduml

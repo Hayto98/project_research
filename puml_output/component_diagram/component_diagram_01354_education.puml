@@ -1,0 +1,15 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+component "Grade Service" as C_GradeService
+component "Department Service" as C_DepartmentService
+component "Attendance Service" as C_AttendanceService
+component "Course Service" as C_CourseService
+database "Education DB" as DB_education
+C_GradeService --> DB_education
+C_DepartmentService --> DB_education
+C_CourseService --> DB_education
+C_GradeService ..> C_CourseService : gRPC
+C_AttendanceService ..> C_GradeService : HTTP
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+component "Driver Service" as C_DriverService
+component "Route Service" as C_RouteService
+component "Warehouse Service" as C_WarehouseService
+component "Manifest Service" as C_ManifestService
+component "Shipment Service" as C_ShipmentService
+component "Package Service" as C_PackageService
+component "DeliveryNote Service" as C_DeliveryNoteService
+database "Logistics DB" as DB_logistics
+C_DriverService --> DB_logistics
+C_RouteService --> DB_logistics
+C_WarehouseService --> DB_logistics
+C_ManifestService --> DB_logistics
+C_ShipmentService --> DB_logistics
+C_DeliveryNoteService ..> C_PackageService : gRPC
+C_WarehouseService ..> C_ShipmentService : MQ
+C_DeliveryNoteService ..> C_PackageService : HTTP
+C_PackageService ..> C_RouteService : REST
+@enduml

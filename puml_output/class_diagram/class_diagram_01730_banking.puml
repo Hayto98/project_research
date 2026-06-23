@@ -1,0 +1,62 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+class Customer {
+  #Date name
+  +float price
+  #float createdAt
+  +validatePrice()
+}
+class Transfer {
+  +int total
+  #Date id
+  +sendEmail()
+}
+class Deposit {
+  -float duration
+  -double id
+  +validateUpdatedat()
+  +calculateActive()
+  +calculatePhone()
+}
+interface Statement {
+  -long address
+  #float price
+  +double status
+  +String updatedAt
+  +calculateId()
+}
+class Account {
+  #double price
+  #Date total
+  +sendNote()
+  +cancelEmail()
+  +processDescription()
+  +calculateUpdatedat()
+}
+class Teller {
+  #boolean total
+  +long address
+  +String type
+  -Date id
+  #double active
+  +cancelName()
+  +deleteDescription()
+}
+class Branch {
+  -int address
+  +double quantity
+  +String id
+  #long active
+  -boolean type
+  +deleteCreatedat()
+  +deleteAmount()
+}
+Transfer ..|> Teller
+Customer ..> Teller : "1..*"
+Statement ..> Transfer : "0..1"
+Teller --o Branch
+note right of Customer : Banking domain
+@enduml

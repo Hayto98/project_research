@@ -1,0 +1,19 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 11
+component "Publisher Service" as C_PublisherService
+component "Librarian Service" as C_LibrarianService
+component "Fine Service" as C_FineService
+component "Shelf Service" as C_ShelfService
+component "Book Service" as C_BookService
+component "Catalog Service" as C_CatalogService
+database "Library DB" as DB_library
+C_LibrarianService --> DB_library
+C_ShelfService --> DB_library
+C_BookService --> DB_library
+C_CatalogService --> DB_library
+C_FineService ..> C_CatalogService : REST
+C_BookService ..> C_FineService : gRPC
+C_LibrarianService ..> C_PublisherService : HTTP
+@enduml

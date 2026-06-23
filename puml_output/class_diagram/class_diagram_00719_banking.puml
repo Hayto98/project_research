@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam shadowing true
+interface Transfer {
+  +long email
+  +boolean total
+  +double id
+  #Date quantity
+  +deleteStatus()
+  +saveTotal()
+}
+class Branch {
+  -double note
+  +int code
+  #String quantity
+  +boolean phone
+  #int description
+  +deleteActive()
+  +setCode()
+  +cancelEmail()
+  +cancelAddress()
+}
+interface Card {
+  -String createdAt
+  +boolean description
+  +sendType()
+  +deleteDescription()
+  +createAmount()
+  +setCode()
+}
+interface Teller {
+  +Date name
+  -long level
+  #String amount
+  +Date duration
+  #long phone
+  +processCode()
+  +setDuration()
+}
+class Interest {
+  +Date name
+  +boolean total
+  #boolean updatedAt
+  +String phone
+  -double level
+  +validatePhone()
+  +findName()
+}
+class Loan {
+  #int level
+  #long id
+  -double address
+  -double updatedAt
+  -long active
+  +createPhone()
+}
+Branch --> Card : "1"
+Branch --|> Transfer
+Transfer --|> Branch
+Interest --> Transfer : "1"
+Loan ..|> Transfer
+note right of Transfer : Banking domain
+@enduml

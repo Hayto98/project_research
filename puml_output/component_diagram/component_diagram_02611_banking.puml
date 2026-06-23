@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Deposit Service" as C_DepositService
+component "Account Service" as C_AccountService
+component "Transfer Service" as C_TransferService
+component "Withdrawal Service" as C_WithdrawalService
+database "Banking DB" as DB_banking
+C_DepositService --> DB_banking
+C_AccountService --> DB_banking
+C_TransferService --> DB_banking
+C_WithdrawalService --> DB_banking
+C_WithdrawalService ..> C_TransferService : HTTP
+C_TransferService ..> C_AccountService : HTTP
+C_TransferService ..> C_AccountService : HTTP
+@enduml

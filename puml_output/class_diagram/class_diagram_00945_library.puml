@@ -1,0 +1,71 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+interface Librarian {
+  #Date code
+  #boolean level
+  +float active
+  #boolean address
+  #int description
+  +calculatePhone()
+  +processEmail()
+  +deleteQuantity()
+}
+class Loan {
+  -Date id
+  -float total
+  +double level
+  -Date amount
+  +int note
+  +sendNote()
+  +setCode()
+  +setEmail()
+}
+class Branch {
+  +String duration
+  -long quantity
+  -boolean type
+  -Date address
+  +saveScore()
+}
+class Book {
+  #String active
+  -double status
+  -String duration
+  -float price
+  +String phone
+  +updateAmount()
+  +createStatus()
+}
+interface Reservation {
+  +int createdAt
+  #double email
+  +deleteName()
+  +calculateScore()
+  +createQuantity()
+}
+interface Publisher {
+  +Date createdAt
+  #int email
+  +setType()
+  +calculateScore()
+  +findDuration()
+}
+class Shelf {
+  -int quantity
+  -String updatedAt
+  #float createdAt
+  #int type
+  #float description
+  +setUpdatedat()
+}
+Reservation --* Publisher
+Librarian --> Publisher : "*"
+Librarian --o Book
+Branch ..|> Shelf
+Loan ..> Reservation : "1"
+Librarian --> Branch : "1..*"
+note right of Librarian : Library domain
+@enduml

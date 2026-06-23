@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+component "Book Service" as C_BookService
+component "Student Service" as C_StudentService
+component "Assignment Service" as C_AssignmentService
+component "Department Service" as C_DepartmentService
+database "Education DB" as DB_education
+C_AssignmentService --> DB_education
+C_BookService ..> C_StudentService : HTTP
+C_StudentService ..> C_DepartmentService : gRPC
+C_StudentService ..> C_DepartmentService : MQ
+@enduml

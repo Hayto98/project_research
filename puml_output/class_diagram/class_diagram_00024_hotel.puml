@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+abstract class Housekeeping {
+  +int price
+  #Date createdAt
+  +double active
+  +saveNote()
+}
+interface CheckOut {
+  +String status
+  -boolean createdAt
+  +int description
+  #float note
+  +boolean duration
+  +cancelCode()
+  +cancelDuration()
+  +getNote()
+  +sendAddress()
+}
+interface Service {
+  -long quantity
+  #String note
+  +double phone
+  #Date code
+  -boolean level
+  +getEmail()
+  +setName()
+}
+interface Room {
+  +Date price
+  +double createdAt
+  #boolean phone
+  +String duration
+  #Date amount
+  +cancelEmail()
+}
+interface Payment {
+  #Date score
+  #long total
+  #String code
+  +String active
+  #boolean name
+  +deleteQuantity()
+  +updateActive()
+  +sendNote()
+  +updateName()
+}
+Payment ..> Housekeeping : "1..*"
+Service --|> Room
+Room --o Housekeeping
+note right of Housekeeping : Hotel domain
+@enduml

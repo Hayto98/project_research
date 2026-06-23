@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+abstract class Diagnosis {
+  +long code
+  #double duration
+  -boolean price
+  +cancelDuration()
+  +deleteType()
+  +createDuration()
+}
+interface Treatment {
+  -int type
+  -String description
+  #Date name
+  #double updatedAt
+  -boolean createdAt
+  +getScore()
+  +updateScore()
+  +findPrice()
+}
+class Billing {
+  -float note
+  -int name
+  +createAmount()
+  +processPrice()
+}
+class Nurse {
+  #Date email
+  #int note
+  #double price
+  +createName()
+}
+Billing ..|> Nurse
+Treatment --* Diagnosis
+note right of Diagnosis : Healthcare domain
+@enduml

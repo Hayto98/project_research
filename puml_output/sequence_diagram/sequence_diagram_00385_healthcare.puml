@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontSize 11
+entity "Nurse" as N
+actor "Patient" as P
+control "Receptionist" as R
+N --> P : Admit Patient
+activate P
+P --> N : ACK
+deactivate P
+note over P : processing admit patient
+P ->> R : Run Lab Test
+activate R
+R --> P : ACK
+deactivate R
+N ->> R : Examine Patient
+note over R : processing examine patient
+N ->> P : Process Insurance Claim
+activate P
+P --> N : ACK
+deactivate P
+@enduml

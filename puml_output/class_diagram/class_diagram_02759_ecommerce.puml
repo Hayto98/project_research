@@ -1,0 +1,53 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+interface Order {
+  #float quantity
+  -String type
+  +double phone
+  -Date name
+  +setAddress()
+  +processStatus()
+  +saveId()
+}
+interface Wishlist {
+  -long status
+  +float type
+  #Date amount
+  -double duration
+  +cancelLevel()
+}
+class Category {
+  -String status
+  #long quantity
+  -int updatedAt
+  +calculateId()
+  +updateTotal()
+  +calculateCreatedat()
+  +processUpdatedat()
+}
+class Review {
+  +long code
+  #int id
+  +getUpdatedat()
+}
+class Product {
+  +Date address
+  #String description
+  +saveType()
+  +updateName()
+  +calculateCreatedat()
+}
+class Invoice {
+  #boolean quantity
+  #float type
+  +cancelLevel()
+  +calculatePrice()
+  +processUpdatedat()
+}
+Category ..|> Order
+Product --* Category
+Invoice --|> Order
+note right of Order : Ecommerce domain
+@enduml

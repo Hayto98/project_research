@@ -1,0 +1,12 @@
+@startuml
+skinparam defaultFontSize 11
+[*] --> Active
+Active --> Archived : process
+Active : entry / log loan
+Archived --> OnHold : confirm
+OnHold --> Approved : review
+OnHold : entry / log loan
+Approved --> Rejected : cancel
+Rejected --> Approved : revert
+Rejected --> [*]
+@enduml

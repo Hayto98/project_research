@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam ArrowColor #555555
+abstract class Loan {
+  #long phone
+  +Date active
+  +saveDescription()
+}
+class Teller {
+  +double quantity
+  +String total
+  +Date duration
+  +processScore()
+  +findQuantity()
+  +processDuration()
+}
+class Withdrawal {
+  +String total
+  -String id
+  -int type
+  -boolean duration
+  +float email
+  +updateEmail()
+  +setScore()
+  +cancelDescription()
+  +processEmail()
+}
+abstract class Transaction {
+  #float price
+  +int quantity
+  +float note
+  +validateAddress()
+  +validateId()
+}
+class Customer {
+  #long note
+  #int quantity
+  +float level
+  -boolean duration
+  +int price
+  +deleteNote()
+}
+class Statement {
+  +Date total
+  -Date price
+  +boolean duration
+  +int address
+  +findStatus()
+  +getName()
+}
+Withdrawal --> Transaction : "0..1"
+Statement --o Withdrawal
+note right of Loan : Banking domain
+@enduml

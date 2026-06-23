@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam ArrowColor #555555
+class Amenity {
+  -Date id
+  #int level
+  #float score
+  -String type
+  +sendAmount()
+}
+abstract class CheckIn {
+  -String level
+  #Date duration
+  +long type
+  -long score
+  +setEmail()
+  +validateActive()
+  +findTotal()
+}
+class Booking {
+  +String price
+  #String amount
+  #double level
+  +createScore()
+  +deleteActive()
+}
+class Room {
+  +double active
+  #Date score
+  -Date status
+  +saveAddress()
+  +deleteNote()
+  +updateDuration()
+  +sendId()
+}
+Amenity --o Room
+Room --* CheckIn
+note right of Amenity : Hotel domain
+@enduml

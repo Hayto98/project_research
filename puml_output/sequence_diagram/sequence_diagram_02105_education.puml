@@ -1,0 +1,23 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+entity "Teacher" as T
+entity "Registrar" as R
+boundary "Student" as S
+T --> R : Take Attendance
+activate R
+R --> T : ACK
+deactivate R
+note over R : processing take attendance
+R -> T : Submit Assignment
+activate T
+T --> R : ACK
+deactivate T
+S --> R : Issue Certificate
+activate R
+R --> S : ACK
+deactivate R
+R ->> T : View Schedule
+R --> T : Enroll Course
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+abstract class Doctor {
+  -long amount
+  -Date quantity
+  +getAddress()
+}
+abstract class Patient {
+  #Date email
+  #String updatedAt
+  +String type
+  +updateQuantity()
+  +deleteDescription()
+  +processEmail()
+  +processScore()
+}
+class Billing {
+  -int quantity
+  -String amount
+  +deleteTotal()
+  +findType()
+  +findScore()
+}
+class Nurse {
+  +String duration
+  -Date updatedAt
+  +setScore()
+  +sendType()
+  +validateAddress()
+  +processStatus()
+}
+Nurse --|> Patient
+Doctor ..|> Patient
+note right of Doctor : Healthcare domain
+@enduml

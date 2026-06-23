@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 13
+participant "ATM" as A
+actor "Account Holder" as AH
+entity "Branch Manager" as BM
+AH ->> A : Block Card
+activate A
+A --> AH : ACK
+deactivate A
+A --> AH : Withdraw Cash
+BM -> A : Pay Bill
+activate A
+A --> BM : ACK
+deactivate A
+AH -> BM : Deposit Money
+activate BM
+BM --> AH : ACK
+deactivate BM
+A ->> AH : Transfer Funds
+activate AH
+AH --> A : ACK
+deactivate AH
+@enduml

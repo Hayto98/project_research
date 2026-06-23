@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+[*] --> Approved
+Approved --> Shipped : reject
+Shipped --> Pending : reject
+Pending --> Rejected : approve
+Rejected --> Draft : update
+Draft --> Closed : reject
+Draft : entry / log insurance
+Rejected --> Closed : revert
+Closed --> [*]
+@enduml

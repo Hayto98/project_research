@@ -1,0 +1,29 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+participant "Admin" as A
+entity "Librarian" as L
+entity "Student" as S
+L ->> S : Grade Exam
+activate S
+S --> L : ACK
+deactivate S
+L --> A : View Schedule
+note over A : processing view schedule
+L --> S : Register Student
+S ->> L : Issue Certificate
+activate L
+L --> S : ACK
+deactivate L
+note over L : processing issue certificate
+A ->> L : Enroll Course
+activate L
+L --> A : ACK
+deactivate L
+L -> S : Take Attendance
+activate S
+S --> L : ACK
+deactivate S
+A ->> L : Submit Assignment
+@enduml

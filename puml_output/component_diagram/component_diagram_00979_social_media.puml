@@ -1,0 +1,16 @@
+@startuml
+skinparam monochrome true
+component "Post Service" as C_PostService
+component "Story Service" as C_StoryService
+component "Notification Service" as C_NotificationService
+component "Comment Service" as C_CommentService
+component "Like Service" as C_LikeService
+component "Report Service" as C_ReportService
+database "Social Media DB" as DB_social_media
+C_StoryService --> DB_social_media
+C_CommentService --> DB_social_media
+C_LikeService --> DB_social_media
+C_ReportService --> DB_social_media
+C_StoryService ..> C_ReportService : REST
+C_LikeService ..> C_CommentService : MQ
+@enduml

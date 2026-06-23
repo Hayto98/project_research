@@ -1,0 +1,13 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+component "Enrollment Service" as C_EnrollmentService
+component "Department Service" as C_DepartmentService
+component "Student Service" as C_StudentService
+component "Teacher Service" as C_TeacherService
+database "Education DB" as DB_education
+C_StudentService --> DB_education
+C_StudentService ..> C_EnrollmentService : gRPC
+C_EnrollmentService ..> C_TeacherService : MQ
+C_DepartmentService ..> C_StudentService : HTTP
+@enduml

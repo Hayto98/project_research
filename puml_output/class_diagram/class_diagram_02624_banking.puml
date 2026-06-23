@@ -1,0 +1,56 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam ArrowColor #555555
+interface Transfer {
+  +Date price
+  -String id
+  #int amount
+  +Date createdAt
+  -String updatedAt
+  +processEmail()
+  +deleteType()
+  +updateName()
+  +deleteStatus()
+}
+class Transaction {
+  -float amount
+  +float note
+  -String score
+  #float total
+  +createPrice()
+  +getDuration()
+  +getId()
+  +createPrice()
+}
+class Beneficiary {
+  +Date quantity
+  #long active
+  +processDuration()
+}
+class Teller {
+  +String total
+  -int quantity
+  +sendType()
+}
+class Deposit {
+  #Date createdAt
+  #int id
+  -int level
+  +boolean address
+  +calculateEmail()
+  +calculateCode()
+}
+class Interest {
+  +String amount
+  -boolean duration
+  +setType()
+}
+Interest ..> Teller : "0..1"
+Deposit --o Interest
+Beneficiary --> Interest : "1..*"
+Interest --> Transaction : "1..*"
+Deposit --> Beneficiary : "0..1"
+note right of Transfer : Banking domain
+@enduml

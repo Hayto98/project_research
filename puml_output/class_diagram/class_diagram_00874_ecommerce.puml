@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+interface Return {
+  #Date description
+  #boolean updatedAt
+  #long level
+  -long amount
+  #int total
+  +updateLevel()
+  +findQuantity()
+  +saveId()
+}
+class Product {
+  #Date address
+  +double id
+  -Date description
+  +String price
+  +updateDescription()
+}
+class Coupon {
+  #boolean level
+  #long createdAt
+  #String updatedAt
+  +setTotal()
+  +calculatePrice()
+}
+class Review {
+  +Date total
+  #double createdAt
+  -Date amount
+  -float email
+  +getCode()
+  +deleteName()
+  +deleteStatus()
+  +findDuration()
+}
+interface Wishlist {
+  +String score
+  -int price
+  +Date name
+  -Date updatedAt
+  -float id
+  +calculateAmount()
+  +findTotal()
+  +findStatus()
+}
+interface Supplier {
+  #double duration
+  -Date active
+  +calculatePhone()
+}
+Wishlist ..> Review : "1..*"
+Return --> Product : "1"
+Return --o Coupon
+Return --> Supplier : "1"
+Coupon --> Product : "1..*"
+note right of Return : Ecommerce domain
+@enduml

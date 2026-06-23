@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+[*] --> Pending
+Pending --> Cancelled : submit
+Cancelled --> Closed : cancel
+Closed --> Rejected : process
+Closed : entry / log notification
+Rejected --> Delivered : cancel
+Delivered --> Draft : cancel
+Draft --> Cancelled : revert
+Draft --> [*]
+@enduml

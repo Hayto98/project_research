@@ -1,0 +1,22 @@
+@startuml
+skinparam defaultFontSize 13
+entity "Customer" as C
+boundary "Driver" as D
+boundary "Dispatcher" as D2
+participant "Warehouse Staff" as WS
+WS --> D2 : Load Package
+activate D2
+D2 --> WS : ACK
+deactivate D2
+WS -> C : Assign Route
+D2 -> WS : Track Shipment
+activate WS
+WS --> D2 : ACK
+deactivate WS
+D2 ->> C : Report Issue
+WS --> D2 : Deliver Package
+activate D2
+D2 --> WS : ACK
+deactivate D2
+note over D2 : processing deliver package
+@enduml

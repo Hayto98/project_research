@@ -1,0 +1,55 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam shadowing true
+class Profile {
+  -boolean type
+  #long quantity
+  #float level
+  +createEmail()
+  +updateAddress()
+  +validateId()
+  +validateAddress()
+}
+class Story {
+  #int score
+  -String code
+  +float active
+  #boolean status
+  -long id
+  +validateId()
+}
+interface Notification {
+  #double address
+  +int status
+  +double description
+  -double level
+  +boolean total
+  +deleteDescription()
+}
+class Hashtag {
+  +long active
+  -float quantity
+  -double description
+  -long duration
+  +getPrice()
+  +saveTotal()
+  +saveAmount()
+  +processQuantity()
+}
+abstract class Like {
+  -String description
+  #boolean address
+  +long id
+  +int createdAt
+  +calculateAmount()
+  +validateScore()
+  +calculateType()
+}
+Story --* Like
+Profile --o Hashtag
+Profile ..|> Story
+Notification ..|> Hashtag
+note right of Profile : Social Media domain
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontSize 13
+component "Coupon Service" as C_CouponService
+component "Product Service" as C_ProductService
+component "Warehouse Service" as C_WarehouseService
+component "Cart Service" as C_CartService
+component "Return Service" as C_ReturnService
+component "Shipment Service" as C_ShipmentService
+component "Invoice Service" as C_InvoiceService
+database "Ecommerce DB" as DB_ecommerce
+C_CouponService --> DB_ecommerce
+C_ProductService --> DB_ecommerce
+C_WarehouseService --> DB_ecommerce
+C_CartService --> DB_ecommerce
+C_ShipmentService --> DB_ecommerce
+C_CartService ..> C_ShipmentService : gRPC
+C_InvoiceService ..> C_CouponService : REST
+C_WarehouseService ..> C_InvoiceService : REST
+C_InvoiceService ..> C_ProductService : MQ
+C_CartService ..> C_ProductService : MQ
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+left to right direction
+actor "Advertiser" as Advertiser
+actor "User" as User
+actor "Moderator" as Moderator
+actor "Admin" as Admin
+rectangle "Social Media System" {
+  usecase "Create Post" as UC_CreatePost
+  usecase "Like Post" as UC_LikePost
+  usecase "Follow User" as UC_FollowUser
+  usecase "Send Message" as UC_SendMessage
+  usecase "Report Content" as UC_ReportContent
+  usecase "Comment" as UC_Comment
+  usecase "Share Post" as UC_SharePost
+}
+Advertiser --> UC_FollowUser
+User --> UC_ReportContent
+Moderator --> UC_FollowUser
+Admin --> UC_Comment
+Admin --> UC_ReportContent
+Admin --> UC_FollowUser
+UC_CreatePost ..|> UC_LikePost : <<include>>
+@enduml

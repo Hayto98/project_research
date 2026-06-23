@@ -1,0 +1,26 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam ArrowColor #555555
+participant "Student" as S
+control "Teacher" as T
+actor "Admin" as A
+A -> T : Borrow Book
+activate T
+T --> A : ACK
+deactivate T
+T ->> A : Take Attendance
+A --> T : Enroll Course
+note over T : processing enroll course
+A -> S : Register Student
+activate S
+S --> A : ACK
+deactivate S
+T --> S : Grade Exam
+T ->> A : Submit Assignment
+activate A
+A --> T : ACK
+deactivate A
+A ->> S : View Schedule
+note over S : processing view schedule
+@enduml

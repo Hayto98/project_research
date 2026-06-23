@@ -1,0 +1,20 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+boundary "Warehouse Staff" as WS
+entity "Dispatcher" as D
+control "Fleet Manager" as FM
+D -> FM : Deliver Package
+WS ->> D : Track Shipment
+activate D
+D --> WS : ACK
+deactivate D
+FM -> D : Load Package
+WS -> D : Schedule Pickup
+activate D
+D --> WS : ACK
+deactivate D
+note over D : processing schedule pickup
+WS -> D : Report Issue
+note over D : processing report issue
+@enduml

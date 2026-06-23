@@ -1,0 +1,23 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam shadowing true
+entity "Nurse" as N
+entity "Receptionist" as R
+participant "Doctor" as D
+actor "Lab Technician" as LT
+control "Insurance Provider" as IP
+R -> N : Process Insurance Claim
+note over N : processing process insurance claim
+D -> R : Update Medical Record
+LT ->> D : Examine Patient
+activate D
+D --> LT : ACK
+deactivate D
+N ->> LT : Run Lab Test
+R --> IP : Issue Prescription
+activate IP
+IP --> R : ACK
+deactivate IP
+LT ->> D : Discharge Patient
+@enduml

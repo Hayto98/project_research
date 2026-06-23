@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+[*] --> Processing
+Processing --> Shipped : approve
+Shipped --> Archived : reject
+Archived --> Rejected : submit
+Rejected --> Completed : reject
+Completed --> Created : process
+Completed : entry / log department
+Shipped --> Rejected : revert
+Created --> [*]
+@enduml

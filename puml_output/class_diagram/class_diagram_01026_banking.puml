@@ -1,0 +1,61 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+class Teller {
+  -String address
+  #double status
+  +createActive()
+  +processStatus()
+  +deleteActive()
+}
+class Deposit {
+  +Date active
+  #float total
+  -long quantity
+  -int name
+  #long level
+  +validateCode()
+  +validateDescription()
+  +cancelCreatedat()
+  +createScore()
+}
+class Account {
+  #String email
+  -long note
+  +setType()
+  +createEmail()
+}
+class Withdrawal {
+  +boolean phone
+  +double level
+  +long status
+  +processDescription()
+  +processLevel()
+  +saveCode()
+  +calculateCreatedat()
+}
+class Interest {
+  #String address
+  -long duration
+  #float id
+  -String code
+  +boolean type
+  +updateDuration()
+  +saveDuration()
+  +deleteTotal()
+  +calculateAmount()
+}
+abstract class Transaction {
+  +long price
+  +boolean note
+  -float type
+  #String total
+  +deleteUpdatedat()
+  +createActive()
+}
+Account --|> Deposit
+Deposit --* Transaction
+Account --* Interest
+Interest ..|> Withdrawal
+note right of Teller : Banking domain
+@enduml

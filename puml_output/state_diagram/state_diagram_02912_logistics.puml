@@ -1,0 +1,15 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+[*] --> Pending
+Pending --> Processing : update
+Pending : entry / log driver
+Processing --> Archived : update
+Processing : entry / log driver
+Archived --> OnHold : reject
+OnHold --> Cancelled : review
+Cancelled --> Closed : cancel
+Cancelled : entry / log driver
+Cancelled --> Closed : revert
+Closed --> [*]
+@enduml

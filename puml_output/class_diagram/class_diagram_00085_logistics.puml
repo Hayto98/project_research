@@ -1,0 +1,62 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+class Tracking {
+  #double description
+  -boolean duration
+  #boolean note
+  #long phone
+  +processDescription()
+  +saveCode()
+}
+abstract class Shipment {
+  #double createdAt
+  -float amount
+  +createAmount()
+}
+class Vehicle {
+  -float total
+  +double type
+  -long quantity
+  +String phone
+  +deleteName()
+}
+class Route {
+  +float total
+  +double code
+  +validateCreatedat()
+  +getUpdatedat()
+  +cancelType()
+  +deleteType()
+}
+class Driver {
+  #long note
+  +float level
+  +float active
+  #Date status
+  +sendDuration()
+}
+class Depot {
+  +float id
+  +boolean quantity
+  +float type
+  #String active
+  +cancelLevel()
+  +calculateTotal()
+}
+class FuelLog {
+  #String address
+  +float level
+  -Date type
+  -int duration
+  +createPrice()
+  +calculateCreatedat()
+  +validateAddress()
+}
+Depot --o Vehicle
+Route --* FuelLog
+Driver ..|> Shipment
+Route --> Driver : "1"
+Vehicle ..|> Shipment
+note right of Tracking : Logistics domain
+@enduml

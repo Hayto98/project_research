@@ -1,0 +1,64 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class Order {
+  +double score
+  #double price
+  +String level
+  +setQuantity()
+}
+class Warehouse {
+  +Date name
+  +boolean code
+  +String level
+  +createActive()
+  +validateDuration()
+  +deleteNote()
+  +getId()
+}
+abstract class Payment {
+  +float createdAt
+  -String address
+  -double description
+  -int status
+  #boolean phone
+  +getCreatedat()
+  +findActive()
+  +validateType()
+  +saveCode()
+}
+class Supplier {
+  -Date address
+  +boolean updatedAt
+  +updateDescription()
+  +deleteScore()
+}
+class Product {
+  +double type
+  #double code
+  -double note
+  +String updatedAt
+  -float quantity
+  +processPrice()
+  +setUpdatedat()
+  +cancelPhone()
+}
+class Cart {
+  -int price
+  #int phone
+  #String score
+  +getEmail()
+  +sendPrice()
+}
+abstract class Review {
+  #boolean duration
+  #Date total
+  +calculateTotal()
+}
+Product ..> Warehouse : "0..1"
+Review --o Cart
+Cart ..> Supplier : "1..*"
+Supplier --> Order : "0..1"
+note right of Order : Ecommerce domain
+@enduml

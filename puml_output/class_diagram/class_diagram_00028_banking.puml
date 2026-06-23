@@ -1,0 +1,64 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam ArrowColor #555555
+abstract class Account {
+  +int updatedAt
+  #double status
+  #long active
+  #int score
+  +setActive()
+  +updateActive()
+}
+class Transfer {
+  +int amount
+  +int type
+  -int duration
+  -long total
+  +sendAddress()
+  +createActive()
+  +processScore()
+  +calculateId()
+}
+class Statement {
+  #double phone
+  -long total
+  -long createdAt
+  #boolean email
+  +boolean description
+  +updateQuantity()
+}
+class Interest {
+  -double createdAt
+  -String duration
+  #long type
+  +validateScore()
+}
+abstract class Teller {
+  #String type
+  +int level
+  +getEmail()
+  +validateAddress()
+}
+abstract class Deposit {
+  -float createdAt
+  -boolean note
+  -float updatedAt
+  +cancelScore()
+}
+class Card {
+  #float score
+  +double id
+  -float updatedAt
+  #String email
+  -String code
+  +setPrice()
+  +updateStatus()
+  +saveAmount()
+}
+Statement ..|> Deposit
+Teller --* Interest
+Statement --* Teller
+Account --* Statement
+note right of Account : Banking domain
+@enduml

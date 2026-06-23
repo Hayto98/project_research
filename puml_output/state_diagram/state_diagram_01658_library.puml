@@ -1,0 +1,16 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+[*] --> Created
+Created --> Archived : reject
+Created : entry / log shelf
+Archived --> Processing : approve
+Archived : entry / log shelf
+Processing --> Cancelled : reject
+Cancelled --> Completed : process
+Completed --> OnHold : approve
+Completed : entry / log shelf
+Created --> Processing : revert
+OnHold --> [*]
+@enduml

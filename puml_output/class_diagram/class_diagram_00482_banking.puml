@@ -1,0 +1,51 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+class Account {
+  +float status
+  #int email
+  +calculatePhone()
+  +getActive()
+}
+class Card {
+  #Date note
+  +long quantity
+  #int description
+  #Date name
+  -Date address
+  +validateAddress()
+  +getDuration()
+}
+abstract class Transfer {
+  #Date createdAt
+  +boolean amount
+  #float total
+  +double note
+  +findActive()
+  +sendCode()
+  +findDescription()
+}
+interface Statement {
+  +String phone
+  +int status
+  +updateActive()
+}
+class Withdrawal {
+  +float createdAt
+  +long description
+  -long level
+  -int id
+  -String status
+  +getEmail()
+}
+interface Customer {
+  +double address
+  +Date name
+  -boolean level
+  +validatePrice()
+}
+Customer --o Card
+Card --* Transfer
+Customer --|> Withdrawal
+note right of Account : Banking domain
+@enduml

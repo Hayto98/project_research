@@ -1,0 +1,63 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+class Prescription {
+  +float createdAt
+  +float total
+  +validateAmount()
+}
+abstract class Appointment {
+  +long score
+  -float phone
+  +String type
+  +deleteAmount()
+  +getAmount()
+  +updateCode()
+}
+class Treatment {
+  #boolean duration
+  #long quantity
+  +String email
+  -Date status
+  +float type
+  +saveQuantity()
+  +getName()
+}
+abstract class Ward {
+  +long status
+  -Date level
+  +boolean email
+  +Date updatedAt
+  +boolean address
+  +sendDuration()
+  +createNote()
+  +getCode()
+}
+class Diagnosis {
+  #Date price
+  -float description
+  +String duration
+  #long updatedAt
+  +validateDuration()
+  +deleteCreatedat()
+  +deletePrice()
+}
+class Insurance {
+  -Date total
+  #long duration
+  #boolean amount
+  #double id
+  +setLevel()
+}
+class LabTest {
+  +boolean duration
+  -String score
+  +processDuration()
+}
+Appointment --o Insurance
+Diagnosis --> Treatment : "1"
+Appointment --> LabTest : "0..1"
+LabTest --|> Treatment
+note right of Prescription : Healthcare domain
+@enduml

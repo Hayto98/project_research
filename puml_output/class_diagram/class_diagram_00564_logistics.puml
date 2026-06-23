@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+interface DeliveryNote {
+  #long amount
+  +double updatedAt
+  +double score
+  +int createdAt
+  -float name
+  +sendName()
+  +updateAddress()
+  +processActive()
+}
+interface Inventory {
+  #Date updatedAt
+  +double status
+  -boolean createdAt
+  -int id
+  -int quantity
+  +deleteTotal()
+  +findId()
+}
+interface Package {
+  #int active
+  #double id
+  -int status
+  -String description
+  +getNote()
+  +setDuration()
+}
+interface Shipment {
+  #float description
+  +Date createdAt
+  +String amount
+  +setTotal()
+  +deleteDuration()
+}
+abstract class Manifest {
+  -Date email
+  -int address
+  -long description
+  #boolean level
+  +findNote()
+  +sendScore()
+  +getAmount()
+}
+class FuelLog {
+  +boolean type
+  +int code
+  #String description
+  +updateQuantity()
+  +sendQuantity()
+  +cancelQuantity()
+  +deleteDuration()
+}
+Manifest --* DeliveryNote
+Inventory --* DeliveryNote
+Shipment --o Manifest
+Inventory --* Shipment
+note right of DeliveryNote : Logistics domain
+@enduml

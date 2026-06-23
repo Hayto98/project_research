@@ -1,0 +1,42 @@
+@startuml
+skinparam defaultFontSize 13
+interface DeliveryNote {
+  -String price
+  -Date total
+  +Date status
+  +validateLevel()
+  +findName()
+  +calculateType()
+}
+class Package {
+  #float quantity
+  #boolean email
+  -double updatedAt
+  +calculatePrice()
+  +processPrice()
+  +processId()
+}
+interface Manifest {
+  #String quantity
+  -boolean phone
+  +float total
+  +findType()
+}
+interface Vehicle {
+  -double address
+  #boolean duration
+  -int amount
+  #int createdAt
+  +validatePrice()
+}
+interface Driver {
+  +double level
+  +double note
+  +sendType()
+  +calculateName()
+}
+Manifest --* DeliveryNote
+Driver ..|> Package
+DeliveryNote ..> Driver : "0..1"
+note right of DeliveryNote : Logistics domain
+@enduml

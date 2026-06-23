@@ -1,0 +1,77 @@
+@startuml
+skinparam backgroundColor #FFFDE7
+skinparam classBackgroundColor #FFF9C4
+skinparam classBorderColor #F57F17
+skinparam ArrowColor #555555
+class Booking {
+  -boolean createdAt
+  +String score
+  +Date updatedAt
+  +int phone
+  +int email
+  +calculateTotal()
+  +getCode()
+  +sendEmail()
+  +createScore()
+}
+class Invoice {
+  -boolean phone
+  +long email
+  +int description
+  +String note
+  -double address
+  +getPrice()
+  +processLevel()
+}
+class Housekeeping {
+  #double amount
+  #boolean address
+  #long score
+  #String price
+  #long level
+  +findId()
+  +validateDescription()
+  +updateId()
+  +sendQuantity()
+}
+class CheckIn {
+  #int createdAt
+  #boolean phone
+  -boolean updatedAt
+  #boolean quantity
+  #String name
+  +saveCode()
+  +calculateCreatedat()
+  +findScore()
+  +saveName()
+}
+abstract class Reservation {
+  +Date description
+  #Date code
+  #Date address
+  +String total
+  #long updatedAt
+  +sendId()
+}
+abstract class CheckOut {
+  -boolean note
+  +boolean description
+  -float name
+  +float code
+  +findCreatedat()
+  +findPrice()
+  +saveNote()
+  +setAmount()
+}
+interface Payment {
+  -String quantity
+  #double note
+  +sendScore()
+  +cancelUpdatedat()
+}
+CheckOut --* Invoice
+CheckIn ..|> Invoice
+Booking --|> CheckOut
+CheckIn --> Booking : "0..1"
+note right of Booking : Hotel domain
+@enduml

@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+class Enrollment {
+  #boolean code
+  +Date type
+  #int score
+  #boolean total
+  #String quantity
+  +validateLevel()
+  +calculateTotal()
+}
+class Book {
+  -long level
+  -long type
+  #float amount
+  -boolean email
+  #Date createdAt
+  +processCode()
+  +setDuration()
+}
+interface Course {
+  #String status
+  -String updatedAt
+  +cancelName()
+  +updateNote()
+  +processDescription()
+  +setType()
+}
+interface Assignment {
+  +long id
+  -Date phone
+  #double total
+  +cancelAddress()
+  +deleteLevel()
+  +createActive()
+}
+abstract class Teacher {
+  +float active
+  -int note
+  -Date name
+  +processNote()
+  +createId()
+}
+interface Schedule {
+  #Date address
+  +boolean name
+  #String code
+  +sendDescription()
+  +updateStatus()
+}
+Teacher --|> Course
+Teacher ..> Assignment : "0..1"
+Assignment ..|> Teacher
+Assignment ..> Schedule : "*"
+note right of Enrollment : Education domain
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+actor "Fleet Manager" as FM
+actor "Dispatcher" as D
+participant "Customer" as C
+D --> C : Fuel Vehicle
+note over C : processing fuel vehicle
+FM ->> D : Load Package
+D ->> C : Report Issue
+note over C : processing report issue
+C -> FM : Deliver Package
+FM -> C : Track Shipment
+activate C
+C --> FM : ACK
+deactivate C
+note over C : processing track shipment
+C --> D : Assign Route
+activate D
+D --> C : ACK
+deactivate D
+D -> C : Schedule Pickup
+note over C : processing schedule pickup
+@enduml

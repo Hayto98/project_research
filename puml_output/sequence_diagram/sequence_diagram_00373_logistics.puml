@@ -1,0 +1,21 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+entity "Warehouse Staff" as WS
+entity "Driver" as D
+boundary "Customer" as C
+entity "Dispatcher" as D2
+WS --> D : Assign Route
+D2 -> D : Fuel Vehicle
+activate D
+D --> D2 : ACK
+deactivate D
+C -> D2 : Update Inventory
+activate D2
+D2 --> C : ACK
+deactivate D2
+D --> WS : Report Issue
+D --> C : Load Package
+D2 -> D : Track Shipment
+@enduml

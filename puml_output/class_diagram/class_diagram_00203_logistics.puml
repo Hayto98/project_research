@@ -1,0 +1,51 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 11
+abstract class Inventory {
+  #int total
+  -boolean amount
+  -boolean price
+  -int updatedAt
+  #int description
+  +sendCode()
+}
+class Warehouse {
+  +int createdAt
+  +long price
+  +boolean active
+  -Date amount
+  +setId()
+  +calculateName()
+  +saveType()
+}
+interface Depot {
+  -Date name
+  #boolean total
+  #String id
+  +float createdAt
+  +setNote()
+  +updateId()
+}
+class Vehicle {
+  #String name
+  #String quantity
+  +setId()
+  +processPrice()
+  +saveAmount()
+  +setNote()
+}
+interface Shipment {
+  #String quantity
+  -double type
+  #double createdAt
+  #int phone
+  +validateActive()
+  +findPrice()
+}
+Shipment ..|> Warehouse
+Warehouse --|> Shipment
+Warehouse --* Inventory
+Inventory --> Warehouse : "0..1"
+note right of Inventory : Logistics domain
+@enduml

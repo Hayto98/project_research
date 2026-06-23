@@ -1,0 +1,58 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam roundCorner 15
+skinparam defaultFontSize 13
+abstract class Tracking {
+  #long phone
+  -float level
+  +getName()
+  +setStatus()
+  +cancelActive()
+}
+class Inventory {
+  +double updatedAt
+  +String amount
+  #double note
+  #String address
+  +deletePrice()
+  +calculateNote()
+  +getNote()
+  +processScore()
+}
+class FuelLog {
+  #String total
+  -int code
+  #double level
+  #double email
+  +validatePrice()
+  +validateQuantity()
+  +calculateAddress()
+}
+class Manifest {
+  +long email
+  #double price
+  +cancelEmail()
+}
+interface Vehicle {
+  +String status
+  +Date amount
+  -long score
+  +validateCode()
+  +getUpdatedat()
+  +calculateScore()
+}
+class Shipment {
+  -float status
+  +float name
+  +int amount
+  -float active
+  -String email
+  +createAmount()
+  +sendDuration()
+  +updateQuantity()
+}
+Tracking --> FuelLog : "1"
+Manifest --> FuelLog : "*"
+Vehicle --|> Inventory
+note right of Tracking : Logistics domain
+@enduml

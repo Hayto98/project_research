@@ -1,0 +1,34 @@
+@startuml
+
+start
+:Borrow Book;
+:Grade Exam;
+:Submit Assignment;
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Issue Certificate;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Register Student;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify system;
+fork again
+:log event;
+end fork
+:Enroll Course;
+:View Schedule;
+stop
+@enduml

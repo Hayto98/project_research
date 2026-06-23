@@ -1,0 +1,25 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 11
+entity "Parent" as P
+participant "Student" as S
+participant "Admin" as A
+A -> P : Issue Certificate
+S ->> A : Borrow Book
+activate A
+A --> S : ACK
+deactivate A
+S --> P : Register Student
+note over P : processing register student
+A --> P : Take Attendance
+activate P
+P --> A : ACK
+deactivate P
+A ->> P : Enroll Course
+activate P
+P --> A : ACK
+deactivate P
+note over P : processing enroll course
+@enduml

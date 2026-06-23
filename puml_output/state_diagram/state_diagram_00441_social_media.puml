@@ -1,0 +1,14 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam defaultFontSize 13
+[*] --> Pending
+Pending --> Completed : reject
+Pending : entry / log album
+Completed --> Shipped : submit
+Shipped --> Cancelled : reject
+Cancelled --> Processing : submit
+Pending --> Completed : revert
+Processing --> [*]
+@enduml

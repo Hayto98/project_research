@@ -1,0 +1,20 @@
+@startuml
+
+entity "Customer" as C
+control "Warehouse Staff" as WS
+actor "Fleet Manager" as FM
+FM ->> WS : Update Inventory
+activate WS
+WS --> FM : ACK
+deactivate WS
+WS ->> FM : Report Issue
+activate FM
+FM --> WS : ACK
+deactivate FM
+C -> WS : Fuel Vehicle
+WS --> C : Deliver Package
+activate C
+C --> WS : ACK
+deactivate C
+note over C : processing deliver package
+@enduml

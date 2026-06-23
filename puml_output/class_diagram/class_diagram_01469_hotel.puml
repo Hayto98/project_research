@@ -1,0 +1,41 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+abstract class Service {
+  -long type
+  -float score
+  +getActive()
+  +calculateStatus()
+  +sendAddress()
+}
+class Staff {
+  -boolean active
+  -float status
+  #Date email
+  -float amount
+  -String address
+  +getAddress()
+  +createAddress()
+  +updateEmail()
+}
+interface Housekeeping {
+  -boolean level
+  +double description
+  +cancelDescription()
+  +getStatus()
+  +cancelPhone()
+  +cancelUpdatedat()
+}
+abstract class Guest {
+  #float id
+  #boolean description
+  +validateUpdatedat()
+  +processPrice()
+  +updatePrice()
+}
+Guest --o Staff
+Service ..|> Guest
+note right of Service : Hotel domain
+@enduml

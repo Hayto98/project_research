@@ -1,0 +1,61 @@
+@startuml
+skinparam backgroundColor #ECEFF1
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #455A64
+skinparam ArrowColor #555555
+abstract class Transaction {
+  -int level
+  +float name
+  #boolean total
+  -Date note
+  +getQuantity()
+}
+interface Deposit {
+  -String quantity
+  -float createdAt
+  #double price
+  +long amount
+  +processUpdatedat()
+  +cancelCreatedat()
+  +processType()
+}
+class Account {
+  +String level
+  -float code
+  +boolean note
+  #String total
+  -long email
+  +cancelStatus()
+  +cancelScore()
+  +saveName()
+}
+class Transfer {
+  -boolean phone
+  +String id
+  -Date quantity
+  +validateName()
+  +processType()
+}
+abstract class Beneficiary {
+  #long id
+  -long type
+  -double quantity
+  +long address
+  +deleteAddress()
+  +updateNote()
+  +sendUpdatedat()
+  +createScore()
+}
+abstract class Card {
+  +boolean createdAt
+  +long description
+  #double total
+  +processActive()
+}
+Transaction --> Transfer : "*"
+Card ..> Transfer : "0..1"
+Transaction --o Deposit
+Card ..> Transaction : "*"
+Deposit --|> Transfer
+note right of Transaction : Banking domain
+@enduml

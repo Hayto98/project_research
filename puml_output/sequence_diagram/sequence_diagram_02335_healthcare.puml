@@ -1,0 +1,20 @@
+@startuml
+skinparam defaultFontSize 13
+boundary "Nurse" as N
+actor "Doctor" as D
+boundary "Receptionist" as R
+R --> D : Book Appointment
+D -> R : Admit Patient
+R ->> D : Process Insurance Claim
+activate D
+D --> R : ACK
+deactivate D
+N -> D : Discharge Patient
+R -> N : Run Lab Test
+note over N : processing run lab test
+N ->> R : Examine Patient
+activate R
+R --> N : ACK
+deactivate R
+note over R : processing examine patient
+@enduml

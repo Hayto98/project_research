@@ -1,0 +1,58 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing true
+class Service {
+  +Date price
+  #boolean score
+  +int id
+  -double createdAt
+  +findActive()
+}
+class Room {
+  +Date status
+  #String total
+  +int updatedAt
+  +createName()
+  +cancelAmount()
+}
+abstract class Reservation {
+  #Date updatedAt
+  #int amount
+  -boolean type
+  +float description
+  +cancelName()
+  +updateCreatedat()
+  +sendEmail()
+}
+class Payment {
+  -boolean updatedAt
+  +double note
+  #long id
+  -long amount
+  #boolean description
+  +findStatus()
+  +setDescription()
+}
+class Staff {
+  #boolean address
+  +Date code
+  +double createdAt
+  +findDescription()
+  +deleteName()
+}
+class Guest {
+  #long updatedAt
+  #String note
+  +Date duration
+  +String address
+  #boolean amount
+  +saveCreatedat()
+  +saveCode()
+}
+Payment ..|> Staff
+Guest --* Room
+Reservation --|> Room
+Guest ..> Reservation : "1"
+Staff --|> Room
+note right of Service : Hotel domain
+@enduml

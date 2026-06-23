@@ -1,0 +1,21 @@
+@startuml
+skinparam defaultFontSize 13
+start
+:Register Member;
+:Search Catalog;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Renew Loan;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Borrow Book;
+:Pay Fine;
+stop
+@enduml

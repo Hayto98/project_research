@@ -1,0 +1,25 @@
+@startuml
+skinparam shadowing false
+skinparam backgroundColor #F5F5F5
+skinparam defaultFontSize 13
+actor "Student" as S
+control "Admin" as A
+actor "Parent" as P
+actor "Teacher" as T
+S --> A : Take Attendance
+T --> A : Enroll Course
+activate A
+A --> T : ACK
+deactivate A
+A -> T : Grade Exam
+activate T
+T --> A : ACK
+deactivate T
+note over T : processing grade exam
+S -> A : Submit Assignment
+activate A
+A --> S : ACK
+deactivate A
+S ->> T : View Schedule
+T -> S : Issue Certificate
+@enduml

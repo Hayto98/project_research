@@ -1,0 +1,17 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 13
+entity "Receptionist" as R
+actor "Patient" as P
+participant "Nurse" as N
+participant "Lab Technician" as LT
+boundary "Doctor" as D
+R ->> P : Issue Prescription
+activate P
+P --> R : ACK
+deactivate P
+D -> R : Book Appointment
+note over R : processing book appointment
+P --> R : Admit Patient
+R -> P : Update Medical Record
+@enduml

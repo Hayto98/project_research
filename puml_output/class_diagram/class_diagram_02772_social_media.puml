@@ -1,0 +1,61 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+interface Follower {
+  -Date active
+  +boolean status
+  #int updatedAt
+  #float type
+  +getScore()
+}
+class Like {
+  #long quantity
+  #double status
+  -float note
+  +cancelDuration()
+  +findUpdatedat()
+  +findDescription()
+}
+interface Comment {
+  #String score
+  +int id
+  +String total
+  -Date createdAt
+  +findCode()
+  +cancelCode()
+  +calculateCode()
+}
+class Message {
+  +long code
+  #boolean description
+  -Date updatedAt
+  #Date active
+  +findPrice()
+  +getDuration()
+  +calculateNote()
+}
+class Notification {
+  #String level
+  #long amount
+  #float score
+  -long quantity
+  +sendPrice()
+  +findId()
+  +calculateName()
+  +saveDescription()
+}
+abstract class Post {
+  -Date description
+  -String name
+  -long address
+  +findLevel()
+  +sendStatus()
+  +sendNote()
+}
+Post --> Like : "*"
+Message --o Comment
+Like --o Message
+Notification --> Message : "1"
+Follower --> Like : "1"
+note right of Follower : Social Media domain
+@enduml

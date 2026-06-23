@@ -1,0 +1,23 @@
+@startuml
+skinparam ArrowColor #555555
+boundary "Registrar" as R
+participant "Student" as S
+entity "Teacher" as T
+participant "Librarian" as L
+L ->> S : View Schedule
+R --> S : Take Attendance
+activate S
+S --> R : ACK
+deactivate S
+R -> L : Grade Exam
+note over L : processing grade exam
+R ->> L : Borrow Book
+activate L
+L --> R : ACK
+deactivate L
+L --> R : Enroll Course
+activate R
+R --> L : ACK
+deactivate R
+note over R : processing enroll course
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam shadowing true
+component "Catalog Service" as C_CatalogService
+component "Reservation Service" as C_ReservationService
+component "Author Service" as C_AuthorService
+component "Book Service" as C_BookService
+component "Branch Service" as C_BranchService
+component "Librarian Service" as C_LibrarianService
+component "Loan Service" as C_LoanService
+database "Library DB" as DB_library
+C_AuthorService --> DB_library
+C_BookService --> DB_library
+C_BranchService --> DB_library
+C_LoanService --> DB_library
+C_BookService ..> C_LibrarianService : HTTP
+C_ReservationService ..> C_CatalogService : MQ
+@enduml

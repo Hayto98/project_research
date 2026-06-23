@@ -1,0 +1,50 @@
+@startuml
+skinparam backgroundColor #FAFAFA
+skinparam classBackgroundColor #FFF3E0
+skinparam classBorderColor #E65100
+skinparam defaultFontSize 13
+class Vehicle {
+  -Date email
+  -float description
+  +getAddress()
+  +getScore()
+  +updateAddress()
+}
+abstract class FuelLog {
+  #Date note
+  -float total
+  #Date address
+  +processStatus()
+  +sendPrice()
+  +setQuantity()
+  +cancelQuantity()
+}
+interface Depot {
+  +boolean level
+  -String amount
+  +sendEmail()
+  +updateNote()
+  +findNote()
+  +sendScore()
+}
+class DeliveryNote {
+  -String price
+  +long description
+  +float updatedAt
+  -long active
+  +validateDuration()
+}
+abstract class Manifest {
+  #float phone
+  +boolean duration
+  #int level
+  +processUpdatedat()
+  +sendScore()
+  +calculatePrice()
+  +createDescription()
+}
+Vehicle --|> Depot
+Depot ..> Vehicle : "*"
+FuelLog --> Depot : "*"
+note right of Vehicle : Logistics domain
+@enduml

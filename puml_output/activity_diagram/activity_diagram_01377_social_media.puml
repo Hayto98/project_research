@@ -1,0 +1,41 @@
+@startuml
+skinparam monochrome true
+skinparam ArrowColor #555555
+start
+:Create Post;
+:Report Content;
+fork
+:notify admin;
+fork again
+:log action;
+end fork
+:Like Post;
+if (available?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+:Follow User;
+:Edit Profile;
+fork
+:notify admin;
+fork again
+:log event;
+end fork
+:Share Post;
+if (approved?) then (yes)
+:continue process;
+else (no)
+:handle error;
+stop
+endif
+fork
+:notify user;
+fork again
+:log action;
+end fork
+:Send Message;
+:Comment;
+stop
+@enduml

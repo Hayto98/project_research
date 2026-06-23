@@ -1,0 +1,65 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F3E5F5
+skinparam classBorderColor #6A1B9A
+skinparam ArrowColor #555555
+class Department {
+  #String duration
+  +String address
+  -boolean total
+  #boolean status
+  -Date code
+  +findAmount()
+  +updateQuantity()
+}
+interface Classroom {
+  #String score
+  #float updatedAt
+  +long level
+  +createAddress()
+  +cancelActive()
+}
+class Exam {
+  +String total
+  +String duration
+  #int updatedAt
+  -String type
+  +Date status
+  +sendScore()
+  +findActive()
+  +calculateName()
+  +getAddress()
+}
+class Attendance {
+  #boolean createdAt
+  #double score
+  +Date id
+  +processCreatedat()
+  +deleteNote()
+  +getCreatedat()
+  +updateCode()
+}
+abstract class Teacher {
+  -String createdAt
+  -Date description
+  +int status
+  +float duration
+  #long quantity
+  +sendEmail()
+}
+interface Course {
+  -Date address
+  #double price
+  #boolean note
+  +float updatedAt
+  #String phone
+  +deleteType()
+  +processPrice()
+}
+Department --* Attendance
+Course ..|> Department
+Exam ..|> Course
+Attendance --> Course : "*"
+Attendance --o Department
+note right of Department : Education domain
+@enduml

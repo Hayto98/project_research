@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #E8F4FA
+skinparam classBorderColor #2C7DA0
+skinparam defaultFontSize 11
+interface Customer {
+  #float quantity
+  +String email
+  -double status
+  +String createdAt
+  +saveCode()
+  +processAmount()
+  +updateAmount()
+}
+interface Shipment {
+  +int total
+  #boolean amount
+  #double phone
+  #boolean duration
+  +float code
+  +deletePrice()
+  +cancelEmail()
+  +sendAddress()
+}
+interface Inventory {
+  +boolean code
+  +int duration
+  +boolean total
+  +long amount
+  +Date createdAt
+  +calculateQuantity()
+  +cancelId()
+  +processAmount()
+  +getDescription()
+}
+class Depot {
+  -boolean level
+  +float id
+  +calculatePrice()
+}
+Inventory ..> Shipment : "0..1"
+Customer --|> Depot
+Shipment --|> Customer
+note right of Customer : Logistics domain
+@enduml

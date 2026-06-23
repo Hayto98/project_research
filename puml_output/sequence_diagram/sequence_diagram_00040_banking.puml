@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+skinparam defaultFontSize 13
+control "Account Holder" as AH
+participant "Auditor" as A
+entity "Branch Manager" as BM
+BM -> A : Pay Bill
+note over A : processing pay bill
+BM --> A : Apply For Loan
+AH ->> A : Withdraw Cash
+activate A
+A --> AH : ACK
+deactivate A
+A ->> AH : Block Card
+activate AH
+AH --> A : ACK
+deactivate AH
+AH ->> A : View Statement
+AH -> A : Open Account
+AH ->> BM : Deposit Money
+activate BM
+BM --> AH : ACK
+deactivate BM
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F1F8E9
+skinparam classBorderColor #33691E
+boundary "Payment Gateway" as PG
+participant "Customer" as C
+boundary "Seller" as S
+S ->> PG : Browse Products
+C ->> PG : Add To Cart
+activate PG
+PG --> C : ACK
+deactivate PG
+PG --> C : Checkout
+activate C
+C --> PG : ACK
+deactivate C
+C --> S : Write Review
+activate S
+S --> C : ACK
+deactivate S
+PG -> S : Track Order
+C -> PG : Make Payment
+activate PG
+PG --> C : ACK
+deactivate PG
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+skinparam defaultFontSize 11
+entity "Librarian" as L
+boundary "Student" as S
+participant "Admin" as A
+participant "Registrar" as R
+participant "Teacher" as T
+A --> S : Submit Assignment
+A -> L : Grade Exam
+note over L : processing grade exam
+T --> L : Take Attendance
+L --> R : Register Student
+note over R : processing register student
+L --> A : Enroll Course
+activate A
+A --> L : ACK
+deactivate A
+@enduml
