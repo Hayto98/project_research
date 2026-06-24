@@ -9,16 +9,17 @@ interface Guest {
   -long name
   #Date email
   +float address
-  +createTotal()
-  +validateLevel()
-  +processPhone()
+  +setAmount()
+  +deleteCreatedat()
+  +calculateQuantity()
 }
-abstract class Payment {
-  #boolean active
+class Payment {
+  -boolean phone
+  #double price
+  #String amount
+  -int active
   -boolean code
-  +double type
-  +calculateActive()
-  +getEmail()
+  +findCreatedat()
 }
 interface Reservation {
   -String name
@@ -26,20 +27,18 @@ interface Reservation {
   +int description
   -double status
   -String amount
-  +savePrice()
+  +updatePhone()
 }
 abstract class Booking {
+  -Date type
   #Date note
-  #int amount
-  #long code
-  #long createdAt
-  -String address
-  +saveActive()
-  +calculateAmount()
-  +validateCode()
-  +updateScore()
+  +boolean amount
+  -Date code
+  -float createdAt
+  +validatePhone()
+  +sendQuantity()
+  +calculateStatus()
 }
-Guest --* Booking
-Booking --|> Payment
-note right of Guest : Hotel domain
+Booking --* Guest
+Guest --> Booking : "1"
 @enduml

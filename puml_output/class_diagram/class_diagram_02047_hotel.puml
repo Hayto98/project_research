@@ -6,46 +6,41 @@ interface Reservation {
   +double address
   #float score
   #String email
-  +findTotal()
+  +cancelUpdatedat()
 }
-class Payment {
-  #long email
-  +float address
-  -long duration
-  +Date createdAt
-  +int note
-  +updateStatus()
-  +sendName()
-  +sendAmount()
-  +deleteQuantity()
+abstract class Payment {
+  +boolean price
+  #boolean email
+  #double address
+  #long level
+  +cancelType()
+  +deleteCreatedat()
 }
 class Service {
+  +String updatedAt
+  #Date description
+  +boolean type
+  +saveQuantity()
+  +updateLevel()
+}
+class Booking {
   +float total
   +float name
   -Date updatedAt
-  +processDuration()
-  +findEmail()
-}
-class Booking {
-  #long level
-  +int amount
-  +cancelId()
-  +sendPrice()
-  +calculateName()
+  +createNote()
+  +createName()
 }
 interface Amenity {
-  #double total
-  #Date email
-  -double quantity
-  #int level
-  +setName()
-  +sendStatus()
-  +getScore()
-  +saveDescription()
+  +int phone
+  -boolean code
+  +float amount
+  #Date address
+  +calculateQuantity()
+  +saveEmail()
+  +cancelActive()
+  +calculateLevel()
 }
-Service --o Amenity
-Service ..> Payment : "1"
-Service ..> Reservation : "*"
-Amenity ..|> Booking
-note right of Reservation : Hotel domain
+Booking --* Service
+Service ..> Booking : "*"
+Booking --o Payment
 @enduml

@@ -6,56 +6,57 @@ abstract class FuelLog {
   +int score
   #long address
   +String description
-  +saveAddress()
-  +findId()
-  +cancelDescription()
+  +validatePrice()
   +findQuantity()
+  +createTotal()
+  +sendTotal()
 }
-abstract class Tracking {
-  -boolean description
-  +Date phone
-  -String note
-  +boolean level
-  +double address
+interface Tracking {
+  -int quantity
+  -float price
+  #float active
   +deleteCode()
-  +findDescription()
-  +sendActive()
+  +findName()
+  +setEmail()
+  +deleteName()
 }
 interface Customer {
+  #String type
+  -long code
+  +String description
+  +getCreatedat()
+  +findPrice()
+}
+interface Package {
   #Date address
   #String quantity
   #float amount
   +double type
   #Date code
-  +getId()
-  +cancelPrice()
-  +processDuration()
+  +processQuantity()
+  +setName()
+  +getQuantity()
 }
-class Package {
+abstract class DeliveryNote {
   #String duration
-  -String description
-  -long updatedAt
-  +savePhone()
-  +processDuration()
+  -String code
+  -long description
+  +Date score
+  -double updatedAt
+  +cancelAddress()
+  +setScore()
 }
-class DeliveryNote {
-  #float id
-  #Date createdAt
-  -boolean code
-  +boolean level
-  +saveTotal()
-  +updateType()
-  +calculateEmail()
+class Driver {
+  #double code
+  #int createdAt
+  #long score
+  +updateStatus()
+  +cancelScore()
+  +cancelCode()
+  +calculateCode()
 }
-interface Driver {
-  #boolean total
-  -boolean phone
-  +int type
-  -float amount
-  +float duration
-  +calculateNote()
-}
-Tracking ..|> Customer
-DeliveryNote --* Driver
-note right of FuelLog : Logistics domain
+DeliveryNote --o Driver
+Package --o Customer
+Tracking ..> DeliveryNote : "*"
+Driver --* DeliveryNote
 @enduml

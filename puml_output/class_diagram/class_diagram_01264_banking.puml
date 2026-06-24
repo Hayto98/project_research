@@ -9,61 +9,64 @@ interface Teller {
   -Date active
   -Date duration
   -boolean level
-  +updateAddress()
-  +createScore()
-  +deleteAddress()
-  +validateType()
+  +processPhone()
+  +validateNote()
+  +findQuantity()
+  +deleteCreatedat()
 }
-class Account {
-  #boolean active
-  -double description
-  -int score
-  #double price
-  -boolean duration
-  +updateDuration()
-  +sendQuantity()
-  +processDuration()
-  +validateCode()
+interface Account {
+  +double address
+  #int phone
+  #boolean type
+  +saveCode()
+  +deleteStatus()
+  +sendAmount()
+  +getNote()
 }
-interface Interest {
+abstract class Interest {
+  +boolean createdAt
+  #long price
+  -boolean type
+  -Date note
+  +saveType()
+}
+interface Customer {
   -String duration
   +Date level
   -float active
-  +setCreatedat()
-  +createUpdatedat()
-}
-interface Customer {
-  #boolean amount
-  #float active
-  #double address
-  -Date total
-  +calculateLevel()
-  +validateNote()
-  +getName()
-  +cancelAddress()
+  +updateUpdatedat()
+  +saveUpdatedat()
 }
 class Transfer {
-  +int id
-  +long updatedAt
-  -float type
-  +deleteQuantity()
+  #boolean updatedAt
+  -double active
+  #boolean phone
+  #float amount
+  +validateUpdatedat()
+  +deleteStatus()
+  +processScore()
+  +updateEmail()
 }
 abstract class Withdrawal {
-  #long phone
-  #long updatedAt
-  +float level
-  +deleteScore()
-  +validateScore()
+  -float note
+  +String id
+  +double name
+  +int address
+  +validateLevel()
 }
-abstract class Loan {
-  -Date score
-  #double active
-  +findAmount()
-  +deleteActive()
-  +getUpdatedat()
-  +findCode()
+class Loan {
+  -int id
+  +boolean amount
+  -Date quantity
+  -String note
+  +float description
+  +getCreatedat()
+  +calculateCreatedat()
 }
-Transfer ..> Interest : "1"
-Interest --> Account : "0..1"
-note right of Teller : Banking domain
+Customer --> Withdrawal : "1"
+Transfer --* Loan
+Withdrawal --o Transfer
+Withdrawal ..> Customer : "0..1"
+Account --|> Transfer
+Account --|> Withdrawal
 @enduml

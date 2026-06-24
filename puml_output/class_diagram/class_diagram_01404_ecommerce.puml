@@ -6,40 +6,42 @@ skinparam defaultFontSize 11
 class Order {
   #Date description
   #int amount
-  +processAddress()
-  +findAmount()
-  +saveLevel()
+  +sendCreatedat()
+  +saveCreatedat()
+  +saveTotal()
 }
 class Return {
-  -float price
-  +Date quantity
-  -float email
-  #boolean duration
-  -String active
-  +saveAddress()
-  +findAddress()
-  +createScore()
+  -long type
+  -boolean price
+  +deleteCreatedat()
+  +setAmount()
+  +updateType()
+  +sendPrice()
 }
-interface Payment {
-  -long id
-  +double amount
-  +int note
-  -boolean phone
-  +getActive()
+abstract class Payment {
+  -float name
+  #boolean quantity
+  -String address
+  +boolean score
+  +createStatus()
+  +setCode()
+  +saveScore()
+  +deleteCreatedat()
 }
-interface Supplier {
+class Supplier {
+  +double total
+  #String status
+  +findDuration()
+}
+interface Customer {
   -double id
   +long code
-  +findScore()
-  +deleteQuantity()
-  +sendStatus()
+  +cancelName()
+  +setAddress()
+  +validateQuantity()
 }
-class Customer {
-  -Date createdAt
-  #Date level
-  +processStatus()
-}
-Customer ..> Supplier : "0..1"
-Order ..|> Customer
-note right of Order : Ecommerce domain
+Payment --|> Order
+Customer ..|> Order
+Customer ..> Supplier : "1"
+Supplier --* Order
 @enduml

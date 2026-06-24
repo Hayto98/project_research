@@ -8,60 +8,58 @@ class Shipment {
   +double description
   +long status
   #boolean id
-  +calculateCreatedat()
-  +sendTotal()
-  +cancelPrice()
-  +deleteNote()
+  +calculateCode()
+  +sendEmail()
+  +calculatePrice()
+  +validateDescription()
 }
-class Invoice {
-  +int score
-  #int total
-  #float description
-  +calculateLevel()
-  +updateScore()
-  +findAddress()
+abstract class Invoice {
+  +float description
+  +int note
+  #int phone
+  #float updatedAt
+  #Date total
+  +deleteId()
+  +calculateCode()
+  +savePrice()
 }
 class Wishlist {
-  +int status
-  -float score
+  +int description
+  -float amount
+  -String status
   -String address
-  +setDescription()
-  +calculateCreatedat()
-  +sendDuration()
-  +findScore()
+  +saveTotal()
+  +updateEmail()
 }
-interface Category {
+class Category {
   #String active
   +long quantity
-  +findNote()
+  +saveStatus()
+  +getActive()
   +setDuration()
-  +createEmail()
 }
 abstract class Return {
-  +String quantity
-  +boolean duration
-  -boolean phone
-  -boolean active
-  +boolean description
+  -float duration
+  -double email
+  +getNote()
   +calculateTotal()
-  +createScore()
+  +deleteCode()
 }
 interface Customer {
-  #float quantity
-  #String status
-  +String updatedAt
-  +deleteEmail()
+  #double status
+  #float duration
+  -boolean updatedAt
+  +savePrice()
 }
 class Order {
-  #float total
-  +double type
-  -boolean amount
-  +processTotal()
+  #long total
+  +Date email
+  +boolean score
+  #String active
+  +String createdAt
+  +getEmail()
 }
-Customer --|> Category
-Wishlist --* Category
-Shipment --* Wishlist
-Wishlist --* Order
-Category ..|> Return
-note right of Shipment : Ecommerce domain
+Wishlist --o Invoice
+Category ..> Invoice : "1"
+Category --> Order : "1"
 @enduml

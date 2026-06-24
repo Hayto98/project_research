@@ -8,54 +8,51 @@ interface Catalog {
   +double score
   -boolean quantity
   #double total
-  +findDescription()
+  +createTotal()
 }
 class Author {
-  #int amount
-  +int status
-  -long name
-  +float price
-  +findQuantity()
-  +getCreatedat()
+  #String level
+  #String address
+  #double amount
+  +validateCreatedat()
+  +findId()
 }
-class Librarian {
-  #float updatedAt
-  +long score
-  +float price
-  #int total
-  +String address
-  +deleteAddress()
-  +calculatePrice()
-  +calculateType()
+abstract class Librarian {
+  +int code
+  #float score
+  -double amount
+  +float quantity
+  +getActive()
+  +setId()
+  +cancelCreatedat()
+  +updateNote()
 }
 class Member {
+  +String address
+  -int status
+  -double description
+  +sendScore()
+  +sendCreatedat()
+  +setName()
+  +saveDuration()
+}
+interface Book {
   +int code
   +String total
   #int note
   #float phone
   #long type
-  +saveAddress()
-}
-class Book {
-  -Date createdAt
-  #String type
-  +boolean description
-  +setEmail()
-  +cancelCreatedat()
-  +createName()
-  +findId()
+  +setPrice()
 }
 class Loan {
-  +int active
-  #int score
-  -String quantity
-  +processDuration()
-  +getCreatedat()
-  +createUpdatedat()
-  +findId()
+  -Date description
+  #String createdAt
+  +boolean type
+  -String duration
+  +findName()
+  +updateDescription()
+  +getNote()
 }
-Librarian --* Loan
-Catalog --* Librarian
-Loan --> Member : "1"
-note right of Catalog : Library domain
+Loan --* Catalog
+Book ..|> Loan
 @enduml

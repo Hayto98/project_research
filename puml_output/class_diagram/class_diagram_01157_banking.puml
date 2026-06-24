@@ -6,51 +6,50 @@ skinparam ArrowColor #555555
 abstract class Loan {
   #long phone
   +Date active
-  +saveDescription()
+  +createType()
 }
 class Teller {
-  +double quantity
+  -int createdAt
+  -float quantity
   +String total
-  +Date duration
-  +processScore()
-  +findQuantity()
-  +processDuration()
+  +cancelDescription()
 }
 class Withdrawal {
-  +String total
-  -String id
-  -int type
-  -boolean duration
-  +float email
-  +updateEmail()
-  +setScore()
-  +cancelDescription()
-  +processEmail()
+  -String score
+  -float quantity
+  #float type
+  -float id
+  -int duration
+  +getPrice()
 }
 abstract class Transaction {
-  #float price
-  +int quantity
-  +float note
-  +validateAddress()
-  +validateId()
+  -boolean type
+  +float createdAt
+  +deleteAddress()
+  +processScore()
+  +deleteTotal()
+  +cancelPhone()
 }
 class Customer {
-  #long note
-  #int quantity
-  +float level
-  -boolean duration
-  +int price
-  +deleteNote()
+  #Date type
+  #int email
+  -long total
+  +calculateLevel()
+  +calculateDuration()
+  +processPhone()
+  +setDescription()
 }
 class Statement {
-  +Date total
-  -Date price
-  +boolean duration
-  +int address
-  +findStatus()
-  +getName()
+  -String createdAt
+  +double phone
+  #double address
+  +cancelAddress()
+  +getCode()
+  +deletePrice()
 }
-Withdrawal --> Transaction : "0..1"
-Statement --o Withdrawal
-note right of Loan : Banking domain
+Customer --> Withdrawal : "0..1"
+Teller --> Transaction : "0..1"
+Teller ..|> Loan
+Transaction --* Loan
+Transaction --o Statement
 @enduml

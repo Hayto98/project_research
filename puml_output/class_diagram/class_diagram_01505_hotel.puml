@@ -9,16 +9,17 @@ abstract class Room {
   #long phone
   +Date updatedAt
   #long level
-  +deleteStatus()
-  +sendDuration()
+  +saveQuantity()
+  +findEmail()
 }
 class Restaurant {
-  +Date id
-  +double email
-  +long address
-  +findPhone()
-  +getNote()
-  +updateActive()
+  +Date createdAt
+  +double id
+  +long email
+  -Date address
+  +setUpdatedat()
+  +processTotal()
+  +getTotal()
 }
 interface Housekeeping {
   #String quantity
@@ -26,30 +27,27 @@ interface Housekeeping {
   +double score
   +boolean status
   +long email
-  +cancelId()
-  +getScore()
-  +updateType()
-  +saveQuantity()
+  +setPhone()
+  +sendLevel()
+  +updatePrice()
+  +calculateId()
 }
-abstract class Booking {
-  +String total
-  #float id
-  +long note
-  +int address
-  +double description
-  +saveStatus()
-  +findScore()
-  +sendEmail()
+interface Booking {
+  -double type
+  +Date quantity
+  #double duration
+  +getEmail()
+  +saveType()
+  +createScore()
 }
 class Service {
-  #float score
-  -double description
-  +Date id
-  #double type
-  +setId()
+  +double email
+  -float updatedAt
+  #Date amount
+  +setActive()
 }
-Restaurant --o Booking
-Booking ..> Housekeeping : "*"
-Booking --|> Room
-note right of Room : Hotel domain
+Service --|> Housekeeping
+Housekeeping ..> Restaurant : "1"
+Booking --o Housekeeping
+Restaurant --|> Booking
 @enduml

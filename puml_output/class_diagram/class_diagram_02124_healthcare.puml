@@ -8,47 +8,54 @@ abstract class Appointment {
   #long price
   #double quantity
   +Date type
-  +setEmail()
-  +processCreatedat()
+  +getType()
+  +validateAddress()
 }
-interface Diagnosis {
-  +boolean name
-  -int id
-  +validateEmail()
+abstract class Diagnosis {
+  +int score
+  #double name
+  +String level
+  +deleteCreatedat()
+  +validateName()
+  +saveEmail()
 }
-abstract class Patient {
-  -String description
-  +int status
-  +validateLevel()
+class Patient {
+  +int address
+  #String name
+  +sendUpdatedat()
+  +findName()
+  +sendActive()
 }
-interface Insurance {
-  #String status
-  #long email
-  -boolean level
-  +calculateQuantity()
-  +findPrice()
-  +processLevel()
+class Insurance {
+  #String email
+  #long duration
+  +saveTotal()
+  +createStatus()
+  +createUpdatedat()
 }
 class Ward {
-  +int address
-  +Date total
-  #boolean name
-  #float quantity
-  +deleteLevel()
-  +deletePrice()
-  +processLevel()
-  +findCreatedat()
+  -double quantity
+  #String price
+  -String type
+  +String name
+  #Date duration
+  +setLevel()
+  +processEmail()
+  +saveAddress()
+  +getActive()
 }
 abstract class MedicalRecord {
-  +Date code
-  #int id
-  +int address
-  +saveCode()
-  +saveName()
-  +deleteCreatedat()
-  +validateCreatedat()
+  #String level
+  -String createdAt
+  #boolean price
+  +String amount
+  +float code
+  +validatePrice()
+  +sendLevel()
+  +cancelStatus()
+  +calculateEmail()
 }
-Ward --> Diagnosis : "1..*"
-Ward ..> Insurance : "0..1"
-note right of Appointment : Healthcare domain
+Diagnosis ..|> Patient
+Appointment ..|> Ward
+Ward --> Patient : "*"
 @enduml

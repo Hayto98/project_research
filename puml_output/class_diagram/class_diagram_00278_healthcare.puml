@@ -9,52 +9,46 @@ abstract class Ward {
   #boolean id
   +boolean description
   +float amount
-  +calculateStatus()
-  +calculateType()
-  +saveCreatedat()
+  +saveName()
+  +updateUpdatedat()
+  +processLevel()
 }
-class Patient {
-  #int email
-  #String duration
-  +double type
+abstract class Patient {
+  -double phone
+  #int createdAt
+  #String email
+  +getId()
+  +calculateDescription()
+}
+interface MedicalRecord {
+  +double active
+  -int note
+  +setCode()
   +sendNote()
-}
-class MedicalRecord {
-  +double price
-  #double createdAt
-  -long email
-  #String updatedAt
-  -long total
-  +deleteLevel()
-  +setAmount()
+  +updateEmail()
 }
 class Doctor {
-  +boolean total
-  #String quantity
-  +deleteCreatedat()
-  +getEmail()
-  +createQuantity()
+  -int total
+  +boolean phone
+  +int level
+  +String code
+  -long email
+  +setId()
 }
-class Billing {
-  #int phone
-  +boolean quantity
-  #boolean total
-  +getAmount()
-  +setAmount()
-  +cancelCode()
+interface Billing {
+  #Date email
+  +String description
+  +setQuantity()
+  +validateStatus()
+  +findScore()
 }
 class Treatment {
-  +float duration
-  -float email
-  #boolean quantity
-  #double phone
-  +savePrice()
-  +sendActive()
-  +setType()
-  +updateCode()
+  -float createdAt
+  -float phone
+  +cancelType()
+  +cancelTotal()
 }
-Doctor ..> Treatment : "1"
-Doctor --|> Patient
-MedicalRecord ..|> Patient
-note right of Ward : Healthcare domain
+Ward --|> Patient
+Patient --|> Billing
+MedicalRecord ..> Treatment : "1..*"
 @enduml

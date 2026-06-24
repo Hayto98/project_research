@@ -6,51 +6,53 @@ skinparam ArrowColor #555555
 class DeliveryNote {
   #boolean name
   +boolean address
-  +findScore()
-  +createDuration()
+  +saveDescription()
+  +saveActive()
 }
 class Vehicle {
-  +double description
+  +int email
+  -float description
   -float note
   +Date total
-  -long status
-  +calculateQuantity()
-  +findDescription()
-  +createAmount()
+  +validateAmount()
+  +findCreatedat()
+  +cancelLevel()
+  +createDuration()
 }
-interface Package {
-  +double score
-  #long note
-  +Date type
-  +createCode()
+class Package {
+  +boolean quantity
+  -float amount
+  #float score
+  +validateCreatedat()
+  +deleteDuration()
+  +getStatus()
+  +validateActive()
 }
 class Shipment {
-  -float price
-  +int level
-  -int name
-  -double description
-  -int code
-  +updateDescription()
-  +findCode()
-  +getAddress()
+  +String status
+  #double email
+  +deleteLevel()
+  +createId()
+  +findTotal()
+  +getCode()
 }
-abstract class Depot {
-  -double level
-  +double active
-  +float description
-  +cancelAddress()
-  +processTotal()
-  +deleteQuantity()
+class Depot {
+  +double code
+  +long email
+  -long id
+  +processStatus()
+  +sendDescription()
 }
 class Manifest {
-  #boolean level
-  +int amount
-  +saveDescription()
-  +calculateId()
+  -float code
+  +boolean id
+  #int address
+  +sendName()
+  +findType()
+  +validateCode()
+  +createName()
 }
-Vehicle ..> Depot : "1..*"
-Manifest --* Package
-Manifest --o Depot
-Shipment --* Package
-note right of DeliveryNote : Logistics domain
+Package --* Depot
+Shipment ..|> Manifest
+Package --|> Manifest
 @enduml

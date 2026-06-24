@@ -9,60 +9,59 @@ abstract class Doctor {
   #Date level
   -long id
   +double score
-  +validateEmail()
-  +findId()
+  +sendPhone()
+  +validateAmount()
 }
 class Billing {
-  #int type
-  +boolean id
-  +int active
-  +int score
-  +calculateScore()
-  +setScore()
+  #boolean phone
+  #Date type
+  +int id
+  +updateType()
+  +updatePrice()
 }
-interface MedicalRecord {
-  -double score
-  #String price
-  #float type
-  +deleteType()
-  +deleteActive()
+class MedicalRecord {
+  #Date total
+  #int score
+  #double status
+  +findCode()
+  +createName()
+  +calculateStatus()
+  +deletePhone()
 }
-abstract class Insurance {
-  #Date duration
-  +long address
-  -double level
-  +setScore()
-  +findUpdatedat()
+class Insurance {
+  #double amount
+  +boolean type
+  -long description
+  +findScore()
+  +calculatePhone()
 }
-class Hospital {
-  +double amount
-  -boolean quantity
-  #long type
-  #boolean level
-  -Date address
-  +validateEmail()
-  +cancelDescription()
+abstract class Hospital {
+  #String code
+  -int score
+  #float updatedAt
+  +findActive()
+  +sendType()
+  +calculateTotal()
 }
 class Prescription {
-  -float duration
-  -long price
-  #long type
-  -int status
-  #long id
-  +sendName()
-  +calculateDescription()
+  #long description
+  #boolean total
+  -Date price
+  +long active
+  +savePrice()
+  +createEmail()
+  +validateTotal()
 }
-interface Diagnosis {
-  +long createdAt
-  -double updatedAt
-  +calculateAddress()
-  +deleteNote()
-  +cancelPhone()
-  +cancelEmail()
+class Diagnosis {
+  -String note
+  +long price
+  +validateDuration()
+  +setAddress()
+  +deleteCreatedat()
 }
-MedicalRecord --o Prescription
-MedicalRecord --o Hospital
-Prescription ..> Hospital : "1"
-Prescription ..> Doctor : "*"
-note right of Doctor : Healthcare domain
+Billing --* Prescription
+Billing --|> Hospital
+Insurance ..|> Prescription
+Hospital ..|> Doctor
+Billing --* Doctor
 @enduml

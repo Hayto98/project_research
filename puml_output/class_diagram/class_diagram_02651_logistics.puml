@@ -5,54 +5,63 @@ class Shipment {
   +float amount
   +double active
   +double status
-  +saveDuration()
+  +sendPrice()
 }
-abstract class FuelLog {
-  #float id
-  -double total
-  +String active
+interface FuelLog {
+  #float active
+  -double quantity
+  +String id
+  +int total
   +int createdAt
-  +updateCreatedat()
+  +createName()
+  +getActive()
 }
-abstract class Warehouse {
+interface Warehouse {
   -String duration
   +String note
-  +validateTotal()
-  +findActive()
-  +setNote()
-  +getName()
+  +findCode()
+  +calculateQuantity()
+  +setQuantity()
+  +cancelName()
 }
-class Route {
-  -int code
-  +String level
-  +double note
-  +calculateCode()
-  +validateType()
-  +sendScore()
+interface Route {
+  +Date note
+  +Date name
+  +calculateDescription()
+  +setDescription()
 }
 interface Driver {
-  #long score
-  -boolean level
-  #float name
-  +float price
+  -Date price
+  -double updatedAt
+  #String level
+  -double status
+  #float id
+  +saveActive()
+  +deleteEmail()
   +findName()
-  +saveName()
 }
 class Manifest {
-  +int phone
-  -long total
-  +updatePhone()
+  #float quantity
+  #String total
+  #float score
+  +long id
+  #float amount
+  +validateTotal()
 }
 class Package {
-  #Date total
-  #float description
-  #float id
-  +setEmail()
-  +updateType()
-  +calculateStatus()
-  +saveEmail()
+  +Date description
+  #long duration
+  +int note
+  -int phone
+  #String id
+  +getLevel()
+  +calculateScore()
+  +deleteEmail()
+  +updateDescription()
 }
+Route --|> Manifest
+Manifest --|> Warehouse
 Route ..> FuelLog : "1..*"
 Shipment --* Driver
-note right of Shipment : Logistics domain
+FuelLog ..|> Manifest
 @enduml

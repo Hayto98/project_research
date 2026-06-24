@@ -7,51 +7,50 @@ class Shipment {
   #int type
   -Date note
   -String duration
-  +findType()
-  +getQuantity()
-  +saveCode()
-  +cancelLevel()
+  +calculateDescription()
+  +sendCreatedat()
+  +updateActive()
+  +processCreatedat()
 }
 class Product {
-  +int type
-  -int address
-  +validateTotal()
-}
-interface Invoice {
-  #Date note
-  +long code
+  -boolean level
+  +float duration
+  +calculateCreatedat()
+  +deletePhone()
+  +validatePhone()
   +cancelNote()
-  +validateCreatedat()
-  +createScore()
-  +processNote()
 }
-class Cart {
-  -Date email
+abstract class Invoice {
+  #boolean status
+  #boolean phone
+  +double total
+  +deleteEmail()
+}
+interface Cart {
+  #Date quantity
+  #double note
+  +processActive()
+  +findCreatedat()
+  +createStatus()
+}
+abstract class Wishlist {
+  -Date name
+  #float createdAt
+  #double email
   #float status
-  #double name
-  +deleteTotal()
-  +validateActive()
-  +createLevel()
-  +cancelDuration()
-}
-class Wishlist {
-  +String note
-  +boolean name
-  -int email
-  +getDuration()
+  #double duration
+  +calculateQuantity()
+  +setEmail()
 }
 interface Category {
-  -Date updatedAt
-  +boolean type
-  +int price
-  #Date status
-  +Date quantity
-  +getQuantity()
-  +cancelScore()
+  +long level
+  +String email
+  +boolean amount
+  -int note
+  +processQuantity()
 }
-Category ..|> Product
-Product --* Invoice
-Shipment --|> Invoice
-Category --> Cart : "*"
-note right of Shipment : Ecommerce domain
+Product --o Cart
+Shipment --o Invoice
+Category --> Product : "1"
+Product ..> Shipment : "0..1"
 @enduml

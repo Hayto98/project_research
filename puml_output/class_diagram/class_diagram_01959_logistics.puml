@@ -5,45 +5,54 @@ skinparam classBorderColor #2C7DA0
 class Vehicle {
   #String quantity
   +boolean id
-  +updateCreatedat()
-  +createCreatedat()
-  +cancelLevel()
-  +calculatePrice()
+  +processDuration()
+  +deleteTotal()
+  +processActive()
+  +calculatePhone()
 }
 class Driver {
-  -long score
-  +Date name
-  +boolean email
-  +boolean phone
-  +cancelPrice()
-  +sendCode()
+  -long price
+  -long status
+  +Date active
+  +boolean quantity
+  +boolean name
+  +setPhone()
+  +saveName()
 }
-class Warehouse {
+interface Warehouse {
+  +String address
   -String name
-  #long code
-  +getDescription()
-  +calculateLevel()
-  +calculateUpdatedat()
-  +createScore()
+  +cancelQuantity()
+  +calculateId()
+  +saveQuantity()
 }
-interface FuelLog {
-  +String type
-  -boolean status
-  +findScore()
+abstract class FuelLog {
+  -String updatedAt
+  +String email
+  -boolean score
+  +Date active
+  #boolean status
+  +deleteScore()
+  +cancelAmount()
+  +getAddress()
 }
 class Route {
-  +double score
-  -boolean total
-  #float phone
-  +sendNote()
+  #Date price
+  #String type
+  +deleteType()
+  +calculateDuration()
+  +cancelDescription()
+  +getType()
 }
-interface DeliveryNote {
-  +long code
-  #float email
-  +createNote()
+class DeliveryNote {
+  -Date createdAt
+  +float address
+  +boolean status
+  -String email
+  +createPrice()
+  +createAddress()
+  +deleteAmount()
 }
-Driver --* Route
-Vehicle --o Warehouse
-Vehicle --> FuelLog : "1"
-note right of Vehicle : Logistics domain
+Route --o Vehicle
+FuelLog --> Route : "1..*"
 @enduml

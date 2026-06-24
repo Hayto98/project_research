@@ -6,53 +6,55 @@ skinparam defaultFontSize 13
 class DeliveryNote {
   +String level
   -int createdAt
-  +validateCode()
-  +saveScore()
+  +calculateType()
+  +calculateName()
 }
 class Driver {
-  #int createdAt
-  -boolean score
-  -String level
-  +double email
-  +setAmount()
-  +deleteCode()
+  #float quantity
+  #long createdAt
+  #int score
+  +saveDuration()
+  +processTotal()
+  +calculateEmail()
 }
-interface Package {
-  #double type
-  +float amount
-  +saveAddress()
-  +validateCode()
+class Package {
+  #String updatedAt
+  -int status
+  #double amount
+  +float description
+  +float code
+  +processStatus()
+  +processAmount()
+  +cancelDuration()
 }
 class Tracking {
   -long id
   #Date type
   +float active
-  +processName()
-  +findTotal()
-  +updateDuration()
-  +setLevel()
+  +sendCode()
+  +deleteNote()
+  +validateLevel()
+  +setCode()
 }
-interface Manifest {
+abstract class Manifest {
+  +boolean duration
+  +String code
   #double score
-  #double updatedAt
-  #float id
-  +processDescription()
-  +findAmount()
-  +updateType()
+  +sendPrice()
+  +validateStatus()
+  +getActive()
+  +updateId()
 }
 class Depot {
-  -long name
-  -String email
-  -boolean amount
-  +deleteUpdatedat()
-  +sendCode()
-  +cancelPhone()
-  +deleteActive()
+  #Date description
+  +String amount
+  -Date createdAt
+  +long type
+  -long level
+  +calculateScore()
 }
-Tracking ..> Manifest : "1..*"
+Driver --> Depot : "1"
+Manifest ..|> Package
+Manifest --o Tracking
 Depot ..|> Manifest
-Depot --|> Driver
-Driver ..> Tracking : "0..1"
-Package ..|> Driver
-note right of DeliveryNote : Logistics domain
 @enduml

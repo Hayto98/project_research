@@ -4,31 +4,37 @@ class Vehicle {
   -int address
   +double total
   -float phone
-  +sendPhone()
+  +saveActive()
 }
-abstract class DeliveryNote {
-  -float code
-  #Date quantity
-  +String createdAt
-  +cancelType()
+class DeliveryNote {
+  -float active
+  #Date amount
+  +String code
+  #float quantity
+  +boolean createdAt
+  +createScore()
+  +validateStatus()
+  +setDuration()
+  +cancelCode()
 }
-class Inventory {
+abstract class Inventory {
+  #Date type
   -Date total
-  -int score
-  #Date duration
-  -Date type
-  #long level
-  +saveId()
-  +createStatus()
-  +updateAddress()
+  #long quantity
+  -Date email
+  +long createdAt
+  +processPrice()
 }
-abstract class Shipment {
-  #double email
-  #int name
-  +validateDuration()
-  +createStatus()
-  +updateLevel()
+class Shipment {
+  #int id
+  #long email
+  -boolean name
+  -String active
+  +boolean type
+  +deleteName()
+  +sendUpdatedat()
 }
-Inventory --* Shipment
-note right of Vehicle : Logistics domain
+Inventory --o Shipment
+DeliveryNote --|> Shipment
+Shipment --> Vehicle : "1"
 @enduml

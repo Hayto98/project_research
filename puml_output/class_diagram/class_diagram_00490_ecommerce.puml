@@ -8,59 +8,64 @@ abstract class Coupon {
   +int duration
   +boolean total
   +String note
-  +createCreatedat()
-  +sendScore()
-  +processEmail()
+  +findTotal()
+  +updateLevel()
+  +calculateNote()
 }
-class Shipment {
-  -float createdAt
-  #float phone
-  +saveName()
-  +setStatus()
-  +setName()
-  +savePhone()
+interface Shipment {
+  -float email
+  #float updatedAt
+  #double code
+  #String createdAt
+  +String phone
+  +findEmail()
 }
-abstract class Cart {
-  #String quantity
-  #int updatedAt
-  +processPrice()
-  +processPhone()
+class Cart {
+  #String total
+  #int status
+  +double quantity
+  -double updatedAt
+  +validateScore()
+  +deleteLevel()
+  +findScore()
 }
 class Wishlist {
-  +float code
-  -double address
-  +Date id
-  #String name
-  +findNote()
+  -String id
+  #Date name
+  +String description
+  #float quantity
+  +validateQuantity()
+  +processDuration()
+  +calculateEmail()
+  +updateDuration()
 }
 class Warehouse {
-  +long name
-  +Date id
-  +double duration
-  +updateEmail()
-  +sendName()
-  +createPrice()
-  +createUpdatedat()
+  -double address
+  +long code
+  #String amount
+  +findType()
+  +calculateCode()
+  +setQuantity()
 }
-abstract class Customer {
-  #float active
-  -String type
-  -Date description
-  #String email
-  +float createdAt
-  +saveName()
-  +updateLevel()
+class Customer {
+  -int note
+  -boolean price
+  +Date active
+  +processAmount()
+  +cancelCode()
+  +setCode()
+  +saveUpdatedat()
 }
 class Order {
-  -boolean price
-  +String score
-  #boolean description
-  #int amount
-  #float note
-  +validateCode()
-  +calculateScore()
+  #String active
+  +float description
+  +createName()
+  +createDuration()
 }
+Shipment ..|> Warehouse
+Wishlist --> Cart : "1"
+Coupon --> Warehouse : "0..1"
+Warehouse --* Shipment
+Coupon --> Wishlist : "1"
 Customer --o Cart
-Coupon ..> Warehouse : "0..1"
-note right of Coupon : Ecommerce domain
 @enduml

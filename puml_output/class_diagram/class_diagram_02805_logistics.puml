@@ -4,41 +4,37 @@ skinparam defaultFontSize 13
 class Tracking {
   #int id
   #int active
-  +processCreatedat()
+  +cancelQuantity()
 }
 class Inventory {
-  +boolean quantity
-  +double note
-  -int phone
-  #double code
-  #String duration
-  +sendEmail()
-  +updateNote()
-  +saveActive()
-  +setTotal()
+  +Date price
+  -int quantity
+  #float note
+  +double phone
+  +saveAddress()
+  +cancelAmount()
+  +deleteId()
 }
-interface Package {
+abstract class Package {
+  -int note
+  -Date score
+  +calculateQuantity()
+}
+interface DeliveryNote {
   +boolean code
   #double name
   #long id
   #double note
-  +deleteDuration()
-  +saveActive()
-  +setTotal()
-  +createAddress()
+  +deleteScore()
+  +sendActive()
+  +saveUpdatedat()
+  +cancelDescription()
 }
-abstract class DeliveryNote {
-  +String duration
-  +Date code
-  +sendAmount()
+interface Driver {
+  -double total
+  #String email
+  +validateEmail()
 }
-class Driver {
-  -Date active
-  +long total
-  #double email
-  +updatePrice()
-}
-Inventory ..> DeliveryNote : "0..1"
-Package --|> DeliveryNote
-note right of Tracking : Logistics domain
+Tracking --> Driver : "0..1"
+Package ..> Inventory : "*"
 @enduml

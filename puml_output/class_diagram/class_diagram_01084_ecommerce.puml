@@ -7,56 +7,64 @@ interface Customer {
   #double amount
   #boolean status
   -int active
-  +saveScore()
-  +createQuantity()
+  +findStatus()
+  +createStatus()
 }
 class Coupon {
-  +Date price
-  +boolean type
-  +cancelActive()
-  +createLevel()
+  +Date quantity
+  +boolean id
+  +boolean price
+  #long type
+  +validateUpdatedat()
+  +validateDescription()
+  +getType()
 }
 class Invoice {
-  -float code
-  +boolean phone
-  +float address
-  +String email
-  -boolean type
-  +processPrice()
+  -double score
+  +boolean level
+  +float email
+  +String active
+  +processEmail()
+  +validateEmail()
+  +calculateTotal()
 }
 abstract class Review {
-  +double address
-  +float type
+  -String note
+  -int address
+  +String level
+  -boolean type
   +String price
-  -boolean note
-  +setScore()
-  +processPrice()
+  +sendScore()
+  +cancelUpdatedat()
+  +processDuration()
+  +processActive()
 }
-class Order {
-  #long score
-  -long type
-  +int id
-  +createScore()
-}
-interface Supplier {
-  -boolean status
-  -int active
-  #long note
-  +cancelName()
-  +saveDescription()
-  +deleteTotal()
-}
-class Product {
-  #String status
-  -boolean score
-  +double type
-  +getPhone()
-  +deleteDuration()
-  +getAddress()
+interface Order {
+  +boolean id
+  #String quantity
+  -boolean type
+  #int email
+  +boolean createdAt
   +calculateAmount()
+  +getCreatedat()
+  +findCode()
+  +findId()
 }
-Review --o Supplier
-Supplier --> Order : "1..*"
+class Supplier {
+  -String duration
+  #int name
+  +boolean description
+  -Date score
+  +sendName()
+}
+interface Product {
+  +long price
+  +boolean total
+  +saveCreatedat()
+}
+Coupon --o Product
+Supplier ..> Review : "1..*"
 Product --o Review
-note right of Customer : Ecommerce domain
+Supplier --|> Customer
+Invoice --|> Supplier
 @enduml

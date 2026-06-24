@@ -6,38 +6,36 @@ class Guest {
   +float createdAt
   +boolean description
   -long status
-  +calculatePhone()
-  +calculateUpdatedat()
+  +getPhone()
+  +updateTotal()
 }
-class Payment {
-  -double updatedAt
-  -double status
-  #int duration
-  -int total
-  +boolean email
-  +deleteScore()
-  +calculateTotal()
+abstract class Payment {
+  +int status
+  #boolean type
+  -long updatedAt
+  +processTotal()
+  +cancelId()
+  +findEmail()
+  +calculateQuantity()
 }
-abstract class Service {
-  -boolean updatedAt
-  +int duration
-  +long description
-  +String code
-  +updateStatus()
-  +saveId()
-  +setName()
-  +createPhone()
-}
-class Staff {
-  -String phone
-  -double note
+class Service {
+  -double amount
+  -int id
+  +int updatedAt
+  #String description
   -boolean total
-  #String email
-  #float id
   +calculateNote()
 }
-Service ..|> Staff
-Guest --o Service
-Guest --> Staff : "0..1"
-note right of Guest : Hotel domain
+class Staff {
+  +Date createdAt
+  #Date code
+  +String note
+  +long duration
+  +cancelDuration()
+  +processPhone()
+  +processUpdatedat()
+}
+Service --o Payment
+Service --o Guest
+Guest --o Payment
 @enduml

@@ -8,58 +8,53 @@ class Transaction {
   -Date email
   -Date id
   #String score
-  +setLevel()
-  +setLevel()
-  +saveType()
-  +setUpdatedat()
+  +validateId()
+  +savePrice()
+  +updateUpdatedat()
+  +saveDuration()
 }
-interface Loan {
-  #boolean status
-  -float note
-  +long address
-  +findDuration()
+abstract class Loan {
+  +Date updatedAt
+  +double active
+  +cancelDescription()
+  +processEmail()
+  +deleteActive()
 }
 class Account {
-  #long phone
-  -long price
-  #double createdAt
-  +boolean level
-  -long code
-  +processCreatedat()
-  +validatePhone()
+  -double active
+  +float name
+  -float description
+  +Date total
+  +calculateType()
+  +validateDuration()
+  +createAmount()
 }
-class Customer {
-  -boolean address
-  +int name
-  -boolean email
-  +saveNote()
-  +sendPrice()
-  +updateDuration()
-  +validateCode()
+interface Customer {
+  -int amount
+  -long level
+  #long type
+  #Date email
+  +long duration
+  +cancelPhone()
 }
 class Teller {
-  #String duration
-  +float email
-  +Date level
-  +calculateScore()
-  +createType()
-  +deleteCreatedat()
+  #double createdAt
+  #float email
+  +saveActive()
+  +calculateCode()
+  +sendEmail()
+  +updateScore()
 }
-class Transfer {
-  -boolean amount
-  +Date id
-  +boolean phone
-  +int email
-  #long quantity
-  +cancelScore()
-  +findAddress()
-  +calculateCreatedat()
-  +saveNote()
+interface Transfer {
+  -Date code
+  +String name
+  +Date description
+  -double email
+  +getId()
+  +setType()
+  +updateCreatedat()
 }
-Customer ..> Transaction : "0..1"
-Teller --* Transaction
-Account --o Transfer
-Transaction --* Customer
-Transfer --o Account
-note right of Transaction : Banking domain
+Transaction --> Teller : "*"
+Loan --> Transaction : "1..*"
+Teller ..> Transfer : "1..*"
 @enduml

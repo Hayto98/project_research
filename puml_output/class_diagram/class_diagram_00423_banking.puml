@@ -6,54 +6,56 @@ class Transaction {
   -boolean active
   #long score
   #float total
-  +validateType()
-  +cancelName()
-  +getDescription()
-  +getEmail()
+  +sendPhone()
+  +validateName()
+  +processId()
+  +saveId()
 }
 class Transfer {
-  #boolean score
-  -double description
-  +long level
-  #Date type
-  +createCode()
-  +processAddress()
-  +saveCreatedat()
+  -boolean name
+  +float email
+  +boolean address
+  +sendAmount()
+  +setPhone()
+  +validateLevel()
+  +saveScore()
 }
-class Deposit {
+abstract class Deposit {
+  -float phone
+  -String active
+  +sendStatus()
+  +validateScore()
+  +findStatus()
+  +updateDescription()
+}
+class Withdrawal {
   -double active
   #String id
   +double createdAt
   +long type
-  +calculateDuration()
+  +saveCode()
 }
-class Withdrawal {
+interface Customer {
+  #double createdAt
   #int address
   +String status
-  -boolean price
-  +deleteActive()
-  +calculateUpdatedat()
-  +createPrice()
-  +deleteTotal()
+  +sendQuantity()
+  +deleteUpdatedat()
+  +getId()
+  +saveAddress()
 }
-class Customer {
-  -int level
-  +long createdAt
-  +long active
-  #boolean score
-  +getPrice()
-  +createUpdatedat()
+interface Beneficiary {
+  +float updatedAt
+  #long quantity
+  #boolean price
+  +float description
+  #float total
+  +createCode()
+  +updateQuantity()
+  +processPrice()
 }
-class Beneficiary {
-  +String id
-  -String level
-  -float name
-  +createPrice()
-  +findTotal()
-  +createCreatedat()
-  +deleteAddress()
-}
-Withdrawal ..|> Beneficiary
-Beneficiary ..> Withdrawal : "1..*"
-note right of Transaction : Banking domain
+Transaction ..> Deposit : "0..1"
+Transaction --* Withdrawal
+Transfer ..|> Beneficiary
+Transaction --|> Customer
 @enduml

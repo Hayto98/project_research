@@ -7,51 +7,49 @@ interface Route {
   #long createdAt
   -long amount
   +float price
-  +processEmail()
-  +createCode()
+  +getPrice()
+  +processTotal()
 }
-interface Driver {
-  -boolean status
-  #long name
-  +sendPhone()
-  +cancelDuration()
+class Driver {
+  -boolean code
+  #long duration
+  +boolean status
+  -boolean name
+  +updatePhone()
+  +deleteNote()
+  +deletePhone()
 }
-class FuelLog {
-  #boolean active
-  +float createdAt
-  +findAmount()
-  +cancelType()
-  +processPrice()
-  +getId()
+interface FuelLog {
+  #int active
+  #double name
+  -double price
+  +deleteId()
 }
-interface Vehicle {
+class Vehicle {
   +long name
   +long note
   #int type
   +float total
-  +deleteLevel()
-  +deleteCreatedat()
+  +createId()
+  +updateCreatedat()
 }
-interface Depot {
-  #boolean email
-  #boolean amount
-  #int duration
-  -float createdAt
-  +sendLevel()
-  +deleteTotal()
-  +deleteTotal()
+class Depot {
+  -long createdAt
+  #int score
+  #long active
+  +cancelAmount()
+  +getCreatedat()
 }
-class Customer {
-  #float email
-  #Date quantity
-  #long note
-  +boolean code
-  +saveNote()
-  +sendPhone()
+interface Customer {
+  #int note
+  -int quantity
+  -long score
+  +cancelPhone()
+  +updateCreatedat()
+  +validateTotal()
 }
-Vehicle ..> Customer : "0..1"
-Route --o Depot
-Route ..|> Customer
+Vehicle ..> Route : "1..*"
+Driver ..|> Depot
+Customer --> Vehicle : "1..*"
 FuelLog --o Vehicle
-note right of Route : Logistics domain
 @enduml

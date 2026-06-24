@@ -8,51 +8,43 @@ class Depot {
   -int status
   #boolean address
   +float phone
-  +calculateQuantity()
-  +getScore()
+  +sendScore()
+  +cancelAddress()
 }
 class Manifest {
+  -float description
   #Date status
   +Date address
-  #int email
-  +validateId()
+  +cancelScore()
+  +saveId()
 }
-interface Shipment {
-  #String total
-  -float active
-  #float level
-  +getName()
-  +processPrice()
-  +getName()
-  +findDuration()
+class Shipment {
+  -boolean level
+  #boolean updatedAt
+  +calculateCreatedat()
 }
-interface Package {
-  +float phone
-  +int name
-  +long id
-  #float status
-  +processAmount()
-  +sendId()
+abstract class Package {
+  #double name
+  +String type
+  +updateTotal()
+  +processQuantity()
+  +createEmail()
 }
 class Driver {
+  +String createdAt
   -boolean name
-  #long type
-  +processCreatedat()
-  +sendPhone()
-  +deleteName()
+  +deleteActive()
+  +createCode()
 }
-class Vehicle {
-  +String active
-  +double createdAt
-  -double note
-  +calculateCode()
-  +deleteType()
-  +validatePrice()
-  +getDuration()
+interface Vehicle {
+  +String address
+  -long level
+  +findScore()
+  +sendName()
+  +updateDescription()
 }
-Package --o Shipment
-Manifest --|> Shipment
-Manifest --o Vehicle
-Driver ..|> Shipment
-note right of Depot : Logistics domain
+Manifest ..|> Depot
+Manifest ..|> Driver
+Package --|> Manifest
+Depot --* Package
 @enduml

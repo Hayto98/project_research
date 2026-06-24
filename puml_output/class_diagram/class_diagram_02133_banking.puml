@@ -6,62 +6,62 @@ skinparam shadowing true
 class Account {
   -double active
   -int address
-  +setName()
+  +createPhone()
 }
-interface Card {
+class Card {
   #Date active
   -boolean quantity
   +float duration
   +float price
   +long updatedAt
-  +createScore()
-  +updateType()
-  +processUpdatedat()
+  +cancelPhone()
+  +calculatePrice()
+  +processPrice()
 }
-class Teller {
-  +long active
-  -int status
-  +boolean id
-  +boolean score
-  -int total
-  +getDescription()
+abstract class Teller {
+  +float updatedAt
+  +float name
+  -String type
+  -double active
+  +int status
   +deleteUpdatedat()
-  +findScore()
 }
 class Withdrawal {
-  +double active
-  +Date score
-  +deleteLevel()
-  +processUpdatedat()
-  +saveUpdatedat()
+  +int phone
+  #boolean name
+  +String description
+  +deletePrice()
+  +getLevel()
 }
 class Deposit {
-  +Date phone
-  -double description
-  +setScore()
-  +calculateId()
+  #int level
+  +float type
+  +long updatedAt
+  +processDuration()
+  +cancelDuration()
 }
-class Transfer {
-  #Date email
-  #double quantity
-  +validateCreatedat()
-  +validateTotal()
-  +calculateActive()
-  +validateCode()
+abstract class Transfer {
+  +boolean createdAt
+  +float code
+  -float score
+  -Date price
+  #Date id
+  +findActive()
+  +setAmount()
+  +deleteCode()
+  +sendId()
 }
-interface Statement {
-  #Date description
-  +boolean duration
-  #Date score
-  #boolean name
-  #Date updatedAt
-  +setEmail()
-  +validateLevel()
+class Statement {
+  #int total
+  #float active
+  +float address
+  #boolean code
+  +int note
+  +sendQuantity()
 }
-Teller ..|> Deposit
-Deposit --|> Card
-Deposit --|> Teller
-Statement ..> Teller : "0..1"
-Withdrawal --|> Teller
-note right of Account : Banking domain
+Transfer --> Deposit : "0..1"
+Account --* Teller
+Deposit --* Withdrawal
+Deposit --> Card : "0..1"
+Account --* Deposit
 @enduml

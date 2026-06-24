@@ -7,40 +7,45 @@ abstract class Account {
   #double id
   -String score
   +String description
-  +getDescription()
-  +validatePrice()
+  +cancelTotal()
+  +findPhone()
 }
-interface Statement {
-  +float quantity
-  +boolean price
-  +processName()
-  +createEmail()
-  +cancelEmail()
-}
-class Loan {
+class Statement {
   +boolean level
-  +int price
-  +saveCode()
-  +processAddress()
+  -double status
+  +long quantity
+  -boolean price
+  -int updatedAt
+  +getCode()
 }
-abstract class Card {
-  +double total
+abstract class Loan {
+  #int duration
+  #String code
+  -Date amount
+  +setDuration()
+  +cancelLevel()
+  +getId()
+}
+class Card {
   #double code
   -long phone
   #int description
-  +createCreatedat()
-  +deletePhone()
-  +validateStatus()
+  -long status
+  +int total
+  +setEmail()
+  +deleteQuantity()
+  +createPrice()
 }
-abstract class Interest {
-  #long amount
-  #double email
-  +getName()
-  +updateName()
-  +findAddress()
-  +setPhone()
+class Interest {
+  -String email
+  +int address
+  +Date note
+  +getType()
+  +deleteCode()
+  +validateCode()
 }
 Loan ..> Interest : "*"
 Account ..|> Card
-note right of Account : Banking domain
+Account --|> Interest
+Interest --> Loan : "1..*"
 @enduml

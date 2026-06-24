@@ -8,49 +8,51 @@ class DeliveryNote {
   #boolean note
   #Date price
   +long phone
-  +cancelId()
-}
-abstract class Tracking {
-  -double quantity
-  -long amount
-  -Date phone
-  +updateDescription()
-  +deleteName()
   +savePrice()
 }
-interface Depot {
+class Tracking {
+  -long createdAt
+  -long quantity
+  #long amount
+  +float phone
+  #int total
+  +saveEmail()
+  +updateAddress()
+}
+abstract class Depot {
   -double email
   #long createdAt
   #long code
   +Date address
-  +getCode()
+  +setName()
 }
-interface Warehouse {
+class Warehouse {
   +long score
   #double quantity
   +String note
-  +sendQuantity()
-  +saveCreatedat()
-  +processStatus()
-  +validatePrice()
+  +findDuration()
+  +processDescription()
+  +setScore()
+  +deleteTotal()
 }
 class Vehicle {
-  -boolean note
-  +String code
-  +double type
-  +deletePhone()
-  +deletePhone()
+  -String status
+  #double address
+  -boolean price
+  +String id
+  +double description
+  +saveTotal()
+  +validateCreatedat()
 }
 class Driver {
-  +boolean status
-  #Date active
-  +boolean duration
-  +getNote()
-  +setScore()
-  +getTotal()
+  +boolean phone
+  +int address
+  #float description
+  +findName()
+  +createNote()
 }
-DeliveryNote ..|> Tracking
-Tracking ..> Vehicle : "1..*"
-Driver --o Depot
-note right of DeliveryNote : Logistics domain
+DeliveryNote --|> Warehouse
+Vehicle --o DeliveryNote
+Depot ..|> DeliveryNote
+Tracking --> Driver : "1..*"
 @enduml

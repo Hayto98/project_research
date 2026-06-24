@@ -6,59 +6,63 @@ class Prescription {
   -Date id
   #double duration
   +boolean price
-  +cancelLevel()
+  +getCode()
 }
-class Diagnosis {
-  #double note
-  #String level
-  +Date quantity
-  #String phone
-  +float description
-  +calculateName()
-}
-class LabTest {
-  -String note
-  +boolean id
-  #float description
-  +String price
+interface Diagnosis {
+  #Date note
   #boolean duration
-  +setEmail()
-  +createScore()
+  +cancelDescription()
+  +updateTotal()
+  +validateCode()
+}
+interface LabTest {
+  -String id
+  -double description
+  -String status
+  +double createdAt
+  #double name
+  +createPhone()
+  +saveEmail()
+  +getCode()
+}
+interface Doctor {
+  +long id
+  -boolean score
+  #float type
+  +updatePrice()
+  +createName()
+  +processDescription()
+  +getAddress()
+}
+class Ward {
+  -String level
+  -double type
+  +long price
+  +String amount
+  +float code
   +sendActive()
-  +calculateId()
-}
-abstract class Doctor {
-  -int total
-  +long description
-  +double price
-  -String type
-  +setId()
-  +updateNote()
-  +cancelStatus()
-}
-abstract class Ward {
-  -int price
-  #boolean address
   +validateEmail()
-  +saveName()
-  +setDescription()
+  +getId()
+  +sendDuration()
 }
 class Nurse {
-  +boolean status
-  +double email
-  +findCode()
-  +deletePrice()
-  +deleteScore()
+  -long address
+  #Date type
+  #String createdAt
+  +int active
+  +String email
+  +validateAmount()
 }
-abstract class Insurance {
-  +long type
-  +int email
-  #String description
-  +deletePrice()
+class Insurance {
+  #String note
+  +Date email
+  +saveQuantity()
+  +validateStatus()
+  +calculatePrice()
+  +validatePrice()
 }
-Doctor --o Insurance
-LabTest --o Doctor
-Prescription --* Nurse
-Diagnosis ..> LabTest : "0..1"
-note right of Prescription : Healthcare domain
+Diagnosis --* Doctor
+Nurse --|> Diagnosis
+LabTest ..|> Diagnosis
+Nurse --|> Prescription
 @enduml

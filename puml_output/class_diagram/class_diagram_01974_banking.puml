@@ -8,51 +8,47 @@ class Statement {
   +double duration
   #boolean phone
   #float status
-  +cancelId()
-  +findUpdatedat()
+  +createNote()
+  +getDescription()
 }
-class Deposit {
-  -long duration
-  +String amount
-  -String price
-  +float note
-  #Date address
-  +findNote()
-  +findName()
-  +saveScore()
+interface Deposit {
+  -boolean updatedAt
+  #boolean amount
+  +calculateCode()
+  +createName()
 }
 class Interest {
-  #String name
-  -boolean amount
-  +saveDescription()
-  +validateDescription()
-  +processNote()
+  +String phone
+  #Date name
+  #long id
+  #float address
+  +setCode()
+  +calculateStatus()
+  +cancelType()
+  +calculateEmail()
 }
 interface Beneficiary {
-  #Date createdAt
-  -int active
-  #long code
-  +createType()
-  +validateUpdatedat()
-  +processLevel()
+  +Date id
+  +double name
+  +updateAddress()
+  +setLevel()
+  +updateAmount()
 }
-abstract class Account {
-  #long updatedAt
-  +long note
-  +float level
-  +getType()
-  +cancelType()
+class Account {
+  +Date type
+  +boolean note
+  #boolean active
+  +setPhone()
 }
-class Teller {
-  #double email
-  -boolean createdAt
-  +sendScore()
-  +sendAmount()
+abstract class Teller {
+  -float active
+  -float address
+  -Date quantity
+  +getId()
+  +savePrice()
 }
-Account ..|> Teller
-Beneficiary --* Interest
-Teller --|> Beneficiary
-Deposit --* Teller
-Account --o Statement
-note right of Statement : Banking domain
+Deposit ..> Teller : "*"
+Beneficiary --* Account
+Statement --|> Interest
+Account --|> Deposit
 @enduml

@@ -8,63 +8,64 @@ class Transaction {
   #Date level
   #double type
   #String duration
-  +cancelType()
-  +validateActive()
-  +createCreatedat()
-  +findType()
+  +findDescription()
+  +getId()
+  +updateCode()
+  +findCode()
 }
-class Withdrawal {
-  #Date description
-  +boolean type
-  +Date phone
+interface Withdrawal {
+  +Date createdAt
+  -long type
+  #Date id
+  +boolean description
+  +setCode()
+  +saveDescription()
+}
+interface Account {
+  +boolean status
+  +double email
   +setEmail()
-}
-class Account {
-  -float note
-  -boolean phone
-  -boolean address
+  +deleteActive()
   +getDescription()
-  +deleteAddress()
 }
 abstract class Interest {
-  #String quantity
-  #Date description
-  +String status
-  #Date active
-  +sendQuantity()
-  +findStatus()
-  +getPrice()
+  -double duration
+  #boolean updatedAt
+  -long id
+  +String description
+  #boolean active
+  +setPrice()
 }
-interface Transfer {
-  +long address
-  #long id
-  +double score
-  #double phone
-  +validatePhone()
-  +setAmount()
-  +calculateEmail()
-  +updateCode()
+class Transfer {
+  -Date quantity
+  +String score
+  +saveActive()
+  +getNote()
+  +calculateName()
+  +setCode()
 }
-abstract class Beneficiary {
-  #boolean quantity
+class Beneficiary {
+  -Date name
+  -double quantity
+  -long level
+  +int amount
+  +deleteName()
+  +processDuration()
+  +findNote()
+  +deleteAmount()
+}
+class Loan {
   -int description
   +double email
   #Date code
-  +saveNote()
-  +validateType()
+  #int active
+  +createActive()
+  +sendCreatedat()
+  +validateAmount()
+  +findId()
 }
-class Loan {
-  #Date total
-  -int createdAt
-  #Date amount
-  +createCreatedat()
-  +calculatePhone()
-  +updateLevel()
-  +setScore()
-}
-Transfer ..> Account : "1..*"
-Transfer --|> Loan
-Loan ..> Account : "*"
-Beneficiary --|> Account
-note right of Transaction : Banking domain
+Loan ..|> Withdrawal
+Beneficiary --o Loan
+Withdrawal ..> Transfer : "*"
+Account --o Withdrawal
 @enduml

@@ -3,37 +3,36 @@ skinparam defaultFontSize 13
 class Prescription {
   -int active
   #String quantity
-  +validateLevel()
-  +deleteType()
-  +findAmount()
-  +updateQuantity()
+  +sendPhone()
+  +processId()
+  +saveQuantity()
+  +validateName()
 }
 class LabTest {
-  -double email
-  #Date type
-  +float duration
-  +createCode()
-  +createCreatedat()
-  +cancelName()
-  +createTotal()
+  #long quantity
+  -long code
+  -double updatedAt
+  +cancelType()
 }
-interface Treatment {
-  -float amount
-  +double address
-  +findNote()
+abstract class Treatment {
+  -double code
+  #float email
+  +int createdAt
+  #Date name
+  +createName()
+  +setQuantity()
+  +saveAddress()
+}
+abstract class Patient {
+  +long note
+  -double score
+  -int type
+  +cancelActive()
+  +cancelScore()
+  +setUpdatedat()
   +sendType()
 }
-class Patient {
-  -boolean price
-  #String type
-  -Date phone
-  +long amount
-  +findStatus()
-  +cancelPhone()
-  +sendId()
-  +setTotal()
-}
-LabTest --|> Treatment
-Patient ..|> Treatment
-note right of Prescription : Healthcare domain
+LabTest ..> Patient : "*"
+Prescription --* Treatment
+Prescription --o Patient
 @enduml

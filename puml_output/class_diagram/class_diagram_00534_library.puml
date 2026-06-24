@@ -8,43 +8,40 @@ class Author {
   #String amount
   #float level
   #double email
-  +getPrice()
-  +processCode()
+  +savePhone()
+  +sendScore()
 }
-class Branch {
-  #Date description
-  -double email
-  +calculatePrice()
-  +cancelActive()
-  +processPhone()
+abstract class Branch {
+  +Date createdAt
+  #long id
+  +cancelQuantity()
+  +calculateStatus()
+  +updateTotal()
 }
-class Librarian {
-  +long type
-  +float note
-  -Date phone
-  +Date name
-  -boolean email
-  +sendPrice()
-  +sendCode()
-  +setStatus()
+abstract class Librarian {
+  #double duration
+  -double active
+  #float type
+  -float phone
+  +long level
+  +processDescription()
 }
-interface Book {
-  #float updatedAt
-  +boolean id
-  +getDuration()
-  +getAmount()
-  +createCode()
+class Book {
+  #Date createdAt
+  +String address
+  +boolean email
+  +Date active
+  +String price
+  +updateNote()
+  +setEmail()
 }
 class Loan {
-  #long quantity
-  +long note
-  +cancelPrice()
-  +saveCreatedat()
-  +cancelCode()
+  +float amount
+  +String quantity
+  +calculateAmount()
+  +calculateStatus()
+  +updateTotal()
 }
-Author --|> Librarian
-Loan ..|> Author
-Book ..|> Branch
-Branch --o Author
-note right of Author : Library domain
+Librarian --> Loan : "*"
+Branch ..> Author : "1"
 @enduml

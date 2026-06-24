@@ -8,64 +8,60 @@ abstract class Cart {
   +double email
   #int active
   +Date address
-  +updateAmount()
-  +findEmail()
-  +updatePhone()
+  +deleteTotal()
+  +saveNote()
+  +findStatus()
 }
 class Return {
-  #double type
-  -double updatedAt
-  #String level
-  #String phone
-  +sendDescription()
+  #long createdAt
+  -int phone
+  #int name
+  -Date active
+  +cancelId()
+  +validateUpdatedat()
+  +setAddress()
+  +saveEmail()
 }
-class Order {
-  -double note
-  +Date level
-  +updateStatus()
-  +createDescription()
-  +createLevel()
-  +calculateLevel()
+interface Order {
+  #int status
+  +boolean score
+  +createName()
 }
-class Coupon {
-  -boolean code
-  -double updatedAt
-  +setNote()
-  +saveNote()
+interface Coupon {
+  +long note
+  +long updatedAt
+  #boolean total
+  -boolean createdAt
+  +sendUpdatedat()
+  +updateName()
 }
-interface Warehouse {
-  -double status
-  -String email
-  #float createdAt
-  -String type
-  #float total
-  +calculateAddress()
-  +updateNote()
-  +validateNote()
-}
-abstract class Supplier {
+class Warehouse {
   -Date address
-  +boolean email
-  -boolean note
-  +setScore()
-  +getTotal()
-  +createLevel()
+  +float score
+  +double note
+  +deleteUpdatedat()
+  +processLevel()
+  +createPhone()
+  +deleteCreatedat()
 }
-interface Customer {
-  -double updatedAt
-  #String quantity
-  +boolean total
-  +boolean description
-  +setLevel()
-  +saveLevel()
-  +processCreatedat()
-  +getType()
+class Supplier {
+  #float total
+  -String quantity
+  #float price
+  -double level
+  -int name
+  +saveCreatedat()
+  +cancelQuantity()
+  +deletePhone()
+  +deleteAmount()
 }
-Warehouse ..|> Supplier
-Cart --|> Customer
-Return --|> Cart
-Supplier --|> Cart
-Coupon --o Warehouse
-Warehouse --* Return
-note right of Cart : Ecommerce domain
+class Customer {
+  #int email
+  #double level
+  #Date note
+  #long total
+  +calculatePrice()
+}
+Coupon --> Order : "1..*"
+Return --o Order
 @enduml

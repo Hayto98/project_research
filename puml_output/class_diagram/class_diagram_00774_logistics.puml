@@ -8,51 +8,45 @@ class Depot {
   -Date name
   -double level
   +Date email
-  +processDescription()
-  +sendAddress()
-  +sendPhone()
-  +updateTotal()
+  +createName()
+  +processCreatedat()
+  +saveQuantity()
+  +saveLevel()
 }
-class Shipment {
-  -long active
-  #float description
-  -double total
-  -boolean createdAt
-  +String updatedAt
-  +cancelScore()
-  +getTotal()
-  +deleteScore()
-  +setType()
+interface Shipment {
+  +double score
+  #int phone
+  -int createdAt
+  +double total
+  +deleteStatus()
+  +validateType()
+  +saveCode()
 }
-class DeliveryNote {
-  -long note
-  #double email
-  +double name
-  #double code
-  +getCode()
-  +sendType()
-  +getId()
-  +validateId()
+abstract class DeliveryNote {
+  -int duration
+  #String updatedAt
+  -int status
+  -float note
+  -long name
+  +cancelDescription()
 }
-interface Driver {
-  +String active
-  +String phone
-  +long score
-  +setCode()
-  +findActive()
+class Driver {
+  -String phone
+  +boolean type
+  -String code
+  +long note
+  +Date total
+  +cancelPrice()
+  +getStatus()
 }
 interface Customer {
-  #String amount
-  +boolean email
-  +int name
-  -int score
-  +sendQuantity()
-  +validateTotal()
-  +updateScore()
-  +processCode()
+  +String level
+  +long score
+  #boolean updatedAt
+  +String code
+  +updateCreatedat()
 }
-DeliveryNote --o Driver
-DeliveryNote --o Shipment
-Shipment ..> DeliveryNote : "0..1"
-note right of Depot : Logistics domain
+Customer ..|> DeliveryNote
+DeliveryNote --|> Depot
+Customer ..|> Depot
 @enduml

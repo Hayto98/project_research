@@ -6,38 +6,36 @@ skinparam shadowing true
 class Diagnosis {
   #Date phone
   #double name
-  +processLevel()
+  +cancelQuantity()
 }
 interface Treatment {
   -double amount
   -long phone
   -String updatedAt
-  +updateId()
+  +sendEmail()
 }
 class Appointment {
-  -boolean email
-  -boolean address
-  +Date level
-  +boolean price
-  +findDuration()
-  +cancelActive()
-  +findAmount()
-  +processEmail()
+  -long address
+  -long email
+  +getCreatedat()
+  +sendStatus()
+  +createCode()
 }
-interface Hospital {
-  #String code
-  #Date status
-  +updateDuration()
+class Hospital {
+  -boolean duration
+  +String level
+  #float active
+  +Date amount
+  +boolean note
+  +updateDescription()
 }
-class Nurse {
+interface Nurse {
+  +long createdAt
   #boolean description
-  +float code
-  #boolean address
-  +createQuantity()
-  +getAddress()
+  +validateStatus()
 }
-Appointment ..> Treatment : "*"
-Hospital --|> Treatment
-Hospital --|> Nurse
-note right of Diagnosis : Healthcare domain
+Nurse --* Treatment
+Appointment --* Diagnosis
+Appointment ..|> Nurse
+Nurse ..> Hospital : "*"
 @enduml

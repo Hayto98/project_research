@@ -9,59 +9,57 @@ class CheckOut {
   #float description
   #int active
   #String note
-  +processAmount()
-  +getTotal()
+  +cancelQuantity()
+  +processAddress()
 }
-abstract class Housekeeping {
-  #String address
-  -long code
-  +deleteCreatedat()
-  +deleteCode()
+class Housekeeping {
+  +float total
+  -String duration
+  +validateType()
 }
-class Amenity {
-  #String note
-  -double type
-  +findQuantity()
-  +getActive()
-  +deleteDescription()
-  +validateDescription()
+abstract class Amenity {
+  +long amount
+  +double description
+  #double createdAt
+  #String level
+  +cancelCreatedat()
+  +createDuration()
+  +cancelDescription()
+  +saveStatus()
 }
 class Reservation {
-  -String total
-  -double type
-  +Date duration
-  +cancelEmail()
-  +updateActive()
+  +long active
+  +long description
+  +calculateQuantity()
+  +updateScore()
 }
-class Payment {
-  #Date active
-  -int email
-  -int code
-  +setTotal()
-  +getUpdatedat()
+abstract class Payment {
+  #int phone
+  #long code
+  +boolean duration
+  -int price
+  #long id
+  +sendStatus()
 }
-class CheckIn {
-  +boolean id
-  +int score
-  -double type
-  +createAddress()
-  +validateQuantity()
-  +createQuantity()
-  +findName()
-}
-class Booking {
-  #long phone
-  +int quantity
+interface CheckIn {
+  -String amount
+  +int type
+  +String duration
+  #double createdAt
   +boolean status
-  #int price
-  +float level
-  +cancelPhone()
-  +findCode()
-  +findLevel()
-  +setId()
+  +processDuration()
+  +getAddress()
 }
-CheckIn ..> Reservation : "*"
-Payment --|> Reservation
-CheckIn --o Booking
-note right of CheckOut : Hotel domain
+abstract class Booking {
+  -Date email
+  +int address
+  #double level
+  -long quantity
+  +double duration
+  +deletePhone()
+  +calculateDescription()
+  +validateScore()
+}
+Housekeeping --> CheckOut : "0..1"
+CheckOut --> Reservation : "1..*"
 @enduml

@@ -6,45 +6,45 @@ class Prescription {
   #long type
   -Date description
   #Date code
-  +processUpdatedat()
-  +calculateLevel()
-  +cancelScore()
-  +saveScore()
+  +sendCreatedat()
+  +deleteType()
+  +updateStatus()
+  +saveCode()
 }
-class Billing {
-  +boolean price
-  -int amount
-  -boolean active
-  -int createdAt
-  +findActive()
-  +findAmount()
-  +setPhone()
+interface Billing {
+  #int score
+  +boolean phone
+  -int price
+  -boolean amount
+  +validateCreatedat()
+  +validateAmount()
+  +updateId()
+  +calculateActive()
 }
 class Diagnosis {
-  -float duration
-  #long name
-  +Date updatedAt
-  +setScore()
+  #boolean phone
+  +boolean amount
+  +processDuration()
 }
-class Nurse {
-  -double status
-  +Date name
-  -float phone
-  -int duration
-  +validateAmount()
-  +updateName()
-  +deleteNote()
+abstract class Nurse {
+  #long createdAt
+  +String code
+  #long status
+  +long name
+  +processCode()
+  +saveUpdatedat()
+  +createAmount()
+  +getDuration()
 }
-interface MedicalRecord {
-  +Date duration
-  #double price
-  +long quantity
-  #double total
-  +updateActive()
-  +updateQuantity()
+abstract class MedicalRecord {
+  +String email
+  +Date phone
+  -float amount
+  +getQuantity()
+  +calculateCode()
+  +updateScore()
 }
-Diagnosis ..> Nurse : "1..*"
-MedicalRecord ..|> Diagnosis
-Nurse --|> Billing
-note right of Prescription : Healthcare domain
+Nurse ..> Prescription : "*"
+Billing --> Diagnosis : "*"
+Billing --> MedicalRecord : "0..1"
 @enduml

@@ -9,58 +9,50 @@ interface Diagnosis {
   +double email
   #long price
   -float active
-  +saveDescription()
-  +calculateUpdatedat()
-  +calculateScore()
-  +setId()
+  +createType()
+  +cancelLevel()
+  +createCreatedat()
+  +saveTotal()
 }
 abstract class Appointment {
-  -long description
-  +float address
-  #double name
+  +double price
+  -int score
   -String status
-  +long level
-  +saveType()
-  +processQuantity()
-  +validateEmail()
+  +setAmount()
 }
 class Hospital {
+  +long address
+  #long status
+  #Date note
+  -double price
+  #long level
+  +deleteId()
+  +deleteCreatedat()
+  +deleteLevel()
+}
+class Insurance {
   -int id
   #boolean status
   +float createdAt
   -Date quantity
-  +getId()
+  +sendTotal()
 }
-class Insurance {
-  -String quantity
-  -double phone
-  +findPhone()
-  +updateTotal()
-  +createScore()
-  +findNote()
+class Ward {
+  +float name
+  -double quantity
+  #Date phone
+  #double price
+  +cancelType()
+  +saveStatus()
+  +getTotal()
 }
-interface Ward {
-  +boolean address
-  +boolean score
-  +int type
-  +boolean level
-  +float status
-  +createLevel()
-  +cancelQuantity()
-  +calculateDuration()
-  +createNote()
+abstract class Billing {
+  -Date score
+  #double note
+  #double duration
+  #String type
+  +findDuration()
 }
-class Billing {
-  -double type
-  -Date code
-  -Date phone
-  -float quantity
-  +deletePhone()
-  +validateUpdatedat()
-}
-Billing ..> Appointment : "1..*"
-Appointment --o Hospital
-Hospital ..|> Billing
-Diagnosis --> Ward : "1"
-note right of Diagnosis : Healthcare domain
+Ward ..|> Diagnosis
+Diagnosis ..|> Ward
 @enduml

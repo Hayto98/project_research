@@ -6,35 +6,33 @@ skinparam defaultFontSize 11
 class Book {
   #int total
   +float type
-  +deleteEmail()
+  +findPhone()
 }
 class Branch {
-  -long price
-  -Date updatedAt
-  +double createdAt
-  #long code
+  #double active
+  #int price
+  +sendDescription()
+  +updateId()
+}
+class Loan {
+  #long quantity
+  -double address
+  -boolean phone
+  +float updatedAt
   -double note
-  +cancelId()
-  +calculateTotal()
-  +validateAddress()
-  +updateDuration()
+  +validateScore()
+  +validateNote()
+  +getStatus()
 }
-abstract class Loan {
-  -int code
-  -double amount
-  #int level
-  +String email
-  -float price
-  +calculateEmail()
+interface Author {
+  -double total
+  +double code
+  -boolean amount
+  +String score
+  +double email
+  +processLevel()
 }
-class Author {
-  #int quantity
-  -float level
-  -Date phone
-  +deleteAddress()
-  +getAmount()
-}
-Branch --* Book
-Book --* Author
-note right of Book : Library domain
+Loan --* Book
+Loan ..|> Author
+Loan ..> Branch : "0..1"
 @enduml

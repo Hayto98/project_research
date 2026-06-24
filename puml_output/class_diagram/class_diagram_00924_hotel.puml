@@ -6,32 +6,29 @@ abstract class Booking {
   -String type
   +long phone
   -int name
-  +findPhone()
+  +getActive()
 }
-abstract class Housekeeping {
-  -double level
-  -boolean status
-  +saveActive()
+class Housekeeping {
+  -boolean id
+  #boolean level
+  +Date status
+  #double price
+  +Date type
+  +createTotal()
+  +cancelId()
+  +calculateDescription()
 }
-abstract class Service {
-  #float active
-  #float quantity
-  #String phone
-  +createType()
-  +findId()
-  +cancelName()
-}
-interface CheckIn {
-  -Date updatedAt
+interface Service {
   -Date quantity
-  +double description
-  +Date score
-  +validateTotal()
-  +cancelType()
-  +createPrice()
+  +boolean email
+  +getCode()
 }
-Housekeeping --o Booking
-Housekeeping ..> CheckIn : "*"
-CheckIn --> Booking : "*"
-note right of Booking : Hotel domain
+class CheckIn {
+  -Date quantity
+  -Date description
+  +double level
+  +validatePrice()
+}
+Service --> Housekeeping : "*"
+CheckIn ..|> Booking
 @enduml

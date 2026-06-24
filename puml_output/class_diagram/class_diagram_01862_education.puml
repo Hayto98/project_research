@@ -6,49 +6,47 @@ skinparam defaultFontSize 11
 class Department {
   #long score
   #double note
-  +validateStatus()
-  +findId()
-  +cancelName()
+  +validateScore()
+  +cancelEmail()
   +calculateLevel()
+  +saveTotal()
 }
 class Library {
-  #int duration
-  -double price
-  +processAddress()
-  +validateLevel()
-  +setActive()
-  +findTotal()
+  -String price
+  #double level
+  +setNote()
+  +createPrice()
 }
-class Classroom {
-  #float total
-  -String status
-  #double createdAt
-  +boolean active
-  +getCode()
-  +processLevel()
-  +cancelId()
+abstract class Classroom {
+  +Date address
+  -double phone
+  +float code
+  #boolean active
+  +Date total
+  +processCode()
+  +findDuration()
+  +sendLevel()
+  +getPhone()
 }
 class Student {
-  +double level
-  -double note
-  +float status
-  +boolean duration
-  #float id
-  +createId()
+  +Date name
+  -boolean code
+  -String note
+  -float id
+  +saveEmail()
 }
-interface Course {
-  +boolean email
-  #boolean level
-  -Date status
-  -long phone
-  +int address
-  +getTotal()
-  +cancelCode()
-  +getLevel()
-  +validateUpdatedat()
+abstract class Course {
+  -String total
+  #boolean updatedAt
+  -long name
+  #float active
+  +long code
+  +validateQuantity()
+  +cancelActive()
+  +saveTotal()
 }
-Course ..|> Classroom
-Course --> Student : "*"
-Classroom --|> Library
-note right of Department : Education domain
+Course ..> Student : "1..*"
+Classroom ..|> Department
+Student --o Department
+Course --|> Department
 @enduml

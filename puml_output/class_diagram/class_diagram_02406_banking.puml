@@ -7,54 +7,49 @@ class Account {
   +int email
   -long price
   +double phone
-  +findScore()
-  +getCreatedat()
+  +setPrice()
+  +processCreatedat()
 }
-class Withdrawal {
-  -int code
-  +String active
-  +String quantity
-  -Date id
-  +int total
-  +saveUpdatedat()
-  +sendUpdatedat()
+interface Withdrawal {
+  #double createdAt
+  +float amount
+  +deleteType()
+  +processName()
+  +cancelCreatedat()
 }
-class Teller {
-  #String active
-  -String duration
-  -String email
-  +processCode()
+abstract class Teller {
+  +double amount
+  #int id
+  +int level
+  +calculateDuration()
+  +getDescription()
 }
-abstract class Transaction {
-  -double type
-  +float price
-  #float level
-  +boolean score
-  #String note
-  +validateUpdatedat()
-  +getPrice()
+class Transaction {
+  -Date updatedAt
+  +double active
+  +long level
+  +sendTotal()
 }
-class Branch {
-  -Date status
-  #boolean quantity
-  +String score
-  #long type
-  +double description
-  +cancelAddress()
-  +cancelStatus()
-  +cancelAmount()
+abstract class Branch {
+  -double note
+  #double total
+  +cancelQuantity()
+  +calculateQuantity()
+  +processTotal()
+  +updateType()
 }
-abstract class Customer {
-  #Date address
-  +int quantity
-  #long active
-  +updateDuration()
-  +cancelUpdatedat()
-  +findScore()
-  +sendQuantity()
+interface Customer {
+  -int active
+  +double code
+  +Date description
+  +validatePrice()
+  +createType()
+  +updateUpdatedat()
+  +updateLevel()
 }
-Branch ..|> Withdrawal
-Teller --* Branch
-Teller --o Transaction
-note right of Account : Banking domain
+Withdrawal ..> Teller : "1"
+Account --* Branch
+Account --* Transaction
+Branch --> Teller : "1"
+Branch --o Withdrawal
 @enduml

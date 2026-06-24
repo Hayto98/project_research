@@ -4,44 +4,38 @@ skinparam defaultFontSize 11
 class Service {
   -double duration
   +Date address
-  +setScore()
+  +deleteEmail()
 }
 class Amenity {
-  #float note
-  -Date level
-  -boolean code
-  +float score
-  #long duration
+  #float price
+  -boolean note
+  -Date code
+  -boolean score
   +deleteLevel()
-  +sendCreatedat()
 }
 interface Reservation {
-  +int duration
-  -boolean note
-  -String active
-  +updateEmail()
-  +cancelActive()
-}
-interface Staff {
-  #boolean status
-  #int description
-  -String address
+  #float updatedAt
+  +float description
   #Date score
-  +boolean phone
-  +sendPrice()
-  +sendScore()
-  +saveActive()
+  -float createdAt
+  +sendEmail()
 }
-class Housekeeping {
-  -double score
-  #boolean updatedAt
-  +updateEmail()
-  +findId()
-  +calculateActive()
+class Staff {
+  +int id
+  #float createdAt
+  -long updatedAt
+  -boolean email
+  #boolean note
+  +getPhone()
+  +savePhone()
 }
-Reservation --|> Service
-Staff ..> Amenity : "1..*"
-Service ..|> Staff
-Housekeeping ..|> Service
-note right of Service : Hotel domain
+interface Housekeeping {
+  #double score
+  #boolean email
+  #boolean duration
+  +cancelStatus()
+}
+Amenity --o Reservation
+Housekeeping ..|> Reservation
+Reservation --o Service
 @enduml

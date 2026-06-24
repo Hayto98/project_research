@@ -3,42 +3,45 @@ skinparam shadowing true
 abstract class Manifest {
   +double name
   +boolean price
-  +setUpdatedat()
-  +setLevel()
-  +updateActive()
+  +validateEmail()
+  +deleteAddress()
+  +createAddress()
 }
 interface Tracking {
+  -int active
+  +double score
   -boolean quantity
-  #int updatedAt
-  #Date level
-  #int type
-  +getQuantity()
-  +findEmail()
-  +findId()
+  +createEmail()
+  +setPrice()
 }
-abstract class Driver {
-  #long amount
-  #Date address
-  +cancelPhone()
+interface Driver {
+  #long quantity
+  #Date name
+  #String duration
+  +updateDuration()
+  +deleteScore()
   +createActive()
-  +calculateQuantity()
+  +cancelDescription()
 }
-interface Inventory {
-  #boolean id
-  -float email
-  +validateId()
-  +saveCreatedat()
+class Inventory {
+  -long duration
+  #boolean phone
+  #boolean email
+  +String active
+  +processAddress()
+  +calculateLevel()
+  +getPrice()
 }
 interface FuelLog {
-  #boolean level
-  #boolean quantity
-  +float type
-  +processLevel()
-  +deleteTotal()
-  +updateNote()
+  #boolean description
+  -Date phone
+  -boolean id
+  #float createdAt
+  #boolean active
+  +processAddress()
+  +createActive()
 }
-Inventory --* Tracking
-Inventory --> Driver : "*"
-Inventory --* FuelLog
-note right of Manifest : Logistics domain
+FuelLog --o Tracking
+Tracking --> Inventory : "*"
+Tracking ..> Driver : "*"
 @enduml

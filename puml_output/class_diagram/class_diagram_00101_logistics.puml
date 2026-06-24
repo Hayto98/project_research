@@ -3,56 +3,57 @@ skinparam defaultFontSize 11
 class Shipment {
   #float total
   #float address
-  +findUpdatedat()
-  +calculateNote()
+  +validateTotal()
+  +createScore()
+  +cancelCreatedat()
+}
+abstract class Depot {
+  #boolean note
+  #String description
+  #float active
+  #Date code
+  -int amount
+  +saveTotal()
+}
+abstract class Manifest {
+  +double score
+  #int total
+  +updateQuantity()
+  +cancelUpdatedat()
+  +deleteDescription()
+  +saveType()
+}
+class Inventory {
+  +Date id
+  -float price
+  +findDuration()
+}
+class FuelLog {
+  #float status
+  #Date total
+  #boolean amount
+  +calculateCode()
+  +getDescription()
+  +validateCode()
+  +createType()
+}
+abstract class Package {
+  +long quantity
+  +float status
+  #double price
   +processNote()
 }
-class Depot {
-  #boolean active
-  #String amount
-  +updateName()
-  +calculateId()
-  +sendTotal()
+interface Driver {
+  #long amount
+  #int total
+  -String duration
+  #long score
+  +findEmail()
+  +createId()
+  +setAddress()
 }
-class Manifest {
-  -float updatedAt
-  +Date price
-  -float duration
-  +boolean status
-  +int id
-  +calculateAmount()
-}
-interface Inventory {
-  +double price
-  +long description
-  +float duration
-  #double amount
-  +Date quantity
-  +deleteTotal()
-  +deleteAmount()
-  +saveAddress()
-}
-interface FuelLog {
-  #boolean address
-  -float code
-  #long quantity
-  +setName()
-}
-class Package {
-  -String active
-  #double price
-  +getStatus()
-}
-class Driver {
-  +double id
-  +Date level
-  +double quantity
-  +deleteCode()
-  +cancelScore()
-  +validatePhone()
-  +setId()
-}
-Shipment --o Manifest
-Depot ..|> Package
-note right of Shipment : Logistics domain
+FuelLog --|> Shipment
+Shipment ..> Manifest : "1"
+FuelLog --o Inventory
+Shipment --o FuelLog
 @enduml

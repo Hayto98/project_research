@@ -5,61 +5,64 @@ class Enrollment {
   -String level
   +float phone
   +String description
-  +deleteTotal()
-  +setTotal()
+  +saveAddress()
+  +getAddress()
 }
 class Department {
-  #int type
-  -double updatedAt
-  #double phone
-  +validateType()
-  +sendPrice()
-  +processName()
-  +processCreatedat()
+  #int code
+  -double createdAt
+  #double type
+  -long updatedAt
+  -boolean phone
+  +cancelCode()
+  +calculateEmail()
+  +setActive()
+  +deleteDuration()
 }
-interface Exam {
+class Exam {
   +long address
   #boolean code
   #int amount
   +boolean active
   +long score
-  +validateType()
+  +createActive()
 }
-interface Student {
+abstract class Student {
   +int description
   +boolean type
   #String phone
   -float updatedAt
   -long address
-  +saveId()
+  +saveTotal()
 }
-interface Classroom {
+class Classroom {
   #int status
   #long duration
   +long quantity
-  +createStatus()
-  +findCreatedat()
+  +sendType()
+  +calculatePhone()
 }
 class Schedule {
+  #int quantity
+  #String total
   -float amount
-  -String level
+  +savePhone()
+  +createDescription()
+  +calculateDescription()
+}
+abstract class Teacher {
   #Date duration
-  -boolean active
-  +float code
-  +createScore()
+  #float status
+  +boolean email
+  +setQuantity()
+  +findType()
+  +validateQuantity()
+  +updateDescription()
 }
-class Teacher {
-  #int amount
-  +int createdAt
-  -Date active
-  -String type
-  -double duration
-  +sendLevel()
-  +sendEmail()
-  +calculateId()
-}
-Schedule ..> Teacher : "0..1"
-Department --|> Classroom
-Enrollment --|> Exam
-note right of Enrollment : Education domain
+Teacher ..|> Student
+Teacher ..|> Schedule
+Enrollment --* Department
+Schedule --|> Student
+Student --* Teacher
+Classroom --> Teacher : "1..*"
 @enduml

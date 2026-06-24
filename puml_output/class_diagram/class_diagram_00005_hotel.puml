@@ -6,41 +6,37 @@ class Payment {
   +float status
   -float name
   #long price
-  +updateDuration()
+  +updateDescription()
 }
-class Amenity {
-  +float total
+interface Amenity {
+  #float amount
+  +long total
+  +processAddress()
+}
+class Room {
+  +boolean level
+  #double price
   -int createdAt
-  #double address
-  +updateDuration()
-  +sendPrice()
+  +saveLevel()
+  +processAmount()
+  +setAddress()
 }
-abstract class Room {
-  #Date phone
-  +double code
-  -int score
-  +calculateAddress()
-  +cancelAmount()
-}
-class Housekeeping {
-  -double address
-  #boolean level
-  +Date phone
-  -boolean updatedAt
-  +int active
-  +deleteEmail()
-  +deleteDescription()
+interface Housekeeping {
+  +double total
+  -boolean address
+  +long description
+  +createActive()
+  +deleteUpdatedat()
+  +saveType()
+  +updateTotal()
 }
 class CheckIn {
-  -float note
-  #int active
-  #int updatedAt
-  +float score
-  +validateId()
-  +validateDuration()
+  +Date email
+  -boolean note
+  +int score
+  +validateQuantity()
+  +deleteName()
 }
-CheckIn --> Housekeeping : "1"
-Room ..|> CheckIn
-Payment ..> CheckIn : "1..*"
-note right of Payment : Hotel domain
+Amenity --> CheckIn : "1..*"
+Housekeeping ..|> Amenity
 @enduml

@@ -7,62 +7,62 @@ class Tracking {
   #long amount
   #Date note
   -double status
-  +deleteLevel()
-  +setCode()
-  +updateId()
-  +setCode()
+  +findId()
+  +deleteEmail()
+  +validatePrice()
+  +findType()
 }
-class Warehouse {
-  #String address
-  #boolean id
-  -boolean amount
-  #double price
-  +sendCode()
-  +cancelCreatedat()
-  +createStatus()
+interface Warehouse {
+  +float code
+  +String createdAt
+  +deleteCode()
+  +createActive()
+  +updateActive()
 }
-abstract class Vehicle {
-  #float updatedAt
-  +Date active
+class Vehicle {
+  -boolean id
+  +boolean active
+  +long level
+  #String quantity
+  #float price
+  +validateTotal()
+  +processStatus()
+  +createScore()
+  +createType()
+}
+interface Customer {
+  -long price
+  #Date id
+  #double code
+  +validateTotal()
+}
+abstract class FuelLog {
+  -Date note
   +double amount
-  -Date price
-  +sendId()
-  +findNote()
-  +deleteNote()
-  +deleteTotal()
-}
-class Customer {
-  -Date price
-  -double description
-  +createPrice()
-  +cancelCreatedat()
-  +sendDescription()
-}
-class FuelLog {
-  #float phone
-  +float quantity
-  +float name
-  -String total
-  +float price
-  +deleteScore()
-  +setAddress()
+  +long total
+  +deleteAmount()
+  +saveDuration()
+  +findCode()
 }
 class Driver {
-  #String level
-  #String email
-  +deleteQuantity()
-  +calculateType()
-  +getUpdatedat()
-  +updateDuration()
+  -long level
+  -String createdAt
+  #double score
+  -boolean description
+  +float code
+  +saveType()
+  +setEmail()
 }
 class Route {
-  -long score
-  +String address
-  +getEmail()
-  +sendName()
-  +validateUpdatedat()
+  +boolean score
+  +long amount
+  +validateStatus()
+  +setUpdatedat()
 }
-Tracking ..|> Route
-Vehicle --* Route
-note right of Tracking : Logistics domain
+Vehicle --|> Driver
+FuelLog ..> Tracking : "*"
+Warehouse --o Vehicle
+Route --|> Customer
+Warehouse ..> Route : "0..1"
+FuelLog --|> Route
 @enduml

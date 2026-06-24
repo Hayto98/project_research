@@ -6,38 +6,34 @@ skinparam ArrowColor #555555
 abstract class Inventory {
   +double note
   #String updatedAt
-  +getCode()
-  +validateActive()
-  +createId()
-  +sendName()
+  +updateDuration()
+  +createAddress()
+  +cancelId()
+  +findDuration()
 }
 class DeliveryNote {
-  -String createdAt
-  #int amount
-  +cancelStatus()
-  +calculateScore()
+  +String active
+  +Date name
+  +deleteCode()
+  +validateId()
 }
-abstract class Driver {
-  +long total
-  #boolean level
-  +int duration
-  #boolean price
-  +int updatedAt
-  +updateType()
-  +updateLevel()
-  +sendName()
-  +createEmail()
+interface Driver {
+  -boolean score
+  -double updatedAt
+  #double status
+  +processType()
+  +sendNote()
+  +saveType()
+  +calculateType()
 }
 class Depot {
-  -boolean email
-  #boolean code
-  #boolean name
-  #float price
-  -float active
-  +calculateStatus()
+  +Date score
+  #double createdAt
+  +double amount
+  +boolean name
+  +findCreatedat()
 }
-Depot --o Driver
-Driver --* Depot
-Inventory ..> DeliveryNote : "0..1"
-note right of Inventory : Logistics domain
+Inventory ..> Driver : "*"
+Driver --|> Inventory
+Depot --* DeliveryNote
 @enduml

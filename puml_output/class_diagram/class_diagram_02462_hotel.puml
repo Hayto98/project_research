@@ -6,31 +6,33 @@ class Reservation {
   +String total
   -float code
   #Date score
-  +processStatus()
-  +calculateDuration()
-  +getScore()
-  +saveCode()
+  +createName()
+  +deleteQuantity()
+  +processType()
+  +setScore()
 }
-class Invoice {
-  #boolean amount
-  #long quantity
-  +long id
-  +createQuantity()
+interface Invoice {
+  +int score
+  +long code
+  +deleteDescription()
 }
-class CheckIn {
-  #long phone
-  +double quantity
-  +int address
-  #Date total
-  +saveName()
+interface CheckIn {
+  -float updatedAt
+  +boolean phone
+  -long id
+  #Date email
+  +setEmail()
+  +calculateQuantity()
+  +sendType()
 }
-class Amenity {
-  #double name
-  +double id
-  +validatePrice()
+interface Amenity {
+  #Date code
+  +Date note
+  +int amount
+  #String description
+  +updatePrice()
 }
-Amenity --o CheckIn
-Invoice --> CheckIn : "*"
-CheckIn --> Reservation : "0..1"
-note right of Reservation : Hotel domain
+Reservation --> Invoice : "1"
+CheckIn --o Amenity
+Amenity ..> Invoice : "*"
 @enduml

@@ -6,57 +6,52 @@ class Author {
   +boolean address
   #float phone
   -String type
-  +sendScore()
-  +deleteName()
-  +createEmail()
-  +getQuantity()
+  +getCreatedat()
+  +setDuration()
+  +processScore()
+  +calculatePrice()
 }
 class Fine {
-  +long type
-  -boolean total
-  #float amount
-  -double quantity
-  +saveLevel()
-  +findScore()
-  +saveAmount()
-  +saveName()
+  +long quantity
+  -Date email
+  +sendCreatedat()
+  +updateEmail()
+  +updateType()
 }
-abstract class Shelf {
-  -boolean active
-  -float total
-  #boolean address
-  -long updatedAt
-  +double type
-  +calculateName()
-  +getEmail()
-  +validateDuration()
-  +cancelScore()
+interface Shelf {
+  -double amount
+  -Date address
+  #Date phone
+  #Date active
+  +updatePhone()
+  +getAmount()
 }
-abstract class Renewal {
-  +boolean description
-  -Date createdAt
-  +sendTotal()
-  +sendDuration()
-  +cancelStatus()
-  +deleteNote()
+class Renewal {
+  +double duration
+  -boolean type
+  -float active
+  #boolean total
+  -long address
+  +findActive()
+  +sendCode()
 }
-class Publisher {
-  -boolean phone
-  +double updatedAt
-  +boolean id
-  +cancelPrice()
-  +cancelUpdatedat()
-  +getDescription()
+abstract class Publisher {
+  -boolean name
+  #Date email
+  +setQuantity()
+  +createLevel()
+  +savePrice()
+  +cancelEmail()
 }
-abstract class Reservation {
-  +long type
-  #String code
-  +createCode()
+class Reservation {
+  #double name
+  #double active
+  #Date quantity
+  +setType()
 }
-Renewal ..> Publisher : "1"
-Publisher ..> Reservation : "0..1"
-Shelf --* Publisher
-Fine --o Shelf
-Reservation --|> Shelf
-note right of Author : Library domain
+Author --* Fine
+Fine --* Author
+Publisher --o Author
+Author ..> Publisher : "1..*"
+Publisher --> Renewal : "0..1"
 @enduml

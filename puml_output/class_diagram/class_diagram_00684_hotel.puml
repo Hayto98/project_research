@@ -8,58 +8,50 @@ abstract class Service {
   -double price
   #double total
   #double duration
-  +cancelCreatedat()
-  +processScore()
-  +setId()
-  +validateScore()
+  +getCode()
+  +sendEmail()
+  +sendCreatedat()
+  +calculatePrice()
 }
 class Payment {
-  +double email
-  #float level
-  +sendTotal()
-  +updateType()
-  +sendId()
-  +createPhone()
+  +String address
+  -boolean score
+  +calculateAmount()
+  +updateCreatedat()
 }
-class Room {
-  -double code
-  #double note
-  +setStatus()
-  +calculateStatus()
-  +cancelAmount()
+abstract class Room {
+  -String createdAt
+  +Date type
+  #String active
+  #double id
+  -double quantity
+  +calculatePhone()
+  +getStatus()
+  +updateCreatedat()
+  +findNote()
 }
 class CheckIn {
-  +float total
-  #float address
-  +float type
-  +double updatedAt
-  +deleteScore()
-  +saveDescription()
-  +findPhone()
-  +findAmount()
+  -Date status
+  -double level
+  +String amount
+  #float updatedAt
+  +float email
+  +calculateAmount()
 }
-class Reservation {
-  +Date quantity
-  +String level
-  +Date phone
-  -String score
-  #boolean id
-  +deleteNote()
-  +createAddress()
-  +getName()
+abstract class Reservation {
+  #int score
+  -double description
+  -boolean phone
+  +findType()
+  +createAmount()
+  +cancelActive()
 }
-class Staff {
-  -int duration
-  +float createdAt
-  +sendAddress()
-  +setUpdatedat()
-  +createPrice()
-  +getCreatedat()
+interface Staff {
+  +String status
+  #long code
+  +validateDescription()
 }
-CheckIn ..|> Service
-Service --> Reservation : "0..1"
-Staff ..> CheckIn : "0..1"
-CheckIn ..|> Room
-Reservation ..> Room : "1..*"
-note right of Service : Hotel domain
+Payment --* CheckIn
+Room --|> Service
+Reservation --o Payment
 @enduml

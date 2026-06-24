@@ -8,41 +8,46 @@ class Fine {
   -Date id
   +double address
   #boolean email
-  +sendPrice()
-  +validateId()
-  +calculateDescription()
-  +processEmail()
-}
-abstract class Author {
-  +int updatedAt
-  #long name
-  +int total
+  +calculateTotal()
+  +getCreatedat()
   +calculateCode()
-}
-class Branch {
-  -float type
-  #boolean duration
-  +int createdAt
-  +deleteStatus()
-  +createPrice()
-  +processScore()
-}
-class Reservation {
-  -boolean updatedAt
-  #Date status
-  #Date address
-  +cancelPhone()
-  +cancelNote()
   +sendPhone()
 }
-class Renewal {
-  #double score
-  #int type
-  -boolean note
-  #boolean id
-  +sendPrice()
+class Author {
+  +String description
+  -float type
+  +int email
+  #long price
+  +int updatedAt
+  +updateCode()
 }
-Reservation --o Author
-Branch --* Fine
-note right of Fine : Library domain
+abstract class Branch {
+  -Date description
+  -int updatedAt
+  +calculateType()
+  +savePrice()
+  +calculatePrice()
+  +saveNote()
+}
+class Reservation {
+  -boolean amount
+  #Date status
+  #long quantity
+  +int price
+  +validateDuration()
+}
+abstract class Renewal {
+  +long duration
+  #Date phone
+  -double note
+  +boolean level
+  +getQuantity()
+  +processActive()
+  +saveName()
+  +getCreatedat()
+}
+Renewal --> Fine : "*"
+Fine ..|> Reservation
+Reservation --> Branch : "1"
+Branch ..|> Author
 @enduml

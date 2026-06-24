@@ -1,9 +1,9 @@
 @startuml
 
 left to right direction
-actor "Delivery Service" as DeliveryService
-actor "Admin" as Admin
-actor "Payment Gateway" as PaymentGateway
+actor "Delivery Service" as DS
+actor "Admin" as A
+actor "Payment Gateway" as PG
 rectangle "Ecommerce System" {
   usecase "Browse Products" as UC_BrowseProducts
   usecase "Add To Cart" as UC_AddToCart
@@ -11,12 +11,12 @@ rectangle "Ecommerce System" {
   usecase "Manage Inventory" as UC_ManageInventory
   usecase "Track Order" as UC_TrackOrder
 }
-DeliveryService --> UC_WriteReview
-DeliveryService --> UC_ManageInventory
-DeliveryService --> UC_TrackOrder
-Admin --> UC_ManageInventory
-PaymentGateway --> UC_AddToCart
-PaymentGateway --> UC_ManageInventory
-PaymentGateway --> UC_WriteReview
+DS --> UC_WriteReview
+DS --> UC_ManageInventory
+DS --> UC_TrackOrder
+A --> UC_ManageInventory
+PG --> UC_AddToCart
+PG --> UC_ManageInventory
+PG --> UC_WriteReview
 UC_AddToCart ..|> UC_ManageInventory : <<include>>
 @enduml

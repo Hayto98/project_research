@@ -5,36 +5,45 @@ skinparam classBorderColor #455A64
 class Guest {
   #String level
   #boolean createdAt
-  +validateDescription()
-  +getCode()
-  +sendQuantity()
+  +validateScore()
+  +validateCode()
+  +saveEmail()
 }
 class Restaurant {
-  -int score
-  -long code
-  #long level
-  +calculateAddress()
+  +long amount
+  +long createdAt
+  -boolean score
+  -String code
+  +cancelName()
+  +findType()
+  +updateAddress()
+  +createActive()
 }
 class Amenity {
   #boolean type
   +boolean email
   +float name
-  +updateScore()
-  +getNote()
-  +processQuantity()
-  +validateCreatedat()
+  +saveNote()
+  +calculateDuration()
+  +calculateId()
+  +deleteStatus()
 }
 abstract class Room {
-  #float id
-  +double code
-  +processCode()
+  +String quantity
+  #float address
+  +double createdAt
+  #float type
+  +float id
+  +saveDescription()
+  +processAmount()
+  +sendActive()
+  +setName()
 }
-interface Housekeeping {
-  #int updatedAt
-  +Date name
-  +sendUpdatedat()
-  +validateUpdatedat()
-  +cancelScore()
+class Housekeeping {
+  +Date active
+  -boolean createdAt
+  +findCode()
+  +findAddress()
 }
 interface Invoice {
   +float active
@@ -42,11 +51,11 @@ interface Invoice {
   +int type
   -float level
   -long note
-  +saveType()
+  +setDuration()
 }
-Room --|> Guest
-Invoice --* Amenity
+Amenity ..> Room : "1"
+Guest --* Amenity
 Room ..> Restaurant : "*"
 Room --> Housekeeping : "*"
-note right of Guest : Hotel domain
+Guest --> Room : "0..1"
 @enduml

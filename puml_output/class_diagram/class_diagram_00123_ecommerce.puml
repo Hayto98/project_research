@@ -6,40 +6,42 @@ skinparam shadowing true
 interface Coupon {
   -int description
   #float quantity
-  +findAmount()
+  +updateScore()
 }
-abstract class Category {
-  -long name
-  -Date note
-  -double price
-  +cancelCode()
+class Category {
+  -long description
+  #long name
+  -boolean note
+  +boolean price
+  +String active
   +setDescription()
+  +createDescription()
 }
 class Wishlist {
-  +float status
-  -double note
-  -Date id
-  +calculateQuantity()
-  +cancelDuration()
-  +validateLevel()
+  +float note
+  -double id
+  +createType()
+  +findType()
+  +createId()
 }
 class Order {
-  #long createdAt
-  #boolean note
-  +String status
-  #Date email
-  +sendType()
+  +double quantity
+  +Date level
+  #float address
+  #Date description
+  -boolean duration
+  +findUpdatedat()
+  +getQuantity()
+  +saveNote()
 }
 class Shipment {
-  +double note
-  -int name
-  -double level
-  +String email
-  -float phone
-  +setCode()
+  -double score
+  #Date type
+  +sendLevel()
+  +sendStatus()
+  +cancelDescription()
+  +setUpdatedat()
 }
-Shipment ..> Coupon : "1..*"
-Wishlist --* Shipment
-Order ..|> Category
-note right of Coupon : Ecommerce domain
+Shipment --* Wishlist
+Coupon --o Order
 @enduml

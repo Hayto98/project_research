@@ -7,37 +7,35 @@ interface Shelf {
   -boolean quantity
   +double description
   +double active
-  +updatePhone()
-  +updateName()
-  +getActive()
+  +cancelNote()
+  +deletePhone()
+  +cancelScore()
 }
 class Branch {
-  +Date updatedAt
-  +Date score
-  +saveScore()
-  +validateDescription()
-  +saveStatus()
-  +saveEmail()
+  -Date name
+  #String id
+  +boolean active
+  +cancelUpdatedat()
+  +setName()
 }
 abstract class Librarian {
-  #float duration
-  #long level
-  +boolean address
-  #double phone
-  -float note
-  +setActive()
+  -boolean description
+  #long status
+  #long email
+  -boolean note
+  +validateCode()
+  +setPhone()
+  +saveDescription()
 }
-class Reservation {
-  #String amount
-  -int price
-  +boolean code
-  +double total
-  +String updatedAt
-  +sendQuantity()
-  +findPhone()
-  +updateQuantity()
+abstract class Reservation {
+  #Date status
+  #double code
+  +double active
+  +double id
+  +getQuantity()
+  +processQuantity()
 }
-Reservation --|> Branch
-Branch ..|> Reservation
-note right of Shelf : Library domain
+Branch --> Shelf : "0..1"
+Reservation --|> Shelf
+Librarian --* Reservation
 @enduml

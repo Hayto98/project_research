@@ -7,49 +7,46 @@ class Housekeeping {
   #double description
   #long amount
   #int address
-  +saveId()
-  +setType()
-  +validateDuration()
-  +deletePrice()
+  +cancelDuration()
+  +cancelType()
+  +processCode()
+  +cancelEmail()
 }
-class Amenity {
-  +long status
-  +float duration
-  +float code
-  +findAmount()
-  +processDescription()
-  +getNote()
+abstract class Amenity {
+  #int duration
+  +String amount
+  +float price
+  +long level
+  +getDuration()
 }
-interface CheckOut {
-  +float amount
-  +double createdAt
-  +processPhone()
-  +calculateCreatedat()
-  +processCreatedat()
+class CheckOut {
+  -boolean amount
+  #boolean type
+  #String description
+  +int name
   +processAddress()
+  +findPhone()
 }
-interface Service {
-  #boolean status
-  #long email
-  -String createdAt
-  +validateId()
-  +validateCreatedat()
-  +deleteCode()
-  +createNote()
+abstract class Service {
+  +double note
+  -boolean phone
+  #boolean price
+  +String createdAt
+  -int type
+  +validateDuration()
+  +validateEmail()
+  +setPhone()
 }
-class Reservation {
-  +String duration
-  #int note
-  +boolean email
-  +float name
-  +updateActive()
-  +sendLevel()
-  +saveName()
-  +createActive()
+abstract class Reservation {
+  +long id
+  -String phone
+  #boolean createdAt
+  -boolean amount
+  +deleteCreatedat()
+  +sendDescription()
+  +getUpdatedat()
+  +processNote()
 }
-Reservation --* Service
-Amenity ..|> CheckOut
-Amenity --> Service : "*"
-Housekeeping ..|> Reservation
-note right of Housekeeping : Hotel domain
+Amenity ..> Housekeeping : "0..1"
+Housekeeping --o Reservation
 @enduml

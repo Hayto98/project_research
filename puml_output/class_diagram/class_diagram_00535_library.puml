@@ -8,49 +8,47 @@ class Shelf {
   -String level
   #boolean duration
   +boolean createdAt
-  +calculateUpdatedat()
-  +deleteType()
-  +sendCreatedat()
+  +cancelCreatedat()
+  +processPrice()
+  +createCode()
 }
 abstract class Loan {
-  -int level
-  #int description
-  -float address
-  +float updatedAt
-  +deleteType()
+  #long price
+  +long quantity
+  +boolean description
+  +calculateTotal()
+  +createPrice()
 }
 class Member {
-  -double status
-  +int type
-  -double score
-  -double phone
-  +processId()
-  +sendPhone()
+  +long description
+  +double type
+  +deleteAmount()
+  +cancelCode()
+  +findPhone()
 }
-interface Catalog {
-  +Date quantity
-  +long type
-  #Date createdAt
-  +setQuantity()
-  +processStatus()
-  +processCode()
+class Catalog {
+  -String type
+  #long total
+  #boolean note
+  #int amount
+  +processPhone()
+  +validateUpdatedat()
+  +updateDescription()
 }
 class Reservation {
+  -double email
+  #float phone
+  +double status
+  +saveScore()
+}
+interface Librarian {
   #double address
   #long description
-  +processDuration()
+  +deleteEmail()
 }
-class Librarian {
-  +Date amount
-  #int quantity
-  +processLevel()
-  +saveDescription()
-  +updateDescription()
-  +createScore()
-}
-Catalog ..> Member : "0..1"
-Shelf ..> Loan : "0..1"
-Loan --|> Reservation
-Librarian --* Catalog
-note right of Shelf : Library domain
+Reservation --|> Loan
+Loan --|> Member
+Librarian --o Loan
+Catalog ..> Reservation : "0..1"
+Loan --* Librarian
 @enduml

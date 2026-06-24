@@ -8,59 +8,65 @@ interface Teller {
   +String name
   +Date type
   #int createdAt
-  +createPhone()
-  +cancelUpdatedat()
-  +validateDuration()
-  +cancelAmount()
+  +setTotal()
+  +updateTotal()
+  +saveDuration()
+  +deleteAddress()
 }
-interface Card {
-  -int level
-  -String price
-  +createTotal()
-  +findActive()
-  +findDuration()
-  +cancelNote()
+class Card {
+  #float duration
+  -double level
+  +double id
+  +getPrice()
 }
 abstract class Account {
-  -int type
-  -Date description
-  -String level
-  +sendTotal()
-  +findId()
-  +createLevel()
-  +createScore()
+  +double total
+  +boolean active
+  #int note
+  -int score
+  +calculateTotal()
+  +findStatus()
+  +createAmount()
 }
 class Transfer {
-  -String score
-  +boolean name
-  +long note
-  +setAmount()
+  #int active
+  #int total
+  #float id
+  +double quantity
+  -String email
+  +sendAmount()
+  +updateAmount()
 }
-abstract class Loan {
-  #int quantity
-  -int amount
-  -double name
-  +validateQuantity()
+class Loan {
+  +long id
+  +String code
+  #int amount
+  -int price
+  +calculateAmount()
+  +validateEmail()
+  +processStatus()
+  +validateStatus()
 }
 class Customer {
+  -long type
   -double code
   +int note
   -long amount
-  #float level
-  #double email
-  +calculateTotal()
+  +getStatus()
+  +sendUpdatedat()
+  +cancelStatus()
+  +getAddress()
 }
-interface Statement {
+abstract class Statement {
   +boolean address
   -Date type
   #double updatedAt
   -boolean score
   +boolean note
-  +validateAddress()
+  +setEmail()
 }
-Customer --|> Account
-Account --|> Teller
-Statement --> Customer : "1"
+Statement ..> Account : "1..*"
+Teller --|> Account
+Statement ..> Teller : "1"
 Statement --o Card
-note right of Teller : Banking domain
 @enduml

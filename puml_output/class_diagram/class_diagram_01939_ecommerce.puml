@@ -8,44 +8,45 @@ class Warehouse {
   #double level
   -boolean note
   #long type
-  +createNote()
-  +findPhone()
+  +findScore()
+  +deleteDuration()
 }
 class Coupon {
-  +float quantity
-  +String id
-  +double code
-  -boolean duration
-  #Date price
-  +getLevel()
+  #boolean price
+  -float quantity
+  #float id
+  -String code
+  +setStatus()
+  +findAddress()
 }
-class Return {
-  -Date level
-  #String quantity
-  -long id
-  -double phone
-  +findId()
+abstract class Return {
+  #long level
+  #long active
+  +long name
+  -Date id
+  #String address
+  +findCode()
+  +getStatus()
+  +sendCreatedat()
 }
 abstract class Supplier {
-  #boolean address
-  -String total
-  +sendQuantity()
-  +updateDuration()
-  +createTotal()
+  +long id
+  #double note
+  +validatePhone()
+  +processScore()
+  +getNote()
 }
-class Invoice {
-  #long level
-  +long duration
-  -Date status
-  +double name
-  +long address
-  +cancelEmail()
-  +createCode()
-  +cancelQuantity()
+interface Invoice {
+  -boolean createdAt
+  #String email
+  +boolean total
+  -boolean description
+  +calculateNote()
+  +updateLevel()
+  +calculateName()
 }
+Coupon ..|> Supplier
+Return --> Invoice : "1..*"
+Return --> Warehouse : "1..*"
 Invoice --o Return
-Return --o Invoice
-Coupon --o Return
-Warehouse ..|> Supplier
-note right of Warehouse : Ecommerce domain
 @enduml

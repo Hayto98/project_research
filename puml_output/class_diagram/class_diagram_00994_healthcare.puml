@@ -7,61 +7,56 @@ class Insurance {
   #String level
   +int price
   -int code
-  +updateType()
-  +cancelCreatedat()
-  +validatePrice()
-  +calculateNote()
+  +updateStatus()
+  +createId()
+  +saveUpdatedat()
+  +sendCreatedat()
 }
-class Hospital {
-  -Date amount
-  #String active
-  -Date description
+interface Hospital {
   -String phone
-  +double total
-  +createUpdatedat()
-  +setId()
-  +saveQuantity()
+  -int price
+  #float level
+  +calculateDescription()
+  +saveScore()
 }
-class Doctor {
-  +double price
-  -int status
-  +String active
-  #String address
-  +saveTotal()
+abstract class Doctor {
+  +int active
+  -long name
+  -Date email
+  +String note
+  +cancelScore()
 }
 class Prescription {
-  -boolean amount
+  #float address
+  -int price
+  -long status
   +String active
-  -String phone
-  -float createdAt
-  +getActive()
+  +deleteType()
 }
-interface MedicalRecord {
+class MedicalRecord {
+  -int total
+  #long updatedAt
+  +validateScore()
+  +getCreatedat()
+}
+class Patient {
+  -float price
+  +float code
+  +updateNote()
+}
+interface LabTest {
   #float duration
   -float name
   #double status
   -float address
-  +processAmount()
-  +cancelPhone()
-  +updatePrice()
+  +findActive()
+  +validateQuantity()
+  +setQuantity()
 }
-class Patient {
-  -boolean score
-  +String active
-  +updateStatus()
-  +deleteAmount()
-  +calculateUpdatedat()
-  +processScore()
-}
-abstract class LabTest {
-  -boolean total
-  -int email
-  +sendEmail()
-  +getAmount()
-  +deleteTotal()
-}
-Insurance --* Doctor
-LabTest ..|> Patient
-LabTest --> Prescription : "1"
-note right of Insurance : Healthcare domain
+Doctor --o Hospital
+Hospital --> Insurance : "*"
+MedicalRecord --|> Insurance
+MedicalRecord ..|> Prescription
+Insurance ..|> Hospital
+Prescription --o Hospital
 @enduml

@@ -8,44 +8,43 @@ interface Renewal {
   -String total
   #Date level
   -boolean code
-  +findTotal()
-  +validateId()
+  +setCode()
+  +getAddress()
 }
-interface Member {
-  #boolean id
+class Member {
+  +double duration
+  -boolean quantity
+  +updateScore()
+  +updateNote()
+}
+abstract class Shelf {
   -int note
-  -boolean address
-  -int amount
-  +deleteAmount()
-  +saveDuration()
-  +updatePrice()
-  +setActive()
+  +Date total
+  #int createdAt
+  +calculateType()
+  +validateEmail()
+  +findPrice()
+  +setPhone()
 }
-interface Shelf {
+interface Loan {
   -long quantity
   +boolean type
-  +setNote()
-  +calculatePrice()
-  +cancelEmail()
+  +setDescription()
+  +createId()
+  +sendCode()
 }
-class Loan {
-  #double phone
-  +boolean address
-  +Date price
-  -long active
-  -Date id
-  +processPrice()
-}
-class Reservation {
-  #double score
-  +int note
-  +setPrice()
-  +validateStatus()
+abstract class Reservation {
+  #float duration
+  -double email
+  #float id
+  #boolean price
+  +boolean phone
+  +setUpdatedat()
   +createUpdatedat()
-  +createEmail()
+  +calculateNote()
+  +updateScore()
 }
-Renewal ..|> Member
-Shelf --o Member
-Member ..|> Loan
-note right of Renewal : Library domain
+Shelf ..> Loan : "1"
+Loan --* Reservation
+Renewal --> Loan : "*"
 @enduml

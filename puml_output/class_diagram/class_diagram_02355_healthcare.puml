@@ -7,43 +7,46 @@ abstract class Hospital {
   -String updatedAt
   +int email
   -int price
-  +calculateName()
-  +deleteNote()
-  +calculateScore()
-  +saveTotal()
+  +saveName()
+  +saveEmail()
+  +deleteScore()
+  +createName()
 }
-interface Diagnosis {
+abstract class Diagnosis {
+  -boolean active
+  #boolean address
   #Date code
-  #Date active
-  #long total
-  +double quantity
-  +sendDescription()
+  -int duration
+  -String total
+  +updateQuantity()
+  +sendPrice()
 }
 interface Billing {
   +String active
   #Date type
   #String level
-  +saveCode()
-  +getEmail()
+  +updateAddress()
+  +saveUpdatedat()
 }
 class Prescription {
+  -float email
+  #long status
+  +calculateDuration()
+  +setEmail()
+  +cancelTotal()
+  +getPrice()
+}
+interface Ward {
+  #double note
   #boolean email
-  -double total
-  #long score
-  #long address
-  +boolean id
-  +cancelDuration()
-  +setCreatedat()
-  +updateId()
-  +processTotal()
+  +int active
+  +String phone
+  -double updatedAt
+  +setLevel()
+  +findTotal()
 }
-class Ward {
-  #long amount
-  -boolean updatedAt
-  +boolean email
-  +cancelDuration()
-}
-Prescription --|> Ward
-Billing --* Prescription
-note right of Hospital : Healthcare domain
+Diagnosis --* Ward
+Ward --o Billing
+Ward --> Diagnosis : "1"
+Ward --o Hospital
 @enduml

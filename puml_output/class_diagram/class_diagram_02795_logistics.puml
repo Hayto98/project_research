@@ -6,52 +6,51 @@ interface Manifest {
   -Date code
   +String total
   +float email
-  +updateAddress()
+  +deleteAddress()
   +deleteLevel()
 }
 class Depot {
-  +int note
-  -boolean score
-  +getUpdatedat()
-  +validateLevel()
-  +deleteScore()
-  +updatePhone()
+  +Date level
+  -boolean description
+  +int active
+  +findPrice()
+  +setAddress()
+  +calculateType()
+  +deleteActive()
 }
 class Warehouse {
-  #boolean type
-  +boolean email
-  +long total
-  +long duration
-  +getScore()
-  +processName()
-  +findStatus()
-  +sendNote()
+  #float address
+  #int level
+  -Date description
+  +sendDescription()
+  +validateScore()
 }
 abstract class DeliveryNote {
-  -float name
-  +String status
-  +long note
-  +findQuantity()
-  +getPhone()
-  +deleteDuration()
-  +setLevel()
+  +boolean total
+  +long type
+  +long active
+  -String score
+  +calculateId()
+  +cancelDescription()
+  +updateQuantity()
+  +createPhone()
 }
-abstract class Customer {
-  +double id
-  -int level
-  -Date active
-  +updateTotal()
+interface Customer {
+  -float total
+  +String createdAt
+  +long name
+  -float status
+  #long note
+  +processStatus()
 }
-interface Inventory {
-  +Date score
-  +double updatedAt
-  -Date active
-  +validateType()
-  +getId()
+class Inventory {
+  #float level
+  +String total
+  +calculateAmount()
+  +setDuration()
 }
-DeliveryNote --> Depot : "*"
-Manifest --o Warehouse
-Customer ..> Inventory : "1..*"
+Depot ..> Warehouse : "1"
+Depot ..> DeliveryNote : "0..1"
+Inventory ..|> Customer
 Depot --o Manifest
-note right of Manifest : Logistics domain
 @enduml

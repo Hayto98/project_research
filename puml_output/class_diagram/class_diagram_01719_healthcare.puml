@@ -8,38 +8,39 @@ class Patient {
   #Date amount
   #float duration
   #float description
-  +getId()
-  +sendDuration()
-  +saveTotal()
+  +updateActive()
+  +calculateLevel()
+  +updatePrice()
 }
-class Hospital {
-  #String name
-  -boolean duration
-  #long updatedAt
-  -boolean active
-  +calculateDescription()
-  +validateScore()
+interface Hospital {
+  #boolean phone
+  +double address
+  #Date name
+  -double score
+  #int updatedAt
+  +setType()
+  +saveCreatedat()
+  +sendAmount()
+  +sendCode()
 }
-abstract class Ward {
-  #String address
-  -double createdAt
-  #Date description
-  +cancelNote()
-  +setCode()
-  +updateId()
-  +savePrice()
+class Ward {
+  -boolean createdAt
+  #double description
+  #double status
+  +String note
+  +setCreatedat()
+  +updatePrice()
 }
-interface Treatment {
+abstract class Treatment {
   -long level
   #Date note
   -double email
   -int duration
   -double total
-  +findQuantity()
-  +processScore()
-  +deleteUpdatedat()
+  +sendUpdatedat()
+  +getNote()
+  +processTotal()
 }
-Patient ..|> Treatment
-Ward --o Treatment
-note right of Patient : Healthcare domain
+Hospital --> Patient : "1"
+Patient --* Treatment
 @enduml

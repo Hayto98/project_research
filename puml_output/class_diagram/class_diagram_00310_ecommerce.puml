@@ -6,64 +6,58 @@ skinparam shadowing true
 class Review {
   -boolean duration
   -Date note
-  +setDuration()
-  +validatePrice()
+  +setDescription()
+  +getQuantity()
 }
 class Coupon {
-  #String phone
-  -int total
-  -float type
-  +findCode()
-  +findName()
-  +calculateScore()
-  +deleteUpdatedat()
+  #Date quantity
+  -Date active
+  +double amount
+  +long phone
+  #double total
+  +calculateStatus()
 }
 class Order {
-  +boolean email
-  +Date active
-  -String note
-  #Date total
-  +validateScore()
-  +cancelPrice()
+  -boolean score
+  -double amount
+  +boolean updatedAt
+  +Date address
+  -String active
+  +saveLevel()
+  +validateDuration()
 }
-abstract class Category {
-  -boolean address
-  +long type
-  #int active
-  #int updatedAt
-  +sendEmail()
-  +createAddress()
-  +saveCode()
-  +createDescription()
+interface Category {
+  #boolean price
+  +double score
+  #float phone
+  +long address
+  #int type
+  +findEmail()
+  +validateStatus()
 }
 abstract class Warehouse {
-  #float description
-  +boolean price
-  +long type
-  +createPhone()
-  +processType()
+  +double quantity
+  +float address
+  +double code
+  -Date email
+  +processId()
+  +saveAddress()
 }
 class Cart {
-  -boolean active
-  +float name
-  -double total
-  +calculatePhone()
-  +setId()
+  #double quantity
+  +boolean phone
+  +boolean type
+  +cancelCreatedat()
 }
-class Wishlist {
-  -Date status
-  -float level
-  +String createdAt
-  +double total
-  +setUpdatedat()
-  +processAddress()
-  +processNote()
+abstract class Wishlist {
+  -long quantity
+  +String note
+  #String createdAt
+  +updateUpdatedat()
+  +processId()
+  +setAmount()
 }
-Category ..> Coupon : "*"
-Wishlist --* Coupon
-Cart ..> Order : "*"
-Coupon --> Wishlist : "1..*"
-Order --|> Wishlist
-Category ..|> Order
-note right of Review : Ecommerce domain
+Category ..> Order : "*"
+Wishlist --|> Review
+Review --* Category
 @enduml

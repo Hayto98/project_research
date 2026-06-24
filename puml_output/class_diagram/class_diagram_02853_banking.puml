@@ -7,37 +7,39 @@ class Card {
   #float note
   #Date level
   -boolean name
-  +setAddress()
-  +findLevel()
-  +createEmail()
-  +cancelTotal()
+  +getLevel()
+  +createType()
+  +createActive()
+  +createTotal()
 }
-class Account {
-  #int price
-  #String description
-  +deleteLevel()
-  +setTotal()
-  +processScore()
-  +calculateActive()
+interface Account {
+  +double email
+  +boolean level
+  +boolean total
+  +float createdAt
+  +saveQuantity()
+  +deleteUpdatedat()
+  +validateEmail()
+  +setNote()
 }
-class Teller {
-  +long duration
-  +long address
-  +String email
-  +processTotal()
+abstract class Teller {
+  +long active
+  +long name
+  +String description
+  #boolean address
+  #boolean email
+  +calculateAmount()
 }
-interface Beneficiary {
+abstract class Beneficiary {
   +double active
   #float duration
   #String level
   -float type
-  +getPrice()
-  +sendScore()
-  +updateQuantity()
-  +getPhone()
+  +saveEmail()
+  +processType()
+  +getCreatedat()
+  +cancelType()
 }
-Beneficiary --* Card
-Card ..|> Beneficiary
-Card --* Account
-note right of Card : Banking domain
+Teller --* Card
+Beneficiary --> Teller : "*"
 @enduml

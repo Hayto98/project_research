@@ -5,50 +5,49 @@ skinparam classBorderColor #6A1B9A
 abstract class Order {
   #int price
   +boolean createdAt
-  +calculateStatus()
+  +findAmount()
 }
 class Customer {
-  -float id
+  -boolean price
+  -long id
   +Date code
-  +boolean level
-  #String address
-  +long email
-  +calculatePrice()
-  +sendActive()
+  +boolean score
+  +getLevel()
 }
-abstract class Wishlist {
-  +float active
-  +double createdAt
-  +String quantity
-  -int name
-  +createNote()
+class Wishlist {
+  #double total
+  #long price
+  #int score
+  +calculateEmail()
+  +setLevel()
+  +deleteLevel()
 }
-interface Category {
-  +long email
-  -int description
-  #long active
-  -Date price
-  -double amount
-  +setId()
+class Category {
+  -double status
+  #double id
+  -int address
+  #double updatedAt
+  #Date name
+  +cancelEmail()
+  +sendAddress()
 }
 class Coupon {
-  #Date code
-  -Date score
-  +Date amount
-  +boolean phone
-  +updateEmail()
+  -String address
+  +String type
+  #int note
+  +getType()
+  +validatePrice()
+  +calculateDuration()
 }
-interface Review {
-  #float total
-  #int name
-  +boolean code
-  #float email
-  +createStatus()
-  +findDescription()
-  +validateType()
+class Review {
+  #String score
+  +long quantity
+  #boolean id
+  -double amount
+  +processAmount()
 }
-Customer --|> Order
-Wishlist --> Order : "1..*"
-Wishlist --* Review
-note right of Order : Ecommerce domain
+Review ..|> Coupon
+Customer --> Coupon : "1..*"
+Wishlist ..> Order : "0..1"
+Wishlist ..|> Category
 @enduml

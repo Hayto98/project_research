@@ -3,54 +3,49 @@ skinparam monochrome true
 class MedicalRecord {
   +Date code
   -boolean name
+  +findPhone()
+  +processCreatedat()
+  +validateQuantity()
   +deleteAmount()
-  +calculateDescription()
-  +setAddress()
-  +saveType()
 }
 class Doctor {
-  -String active
-  #long id
-  #long updatedAt
-  +int address
-  #float score
-  +processQuantity()
-  +updateLevel()
+  -double address
+  #String type
+  +calculateCreatedat()
+  +sendNote()
 }
-interface Treatment {
+class Treatment {
+  #long level
+  +int quantity
+  +cancelQuantity()
+  +processDescription()
+}
+class Insurance {
   +long createdAt
   +boolean status
   +double quantity
   #float name
   +long id
-  +createScore()
-  +deleteAddress()
+  +sendLevel()
+  +updateLevel()
 }
-class Insurance {
-  #boolean address
-  +boolean id
-  +deleteDescription()
-  +createId()
-  +validateEmail()
+interface Billing {
+  #long address
+  #String quantity
+  #boolean status
+  +getScore()
+  +saveDescription()
 }
-class Billing {
-  +double code
-  +int quantity
-  #String price
-  +String score
+class Prescription {
+  -long description
+  +long quantity
+  +long id
   +processType()
-  +sendQuantity()
+  +saveAddress()
+  +calculateQuantity()
+  +createPhone()
 }
-abstract class Prescription {
-  #boolean duration
-  #double description
-  +float email
-  +validateActive()
-  +sendName()
-  +getDuration()
-}
-Doctor ..> Insurance : "1"
-Billing --* Doctor
-Insurance --o Billing
-note right of MedicalRecord : Healthcare domain
+Billing ..|> MedicalRecord
+MedicalRecord --o Doctor
+Insurance --* Billing
 @enduml

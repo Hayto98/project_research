@@ -9,45 +9,45 @@ class Classroom {
   #Date active
   #float createdAt
   -Date id
-  +sendLevel()
-  +cancelType()
   +findDuration()
+  +getCode()
+  +cancelLevel()
 }
-class Exam {
+interface Exam {
+  #boolean duration
+  -float amount
+  #int score
   +String address
-  -float score
-  #boolean email
-  #long description
-  +processCode()
-  +updateLevel()
-  +updateCode()
+  -float active
+  +cancelId()
+  +saveAmount()
+  +deleteType()
 }
 class Grade {
-  +String active
-  -double name
-  +sendActive()
-  +validateCreatedat()
-  +validateAmount()
+  #int level
+  #Date updatedAt
+  +boolean code
+  +updateActive()
 }
 class Book {
-  #float amount
-  -Date email
-  +String quantity
-  +String total
-  +updateAddress()
-  +setStatus()
-  +createAmount()
-  +cancelDescription()
+  -int note
+  -int address
+  +long score
+  #int active
+  +getNote()
+  +setNote()
+  +getAmount()
 }
 abstract class Student {
-  -String duration
-  #int note
-  +boolean name
-  +saveQuantity()
-  +createScore()
+  -int status
+  -String description
+  #String name
+  +processUpdatedat()
+  +processScore()
+  +sendStatus()
 }
-Exam --o Grade
-Classroom ..|> Student
-Grade ..|> Book
-note right of Classroom : Education domain
+Exam ..|> Book
+Student --|> Book
+Grade --> Classroom : "0..1"
+Classroom ..> Exam : "1..*"
 @enduml

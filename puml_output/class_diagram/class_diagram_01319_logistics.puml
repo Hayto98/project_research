@@ -6,58 +6,64 @@ interface Tracking {
   #long active
   -String phone
   -double name
-  +cancelDuration()
-  +processStatus()
+  +getCode()
+  +setCode()
 }
-class Manifest {
-  +float total
+interface Manifest {
+  +Date status
+  -String duration
   -float address
-  +float updatedAt
-  -long type
-  +getQuantity()
-  +createEmail()
+  +float total
+  -long score
+  +savePhone()
+  +setTotal()
 }
 class Shipment {
-  -double duration
-  -long total
-  +findAmount()
-  +findStatus()
-}
-abstract class Customer {
-  #double createdAt
-  -long name
-  #Date code
-  +cancelName()
-  +cancelCode()
-  +sendEmail()
-}
-interface Warehouse {
-  +String duration
-  #double phone
-  #Date quantity
-  +long name
-  +createActive()
-  +cancelAddress()
-}
-abstract class Route {
-  -float phone
-  #Date total
-  +createNote()
-  +sendStatus()
-  +createAmount()
-}
-interface Inventory {
-  +boolean address
-  -long active
-  +long level
+  -long updatedAt
+  -int id
+  #int total
   #String quantity
-  +sendLevel()
-  +findUpdatedat()
-  +setPrice()
-  +createId()
+  +deleteLevel()
+  +createCode()
+  +deleteStatus()
+  +getName()
 }
-Inventory ..|> Warehouse
-Route --> Tracking : "1"
-Tracking ..|> Inventory
-note right of Tracking : Logistics domain
+class Customer {
+  -long code
+  #Date note
+  +getCode()
+  +cancelLevel()
+  +cancelPrice()
+}
+class Warehouse {
+  #float score
+  -boolean email
+  +updateLevel()
+  +savePhone()
+  +processDuration()
+}
+class Route {
+  #boolean active
+  -Date amount
+  #double address
+  +float level
+  -double email
+  +updateCreatedat()
+  +getDuration()
+  +saveActive()
+  +validateTotal()
+}
+class Inventory {
+  +Date note
+  #long active
+  -float status
+  #boolean quantity
+  +setType()
+  +getCreatedat()
+  +setDuration()
+}
+Shipment --* Tracking
+Route --o Tracking
+Inventory ..> Warehouse : "0..1"
+Inventory --o Tracking
 @enduml

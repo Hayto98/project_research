@@ -5,61 +5,62 @@ skinparam shadowing true
 class Route {
   -Date phone
   #float note
-  +cancelLevel()
-  +cancelName()
+  +savePrice()
+  +deleteUpdatedat()
 }
-class Tracking {
-  +double total
-  #String type
-  #Date level
-  #boolean score
-  +updateCreatedat()
-  +cancelTotal()
-  +sendPrice()
+interface Tracking {
+  -float description
+  -double active
+  +findEmail()
+  +savePrice()
+  +validateUpdatedat()
+  +processCode()
 }
-class Inventory {
-  #long duration
-  +String type
-  -Date amount
-  +getPrice()
+abstract class Inventory {
+  -int active
+  +boolean duration
+  +getCreatedat()
   +processType()
-  +cancelDuration()
+  +calculateNote()
+  +createCreatedat()
 }
-abstract class Driver {
-  -double note
-  #Date phone
-  #String price
-  #boolean total
-  +sendEmail()
-  +deleteName()
-  +validateId()
-  +cancelStatus()
+interface Driver {
+  -Date amount
+  -String active
+  -double address
+  #double status
+  #boolean code
+  +processAddress()
+  +validateAmount()
+  +deletePrice()
+  +calculateDescription()
 }
-abstract class Customer {
-  -String status
-  -float email
-  +updateLevel()
+interface Customer {
+  -boolean price
+  #Date score
+  +boolean total
+  #double email
+  +getEmail()
+  +processScore()
+  +savePhone()
 }
 class Shipment {
-  -long note
-  #int score
+  #float level
   -String status
-  -Date description
-  +validateUpdatedat()
-  +saveAddress()
+  +calculateUpdatedat()
 }
 class DeliveryNote {
-  -double amount
-  #int duration
-  #long updatedAt
-  -Date description
-  +sendName()
+  #long status
+  #double total
+  #String name
+  +double createdAt
+  -Date id
+  +sendAddress()
+  +savePhone()
 }
-Route --> Driver : "1"
-Route --|> Customer
-Shipment ..|> Inventory
-Shipment ..|> Driver
-DeliveryNote ..> Shipment : "1..*"
-DeliveryNote --> Inventory : "*"
-note right of Route : Logistics domain
+Shipment --* Tracking
+Tracking --* Shipment
+Tracking ..|> Inventory
+Tracking --> DeliveryNote : "0..1"
+Driver --> DeliveryNote : "0..1"
 @enduml

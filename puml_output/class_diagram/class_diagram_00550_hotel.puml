@@ -7,49 +7,37 @@ class Housekeeping {
   -String email
   #long active
   +int level
-  +saveActive()
-  +updateCode()
-  +createDescription()
+  +cancelPrice()
+  +saveType()
+  +findLevel()
 }
-class CheckIn {
-  +double createdAt
-  -int name
-  #long quantity
+interface CheckIn {
   +boolean code
-  +processUpdatedat()
-  +saveCreatedat()
+  -int email
+  +long description
+  +createCode()
 }
-class Amenity {
-  +double address
-  +float quantity
-  #boolean updatedAt
-  +Date createdAt
-  #Date level
-  +deleteUpdatedat()
-  +setNote()
+abstract class Amenity {
+  -float createdAt
+  +Date score
+  +int email
+  -long description
+  -boolean active
+  +processScore()
+  +updateDescription()
 }
 class Guest {
-  #float email
-  +double active
-  #long description
-  +validateEmail()
-  +sendCode()
-  +validateUpdatedat()
-  +findCode()
+  #boolean note
+  +Date status
+  +createCode()
+  +deleteEmail()
 }
-interface Staff {
-  #String updatedAt
-  #Date duration
-  +float code
-  -double description
-  +long status
-  +validatePrice()
-  +findDuration()
-  +getCode()
+class Staff {
+  +Date note
+  #long email
+  +getPrice()
+  +findStatus()
 }
-Staff ..> CheckIn : "1"
-Guest --o Housekeeping
-CheckIn --> Housekeeping : "*"
-Amenity ..> Housekeeping : "1..*"
-note right of Housekeeping : Hotel domain
+Guest --o Amenity
+Amenity --> Staff : "1"
 @enduml

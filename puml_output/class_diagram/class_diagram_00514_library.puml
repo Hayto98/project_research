@@ -5,56 +5,55 @@ skinparam classBorderColor #455A64
 class Book {
   +String description
   -boolean code
-  +saveUpdatedat()
-  +processTotal()
-  +deleteCode()
-  +setLevel()
+  +calculateUpdatedat()
+  +processPrice()
+  +cancelCode()
+  +findAmount()
 }
 class Member {
-  -float address
-  -float description
-  +cancelType()
-  +cancelScore()
+  -String status
+  -Date level
+  +deleteName()
+  +validateType()
+}
+abstract class Catalog {
+  -Date duration
+  +String type
+  +Date score
+  -Date price
   +sendPrice()
 }
-class Catalog {
-  #long status
-  #boolean duration
-  +saveDuration()
-}
-class Librarian {
-  +String email
-  #int phone
-  +findCode()
-  +processTotal()
-  +updatePrice()
-  +validateCreatedat()
+interface Librarian {
+  +boolean status
+  +double email
+  #Date phone
+  +double name
+  +processDuration()
+  +calculateCode()
+  +deleteCode()
+  +processActive()
 }
 class Shelf {
   -long createdAt
   +int amount
-  +deletePhone()
+  +findPhone()
 }
 class Fine {
-  #Date updatedAt
-  +int score
-  #boolean status
-  -String createdAt
-  +int amount
-  +cancelUpdatedat()
+  #boolean note
+  +Date updatedAt
+  +updateAmount()
+  +processUpdatedat()
 }
-class Renewal {
-  -boolean price
-  -int description
-  #int duration
-  +float name
-  +sendPhone()
+interface Renewal {
+  -String updatedAt
+  +int active
+  #boolean level
+  +sendType()
 }
-Librarian --* Renewal
-Catalog ..|> Fine
-Librarian --|> Member
-Fine ..|> Renewal
-Fine ..> Book : "0..1"
-Renewal ..|> Shelf
-note right of Book : Library domain
+Member --* Catalog
+Librarian --o Member
+Book --> Catalog : "*"
+Member ..|> Fine
+Book --> Renewal : "1..*"
+Shelf --o Librarian
 @enduml

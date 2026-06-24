@@ -6,44 +6,46 @@ class Invoice {
   -boolean status
   +int note
   -boolean amount
-  +updatePrice()
-  +cancelAmount()
+  +processPrice()
+  +createType()
 }
 abstract class Cart {
-  +boolean note
-  #long createdAt
-  +double code
-  +processCreatedat()
+  +String type
+  +boolean description
+  #long note
+  +cancelCode()
+  +processAmount()
 }
-class Wishlist {
+abstract class Wishlist {
+  #double createdAt
+  +long quantity
   #String amount
-  #double note
-  +double createdAt
-  #int email
-  +findDuration()
+  +setStatus()
+  +sendCode()
+  +findPrice()
+  +findAddress()
 }
-class Review {
-  +double code
-  #float updatedAt
-  +findDuration()
+interface Review {
+  +String duration
+  #float description
+  +createCode()
+  +deletePrice()
 }
 interface Shipment {
-  +boolean active
-  -int duration
-  +getCreatedat()
-  +processQuantity()
-  +deleteUpdatedat()
+  +boolean duration
+  #String score
+  +deleteAddress()
+  +cancelAddress()
+  +getDescription()
 }
 class Return {
-  +double address
-  +long type
-  +getDuration()
-  +createCreatedat()
-  +findEmail()
-  +processDescription()
+  +String type
+  #Date quantity
+  +Date amount
+  +validateName()
+  +createAddress()
+  +getAddress()
 }
-Review --o Wishlist
-Cart ..> Return : "1"
-Wishlist --> Shipment : "0..1"
-note right of Invoice : Ecommerce domain
+Wishlist --o Shipment
+Invoice --* Shipment
 @enduml

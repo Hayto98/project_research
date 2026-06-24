@@ -5,49 +5,50 @@ class Amenity {
   -String code
   +double email
   #Date type
-  +cancelStatus()
-  +sendPrice()
+  +validateActive()
+  +updateName()
 }
-class Service {
-  -long level
-  +String active
-  +validateCode()
-  +processDuration()
-  +saveName()
-  +getAddress()
+interface Service {
+  +String phone
+  #double name
+  -String active
+  -boolean type
+  #float email
+  +calculateId()
 }
 class Payment {
-  #double active
-  +boolean email
-  +String total
-  -String description
-  #float quantity
-  +findAddress()
-  +calculateCreatedat()
-  +validateDescription()
-  +processNote()
+  -double note
+  +long active
+  +cancelTotal()
+  +calculateActive()
+  +calculateNote()
+  +calculateEmail()
 }
-class Booking {
+abstract class Booking {
+  -int price
+  -int address
+  +findStatus()
+  +findType()
+  +cancelQuantity()
+  +cancelPhone()
+}
+interface Housekeeping {
   -Date total
   -double score
   -Date price
-  +sendAddress()
-}
-class Housekeeping {
-  +Date updatedAt
-  -boolean status
-  +savePrice()
+  +findDuration()
 }
 class Restaurant {
-  #Date active
-  -long address
-  +validateLevel()
-  +findDescription()
-  +createCode()
-  +updateScore()
+  +Date id
+  -boolean updatedAt
+  +float status
+  +savePhone()
+  +calculateId()
+  +findDuration()
+  +validateScore()
 }
-Restaurant --|> Housekeeping
-Booking --o Housekeeping
-Payment --> Restaurant : "0..1"
-note right of Amenity : Hotel domain
+Payment --* Booking
+Housekeeping --* Service
+Restaurant ..|> Amenity
+Restaurant --> Housekeeping : "0..1"
 @enduml

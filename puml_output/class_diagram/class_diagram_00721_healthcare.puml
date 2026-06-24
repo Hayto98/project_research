@@ -4,62 +4,54 @@ skinparam defaultFontSize 11
 class Appointment {
   -float type
   #boolean status
-  +deleteEmail()
-  +saveAddress()
+  +validateQuantity()
+  +deleteCreatedat()
 }
-interface Insurance {
+class Insurance {
   #int price
   -String duration
-  +createDuration()
+  +validateAddress()
 }
-abstract class Diagnosis {
-  #boolean description
-  #float score
-  +float code
-  +getUpdatedat()
-  +deleteAmount()
+interface Diagnosis {
+  #int amount
+  +int description
+  +Date score
+  #int code
+  -long updatedAt
+  +processAmount()
 }
 class Billing {
-  +double status
-  -boolean code
-  #float amount
-  #int email
-  +saveNote()
-  +deleteType()
-  +sendName()
-  +deleteScore()
+  +float id
+  -Date price
+  -int quantity
+  -boolean active
+  +saveAddress()
 }
-class Doctor {
-  +int level
-  #double updatedAt
-  #int address
-  +sendTotal()
-}
-class Hospital {
-  #Date note
-  -long phone
-  -long price
-  -long code
+interface Doctor {
+  -int amount
+  +Date level
+  -boolean updatedAt
   +savePhone()
-  +sendActive()
-  +getName()
+  +sendQuantity()
+}
+abstract class Hospital {
+  -double quantity
+  #String note
+  +createAmount()
+  +createQuantity()
+  +processStatus()
 }
 abstract class Treatment {
-  #boolean description
-  +double address
-  +double duration
-  -Date total
-  -String id
-  +cancelTotal()
-  +deleteCode()
-  +getPrice()
-  +getType()
+  +String address
+  -double phone
+  +long score
+  +double active
+  +processAddress()
 }
-Insurance --o Treatment
-Hospital ..> Diagnosis : "0..1"
-Insurance --> Diagnosis : "1..*"
-Doctor ..|> Hospital
-Diagnosis --> Hospital : "0..1"
-Doctor --> Treatment : "0..1"
-note right of Appointment : Healthcare domain
+Doctor --o Insurance
+Treatment --o Insurance
+Diagnosis --o Hospital
+Appointment --> Billing : "*"
+Insurance --|> Appointment
+Billing --o Appointment
 @enduml

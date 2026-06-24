@@ -8,61 +8,56 @@ class Attendance {
   #float name
   #double phone
   +int quantity
-  +calculateTotal()
-  +sendCreatedat()
-  +findUpdatedat()
-  +validateEmail()
+  +updateCreatedat()
+  +createDuration()
+  +getAddress()
+  +updateAmount()
 }
-abstract class Library {
-  +float price
-  +double email
-  +String description
-  #double quantity
-  -int phone
-  +cancelStatus()
-  +processType()
-  +setCode()
-  +setPrice()
+interface Library {
+  -Date updatedAt
+  #double address
+  -long email
+  +cancelAddress()
+  +saveScore()
 }
 class Grade {
-  #boolean note
-  -long level
-  #long quantity
-  -boolean email
-  +sendQuantity()
-  +updatePrice()
+  +boolean note
+  -double name
+  +saveCode()
+  +deleteLevel()
 }
 interface Schedule {
-  #boolean level
-  -float status
-  #boolean quantity
-  +validatePhone()
+  +String note
+  +double type
+  +saveDescription()
+  +findDuration()
+  +deleteName()
 }
-class Teacher {
-  +double level
-  -float code
-  +sendCreatedat()
-  +sendTotal()
-  +updateTotal()
+abstract class Teacher {
+  #long email
+  -boolean level
+  +boolean duration
+  -int phone
+  +calculateUpdatedat()
+  +savePrice()
+  +deleteStatus()
+  +deleteScore()
 }
-abstract class Student {
-  +float duration
-  #float id
-  #int score
-  +getUpdatedat()
-  +validateCode()
+interface Student {
+  -float quantity
+  #boolean active
+  +findQuantity()
 }
 class Exam {
-  -long price
-  -int score
-  +findName()
-  +saveDescription()
-  +setCode()
+  +String name
+  -long level
+  +calculateType()
+  +findDuration()
+  +processActive()
 }
-Attendance ..|> Student
-Schedule ..|> Library
-Teacher --|> Exam
-Library --* Student
-Student ..> Schedule : "*"
-note right of Attendance : Education domain
+Schedule ..> Library : "*"
+Student --o Exam
+Library --|> Teacher
+Teacher --> Attendance : "0..1"
+Library ..|> Attendance
 @enduml

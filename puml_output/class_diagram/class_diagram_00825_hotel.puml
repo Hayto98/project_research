@@ -6,37 +6,39 @@ class Room {
   #String type
   +long email
   #long quantity
-  +setEmail()
+  +deleteQuantity()
 }
 class Booking {
-  #boolean updatedAt
-  #boolean note
-  +calculateScore()
+  -Date duration
+  #Date name
+  #Date updatedAt
+  +processLevel()
 }
 interface Service {
   +boolean active
   #long quantity
   +int phone
-  +processTotal()
-  +cancelName()
-  +validateEmail()
+  +getStatus()
+  +validateDescription()
+  +deletePrice()
 }
-class Reservation {
-  -double amount
-  #int description
-  -float quantity
-  +getActive()
+abstract class Reservation {
+  -Date phone
+  #float email
+  +validateQuantity()
+  +createCreatedat()
 }
-abstract class Payment {
-  +double level
-  -String phone
-  -long duration
-  -int status
-  +long score
-  +validateCreatedat()
+interface Payment {
+  -float note
+  +String type
+  #double active
+  -boolean createdAt
+  +cancelId()
+  +saveDescription()
+  +validateId()
 }
-Payment ..> Reservation : "1..*"
-Service --> Payment : "*"
-Service --> Booking : "*"
-note right of Room : Hotel domain
+Service --o Booking
+Service --* Room
+Service ..|> Payment
+Booking --|> Service
 @enduml

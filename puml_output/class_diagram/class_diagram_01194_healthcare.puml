@@ -9,50 +9,54 @@ interface Diagnosis {
   +Date type
   -double price
   +float address
-  +processCode()
-  +getActive()
-  +setAddress()
-  +getScore()
+  +saveAmount()
+  +processAmount()
+  +saveId()
+  +findDuration()
 }
 class Patient {
-  +boolean note
-  -Date score
-  -long price
-  #int code
-  #boolean id
-  +processEmail()
-  +sendId()
+  -Date name
+  #float score
+  -String amount
+  +int price
+  +deleteStatus()
+  +createPrice()
+  +setTotal()
 }
-abstract class Appointment {
-  -long name
-  -double score
-  -boolean id
-  +findScore()
+interface Appointment {
+  -long duration
+  #float score
+  +double createdAt
+  +setUpdatedat()
+  +cancelAmount()
 }
 class Hospital {
-  -double updatedAt
-  -boolean name
-  #int type
-  +boolean description
-  +int note
-  +setActive()
-  +processScore()
+  #Date address
+  +Date email
+  #int note
+  -float total
+  +deleteNote()
+  +sendName()
 }
 class Billing {
-  #float score
-  #double amount
-  +updateStatus()
+  #String total
+  +int price
+  +boolean quantity
+  -Date updatedAt
+  #Date active
+  +saveId()
+  +processNote()
 }
-class Nurse {
-  +Date type
-  #Date total
-  +saveEmail()
-  +findName()
+interface Nurse {
+  +int active
+  +int type
+  +float score
+  +cancelCreatedat()
+  +processActive()
+  +getAmount()
+  +deleteStatus()
 }
-Hospital --* Nurse
-Appointment --> Nurse : "1..*"
-Hospital ..|> Diagnosis
-Hospital --|> Patient
-Billing ..|> Appointment
-note right of Diagnosis : Healthcare domain
+Nurse ..> Appointment : "1"
+Hospital --o Nurse
+Appointment --* Nurse
 @enduml

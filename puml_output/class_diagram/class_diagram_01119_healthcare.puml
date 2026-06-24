@@ -6,65 +6,67 @@ skinparam defaultFontSize 11
 abstract class LabTest {
   +String note
   +float score
-  +findActive()
+  +createLevel()
 }
-class Prescription {
-  #Date updatedAt
-  +double type
-  +sendPhone()
-  +setCreatedat()
-  +processAddress()
+interface Prescription {
+  #Date id
+  +double updatedAt
+  -float type
+  +updateAmount()
+  +createPhone()
+  +calculateNote()
 }
-class Billing {
+abstract class Billing {
+  +String createdAt
   -long address
-  -long amount
-  -float id
-  -boolean score
-  +findAmount()
-  +calculateEmail()
+  -long level
+  -float amount
+  +findUpdatedat()
+  +updateQuantity()
+  +calculateLevel()
+  +validateCreatedat()
 }
-interface Appointment {
-  +Date status
-  #float note
-  +float address
-  #boolean phone
-  -String createdAt
-  +calculateAmount()
-  +processNote()
-  +validateAddress()
+class Appointment {
+  -long email
+  #int score
+  +Date price
+  #float status
+  +float note
+  +processQuantity()
+  +cancelId()
+  +setPrice()
 }
-class Ward {
-  #int level
-  -String note
-  +Date id
-  -long phone
-  +Date quantity
-  +calculateScore()
-  +cancelAmount()
-}
-abstract class Diagnosis {
+abstract class Ward {
   -String type
-  #String updatedAt
-  +boolean name
-  #String total
-  +cancelName()
-  +cancelEmail()
-  +processTotal()
+  #double note
+  #boolean phone
+  +processCreatedat()
+  +processName()
+  +createAmount()
+  +saveTotal()
+}
+interface Diagnosis {
+  +Date duration
+  -long createdAt
+  +Date total
+  #int status
+  +setAddress()
+  +processId()
+  +getActive()
+  +saveType()
 }
 class Hospital {
-  +long updatedAt
-  #float amount
-  -float status
-  -Date id
-  +findCode()
+  -String address
+  #String type
+  +boolean updatedAt
+  #String name
+  -boolean total
   +validateDescription()
-  +cancelPrice()
 }
-Hospital --* Diagnosis
-LabTest ..> Diagnosis : "1..*"
-Hospital --* Appointment
-Ward --* LabTest
-Billing ..|> Appointment
-Prescription ..|> Ward
-note right of LabTest : Healthcare domain
+Billing --o Appointment
+LabTest --> Diagnosis : "1..*"
+Prescription --|> Hospital
+LabTest --* Hospital
+Diagnosis --* Appointment
+Diagnosis ..> Billing : "1"
 @enduml

@@ -7,63 +7,62 @@ interface Cart {
   #long email
   -double code
   #float name
-  +validateDuration()
-  +calculateType()
+  +setPrice()
+  +findCode()
 }
-class Product {
-  -double name
-  -double phone
-  #long email
-  +setQuantity()
+interface Product {
+  #long type
+  #long status
+  -double active
+  -double createdAt
+  #long name
+  +getLevel()
 }
 class Shipment {
-  -String phone
-  -float code
-  +int quantity
-  +float active
   #float price
-  +createActive()
-  +createCreatedat()
-  +findDescription()
+  #double phone
+  -String code
+  -float quantity
+  +validateNote()
 }
 class Order {
-  -int note
-  -int total
-  +long createdAt
-  -float duration
-  +calculateAddress()
-  +findQuantity()
+  #int quantity
+  +boolean active
+  #boolean duration
+  #float createdAt
+  +saveType()
+  +processTotal()
+  +getPhone()
 }
-interface Customer {
-  -float phone
-  #int code
-  -boolean type
-  +findUpdatedat()
-  +cancelActive()
-  +cancelScore()
-}
-abstract class Supplier {
-  +String level
-  +boolean type
-  +Date description
-  +validateNote()
-  +setTotal()
-}
-interface Review {
+class Customer {
+  -double address
+  #Date description
+  #int note
+  -float createdAt
   -Date level
-  #long phone
-  +double createdAt
-  -double type
-  -float id
-  +calculateDescription()
-  +setCode()
-  +cancelScore()
-  +validateScore()
+  +findDescription()
+  +createCode()
+  +updateTotal()
 }
-Order ..> Shipment : "0..1"
-Review --> Shipment : "1"
-Order ..|> Review
-Cart --o Review
-Shipment --* Order
-note right of Cart : Ecommerce domain
+class Supplier {
+  #float address
+  #boolean createdAt
+  #double email
+  +boolean score
+  #float updatedAt
+  +saveStatus()
+  +validateCreatedat()
+  +validatePhone()
+  +updatePrice()
+}
+class Review {
+  +double description
+  #float phone
+  -float note
+  +sendId()
+  +validateUpdatedat()
+  +saveDescription()
+}
+Order ..> Supplier : "1..*"
+Cart --* Order
 @enduml

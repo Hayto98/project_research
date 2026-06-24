@@ -3,41 +3,40 @@ skinparam defaultFontSize 11
 class Appointment {
   -boolean active
   #String phone
-  +sendCreatedat()
-  +setEmail()
-  +validateAmount()
-  +getType()
+  +saveActive()
+  +createType()
+  +processActive()
+  +createNote()
 }
 class Nurse {
-  -int code
-  #float price
-  #String createdAt
-  +createDuration()
-  +findActive()
+  #int phone
+  #int amount
+  +double id
+  +double type
+  +sendAmount()
+  +updateCode()
 }
 class Patient {
-  +int phone
-  -String createdAt
-  -String address
-  +createLevel()
-  +saveAddress()
+  +Date email
+  -int active
+  -String status
+  +cancelCreatedat()
+  +saveTotal()
 }
 class MedicalRecord {
-  +int total
-  #Date quantity
-  +boolean name
-  #String duration
-  -int email
-  +setName()
+  #int name
+  #double amount
+  #double quantity
+  #long address
+  +updateAddress()
 }
-interface Insurance {
-  -long createdAt
-  -boolean amount
-  +findUpdatedat()
-  +updateEmail()
-  +setAddress()
+abstract class Insurance {
+  -int createdAt
+  +String description
+  +float level
+  #boolean id
+  +updateDescription()
 }
-Appointment --* MedicalRecord
-Nurse --o MedicalRecord
-note right of Appointment : Healthcare domain
+MedicalRecord --o Patient
+Insurance ..> Patient : "0..1"
 @enduml

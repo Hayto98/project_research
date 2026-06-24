@@ -9,58 +9,44 @@ interface Prescription {
   #int address
   -Date active
   +int id
-  +getStatus()
-  +processType()
-  +calculateDescription()
+  +processCode()
+  +cancelEmail()
+  +deleteActive()
 }
-class Diagnosis {
-  -int total
-  -long active
+abstract class Diagnosis {
+  #Date description
+  +String email
+  -int price
+  -long total
   #boolean address
-  +boolean id
-  #Date code
-  +sendCreatedat()
-  +findDescription()
+  +calculateActive()
 }
-abstract class Ward {
-  #Date status
-  #boolean phone
-  +getCode()
-  +sendId()
-  +sendCode()
+interface Ward {
+  -String active
+  #String createdAt
+  -Date description
+  +cancelTotal()
+  +getType()
+  +cancelAmount()
 }
-abstract class Hospital {
-  +boolean description
-  -boolean type
-  +boolean score
-  #boolean amount
-  +Date id
-  +calculateName()
-  +processAddress()
-  +sendCode()
+class Hospital {
+  +float price
+  -boolean total
+  +createStatus()
+  +saveType()
 }
 class Patient {
-  +Date active
-  #long id
-  -int name
-  #long updatedAt
-  +int createdAt
-  +findCreatedat()
-  +processCreatedat()
-  +processCreatedat()
-  +updateUpdatedat()
+  #String level
+  #float address
+  +saveDescription()
+  +sendAddress()
 }
-class Insurance {
-  +long status
-  #boolean quantity
-  +updateActive()
-  +getName()
-  +getName()
-  +setNote()
+abstract class Insurance {
+  #String note
+  +double address
+  +calculateId()
 }
 Patient --|> Diagnosis
-Insurance --o Hospital
-Prescription --o Insurance
-Insurance ..|> Ward
-note right of Prescription : Healthcare domain
+Insurance --* Patient
+Ward ..> Diagnosis : "1..*"
 @enduml

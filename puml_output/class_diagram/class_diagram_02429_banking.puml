@@ -6,54 +6,55 @@ abstract class Loan {
   -boolean total
   +Date id
   +double type
-  +setDuration()
+  +updateName()
 }
-abstract class Statement {
-  -Date code
-  +long createdAt
-  -int amount
-  +boolean total
-  +saveId()
+interface Statement {
+  -Date address
+  +long code
+  -int createdAt
+  +boolean amount
+  #String total
+  +getType()
 }
-class Teller {
+interface Teller {
   +double total
   #int quantity
-  +findAmount()
+  +deleteType()
 }
 class Branch {
-  #Date status
-  -long createdAt
-  #long updatedAt
-  +calculateActive()
+  #Date createdAt
+  -long status
+  #long duration
+  +double updatedAt
+  +sendQuantity()
+  +validateTotal()
 }
-interface Beneficiary {
-  #float active
-  #double address
-  #int updatedAt
-  +setAmount()
+class Beneficiary {
+  +float price
+  +boolean description
+  -float name
+  +findTotal()
+  +updatePhone()
+  +saveCode()
+  +cancelNote()
 }
-interface Card {
-  -double level
-  #float price
-  #float duration
-  +boolean createdAt
-  #double updatedAt
-  +setScore()
-  +cancelPhone()
-  +getStatus()
-  +createNote()
-}
-class Customer {
+class Card {
   -String note
-  +Date status
-  -long address
-  +boolean phone
-  -String description
-  +findName()
-  +createStatus()
+  #boolean level
+  -float id
+  +String duration
+  +calculateAmount()
+  +validateAmount()
+  +sendScore()
 }
-Customer --* Teller
-Beneficiary ..|> Loan
-Customer ..> Branch : "1..*"
-note right of Loan : Banking domain
+abstract class Customer {
+  #int address
+  -String phone
+  +updatePhone()
+}
+Teller --> Loan : "*"
+Loan ..|> Beneficiary
+Card --* Loan
+Loan --* Statement
+Teller --|> Beneficiary
 @enduml

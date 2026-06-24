@@ -6,43 +6,37 @@ class Ward {
   #double id
   +int score
   +Date description
-  +processId()
+  +calculateAmount()
 }
-interface Prescription {
+class Prescription {
   +boolean price
   -int quantity
   +long total
   #String type
-  +validateDuration()
+  +validateScore()
 }
-class Appointment {
-  #String note
-  -String status
-  #boolean score
+interface Appointment {
   +boolean email
-  +setDuration()
+  -boolean note
+  +deleteLevel()
 }
 class Hospital {
-  -String score
-  #Date total
-  #float email
-  -boolean address
-  -long name
-  +cancelId()
-  +processPhone()
+  #float score
+  +String id
+  +updateScore()
+  +processTotal()
+  +cancelAmount()
 }
-interface Treatment {
-  #double code
-  #Date status
-  #float id
-  +double price
-  +createScore()
-  +processName()
-  +cancelNote()
-  +processCreatedat()
+abstract class Treatment {
+  #Date address
+  #float name
+  -boolean price
+  -long id
+  +cancelType()
+  +findName()
 }
-Appointment --> Hospital : "0..1"
-Ward --o Hospital
+Ward ..> Hospital : "1..*"
+Treatment --|> Appointment
 Ward --o Treatment
-note right of Ward : Healthcare domain
+Hospital --o Prescription
 @enduml

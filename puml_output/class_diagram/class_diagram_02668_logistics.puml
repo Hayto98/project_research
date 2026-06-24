@@ -6,35 +6,30 @@ interface Tracking {
   #boolean duration
   +float address
   -double description
-  +calculateDuration()
-  +getStatus()
+  +setNote()
+  +findDescription()
 }
 class DeliveryNote {
-  -boolean description
-  #int id
-  -Date createdAt
-  +int name
-  +getId()
-  +calculateEmail()
+  #int address
+  +int quantity
+  +calculateName()
 }
-class Manifest {
-  +int email
-  -float active
-  -long price
-  +long duration
-  +calculateActive()
-  +cancelTotal()
+interface Manifest {
+  +String note
+  +double amount
+  -String createdAt
+  +validateAmount()
+  +updateNote()
+  +calculateType()
 }
-class Warehouse {
-  +String updatedAt
-  +int phone
-  #long level
-  -int score
-  +String address
-  +processAmount()
-  +sendLevel()
+abstract class Warehouse {
+  -int updatedAt
+  -int description
+  -boolean quantity
+  #double score
+  +createDuration()
+  +setDuration()
 }
-DeliveryNote --> Manifest : "0..1"
-Tracking --> DeliveryNote : "*"
-note right of Tracking : Logistics domain
+Manifest --* Warehouse
+Manifest --|> DeliveryNote
 @enduml

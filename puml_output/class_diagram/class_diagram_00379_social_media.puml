@@ -6,47 +6,44 @@ skinparam ArrowColor #555555
 abstract class Comment {
   +long duration
   +boolean createdAt
-  +updateName()
+  +updateDescription()
 }
 class Message {
-  -float phone
-  #int createdAt
-  +long note
-  +calculateTotal()
-  +cancelType()
-  +cancelStatus()
+  -int active
+  -long updatedAt
+  +validateCreatedat()
+  +saveCreatedat()
 }
-class Profile {
-  +Date name
-  #String id
-  -float score
-  +boolean duration
-  +saveEmail()
-  +getQuantity()
-  +saveStatus()
-  +validateDuration()
+interface Profile {
+  +long total
+  #String duration
+  +boolean type
+  +int status
+  +findActive()
 }
-interface User {
-  #long type
-  #boolean level
-  +getAddress()
-  +saveQuantity()
+class User {
+  #boolean email
+  #float name
+  +float quantity
+  #double status
+  #boolean phone
+  +setPrice()
+  +validateType()
+  +deleteDescription()
 }
-abstract class Report {
-  +String type
-  #boolean description
-  +saveId()
-  +processAmount()
-  +createNote()
+interface Report {
+  #Date name
+  #double address
+  #boolean quantity
+  +cancelCode()
 }
 interface Album {
-  #long name
-  +float duration
-  -Date updatedAt
-  +updateName()
-  +setPhone()
+  #String updatedAt
+  -int code
+  -double quantity
+  +deleteNote()
+  +calculateTotal()
 }
-Message --* Comment
-User --> Message : "0..1"
-note right of Comment : Social Media domain
+Album --> Message : "1..*"
+Message ..> Profile : "0..1"
 @enduml

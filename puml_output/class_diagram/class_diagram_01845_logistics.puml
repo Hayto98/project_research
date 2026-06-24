@@ -8,54 +8,53 @@ abstract class Inventory {
   #double active
   #Date status
   #Date type
-  +getId()
-  +saveAddress()
-  +saveQuantity()
+  +cancelTotal()
+  +updateDuration()
+  +sendPrice()
 }
 class Tracking {
-  -int note
-  #long active
-  +getDuration()
-  +calculateCode()
+  -int status
+  #long duration
+  +float note
+  +Date active
+  +processAmount()
+  +sendPrice()
+  +sendEmail()
+  +findScore()
 }
-class Depot {
-  #int total
-  #Date level
-  #String status
-  #long description
-  +cancelPhone()
-  +sendDescription()
-  +createId()
-  +sendAddress()
+abstract class Depot {
+  #Date description
+  #String updatedAt
+  +processLevel()
+  +calculateType()
+  +saveDuration()
 }
-interface Warehouse {
-  -double description
-  -String code
-  -Date createdAt
-  +double price
-  +int name
-  +findEmail()
+class Warehouse {
+  -boolean quantity
+  -Date id
+  +String score
+  +saveName()
+  +calculateEmail()
 }
-interface Vehicle {
-  -long address
-  -float createdAt
-  -String updatedAt
-  #Date amount
-  -float name
-  +calculateNote()
-  +sendType()
-}
-interface Driver {
+abstract class Vehicle {
+  +int total
+  +Date name
+  -boolean address
+  #double createdAt
   -int type
-  -boolean active
-  -float description
-  +Date address
-  +validateLevel()
-  +updateCreatedat()
+  +processUpdatedat()
+  +savePhone()
 }
-Warehouse ..> Driver : "*"
-Depot --|> Vehicle
-Depot --* Tracking
-Driver --o Inventory
-note right of Inventory : Logistics domain
+abstract class Driver {
+  #Date address
+  +double duration
+  -boolean status
+  -boolean type
+  +findActive()
+  +cancelUpdatedat()
+  +createDescription()
+}
+Depot ..|> Driver
+Depot --o Vehicle
+Inventory ..|> Vehicle
 @enduml

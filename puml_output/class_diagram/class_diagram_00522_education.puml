@@ -7,61 +7,60 @@ interface Student {
   #Date note
   +boolean level
   #int email
-  +deleteDescription()
-  +findTotal()
-  +getId()
-  +deleteType()
+  +processUpdatedat()
+  +cancelLevel()
+  +sendDuration()
+  +findPhone()
 }
-interface Enrollment {
-  +double description
-  #long active
-  #double price
-  +saveEmail()
+abstract class Enrollment {
+  -boolean id
+  +int description
+  +savePhone()
+  +saveName()
+  +processNote()
+  +createActive()
 }
-class Teacher {
-  #boolean active
-  +String description
-  +int code
-  +updateAmount()
-  +validateAddress()
-  +cancelName()
-  +processCreatedat()
+abstract class Teacher {
+  +float email
+  #int status
+  +cancelLevel()
 }
-abstract class Classroom {
-  -float price
-  +int updatedAt
-  +setId()
-  +setAddress()
+interface Classroom {
+  -int name
+  +long createdAt
+  -float amount
+  +sendName()
 }
 class Schedule {
-  #Date type
-  +Date phone
-  +saveName()
-  +processUpdatedat()
-  +validateCreatedat()
+  +boolean code
+  +String price
+  +String updatedAt
+  -String address
+  #String duration
+  +calculateTotal()
+  +updateTotal()
+  +findDuration()
+  +validateTotal()
 }
-interface Library {
-  #long score
-  -int id
-  #int phone
-  -Date amount
-  #double updatedAt
-  +cancelDuration()
-  +createAddress()
-  +cancelPhone()
-  +validateAddress()
+class Library {
+  #float name
+  #Date note
+  +boolean updatedAt
+  -boolean address
+  +deleteCode()
 }
 class Grade {
-  #boolean score
-  +double id
-  +deleteQuantity()
-  +validateType()
+  #int address
+  -Date email
+  #double amount
+  +getCode()
+  +deleteDescription()
+  +deleteCreatedat()
+  +setEmail()
 }
-Student ..|> Grade
-Teacher --o Schedule
-Schedule --|> Library
-Teacher ..|> Classroom
-Student --* Classroom
-Classroom --|> Enrollment
-note right of Student : Education domain
+Teacher ..> Grade : "1..*"
+Student --> Grade : "1"
+Grade --> Schedule : "1"
+Classroom ..|> Enrollment
+Classroom --|> Schedule
 @enduml

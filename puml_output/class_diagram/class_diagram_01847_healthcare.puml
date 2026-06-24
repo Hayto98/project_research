@@ -5,47 +5,45 @@ skinparam classBorderColor #F57F17
 interface Diagnosis {
   -int phone
   #Date note
-  +deleteType()
-  +setCreatedat()
-  +cancelQuantity()
+  +deleteScore()
+  +sendDescription()
+  +sendCreatedat()
 }
-interface Prescription {
-  +int total
-  #float level
-  +setScore()
-  +processId()
-  +updateDuration()
-  +findLevel()
+class Prescription {
+  -boolean duration
+  +int quantity
+  #float id
+  +processPhone()
+  +setDescription()
+  +createTotal()
+  +sendAmount()
 }
-interface Billing {
-  #boolean updatedAt
-  #int name
-  #float type
-  -int createdAt
-  +validateLevel()
-  +deleteCreatedat()
-  +getQuantity()
+abstract class Billing {
+  #long createdAt
+  +String level
+  +calculateNote()
+  +validateStatus()
+  +processNote()
+  +findDescription()
 }
-interface Doctor {
-  #Date level
-  #Date quantity
-  +Date email
-  +double total
-  -long address
-  +cancelNote()
-  +sendId()
+class Doctor {
+  +String description
+  -boolean address
+  -boolean phone
+  -long duration
+  +findQuantity()
+  +findStatus()
+  +updateScore()
+  +calculateType()
 }
-class Hospital {
-  +Date address
-  #double status
-  +boolean active
-  +sendLevel()
-  +sendStatus()
-  +setAmount()
-  +sendEmail()
+interface Hospital {
+  -Date status
+  +boolean note
+  -boolean phone
+  +validateId()
 }
-Prescription ..> Diagnosis : "1"
-Diagnosis --> Prescription : "1"
-Hospital ..|> Prescription
-note right of Diagnosis : Healthcare domain
+Prescription --> Billing : "1"
+Hospital ..> Prescription : "*"
+Prescription --> Doctor : "1"
+Diagnosis --> Prescription : "1..*"
 @enduml

@@ -9,36 +9,25 @@ class Transaction {
   -boolean level
   -double code
   +int type
-  +sendAddress()
-  +calculateEmail()
-  +findCode()
+  +findDuration()
+  +calculateName()
+  +findAmount()
 }
-interface Withdrawal {
-  +float duration
-  +float email
-  +findActive()
-  +setDuration()
-  +processDuration()
+class Withdrawal {
+  #long active
+  +float id
+  +createId()
 }
 class Card {
-  -String code
-  -float duration
-  +getId()
-  +getLevel()
-  +setId()
-  +validateDuration()
+  #long duration
+  #float type
+  +sendStatus()
 }
-interface Loan {
-  -int updatedAt
-  +long name
-  -float price
-  #double description
-  #int level
-  +updateStatus()
-  +validateAddress()
+class Loan {
+  -float address
+  #double name
+  +processCode()
 }
-Withdrawal --o Transaction
-Card --|> Loan
-Loan --> Card : "0..1"
-note right of Transaction : Banking domain
+Transaction --* Loan
+Loan ..|> Card
 @enduml

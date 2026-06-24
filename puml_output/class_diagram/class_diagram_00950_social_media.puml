@@ -5,43 +5,46 @@ interface Notification {
   +String email
   +Date status
   +float score
-  +createDescription()
-  +findPrice()
-  +findPhone()
+  +validateAmount()
+  +getPrice()
+  +getEmail()
 }
-interface Post {
-  +boolean status
-  #double id
-  -String phone
-  -double active
-  +cancelTotal()
-  +calculateScore()
-  +createCreatedat()
-  +processAmount()
+abstract class Post {
+  #long active
+  #boolean quantity
+  #String status
+  #boolean id
+  +saveScore()
+  +processQuantity()
+  +sendName()
+  +processType()
 }
-interface Follower {
-  -long phone
-  #long type
-  -long active
-  +saveName()
-  +setAddress()
-  +getAddress()
+abstract class Follower {
+  +boolean total
+  #int score
+  -double email
+  #long createdAt
+  -float note
+  +sendCode()
+  +cancelPhone()
+  +processAddress()
 }
-abstract class Album {
-  +float email
-  -double address
-  #int level
-  #long status
-  +validateActive()
+class Album {
+  +long code
+  #double address
+  +validateStatus()
+  +cancelPhone()
+  +setAmount()
 }
 class Report {
-  #Date createdAt
-  +float status
-  +deleteQuantity()
-  +calculateName()
-  +processTotal()
+  -float level
+  #int status
+  #long createdAt
+  +long price
+  +validateType()
+  +validatePrice()
+  +sendTotal()
 }
-Notification ..|> Report
-Notification --|> Follower
-note right of Notification : Social Media domain
+Notification --* Post
+Post --o Follower
 @enduml

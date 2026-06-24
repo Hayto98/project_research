@@ -8,60 +8,50 @@ class Notification {
   +String email
   -long code
   +double phone
-  +validateCode()
-  +setDuration()
-  +setScore()
+  +cancelId()
+  +validatePhone()
+  +setDescription()
 }
-class Group {
-  -float code
-  #long updatedAt
-  +long email
-  #float duration
-  #long address
-  +sendPrice()
+interface Group {
+  -String score
+  +long status
+  +setEmail()
 }
 abstract class Message {
-  +double type
-  -float duration
-  -float email
-  -boolean amount
-  -float name
-  +findLevel()
-  +createAddress()
-  +validateScore()
-  +sendTotal()
+  #float name
+  #double email
+  -double level
+  -double duration
+  +sendPrice()
+  +sendAmount()
+  +processUpdatedat()
 }
-class Report {
-  #int type
-  -long duration
-  -long name
-  #boolean note
-  +Date level
-  +sendLevel()
-  +calculateScore()
-  +findPhone()
-  +getId()
+interface Report {
+  -float createdAt
+  -float type
+  +validateActive()
+  +deleteAmount()
+  +getUpdatedat()
+  +createEmail()
 }
-class Story {
-  -String quantity
-  -boolean note
-  #Date email
-  +deleteStatus()
-  +cancelId()
-  +getName()
+abstract class Story {
+  -int address
+  #double duration
+  -double score
+  #String active
+  +updateAmount()
+  +deleteActive()
+  +createUpdatedat()
+  +saveNote()
 }
-class Profile {
-  +int phone
-  +long price
-  #boolean updatedAt
-  -boolean status
-  +float address
-  +updateCreatedat()
+abstract class Profile {
+  #boolean address
+  -boolean quantity
+  #long description
+  +float total
+  +sendId()
 }
-Message --o Profile
-Group ..|> Story
-Message --o Notification
-Message --o Group
-Profile --o Notification
-note right of Notification : Social Media domain
+Message --o Story
+Profile --* Message
+Notification --> Message : "1..*"
 @enduml

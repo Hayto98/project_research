@@ -9,51 +9,50 @@ abstract class Withdrawal {
   #int id
   +boolean type
   #int total
-  +createName()
+  +setDuration()
 }
 class Statement {
+  #Date id
   #String level
-  #Date address
-  +validateActive()
-  +createId()
-  +findDuration()
-  +sendStatus()
+  +cancelType()
+  +createStatus()
+  +deleteQuantity()
 }
-class Teller {
-  -float description
-  #boolean code
-  #Date level
-  #long total
-  #Date status
-  +findDescription()
-  +processType()
-  +setId()
+abstract class Teller {
+  #String active
+  -int email
+  +String id
+  -String status
+  +sendLevel()
+  +saveType()
+  +findName()
 }
-class Branch {
-  +long amount
-  +long quantity
-  #boolean active
-  #String name
-  +long total
-  +validateNote()
-  +findDuration()
-  +findCreatedat()
+interface Branch {
+  #double score
+  +String address
+  +float description
+  -int note
+  +updateNote()
+  +calculateEmail()
+  +sendDescription()
 }
-class Deposit {
-  #int amount
-  +boolean address
-  -String price
-  +calculateName()
-  +calculateActive()
+abstract class Deposit {
+  #boolean phone
+  #String id
+  +long address
+  +createActive()
+  +deleteDuration()
+  +cancelDescription()
 }
 interface Interest {
-  +double active
-  #long address
-  +findActive()
+  #long quantity
+  -Date updatedAt
+  +int amount
+  +validateEmail()
+  +saveTotal()
+  +createStatus()
 }
-Interest ..> Teller : "1..*"
-Branch --|> Withdrawal
-Deposit --* Interest
-Deposit --o Withdrawal
-note right of Withdrawal : Banking domain
+Branch --o Withdrawal
+Interest --> Deposit : "1"
+Deposit --|> Teller
 @enduml

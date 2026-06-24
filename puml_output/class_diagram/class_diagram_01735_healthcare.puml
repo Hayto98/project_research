@@ -9,48 +9,49 @@ interface Nurse {
   -long address
   +double amount
   #Date price
-  +processAmount()
+  +sendCode()
 }
 class Diagnosis {
-  -String amount
-  #double createdAt
-  -int address
-  #Date note
-  -String id
-  +findCreatedat()
+  +int active
+  -double total
+  +saveScore()
 }
-interface LabTest {
-  -Date address
-  #boolean amount
-  +findType()
-  +updateCreatedat()
+class LabTest {
+  #int note
+  #String description
+  -int duration
+  -Date code
+  #boolean id
+  +validateTotal()
+  +getId()
 }
-abstract class MedicalRecord {
-  +int updatedAt
-  +double description
-  -double score
-  +String total
-  +setType()
-  +saveNote()
-  +validatePrice()
+class MedicalRecord {
+  +boolean total
+  -int email
+  +String updatedAt
+  +sendCreatedat()
+  +sendName()
+  +saveLevel()
+  +validateDescription()
 }
 class Hospital {
-  -int total
-  #String updatedAt
-  +cancelEmail()
-  +sendPhone()
-  +createType()
+  #double email
+  #double status
+  +processType()
+  +findId()
+  +findUpdatedat()
 }
 class Appointment {
-  -boolean level
-  -float updatedAt
-  +float status
-  #boolean total
-  +validateId()
-  +processDescription()
-  +cancelQuantity()
+  #long updatedAt
+  #float phone
+  -long description
+  -long code
+  -boolean quantity
+  +validateEmail()
+  +findUpdatedat()
 }
-MedicalRecord --o Diagnosis
-LabTest --o Appointment
-note right of Nurse : Healthcare domain
+MedicalRecord --* Hospital
+Diagnosis ..> Hospital : "1..*"
+LabTest --o Nurse
+Appointment --> LabTest : "1"
 @enduml

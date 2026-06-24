@@ -7,35 +7,32 @@ abstract class Invoice {
   #int amount
   -boolean duration
   -boolean description
-  +sendPhone()
-  +calculatePhone()
+  +sendAmount()
+  +saveScore()
 }
-interface Guest {
-  -int createdAt
-  -double note
-  #float total
-  +createLevel()
+abstract class Guest {
+  -double duration
+  +float createdAt
+  -double level
+  #float note
+  +updateLevel()
 }
-abstract class Amenity {
-  -Date name
-  +double level
-  #double address
-  +deleteDescription()
-  +calculateLevel()
-  +updateScore()
-  +findCreatedat()
+interface Amenity {
+  -boolean createdAt
+  -double name
+  +int address
+  -boolean phone
+  +boolean description
+  +cancelNote()
+  +processTotal()
 }
-class CheckOut {
-  +float duration
-  -double id
-  -String phone
-  +float level
-  -Date amount
-  +sendCode()
-  +createUpdatedat()
-  +createDuration()
+interface CheckOut {
+  +float phone
+  +float id
+  +processType()
+  +processLevel()
+  +setStatus()
 }
-CheckOut --* Guest
-Invoice ..> Amenity : "1..*"
-note right of Invoice : Hotel domain
+Amenity --* CheckOut
+Invoice ..> Guest : "0..1"
 @enduml

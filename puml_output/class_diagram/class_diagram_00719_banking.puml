@@ -7,58 +7,50 @@ interface Transfer {
   +boolean total
   +double id
   #Date quantity
-  +deleteStatus()
   +saveTotal()
+  +saveQuantity()
 }
 class Branch {
-  -double note
-  +int code
-  #String quantity
-  +boolean phone
-  #int description
-  +deleteActive()
-  +setCode()
-  +cancelEmail()
-  +cancelAddress()
+  -Date address
+  #Date type
+  +long note
+  -String code
+  +float quantity
+  +processScore()
 }
-interface Card {
-  -String createdAt
-  +boolean description
-  +sendType()
-  +deleteDescription()
-  +createAmount()
-  +setCode()
+class Card {
+  +String total
+  #long amount
+  #long active
+  +sendId()
 }
-interface Teller {
+class Teller {
+  -int name
+  #float duration
+  +long type
+  #int active
+  +deleteType()
+}
+class Interest {
   +Date name
   -long level
   #String amount
   +Date duration
   #long phone
-  +processCode()
-  +setDuration()
+  +getDescription()
+  +updateCreatedat()
 }
-class Interest {
-  +Date name
-  +boolean total
-  #boolean updatedAt
-  +String phone
-  -double level
-  +validatePhone()
-  +findName()
+abstract class Loan {
+  #float status
+  -String address
+  +findLevel()
+  +findTotal()
+  +processPrice()
+  +findCode()
 }
-class Loan {
-  #int level
-  #long id
-  -double address
-  -double updatedAt
-  -long active
-  +createPhone()
-}
-Branch --> Card : "1"
-Branch --|> Transfer
-Transfer --|> Branch
-Interest --> Transfer : "1"
-Loan ..|> Transfer
-note right of Transfer : Banking domain
+Transfer --> Branch : "0..1"
+Transfer --o Card
+Branch --* Card
+Loan ..> Transfer : "1..*"
+Teller ..> Interest : "1"
 @enduml

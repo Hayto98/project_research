@@ -3,47 +3,45 @@
 class Product {
   #boolean active
   +float amount
-  +getScore()
+  +processCode()
 }
-class Review {
-  #Date status
-  +int duration
-  +long code
-  +int price
-  +Date type
-  +cancelStatus()
-  +calculateUpdatedat()
+interface Review {
+  #String score
+  #Date type
+  -boolean status
+  #double duration
+  +calculateAddress()
+  +validateEmail()
 }
 class Order {
+  #Date createdAt
+  #float id
+  +double amount
+  +updateQuantity()
+  +setAmount()
+}
+class Warehouse {
   -double createdAt
   +float email
   -float active
   -String total
   #boolean quantity
-  +cancelCreatedat()
-  +getNote()
+  +deleteDescription()
+  +setCode()
 }
-class Warehouse {
-  +float score
-  +boolean createdAt
-  +deleteQuantity()
+class Shipment {
+  +Date note
+  #int email
+  +calculateLevel()
+  +processAmount()
 }
-abstract class Shipment {
-  +boolean price
-  -int email
-  +processStatus()
+interface Wishlist {
+  -Date amount
+  #float quantity
+  +saveCode()
 }
-class Wishlist {
-  -double amount
-  -boolean email
-  #Date active
-  +sendId()
-  +processNote()
-}
-Warehouse --* Shipment
-Warehouse --o Order
+Product --o Shipment
 Review --|> Shipment
-Wishlist --> Shipment : "1..*"
-Shipment --* Product
-note right of Product : Ecommerce domain
+Warehouse --|> Product
+Shipment ..|> Review
 @enduml

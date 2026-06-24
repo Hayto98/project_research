@@ -7,57 +7,49 @@ interface Order {
   -int active
   #boolean amount
   #int code
-  +validateTotal()
+  +cancelId()
 }
-class Cart {
+abstract class Cart {
+  -String phone
   -long createdAt
-  #float phone
-  #float code
-  #Date total
-  +validateCode()
-  +saveQuantity()
-  +cancelDuration()
+  +sendPrice()
+  +processAddress()
+  +saveDescription()
 }
-abstract class Review {
-  -Date createdAt
-  #String amount
-  +setNote()
-  +validatePhone()
-  +createStatus()
+interface Review {
+  #String address
+  +int code
+  -Date quantity
+  #String type
+  +cancelStatus()
+  +cancelUpdatedat()
+  +deleteDuration()
 }
 class Wishlist {
-  #float updatedAt
-  #int score
-  +int code
-  +String duration
-  +createLevel()
-  +sendActive()
-  +calculateNote()
+  +boolean quantity
+  +Date status
+  +boolean name
+  #int phone
   +processUpdatedat()
 }
-abstract class Invoice {
-  -String address
-  -boolean level
+class Invoice {
+  #boolean note
+  #float email
+  +calculateAmount()
+  +updateAmount()
+  +getActive()
+  +setPrice()
+}
+class Shipment {
+  -String price
+  -boolean address
   #int updatedAt
   #Date type
   +boolean description
-  +deleteType()
-  +sendStatus()
-  +processCreatedat()
+  +setType()
+  +findStatus()
+  +cancelCode()
 }
-abstract class Shipment {
-  +int code
-  -String active
-  #double note
-  -boolean type
-  +long email
-  +processScore()
-  +saveDuration()
-  +validateCode()
-  +cancelNote()
-}
-Invoice --o Order
-Invoice --* Review
-Cart --> Invoice : "*"
-note right of Order : Ecommerce domain
+Wishlist --o Cart
+Wishlist --> Order : "*"
 @enduml

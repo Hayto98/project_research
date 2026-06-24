@@ -6,49 +6,56 @@ skinparam shadowing true
 abstract class Guest {
   #String price
   +float address
-  +sendAddress()
-  +updateCreatedat()
+  +createDescription()
+  +calculateName()
 }
 class Restaurant {
-  +String phone
-  +String address
-  +int type
-  -String active
-  +float note
-  +findAmount()
+  -float id
+  -boolean price
+  -int phone
+  +cancelTotal()
 }
 class CheckOut {
-  #int updatedAt
-  -long email
-  -double total
-  +String type
+  +String description
+  #String phone
+  +processCode()
+  +createDuration()
+}
+class Booking {
+  #int total
+  -long level
+  -double type
   +String status
-  +deletePrice()
+  +processCode()
+  +getQuantity()
 }
-interface Booking {
-  +double description
-  -long type
-  +calculateNote()
-  +updateEmail()
-  +calculateScore()
-}
-interface Room {
-  #double address
-  -double quantity
-  +createAddress()
+class Room {
+  +Date price
+  #Date active
+  +Date score
+  +processPrice()
+  +deleteAmount()
+  +sendCode()
+  +validateAddress()
 }
 class Reservation {
-  -boolean active
-  +float name
-  +validateCreatedat()
-  +findPhone()
-  +createAmount()
+  #long note
+  -boolean updatedAt
+  -double email
+  -float total
+  #String status
+  +cancelName()
+  +saveCreatedat()
+  +processDescription()
 }
 class Staff {
-  #Date email
-  -long name
-  +validateLevel()
+  +float price
+  -long active
+  +findLevel()
+  +setCode()
 }
-Guest ..|> Restaurant
-note right of Guest : Hotel domain
+CheckOut --|> Restaurant
+Guest ..> CheckOut : "1"
+Room --* Reservation
+CheckOut --* Guest
 @enduml

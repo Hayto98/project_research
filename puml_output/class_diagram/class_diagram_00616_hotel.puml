@@ -7,33 +7,32 @@ class Invoice {
   +Date amount
   +boolean id
   +boolean score
-  +updateStatus()
+  +updateDescription()
 }
 class Housekeeping {
-  +boolean quantity
-  -long address
-  #String description
-  +double code
-  -boolean status
-  +findNote()
-  +calculateAddress()
-  +sendNote()
+  -Date duration
+  +String note
+  #boolean quantity
+  +processCode()
 }
-abstract class Restaurant {
+interface Restaurant {
+  #float email
+  -Date code
+  #Date updatedAt
+  -float total
+  -Date address
+  +sendAmount()
+  +createNote()
+  +processTotal()
+}
+abstract class Payment {
   #int total
   -boolean address
-  +findActive()
-  +saveType()
-  +calculatePrice()
+  +cancelUpdatedat()
+  +updateNote()
+  +sendDuration()
 }
-class Payment {
-  +boolean price
-  -float note
-  +getAmount()
-  +deleteCreatedat()
-  +deleteActive()
-}
-Restaurant --> Payment : "*"
-Invoice ..|> Restaurant
-note right of Invoice : Hotel domain
+Payment ..|> Housekeeping
+Invoice ..> Housekeeping : "*"
+Invoice --o Restaurant
 @enduml

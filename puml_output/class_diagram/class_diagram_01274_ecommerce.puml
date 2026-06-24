@@ -5,43 +5,43 @@ skinparam classBorderColor #2C7DA0
 class Shipment {
   -boolean email
   -float createdAt
-  +getId()
-  +validateDuration()
+  +calculateEmail()
+  +processNote()
 }
 class Cart {
-  +Date duration
-  -boolean status
-  +Date note
-  -long createdAt
-  +long quantity
-  +createAmount()
-  +saveCreatedat()
+  -int duration
+  -String email
+  #long total
+  #int status
+  +calculatePhone()
+  +cancelLevel()
+  +validateQuantity()
 }
-interface Return {
-  -float quantity
-  #String updatedAt
+class Return {
+  #String email
+  #long amount
+  +double createdAt
   +saveAddress()
-  +calculateTotal()
 }
 class Coupon {
-  -String name
-  -long id
-  +calculateActive()
-  +saveDuration()
+  -String total
+  -long name
+  #int id
+  -boolean level
+  #boolean score
+  +deleteDuration()
+  +updateDuration()
+  +setAmount()
 }
-interface Payment {
-  -int note
-  +double id
-  +boolean duration
-  -String level
-  +calculateQuantity()
-  +deleteType()
-  +saveType()
-  +findName()
+abstract class Payment {
+  +double total
+  +boolean updatedAt
+  +setStatus()
+  +calculateAmount()
+  +setNote()
+  +findTotal()
 }
-Payment ..> Cart : "1..*"
+Cart ..> Coupon : "*"
+Shipment ..> Cart : "1..*"
 Cart --> Return : "1"
-Shipment --|> Cart
-Shipment --* Return
-note right of Shipment : Ecommerce domain
 @enduml

@@ -6,50 +6,55 @@ interface Statement {
   #boolean address
   #long note
   -Date score
-  +calculateId()
-  +getQuantity()
+  +createDuration()
+  +setAmount()
 }
-abstract class Transfer {
-  -int code
-  #String id
-  #boolean duration
-  #long address
-  +updateScore()
-  +deleteTotal()
+class Transfer {
+  -String quantity
+  +String type
+  +cancelAddress()
+  +calculateAddress()
+  +cancelName()
 }
-abstract class Teller {
-  -float updatedAt
-  #double note
-  -Date price
-  -int active
-  +getActive()
+class Teller {
+  -double createdAt
+  #float updatedAt
+  -float score
+  +double amount
+  +findDuration()
+  +deleteDuration()
+  +findType()
+  +setCreatedat()
 }
-class Beneficiary {
-  -long email
-  #double name
-  #String duration
-  +double code
-  +long quantity
-  +deleteUpdatedat()
-  +cancelDescription()
-  +calculateStatus()
-  +calculateType()
+abstract class Beneficiary {
+  -float total
+  -String description
+  -String code
+  #long name
+  -long active
+  +getAmount()
+  +validatePhone()
+  +findId()
+  +cancelCode()
 }
 class Deposit {
-  #String amount
-  +String active
-  -Date createdAt
-  #Date code
-  +getCreatedat()
+  -String price
+  -double amount
+  #float updatedAt
+  +float description
+  +updateType()
+  +updateNote()
   +saveLevel()
 }
-abstract class Interest {
-  #int address
-  -Date phone
-  +sendCreatedat()
+class Interest {
+  +String duration
+  -Date status
+  +updatePrice()
+  +sendId()
 }
+Interest ..> Statement : "1..*"
+Teller --* Transfer
+Interest --> Deposit : "1"
+Deposit ..> Transfer : "0..1"
 Interest --> Teller : "0..1"
-Teller --> Statement : "*"
-Statement --> Deposit : "1"
-note right of Statement : Banking domain
 @enduml

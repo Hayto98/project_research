@@ -6,52 +6,60 @@ interface Invoice {
   -String price
   -boolean duration
   -double score
-  +cancelType()
-  +createDescription()
+  +findTotal()
+  +processId()
 }
 abstract class Wishlist {
-  #int id
-  +String level
-  -int email
-  +updateQuantity()
-  +validatePrice()
-  +validateDuration()
+  #long description
+  #int total
+  +String updatedAt
+  -int id
+  +updateDescription()
+  +createQuantity()
+  +createAmount()
 }
 abstract class Warehouse {
-  +long status
-  +int type
-  +deletePrice()
+  +double duration
+  +long type
+  +int score
+  +int status
+  +saveAmount()
+  +cancelLevel()
+  +setType()
+  +deleteActive()
 }
-abstract class Order {
-  +int type
-  #boolean status
-  -String description
-  +saveQuantity()
-  +createEmail()
+class Order {
+  #double updatedAt
+  +float duration
+  +Date active
+  +processDescription()
+  +getDescription()
+  +updateId()
 }
 class Category {
+  #double status
   #float type
-  -float total
-  +cancelTotal()
-}
-class Product {
-  -String phone
-  +Date type
   +findTotal()
-  +sendId()
-  +deleteDuration()
+  +calculateId()
+  +setQuantity()
+}
+interface Product {
+  +int status
+  #long code
+  #double phone
+  #float type
+  +int email
+  +setEmail()
+  +deleteQuantity()
+  +getCreatedat()
 }
 class Cart {
-  +boolean status
-  #float score
-  #long quantity
-  #String duration
-  +saveEmail()
-  +sendAddress()
-  +saveAmount()
-  +saveEmail()
+  #float name
+  #long level
+  +getScore()
 }
-Category --o Warehouse
-Category ..|> Invoice
-note right of Invoice : Ecommerce domain
+Cart --* Product
+Category ..> Warehouse : "0..1"
+Product --|> Warehouse
+Order --|> Category
 @enduml

@@ -6,61 +6,58 @@ skinparam ArrowColor #555555
 abstract class Order {
   +boolean name
   #Date id
-  +setDuration()
-  +createQuantity()
-  +processEmail()
-  +calculateAddress()
+  +setDescription()
+  +deleteDescription()
+  +calculatePhone()
+  +findScore()
 }
 abstract class Warehouse {
-  +int createdAt
-  -int note
-  +setType()
-  +getStatus()
-  +deletePhone()
+  +Date total
+  -String address
+  +double price
+  +boolean status
+  +createAddress()
+  +sendCreatedat()
+  +saveEmail()
 }
-abstract class Wishlist {
-  #Date score
-  #long note
-  #int type
-  #double name
-  +createDescription()
-  +createName()
+class Wishlist {
+  #double phone
+  -float total
+  #Date duration
+  +saveActive()
 }
-class Review {
-  #String quantity
-  #float id
-  #String type
-  +cancelPhone()
-  +validateCode()
+interface Review {
+  +long active
+  #int updatedAt
+  -String duration
+  +boolean type
+  +processDescription()
+  +processName()
 }
-interface Payment {
+abstract class Payment {
+  +float score
+  +boolean duration
+  +findCode()
+  +sendStatus()
+  +setDescription()
+}
+interface Return {
   -float createdAt
   -Date amount
-  +validateActive()
-  +createName()
-  +validateAmount()
-  +processQuantity()
-}
-abstract class Return {
-  +String name
-  +float id
-  +double total
-  +boolean updatedAt
-  +saveScore()
-  +getUpdatedat()
-  +saveCreatedat()
-  +updateId()
+  +calculateName()
+  +getScore()
+  +setTotal()
+  +setUpdatedat()
 }
 class Coupon {
-  -String price
-  +boolean level
-  -float code
-  +updateScore()
+  #long note
+  +Date quantity
+  +float total
+  +processNote()
+  +cancelDuration()
+  +calculateUpdatedat()
+  +createScore()
 }
-Review --o Warehouse
-Review --|> Coupon
-Warehouse ..|> Review
-Review ..> Wishlist : "1"
-Return --o Review
-note right of Order : Ecommerce domain
+Order ..|> Coupon
+Review --> Order : "*"
 @enduml

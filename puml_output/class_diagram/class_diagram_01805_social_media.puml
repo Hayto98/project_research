@@ -5,44 +5,41 @@ class Profile {
   #int score
   #double amount
   #boolean createdAt
-  +setStatus()
+  +validateStatus()
 }
 class Group {
-  #int score
-  -Date email
-  #boolean phone
-  #boolean createdAt
-  +getCode()
+  #float id
+  -float address
+  +setPhone()
+  +cancelNote()
+  +updateId()
 }
-interface Story {
-  -long phone
-  #long description
-  -Date note
-  +boolean id
-  #String createdAt
-  +setScore()
-  +validateCode()
-  +calculateAmount()
+class Story {
+  +boolean active
+  -long duration
+  +double score
+  +int name
+  -long level
+  +createActive()
+  +setPrice()
+  +cancelScore()
 }
-interface Message {
-  #long total
+class Message {
+  #long quantity
+  +double code
+  +sendAmount()
+  +updateCode()
+}
+abstract class Hashtag {
   -int price
   -long description
   -boolean type
   -long quantity
-  +updateCode()
+  +int active
+  +cancelTotal()
 }
-class Hashtag {
-  #String updatedAt
-  #float duration
-  -double name
-  -String score
-  #float level
-  +deletePhone()
-  +createPhone()
-  +processScore()
-}
-Profile --> Message : "1..*"
-Story ..> Hashtag : "*"
-note right of Profile : Social Media domain
+Message ..|> Group
+Profile --> Hashtag : "0..1"
+Hashtag --> Profile : "*"
+Message --|> Story
 @enduml

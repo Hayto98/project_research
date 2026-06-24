@@ -8,55 +8,47 @@ interface Statement {
   #boolean note
   #float amount
   -Date status
-  +validateTotal()
-  +cancelAddress()
+  +deleteCode()
+  +processScore()
 }
 abstract class Account {
-  -int code
-  -Date updatedAt
-  #boolean note
-  +sendLevel()
-  +createTotal()
+  -long type
+  +float updatedAt
+  -Date code
+  #boolean level
+  +calculateDuration()
+  +saveDuration()
 }
-interface Transaction {
-  -int description
-  -long score
-  -String phone
+class Transaction {
+  -int active
+  -long phone
+  -String description
   -double level
-  +getQuantity()
-  +createCreatedat()
-  +processDuration()
+  #Date duration
+  +calculateId()
+  +createQuantity()
+  +processDescription()
 }
 class Withdrawal {
-  #long note
-  +boolean description
-  -int id
-  +calculateType()
-  +getType()
-}
-class Customer {
-  +String code
-  -int name
+  +boolean duration
+  -String amount
+  #long description
   +int note
-  #int email
-  +float type
-  +savePhone()
-  +deletePhone()
-  +updateStatus()
-  +cancelTotal()
+  -double score
+  +findStatus()
 }
-class Card {
-  #long score
-  -String status
-  #int total
-  #long updatedAt
-  +deleteEmail()
-  +calculateNote()
+abstract class Customer {
+  +double price
+  -double code
+  +updateDuration()
 }
-Withdrawal ..> Customer : "1..*"
-Card ..> Statement : "1..*"
-Statement ..> Customer : "*"
-Withdrawal --> Transaction : "1..*"
-Transaction ..> Card : "0..1"
-note right of Statement : Banking domain
+abstract class Card {
+  +String amount
+  -float createdAt
+  #long active
+  +cancelId()
+  +getTotal()
+}
+Customer --|> Withdrawal
+Transaction --|> Customer
 @enduml

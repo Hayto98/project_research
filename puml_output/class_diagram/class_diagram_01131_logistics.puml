@@ -9,53 +9,51 @@ abstract class Warehouse {
   #float email
   -float quantity
   #long price
-  +cancelId()
-  +deleteType()
+  +deleteDescription()
+  +calculateStatus()
 }
-abstract class Customer {
-  #int address
-  #String email
-  #String code
-  +setLevel()
-  +findEmail()
-  +getNote()
-  +processActive()
+class Customer {
+  -long type
+  +Date price
+  +Date updatedAt
+  +setCreatedat()
 }
-abstract class Package {
-  +double total
-  #double email
-  -double duration
-  #int updatedAt
-  +updateDescription()
-  +setAddress()
-  +deleteCreatedat()
+class Package {
+  -boolean code
+  #double level
+  #long email
+  -long id
+  -int note
+  +saveCode()
 }
 abstract class Driver {
-  #float duration
-  #int description
-  -int address
-  #float status
-  +saveStatus()
+  +String note
+  -int level
+  +double updatedAt
+  -float phone
+  #float createdAt
+  +calculateStatus()
+  +findQuantity()
 }
-class Tracking {
-  +boolean note
-  +boolean name
-  +setScore()
+interface Tracking {
+  -int level
+  #float amount
+  +updatePhone()
 }
 class Vehicle {
-  +String address
-  -float duration
-  -int total
-  -int level
-  +updateUpdatedat()
+  #double score
+  +String name
+  +getCreatedat()
 }
 class FuelLog {
-  -double status
-  #String email
-  +calculateNote()
+  -long score
+  -double description
+  +saveEmail()
+  +validatePhone()
+  +deletePrice()
 }
-Warehouse ..> Vehicle : "1..*"
-FuelLog --> Customer : "1"
-Vehicle --* Customer
-note right of Warehouse : Logistics domain
+Customer ..|> Driver
+Vehicle ..|> Warehouse
+Vehicle ..|> Customer
+Warehouse --* Package
 @enduml

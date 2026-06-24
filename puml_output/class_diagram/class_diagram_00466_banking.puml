@@ -7,36 +7,33 @@ interface Loan {
   -long name
   +long status
   +Date price
-  +findTotal()
-  +sendDuration()
+  +calculateTotal()
+  +updateId()
 }
-class Beneficiary {
-  -long status
+abstract class Beneficiary {
+  +long address
+  -float status
   -double phone
   #double active
-  +double amount
-  +sendNote()
+  +calculateQuantity()
+  +updatePhone()
 }
-class Interest {
-  +String updatedAt
-  -String type
-  +int createdAt
-  +createType()
-  +getStatus()
-  +cancelCode()
-  +createLevel()
+interface Interest {
+  -int active
+  +double note
+  +createNote()
+  +validatePhone()
 }
-interface Statement {
-  #boolean id
-  +float total
-  +int duration
-  #int description
-  +saveDescription()
-  +createUpdatedat()
-  +saveDescription()
-  +setQuantity()
+class Statement {
+  #Date id
+  -String duration
+  +boolean updatedAt
+  +long total
+  #float email
+  +processCode()
+  +processScore()
+  +cancelCreatedat()
 }
-Statement ..|> Beneficiary
-Loan --o Beneficiary
-note right of Loan : Banking domain
+Beneficiary --> Interest : "1"
+Loan --> Statement : "0..1"
 @enduml

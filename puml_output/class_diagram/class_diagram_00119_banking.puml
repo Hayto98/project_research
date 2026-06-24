@@ -8,65 +8,61 @@ interface Statement {
   -String total
   +int id
   -Date code
-  +calculateDuration()
+  +setPrice()
+  +getAddress()
+}
+interface Transfer {
+  +float updatedAt
+  +float total
+  -float phone
+  +float description
+  +findStatus()
+  +getDescription()
+  +calculateName()
+  +processName()
+}
+abstract class Deposit {
+  #boolean updatedAt
+  #long price
+  +createType()
+  +calculateAmount()
   +sendEmail()
 }
-class Transfer {
-  +float phone
-  -Date description
-  -String id
-  -String code
-  #int price
-  +findScore()
-  +findAddress()
-  +findPhone()
-  +saveNote()
-}
-class Deposit {
+interface Loan {
   -float active
   +long amount
   +String phone
-  +validateDescription()
-}
-class Loan {
-  -long description
-  #Date phone
-  #long amount
-  -int updatedAt
-  +sendCreatedat()
-  +setId()
-  +validateNote()
+  +createAmount()
 }
 class Withdrawal {
-  +float price
-  +int id
-  -Date type
-  -Date createdAt
-  +long address
-  +updateName()
-  +setType()
-}
-abstract class Transaction {
-  -Date email
-  +Date level
-  -boolean score
-  +String status
-  +saveNote()
-}
-abstract class Account {
-  #long level
-  +Date email
-  -int createdAt
-  -Date address
-  #boolean score
-  +calculateQuantity()
-  +updateCreatedat()
+  #int quantity
+  +double description
+  -boolean phone
   +validateAddress()
+  +saveTotal()
+  +validateCreatedat()
 }
-Withdrawal --o Transfer
-Transfer ..|> Transaction
-Statement --* Withdrawal
-Deposit --> Account : "0..1"
-Loan --> Deposit : "*"
-note right of Statement : Banking domain
+interface Transaction {
+  -double score
+  +double createdAt
+  -String status
+  -int id
+  +createScore()
+  +updateCode()
+  +processAmount()
+}
+class Account {
+  +String type
+  -double id
+  #long phone
+  -boolean updatedAt
+  #String active
+  +validateTotal()
+  +processQuantity()
+  +cancelScore()
+}
+Withdrawal --|> Statement
+Statement --o Transaction
+Account --> Loan : "*"
+Withdrawal --* Transaction
 @enduml

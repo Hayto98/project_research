@@ -6,56 +6,48 @@ abstract class Customer {
   +long price
   #String score
   +boolean name
-  +findName()
-  +deleteActive()
-  +sendName()
+  +setCode()
+  +savePhone()
+  +updateType()
 }
-class FuelLog {
-  -double createdAt
-  #String total
-  +deleteUpdatedat()
-  +deleteDuration()
-  +createAddress()
-  +calculateDuration()
+interface FuelLog {
+  +double createdAt
+  -double code
+  +sendStatus()
 }
-class Package {
-  +String createdAt
+interface Package {
+  -boolean description
+  +double updatedAt
+  +long duration
   -boolean email
-  #int price
-  -long note
-  #Date phone
-  +updateDuration()
-  +validateAmount()
-  +processDuration()
+  -long address
+  +processAmount()
+  +createDuration()
 }
 interface DeliveryNote {
-  #long updatedAt
-  +Date level
-  +double id
-  -float score
-  +Date email
-  +getCreatedat()
+  #long price
+  +boolean quantity
+  -int score
+  +setPhone()
+  +getQuantity()
+  +cancelQuantity()
+  +saveUpdatedat()
 }
-interface Warehouse {
-  -double description
-  #double email
-  +float amount
-  +double name
-  +sendDuration()
-  +findPhone()
-  +updateTotal()
+class Warehouse {
+  #long id
+  +Date email
+  +validateUpdatedat()
 }
 class Manifest {
-  #double description
-  +String score
-  +int amount
-  #double price
-  +createEmail()
-  +calculateScore()
-  +sendLevel()
-  +validateCreatedat()
+  #float code
+  #long id
+  +long createdAt
+  +deleteNote()
+  +createQuantity()
 }
-FuelLog ..> Manifest : "*"
-DeliveryNote --> Manifest : "1..*"
-note right of Customer : Logistics domain
+Manifest ..|> DeliveryNote
+Customer --* DeliveryNote
+Warehouse ..> Manifest : "1..*"
+FuelLog ..|> DeliveryNote
+Package --> FuelLog : "0..1"
 @enduml

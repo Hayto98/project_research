@@ -3,10 +3,10 @@ skinparam backgroundColor #FFFFFF
 skinparam roundCorner 15
 skinparam ArrowColor #555555
 left to right direction
-actor "Fleet Manager" as FleetManager
-actor "Dispatcher" as Dispatcher
-actor "Warehouse Staff" as WarehouseStaff
-actor "Customer" as Customer
+actor "Fleet Manager" as FM
+actor "Dispatcher" as D
+actor "Warehouse Staff" as WS
+actor "Customer" as C
 rectangle "Logistics System" {
   usecase "Fuel Vehicle" as UC_FuelVehicle
   usecase "Load Package" as UC_LoadPackage
@@ -17,13 +17,13 @@ rectangle "Logistics System" {
   usecase "Update Inventory" as UC_UpdateInventory
   usecase "Report Issue" as UC_ReportIssue
 }
-FleetManager --> UC_SchedulePickup
-Dispatcher --> UC_DeliverPackage
-WarehouseStaff --> UC_DeliverPackage
-WarehouseStaff --> UC_SchedulePickup
-WarehouseStaff --> UC_AssignRoute
-Customer --> UC_UpdateInventory
-Customer --> UC_SchedulePickup
-Customer --> UC_ReportIssue
+FM --> UC_SchedulePickup
+D --> UC_DeliverPackage
+WS --> UC_DeliverPackage
+WS --> UC_SchedulePickup
+WS --> UC_AssignRoute
+C --> UC_UpdateInventory
+C --> UC_SchedulePickup
+C --> UC_ReportIssue
 UC_FuelVehicle ..> UC_SchedulePickup : <<extend>>
 @enduml

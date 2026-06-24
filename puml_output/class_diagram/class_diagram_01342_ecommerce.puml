@@ -5,60 +5,58 @@ interface Return {
   -long email
   +long level
   #int score
-  +createDuration()
-  +cancelCode()
-  +saveAddress()
-  +calculateLevel()
+  +deleteCreatedat()
+  +findDescription()
+  +getQuantity()
+  +cancelStatus()
 }
 class Customer {
   #float level
-  #String updatedAt
-  #String code
-  +sendTotal()
+  #String amount
+  #String createdAt
+  #boolean updatedAt
+  #boolean code
+  +getScore()
 }
-class Wishlist {
-  #float active
-  -String level
-  +calculateEmail()
-  +setActive()
-  +validatePhone()
-  +sendAddress()
+abstract class Wishlist {
+  #boolean status
+  -String active
+  +createDuration()
+  +createEmail()
+  +cancelPhone()
+  +deleteQuantity()
 }
-class Cart {
-  -String createdAt
-  #long code
-  +setPhone()
-  +updatePhone()
+interface Cart {
+  +int phone
+  #boolean score
+  +float address
+  -String description
+  +getEmail()
+  +cancelEmail()
+  +sendPhone()
 }
 class Review {
+  -String status
   -double duration
-  +long score
-  +validateName()
-  +findType()
-  +saveAmount()
+  -String score
+  #double total
   +processPhone()
+  +sendCreatedat()
 }
 class Invoice {
-  #Date code
-  +int score
-  -boolean amount
-  +long active
-  +calculateDescription()
-  +getPrice()
-  +deleteScore()
-  +deleteLevel()
-}
-class Shipment {
-  +String id
-  +String email
-  #int code
   #int phone
-  +updateId()
-  +findCode()
-  +findStatus()
+  #Date code
+  +saveQuantity()
 }
-Wishlist ..> Return : "1"
-Shipment ..|> Customer
-Cart ..|> Wishlist
-note right of Return : Ecommerce domain
+abstract class Shipment {
+  +String phone
+  #double total
+  +boolean level
+  +setQuantity()
+  +processEmail()
+}
+Wishlist --|> Invoice
+Wishlist ..> Return : "1..*"
+Shipment --|> Return
+Customer ..> Return : "0..1"
 @enduml

@@ -7,56 +7,50 @@ class Account {
   #String score
   #Date email
   +double quantity
-  +findName()
-  +validateUpdatedat()
-  +setId()
+  +setActive()
+  +sendUpdatedat()
+  +calculateId()
 }
-abstract class Customer {
-  -String id
-  #int active
-  #long code
+class Customer {
+  +String code
+  #float id
+  #String type
+  +deleteNote()
   +updateCode()
+  +setAddress()
+}
+class Beneficiary {
+  #boolean createdAt
+  -String duration
+  +String code
+  -Date note
+  +validateActive()
+  +sendDuration()
+  +sendAddress()
   +processLevel()
 }
-interface Beneficiary {
-  #Date name
-  -double duration
-  -long code
-  -boolean note
-  -String active
-  +sendPrice()
-}
-interface Interest {
-  +String updatedAt
-  #Date amount
-  +Date phone
-  -Date email
-  -int price
-  +createScore()
-  +deleteNote()
+abstract class Interest {
+  +boolean note
+  -boolean level
+  -float type
+  +int name
+  +calculateScore()
+  +deleteAmount()
+  +sendNote()
 }
 class Deposit {
-  -double id
-  +Date name
-  +boolean amount
-  #float code
-  -boolean score
+  +boolean quantity
+  +float note
   +createType()
+  +getCreatedat()
+  +setType()
 }
-interface Card {
-  #int score
-  #String amount
-  +Date price
-  +String name
-  +validateDuration()
-  +calculateUpdatedat()
-  +setUpdatedat()
-  +cancelDescription()
+abstract class Card {
+  -Date level
+  +String active
+  +validateLevel()
+  +createNote()
 }
-Card --* Account
-Customer --|> Account
-Customer ..> Interest : "1..*"
-Account --o Interest
-Account --* Customer
-note right of Account : Banking domain
+Customer --o Interest
+Customer --> Card : "*"
 @enduml

@@ -5,36 +5,34 @@ abstract class Guest {
   #Date active
   +boolean total
   -float amount
-  +processActive()
-  +saveType()
-  +setType()
-  +sendLevel()
+  +setActive()
+  +sendCode()
+  +getScore()
+  +createEmail()
 }
-class Reservation {
-  +Date quantity
-  +long description
-  +getEmail()
-  +sendScore()
-  +calculateQuantity()
-  +calculateAmount()
+abstract class Reservation {
+  #Date type
+  #long active
+  +cancelAddress()
 }
-abstract class Room {
+class Room {
+  -String name
+  #long phone
+  +setTotal()
+  +sendStatus()
+  +getAddress()
+  +processUpdatedat()
+}
+abstract class Restaurant {
   +float note
   #boolean amount
   #long email
   +double createdAt
-  +deleteCode()
-  +createType()
-  +getAmount()
+  +validateCode()
+  +validatePhone()
+  +deleteCreatedat()
 }
-abstract class Restaurant {
-  -int email
-  +String phone
-  +String note
-  +saveId()
-  +cancelActive()
-}
-Restaurant --|> Guest
-Room --|> Guest
-note right of Guest : Hotel domain
+Guest --o Restaurant
+Reservation --* Room
+Room --o Reservation
 @enduml

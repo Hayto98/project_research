@@ -6,40 +6,45 @@ interface MedicalRecord {
   #float address
   +int level
   +boolean quantity
-  +setAmount()
-  +createLevel()
+  +cancelEmail()
+  +processCreatedat()
 }
-abstract class Doctor {
-  #boolean quantity
-  #long updatedAt
-  -Date score
-  +updateId()
-  +processDescription()
+class Doctor {
+  +boolean level
+  #boolean total
+  #long description
+  -Date quantity
+  +processDuration()
+  +processCode()
 }
-class Prescription {
-  +boolean total
-  -float amount
-  #float code
-  +getAddress()
-  +saveAddress()
-  +saveTotal()
+abstract class Prescription {
+  +String status
+  +boolean updatedAt
+  -float total
+  +processName()
+  +validateScore()
+  +validatePrice()
 }
-abstract class LabTest {
-  +double email
-  +String phone
-  +processType()
-  +getQuantity()
+class LabTest {
+  -String total
+  +int status
+  -double email
+  +long phone
+  -double level
+  +calculatePhone()
+  +calculateScore()
+  +createAmount()
+  +saveQuantity()
 }
-abstract class Appointment {
-  #int price
-  +double quantity
-  -int email
-  #int phone
-  +double description
-  +deleteQuantity()
+interface Appointment {
+  +boolean createdAt
+  +String price
+  -String type
+  +cancelAddress()
+  +validateTotal()
 }
-Appointment ..|> MedicalRecord
+MedicalRecord --> Doctor : "1"
 LabTest ..> Prescription : "1"
 Appointment --|> Doctor
-note right of MedicalRecord : Healthcare domain
+LabTest --|> Appointment
 @enduml

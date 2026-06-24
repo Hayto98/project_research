@@ -1,10 +1,10 @@
 @startuml
 skinparam shadowing true
 left to right direction
-actor "Insurance Provider" as InsuranceProvider
-actor "Nurse" as Nurse
-actor "Doctor" as Doctor
-actor "Lab Technician" as LabTechnician
+actor "Insurance Provider" as IP
+actor "Nurse" as N
+actor "Doctor" as D
+actor "Lab Technician" as LT
 rectangle "Healthcare System" {
   usecase "Issue Prescription" as UC_IssuePrescription
   usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
@@ -15,12 +15,12 @@ rectangle "Healthcare System" {
   usecase "Examine Patient" as UC_ExaminePatient
   usecase "Discharge Patient" as UC_DischargePatient
 }
-InsuranceProvider --> UC_ProcessInsuranceClaim
-InsuranceProvider --> UC_ExaminePatient
-Nurse --> UC_RunLabTest
-Nurse --> UC_DischargePatient
-Nurse --> UC_BookAppointment
-Doctor --> UC_BookAppointment
-LabTechnician --> UC_DischargePatient
+IP --> UC_ProcessInsuranceClaim
+IP --> UC_ExaminePatient
+N --> UC_RunLabTest
+N --> UC_DischargePatient
+N --> UC_BookAppointment
+D --> UC_BookAppointment
+LT --> UC_DischargePatient
 UC_RunLabTest ..> UC_IssuePrescription : <<extend>>
 @enduml

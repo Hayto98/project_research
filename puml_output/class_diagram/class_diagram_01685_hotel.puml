@@ -6,55 +6,54 @@ skinparam defaultFontSize 13
 abstract class Payment {
   +int level
   +boolean score
-  +setNote()
-  +sendActive()
-  +sendAmount()
+  +deleteQuantity()
+  +deleteDuration()
+  +cancelAmount()
 }
-class Amenity {
-  -int quantity
-  +long note
-  +saveCode()
-  +deletePhone()
-  +calculateId()
+interface Amenity {
+  -double createdAt
+  +int name
+  -boolean quantity
+  +calculateTotal()
+  +sendPrice()
+  +setDescription()
 }
 class Housekeeping {
-  #double duration
-  -double note
-  +boolean updatedAt
-  -Date level
-  #boolean createdAt
-  +sendName()
-  +processQuantity()
-  +setPhone()
-  +updateActive()
+  #boolean total
+  #double id
+  +float code
+  -int note
+  +updateLevel()
+  +cancelCode()
+  +setType()
+  +sendAmount()
 }
-class Staff {
-  +float status
+abstract class Staff {
+  -int score
+  #int name
   -String type
-  #String score
-  -float phone
-  +validateTotal()
-  +setCreatedat()
+  -Date quantity
+  #boolean status
+  +calculateAddress()
+  +saveType()
+  +sendStatus()
 }
-interface Booking {
-  #boolean createdAt
-  #float name
-  +saveAmount()
-  +createName()
-  +processUpdatedat()
-  +processCode()
+abstract class Booking {
+  -float active
+  +long name
+  +validateEmail()
+  +getTotal()
+  +getScore()
+  +calculateActive()
 }
 class Guest {
-  -int amount
-  -long type
-  +String updatedAt
-  +float note
-  +savePrice()
-  +calculateStatus()
-  +updateNote()
+  #float name
+  #int active
+  -Date note
+  +deleteTotal()
 }
-Staff --|> Booking
-Staff --* Payment
-Guest --|> Booking
-note right of Payment : Hotel domain
+Amenity --|> Staff
+Payment --* Booking
+Amenity --o Booking
+Staff --o Amenity
 @enduml

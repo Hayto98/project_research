@@ -9,33 +9,35 @@ interface Attendance {
   +Date createdAt
   +float price
   +String code
-  +findAddress()
-  +validateAddress()
-  +setDescription()
-  +calculateDescription()
+  +deleteType()
+  +validateType()
+  +saveType()
+  +validateDuration()
 }
-abstract class Grade {
-  -double name
-  #boolean price
-  +cancelPhone()
-  +findQuantity()
+class Grade {
+  -String code
+  #String description
+  -double total
+  -Date level
+  +findUpdatedat()
+  +sendPhone()
 }
-interface Assignment {
+class Assignment {
   +float price
   +String address
-  +getStatus()
+  +validateType()
+  +updateDuration()
+  +getAmount()
+}
+class Book {
+  +int quantity
+  +boolean active
+  #long total
   +findDescription()
-  +createActive()
+  +getUpdatedat()
+  +getQuantity()
 }
-abstract class Book {
-  #Date updatedAt
-  -long duration
-  +calculateName()
-  +deleteCode()
-  +createCode()
-}
-Attendance --* Grade
-Book ..> Grade : "*"
-Assignment --* Attendance
-note right of Attendance : Education domain
+Book ..|> Attendance
+Attendance --|> Grade
+Assignment --> Book : "1"
 @enduml

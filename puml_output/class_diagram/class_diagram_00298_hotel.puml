@@ -5,40 +5,33 @@ class Invoice {
   #long address
   -Date active
   -float id
-  +updateScore()
-  +deleteQuantity()
+  +deleteAddress()
+  +calculatePrice()
 }
-interface Housekeeping {
-  +int score
-  #double type
-  #boolean id
-  +sendQuantity()
-}
-class Staff {
-  #String level
-  #float updatedAt
-  #String code
-  +validateAmount()
-  +calculateUpdatedat()
-  +validateTotal()
-  +processActive()
-}
-class Reservation {
-  +int name
-  #String phone
-  +sendDuration()
-  +processPhone()
-  +getPrice()
-}
-abstract class Service {
-  #double id
-  +String updatedAt
-  +boolean active
-  +getAddress()
-  +saveDescription()
+class Housekeeping {
+  #String score
+  +int duration
+  #double amount
+  #boolean type
   +getCreatedat()
 }
-Staff ..> Service : "1..*"
-Reservation ..> Invoice : "1"
-note right of Invoice : Hotel domain
+class Staff {
+  #float active
+  +float amount
+  +findPrice()
+}
+class Reservation {
+  -int active
+  -Date price
+  +findCode()
+  +processLevel()
+}
+abstract class Service {
+  -String id
+  +Date name
+  +createQuantity()
+}
+Service --* Reservation
+Invoice --o Reservation
+Housekeeping ..> Invoice : "0..1"
 @enduml

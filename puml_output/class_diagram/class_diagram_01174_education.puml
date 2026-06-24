@@ -8,51 +8,55 @@ interface Grade {
   -float type
   -float status
   +sendAmount()
-  +setLevel()
-  +cancelActive()
-  +calculateUpdatedat()
+  +cancelName()
+  +processUpdatedat()
+  +getType()
 }
-class Enrollment {
-  #String address
-  +int code
-  -double type
-  +calculatePhone()
-  +processStatus()
+interface Enrollment {
+  -Date updatedAt
+  +int address
+  +long amount
+  -int level
+  -Date code
+  +createNote()
+  +validateUpdatedat()
+  +updateUpdatedat()
 }
 interface Classroom {
   #float description
   +float quantity
   +double code
-  +updateId()
-  +cancelPhone()
+  +cancelNote()
+  +processCode()
 }
-class Attendance {
-  #String type
-  +Date email
+interface Attendance {
+  -double email
+  #String quantity
+  +Date type
   -boolean duration
-  +boolean price
-  +validateAddress()
-  +calculateEmail()
-  +updateEmail()
+  +getCreatedat()
+  +sendAddress()
 }
-abstract class Assignment {
-  +int phone
-  #float code
-  #double level
-  +String status
-  #String email
-  +findScore()
+class Assignment {
+  -Date total
+  -Date email
+  -float createdAt
+  +Date level
+  +saveActive()
 }
-abstract class Teacher {
-  -float total
-  #String amount
-  +createDescription()
-  +calculateCreatedat()
-  +setCreatedat()
-  +createScore()
+class Teacher {
+  +String amount
+  #String duration
+  #float score
+  +Date total
+  +validateDescription()
+  +deleteQuantity()
+  +setNote()
+  +findId()
 }
+Teacher --o Grade
+Classroom --o Enrollment
+Enrollment ..|> Grade
+Classroom ..|> Assignment
 Assignment --> Teacher : "*"
-Teacher --* Classroom
-Attendance --|> Teacher
-note right of Grade : Education domain
 @enduml

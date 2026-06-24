@@ -6,53 +6,55 @@ class Shipment {
   +float address
   #long id
   +String phone
-  +sendTotal()
-  +calculateCode()
-  +validateQuantity()
-  +validatePhone()
+  +getCreatedat()
+  +findAmount()
+  +setAmount()
+  +getPhone()
 }
-interface Payment {
-  +Date createdAt
-  +String email
-  -String level
-  +cancelId()
-  +deleteName()
-  +cancelName()
+class Payment {
+  +long quantity
+  -int address
+  #String phone
+  +double amount
+  +setQuantity()
 }
-abstract class Customer {
-  -boolean score
-  -long phone
-  +double quantity
-  +int active
-  +createLevel()
-  +calculateEmail()
-  +processScore()
+class Customer {
+  #Date amount
+  +double name
+  +cancelAmount()
+  +updateTotal()
+  +setTotal()
 }
-class Return {
-  +int amount
-  -double total
-  +boolean status
-  +long updatedAt
-  +sendType()
-  +updateType()
+interface Return {
+  +int score
+  #long phone
+  -boolean quantity
+  -float status
+  -float note
+  +getCreatedat()
+  +saveEmail()
+  +cancelType()
+  +validateScore()
 }
 class Cart {
-  +boolean quantity
-  #double description
-  #float name
-  -float total
-  +findLevel()
-  +deletePhone()
+  -String status
+  #int updatedAt
+  -int level
+  #float description
+  -int quantity
+  +updatePrice()
+  +processCreatedat()
+  +updateCode()
+  +calculateCreatedat()
 }
 class Supplier {
-  +Date status
-  #double level
-  #float score
-  +int amount
-  #double email
-  +findCode()
+  #Date name
+  -boolean total
+  -float updatedAt
+  +validateDescription()
+  +updateScore()
 }
-Cart --> Customer : "1"
-Customer --> Supplier : "*"
-note right of Shipment : Ecommerce domain
+Supplier ..> Customer : "1..*"
+Return --> Shipment : "0..1"
+Customer ..> Shipment : "*"
 @enduml

@@ -6,44 +6,39 @@ skinparam defaultFontSize 13
 abstract class CheckIn {
   #String address
   #boolean active
-  +validateDescription()
-  +createStatus()
-  +sendStatus()
+  +calculateCreatedat()
+  +findPhone()
+  +getNote()
 }
-abstract class Booking {
-  #String score
-  #Date name
-  +getTotal()
+class Booking {
+  +boolean total
+  +float score
+  +validateActive()
 }
 class Payment {
-  +int email
-  +int active
-  -long id
+  #double total
+  -boolean email
+  +calculateAddress()
+}
+class Amenity {
   +long amount
-  +Date name
-  +cancelPhone()
+  -float code
+  +findScore()
 }
-abstract class Amenity {
-  -long total
-  #int updatedAt
-  #Date description
-  +sendType()
-}
-abstract class Reservation {
-  +boolean updatedAt
-  #Date name
-  +findName()
+class Reservation {
+  -boolean duration
+  +double phone
+  +findPhone()
+  +createAmount()
 }
 class Staff {
-  +double updatedAt
-  -double createdAt
-  +saveLevel()
-  +createPhone()
-  +saveType()
-  +validateUpdatedat()
+  -double level
+  +float code
+  #float active
+  +saveEmail()
+  +sendStatus()
 }
-Payment --* Booking
-Payment ..> Reservation : "1"
-Reservation --> Booking : "0..1"
-note right of CheckIn : Hotel domain
+Reservation ..> Staff : "1"
+Staff ..> CheckIn : "1"
+CheckIn ..> Booking : "0..1"
 @enduml

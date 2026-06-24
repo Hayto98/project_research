@@ -5,47 +5,40 @@ class Notification {
   +long email
   +long code
   +long id
-  +setTotal()
-  +cancelStatus()
+  +setDescription()
+  +processLevel()
 }
-class Album {
-  -Date id
-  +float phone
-  -float email
-  +long level
-  +processScore()
-  +validateQuantity()
-  +deletePhone()
+interface Album {
+  #String description
+  -Date quantity
+  +findCode()
+  +getPhone()
+  +deleteStatus()
 }
 class Follower {
-  +int score
-  -int price
-  #Date active
-  +boolean total
-  +int name
-  +deleteNote()
-  +updatePhone()
-  +updateAddress()
-}
-class Like {
-  -String name
-  #long type
-  +int createdAt
-  +double total
-  +cancelName()
-  +processStatus()
-}
-interface Post {
+  #long status
+  #Date address
+  -int phone
   -long type
-  -long id
-  #int price
-  -float code
-  -int amount
-  +updateAmount()
-  +createActive()
+  +sendAmount()
+  +sendScore()
+  +sendPrice()
+  +findPrice()
 }
-Album --|> Follower
-Post --> Like : "1"
-Like --* Notification
-note right of Notification : Social Media domain
+abstract class Like {
+  -int code
+  #Date createdAt
+  +deleteDescription()
+}
+class Post {
+  +float address
+  #long description
+  +long note
+  +validateAmount()
+  +calculateLevel()
+  +saveId()
+}
+Album --o Like
+Notification ..|> Follower
+Album --o Notification
 @enduml

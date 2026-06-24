@@ -8,56 +8,51 @@ class Interest {
   #long updatedAt
   #boolean quantity
   +double amount
-  +validateId()
+  +findCode()
 }
-abstract class Statement {
-  #float email
-  #Date duration
-  -String createdAt
-  #int note
-  -float active
-  +calculateId()
+class Statement {
+  -double active
+  #float price
+  #Date email
+  -String score
+  #int createdAt
+  +setActive()
+  +updateDuration()
+  +validateType()
 }
-class Account {
-  -float id
-  -double score
-  #String phone
-  -Date createdAt
-  #String name
-  +processPrice()
-  +saveCode()
-  +saveEmail()
+abstract class Account {
+  +boolean address
+  -float type
+  +calculateEmail()
+  +cancelCreatedat()
 }
-interface Teller {
-  -long email
+class Teller {
+  -double duration
+  #String code
+  #long quantity
+  #boolean id
   #float address
-  +float name
-  -float description
-  -String active
+  +cancelPhone()
+  +findQuantity()
+  +findName()
   +deletePhone()
-  +calculateDuration()
-  +cancelScore()
-  +findPrice()
 }
-class Withdrawal {
-  +int level
-  +boolean phone
-  -long note
-  +updateAddress()
-  +savePhone()
-  +validateAddress()
-  +findCreatedat()
+interface Withdrawal {
+  -long description
+  #float duration
+  +saveType()
+  +calculateTotal()
 }
-class Transfer {
-  +String duration
-  #double name
-  #double level
-  -boolean description
-  +getCreatedat()
+abstract class Transfer {
+  -boolean name
+  #boolean total
+  #double amount
+  +int phone
+  +createName()
+  +processUpdatedat()
+  +validateQuantity()
 }
-Transfer ..> Withdrawal : "1"
-Interest ..> Statement : "1"
-Statement --|> Interest
-Transfer --|> Statement
-note right of Interest : Banking domain
+Withdrawal --* Account
+Teller --* Statement
+Transfer --* Account
 @enduml

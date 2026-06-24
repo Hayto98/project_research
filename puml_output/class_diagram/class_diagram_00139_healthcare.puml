@@ -6,57 +6,56 @@ class Treatment {
   #String updatedAt
   +long email
   #boolean duration
-  +getQuantity()
+  +updateActive()
 }
-abstract class Ward {
-  -Date score
-  -boolean id
-  +double description
-  +updateCode()
-  +processAmount()
+class Ward {
+  #double createdAt
+  #int score
+  -int id
+  +float description
+  +double note
+  +setQuantity()
+  +findDuration()
 }
 interface Nurse {
   #boolean id
   -int active
   -boolean type
-  +sendAddress()
-  +findAddress()
+  +getScore()
+  +calculateName()
 }
-abstract class Hospital {
-  #Date code
-  #int price
-  #double type
-  +long quantity
-  #long total
-  +cancelCode()
+class Hospital {
+  -Date total
+  #boolean code
+  +Date price
+  -int type
+  -boolean quantity
+  +updateNote()
+  +updateDuration()
+  +processId()
 }
 class Diagnosis {
+  -double amount
   -double createdAt
-  -boolean phone
-  -long type
-  +sendPhone()
-  +sendNote()
-  +deleteType()
+  +setAddress()
+  +validateUpdatedat()
+  +deleteName()
   +getAddress()
 }
-class Prescription {
-  +long type
-  -boolean score
-  +int id
-  #long duration
-  +getQuantity()
-  +deleteId()
+interface Prescription {
+  +long active
+  #float note
+  -long description
+  -float type
+  +validateUpdatedat()
 }
 class Patient {
+  #long type
   #boolean score
-  #Date name
-  +cancelStatus()
-  +calculateTotal()
+  +String updatedAt
+  -int amount
+  +createQuantity()
 }
-Prescription --o Nurse
-Nurse --* Patient
-Prescription --o Diagnosis
-Ward --> Diagnosis : "0..1"
-Ward ..> Hospital : "0..1"
-note right of Treatment : Healthcare domain
+Diagnosis --> Treatment : "0..1"
+Patient --|> Diagnosis
 @enduml

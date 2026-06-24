@@ -7,57 +7,62 @@ class Branch {
   -long score
   #int name
   #int duration
-  +sendName()
-  +deletePrice()
-  +cancelCreatedat()
-  +calculateEmail()
+  +sendQuantity()
+  +setUpdatedat()
+  +setPrice()
+  +setType()
 }
-interface Shelf {
-  #double code
-  #float status
-  +saveAmount()
-  +calculateId()
-  +setStatus()
-  +processUpdatedat()
+abstract class Shelf {
+  #float total
+  +String email
+  #double id
+  +sendDuration()
+  +validateQuantity()
+  +processLevel()
+  +updatePrice()
 }
 class Catalog {
-  #float name
-  #String total
-  #String createdAt
-  #float id
-  +deleteName()
-  +processStatus()
-  +processCreatedat()
+  +float type
+  -String updatedAt
+  +sendId()
+  +setCode()
+  +updatePrice()
+  +createStatus()
 }
 class Author {
-  -Date code
-  -Date updatedAt
-  +String duration
-  #long level
-  -long name
-  +deleteNote()
-  +validateCreatedat()
-  +findAddress()
+  +String active
+  -String quantity
+  +saveLevel()
+  +cancelNote()
+  +findCode()
+  +validateStatus()
 }
-class Loan {
-  +String id
-  #boolean updatedAt
-  +processCode()
-  +cancelDuration()
+abstract class Loan {
+  +boolean updatedAt
+  +long code
+  +processNote()
+  +saveEmail()
+  +getType()
+  +cancelAmount()
 }
 class Member {
-  -Date amount
-  #int description
-  +Date id
-  +sendCreatedat()
+  -int phone
+  #long quantity
+  +String amount
+  +int note
+  +updateActive()
 }
 interface Reservation {
-  #int updatedAt
-  -float price
-  +getUpdatedat()
+  #int type
+  +int code
+  +long quantity
+  +deleteAddress()
+  +getStatus()
 }
+Member --|> Reservation
+Loan ..> Shelf : "1"
+Shelf --> Author : "0..1"
+Reservation --|> Catalog
+Branch ..|> Shelf
 Member --|> Branch
-Branch ..|> Reservation
-Shelf ..> Catalog : "1..*"
-note right of Branch : Library domain
 @enduml

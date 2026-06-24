@@ -9,56 +9,63 @@ class Shipment {
   #Date note
   -double duration
   +float total
+  +calculateAddress()
   +deleteStatus()
-  +findStatus()
 }
 class Category {
-  -long score
-  #long quantity
-  +String status
-  +deleteName()
-  +createTotal()
-}
-interface Customer {
-  -int price
   #long amount
-  +getTotal()
+  +double duration
+  +setScore()
+  +validateLevel()
+  +sendAddress()
+}
+class Customer {
+  +long createdAt
+  #Date amount
+  +setPhone()
+  +saveActive()
+  +validateTotal()
+  +createStatus()
 }
 class Return {
-  #float level
-  #int code
-  +long updatedAt
-  -Date status
-  #long id
-  +saveTotal()
+  #String amount
+  +Date phone
+  -Date description
+  +double active
+  #String quantity
+  +updateName()
+  +deleteId()
 }
 class Review {
-  +boolean price
-  -Date description
-  +int updatedAt
-  +setLevel()
-  +updatePrice()
-  +cancelQuantity()
+  #Date status
+  -float email
+  +Date level
+  +deleteLevel()
+  +sendNote()
+  +sendQuantity()
   +cancelNote()
 }
-class Order {
-  -String address
-  -int amount
-  +long score
-  -long type
-  +double createdAt
-  +saveNote()
+abstract class Order {
+  #String updatedAt
+  +double id
+  +boolean price
+  +saveName()
+  +setPhone()
 }
-abstract class Warehouse {
-  +String total
-  +double note
-  +String description
-  #String name
-  +getQuantity()
-  +validateLevel()
-  +findDescription()
+class Warehouse {
+  +long phone
+  +long type
+  +int address
+  -double amount
+  -String level
+  +createPhone()
+  +sendStatus()
+  +setActive()
+  +cancelPrice()
 }
-Customer --* Return
-Shipment ..> Customer : "0..1"
-note right of Shipment : Ecommerce domain
+Return ..> Review : "1..*"
+Warehouse ..> Return : "*"
+Category --|> Order
+Warehouse --|> Shipment
+Category --|> Return
 @enduml

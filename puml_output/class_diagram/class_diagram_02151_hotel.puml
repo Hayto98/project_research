@@ -5,51 +5,48 @@ interface CheckOut {
   -String updatedAt
   -double duration
   #float total
-  +setCode()
-  +savePhone()
+  +createAddress()
+  +cancelType()
 }
-interface CheckIn {
-  -float description
-  +long name
-  +validatePhone()
-  +findLevel()
-  +savePhone()
+class CheckIn {
+  -float duration
+  +long status
+  #long description
+  -long name
+  +getType()
+  +findStatus()
+  +updateNote()
 }
 class Restaurant {
-  -float description
-  #double email
-  +calculatePhone()
+  +double email
+  #long phone
+  +float total
+  +createEmail()
 }
-class Payment {
-  +Date score
-  +long status
-  +deleteTotal()
-  +cancelId()
+interface Payment {
+  -float id
+  -int code
+  +deleteDescription()
   +cancelLevel()
-  +saveEmail()
+  +cancelTotal()
+  +processAddress()
 }
 interface Room {
-  -Date duration
+  -Date score
+  #double description
   #double createdAt
-  #double note
-  +findNote()
-  +validateType()
-  +getNote()
+  -Date note
+  +setEmail()
+  +calculateType()
+  +sendPrice()
+  +cancelName()
 }
 abstract class Housekeeping {
-  #String note
-  -Date createdAt
-  #double code
-  -boolean status
-  +boolean quantity
-  +setId()
-  +validateUpdatedat()
-  +findId()
+  -double note
+  +String type
+  +processId()
 }
-Housekeeping --|> CheckOut
-CheckOut --|> Housekeeping
-CheckIn --* CheckOut
-CheckIn ..|> Payment
-CheckOut ..> Restaurant : "0..1"
-note right of CheckOut : Hotel domain
+Room --o CheckOut
+Housekeeping --* Payment
+Room --|> Restaurant
 @enduml

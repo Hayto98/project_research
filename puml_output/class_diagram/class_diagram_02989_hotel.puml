@@ -6,60 +6,59 @@ class CheckIn {
   -double createdAt
   +double status
   #int level
-  +cancelNote()
-  +processStatus()
+  +validateActive()
+  +calculateAmount()
 }
-class Reservation {
-  #double id
-  #int score
-  +long price
-  +float duration
-  +updateActive()
-  +calculateAddress()
-  +cancelActive()
+abstract class Reservation {
+  +boolean code
+  #Date address
+  +validateType()
+  +findLevel()
+  +saveDuration()
+  +updateScore()
 }
-interface Restaurant {
-  +Date status
-  +boolean amount
-  +validateCreatedat()
-  +processName()
+class Restaurant {
+  +boolean description
+  -long code
+  #boolean quantity
+  #String updatedAt
+  +int email
+  +findStatus()
 }
 class CheckOut {
-  -boolean status
-  -String id
-  #long phone
-  -double note
-  +Date score
-  +createUpdatedat()
-  +validateActive()
-  +findPrice()
+  +float phone
+  +double createdAt
+  +String type
+  +createName()
+  +updateTotal()
+  +setActive()
 }
-interface Amenity {
-  #String status
-  #Date code
-  -int quantity
-  #int active
-  +getLevel()
-  +sendAddress()
+class Amenity {
+  +Date status
+  -long quantity
+  #int phone
+  -boolean type
+  +validateStatus()
+  +getCode()
+  +deleteCreatedat()
+  +createPhone()
 }
 class Room {
-  #Date score
-  #String phone
-  +findPrice()
+  +Date active
+  +float level
+  +float code
+  +boolean price
+  +cancelLevel()
+  +calculateStatus()
+  +validateStatus()
 }
 class Staff {
-  -boolean description
-  +Date note
-  #String address
-  #String level
-  +String amount
-  +cancelLevel()
-  +deletePrice()
-  +createCode()
+  #Date score
+  #String phone
+  +sendUpdatedat()
 }
-CheckOut --* Restaurant
-Reservation --|> Room
-Room --|> Restaurant
-Room --|> Staff
-note right of CheckIn : Hotel domain
+Reservation ..> CheckOut : "0..1"
+Room --* CheckOut
+CheckOut --o Reservation
+Amenity ..> CheckIn : "1"
 @enduml

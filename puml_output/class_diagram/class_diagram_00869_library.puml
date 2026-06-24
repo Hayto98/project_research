@@ -5,42 +5,41 @@ abstract class Librarian {
   +double id
   -Date active
   +boolean code
-  +createLevel()
-  +processName()
-  +saveStatus()
-  +saveId()
+  +calculateScore()
+  +findStatus()
+  +cancelActive()
+  +validateUpdatedat()
 }
 class Member {
-  #Date email
-  #String amount
-  +double description
-  #Date code
-  +saveNote()
+  #long id
+  -int description
+  +cancelActive()
+  +processAmount()
 }
-class Branch {
-  -long level
-  -float code
-  -String price
-  #int email
-  +findAddress()
-}
-class Book {
-  #float duration
-  +long level
-  +findAmount()
-  +validateScore()
+interface Branch {
+  #Date id
+  #String note
   +updateStatus()
+  +findTotal()
+  +findQuantity()
+  +processScore()
+}
+interface Book {
+  -long duration
+  -long price
+  +updateUpdatedat()
+  +findDuration()
+  +processDuration()
+  +processQuantity()
 }
 class Fine {
-  #String total
-  -double description
-  +boolean duration
-  +deleteName()
-  +saveUpdatedat()
-  +setAmount()
-  +validateLevel()
+  #float code
+  +long level
+  +updateId()
+  +updateType()
+  +cancelLevel()
 }
-Fine ..> Book : "1..*"
 Fine --|> Member
-note right of Librarian : Library domain
+Member ..> Fine : "*"
+Member --> Book : "1"
 @enduml

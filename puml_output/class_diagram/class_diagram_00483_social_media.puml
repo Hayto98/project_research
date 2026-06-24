@@ -4,16 +4,21 @@ interface Profile {
   +boolean name
   -String phone
   +long level
-  +findDescription()
-  +updateDescription()
-  +processTotal()
-  +cancelAddress()
+  +cancelDescription()
+  +setType()
+  +updateAmount()
+  +sendEmail()
 }
 class Message {
-  +Date updatedAt
-  -int active
-  +double email
-  +updatePrice()
+  +boolean total
+  #boolean level
+  -String address
+  #double quantity
+  +int amount
+  +cancelScore()
+  +setName()
+  +calculateNote()
+  +saveName()
 }
 abstract class Album {
   +boolean email
@@ -21,43 +26,37 @@ abstract class Album {
   -long level
   -double price
   #Date total
-  +setEmail()
-  +sendPhone()
+  +findNote()
+  +deleteCreatedat()
 }
-class Group {
-  +long createdAt
-  #int id
-  -Date note
-  +Date status
-  #double address
-  +getStatus()
+interface Group {
+  +boolean createdAt
+  #double score
+  +long total
+  +long duration
+  +deletePrice()
+  +cancelScore()
+}
+class User {
+  #String type
+  -double name
+  -Date status
+  #Date createdAt
+  -float score
+  +setScore()
+}
+class Follower {
+  -boolean email
+  #float amount
+  -Date updatedAt
+  #boolean duration
+  +double type
+  +deleteAddress()
+  +getEmail()
+  +processCode()
   +sendCreatedat()
-  +setActive()
-  +getTotal()
 }
-abstract class User {
-  -int duration
-  #int phone
-  -double id
-  -boolean description
-  #float price
-  +saveScore()
-  +getType()
-  +processUpdatedat()
-  +deleteId()
-}
-abstract class Follower {
-  #int updatedAt
-  +boolean price
-  -long total
-  #int address
-  +validateCreatedat()
-  +createUpdatedat()
-  +calculateQuantity()
-}
-Message --* Album
-Follower --> Album : "1..*"
-User ..> Follower : "1"
-Group --|> Follower
-note right of Profile : Social Media domain
+Message --o Group
+Album ..|> User
+Message --* User
 @enduml

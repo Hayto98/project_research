@@ -7,52 +7,49 @@ abstract class Prescription {
   +Date email
   #Date updatedAt
   +int price
-  +calculateType()
+  +saveCode()
 }
 abstract class Treatment {
-  +boolean id
-  #int duration
-  +processCode()
-  +saveAmount()
+  #Date active
+  +int name
+  -float id
+  +Date score
+  #int description
+  +findTotal()
 }
-class MedicalRecord {
+interface MedicalRecord {
   +boolean quantity
   -boolean duration
   +long type
   -int level
   #long price
+  +getCreatedat()
+  +saveAddress()
+  +createPrice()
+}
+interface Patient {
+  -double updatedAt
+  +boolean email
   +sendAmount()
-  +calculateLevel()
-  +setUpdatedat()
+  +findTotal()
+  +createDuration()
+  +getDescription()
 }
-class Patient {
-  #float price
-  -float createdAt
-  +Date active
-  #String total
-  +sendQuantity()
-  +validateName()
-  +deleteLevel()
-  +setActive()
+class LabTest {
+  -long note
+  +int score
+  +calculateActive()
 }
-interface LabTest {
+interface Insurance {
   -int note
   -long status
   +String duration
-  +calculateAddress()
-  +saveStatus()
-  +cancelName()
+  +findAmount()
+  +sendDuration()
+  +getAmount()
 }
-interface Insurance {
-  -String price
-  -long code
-  +setDescription()
-  +saveLevel()
-  +createName()
-  +getPhone()
-}
-MedicalRecord --> Insurance : "1"
-Patient ..|> Insurance
-Treatment --* Insurance
-note right of Prescription : Healthcare domain
+Insurance --> Prescription : "1"
+LabTest --o Prescription
+Prescription --|> Patient
+Patient --o MedicalRecord
 @enduml

@@ -5,44 +5,45 @@ skinparam defaultFontSize 11
 abstract class Nurse {
   #float score
   -float amount
-  +calculateLevel()
-  +setCreatedat()
+  +updateEmail()
+  +processScore()
 }
-class Prescription {
-  #Date quantity
-  -int score
-  +calculatePhone()
+interface Prescription {
+  +long createdAt
+  #boolean description
+  +setLevel()
+  +validateId()
+  +setNote()
 }
-interface Insurance {
+class Insurance {
   +float code
   -float status
-  +validateQuantity()
+  +calculateName()
 }
-interface Patient {
+class Patient {
   +boolean duration
   +boolean updatedAt
-  +findAmount()
-  +setScore()
+  +validateType()
+  +setCreatedat()
 }
 class Billing {
-  #boolean updatedAt
-  +Date price
-  #double quantity
-  #double status
-  +deleteAmount()
-  +calculateId()
-  +findCreatedat()
-  +savePhone()
+  #boolean score
+  -int id
+  +deleteType()
+  +calculatePhone()
+  +calculateDescription()
+  +cancelEmail()
 }
-abstract class Appointment {
-  +double createdAt
-  #Date price
-  +validateLevel()
-  +findAmount()
-  +updateQuantity()
+interface Appointment {
+  -float type
+  +int duration
+  +processName()
+  +updateScore()
+  +createTotal()
+  +cancelNote()
 }
-Prescription --* Appointment
-Appointment ..|> Patient
-Billing --|> Appointment
-note right of Nurse : Healthcare domain
+Patient ..|> Nurse
+Patient --o Prescription
+Appointment --* Insurance
+Billing ..|> Prescription
 @enduml

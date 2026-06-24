@@ -7,68 +7,64 @@ abstract class Shipment {
   +Date type
   +long phone
   +long amount
-  +deleteTotal()
-  +sendScore()
-  +getPrice()
+  +validateLevel()
+  +deletePhone()
+  +saveAddress()
 }
-interface Depot {
-  -long duration
-  +int phone
-  +saveAmount()
-  +calculateActive()
-  +processEmail()
+abstract class Depot {
+  #boolean price
+  #String level
+  +createName()
+  +validateScore()
+  +validateNote()
 }
 class Manifest {
-  -double id
-  #long total
-  #int price
-  #long updatedAt
-  +updateAddress()
-  +setCreatedat()
-  +sendDescription()
-  +deleteNote()
+  #long amount
+  +long total
+  +Date active
+  -double note
+  +validateScore()
+  +sendScore()
 }
 class Tracking {
-  +boolean level
-  +Date address
-  -float phone
-  +String amount
-  -Date email
-  +createCode()
-  +saveEmail()
-  +saveTotal()
-  +setUpdatedat()
+  -String email
+  +boolean price
+  +int createdAt
+  +cancelLevel()
+  +findCreatedat()
+  +processTotal()
+  +findLevel()
 }
-class Customer {
-  +boolean description
-  +boolean score
-  +boolean note
-  -double type
-  -long quantity
-  +setDuration()
-  +findType()
-  +validateName()
+interface Customer {
+  #String phone
+  #long amount
+  +String email
+  -Date updatedAt
+  +cancelLevel()
+  +deleteCreatedat()
+  +getType()
+  +updateAddress()
 }
-interface Package {
-  +float duration
-  #double id
-  -long price
-  +processLevel()
-  +createType()
-  +cancelScore()
+class Package {
+  #double status
+  #double updatedAt
+  #float code
+  -int type
+  #String description
+  +getQuantity()
 }
-class Route {
-  +int duration
-  -String name
-  +getPrice()
-  +updateActive()
-  +processScore()
-  +validateDuration()
+abstract class Route {
+  -float email
+  +float address
+  #float quantity
+  +boolean code
+  +double type
+  +calculateType()
 }
-Depot ..|> Shipment
-Tracking ..|> Manifest
-Shipment ..> Package : "*"
-Package ..> Manifest : "1"
-Customer ..> Package : "1"
-note right of Shipment : Logistics domain
+Tracking --* Manifest
+Manifest ..> Tracking : "1..*"
+Tracking --> Customer : "1"
+Shipment --|> Customer
+Depot --o Route
+Shipment --|> Tracking
 @enduml

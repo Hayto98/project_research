@@ -8,53 +8,54 @@ interface Payment {
   #long createdAt
   #long level
   +boolean active
-  +setScore()
-  +sendCreatedat()
-  +calculateAmount()
+  +getLevel()
+  +saveActive()
+  +createUpdatedat()
 }
-abstract class Review {
-  -boolean score
-  -long level
-  -long code
-  +double address
+class Review {
+  -double amount
   -boolean note
-  +cancelAddress()
-  +saveEmail()
+  -long active
+  -long level
+  +double code
+  +cancelAmount()
+  +setCreatedat()
+  +validateCreatedat()
+  +getCode()
 }
 class Category {
-  -Date name
-  +int code
-  -String duration
-  -int score
-  +saveId()
-  +updateDescription()
-  +processNote()
+  +String createdAt
+  -Date phone
+  +int name
+  -String code
+  +setLevel()
+  +calculateUpdatedat()
+  +updateLevel()
 }
-interface Return {
-  #int email
-  +double score
-  +double note
-  +findNote()
-  +updateCreatedat()
-  +findAddress()
-}
-abstract class Warehouse {
-  -long name
-  -String type
-  #float code
-  +saveQuantity()
-  +calculateCode()
-  +saveStatus()
-  +findName()
-}
-interface Customer {
-  +int total
-  #Date name
+class Return {
   #int description
-  +processQuantity()
+  -boolean type
+  -float note
+  +validatePhone()
+  +findActive()
 }
-Review ..> Category : "*"
-Payment ..> Review : "1..*"
-Review --* Return
-note right of Payment : Ecommerce domain
+class Warehouse {
+  -Date address
+  #int note
+  +double updatedAt
+  +long createdAt
+  -long duration
+  +getScore()
+}
+abstract class Customer {
+  #boolean price
+  #boolean code
+  +double status
+  +float name
+  +setQuantity()
+  +calculateEmail()
+}
+Customer ..|> Warehouse
+Payment --* Return
+Review --* Customer
 @enduml

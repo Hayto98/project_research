@@ -9,38 +9,39 @@ class Treatment {
   -int status
   -Date active
   -boolean amount
-  +validateLevel()
-  +processQuantity()
+  +calculateCreatedat()
+  +savePrice()
 }
-class Billing {
-  +Date updatedAt
-  #Date createdAt
-  +createNote()
+abstract class Billing {
+  +Date email
+  #Date status
+  +long updatedAt
+  -int createdAt
+  +findCode()
+  +findEmail()
 }
 class Hospital {
-  +float phone
-  +Date duration
-  -long status
-  +setDuration()
-  +calculatePrice()
-  +cancelName()
+  #double id
+  -long code
+  +deleteDescription()
 }
-class Diagnosis {
-  -float quantity
-  -Date price
-  +validateId()
-  +findType()
+abstract class Diagnosis {
+  -long level
+  -Date name
+  +long address
+  +Date status
+  -double quantity
+  +setAmount()
+  +getPhone()
 }
-abstract class MedicalRecord {
-  #long total
-  #String active
-  #String phone
-  +getDuration()
-  +cancelActive()
-  +getQuantity()
-  +updatePhone()
+interface MedicalRecord {
+  #double duration
+  +float email
+  #float code
+  #boolean score
+  +findStatus()
 }
+Billing --|> Hospital
 Diagnosis ..|> Treatment
 Diagnosis --o Hospital
-note right of Treatment : Healthcare domain
 @enduml

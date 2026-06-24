@@ -6,51 +6,50 @@ class Manifest {
   +int updatedAt
   -double code
   -Date level
-  +updateId()
+  +processPrice()
 }
 class Vehicle {
-  -Date amount
-  #String type
-  +boolean quantity
-  +getDescription()
+  -long amount
+  -Date duration
+  +findId()
 }
-class Depot {
-  -float updatedAt
-  #Date type
-  +createTotal()
+interface Depot {
+  +String id
+  +double description
+  +setActive()
+  +cancelDescription()
+  +sendDuration()
+  +createType()
 }
-interface Driver {
-  +boolean name
-  #float createdAt
-  +float quantity
-  #float status
-  +validateType()
+class Driver {
+  #int total
+  -String level
+  +boolean phone
+  #float name
+  +getStatus()
+  +getDuration()
 }
-class Inventory {
-  +float amount
-  -float price
-  +getId()
+interface Inventory {
+  +String phone
+  +double type
+  +calculateTotal()
 }
-interface Tracking {
-  -String note
-  -double type
-  #Date id
-  -float price
-  +Date total
-  +cancelCode()
-  +updateType()
-  +saveQuantity()
+abstract class Tracking {
+  #double name
+  -boolean id
+  +sendTotal()
+  +createPrice()
+  +setDuration()
+  +getAddress()
 }
 class Warehouse {
-  -int duration
-  -boolean description
-  +deleteAddress()
-  +updateLevel()
+  #Date note
+  -float price
+  +cancelScore()
+  +sendStatus()
 }
-Inventory ..|> Manifest
-Manifest --|> Depot
-Warehouse --|> Vehicle
-Tracking --* Inventory
-Tracking --* Vehicle
-note right of Manifest : Logistics domain
+Warehouse --|> Inventory
+Vehicle ..> Driver : "1..*"
+Tracking --|> Depot
+Inventory --o Vehicle
 @enduml

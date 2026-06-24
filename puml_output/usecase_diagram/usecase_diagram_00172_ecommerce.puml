@@ -1,10 +1,10 @@
 @startuml
 skinparam defaultFontSize 11
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Delivery Service" as DeliveryService
-actor "Customer" as Customer
-actor "Seller" as Seller
+actor "Payment Gateway" as PG
+actor "Delivery Service" as DS
+actor "Customer" as C
+actor "Seller" as S
 rectangle "Ecommerce System" {
   usecase "Make Payment" as UC_MakePayment
   usecase "Checkout" as UC_Checkout
@@ -14,14 +14,14 @@ rectangle "Ecommerce System" {
   usecase "Apply Coupon" as UC_ApplyCoupon
   usecase "Write Review" as UC_WriteReview
 }
-PaymentGateway --> UC_AddToCart
-PaymentGateway --> UC_ManageInventory
-PaymentGateway --> UC_MakePayment
-DeliveryService --> UC_AddToCart
-DeliveryService --> UC_ManageInventory
-Customer --> UC_WriteReview
-Customer --> UC_Checkout
-Seller --> UC_CancelOrder
-Seller --> UC_ManageInventory
+PG --> UC_AddToCart
+PG --> UC_ManageInventory
+PG --> UC_MakePayment
+DS --> UC_AddToCart
+DS --> UC_ManageInventory
+C --> UC_WriteReview
+C --> UC_Checkout
+S --> UC_CancelOrder
+S --> UC_ManageInventory
 UC_ManageInventory ..|> UC_ApplyCoupon : <<include>>
 @enduml

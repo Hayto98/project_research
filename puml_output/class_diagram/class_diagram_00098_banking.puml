@@ -8,33 +8,32 @@ class Interest {
   +int address
   -String price
   +Date id
-  +updateType()
+  +calculateNote()
 }
-class Account {
-  -int type
-  #double price
-  -boolean status
-  +float level
-  +int address
-  +updateStatus()
-  +deleteNote()
+abstract class Account {
+  -Date type
+  #long duration
+  -int price
+  #double status
+  +getScore()
+  +validateQuantity()
+  +deleteLevel()
 }
 class Withdrawal {
-  #double id
-  -Date type
-  +String duration
-  -long address
-  +updateAddress()
-  +validateId()
-  +updateActive()
+  +double amount
+  +boolean updatedAt
+  #long status
+  +findType()
 }
-interface Teller {
-  #long quantity
-  #Date phone
-  +float note
-  +processCreatedat()
+abstract class Teller {
+  -Date address
+  +String note
+  +cancelPhone()
+  +getDuration()
+  +findAddress()
+  +getUpdatedat()
 }
-Account --o Withdrawal
-Interest --|> Account
-note right of Interest : Banking domain
+Withdrawal ..|> Interest
+Account --* Teller
+Teller --* Withdrawal
 @enduml

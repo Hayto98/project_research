@@ -7,56 +7,67 @@ abstract class Follower {
   +boolean updatedAt
   -boolean type
   +boolean description
-  +processLevel()
+  +calculateType()
 }
-interface Story {
+abstract class Story {
   #Date price
   +String score
   #boolean amount
   -String createdAt
-  +findPrice()
-  +validateType()
-  +sendCode()
+  +updateId()
+  +createTotal()
+  +processType()
 }
 class Like {
-  -Date createdAt
-  +int score
-  #String name
-  +boolean price
-  -String active
-  +validateTotal()
+  #String score
+  -Date code
+  #float phone
+  -long type
+  #String createdAt
+  +findStatus()
+  +updateActive()
 }
 class Comment {
-  #long score
-  #long name
   #long code
-  #double address
-  +deletePhone()
+  #boolean duration
+  #String phone
+  +long total
+  #long name
+  +createType()
+  +processDescription()
+  +sendQuantity()
 }
-class Notification {
-  #boolean status
-  -double phone
-  +updateLevel()
-  +saveAddress()
+abstract class Notification {
+  -String description
+  +long phone
+  +saveName()
+  +getTotal()
+  +processPrice()
+  +getCode()
 }
 class Album {
-  +boolean active
+  +String active
+  #Date createdAt
+  +String duration
   #String phone
-  +float amount
-  +saveLevel()
+  +createTotal()
+  +createDescription()
+  +processStatus()
 }
-class Message {
-  -float duration
-  #float price
-  -float phone
-  +double description
+interface Message {
+  -Date phone
+  -int description
+  -double email
+  -double address
+  -boolean createdAt
+  +cancelNote()
+  +processAddress()
   +updateAddress()
-  +processNote()
-  +calculatePhone()
-  +cancelPrice()
+  +cancelCreatedat()
 }
 Message --o Album
-Comment --o Album
 Follower ..> Like : "*"
-note right of Follower : Social Media domain
+Follower ..|> Album
+Story --> Like : "1..*"
+Notification --> Story : "1"
 @enduml

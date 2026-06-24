@@ -6,45 +6,44 @@ class CheckIn {
   +boolean quantity
   +Date amount
   +int price
-  +setEmail()
-  +deleteStatus()
+  +cancelLevel()
+  +getType()
 }
 class CheckOut {
-  #long duration
-  -float note
-  -Date description
-  #String amount
-  +saveId()
+  #double status
+  #int updatedAt
+  +boolean address
+  +sendPhone()
+  +setQuantity()
+  +calculateScore()
 }
 class Room {
-  +Date email
-  #float id
-  -long duration
-  #int description
-  +boolean code
-  +updatePrice()
+  -long id
+  +boolean amount
+  +validateCode()
+  +processAmount()
+  +sendNote()
 }
-class Invoice {
-  #float email
-  +double amount
-  -String total
-  +float updatedAt
-  +updateDuration()
-  +updateName()
-  +findAddress()
+interface Invoice {
+  #String address
+  +Date active
+  -int description
+  -float createdAt
+  +findId()
+  +cancelCreatedat()
+  +processDuration()
 }
 class Guest {
-  +String amount
-  #Date active
-  +Date updatedAt
-  +boolean note
-  +cancelType()
-  +sendId()
-  +cancelQuantity()
+  #float quantity
+  +String code
+  #long description
+  +Date email
+  #long createdAt
+  +setQuantity()
+  +setAmount()
 }
-Room ..|> CheckIn
-Room ..|> CheckOut
-CheckOut ..|> CheckIn
-Invoice ..|> CheckIn
-note right of CheckIn : Hotel domain
+CheckOut ..|> Invoice
+CheckIn ..> Guest : "1"
+Guest --> Room : "*"
+Guest --> CheckIn : "1..*"
 @enduml

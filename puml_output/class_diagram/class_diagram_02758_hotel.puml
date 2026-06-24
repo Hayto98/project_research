@@ -7,57 +7,61 @@ class Room {
   -int total
   -int createdAt
   +String address
-  +findTotal()
-  +findPhone()
-  +updateDescription()
-  +createStatus()
+  +getActive()
+  +processLevel()
+  +saveStatus()
+  +cancelDescription()
 }
-interface Reservation {
+class Reservation {
+  #float description
   #String email
-  +String description
-  +updateId()
+  #long status
+  +findDuration()
+  +setUpdatedat()
 }
-abstract class Payment {
-  -Date quantity
-  +double updatedAt
-  +float phone
-  #boolean total
-  +calculateId()
+class Payment {
+  +float id
+  -Date createdAt
+  +setTotal()
+  +getPrice()
+  +createScore()
 }
 class CheckOut {
-  -int updatedAt
-  -long score
-  -long description
-  -boolean phone
-  #long amount
-  +getTotal()
-}
-abstract class Amenity {
-  -long duration
-  -boolean createdAt
-  +boolean updatedAt
-  #float description
-  +updateLevel()
-  +setType()
-  +updateCreatedat()
-}
-class Restaurant {
-  +String duration
-  #boolean phone
-  -long status
+  -String phone
+  -double id
+  +boolean note
+  #int amount
+  -int level
   +createScore()
-  +cancelPrice()
+  +deleteName()
+  +calculateTotal()
+  +calculatePhone()
+}
+class Amenity {
+  +double address
+  #double score
+  -boolean phone
+  +Date id
+  +cancelLevel()
+  +getAmount()
+}
+interface Restaurant {
+  #int quantity
+  #boolean phone
+  -int address
+  +sendCreatedat()
 }
 class Housekeeping {
-  -boolean amount
-  -String level
-  -long quantity
-  -long address
-  +updateDescription()
-  +sendEmail()
-  +calculateName()
+  +String address
+  +boolean description
+  #double phone
+  +findPhone()
+  +cancelPhone()
+  +getCreatedat()
 }
-Payment --o Reservation
-Restaurant --* Reservation
-note right of Room : Hotel domain
+CheckOut ..> Payment : "1..*"
+Reservation --* Amenity
+Payment --> Housekeeping : "1..*"
+Room --* CheckOut
+Payment ..|> Reservation
 @enduml

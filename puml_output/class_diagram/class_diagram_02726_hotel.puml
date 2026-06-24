@@ -7,48 +7,49 @@ class CheckIn {
   +double type
   -double email
   +Date description
-  +processTotal()
+  +findActive()
 }
-interface Reservation {
+abstract class Reservation {
   -Date total
   +double level
   #boolean createdAt
-  +findType()
-  +processId()
-  +processType()
-  +setType()
+  +calculateStatus()
+  +sendName()
+  +processTotal()
+  +processCode()
 }
-interface Guest {
-  -float status
-  -String total
-  +double active
-  -Date email
-  +int price
-  +calculateType()
-  +getDuration()
-  +getDuration()
-  +calculateScore()
+abstract class Guest {
+  -boolean status
+  -Date type
+  -double active
+  -String note
+  +double duration
+  +setCreatedat()
+  +getTotal()
+  +sendNote()
 }
-abstract class Staff {
-  -double score
-  -double type
-  +double updatedAt
-  +double total
-  #float price
-  +deleteId()
-  +updateAddress()
-  +createLevel()
-  +saveUpdatedat()
+interface Staff {
+  #double price
+  #double type
+  #float id
+  -int score
+  #float duration
+  +updateCode()
+  +updateScore()
+  +sendScore()
+  +cancelPhone()
 }
 abstract class Payment {
-  #long total
-  +float amount
-  +sendPrice()
-  +calculateQuantity()
-  +sendDuration()
-  +getName()
+  #float price
+  -float code
+  +Date note
+  +float status
+  +Date score
+  +sendAddress()
+  +sendUpdatedat()
+  +setScore()
 }
-Reservation --> Staff : "0..1"
-Staff --> Payment : "1"
-note right of CheckIn : Hotel domain
+Reservation --|> Staff
+Staff --> Reservation : "1..*"
+Payment --o Staff
 @enduml

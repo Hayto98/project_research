@@ -9,61 +9,57 @@ interface Booking {
   #boolean type
   -double address
   #String level
-  +setActive()
-  +cancelLevel()
+  +cancelStatus()
+  +findDuration()
 }
 interface Housekeeping {
   -Date email
   +double amount
-  +deleteCode()
-  +deleteQuantity()
+  +findId()
+  +processAmount()
 }
 class Amenity {
+  #double code
+  +float email
   #boolean quantity
   -long phone
-  #double total
-  +double createdAt
-  +processScore()
   +setStatus()
-  +getLevel()
+  +sendCode()
+  +setActive()
+  +validateDuration()
 }
 abstract class Guest {
-  -Date phone
-  #long status
+  #double status
+  #double id
+  +getDuration()
+  +cancelScore()
+  +validateId()
+}
+abstract class Invoice {
+  -float name
   #Date type
+  #double score
+  +findScore()
+  +processDuration()
+  +sendName()
+  +setNote()
+}
+class Reservation {
   #double updatedAt
-  -long name
-  +processTotal()
-  +deleteStatus()
-}
-class Invoice {
-  +boolean level
-  -double type
-  +deleteDuration()
-  +updateEmail()
-  +createAmount()
-  +processCode()
-}
-abstract class Reservation {
-  #double code
-  +double active
-  #boolean status
-  +findCode()
-  +validatePhone()
-  +sendUpdatedat()
-  +setPhone()
+  +boolean id
+  +createDuration()
+  +calculateCode()
+  +createCode()
 }
 interface Room {
-  #int active
-  +double name
-  #String email
-  #boolean phone
-  +getDescription()
-  +sendPrice()
+  -String email
+  -int duration
+  +boolean amount
+  +cancelUpdatedat()
 }
-Room ..|> Amenity
-Guest ..|> Amenity
-Invoice --* Room
-Invoice --> Reservation : "1"
-note right of Booking : Hotel domain
+Booking ..> Guest : "*"
+Room ..> Reservation : "1"
+Amenity --> Room : "0..1"
+Room --* Booking
+Room ..> Invoice : "1..*"
 @enduml

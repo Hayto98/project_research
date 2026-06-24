@@ -7,15 +7,15 @@ interface CheckIn {
   +double status
   +boolean note
   #boolean price
-  +saveNote()
-  +processEmail()
-}
-class Reservation {
-  -long total
-  -long score
-  #long email
-  +findActive()
+  +cancelPrice()
   +sendCode()
+}
+abstract class Reservation {
+  -long createdAt
+  -long description
+  #long total
+  +Date email
+  +validatePrice()
 }
 class Booking {
   #boolean phone
@@ -23,43 +23,35 @@ class Booking {
   #double status
   #boolean active
   -float duration
-  +findUpdatedat()
+  +updateScore()
 }
 class Room {
-  +boolean duration
-  #float address
-  #float status
-  -long description
-  +Date type
-  +sendAmount()
+  #boolean note
+  #int address
+  -String status
+  +findCode()
+  +cancelNote()
+  +cancelDescription()
 }
 class Housekeeping {
-  #float note
-  #String quantity
-  #boolean type
-  #String id
-  +setEmail()
-}
-class CheckOut {
-  #String duration
-  -int status
-  -int score
-  -long phone
-  -int updatedAt
+  -double updatedAt
+  +boolean email
+  #String note
   +updatePhone()
 }
-class Service {
-  +float duration
-  +double quantity
-  +boolean id
-  +String status
-  +createAddress()
-  +deleteScore()
-  +processCreatedat()
+interface CheckOut {
+  -double status
+  #float email
+  +calculatePrice()
 }
-Service ..> Reservation : "*"
-Booking ..|> Room
-Room --|> CheckIn
-Booking --|> Service
-note right of CheckIn : Hotel domain
+class Service {
+  -int id
+  -long phone
+  -int updatedAt
+  +updateStatus()
+}
+Booking --* CheckOut
+Housekeeping --* CheckOut
+CheckOut --|> CheckIn
+Reservation --o Service
 @enduml

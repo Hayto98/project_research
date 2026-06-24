@@ -6,62 +6,53 @@ class Warehouse {
   +float id
   +long name
   +long description
-  +saveDescription()
-  +sendPrice()
-  +savePrice()
-  +processActive()
+  +calculateUpdatedat()
+  +validateCreatedat()
+  +sendAmount()
+  +sendScore()
 }
 abstract class Customer {
-  +String type
+  #String active
+  #float type
+  #double note
+  #Date level
   +String email
-  +String id
-  +double note
-  +float amount
-  +saveName()
-}
-class Package {
-  +int description
-  #String name
-  -double id
-  +getId()
-  +findDescription()
-  +saveAddress()
   +processName()
 }
-interface Shipment {
-  -long quantity
-  -Date description
-  -double createdAt
-  +validateStatus()
+class Package {
+  -int id
+  +Date code
+  +setStatus()
+}
+class Shipment {
+  +boolean name
+  +long id
+  -double code
+  +sendTotal()
 }
 class Vehicle {
-  #int phone
-  +int code
-  +String price
-  +String email
-  -boolean updatedAt
-  +cancelAddress()
-  +saveCode()
-  +cancelAmount()
+  +boolean note
+  +float name
+  -long description
+  -Date quantity
+  +setPrice()
+  +findActive()
+  +setUpdatedat()
 }
 class Inventory {
-  -long name
-  #float email
-  -String active
-  #double type
-  +calculateQuantity()
-  +saveScore()
-  +sendCreatedat()
+  -String updatedAt
+  -float total
+  +updateStatus()
+  +updateId()
+  +processActive()
 }
 class DeliveryNote {
-  #String note
-  #String score
-  +setStatus()
-  +saveQuantity()
+  -boolean code
+  -boolean id
+  -float level
+  +deleteDescription()
 }
-Package --|> Customer
-Warehouse --> Vehicle : "*"
-DeliveryNote ..> Warehouse : "1"
-Customer --* Warehouse
-note right of Warehouse : Logistics domain
+Customer --> Inventory : "1..*"
+Warehouse --* Inventory
+Vehicle --o Shipment
 @enduml

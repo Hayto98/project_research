@@ -5,52 +5,56 @@ class Service {
   -String phone
   +int description
   #float id
-  +getPrice()
-  +updateStatus()
+  +savePhone()
+  +createPrice()
 }
 class Room {
-  -float quantity
-  +Date level
-  -Date amount
-  +calculateDuration()
-  +updateDescription()
-  +setNote()
+  -boolean quantity
+  #int description
+  +setAmount()
+  +setActive()
+  +deleteTotal()
+  +processActive()
 }
 class CheckOut {
-  -Date quantity
-  -long total
-  +validateLevel()
-  +validateDuration()
-  +getLevel()
-  +calculateQuantity()
-}
-interface Amenity {
-  +String type
+  -String price
+  +long updatedAt
   -double description
-  #float createdAt
-  #boolean note
-  #String quantity
-  +processActive()
-  +calculateName()
+  #long status
+  +deleteStatus()
+  +cancelType()
+  +setAddress()
 }
-interface Housekeeping {
-  +Date name
-  #long createdAt
-  #double phone
-  -long description
-  -long address
-  +sendName()
+abstract class Amenity {
+  -float level
+  #double address
+  -int id
+  +double price
+  +findNote()
+  +calculateEmail()
+  +calculateLevel()
 }
-abstract class Payment {
-  +Date email
-  -Date phone
-  +Date name
-  +setLevel()
-  +updatePrice()
-  +sendCreatedat()
+abstract class Housekeeping {
+  #float duration
+  #double level
+  +boolean code
+  -String description
+  +long type
+  +validateScore()
+  +deleteTotal()
 }
-CheckOut --> Amenity : "1"
-Room --> CheckOut : "0..1"
-Amenity --> Service : "1..*"
-note right of Service : Hotel domain
+class Payment {
+  -long duration
+  #boolean price
+  +boolean total
+  +float quantity
+  +updateAmount()
+  +processNote()
+  +deleteAddress()
+  +cancelPhone()
+}
+Service ..> Payment : "1..*"
+Payment ..> Room : "1..*"
+Service ..|> Housekeeping
+Amenity ..> Housekeeping : "0..1"
 @enduml

@@ -5,47 +5,55 @@ class Transaction {
   +int phone
   +boolean amount
   +float note
-  +createPrice()
-  +processStatus()
-  +processNote()
-  +saveType()
+  +getNote()
+  +processType()
+  +findActive()
+  +validateEmail()
 }
-class Customer {
+abstract class Customer {
+  -boolean type
+  #boolean phone
+  #String createdAt
+  +String id
+  -long address
+  +updateStatus()
+  +cancelDuration()
+}
+abstract class Withdrawal {
+  +Date active
   #Date id
-  #Date address
-  +int quantity
-  +calculatePhone()
+  +setPhone()
+  +findAddress()
 }
-class Withdrawal {
-  +String price
-  #float name
-  #Date active
-  +cancelUpdatedat()
-  +deleteAddress()
-}
-interface Deposit {
-  #double amount
-  #boolean duration
-  +Date phone
-  -boolean quantity
-  #String score
-  +cancelPrice()
-}
-class Card {
-  -float active
+class Deposit {
+  +float duration
+  +float level
+  -long score
   #Date note
-  #double updatedAt
+  +deleteStatus()
+  +findActive()
+  +savePrice()
+}
+interface Card {
   #String email
-  #Date type
-  +getPrice()
-  +processCreatedat()
+  #Date id
+  +getTotal()
+  +processLevel()
+  +calculateActive()
+  +createName()
 }
-interface Teller {
-  +long active
-  #long address
-  +deleteCode()
+class Teller {
+  #String type
+  #Date price
+  +String active
+  -float note
+  +getTotal()
+  +getCode()
+  +updatePrice()
+  +sendQuantity()
 }
-Card ..> Withdrawal : "0..1"
-Customer --o Withdrawal
-note right of Transaction : Banking domain
+Transaction ..> Withdrawal : "1..*"
+Transaction --|> Customer
+Customer --* Card
+Teller ..> Card : "0..1"
 @enduml

@@ -5,46 +5,45 @@ abstract class Invoice {
   -double description
   -double total
   -int duration
-  +createDuration()
-  +createUpdatedat()
+  +updateLevel()
+  +deleteLevel()
 }
 interface Category {
+  -String updatedAt
   +boolean score
-  -boolean name
-  #long type
-  -String level
-  +saveAmount()
-  +cancelDescription()
-  +getStatus()
+  -boolean email
+  #long name
+  +processCreatedat()
+  +updatePrice()
+  +setActive()
+  +createStatus()
 }
 class Supplier {
-  #long price
-  +boolean duration
-  +int updatedAt
-  +Date code
-  #String quantity
-  +calculateDuration()
-  +calculatePrice()
+  +String level
+  #double description
+  -double name
+  +getLevel()
+  +setTotal()
 }
 interface Product {
-  +boolean total
-  -long quantity
-  +float code
-  +cancelCode()
-  +deleteScore()
-  +calculateStatus()
+  +Date amount
+  #String score
+  #int updatedAt
+  -boolean duration
+  +sendStatus()
+  +saveName()
+  +getCreatedat()
+  +calculateAddress()
 }
-interface Coupon {
-  +int email
-  -Date price
-  #Date note
-  +boolean createdAt
-  +createId()
-  +findEmail()
-  +deleteType()
-  +findEmail()
+abstract class Coupon {
+  -String code
+  -boolean amount
+  +int score
+  #double note
+  +createLevel()
 }
-Coupon --o Supplier
-Product --* Supplier
-note right of Invoice : Ecommerce domain
+Supplier --o Coupon
+Product --|> Category
+Category ..> Supplier : "1"
+Coupon --* Product
 @enduml

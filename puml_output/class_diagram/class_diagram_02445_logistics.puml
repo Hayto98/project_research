@@ -9,35 +9,34 @@ interface DeliveryNote {
   +boolean total
   -int id
   #double name
-  +createCreatedat()
-  +saveDescription()
-  +saveNote()
-  +sendStatus()
+  +processDescription()
+  +updateDescription()
+  +cancelDuration()
+  +saveQuantity()
 }
 abstract class Route {
-  +float id
-  -String duration
-  #int level
-  +getCode()
-  +saveAddress()
-}
-class Manifest {
-  +Date level
-  #int email
-  +long createdAt
-  +deleteLevel()
-}
-class FuelLog {
-  -Date id
-  +float duration
-  +Date level
   +String price
-  #int createdAt
-  +updateAmount()
-  +calculateId()
-  +cancelCode()
+  +int description
+  +processAmount()
+  +processId()
+  +validateQuantity()
 }
-DeliveryNote --|> FuelLog
-FuelLog --|> Route
-note right of DeliveryNote : Logistics domain
+interface Manifest {
+  #String id
+  #int code
+  #boolean address
+  +saveNote()
+  +calculateNote()
+  +calculateDescription()
+}
+interface FuelLog {
+  +Date name
+  #float address
+  #boolean duration
+  +createEmail()
+  +sendUpdatedat()
+  +createName()
+}
+DeliveryNote ..> FuelLog : "*"
+Route ..> FuelLog : "0..1"
 @enduml

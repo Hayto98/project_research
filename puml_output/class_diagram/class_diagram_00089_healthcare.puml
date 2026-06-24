@@ -6,52 +6,51 @@ skinparam defaultFontSize 11
 interface Prescription {
   -int description
   #float score
-  +updateTotal()
+  +saveLevel()
 }
 class Nurse {
-  -String price
+  -long quantity
+  -String note
+  +long price
+  +Date active
+  -float email
+  +calculateCreatedat()
+  +validateQuantity()
+  +findPrice()
+}
+class Patient {
   +long active
-  +Date email
-  -float address
-  -long phone
-  +sendCreatedat()
-  +updateActive()
+  #Date note
+  #int duration
+  +saveActive()
+  +updateStatus()
 }
-abstract class Patient {
-  #Date email
-  +boolean active
-  +Date amount
-  +getAmount()
-}
-interface Billing {
-  -int id
-  #String name
-  #boolean active
-  #int quantity
-  +processScore()
-  +createDuration()
+class Billing {
+  #long amount
+  +String active
+  +createActive()
+  +getTotal()
+  +processEmail()
 }
 class Doctor {
-  +int note
-  -String score
-  -long name
-  +createCreatedat()
-  +deleteTotal()
-  +processAddress()
-  +sendPhone()
-}
-abstract class Treatment {
-  +int type
-  -double email
-  #float active
-  #long level
-  -float updatedAt
-  +saveNote()
-  +cancelQuantity()
-  +cancelAmount()
+  -Date createdAt
+  #boolean note
+  #Date score
   +cancelActive()
+  +processAddress()
 }
-Nurse --* Patient
-Nurse --|> Doctor
-note right of Prescription : Healthcare domain
+class Treatment {
+  +double score
+  -double name
+  -int id
+  +Date updatedAt
+  -double address
+  +setAddress()
+  +saveScore()
+  +deleteAmount()
+}
+Treatment --* Billing
+Treatment --* Doctor
+Nurse ..|> Treatment
+Billing --> Treatment : "1..*"
 @enduml

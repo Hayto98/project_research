@@ -5,53 +5,52 @@ skinparam shadowing true
 class Customer {
   +String active
   +Date score
-  +cancelStatus()
-  +saveAddress()
+  +sendDescription()
+  +getUpdatedat()
 }
-class Warehouse {
-  -boolean description
-  -int code
-  -String level
-  +processStatus()
+interface Warehouse {
+  +int address
+  +String description
+  +savePrice()
+  +calculateCode()
+  +findPhone()
 }
 class Wishlist {
-  -boolean quantity
-  -int active
-  +long level
-  +double status
+  -float score
+  +long id
   +updateLevel()
-  +processName()
-  +cancelAddress()
-  +cancelTotal()
-}
-class Return {
-  #Date email
-  -float quantity
-  +savePrice()
-  +saveActive()
-  +deleteTotal()
   +updateNote()
+  +sendQuantity()
 }
-class Order {
-  -long email
-  +int note
-  #boolean updatedAt
-  -long createdAt
-  +setTotal()
+interface Return {
+  +float price
+  +long address
+  +calculateAmount()
 }
-interface Supplier {
-  +long price
-  -float code
-  #float address
-  +deleteQuantity()
+abstract class Order {
+  #float level
+  -boolean note
+  -String name
+  +calculateScore()
 }
-interface Coupon {
-  +boolean amount
-  +Date total
-  +calculateCreatedat()
+class Supplier {
+  +double score
+  +double note
+  #long price
+  -long active
+  +getStatus()
+  +processPrice()
+  +updateQuantity()
+  +sendEmail()
 }
-Customer --> Coupon : "0..1"
-Supplier ..|> Customer
-Wishlist --o Supplier
-note right of Customer : Ecommerce domain
+class Coupon {
+  -float description
+  +String updatedAt
+  #Date score
+  -boolean quantity
+  +processType()
+  +updateScore()
+}
+Wishlist --* Warehouse
+Return --|> Order
 @enduml

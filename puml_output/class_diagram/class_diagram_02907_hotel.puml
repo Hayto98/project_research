@@ -7,47 +7,52 @@ class Invoice {
   +int type
   #int name
   #long email
-  +createEmail()
+  +updateLevel()
 }
-abstract class Guest {
-  +int phone
-  -float active
+class Guest {
+  +double updatedAt
+  -float phone
+  #int active
+  #int email
+  +int amount
+  +cancelTotal()
+}
+abstract class Amenity {
+  -String name
+  -long score
+  -float level
+  +long total
+  #float description
+  +sendCode()
+  +updateLevel()
+  +calculateLevel()
+}
+interface Room {
+  +long active
   -float email
-  +findCreatedat()
-  +setCreatedat()
-}
-class Amenity {
-  #double total
-  +boolean level
-  +sendDescription()
-  +processStatus()
-  +processAddress()
-  +calculateUpdatedat()
-}
-class Room {
-  #long note
-  #long quantity
-  +String active
-  -double level
-  +setCreatedat()
+  #boolean phone
+  #boolean amount
+  +cancelType()
 }
 class Housekeeping {
-  #String quantity
-  +String phone
-  -int code
-  +setDuration()
-  +validateLevel()
+  -long quantity
+  #float score
+  #String updatedAt
+  +saveEmail()
 }
 class CheckIn {
-  +String active
-  +String duration
-  +sendName()
-  +processType()
-  +sendQuantity()
-  +findEmail()
+  #boolean createdAt
+  #String amount
+  #boolean status
+  +String address
+  +String quantity
+  +createUpdatedat()
+  +processQuantity()
+  +validateUpdatedat()
+  +validateName()
 }
+CheckIn ..> Amenity : "1..*"
 CheckIn --|> Housekeeping
 Housekeeping --> Invoice : "1..*"
 Invoice --o Amenity
-note right of Invoice : Hotel domain
 @enduml

@@ -7,60 +7,53 @@ abstract class Review {
   -String duration
   #Date updatedAt
   #boolean quantity
-  +sendQuantity()
+  +updateCode()
 }
-class Category {
-  #int code
-  #long note
-  #String id
-  +validatePrice()
-  +createUpdatedat()
-  +processCode()
-  +getDescription()
-}
-abstract class Order {
-  #float active
-  -float description
+interface Category {
+  +float address
+  #int createdAt
+  #long code
+  #String note
+  +updateAmount()
   +findCode()
-  +createCode()
-  +getId()
+  +createDuration()
+  +processDescription()
 }
-interface Customer {
-  -Date type
+class Order {
+  #int code
   #float id
-  +saveCode()
-  +updateAddress()
-  +updateStatus()
-  +calculateUpdatedat()
+  -float description
+  -Date type
+  +long status
+  +validateStatus()
+}
+class Customer {
+  -String active
+  -Date name
+  +getPrice()
+  +setScore()
+  +findNote()
+  +createScore()
 }
 class Coupon {
-  +float name
-  #float amount
-  +createPhone()
-  +cancelPhone()
+  -boolean status
+  #String total
+  +int updatedAt
+  +updateCreatedat()
 }
-class Wishlist {
-  +double updatedAt
-  -float name
-  +Date score
-  +float active
-  #int duration
-  +findActive()
-  +updatePrice()
-  +getCreatedat()
+interface Wishlist {
+  +boolean quantity
+  -Date phone
+  +String level
+  +processUpdatedat()
+  +saveName()
 }
 class Shipment {
-  #double address
-  -boolean duration
-  +getCode()
-  +deleteTotal()
-  +processStatus()
+  -Date name
+  #int score
+  #double updatedAt
+  +saveNote()
 }
-Review --o Shipment
-Coupon --> Customer : "1"
-Review --|> Customer
-Review ..> Order : "1..*"
-Wishlist --o Customer
-Customer ..|> Category
-note right of Review : Ecommerce domain
+Coupon --* Review
+Order --o Coupon
 @enduml

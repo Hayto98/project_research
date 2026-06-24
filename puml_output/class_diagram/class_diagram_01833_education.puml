@@ -9,59 +9,61 @@ class Exam {
   #String createdAt
   #float score
   #int note
-  +cancelType()
+  +createId()
 }
-class Library {
+interface Library {
+  +double status
+  #String name
+  -Date address
+  -float quantity
+  +boolean code
+  +sendEmail()
+  +saveScore()
+}
+abstract class Course {
+  #boolean email
+  -String level
+  #String type
+  +validateStatus()
+  +setQuantity()
+  +processCode()
+  +getPrice()
+}
+interface Book {
+  +long address
+  -Date score
+  +sendAddress()
+  +createEmail()
+}
+abstract class Student {
+  -double status
+  +int active
+  -long phone
   -String duration
-  +double address
-  +processAddress()
+  +calculateEmail()
+  +setName()
+  +sendCreatedat()
+  +findCreatedat()
 }
-class Course {
-  +float createdAt
-  #long phone
-  #double type
-  +getId()
-  +calculateId()
-  +cancelId()
-  +validateScore()
-}
-class Book {
-  -String note
-  #boolean description
-  -String email
-  -double duration
-  +updatePrice()
-  +createPhone()
-}
-class Student {
-  #float name
-  +float id
-  #double type
-  +int email
-  -Date level
-  +cancelStatus()
-  +cancelPhone()
-}
-abstract class Teacher {
-  -String id
-  -String description
-  +int type
-  #double email
-  +createNote()
-  +sendTotal()
-  +deleteCreatedat()
-  +validateUpdatedat()
+class Teacher {
+  +int active
+  -Date type
+  +setPhone()
+  +sendStatus()
 }
 class Enrollment {
-  +long description
-  +float note
-  +sendNote()
-  +saveCode()
+  -long price
+  -String phone
+  -String id
+  +int description
+  +updateId()
+  +updateScore()
+  +validateUpdatedat()
+  +sendAddress()
 }
-Student ..|> Course
-Teacher --|> Book
-Book ..> Teacher : "1..*"
-Course --o Book
-Teacher --* Course
-note right of Exam : Education domain
+Student --o Teacher
+Library --* Enrollment
+Library --|> Exam
+Library ..|> Book
+Course ..|> Exam
 @enduml

@@ -6,59 +6,57 @@ class Transaction {
   -boolean code
   +long type
   -int updatedAt
-  +setCreatedat()
-  +sendLevel()
-  +setCode()
-  +updateScore()
+  +validateEmail()
+  +updateDescription()
+  +findPrice()
+  +getCode()
 }
 class Branch {
-  +double quantity
-  -Date phone
-  -boolean score
-  -int name
-  +processDescription()
-  +findQuantity()
+  +long createdAt
+  -long score
+  +saveEmail()
 }
-interface Deposit {
-  #double level
-  +long status
-  +createQuantity()
-  +deleteDescription()
-  +processPhone()
-  +saveCode()
+abstract class Deposit {
+  +double phone
+  +Date active
+  -boolean address
+  #String updatedAt
+  +processNote()
 }
-class Card {
+abstract class Card {
+  -long address
+  +float active
+  #int price
+  +deletePhone()
+  +validateTotal()
+  +setCode()
+  +cancelId()
+}
+class Customer {
+  +String note
   -boolean address
   -boolean status
   +boolean updatedAt
-  #int code
-  -float level
-  +sendDescription()
-  +getCreatedat()
-  +getAddress()
+  +calculateCreatedat()
+  +deleteTotal()
 }
-class Customer {
-  +double level
-  +Date name
-  #long quantity
-  +sendUpdatedat()
-}
-interface Transfer {
-  #Date quantity
-  #Date description
-  +double phone
-  +deleteId()
-  +cancelDuration()
-  +saveId()
+class Transfer {
+  -long name
+  #boolean createdAt
+  #boolean id
+  +updateScore()
+  +deleteUpdatedat()
 }
 class Teller {
-  +float amount
-  #float createdAt
-  +deleteAmount()
-  +updateCreatedat()
-  +findStatus()
+  #Date amount
+  #float note
+  +boolean duration
+  +boolean quantity
+  +processCreatedat()
+  +calculateType()
 }
-Branch --* Teller
-Customer ..> Transfer : "0..1"
-note right of Transaction : Banking domain
+Branch --> Deposit : "0..1"
+Card --* Transfer
+Branch --> Transaction : "1"
+Deposit ..|> Transaction
 @enduml

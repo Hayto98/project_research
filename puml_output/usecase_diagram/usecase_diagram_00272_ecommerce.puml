@@ -2,10 +2,10 @@
 skinparam monochrome true
 skinparam shadowing true
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Delivery Service" as DeliveryService
-actor "Customer" as Customer
-actor "Seller" as Seller
+actor "Payment Gateway" as PG
+actor "Delivery Service" as DS
+actor "Customer" as C
+actor "Seller" as S
 rectangle "Ecommerce System" {
   usecase "Add To Cart" as UC_AddToCart
   usecase "Browse Products" as UC_BrowseProducts
@@ -16,15 +16,15 @@ rectangle "Ecommerce System" {
   usecase "Manage Inventory" as UC_ManageInventory
   usecase "Write Review" as UC_WriteReview
 }
-PaymentGateway --> UC_WriteReview
-PaymentGateway --> UC_ApplyCoupon
-DeliveryService --> UC_Checkout
-DeliveryService --> UC_AddToCart
-DeliveryService --> UC_ApplyCoupon
-Customer --> UC_AddToCart
-Customer --> UC_BrowseProducts
-Customer --> UC_Checkout
-Seller --> UC_AddToCart
-Seller --> UC_ManageInventory
+PG --> UC_WriteReview
+PG --> UC_ApplyCoupon
+DS --> UC_Checkout
+DS --> UC_AddToCart
+DS --> UC_ApplyCoupon
+C --> UC_AddToCart
+C --> UC_BrowseProducts
+C --> UC_Checkout
+S --> UC_AddToCart
+S --> UC_ManageInventory
 UC_ApplyCoupon ..|> UC_MakePayment : <<include>>
 @enduml

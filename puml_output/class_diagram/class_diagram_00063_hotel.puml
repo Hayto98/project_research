@@ -7,53 +7,52 @@ abstract class Housekeeping {
   +boolean note
   +boolean active
   #Date type
-  +updateTotal()
-  +sendLevel()
+  +updateDescription()
+  +cancelCreatedat()
 }
-class Staff {
+interface Staff {
   +float createdAt
   #int duration
-  #String address
-  +setDuration()
-  +createType()
-  +saveStatus()
-  +findScore()
-}
-interface CheckOut {
+  #String level
   #double address
+  +getQuantity()
+}
+class CheckOut {
+  +double status
+  #Date score
+  +boolean total
+  -float address
   +int amount
-  -int description
-  -double note
-  #int status
-  +validateTotal()
-  +createPrice()
-  +deleteNote()
-  +cancelQuantity()
+  +updateDescription()
+  +createName()
+  +findAmount()
+  +deleteLevel()
 }
-class Room {
-  +String price
-  #long type
+interface Room {
+  -double price
+  +double address
+  #long total
+  +validateScore()
+}
+abstract class CheckIn {
   +String createdAt
-  +float level
-  +createDuration()
-  +findScore()
-  +updateUpdatedat()
-  +deletePrice()
+  +float type
+  -long updatedAt
+  #Date id
+  #int phone
+  +validateCreatedat()
+  +deleteAmount()
 }
-class CheckIn {
+class Service {
   -long active
   +float status
   #String email
   -long quantity
-  +calculateEmail()
+  +calculateLevel()
 }
-class Service {
-  -Date phone
-  +Date createdAt
-  +updateAmount()
-  +getPhone()
-}
-Staff ..> Service : "1..*"
-Staff --o CheckIn
-note right of Housekeeping : Hotel domain
+CheckOut --|> Service
+CheckOut --* Staff
+Service ..> Staff : "0..1"
+Staff --|> Service
+Service --> CheckOut : "1"
 @enduml

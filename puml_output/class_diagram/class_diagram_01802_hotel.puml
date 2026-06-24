@@ -4,62 +4,60 @@ skinparam defaultFontSize 11
 interface Housekeeping {
   -String id
   #float score
-  +createActive()
-  +findType()
+  +createNote()
+  +updateLevel()
 }
-class Room {
-  -String phone
-  +float type
-  +sendCode()
-  +deletePhone()
-  +getNote()
-  +createId()
+interface Room {
+  +int email
+  -boolean status
+  +int phone
+  -String type
+  -long quantity
+  +cancelQuantity()
 }
-abstract class Invoice {
-  #boolean code
-  -double status
-  -double level
-  +sendPhone()
-  +findQuantity()
-  +updateScore()
-  +validateAddress()
+class Invoice {
+  #boolean status
+  -double duration
+  +saveCode()
+  +getDuration()
+  +findEmail()
 }
-interface CheckIn {
-  +Date id
-  -Date price
-  +sendUpdatedat()
-  +findDuration()
-  +getNote()
+abstract class CheckIn {
+  -boolean quantity
+  +Date updatedAt
+  +double score
+  +Date address
+  +cancelUpdatedat()
+  +saveScore()
+  +createStatus()
+  +validateNote()
 }
-class Reservation {
-  +boolean name
-  +Date total
-  #double duration
-  -long note
-  +double description
-  +getType()
-  +calculateQuantity()
-  +sendActive()
+interface Reservation {
+  #double note
+  +float phone
+  +setUpdatedat()
+  +deleteDuration()
+  +getEmail()
+  +findId()
 }
 interface Restaurant {
+  +double price
+  -String email
+  -double phone
+  +sendAmount()
+  +getScore()
+  +createUpdatedat()
+}
+interface CheckOut {
   -boolean active
   +String email
   +String code
   +double amount
   +long name
-  +findPrice()
-  +saveLevel()
+  +processAddress()
+  +setPrice()
 }
-class CheckOut {
-  #long score
-  #boolean total
-  #Date active
-  -long price
-  +calculateNote()
-}
-Room ..> Housekeeping : "0..1"
-Housekeeping --o Reservation
-CheckOut ..> Housekeeping : "1..*"
-Invoice --o Restaurant
-note right of Housekeeping : Hotel domain
+Restaurant --|> Reservation
+Restaurant ..> Invoice : "*"
+CheckIn --* Restaurant
 @enduml

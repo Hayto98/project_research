@@ -3,46 +3,47 @@
 class Withdrawal {
   +boolean score
   +boolean amount
-  +sendDuration()
-  +processPhone()
-  +updatePhone()
-  +findAddress()
+  +setAddress()
+  +updateQuantity()
+  +setId()
+  +deleteActive()
 }
 class Teller {
-  -long phone
-  +Date duration
-  +sendNote()
-  +cancelTotal()
+  #String phone
+  -Date address
+  #long code
+  +processDescription()
+  +getEmail()
+  +getActive()
 }
 class Customer {
+  +long duration
+  #Date total
+  +float id
+  #long level
   -long type
-  -long description
-  #String address
-  #String createdAt
-  #int score
-  +setCreatedat()
-  +calculateUpdatedat()
-}
-class Interest {
-  -double description
-  -float level
-  +int duration
-  -double total
-  -double price
-  +deleteDuration()
+  +sendLevel()
+  +createQuantity()
   +setScore()
-  +createNote()
-  +savePhone()
+  +validateId()
 }
-interface Deposit {
-  #boolean id
-  #Date score
-  +int amount
-  #long email
-  +calculateUpdatedat()
+interface Interest {
+  +String level
+  +double amount
+  +updateStatus()
+  +deleteEmail()
 }
-Withdrawal ..> Teller : "0..1"
-Teller --|> Customer
-Teller --> Deposit : "*"
-note right of Withdrawal : Banking domain
+abstract class Deposit {
+  -long level
+  -long description
+  +int total
+  +calculateAmount()
+  +getUpdatedat()
+  +setNote()
+  +createPrice()
+}
+Interest --> Teller : "1"
+Deposit ..> Customer : "*"
+Customer --|> Deposit
+Deposit --* Teller
 @enduml

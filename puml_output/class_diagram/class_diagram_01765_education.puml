@@ -3,61 +3,62 @@ skinparam ArrowColor #555555
 class Teacher {
   +double email
   -boolean duration
-  +getTotal()
-  +cancelUpdatedat()
+  +saveEmail()
+  +cancelCreatedat()
 }
 interface Classroom {
-  +double code
-  -String price
-  -String duration
-  #Date updatedAt
-  -double description
-  +cancelActive()
-  +deleteUpdatedat()
-  +getCode()
-  +updateNote()
+  +double active
+  +int score
+  +String total
+  +saveCreatedat()
+  +getType()
+  +findAmount()
+  +saveId()
 }
-class Grade {
-  #boolean amount
-  #double description
-  #int level
+interface Grade {
+  +float total
+  +int price
+  #double active
+  -long amount
+  +int updatedAt
+  +sendActive()
+  +processScore()
+}
+class Enrollment {
   +String score
-  +setId()
-  +processTotal()
-  +processActive()
-}
-abstract class Enrollment {
-  +double note
-  +boolean level
-  +long description
-  -Date id
-  +validateDuration()
-  +createDuration()
+  -double amount
+  -boolean level
+  -long name
+  -boolean quantity
+  +processName()
+  +processQuantity()
 }
 abstract class Attendance {
+  -Date duration
+  +float createdAt
+  -boolean address
+  +createType()
+  +deleteDescription()
+  +setScore()
+}
+abstract class Schedule {
   +float description
   #int createdAt
-  +processScore()
-  +setActive()
-  +getId()
+  +getUpdatedat()
+  +calculateAmount()
+  +validateLevel()
 }
-interface Schedule {
-  +boolean code
-  #boolean level
-  +long duration
-  #String amount
-  +deleteScore()
-  +getAddress()
+interface Student {
+  +boolean active
+  #Date name
+  +setDescription()
+  +getCode()
+  +validatePhone()
 }
-class Student {
-  +Date phone
-  #long quantity
-  +validateAmount()
-  +processDuration()
-  +saveTotal()
-}
-Grade --> Attendance : "0..1"
-Schedule --|> Teacher
-Classroom ..|> Grade
-note right of Teacher : Education domain
+Attendance --|> Classroom
+Attendance --> Student : "0..1"
+Grade --|> Schedule
+Classroom --> Student : "1"
+Grade --> Student : "1"
+Student --> Grade : "1..*"
 @enduml

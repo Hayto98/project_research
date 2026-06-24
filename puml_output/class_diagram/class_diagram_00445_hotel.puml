@@ -9,53 +9,60 @@ abstract class Room {
   -boolean total
   +float active
   -String description
-  +setQuantity()
-  +processPrice()
+  +findNote()
+  +updateLevel()
 }
-class Restaurant {
-  -Date name
-  -double level
-  -float updatedAt
-  +createCreatedat()
-  +cancelCode()
+abstract class Restaurant {
+  #double createdAt
+  -double description
+  +long name
+  #int updatedAt
+  #String phone
+  +createLevel()
+  +cancelActive()
+  +findAmount()
+  +deleteCode()
 }
-abstract class Payment {
-  #boolean phone
-  +int amount
-  -Date price
-  #float address
+class Payment {
+  -Date address
   #float quantity
-  +setPrice()
-  +calculateType()
+  #float active
+  +String code
+  -double amount
+  +sendDescription()
+  +saveUpdatedat()
+  +calculateAmount()
+  +calculateStatus()
 }
-abstract class Staff {
+interface Staff {
   -int address
   -double type
-  +createActive()
-  +sendActive()
-  +sendNote()
-  +sendScore()
+  +processDescription()
+  +calculateDescription()
+  +cancelUpdatedat()
+  +getScore()
 }
-class CheckOut {
-  +long name
-  #String price
-  -boolean level
-  -boolean phone
-  #double total
-  +validateQuantity()
-  +createType()
-  +findCode()
-  +processEmail()
+interface CheckOut {
+  -double active
+  #boolean score
+  -double updatedAt
+  +long note
+  #String name
+  +findPrice()
+  +cancelPhone()
+  +sendQuantity()
+  +cancelScore()
 }
-interface Invoice {
-  +int name
-  #long duration
-  +float note
-  +sendNote()
+abstract class Invoice {
+  -float phone
+  -float quantity
+  #boolean level
+  +String type
+  +double code
+  +createScore()
 }
-Staff ..|> CheckOut
+Room --> Invoice : "*"
+Staff --> Invoice : "0..1"
 Invoice --> Restaurant : "1"
 Room ..|> Payment
-Restaurant --o Invoice
-note right of Room : Hotel domain
 @enduml

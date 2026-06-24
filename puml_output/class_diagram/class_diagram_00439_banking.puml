@@ -5,44 +5,40 @@ class Customer {
   +long note
   -Date address
   #long updatedAt
-  +sendName()
+  +saveActive()
   +calculateId()
-  +processTotal()
+  +updateCreatedat()
 }
-interface Transaction {
-  +Date level
-  #double updatedAt
-  #float total
-  +findScore()
-  +saveType()
-  +validateNote()
+abstract class Transaction {
+  #boolean note
+  +Date total
+  +findAmount()
+  +getTotal()
 }
-class Teller {
-  +long email
-  -Date address
-  #Date description
-  +int name
-  +Date updatedAt
-  +sendDescription()
-  +sendName()
+interface Teller {
+  -int score
+  #double phone
+  -float duration
+  #long type
+  #float address
+  +saveEmail()
+  +calculatePrice()
 }
-interface Transfer {
-  +float updatedAt
-  -Date code
-  #String address
-  +long active
-  #float description
-  +findCreatedat()
+class Transfer {
+  +float phone
+  +Date type
+  +boolean id
+  +createEmail()
+  +sendLevel()
 }
-class Branch {
-  -String address
-  -String createdAt
-  #boolean id
-  +saveCreatedat()
-  +findPrice()
-  +findQuantity()
+interface Branch {
+  +boolean duration
+  +float total
+  +updateNote()
+  +findPhone()
+  +validateQuantity()
 }
-Teller ..> Transfer : "1"
-Transaction --* Branch
-note right of Customer : Banking domain
+Branch --|> Customer
+Teller ..> Customer : "0..1"
+Customer --* Transaction
 @enduml

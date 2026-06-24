@@ -3,10 +3,10 @@ skinparam shadowing false
 skinparam backgroundColor #F5F5F5
 skinparam defaultFontSize 11
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Seller" as Seller
-actor "Admin" as Admin
-actor "Customer" as Customer
+actor "Payment Gateway" as PG
+actor "Seller" as S
+actor "Admin" as A
+actor "Customer" as C
 rectangle "Ecommerce System" {
   usecase "Add To Cart" as UC_AddToCart
   usecase "Browse Products" as UC_BrowseProducts
@@ -15,15 +15,15 @@ rectangle "Ecommerce System" {
   usecase "Checkout" as UC_Checkout
   usecase "Manage Inventory" as UC_ManageInventory
 }
-PaymentGateway --> UC_TrackOrder
-PaymentGateway --> UC_AddToCart
-PaymentGateway --> UC_BrowseProducts
-Seller --> UC_Checkout
-Admin --> UC_AddToCart
-Admin --> UC_ManageInventory
-Admin --> UC_BrowseProducts
-Customer --> UC_MakePayment
-Customer --> UC_BrowseProducts
-Customer --> UC_Checkout
+PG --> UC_TrackOrder
+PG --> UC_AddToCart
+PG --> UC_BrowseProducts
+S --> UC_Checkout
+A --> UC_AddToCart
+A --> UC_ManageInventory
+A --> UC_BrowseProducts
+C --> UC_MakePayment
+C --> UC_BrowseProducts
+C --> UC_Checkout
 UC_Checkout ..|> UC_ManageInventory : <<extend>>
 @enduml

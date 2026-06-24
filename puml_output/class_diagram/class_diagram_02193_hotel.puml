@@ -6,41 +6,46 @@ skinparam defaultFontSize 11
 interface Housekeeping {
   #boolean note
   +float id
-  +updateStatus()
+  +updateDescription()
 }
 class Payment {
-  +long phone
+  -int description
+  -float phone
   +Date score
-  #long note
-  +calculateAddress()
-  +sendType()
-  +cancelType()
-  +cancelAmount()
+  +sendScore()
+  +createPrice()
+  +getDuration()
 }
 class Service {
-  #int duration
-  +double active
-  #String email
-  -String id
-  -boolean level
-  +calculateUpdatedat()
-  +findScore()
-  +cancelEmail()
-  +saveCreatedat()
+  #float level
+  #boolean type
+  -String amount
+  +boolean phone
+  +String total
+  +createLevel()
+  +calculateEmail()
+  +calculateCreatedat()
+  +setUpdatedat()
 }
 class CheckIn {
-  +int address
-  #int type
-  +calculateStatus()
+  -Date price
+  #String updatedAt
+  -double score
+  +int email
+  #int createdAt
+  +deleteAmount()
 }
-abstract class Restaurant {
-  -long address
-  +float level
-  +createAmount()
-  +deleteLevel()
+class Restaurant {
+  #int id
+  -int address
+  +boolean total
+  -double quantity
+  +float amount
+  +sendStatus()
+  +saveTotal()
+  +validateStatus()
+  +sendAmount()
 }
-CheckIn --o Payment
-Restaurant --> Housekeeping : "1..*"
-Payment --|> Housekeeping
-note right of Housekeeping : Hotel domain
+Restaurant ..|> Service
+Housekeeping ..|> Restaurant
 @enduml

@@ -7,33 +7,29 @@ class Shelf {
   +double active
   +float status
   +double address
-  +findId()
-  +cancelId()
+  +updateId()
+  +processName()
 }
 interface Fine {
-  +boolean id
-  #Date note
-  #boolean quantity
-  +int code
-  +updateDuration()
-  +findCode()
+  #String active
+  -long address
+  +validateId()
 }
 interface Reservation {
-  +boolean description
-  #long id
-  +float active
-  #float score
-  #boolean phone
-  +deleteCreatedat()
-  +updateName()
+  #Date description
+  +boolean updatedAt
+  -Date createdAt
+  +processName()
+  +saveStatus()
 }
 interface Member {
-  #String active
-  #long total
-  +findDescription()
+  #float updatedAt
+  #boolean level
+  #Date phone
+  +int createdAt
+  +saveNote()
+  +processQuantity()
 }
-Shelf --o Reservation
-Fine --> Shelf : "0..1"
-Reservation --* Member
-note right of Shelf : Library domain
+Member --|> Reservation
+Reservation ..> Shelf : "0..1"
 @enduml

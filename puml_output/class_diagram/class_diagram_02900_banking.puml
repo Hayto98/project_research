@@ -5,35 +5,39 @@ skinparam defaultFontSize 11
 class Card {
   +double code
   #int note
-  +processDuration()
-  +validateId()
-  +cancelQuantity()
-  +cancelPhone()
+  +validateName()
+  +sendActive()
+  +saveCreatedat()
+  +sendLevel()
 }
 class Loan {
-  #float code
+  +float level
+  +Date phone
+  +boolean status
   #long createdAt
-  -long level
-  +calculateType()
-  +cancelNote()
-  +cancelPhone()
+  +sendPhone()
+  +findScore()
+  +sendScore()
 }
 abstract class Branch {
-  #double address
-  +int type
-  +getTotal()
-  +calculateActive()
-  +updateTotal()
-  +validateName()
-}
-class Transfer {
-  #String description
-  +String address
+  -Date level
   -String phone
-  +cancelTotal()
-  +saveName()
+  +Date note
+  #float status
+  -String address
+  +processLevel()
+  +calculateActive()
+  +deleteAddress()
+  +saveLevel()
 }
-Transfer --> Branch : "1"
-Card ..> Branch : "1..*"
-note right of Card : Banking domain
+abstract class Transfer {
+  +long name
+  -boolean code
+  +int active
+  +double amount
+  +createCode()
+}
+Card --o Transfer
+Card --|> Branch
+Branch ..|> Transfer
 @enduml

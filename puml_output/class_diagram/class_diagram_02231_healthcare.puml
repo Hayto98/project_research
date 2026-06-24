@@ -4,55 +4,49 @@ skinparam defaultFontSize 13
 class Patient {
   #int active
   #Date id
-  +savePrice()
-  +setType()
+  +validatePrice()
+  +calculateCode()
 }
-interface Nurse {
-  +long code
-  #int name
-  +long type
-  #double price
-  +cancelAmount()
+class Nurse {
+  -int score
+  -Date quantity
+  +String code
+  -Date name
+  -Date type
+  +createNote()
 }
-class Appointment {
-  +Date duration
-  #int active
-  #double address
-  +float note
-  +updateAddress()
-  +findCreatedat()
+interface Appointment {
+  -Date code
+  #float score
+  #float active
+  +cancelQuantity()
+  +getName()
+  +updateUpdatedat()
 }
-class LabTest {
-  #boolean name
-  #String active
-  +double email
-  +boolean phone
-  #Date type
-  +processNote()
-  +updateAddress()
-  +updateAddress()
+interface LabTest {
+  +long note
+  #int id
+  -double description
+  +getActive()
 }
-class Doctor {
-  #boolean name
-  -Date score
-  -boolean type
-  +Date active
-  +cancelTotal()
-  +cancelPrice()
-  +deleteNote()
-  +findActive()
+interface Doctor {
+  +int phone
+  -int type
+  #Date active
+  #boolean score
+  +sendCode()
+  +saveAmount()
+  +cancelNote()
 }
 class Prescription {
-  -float score
-  #long status
-  +setStatus()
-  +updatePrice()
-  +validateUpdatedat()
+  +boolean address
+  -boolean createdAt
+  #boolean duration
+  +createLevel()
+  +createQuantity()
+  +processId()
 }
-Prescription --* Appointment
-LabTest --|> Patient
-Prescription ..> Doctor : "0..1"
-Prescription ..|> Patient
-Patient --|> Prescription
-note right of Patient : Healthcare domain
+Prescription --> LabTest : "*"
+Doctor ..|> LabTest
+LabTest --|> Doctor
 @enduml

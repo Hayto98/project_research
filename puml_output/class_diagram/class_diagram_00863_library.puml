@@ -8,47 +8,36 @@ abstract class Catalog {
   +boolean total
   #int name
   +int level
-  +sendNote()
-  +setActive()
+  +setAddress()
+  +cancelQuantity()
 }
 class Branch {
-  #long phone
-  -double note
-  #long quantity
-  #int amount
-  +saveName()
-  +createEmail()
-  +sendCreatedat()
-  +cancelCode()
+  -long address
+  +boolean phone
+  +findActive()
+  +createTotal()
+  +processStatus()
 }
 interface Shelf {
-  -float note
+  -float active
+  #long note
+  #int name
+  +calculateDuration()
+}
+abstract class Librarian {
   +double name
   +double amount
   +float price
-  #long active
-  +saveAddress()
-  +setEmail()
-}
-class Librarian {
-  +long status
-  -double createdAt
-  +long duration
-  #double description
-  +setStatus()
+  #long score
+  #Date active
+  +validatePrice()
+  +updateCreatedat()
 }
 class Fine {
-  #double duration
-  -Date active
-  -String status
-  +long level
-  +findActive()
-  +saveUpdatedat()
-  +setPhone()
+  -String email
+  #int status
+  +saveLevel()
 }
-Catalog --> Fine : "1"
-Shelf ..|> Fine
-Branch --o Shelf
-Fine ..|> Shelf
-note right of Catalog : Library domain
+Branch --* Shelf
+Librarian --* Catalog
 @enduml

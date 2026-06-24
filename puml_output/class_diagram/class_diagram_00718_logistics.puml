@@ -4,39 +4,35 @@ skinparam defaultFontSize 13
 class Inventory {
   #String total
   +boolean type
-  +saveUpdatedat()
-  +getEmail()
-  +updateQuantity()
+  +cancelScore()
+  +updateStatus()
+  +updatePrice()
 }
-abstract class Package {
-  #String email
-  #String status
-  -int score
-  +validateAddress()
-  +createEmail()
-  +updateName()
+class Package {
+  -String quantity
+  #Date price
+  +Date description
+  +processTotal()
 }
 class Manifest {
-  -String quantity
-  +String id
-  +long level
-  +sendNote()
+  +float phone
+  +Date address
+  -float email
+  +long score
+  +updateScore()
 }
-class Route {
-  +double createdAt
-  -Date score
-  +calculatePrice()
-  +findLevel()
+interface Route {
+  +String address
+  +long name
+  +sendQuantity()
 }
-class Shipment {
-  +float quantity
-  +int score
-  +long status
-  +saveQuantity()
-  +findQuantity()
-  +updateCreatedat()
+abstract class Shipment {
+  #int id
+  -long createdAt
+  +saveName()
+  +processScore()
 }
-Shipment --* Inventory
-Package --o Shipment
-note right of Inventory : Logistics domain
+Shipment ..|> Inventory
+Manifest --|> Inventory
+Inventory --|> Package
 @enduml

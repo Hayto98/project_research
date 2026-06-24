@@ -9,35 +9,37 @@ interface Billing {
   #long type
   -float price
   -long amount
-  +saveDuration()
+  +calculateType()
 }
-abstract class Hospital {
-  -Date note
-  #float active
-  -boolean id
-  -float quantity
-  -double level
+interface Hospital {
+  -long level
+  -Date total
+  #float note
+  -boolean active
+  -float id
+  +deleteAmount()
   +createDescription()
-  +processPrice()
-  +findId()
+  +deleteLevel()
+  +updateId()
 }
-interface LabTest {
-  -double phone
-  +boolean updatedAt
-  -String description
-  +sendUpdatedat()
+class LabTest {
+  #int description
+  #float note
+  -int price
+  +long id
+  +processQuantity()
+  +savePrice()
+  +sendScore()
+  +updateUpdatedat()
 }
 class Nurse {
-  +boolean createdAt
-  -float updatedAt
-  -Date address
-  #float level
-  +Date score
-  +validateTotal()
-  +createUpdatedat()
-  +processQuantity()
+  +int description
+  -int level
+  #long total
+  +sendActive()
+  +updateLevel()
 }
-Billing ..|> LabTest
-Hospital ..> Nurse : "0..1"
-note right of Billing : Healthcare domain
+Hospital --> LabTest : "1..*"
+LabTest --* Hospital
+Hospital --* Nurse
 @enduml

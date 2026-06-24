@@ -6,43 +6,44 @@ skinparam defaultFontSize 13
 class Amenity {
   +boolean phone
   +double id
-  +createName()
-  +savePhone()
-  +sendPrice()
-  +sendType()
+  +setPrice()
+  +deleteCreatedat()
+  +processNote()
+  +cancelScore()
 }
 class Reservation {
-  -String type
+  +double score
+  #double price
+  +boolean duration
+  -float type
+  +getPhone()
+  +sendTotal()
+  +savePrice()
+  +cancelName()
+}
+abstract class Payment {
+  -long code
+  +Date note
+  -String amount
+  -float total
+  #String phone
+  +saveQuantity()
+}
+class CheckOut {
+  #float phone
+  -long address
+  #float email
+  #boolean type
   #Date id
-  -Date score
-  -float price
-  +double total
-  +cancelTotal()
-  +validateTotal()
+  +deleteId()
+  +updateUpdatedat()
 }
-class Payment {
-  -float quantity
-  #String name
-  +deleteDescription()
+abstract class Staff {
+  +String status
+  -int quantity
+  +updatePrice()
+  +updateAmount()
 }
-abstract class CheckOut {
-  #float address
-  -long email
-  #float type
-  #boolean id
-  +setType()
-  +getStatus()
-}
-class Staff {
-  #int status
-  +int type
-  -long description
-  +findEmail()
-  +calculateTotal()
-  +cancelDescription()
-}
-Staff --|> Reservation
-Reservation ..|> Staff
-Staff --o CheckOut
-note right of Amenity : Hotel domain
+Payment --> Staff : "1..*"
+Payment --o CheckOut
 @enduml

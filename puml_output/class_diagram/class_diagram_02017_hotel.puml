@@ -7,37 +7,44 @@ abstract class Guest {
   -String phone
   +double total
   -String score
-  +calculateScore()
-  +saveScore()
+  +sendDescription()
+  +getAddress()
 }
-class Staff {
-  +int duration
+interface Staff {
+  +int quantity
   +int address
   -long active
   -long level
-  +calculateNote()
-  +validateId()
+  +calculateQuantity()
+  +createName()
 }
-interface Amenity {
-  -Date active
-  +int note
-  +findDescription()
-  +validatePrice()
-  +createUpdatedat()
-  +processCreatedat()
+class Amenity {
+  +Date active
+  #double score
+  +cancelName()
+  +sendId()
+  +findAddress()
+  +processPhone()
 }
-class CheckIn {
-  +double quantity
-  -float note
-  +findPhone()
+interface CheckIn {
+  -int description
+  -Date address
+  +long price
+  -String quantity
+  -double updatedAt
+  +cancelDescription()
 }
-abstract class Service {
-  +boolean updatedAt
+class Service {
+  #float description
+  +String updatedAt
   +String code
-  +String note
-  +cancelTotal()
+  +boolean note
+  -float id
+  +validateUpdatedat()
+  +cancelStatus()
 }
-CheckIn --|> Service
 Service --> CheckIn : "1"
-note right of Guest : Hotel domain
+Staff --> Service : "1..*"
+Service ..|> Amenity
+Amenity --> Staff : "*"
 @enduml

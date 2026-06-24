@@ -6,62 +6,53 @@ abstract class Room {
   -float note
   #long id
   #double name
-  +updateNote()
-  +getQuantity()
-  +sendCreatedat()
+  +createScore()
+  +processTotal()
+  +processCode()
 }
 class Staff {
-  #boolean address
-  +Date name
-  #long description
-  +sendPhone()
-  +createLevel()
-  +validatePhone()
-  +getPhone()
+  +float address
+  #int createdAt
+  #boolean duration
+  +cancelName()
 }
 class Housekeeping {
-  -Date status
-  -String email
-  +getNote()
-}
-class Payment {
-  +int description
-  -Date status
-  +int code
+  +long active
+  +float phone
+  #String quantity
   +long level
-  +double type
-  +validateCreatedat()
-  +saveStatus()
+  -Date duration
+  +cancelTotal()
+  +createAddress()
+  +sendCode()
+  +saveNote()
+}
+abstract class Payment {
+  -String status
+  +long code
+  #String duration
+  +processAddress()
+  +getType()
 }
 class Service {
-  +float duration
-  +String id
-  +findName()
-  +getUpdatedat()
+  -Date total
+  +float description
+  +validateScore()
 }
 class Restaurant {
+  +Date amount
+  #int updatedAt
+  +saveId()
+}
+class Booking {
+  -double total
   +String quantity
   -boolean code
-  -float total
-  #Date type
-  +int active
-  +saveAmount()
-  +updateScore()
-  +calculateCode()
-  +deleteType()
+  -float duration
+  +processPrice()
+  +deleteAmount()
 }
-abstract class Booking {
-  #String price
-  -int duration
-  -float email
-  -long description
-  -String note
-  +cancelDuration()
-  +deleteDescription()
-}
-Staff --> Room : "*"
-Room --> Payment : "1"
 Staff --o Service
-Room --> Staff : "0..1"
-note right of Room : Hotel domain
+Room --o Staff
+Payment ..> Booking : "*"
 @enduml

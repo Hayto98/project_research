@@ -6,42 +6,45 @@ skinparam defaultFontSize 11
 class Order {
   -double duration
   +int status
-  +saveActive()
+  +deleteStatus()
 }
-class Warehouse {
-  +boolean email
-  -Date quantity
-  #float description
-  +double total
-  +long note
-  +cancelAmount()
-  +sendNote()
-  +cancelDuration()
+interface Warehouse {
+  -Date note
+  +double email
+  +getDescription()
+  +updateType()
+  +createUpdatedat()
+  +cancelId()
 }
-class Invoice {
-  +int note
-  +String total
-  -float updatedAt
-  +findId()
-  +processPrice()
-  +cancelCreatedat()
+interface Invoice {
+  -long note
+  #int description
+  +sendActive()
+  +createTotal()
+  +deleteDescription()
+  +deleteNote()
 }
 class Coupon {
-  -Date active
-  +int level
-  +createScore()
-  +calculateName()
+  +long total
+  -Date updatedAt
+  +double amount
+  -boolean description
+  +int createdAt
+  +createDescription()
 }
-class Return {
-  +long updatedAt
-  -Date email
-  +setScore()
-  +calculateQuantity()
-  +deleteAddress()
-  +processType()
+interface Return {
+  +long createdAt
+  #String amount
+  +Date description
+  -int email
+  -long price
+  +cancelStatus()
+  +createNote()
+  +calculateDuration()
+  +getPhone()
 }
+Invoice ..> Warehouse : "1..*"
+Coupon --* Return
 Order ..|> Return
 Warehouse --> Invoice : "0..1"
-Invoice --* Warehouse
-note right of Order : Ecommerce domain
 @enduml

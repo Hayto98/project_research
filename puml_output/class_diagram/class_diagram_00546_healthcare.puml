@@ -5,42 +5,46 @@ skinparam classBorderColor #455A64
 class Doctor {
   +String createdAt
   -double id
-  +processNote()
-  +sendEmail()
-  +calculateEmail()
-  +getDuration()
+  +sendName()
+  +createName()
+  +sendQuantity()
+  +cancelDescription()
 }
 class Diagnosis {
-  -long description
-  +boolean note
-  +cancelDuration()
+  -double email
+  -String id
+  #String updatedAt
+  #boolean status
+  +float description
+  +validateDescription()
+  +deleteDescription()
 }
 class Insurance {
-  #float duration
-  #float description
-  #int type
-  +setAddress()
-  +findNote()
+  #double level
+  +long createdAt
+  +int duration
+  -boolean code
+  -float address
+  +createQuantity()
 }
-class Patient {
-  +long amount
-  #boolean duration
-  -int price
-  -float total
-  +createId()
-  +sendNote()
-  +calculatePrice()
-  +processActive()
+interface Patient {
+  +boolean description
+  -double price
+  -double level
+  #boolean quantity
+  +updateStatus()
+  +validateDescription()
 }
 interface Nurse {
-  -double updatedAt
-  -double level
-  -double active
-  +saveId()
-  +getName()
-  +saveTotal()
+  -Date price
+  #Date note
+  +String type
+  +Date quantity
+  -String score
+  +sendCode()
+  +deleteQuantity()
 }
-Diagnosis --|> Patient
-Insurance --* Patient
-note right of Doctor : Healthcare domain
+Patient --* Insurance
+Diagnosis ..> Doctor : "1..*"
+Diagnosis --o Insurance
 @enduml

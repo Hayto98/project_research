@@ -8,42 +8,43 @@ interface Branch {
   #float phone
   -String email
   +Date score
-  +sendNote()
-  +findActive()
+  +calculateDuration()
+  +calculateAmount()
 }
-class Beneficiary {
+interface Beneficiary {
+  +float updatedAt
   #int code
   +long active
-  #Date createdAt
-  +validateStatus()
-  +updatePhone()
+  +calculateName()
+  +setStatus()
 }
 class Deposit {
-  #double quantity
-  -double description
-  +Date duration
-  -long total
-  +cancelAddress()
-  +createDuration()
-  +getLevel()
+  -double name
+  #double phone
+  -double quantity
+  +Date description
+  +processDescription()
+  +updateScore()
+  +findName()
 }
-class Transfer {
-  -long quantity
-  #float active
-  -double createdAt
-  +findLevel()
+interface Transfer {
+  #int level
+  +long address
+  #int quantity
+  -long id
+  +deleteAmount()
+  +setStatus()
+  +calculateTotal()
+  +setCode()
 }
-abstract class Statement {
-  #boolean updatedAt
-  #int score
-  +float note
-  +createTotal()
-  +cancelAmount()
-  +findPrice()
+interface Statement {
+  +float duration
+  -long updatedAt
+  -boolean level
+  +Date note
+  #double createdAt
+  +validateScore()
 }
-Branch ..|> Deposit
 Transfer --* Statement
 Beneficiary ..|> Branch
-Beneficiary --* Deposit
-note right of Branch : Banking domain
 @enduml

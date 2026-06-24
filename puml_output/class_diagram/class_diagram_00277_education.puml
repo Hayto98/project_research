@@ -6,55 +6,56 @@ class Schedule {
   +Date description
   #String duration
   #Date phone
-  +deleteCreatedat()
-  +calculateName()
+  +validateType()
+  +updateCreatedat()
 }
-abstract class Student {
-  +double phone
-  #double note
-  #float email
-  #boolean score
-  +double description
-  +calculateCreatedat()
-}
-class Enrollment {
-  -int code
-  -float phone
+class Student {
+  #double total
+  -double name
   -long type
-  +float quantity
-  -String duration
-  +saveUpdatedat()
-  +calculateAmount()
-  +setAddress()
-  +processPhone()
+  +setLevel()
+  +createName()
+}
+interface Enrollment {
+  +float level
+  +boolean id
+  -String note
+  #long status
+  #float total
+  +updateLevel()
+  +processScore()
+  +getLevel()
+  +setTotal()
 }
 class Attendance {
-  #float type
-  -String phone
-  +Date email
-  #Date address
-  +getEmail()
-  +findLevel()
-  +calculateAddress()
-  +deleteName()
+  -Date quantity
+  #int phone
+  -int description
+  +long address
+  -long code
+  +updateLevel()
+  +getId()
+  +createAmount()
 }
-abstract class Book {
+class Book {
+  #boolean score
+  #boolean address
+  -float code
+  +long id
+  +createActive()
+  +findId()
+  +savePhone()
+  +cancelCode()
+}
+interface Grade {
   -Date note
   -int price
   +double createdAt
-  +createNote()
-  +cancelUpdatedat()
+  +getUpdatedat()
+  +deleteCreatedat()
 }
-class Grade {
-  +boolean createdAt
-  #boolean address
-  #int id
-  +cancelType()
-  +updateDuration()
-}
-Attendance ..> Enrollment : "1"
-Student --o Grade
-Book --|> Grade
-Enrollment --> Student : "1"
-note right of Schedule : Education domain
+Book ..> Student : "1"
+Student --* Grade
+Schedule --> Grade : "0..1"
+Student --o Book
 @enduml

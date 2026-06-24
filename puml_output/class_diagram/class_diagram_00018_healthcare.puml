@@ -8,51 +8,50 @@ class Diagnosis {
   -boolean phone
   -boolean code
   -boolean name
-  +deleteLevel()
-  +createQuantity()
-  +createPrice()
-  +sendAddress()
+  +setLevel()
+  +deleteEmail()
+  +sendUpdatedat()
+  +findName()
 }
-abstract class Prescription {
+class Prescription {
+  #double email
+  #Date price
+  #float score
+  -long address
+  +deleteName()
+  +setPhone()
+  +validateDuration()
+}
+interface Insurance {
   -boolean email
-  -boolean level
-  +long score
-  -boolean duration
-  +sendQuantity()
-  +createPhone()
-  +cancelCode()
+  -long note
+  -float score
+  +updateId()
 }
-abstract class Insurance {
+abstract class Treatment {
   +Date address
   +float score
   -int status
   +boolean total
   +Date amount
-  +setAddress()
-}
-class Treatment {
-  -double level
-  +long phone
-  +boolean description
-  +findName()
+  +setDescription()
 }
 class Appointment {
-  +String status
-  #float duration
-  +findNote()
-  +deleteId()
-  +sendLevel()
+  #long level
+  +long description
+  +createAddress()
+  +validateDuration()
+  +deleteScore()
+  +setAddress()
 }
 class Hospital {
-  +Date active
-  -String phone
-  +String duration
-  +setCreatedat()
-  +processUpdatedat()
+  +String code
+  +String id
+  +deleteType()
+  +cancelType()
+  +calculateAmount()
 }
-Treatment --* Appointment
-Diagnosis --> Treatment : "*"
-Appointment --* Diagnosis
-Diagnosis --* Hospital
-note right of Diagnosis : Healthcare domain
+Diagnosis --> Appointment : "1..*"
+Prescription --* Appointment
+Appointment ..> Diagnosis : "*"
 @enduml

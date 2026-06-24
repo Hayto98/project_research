@@ -9,59 +9,62 @@ abstract class Librarian {
   #String note
   #boolean type
   +boolean duration
-  +findStatus()
-  +updateTotal()
-  +cancelPhone()
+  +calculateStatus()
+  +getAmount()
+  +saveLevel()
 }
 class Book {
-  #long status
-  +String quantity
-  #Date price
-  -Date type
-  +updateQuantity()
+  -String total
+  #long phone
+  #Date id
+  +cancelAmount()
+  +getId()
+  +sendActive()
+  +sendLevel()
 }
 class Author {
-  +Date level
-  +boolean type
-  +validateType()
+  +Date id
+  -long type
+  #String code
+  +createCreatedat()
+  +updateAddress()
+  +saveNote()
+  +setPhone()
 }
-abstract class Catalog {
-  -float total
-  -Date amount
-  -String updatedAt
-  #long name
-  -float code
-  +validateAmount()
-  +deleteName()
-  +deleteScore()
+class Catalog {
+  +int type
+  +String duration
+  -float note
+  -Date total
+  +updateUpdatedat()
+  +validateActive()
+  +findScore()
 }
-class Reservation {
-  +boolean total
-  #long level
-  +boolean createdAt
-  #long status
-  +processAddress()
-  +findActive()
-  +setDescription()
-  +updateAmount()
+abstract class Reservation {
+  +float address
+  #float amount
+  +float level
+  -double name
+  +setQuantity()
+  +createPhone()
 }
-abstract class Publisher {
+class Publisher {
+  -double updatedAt
+  -Date level
+  #String score
+  +float email
+  +saveAddress()
+  +cancelQuantity()
+}
+interface Renewal {
   +long active
   #boolean id
   -String updatedAt
   #String description
   #float status
-  +createDescription()
+  +findCreatedat()
 }
-interface Renewal {
-  -boolean phone
-  #long type
-  -float amount
-  +updateScore()
-}
-Renewal --|> Catalog
-Catalog --* Book
-Librarian --> Book : "1..*"
-Renewal ..|> Publisher
-note right of Librarian : Library domain
+Renewal --> Reservation : "0..1"
+Author ..|> Catalog
+Catalog --> Reservation : "1..*"
 @enduml

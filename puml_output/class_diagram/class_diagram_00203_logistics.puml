@@ -8,44 +8,35 @@ abstract class Inventory {
   -boolean price
   -int updatedAt
   #int description
-  +sendCode()
+  +calculateDuration()
 }
 class Warehouse {
+  #Date level
+  +String email
   +int createdAt
-  +long price
-  +boolean active
-  -Date amount
-  +setId()
-  +calculateName()
-  +saveType()
+  -String price
+  +saveDescription()
+  +createEmail()
+  +cancelUpdatedat()
 }
 interface Depot {
+  #float code
+  -boolean id
+  -String price
   -Date name
-  #boolean total
-  #String id
-  +float createdAt
-  +setNote()
-  +updateId()
+  +sendEmail()
 }
-class Vehicle {
-  #String name
+abstract class Vehicle {
+  +Date updatedAt
+  -int description
+  +validateScore()
+}
+class Shipment {
   #String quantity
-  +setId()
-  +processPrice()
-  +saveAmount()
-  +setNote()
+  -String code
+  +deletePrice()
 }
-interface Shipment {
-  #String quantity
-  -double type
-  #double createdAt
-  #int phone
-  +validateActive()
-  +findPrice()
-}
-Shipment ..|> Warehouse
-Warehouse --|> Shipment
-Warehouse --* Inventory
-Inventory --> Warehouse : "0..1"
-note right of Inventory : Logistics domain
+Warehouse --o Inventory
+Shipment --* Depot
+Vehicle --* Warehouse
 @enduml

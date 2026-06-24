@@ -8,31 +8,36 @@ class Restaurant {
   +long note
   +long updatedAt
   #int description
-  +sendTotal()
-  +deleteDescription()
+  +deletePhone()
+  +getPrice()
 }
-abstract class CheckIn {
-  -int email
-  #int total
-  +deleteDuration()
-  +updateLevel()
-  +deleteQuantity()
+interface CheckIn {
+  -long description
+  +boolean duration
+  +long price
+  +float id
+  #int email
+  +findScore()
+  +setName()
 }
 class Amenity {
-  -String type
   -Date id
-  +calculateTotal()
-  +createPhone()
-  +updateDescription()
+  #double quantity
+  -float code
+  -int type
+  +String email
+  +deleteNote()
+  +cancelNote()
+  +calculateLevel()
 }
 class Housekeeping {
-  -int name
-  #Date createdAt
-  -long amount
-  #boolean total
-  +findStatus()
+  #String note
+  +int description
+  -float total
+  #String quantity
+  +int id
+  +calculateName()
 }
-CheckIn ..> Housekeeping : "1"
-CheckIn --|> Restaurant
-note right of Restaurant : Hotel domain
+CheckIn --* Housekeeping
+Amenity --* CheckIn
 @enduml

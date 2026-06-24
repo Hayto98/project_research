@@ -6,39 +6,40 @@ skinparam shadowing true
 class Warehouse {
   +Date active
   #String type
-  +deleteActive()
-  +sendType()
-  +cancelLevel()
+  +findLevel()
+  +findPhone()
   +calculateActive()
-}
-class Coupon {
-  +String score
-  -Date amount
-  #String name
   +saveActive()
-  +setType()
-  +cancelType()
-  +sendEmail()
 }
-class Shipment {
-  +String total
-  +Date quantity
-  -Date amount
-  +long id
-  +getAddress()
-  +updateTotal()
+abstract class Coupon {
+  +int active
+  +long name
+  #boolean duration
+  +boolean amount
+  -Date score
+  +deleteActive()
 }
-interface Wishlist {
-  +Date email
-  -float type
-  -double name
-  -String duration
-  +updateDescription()
-  +validateCreatedat()
-  +cancelNote()
-  +findActive()
+interface Shipment {
+  -int score
+  +int email
+  +String code
+  #double phone
+  #int total
+  +calculateNote()
+  +saveEmail()
+  +findQuantity()
 }
-Wishlist ..> Coupon : "*"
-Warehouse ..|> Coupon
-note right of Warehouse : Ecommerce domain
+class Wishlist {
+  -int duration
+  #float quantity
+  -float email
+  -double type
+  -String name
+  +updateStatus()
+  +saveQuantity()
+  +validateDuration()
+  +sendId()
+}
+Coupon --* Wishlist
+Wishlist --o Warehouse
 @enduml

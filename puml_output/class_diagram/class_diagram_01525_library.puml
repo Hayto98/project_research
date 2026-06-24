@@ -6,59 +6,65 @@ skinparam defaultFontSize 11
 interface Reservation {
   #double total
   -float score
-  +createPrice()
-  +findPhone()
+  +createId()
+  +setTotal()
 }
-interface Shelf {
-  #boolean amount
-  #float duration
-  +float phone
-  #boolean type
-  +int id
-  +createAddress()
-  +savePhone()
+abstract class Shelf {
+  -Date level
+  #double price
+  +boolean amount
+  #boolean score
+  +findEmail()
+  +validateStatus()
 }
-class Fine {
-  #long active
-  +long phone
-  #boolean total
-  +setStatus()
+interface Fine {
+  -Date createdAt
+  -String description
+  #int email
+  +getAddress()
+  +createDescription()
+  +findQuantity()
 }
 class Renewal {
-  +Date note
-  #boolean type
-  +setEmail()
-  +processScore()
-  +deleteAddress()
-  +getCreatedat()
-}
-class Librarian {
-  +String address
-  +int active
-  -float level
-  +processId()
-}
-interface Catalog {
-  #boolean email
-  #long name
-  #float total
-  +validateDescription()
-  +saveCreatedat()
-  +validateAddress()
-  +processQuantity()
-}
-class Publisher {
-  #float level
-  #Date type
-  +sendTotal()
-  +updateScore()
-  +processCreatedat()
+  +Date score
+  #long active
+  #String code
+  -float duration
+  +updateUpdatedat()
+  +getActive()
+  +saveStatus()
   +setPhone()
 }
-Reservation ..> Renewal : "1"
-Librarian --|> Shelf
-Librarian --* Publisher
-Catalog --> Librarian : "0..1"
-Renewal --> Librarian : "*"
-note right of Reservation : Library domain
+interface Librarian {
+  +float code
+  +float email
+  +int note
+  -boolean amount
+  #float address
+  +processAmount()
+  +processAddress()
+}
+class Catalog {
+  +boolean type
+  #int status
+  #float duration
+  +setAmount()
+  +calculateType()
+  +setUpdatedat()
+}
+abstract class Publisher {
+  #int active
+  #float score
+  +long total
+  #long address
+  +findScore()
+  +getLevel()
+  +validateEmail()
+  +savePrice()
+}
+Librarian ..> Publisher : "*"
+Librarian ..|> Renewal
+Catalog --o Librarian
+Shelf --* Reservation
+Renewal --o Reservation
 @enduml

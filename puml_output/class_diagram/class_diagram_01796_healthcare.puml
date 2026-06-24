@@ -6,63 +6,56 @@ interface Ward {
   -Date type
   +String status
   -Date duration
-  +setUpdatedat()
-  +deleteScore()
-  +updateQuantity()
+  +processAmount()
+  +processPrice()
+  +createCreatedat()
 }
-class Nurse {
-  -long name
-  +long note
-  -long level
-  #boolean active
-  +saveNote()
-  +createType()
-  +calculateEmail()
-  +getId()
+interface Nurse {
+  -Date quantity
+  +double createdAt
+  -float score
+  +cancelAddress()
+  +processUpdatedat()
+  +validateScore()
 }
 abstract class Appointment {
-  +double amount
-  -String name
-  +cancelNote()
-  +sendDuration()
-  +getNote()
-  +saveNote()
+  -double active
+  -String type
+  #String note
+  -float quantity
+  +saveAddress()
 }
 class Prescription {
-  +String email
-  +Date status
-  +sendTotal()
-  +deleteAddress()
+  #double price
+  #double quantity
+  #boolean name
+  +calculateAmount()
 }
-class Hospital {
-  +Date price
-  #long duration
-  +saveName()
-  +cancelTotal()
-  +validateAmount()
+abstract class Hospital {
+  +int status
+  +float email
+  +sendDuration()
+  +validateCode()
 }
-class Treatment {
-  -double quantity
-  +double code
-  -Date email
-  -int name
-  +getAddress()
-  +cancelTotal()
-  +sendAmount()
-  +findAddress()
+interface Treatment {
+  -int amount
+  #Date address
+  -boolean email
+  #Date name
+  -Date price
+  +setAmount()
 }
-class MedicalRecord {
-  #float level
-  -float active
-  -long id
-  +long total
-  +findScore()
+interface MedicalRecord {
+  +long address
+  #float amount
+  +long description
+  -String duration
+  -long quantity
+  +createCode()
+  +calculateLevel()
+  +deleteActive()
+  +saveStatus()
 }
-Prescription --o Appointment
-Prescription --> Nurse : "1"
-MedicalRecord --o Appointment
-Prescription --* Treatment
-Ward --* Treatment
-Treatment ..> MedicalRecord : "1..*"
-note right of Ward : Healthcare domain
+Treatment --> Appointment : "*"
+Hospital ..> Nurse : "1..*"
 @enduml

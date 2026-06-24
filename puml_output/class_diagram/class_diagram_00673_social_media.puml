@@ -6,41 +6,45 @@ skinparam shadowing true
 abstract class Follower {
   #float type
   #Date score
-  +processScore()
+  +getPrice()
 }
-class Hashtag {
+abstract class Hashtag {
+  #long address
   #boolean level
   #double type
   -String code
-  #double quantity
-  +validateQuantity()
-  +sendNote()
-  +sendQuantity()
-  +calculateEmail()
+  +sendStatus()
+  +sendUpdatedat()
+  +createDuration()
+  +findCode()
 }
-abstract class Comment {
-  -boolean amount
-  #double active
-  +float name
-  +cancelLevel()
-  +cancelScore()
+class Comment {
+  +float score
+  +float quantity
+  #String total
+  -boolean email
+  #double type
+  +getName()
+  +setAddress()
 }
 class Notification {
+  #double email
   +double phone
   -double name
-  -int active
-  #double type
-  +deleteCode()
+  +getTotal()
+  +findDescription()
+  +getPhone()
+  +setId()
 }
 class Report {
-  -int status
-  #double amount
-  #double price
-  +updateNote()
-  +processEmail()
+  +int code
+  -double amount
+  +boolean level
+  +saveDescription()
+  +getAddress()
+  +updateCode()
+  +calculateDescription()
 }
-Comment --o Notification
-Notification --|> Hashtag
-Notification ..> Follower : "1..*"
-note right of Follower : Social Media domain
+Hashtag --o Notification
+Comment ..> Report : "1..*"
 @enduml

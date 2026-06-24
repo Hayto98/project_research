@@ -4,44 +4,42 @@ class Invoice {
   #double code
   -String level
   #int quantity
-  +sendStatus()
-  +sendPrice()
-  +validateEmail()
+  +findPrice()
+  +setStatus()
+  +calculateActive()
 }
-interface Housekeeping {
-  +int status
-  -boolean type
-  #float quantity
-  -String phone
-  #String name
-  +createActive()
+abstract class Housekeeping {
+  -long email
+  -String active
+  +int total
+  -boolean status
+  +deleteNote()
+  +validatePrice()
+  +processAmount()
+  +calculateId()
 }
 class Room {
+  #String createdAt
   #Date email
   #Date note
-  -int code
-  +sendUpdatedat()
+  +findAddress()
+  +updateQuantity()
+  +processName()
 }
-class Guest {
-  +float phone
-  #int duration
-  +boolean note
-  +int type
-  -double code
-  +cancelStatus()
-  +sendId()
-  +savePhone()
+interface Guest {
+  -boolean id
+  -float note
+  -String phone
+  +validateType()
+  +processScore()
 }
 interface CheckIn {
-  #int updatedAt
-  +boolean id
-  -double type
-  +setPhone()
-  +processStatus()
+  -double code
+  -boolean createdAt
+  +boolean level
+  +cancelDuration()
 }
-Invoice --> Guest : "*"
-Room ..|> Invoice
-CheckIn ..> Room : "0..1"
-Invoice --> Room : "1"
-note right of Invoice : Hotel domain
+CheckIn ..|> Housekeeping
+Invoice ..> Guest : "0..1"
+Housekeeping --o Guest
 @enduml

@@ -8,65 +8,55 @@ abstract class Exam {
   +int level
   +boolean description
   +int code
-  +getTotal()
-  +calculateType()
+  +processQuantity()
+  +setNote()
 }
-class Grade {
+abstract class Grade {
+  -double code
+  -boolean active
+  -int note
+  #boolean phone
+  #boolean level
+  +saveId()
+  +updateActive()
+  +cancelDescription()
+}
+interface Book {
+  -float total
+  +boolean active
   #double phone
-  +Date duration
-  #Date level
-  #boolean price
-  #long active
-  +getActive()
-}
-class Book {
-  +long active
-  #String phone
-  +boolean level
-  -float code
-  #String total
-  +getType()
-  +createAmount()
+  +validateAmount()
 }
 class Library {
-  -int score
-  -Date id
-  #String status
-  +processName()
-  +updateScore()
-  +cancelCreatedat()
-}
-abstract class Attendance {
-  +Date quantity
-  #String address
-  -int duration
-  #double score
-  +int total
-  +createUpdatedat()
-  +updateName()
-  +validateNote()
-}
-abstract class Schedule {
-  -double phone
-  -int createdAt
-  -float email
-  #Date id
+  +String duration
+  -long total
+  +int name
+  +cancelLevel()
   +getCreatedat()
-  +saveDescription()
-  +sendPrice()
+}
+class Attendance {
+  -Date price
+  #String updatedAt
+  +cancelCode()
+  +calculateEmail()
+  +updateStatus()
+}
+interface Schedule {
+  -long type
+  -long score
+  -int note
+  +cancelAddress()
 }
 class Enrollment {
-  +long price
-  -String quantity
-  +int phone
-  +float type
-  +createQuantity()
+  +String createdAt
+  -double description
+  -Date email
+  #Date quantity
+  -Date updatedAt
+  +saveNote()
+  +deleteCreatedat()
+  +deleteDescription()
 }
-Schedule ..|> Book
-Attendance --o Exam
-Exam --* Library
-Exam --> Attendance : "0..1"
-Grade ..> Exam : "1"
-Library --* Attendance
-note right of Exam : Education domain
+Library --o Enrollment
+Grade --> Library : "1..*"
 @enduml

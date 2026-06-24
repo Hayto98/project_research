@@ -8,44 +8,45 @@ interface Supplier {
   #long duration
   #int email
   #String total
-  +cancelType()
-  +setDescription()
-  +sendTotal()
+  +savePrice()
+  +getId()
+  +createAddress()
 }
-abstract class Wishlist {
-  +String email
-  -double level
-  +boolean description
-  +Date price
-  -double address
-  +setScore()
-  +updatePhone()
-}
-class Coupon {
-  -String address
-  -double phone
-  -String id
+class Wishlist {
+  -int type
+  +long note
+  -int email
+  #String description
+  #long price
+  +saveLevel()
+  +validateCode()
   +deleteQuantity()
+  +findType()
+}
+interface Coupon {
+  -long phone
+  +double status
+  +float createdAt
+  +findAmount()
+  +findCode()
+  +createPhone()
 }
 class Warehouse {
-  #double description
-  #int level
-  +String active
-  -boolean duration
-  +setQuantity()
-  +processAmount()
+  +boolean quantity
+  #int phone
+  #double address
+  +deleteScore()
+  +deleteNote()
 }
 class Payment {
-  +double createdAt
-  +float note
-  +int email
-  -double updatedAt
-  +long total
-  +calculatePrice()
+  #int status
+  -double quantity
+  +boolean note
+  +cancelPhone()
+  +sendNote()
+  +createEmail()
+  +getAddress()
 }
-Wishlist ..|> Payment
-Coupon ..> Wishlist : "1..*"
-Wishlist ..> Coupon : "0..1"
-Payment ..> Supplier : "*"
-note right of Supplier : Ecommerce domain
+Warehouse ..|> Supplier
+Wishlist --o Warehouse
 @enduml

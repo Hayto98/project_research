@@ -3,31 +3,32 @@ skinparam shadowing true
 interface DeliveryNote {
   -float description
   #boolean level
-  +calculateName()
-  +deleteQuantity()
+  +createDuration()
+  +calculateEmail()
 }
 class FuelLog {
-  +float type
-  #int createdAt
-  #boolean note
-  +cancelId()
+  #double id
+  +float description
+  #int type
+  #boolean createdAt
+  +validateActive()
 }
 class Shipment {
-  +String price
-  -long duration
-  +getDuration()
-  +updatePrice()
+  +String status
+  -long price
+  #int level
+  +findUpdatedat()
 }
 class Warehouse {
-  #long code
-  +boolean status
-  -int createdAt
-  +deleteDescription()
-  +updateQuantity()
-  +deleteLevel()
+  #long amount
+  +boolean updatedAt
+  -int code
+  -int status
+  +int createdAt
+  +validateQuantity()
+  +getCode()
+  +getPhone()
 }
-DeliveryNote --> Shipment : "*"
-Warehouse ..|> FuelLog
-Shipment ..|> Warehouse
-note right of DeliveryNote : Logistics domain
+Warehouse --o FuelLog
+FuelLog --* Shipment
 @enduml

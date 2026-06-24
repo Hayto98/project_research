@@ -8,63 +8,59 @@ interface Billing {
   -int quantity
   -double amount
   #Date updatedAt
-  +processName()
-  +saveDescription()
-  +setQuantity()
-  +findAddress()
+  +deleteActive()
+  +findLevel()
+  +calculateId()
+  +processNote()
 }
 class MedicalRecord {
-  -long updatedAt
-  -double total
-  +String code
-  +findLevel()
-  +getCode()
-  +createActive()
+  +boolean quantity
+  #int address
+  +createLevel()
+  +getPhone()
 }
 class Diagnosis {
-  +double type
-  #boolean email
-  -double quantity
-  +getStatus()
+  +float email
+  -Date note
+  #String type
+  +long status
+  +updateNote()
+  +createLevel()
 }
-interface Patient {
-  -long description
-  #long code
-  +double id
-  -int address
-  +setAmount()
-  +updateActive()
-  +createCode()
-  +findAmount()
+class Patient {
+  -String email
+  +String quantity
+  #Date id
+  #Date price
+  -int phone
+  +updatePrice()
 }
 interface Appointment {
+  -long type
+  +double phone
+  +Date level
+  +int updatedAt
+  +validatePhone()
+  +sendUpdatedat()
+  +findId()
+}
+interface Nurse {
   +String active
   #boolean address
   #float createdAt
   +long code
-  +calculateEmail()
-  +sendCode()
+  +saveName()
+  +sendType()
 }
-interface Nurse {
-  -double phone
-  -long email
-  #double price
-  +sendDescription()
-  +cancelActive()
-  +updateNote()
+class Treatment {
+  #int level
+  -long score
+  +updateQuantity()
+  +processTotal()
+  +setNote()
+  +calculatePhone()
 }
-abstract class Treatment {
-  #float note
-  -int price
-  +updatePrice()
-  +validateUpdatedat()
-  +deleteStatus()
-  +saveStatus()
-}
-MedicalRecord ..|> Nurse
-Patient --o Nurse
-Treatment --> Billing : "0..1"
-Nurse ..|> Patient
-Appointment --* Treatment
-note right of Billing : Healthcare domain
+Treatment --o Appointment
+Treatment --> Nurse : "1..*"
+MedicalRecord --> Appointment : "0..1"
 @enduml

@@ -7,57 +7,54 @@ class Service {
   #Date score
   #String level
   +boolean email
-  +deleteName()
-  +validateEmail()
-  +calculateCode()
-  +setAmount()
+  +setLevel()
+  +calculateEmail()
+  +findCode()
+  +calculateUpdatedat()
 }
 class CheckOut {
-  #Date phone
-  #float createdAt
-  +cancelActive()
-  +deleteStatus()
+  #long code
+  #int duration
+  #Date amount
+  #float description
+  +boolean status
+  +createPhone()
+  +findTotal()
 }
 class CheckIn {
   -String phone
   -boolean quantity
   -Date amount
   +float duration
-  +updateCode()
-  +cancelType()
-  +updateUpdatedat()
-  +cancelDescription()
+  +updateStatus()
+  +getDescription()
+  +setDescription()
+  +getQuantity()
 }
-interface Guest {
-  +boolean updatedAt
-  +double price
-  -boolean score
-  +String createdAt
-  +setScore()
-  +cancelNote()
-  +deleteCreatedat()
-  +getType()
+abstract class Guest {
+  #long updatedAt
+  +double level
+  #int description
+  +setId()
 }
-abstract class Staff {
-  #int quantity
-  -long code
-  -double total
-  +float updatedAt
-  +Date id
-  +validatePhone()
-  +saveNote()
-  +cancelAddress()
-  +processLevel()
+class Staff {
+  +Date email
+  #float level
+  #float status
+  -int id
+  +String type
+  +sendUpdatedat()
+  +createEmail()
+  +saveCode()
+  +findActive()
 }
 class Housekeeping {
-  +Date description
-  +float level
-  #Date quantity
-  #double address
-  +calculateActive()
+  +Date total
+  +long updatedAt
+  +createAmount()
+  +sendName()
+  +getDescription()
 }
-Staff ..|> Guest
-Staff ..|> Housekeeping
-CheckOut ..|> Staff
-note right of Service : Hotel domain
+Service --* Guest
+CheckIn --> Guest : "1..*"
 @enduml

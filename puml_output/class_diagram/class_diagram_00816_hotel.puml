@@ -8,36 +8,34 @@ class Amenity {
   #double code
   -double active
   +boolean type
-  +saveCreatedat()
+  +updateAddress()
 }
 class CheckIn {
-  +long level
-  #float active
-  #float price
-  #long score
-  +deleteType()
-  +cancelCreatedat()
-  +getEmail()
-  +validateType()
+  #double quantity
+  -String level
+  +calculateUpdatedat()
+  +getPrice()
+  +getCode()
 }
-interface CheckOut {
-  +String status
-  +long type
-  -float id
-  -int total
-  +updateLevel()
-  +updateScore()
-  +saveId()
+class CheckOut {
+  -Date description
+  -float type
+  #long createdAt
+  +Date id
+  -String email
+  +deleteLevel()
+  +validateId()
+  +deletePhone()
+  +setName()
 }
 class Reservation {
+  #int email
+  #boolean amount
+  #String address
   +int updatedAt
-  +long amount
-  #long createdAt
-  +findTotal()
-  +saveTotal()
+  +findId()
+  +cancelNote()
 }
-CheckIn --o Reservation
-CheckOut ..|> Amenity
-Amenity --* CheckOut
-note right of Amenity : Hotel domain
+CheckIn --* Amenity
+CheckOut ..> Amenity : "*"
 @enduml

@@ -5,50 +5,51 @@ class Statement {
   #Date email
   #String duration
   #double score
-  +calculateAddress()
-  +sendNote()
+  +updateCode()
+  +processLevel()
 }
-interface Beneficiary {
-  #int active
-  +double total
-  +Date quantity
-  #double amount
-  +validatePrice()
+class Beneficiary {
+  +float level
+  #int phone
+  +double active
+  +Date total
+  #double quantity
+  +createActive()
 }
-interface Withdrawal {
+abstract class Withdrawal {
   +long score
   -long description
   -Date amount
-  +saveEmail()
-  +deleteUpdatedat()
-  +sendStatus()
-  +updateAmount()
+  +deleteStatus()
+  +cancelType()
+  +processCreatedat()
+  +cancelPhone()
 }
 class Deposit {
-  #Date description
-  #double createdAt
-  #boolean id
-  +processStatus()
-  +calculateActive()
+  #int active
+  #String status
+  +int createdAt
+  +updateDuration()
+  +validateLevel()
 }
-class Account {
-  -int code
-  #boolean note
-  +setCreatedat()
-  +createUpdatedat()
-  +validateActive()
-  +calculateAmount()
+abstract class Account {
+  #long note
+  +String status
+  -double total
+  +getScore()
+  +getStatus()
 }
-class Loan {
-  +String score
-  -String email
-  +findAmount()
-  +findLevel()
-  +saveNote()
+interface Loan {
+  #double code
+  #int createdAt
+  +String email
+  #long updatedAt
+  +String phone
+  +setUpdatedat()
+  +createQuantity()
+  +createTotal()
+  +sendDescription()
 }
-Deposit ..> Beneficiary : "1..*"
-Statement --|> Deposit
-Beneficiary ..> Statement : "1..*"
-Withdrawal --* Beneficiary
-note right of Statement : Banking domain
+Loan ..> Account : "*"
+Withdrawal ..|> Deposit
 @enduml

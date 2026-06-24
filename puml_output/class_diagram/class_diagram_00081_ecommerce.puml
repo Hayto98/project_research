@@ -5,66 +5,57 @@ interface Order {
   -int duration
   +String createdAt
   #double address
-  +findPhone()
-  +deleteAmount()
-  +updatePhone()
-  +findPhone()
+  +cancelName()
+  +cancelId()
+  +updateType()
+  +deleteScore()
 }
-abstract class Cart {
-  #double amount
-  -long score
+class Cart {
   #Date phone
-  #float quantity
-  +updateTotal()
+  -long type
+  #double quantity
+  -long amount
+  +cancelNote()
 }
-interface Coupon {
+abstract class Coupon {
   #float description
   -boolean phone
-  +savePhone()
-  +validateCode()
-  +processId()
-  +createPrice()
+  +cancelScore()
+  +cancelId()
+  +validateDuration()
+  +getType()
 }
 abstract class Shipment {
-  -long total
-  +long duration
-  -double phone
-  -boolean name
-  #double price
-  +processDuration()
-  +deleteQuantity()
+  -float quantity
+  #boolean price
+  +processPhone()
+  +calculateTotal()
+  +setNote()
+  +cancelCreatedat()
 }
-interface Review {
-  #Date status
-  +float code
-  +updateScore()
-  +findDescription()
+class Review {
+  -String price
+  -float total
+  +processTotal()
+  +getUpdatedat()
+  +validateUpdatedat()
 }
-class Supplier {
-  -Date phone
-  -double id
-  +Date status
-  -float note
-  #Date level
-  +updateUpdatedat()
-  +deletePrice()
-  +updateEmail()
-  +createName()
+interface Supplier {
+  #boolean level
+  +String updatedAt
+  +boolean note
+  #float description
+  +float quantity
+  +findAddress()
+  +getCreatedat()
 }
-interface Payment {
-  +boolean phone
-  #String note
-  #float status
-  -double updatedAt
-  +createDescription()
-  +validateDescription()
-  +createPhone()
-  +createQuantity()
+class Payment {
+  +String total
+  #double phone
+  +findCode()
 }
-Payment --* Order
-Supplier --* Review
-Shipment --> Cart : "1..*"
-Order --o Cart
-Cart --* Review
-note right of Order : Ecommerce domain
+Shipment ..> Order : "1..*"
+Payment ..> Supplier : "*"
+Cart ..|> Supplier
+Cart ..|> Shipment
 @enduml

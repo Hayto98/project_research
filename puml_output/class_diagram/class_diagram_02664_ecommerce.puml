@@ -7,53 +7,52 @@ class Warehouse {
   #Date quantity
   +float amount
   -float score
-  +deleteCreatedat()
-  +cancelLevel()
-  +deleteEmail()
+  +validateCode()
+  +saveNote()
+  +updateQuantity()
 }
-class Invoice {
-  +String id
-  +int amount
-  +calculateCreatedat()
+interface Invoice {
+  #String email
+  #Date quantity
+  #int name
+  +setName()
+  +setType()
 }
-abstract class Review {
-  #float createdAt
-  +long total
-  +saveId()
+class Review {
+  -String total
+  +double createdAt
+  +deleteId()
 }
 class Coupon {
-  -long description
-  +int name
-  -int address
-  +String quantity
-  +createAddress()
+  #long id
+  #Date updatedAt
+  +setPrice()
+  +updateQuantity()
 }
 class Shipment {
+  +double quantity
+  +int duration
+  +boolean level
   +float id
-  #Date updatedAt
-  +cancelScore()
-  +setAddress()
+  +calculateCreatedat()
+  +updateLevel()
+  +calculateTotal()
 }
 interface Cart {
-  -double price
-  +double email
-  -long duration
-  +sendDescription()
-  +deleteQuantity()
+  +float id
+  #Date updatedAt
+  +setPhone()
+  +cancelAmount()
 }
-interface Customer {
-  +long level
-  #String updatedAt
-  -Date id
-  +int amount
-  +double type
-  +createTotal()
-  +processQuantity()
-  +sendStatus()
+class Customer {
+  #double active
+  -double updatedAt
+  +double price
+  -long email
+  +calculateDuration()
+  +cancelName()
 }
-Customer --|> Invoice
-Shipment --* Cart
-Customer --|> Coupon
-Shipment --* Invoice
-note right of Warehouse : Ecommerce domain
+Invoice --> Review : "*"
+Shipment --|> Invoice
+Invoice --|> Coupon
 @enduml

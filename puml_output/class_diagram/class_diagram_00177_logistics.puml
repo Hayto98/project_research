@@ -6,55 +6,59 @@ skinparam defaultFontSize 11
 class Shipment {
   #double createdAt
   -float score
-  +createDuration()
-  +deleteAmount()
+  +findScore()
+  +getQuantity()
 }
-abstract class Depot {
-  -double amount
-  #float score
-  +int quantity
-  +updateDuration()
-  +sendEmail()
+class Depot {
+  #long total
+  -double createdAt
+  #float amount
+  +validateCode()
+  +saveNote()
 }
 interface DeliveryNote {
+  -float duration
+  #String description
   #String note
-  #String code
-  -Date address
-  +processUpdatedat()
+  -Date code
+  +processTotal()
 }
 class Manifest {
-  -int phone
-  +boolean name
-  -Date quantity
-  #boolean email
-  -float level
-  +processActive()
-  +findCode()
+  -Date price
+  #float phone
+  -float name
+  +createQuantity()
 }
 class Warehouse {
-  +Date address
-  -boolean score
-  +float id
-  #double email
+  +double active
+  #Date quantity
+  +long note
+  +setEmail()
+  +createStatus()
+  +updatePrice()
+  +validateAmount()
+}
+class FuelLog {
+  #double total
   #Date level
-  +sendQuantity()
+  +boolean description
+  +setAddress()
+  +saveLevel()
+  +findQuantity()
 }
-interface FuelLog {
-  #long name
-  +Date quantity
-  #boolean address
-  -double email
-  +getLevel()
-  +calculateAddress()
+class Inventory {
+  #Date address
+  #long email
+  -int level
+  +Date updatedAt
+  +validateScore()
+  +sendCode()
+  +processDuration()
+  +findPhone()
 }
-abstract class Inventory {
-  #double updatedAt
-  +double description
-  -long type
-  +setLevel()
-}
+Warehouse ..|> Manifest
+Manifest --* Inventory
+Shipment --> Inventory : "1..*"
 FuelLog --o Depot
 Inventory --o Shipment
-Depot --* DeliveryNote
-note right of Shipment : Logistics domain
 @enduml

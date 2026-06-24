@@ -8,15 +8,16 @@ abstract class Inventory {
   #double status
   #long price
   +int code
-  +deletePhone()
-  +sendTotal()
+  +createCreatedat()
+  +findCode()
 }
-class Depot {
-  #float price
-  #long type
-  #long score
-  #double duration
-  +deleteScore()
+interface Depot {
+  #float id
+  -boolean score
+  #long address
+  #long price
+  #double type
+  +findId()
 }
 interface FuelLog {
   #int total
@@ -24,18 +25,18 @@ interface FuelLog {
   #float amount
   +int phone
   -float email
-  +createCreatedat()
+  +deleteCreatedat()
 }
 class Manifest {
-  -Date score
-  +boolean quantity
-  #Date level
-  +createQuantity()
-  +updateTotal()
-  +findPrice()
-  +sendCreatedat()
+  -Date description
+  +boolean score
+  #Date quantity
+  -long level
+  +processActive()
+  +calculateQuantity()
+  +deleteType()
 }
-Depot --o FuelLog
-Manifest --> Depot : "*"
-note right of Inventory : Logistics domain
+Depot --> Inventory : "0..1"
+Manifest --o FuelLog
+FuelLog --o Manifest
 @enduml

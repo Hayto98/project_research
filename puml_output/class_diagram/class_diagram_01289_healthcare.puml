@@ -5,15 +5,15 @@ skinparam defaultFontSize 13
 class Prescription {
   +float createdAt
   +float total
-  +validateAmount()
+  +saveScore()
 }
-abstract class Appointment {
-  +long score
-  -float phone
+class Appointment {
+  -long amount
+  +String score
+  -int phone
   +String type
-  +deleteAmount()
-  +getAmount()
-  +updateCode()
+  +int status
+  +validateDescription()
 }
 class Treatment {
   #boolean duration
@@ -21,43 +21,39 @@ class Treatment {
   +String email
   -Date status
   +float type
-  +saveQuantity()
-  +getName()
+  +saveUpdatedat()
+  +deleteLevel()
 }
-abstract class Ward {
-  +long status
-  -Date level
-  +boolean email
-  +Date updatedAt
-  +boolean address
-  +sendDuration()
-  +createNote()
-  +getCode()
+class Ward {
+  -String name
+  #float note
+  +sendNote()
+  +processEmail()
+  +deleteUpdatedat()
 }
 class Diagnosis {
-  #Date price
-  -float description
-  +String duration
-  #long updatedAt
-  +validateDuration()
-  +deleteCreatedat()
-  +deletePrice()
+  #float phone
+  +boolean quantity
+  +getActive()
 }
 class Insurance {
-  -Date total
-  #long duration
-  #boolean amount
-  #double id
-  +setLevel()
+  +long score
+  -double email
+  +boolean note
+  -int id
+  +setActive()
+  +saveEmail()
+  +setStatus()
 }
-class LabTest {
-  +boolean duration
-  -String score
-  +processDuration()
+interface LabTest {
+  +int duration
+  -long quantity
+  -double phone
+  -int description
+  +updateQuantity()
 }
-Appointment --o Insurance
-Diagnosis --> Treatment : "1"
-Appointment --> LabTest : "0..1"
-LabTest --|> Treatment
-note right of Prescription : Healthcare domain
+Insurance --* Diagnosis
+Diagnosis ..> Ward : "1"
+Prescription --> Insurance : "1..*"
+Diagnosis --> LabTest : "1"
 @enduml

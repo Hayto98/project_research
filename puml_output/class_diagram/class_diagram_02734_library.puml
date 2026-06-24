@@ -7,39 +7,43 @@ interface Loan {
   #int quantity
   #double total
   #Date active
-  +cancelQuantity()
+  +sendLevel()
 }
-class Fine {
+interface Fine {
+  #float email
   #float active
-  +float level
-  +setEmail()
-  +findName()
-  +processEmail()
+  +float status
+  -String level
+  +setCreatedat()
+  +saveId()
+  +processCreatedat()
 }
-class Shelf {
-  -int amount
-  -String duration
-  +createAddress()
-  +calculateLevel()
-  +updateQuantity()
+abstract class Shelf {
+  -int name
+  -String status
+  -long amount
+  -double score
+  +cancelAddress()
+  +findDuration()
 }
-interface Book {
-  -String id
-  -boolean updatedAt
-  -long quantity
-  -double code
-  -int status
-  +saveTotal()
-  +calculateStatus()
+abstract class Book {
+  +String updatedAt
+  -String quantity
+  +sendQuantity()
+  +deleteLevel()
+  +calculateTotal()
+  +findAmount()
 }
-interface Author {
-  -Date code
-  #int active
-  +validateStatus()
-  +cancelDuration()
-  +updateNote()
+class Author {
+  -String total
+  #String email
+  #String updatedAt
+  #float description
+  -Date duration
+  +getCreatedat()
+  +createId()
 }
-Shelf --* Fine
-Fine --o Shelf
-note right of Loan : Library domain
+Shelf --> Loan : "0..1"
+Book ..> Fine : "1..*"
+Fine ..> Shelf : "0..1"
 @enduml

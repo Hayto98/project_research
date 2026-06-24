@@ -6,43 +6,38 @@ class DeliveryNote {
   -float address
   #String score
   -String active
-  +deleteAddress()
-  +updateStatus()
-  +processId()
+  +findPhone()
+  +calculateName()
+  +updateAmount()
 }
 class FuelLog {
-  +String id
-  -boolean address
-  #long status
-  +sendDescription()
-  +cancelScore()
-  +getUpdatedat()
-  +setEmail()
-}
-abstract class Shipment {
-  -String name
-  #int duration
-  +double note
-  +createPrice()
-  +processPrice()
-  +setUpdatedat()
-  +sendDescription()
-}
-class Warehouse {
-  +String phone
+  +int type
   +boolean id
-  +deletePhone()
-  +createName()
-  +sendDescription()
-  +setName()
+  +setAmount()
+  +createEmail()
+  +updateQuantity()
 }
-class Tracking {
-  #float quantity
-  +boolean total
-  +processCode()
-  +createAmount()
+interface Shipment {
+  -boolean createdAt
+  #long id
+  +sendAmount()
+  +getEmail()
+  +getStatus()
+  +saveDuration()
 }
-Shipment --* Warehouse
-Tracking --|> Warehouse
-note right of DeliveryNote : Logistics domain
+interface Warehouse {
+  -double updatedAt
+  +Date code
+  +saveId()
+}
+abstract class Tracking {
+  -double id
+  -Date updatedAt
+  -String createdAt
+  +boolean price
+  +int note
+  +processStatus()
+}
+DeliveryNote --|> Tracking
+Tracking ..|> Warehouse
 @enduml

@@ -7,38 +7,46 @@ class Hashtag {
   -int type
   -String address
   +boolean code
-  +createCreatedat()
+  +validateAmount()
 }
-abstract class Notification {
-  #double total
-  +boolean name
-  +sendDescription()
-  +calculateCode()
-  +findPrice()
-}
-class Story {
-  -boolean createdAt
-  +boolean score
-  -double code
-  #long duration
-  +calculateScore()
-  +validateNote()
-  +updateStatus()
-}
-class Post {
-  +float name
-  #float quantity
-  #double total
-  +updateAddress()
-  +calculateType()
-}
-class User {
+class Notification {
+  #long name
+  #float total
+  +double duration
   +Date note
-  #double score
-  +Date type
-  +sendType()
+  -String code
+  +getTotal()
+  +updateScore()
+  +findLevel()
 }
-Hashtag ..> User : "1..*"
+interface Story {
+  #int createdAt
+  #double address
+  +sendPrice()
+  +processDescription()
+  +calculatePhone()
+  +getPhone()
+}
+interface Post {
+  +float note
+  +long createdAt
+  -int status
+  #float address
+  +getActive()
+  +cancelNote()
+  +deleteAddress()
+  +calculateName()
+}
+abstract class User {
+  #float createdAt
+  #double description
+  +Date note
+  +boolean type
+  -double updatedAt
+  +updateDuration()
+}
+Story --|> Hashtag
 Story --> Post : "1"
-note right of Hashtag : Social Media domain
+Post ..> Hashtag : "1..*"
+Hashtag --o Notification
 @enduml

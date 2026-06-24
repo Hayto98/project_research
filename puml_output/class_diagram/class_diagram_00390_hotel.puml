@@ -6,43 +6,51 @@ class Reservation {
   -float email
   -boolean status
   -String createdAt
-  +updateNote()
-  +createQuantity()
-  +createAddress()
+  +processDuration()
+  +deletePrice()
+  +setTotal()
 }
 class Restaurant {
-  +String quantity
-  +int updatedAt
-  +processAmount()
+  +String address
+  +int email
+  +String code
+  -int quantity
+  +calculateQuantity()
+  +setUpdatedat()
+  +sendTotal()
 }
 class Service {
-  +String name
-  -float id
-  -boolean email
-  +double level
-  #long note
-  +processPhone()
-  +setTotal()
-  +getType()
+  +double note
+  -boolean name
+  +processLevel()
+  +getScore()
 }
 class CheckIn {
-  #int score
-  #float code
-  +cancelScore()
-  +processLevel()
+  +double type
+  +String phone
+  #String status
+  #int total
+  +validateActive()
+  +createStatus()
 }
-class Guest {
-  -float description
-  +String name
-  +calculateEmail()
+abstract class Guest {
+  -float status
+  +String description
+  +double name
+  +setAmount()
+  +createPhone()
+  +setStatus()
 }
 class Housekeeping {
-  -int createdAt
-  #boolean price
-  +cancelDescription()
-  +processCreatedat()
+  -int email
+  +String createdAt
+  #String active
+  -String updatedAt
+  +float description
+  +savePrice()
+  +saveLevel()
 }
-Reservation --* Housekeeping
-Housekeeping --> Restaurant : "0..1"
-note right of Reservation : Hotel domain
+Guest ..|> Restaurant
+Reservation --> Restaurant : "1"
+Guest --o Reservation
 @enduml

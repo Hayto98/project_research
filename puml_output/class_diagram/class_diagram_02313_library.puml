@@ -8,58 +8,66 @@ class Catalog {
   #long email
   +long note
   #String status
-  +updateTotal()
+  +deleteAddress()
 }
-class Fine {
-  +long level
-  +long duration
-  -boolean name
-  +sendCode()
+abstract class Fine {
+  -int updatedAt
+  -long level
+  #String name
+  #String duration
+  +cancelUpdatedat()
+  +saveTotal()
+  +setQuantity()
 }
 class Reservation {
-  #Date duration
-  #float email
-  -boolean id
-  -Date score
-  +calculateQuantity()
-  +findCode()
+  #int id
+  -long duration
+  #Date quantity
+  +String total
+  +updatePrice()
 }
 class Member {
-  -float id
-  +double createdAt
-  +setId()
-  +saveUpdatedat()
-  +createId()
+  #Date description
+  +long note
+  +int phone
+  #long code
+  -boolean id
+  +calculateAmount()
+  +updateStatus()
+  +saveQuantity()
+  +sendActive()
 }
-class Book {
-  +boolean total
-  #double type
-  -float note
-  #float updatedAt
-  +setEmail()
-  +calculateTotal()
-  +deleteActive()
+interface Book {
+  -double total
+  +boolean level
+  +double quantity
+  +Date status
+  +float email
+  +sendEmail()
+  +validateDuration()
+  +findDuration()
 }
-class Branch {
-  #double description
-  -double id
-  #Date address
-  #boolean createdAt
-  -double score
-  +saveAmount()
-  +deleteTotal()
-  +calculatePhone()
-  +cancelPrice()
+abstract class Branch {
+  #float total
+  -Date score
+  +int phone
+  -double type
+  +processEmail()
+  +processPhone()
+  +cancelType()
 }
 abstract class Librarian {
-  -boolean level
-  +int phone
-  +findName()
-  +updateType()
-  +findId()
+  +float status
+  -Date level
+  #float phone
+  +int address
+  -Date description
+  +validateCreatedat()
 }
-Book --o Librarian
-Catalog ..|> Fine
+Book --|> Member
+Librarian ..|> Fine
 Member --> Branch : "1"
-note right of Catalog : Library domain
+Catalog --o Fine
+Book --o Librarian
+Librarian ..|> Member
 @enduml

@@ -7,57 +7,51 @@ interface Shipment {
   +Date quantity
   +double total
   #Date address
-  +setNote()
-  +findActive()
-  +cancelUpdatedat()
-  +setNote()
+  +deletePhone()
+  +createAddress()
+  +calculateAmount()
+  +sendUpdatedat()
 }
-class Warehouse {
-  +boolean id
-  +float active
-  #long quantity
-  +updateEmail()
+interface Warehouse {
+  +String code
+  #long note
+  +boolean phone
+  +getDuration()
 }
-abstract class Category {
+class Category {
+  #double createdAt
+  #long email
+  +createQuantity()
+  +calculateStatus()
+}
+class Return {
+  #double status
+  +long address
+  -float type
+  +sendEmail()
+  +processNote()
+}
+class Order {
+  +Date total
   #String amount
-  -double quantity
-  #double email
-  +long updatedAt
-  +deleteCreatedat()
-  +saveDescription()
-  +findQuantity()
-}
-abstract class Return {
-  #Date description
-  +float total
-  #float code
-  +findQuantity()
-  +setLevel()
-  +getType()
-}
-abstract class Order {
-  #String address
-  #boolean total
-  -long level
-  #Date note
-  +calculateLevel()
-  +calculateActive()
-  +updateScore()
-  +calculatePrice()
+  #float description
+  -Date duration
+  +saveLevel()
+  +deleteQuantity()
+  +cancelActive()
 }
 class Wishlist {
-  +double description
-  #boolean code
-  +long phone
-  +validateDuration()
-  +cancelEmail()
-  +getName()
-  +deleteAddress()
+  #double price
+  #String phone
+  #boolean address
+  -long total
+  #Date active
+  +setQuantity()
+  +setNote()
+  +cancelActive()
+  +calculateCode()
 }
-Order --* Category
-Category --* Shipment
-Warehouse ..> Shipment : "1"
-Wishlist ..> Return : "1..*"
-Order --o Shipment
-note right of Shipment : Ecommerce domain
+Wishlist --o Order
+Return ..|> Warehouse
+Warehouse --* Shipment
 @enduml

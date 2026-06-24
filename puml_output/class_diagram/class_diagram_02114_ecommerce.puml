@@ -9,39 +9,40 @@ class Shipment {
   +boolean address
   #Date quantity
   -long level
+  +findUpdatedat()
+  +processName()
+  +updateCode()
   +cancelId()
-  +cancelPhone()
-  +cancelQuantity()
-  +findActive()
 }
-class Cart {
-  +int quantity
-  #String id
-  +Date phone
-  +long price
-  +calculateTotal()
-  +findName()
+interface Cart {
+  +long active
+  -String updatedAt
+  +boolean quantity
+  +String score
+  +deleteCode()
+  +findId()
 }
-class Order {
-  #boolean description
-  -long note
-  -int score
-  +getActive()
-  +processActive()
-  +validateLevel()
-  +setStatus()
+abstract class Order {
+  #boolean name
+  #long email
+  -float createdAt
+  -int description
+  #boolean note
+  +savePhone()
+  +setCreatedat()
+  +createDescription()
+  +sendCreatedat()
 }
-abstract class Invoice {
-  -String status
-  #float quantity
-  -boolean note
-  +processTotal()
-  +calculateId()
-  +setNote()
-  +saveActive()
+interface Invoice {
+  +String level
+  #long code
+  #double status
+  -String price
+  +createStatus()
+  +findUpdatedat()
+  +calculateAmount()
 }
-Cart --|> Invoice
-Shipment --o Invoice
-Order --> Cart : "0..1"
-note right of Shipment : Ecommerce domain
+Invoice ..> Cart : "1"
+Shipment --o Order
+Invoice --o Shipment
 @enduml

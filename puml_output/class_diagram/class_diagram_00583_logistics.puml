@@ -7,61 +7,50 @@ class DeliveryNote {
   +long quantity
   +float note
   #long email
-  +deleteActive()
-  +calculateUpdatedat()
-  +processEmail()
+  +validateQuantity()
+  +sendUpdatedat()
+  +updateNote()
 }
-class Tracking {
-  -float price
-  #float note
-  -int phone
-  +String id
-  +validatePhone()
+abstract class Tracking {
+  #long note
+  -double email
+  -boolean quantity
+  +createAmount()
 }
-interface Package {
-  -float createdAt
-  #long phone
-  +createTotal()
+abstract class Package {
+  -long id
+  #Date code
+  #boolean name
+  +getPrice()
 }
 class FuelLog {
-  #float level
-  +long phone
-  -String quantity
-  +String name
-  +deleteCreatedat()
-  +calculateId()
-  +cancelCreatedat()
-  +getScore()
+  -long phone
+  -boolean quantity
+  -long name
+  +Date level
+  +createActive()
+  +setQuantity()
 }
-interface Vehicle {
-  -boolean updatedAt
-  -double price
-  +deleteActive()
-  +sendUpdatedat()
+abstract class Vehicle {
+  -int amount
+  +double code
+  +findDescription()
 }
 class Depot {
-  #int level
-  #float status
-  #int address
-  #long email
-  -Date note
-  +calculateAmount()
-  +updatePhone()
-  +saveScore()
+  +int score
+  -double level
+  +sendCode()
+  +validateTotal()
+  +getTotal()
 }
 class Manifest {
-  +boolean amount
-  +String type
-  -int note
-  #float createdAt
-  #boolean id
-  +sendCreatedat()
+  -long phone
+  #float type
+  -Date status
+  +createNote()
+  +updateAddress()
 }
-Manifest --> Tracking : "*"
-Tracking --|> FuelLog
-DeliveryNote ..> Manifest : "1..*"
-DeliveryNote --* Depot
-Manifest ..|> Depot
-Vehicle --* Tracking
-note right of DeliveryNote : Logistics domain
+Vehicle --o Package
+Depot --o Package
+Tracking --* Manifest
 @enduml

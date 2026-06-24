@@ -8,39 +8,40 @@ interface FuelLog {
   -int total
   -Date id
   +boolean amount
-  +deleteStatus()
-  +saveName()
+  +processScore()
+  +saveQuantity()
 }
 class Tracking {
-  #double quantity
-  +boolean phone
-  +String price
-  +cancelPrice()
-}
-class Warehouse {
-  #String phone
-  #double id
-  +float amount
-  +Date quantity
-  #String status
+  #long amount
+  -Date updatedAt
+  +cancelName()
+  +calculateAmount()
+  +setDescription()
   +createStatus()
 }
+class Warehouse {
+  #double duration
+  +double name
+  +setName()
+  +calculateAddress()
+  +processNote()
+}
 class Package {
-  -int amount
-  +Date note
-  +saveAmount()
+  #double level
+  +float name
+  +processNote()
   +createUpdatedat()
-  +processActive()
 }
 class Route {
-  -Date name
-  -Date address
-  -long status
-  -boolean note
-  #double amount
-  +sendName()
+  -String quantity
+  +double status
+  +saveTotal()
+  +validateNote()
+  +findTotal()
+  +saveEmail()
 }
-Tracking --> Route : "1"
-Package --o Tracking
-note right of FuelLog : Logistics domain
+Warehouse --* Tracking
+Tracking --> Package : "1"
+Package --> FuelLog : "1..*"
+FuelLog ..|> Package
 @enduml

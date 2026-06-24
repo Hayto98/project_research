@@ -7,49 +7,46 @@ class DeliveryNote {
   -double duration
   -Date description
   -float phone
-  +deleteLevel()
+  +createCode()
 }
-class Manifest {
+interface Manifest {
+  -double phone
   +String note
   #boolean price
-  +float quantity
-  -float duration
-  +setActive()
-  +getUpdatedat()
-  +saveCode()
+  +sendDescription()
 }
 class Inventory {
-  #boolean phone
-  #int description
-  #boolean level
-  +calculateLevel()
-  +findScore()
+  #String status
+  +int active
+  -int id
+  +boolean updatedAt
+  +calculateStatus()
+  +sendQuantity()
 }
 interface Vehicle {
-  #String duration
-  #float phone
-  +String price
-  -long active
-  -float createdAt
-  +cancelScore()
-  +validateName()
-  +cancelPrice()
+  #double price
+  #long level
+  -float score
+  +getScore()
+  +setName()
 }
 class Tracking {
-  +double address
-  +float email
-  -boolean phone
-  +validateTotal()
+  -float price
+  #long quantity
+  +createType()
+  +calculateEmail()
+  +validateActive()
 }
-interface Route {
-  #Date email
-  -float note
-  +double total
-  #boolean level
-  #String code
-  +processAmount()
+abstract class Route {
+  -boolean description
+  -String address
+  +cancelEmail()
+  +createNote()
+  +deletePhone()
+  +processScore()
 }
-Tracking ..|> Route
-Inventory --o Route
-note right of DeliveryNote : Logistics domain
+Tracking --* DeliveryNote
+Vehicle --o Tracking
+Inventory --o Vehicle
+Vehicle --> DeliveryNote : "*"
 @enduml

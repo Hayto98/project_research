@@ -8,50 +8,44 @@ class Reservation {
   #long createdAt
   +String active
   +long code
-  +sendCode()
+  +calculateDuration()
 }
 class Restaurant {
-  #Date phone
+  +int phone
+  #Date duration
   #Date amount
-  -boolean id
-  -double level
-  +createAddress()
-  +sendType()
-  +deleteCode()
-}
-class CheckOut {
-  +String status
-  #boolean id
-  -long active
-  +saveDescription()
-  +deleteAddress()
-  +createQuantity()
-}
-class Staff {
-  -boolean address
-  #boolean note
-  #int status
-  -int active
-  +int id
-  +sendAddress()
-  +getId()
-}
-abstract class Amenity {
-  +int active
-  -String code
-  #float note
-  +sendCreatedat()
-  +deletePrice()
-}
-class Room {
-  #Date note
-  +double quantity
-  -long price
-  +processPrice()
+  +calculateActive()
+  +validateDuration()
   +processLevel()
 }
-Room --|> Reservation
-Restaurant --o Room
-Amenity --* Restaurant
-note right of Reservation : Hotel domain
+class CheckOut {
+  #float address
+  +float active
+  -float type
+  +String description
+  +updateNote()
+}
+class Staff {
+  -long duration
+  -Date active
+  +cancelType()
+  +createCode()
+}
+class Amenity {
+  #float quantity
+  -Date duration
+  +boolean type
+  #float address
+  +saveCreatedat()
+}
+interface Room {
+  +int address
+  #float createdAt
+  #long amount
+  +cancelTotal()
+}
+Restaurant --|> Amenity
+Staff ..|> Reservation
+Room --> Restaurant : "0..1"
+Restaurant --* Staff
 @enduml

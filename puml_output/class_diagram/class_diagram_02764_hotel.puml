@@ -9,43 +9,44 @@ abstract class Reservation {
   +String amount
   +String createdAt
   #double note
-  +getPrice()
-  +cancelTotal()
-  +setStatus()
+  +setUpdatedat()
+  +calculateTotal()
+  +createPrice()
 }
-class Restaurant {
-  -boolean email
-  #double address
-  +sendStatus()
+interface Restaurant {
+  -long status
+  #Date duration
+  -String address
+  #String level
+  +boolean email
+  +setTotal()
+  +calculateUpdatedat()
+  +saveStatus()
 }
-class CheckOut {
-  #int quantity
-  #float active
-  #double name
-  #int email
-  +deleteId()
-  +findAmount()
-  +getNote()
-  +setStatus()
+interface CheckOut {
+  #int duration
+  #float email
+  +setPrice()
+  +sendDuration()
+  +validateQuantity()
+  +getId()
 }
-abstract class Booking {
-  -boolean note
-  #float active
-  +boolean address
-  #long score
-  -String quantity
-  +findAmount()
+class Booking {
+  -String amount
+  +double id
+  +processTotal()
+  +setPrice()
+  +cancelUpdatedat()
+  +calculateActive()
 }
 class Staff {
-  -String level
-  #float status
-  +sendDuration()
-  +processQuantity()
-  +calculateAmount()
-  +createUpdatedat()
+  -String quantity
+  +Date type
+  +long amount
+  +boolean address
+  +createEmail()
 }
-Staff --o CheckOut
-Restaurant ..> CheckOut : "1..*"
-Restaurant ..|> Booking
-note right of Reservation : Hotel domain
+Reservation --> Booking : "*"
+CheckOut ..|> Booking
+CheckOut --* Restaurant
 @enduml

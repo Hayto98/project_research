@@ -5,61 +5,61 @@ class Branch {
   #float active
   #boolean amount
   +int level
-  +sendType()
+  +calculateDuration()
 }
-interface Fine {
+abstract class Fine {
   #long active
   #double id
   +String duration
   #String total
-  +calculateNote()
-  +updateActive()
-  +saveType()
-  +saveQuantity()
+  +createDuration()
+  +validateTotal()
+  +deleteDuration()
+  +saveNote()
 }
-abstract class Librarian {
-  +Date duration
-  #String quantity
-  -String total
-  +float note
-  +findActive()
-  +cancelId()
-  +calculateQuantity()
+interface Librarian {
+  -int quantity
+  #float note
+  #String duration
+  -String score
+  +float total
+  +updateId()
+  +sendType()
+  +findDuration()
 }
-class Shelf {
-  +Date updatedAt
-  #int duration
-  #boolean total
-  +double note
-  #double id
-  +calculateCreatedat()
-  +calculateActive()
+interface Shelf {
+  #long price
+  -int quantity
+  +getAddress()
+  +updateAmount()
 }
-class Renewal {
-  +boolean score
-  +int updatedAt
-  -long code
-  +deleteStatus()
+abstract class Renewal {
+  #boolean amount
+  +double updatedAt
+  +saveNote()
+  +processType()
+  +cancelNote()
+  +findAmount()
 }
-class Loan {
-  -long address
-  +String id
-  +calculateStatus()
-  +validateScore()
-  +getEmail()
+interface Loan {
+  +int amount
+  #String score
+  +long updatedAt
+  +processQuantity()
+  +validateCode()
+  +updateName()
 }
 class Author {
-  +Date duration
-  -Date active
-  -String type
-  +long address
-  +sendPhone()
-  +setId()
+  -long address
+  +String id
+  +createPrice()
+  +cancelEmail()
+  +setEmail()
 }
-Renewal ..|> Fine
-Branch ..> Loan : "1..*"
-Author ..> Shelf : "0..1"
-Fine --* Shelf
-Author ..|> Branch
-note right of Branch : Library domain
+Branch --* Librarian
+Librarian --> Renewal : "*"
+Librarian ..> Fine : "*"
+Loan --|> Shelf
+Fine ..|> Librarian
+Renewal --|> Librarian
 @enduml

@@ -9,40 +9,45 @@ interface Patient {
   #int updatedAt
   -String total
   -boolean score
-  +findActive()
+  +setCode()
 }
-class Hospital {
+interface Hospital {
+  #double id
   -Date amount
-  -long note
-  +cancelPrice()
-  +saveCreatedat()
+  +findCode()
+  +sendQuantity()
+  +deleteAddress()
+  +cancelActive()
 }
-class Nurse {
+abstract class Nurse {
+  #String quantity
+  -boolean price
   -double note
-  +long code
-  +double total
-  #Date phone
-  -float price
-  +validateLevel()
+  +processTotal()
+  +cancelNote()
+  +validateAddress()
+  +validateCode()
 }
 abstract class Insurance {
-  +int createdAt
-  +double score
-  -long quantity
-  +deleteDuration()
-  +processCreatedat()
-  +calculateTotal()
+  #long id
+  +int address
+  +double price
+  -long createdAt
+  -int active
+  +validateType()
+  +saveNote()
+  +calculateQuantity()
+  +processLevel()
 }
 abstract class MedicalRecord {
   +long code
   -String phone
   -int updatedAt
   #int active
-  +saveCreatedat()
-  +updateScore()
-  +updateScore()
+  +sendPrice()
+  +saveNote()
+  +cancelType()
 }
+MedicalRecord ..> Hospital : "0..1"
 Nurse --* Patient
-MedicalRecord --* Nurse
-note right of Patient : Healthcare domain
 @enduml

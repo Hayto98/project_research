@@ -5,61 +5,60 @@ abstract class Reservation {
   #long active
   #String level
   #boolean price
-  +getPhone()
-  +processPhone()
-  +validateDuration()
+  +calculateEmail()
+  +saveScore()
+  +deleteDuration()
 }
-abstract class Member {
-  #long type
-  #Date id
-  +float updatedAt
-  +calculateDuration()
-  +findScore()
-  +processDuration()
-  +sendStatus()
+class Member {
+  +int duration
+  #long note
+  #Date createdAt
+  +float type
+  +calculateCode()
+  +saveLevel()
+  +setId()
+  +setCode()
 }
-class Loan {
-  -long price
-  -double createdAt
-  #Date address
-  +saveCode()
+interface Loan {
+  -int duration
+  -long score
+  -double status
+  -Date name
+  #String updatedAt
+  +sendAddress()
 }
 class Librarian {
-  #long address
-  #int total
-  +double phone
-  +getUpdatedat()
+  +double total
+  +String phone
+  #Date email
+  +double amount
+  +updateStatus()
+  +updateAddress()
+  +saveNote()
 }
-abstract class Catalog {
-  -float updatedAt
-  -int createdAt
-  +Date phone
-  -Date id
-  +findAddress()
-  +getDuration()
-  +getId()
-  +createActive()
+class Catalog {
+  +float note
+  +Date total
+  +cancelDuration()
+  +findAmount()
+  +validateTotal()
 }
-interface Shelf {
-  -float updatedAt
-  -long quantity
-  -int address
-  +deleteEmail()
-  +cancelNote()
-  +updateUpdatedat()
+class Shelf {
+  +long duration
+  #boolean name
+  +updateStatus()
+  +sendPrice()
 }
-interface Fine {
-  +long amount
-  -boolean name
-  -long createdAt
-  -int active
-  +updateLevel()
+class Fine {
+  +long address
+  +float phone
+  #long email
+  #double score
+  +processPrice()
+  +updateNote()
 }
-Fine --o Member
-Reservation ..|> Librarian
-Shelf ..> Librarian : "1"
-Member --> Loan : "1..*"
-Loan --* Catalog
-Reservation --|> Shelf
-note right of Reservation : Library domain
+Catalog --* Fine
+Member ..|> Reservation
+Shelf --|> Catalog
+Loan --> Fine : "1..*"
 @enduml

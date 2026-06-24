@@ -5,51 +5,49 @@ skinparam classBorderColor #455A64
 class Tracking {
   #String price
   +long code
-  +findPrice()
-  +saveActive()
+  +getActive()
+  +createPrice()
 }
-class Driver {
-  #double duration
-  -String code
-  +boolean total
-  +updateLevel()
-  +setTotal()
-  +cancelUpdatedat()
-  +cancelDuration()
+interface Driver {
+  -String description
+  +boolean code
+  #double total
+  +boolean score
+  +getPhone()
 }
-abstract class Inventory {
-  #float type
-  #boolean level
-  #long active
-  +createDuration()
-  +getLevel()
-  +updateNote()
-  +updateEmail()
+interface Inventory {
+  #Date duration
+  -boolean note
+  #boolean amount
+  +saveStatus()
+  +processLevel()
+  +calculateScore()
 }
-class Customer {
-  -boolean address
-  -boolean id
-  +validateQuantity()
-  +cancelNote()
-  +setDuration()
-  +setStatus()
+interface Customer {
+  -float level
+  +long createdAt
+  +createType()
+  +updateDuration()
 }
 class DeliveryNote {
-  #long updatedAt
-  +int score
-  +processNote()
+  #Date total
+  #double duration
+  +validateStatus()
+  +updateLevel()
+  +sendType()
 }
 interface Vehicle {
-  #String total
-  -Date description
-  #float name
-  -double active
-  +long updatedAt
-  +getUpdatedat()
-  +deleteActive()
+  #int code
+  #Date duration
+  -String status
+  +String quantity
+  -double score
+  +cancelCreatedat()
+  +validateCode()
+  +calculateId()
+  +sendQuantity()
 }
-Inventory --* DeliveryNote
-Tracking --|> Vehicle
-Customer --|> Vehicle
-note right of Tracking : Logistics domain
+Vehicle --* Tracking
+Vehicle --o DeliveryNote
+Customer --* Driver
 @enduml

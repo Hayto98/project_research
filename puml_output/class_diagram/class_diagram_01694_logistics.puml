@@ -7,41 +7,42 @@ class Tracking {
   -int total
   +Date amount
   +long phone
-  +validateQuantity()
-  +saveScore()
+  +updateTotal()
+  +getNote()
 }
-class Manifest {
-  #int updatedAt
-  -Date total
-  #float phone
-  +findScore()
-  +cancelTotal()
+interface Manifest {
+  -boolean amount
+  +long updatedAt
+  #boolean total
+  +updateScore()
+  +saveActive()
 }
-class DeliveryNote {
-  +float amount
+interface DeliveryNote {
+  +long email
+  +float note
+  #float amount
   #float id
-  #float createdAt
-  +String code
-  +boolean address
-  +updateQuantity()
-  +setPrice()
-  +calculateAddress()
+  +String createdAt
+  +deleteUpdatedat()
 }
-interface Shipment {
-  #double id
-  #int price
-  #long score
-  +sendActive()
-  +createStatus()
-  +deleteAmount()
-  +processActive()
+class Shipment {
+  -float quantity
+  -boolean status
+  +float price
+  +sendScore()
 }
 interface Package {
-  -long phone
-  #boolean price
-  +cancelDuration()
+  +int createdAt
+  +double email
+  #boolean total
+  +long active
+  -long level
+  +saveLevel()
+  +setDuration()
+  +createLevel()
 }
-Tracking --|> DeliveryNote
-Manifest ..> DeliveryNote : "0..1"
-note right of Tracking : Logistics domain
+Tracking --|> Manifest
+DeliveryNote ..|> Tracking
+Package ..> DeliveryNote : "0..1"
+Tracking --* Package
 @enduml

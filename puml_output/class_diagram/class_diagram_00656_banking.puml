@@ -4,55 +4,58 @@ skinparam ArrowColor #555555
 class Branch {
   #Date total
   +float createdAt
-  +setTotal()
-  +getStatus()
-  +createCode()
+  +setStatus()
+  +updateEmail()
+  +updateActive()
 }
 class Teller {
-  -long price
+  +double code
+  -long email
   -String amount
-  -int note
-  +validateCreatedat()
-  +processCreatedat()
+  -int price
   +getDuration()
-  +setScore()
+  +getDescription()
+  +createActive()
+  +processActive()
 }
-class Card {
-  #String total
-  +double price
-  +saveType()
+abstract class Card {
+  +float id
+  +double code
+  -boolean score
+  +setPrice()
 }
 class Customer {
-  -Date id
-  #float createdAt
-  +double type
-  -Date status
-  -String updatedAt
-  +saveId()
+  +double code
+  #String type
+  +float phone
+  -Date level
+  #float id
+  +processType()
+  +updateCode()
 }
 class Withdrawal {
-  #float amount
-  #Date price
-  #long note
+  #Date name
+  +double code
   -String id
-  +boolean status
-  +createScore()
-  +sendDescription()
-  +findPrice()
-  +calculateDuration()
+  +boolean level
+  #Date total
+  +calculateQuantity()
+  +updateName()
+  +validateId()
 }
-class Deposit {
-  #float duration
-  -double total
-  +getScore()
-  +updateCode()
-  +updateActive()
-  +getAmount()
+interface Deposit {
+  -float email
+  #float score
+  #long level
+  +boolean description
+  #float price
+  +getName()
+  +processEmail()
+  +updateCreatedat()
+  +calculateAmount()
 }
-Card --o Teller
-Branch --> Customer : "0..1"
-Card --|> Customer
-Customer --|> Branch
-Card --> Deposit : "*"
-note right of Branch : Banking domain
+Deposit --> Withdrawal : "*"
+Branch ..|> Withdrawal
+Branch --> Teller : "1"
+Teller --* Customer
 @enduml

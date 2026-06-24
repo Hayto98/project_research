@@ -9,35 +9,33 @@ class Depot {
   -boolean quantity
   -double description
   -long code
-  +findLevel()
-  +deleteCreatedat()
-  +cancelAddress()
-  +createTotal()
+  +validateTotal()
+  +processId()
+  +setLevel()
+  +saveNote()
 }
-class Route {
-  +Date amount
-  -String name
-  +String email
-  +getScore()
-  +saveActive()
-  +validateAmount()
+interface Route {
+  #int quantity
+  +long total
+  +Date id
+  -String updatedAt
+  +cancelTotal()
 }
-class Warehouse {
-  -long id
-  +Date note
-  -boolean code
-  -Date updatedAt
-  #Date duration
-  +updateName()
+interface Warehouse {
+  +String name
+  #double score
+  +double active
+  +int phone
+  +getUpdatedat()
 }
-class Inventory {
-  #Date quantity
-  #String total
-  +getStatus()
-  +cancelCreatedat()
-  +createAddress()
+abstract class Inventory {
+  +String updatedAt
+  +Date address
+  #String type
+  -double code
+  +calculateUpdatedat()
 }
+Depot --> Inventory : "0..1"
+Warehouse ..|> Route
 Route ..|> Warehouse
-Warehouse --o Inventory
-note right of Depot : Logistics domain
 @enduml

@@ -7,34 +7,33 @@ interface Customer {
   +float price
   #float status
   #double description
-  +deleteLevel()
-  +validateNote()
-  +deleteAmount()
+  +createId()
+  +saveQuantity()
+  +processEmail()
 }
-interface Package {
-  +boolean email
-  #Date quantity
-  -Date level
-  +boolean type
-  +updateCreatedat()
-  +sendPrice()
-  +sendLevel()
+class Package {
+  -long amount
+  #double duration
+  +boolean active
+  #Date address
+  -Date email
+  +getQuantity()
+  +calculateLevel()
 }
-interface Warehouse {
-  -boolean note
-  -Date code
-  +createActive()
-  +getDuration()
-  +sendType()
+class Warehouse {
+  #boolean createdAt
+  #float active
+  +double price
+  +cancelAddress()
 }
-class Inventory {
-  +int total
-  -int id
-  +findCode()
-  +getActive()
-  +deleteStatus()
+interface Inventory {
+  -String quantity
+  -String duration
+  +int active
+  -int name
+  -Date type
+  +updateActive()
 }
+Customer --|> Warehouse
 Inventory --|> Package
-Warehouse ..> Package : "1"
-note right of Customer : Logistics domain
 @enduml

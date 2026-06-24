@@ -5,56 +5,54 @@ skinparam classBorderColor #2C7DA0
 class Interest {
   -boolean updatedAt
   #boolean status
-  +createDescription()
-  +validateAmount()
+  +validateAddress()
   +validateCode()
+  +createAmount()
   +cancelScore()
 }
 class Customer {
-  #int email
-  -double code
-  +calculateActive()
-  +createDuration()
+  +long code
+  +Date level
+  +double score
+  -double amount
+  +findDuration()
+  +getNote()
   +setActive()
-  +setPhone()
+  +findUpdatedat()
 }
-interface Card {
-  -long quantity
-  #Date updatedAt
-  +processAmount()
-  +getCode()
-  +createNote()
+class Card {
+  #String phone
+  -int active
+  +validateAmount()
+  +validatePrice()
+  +deleteStatus()
+  +findType()
 }
 class Statement {
-  #Date duration
-  -int phone
-  +double type
-  +int quantity
-  +long score
-  +createQuantity()
-  +updateDuration()
-  +validateCreatedat()
+  +Date amount
+  -boolean id
+  -float code
+  -long quantity
+  #double note
+  +setPrice()
+  +validateNote()
+  +sendNote()
 }
-class Branch {
-  #Date note
-  -float duration
-  +int active
-  +createCreatedat()
+abstract class Branch {
+  -long createdAt
+  -Date status
+  +createId()
+  +findAddress()
+  +setDuration()
 }
-class Account {
-  #int phone
-  -long amount
-  #int type
-  #float code
-  #float score
-  +updateName()
-  +calculatePrice()
-  +saveCreatedat()
-  +deleteAddress()
+interface Account {
+  -boolean createdAt
+  #Date updatedAt
+  -float amount
+  +int note
+  +sendAddress()
 }
-Account ..> Customer : "1"
-Interest ..|> Card
-Interest --* Statement
-Card --* Account
-note right of Interest : Banking domain
+Customer --* Statement
+Branch --o Customer
+Interest ..> Statement : "0..1"
 @enduml

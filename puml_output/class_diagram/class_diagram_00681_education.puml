@@ -7,48 +7,42 @@ abstract class Student {
   +int address
   #Date quantity
   #double code
-  +cancelAddress()
-  +saveTotal()
-  +updateType()
+  +getCode()
+  +calculateName()
+  +cancelScore()
 }
-class Library {
-  -String level
-  -double phone
-  +findScore()
-  +createActive()
+abstract class Library {
+  #Date type
+  #boolean description
+  -long code
+  +validateUpdatedat()
 }
 abstract class Assignment {
-  +boolean score
-  #int active
-  +int price
-  +long description
-  +int address
-  +createCode()
-  +processTotal()
-  +saveNote()
+  -double score
+  #float quantity
+  #double active
+  +validateScore()
+  +getTotal()
 }
-abstract class Classroom {
-  #Date description
+interface Classroom {
+  -String code
+  +long amount
+  -String name
+  +sendStatus()
+  +saveTotal()
+  +processLevel()
+  +sendDuration()
+}
+abstract class Teacher {
+  +Date price
+  #float description
   #float name
   +boolean id
   +long total
-  +Date score
-  +createId()
-  +processDescription()
-  +setUpdatedat()
+  +processNote()
+  +deleteEmail()
 }
-class Teacher {
-  #Date id
-  +double level
-  -float code
-  +sendPrice()
-  +setNote()
-  +deleteQuantity()
-  +setEmail()
-}
-Teacher --> Assignment : "0..1"
-Student --o Assignment
-Classroom --> Teacher : "0..1"
-Assignment --* Teacher
-note right of Student : Education domain
+Assignment --o Student
+Library ..> Student : "0..1"
+Assignment --|> Library
 @enduml

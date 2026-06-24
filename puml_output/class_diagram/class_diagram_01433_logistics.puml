@@ -4,68 +4,59 @@ abstract class Package {
   #Date code
   -float updatedAt
   -Date note
-  +updateQuantity()
-  +cancelAmount()
+  +createScore()
+  +findScore()
 }
-class Depot {
-  +Date updatedAt
-  -long total
-  #float note
-  -Date email
-  -String address
-  +sendCreatedat()
-  +setTotal()
-  +getCode()
+interface Depot {
+  #double amount
+  -long type
+  -String updatedAt
+  +calculatePhone()
+  +deleteType()
+  +getDescription()
+  +sendAddress()
 }
 class Warehouse {
+  +String address
+  -String score
+  +processScore()
+}
+class Route {
   -int type
   #Date note
   -double id
   #long active
-  +setTotal()
-  +sendName()
-  +deleteLevel()
+  +processScore()
+  +validatePhone()
+  +getAddress()
 }
-class Route {
-  +boolean level
-  -long phone
-  -long email
-  -float updatedAt
-  +processQuantity()
-  +cancelLevel()
-  +createAmount()
+interface Vehicle {
+  +boolean description
+  #long level
+  +saveLevel()
+  +setCode()
+  +validateAddress()
 }
-abstract class Vehicle {
-  -long email
-  -boolean note
-  #String quantity
-  #float type
-  +long description
-  +setCreatedat()
-}
-interface DeliveryNote {
-  #float status
-  -long total
-  +boolean name
-  +cancelStatus()
-  +createScore()
-  +processNote()
-  +saveAmount()
+class DeliveryNote {
+  -long active
+  -float phone
+  -double quantity
+  +findName()
+  +savePrice()
+  +calculatePhone()
 }
 class Tracking {
-  #Date email
-  -double type
-  -int createdAt
-  -Date total
-  +validateAddress()
-  +calculateDescription()
-  +validateDuration()
-  +saveLevel()
+  -int duration
+  -long note
+  -boolean email
+  #String level
+  #float quantity
+  +sendAddress()
+  +getQuantity()
 }
-Warehouse ..> Depot : "1..*"
-DeliveryNote --|> Depot
-Package --* Route
-Depot --> Tracking : "1..*"
-Vehicle --|> Warehouse
-note right of Package : Logistics domain
+Vehicle --|> Package
+Depot ..|> Vehicle
+Package --|> Route
+Vehicle --* Route
+Vehicle --o Tracking
 @enduml

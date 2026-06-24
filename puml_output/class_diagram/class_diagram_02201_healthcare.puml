@@ -6,42 +6,45 @@ class Hospital {
   -long type
   -double email
   -int price
-  +setNote()
-  +updateQuantity()
+  +setStatus()
+  +calculateUpdatedat()
 }
-class Billing {
-  #int phone
-  #double updatedAt
-  -int total
-  -float createdAt
-  +double duration
-  +processUpdatedat()
-}
-class Appointment {
-  +float createdAt
-  #float code
-  +setQuantity()
-  +createPhone()
-}
-interface MedicalRecord {
-  +boolean code
-  +long address
+abstract class Billing {
   -int quantity
-  +createDescription()
-  +saveCreatedat()
-  +updateQuantity()
-  +sendType()
+  -boolean name
+  +boolean total
+  +validateActive()
+  +sendNote()
+  +calculateDuration()
+}
+abstract class Appointment {
+  -int createdAt
+  +Date price
+  #String status
+  +float total
+  +int name
+  +getType()
+  +calculatePhone()
+}
+class MedicalRecord {
+  -String level
+  #String amount
+  -double code
+  +double address
+  +deleteEmail()
+  +getName()
+  +getEmail()
 }
 class Diagnosis {
-  #double duration
-  +int address
-  #String phone
-  -boolean updatedAt
-  #float quantity
-  +findId()
+  +float quantity
+  -boolean active
+  #long type
+  +updateStatus()
+  +findDuration()
+  +validateStatus()
 }
-Billing ..|> Diagnosis
-Diagnosis --> Hospital : "1"
-MedicalRecord --|> Diagnosis
-note right of Hospital : Healthcare domain
+Appointment ..|> MedicalRecord
+Billing --* Hospital
+Diagnosis ..> Hospital : "1"
+MedicalRecord ..|> Billing
 @enduml

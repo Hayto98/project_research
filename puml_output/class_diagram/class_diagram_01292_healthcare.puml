@@ -6,56 +6,47 @@ class Appointment {
   #Date code
   #String duration
   -Date amount
-  +createDescription()
+  +processDescription()
 }
-abstract class Diagnosis {
-  +int active
-  -String email
+class Diagnosis {
+  +String duration
+  +int note
+  -String active
+  #double email
+  -boolean total
+  +calculatePhone()
+}
+abstract class Treatment {
   #double total
-  -boolean updatedAt
-  +long name
-  +getTotal()
-  +cancelAddress()
-  +findType()
-  +getStatus()
+  +String address
+  +calculateType()
+  +saveLevel()
 }
-class Treatment {
-  +float address
-  #float total
-  #boolean description
-  -double createdAt
-  +String active
-  +cancelDescription()
+abstract class Ward {
+  +float total
+  #float description
+  #boolean createdAt
+  -double score
+  +processQuantity()
+  +getLevel()
 }
-class Ward {
-  +long quantity
-  #float level
-  -String description
-  -long createdAt
-  #long type
-  +findAmount()
-}
-abstract class Prescription {
-  -Date duration
-  +long name
-  #int address
-  #float id
-  +getPrice()
-  +updateNote()
-  +createTotal()
-  +createId()
+interface Prescription {
+  #double id
+  -boolean score
+  +int level
+  +processName()
+  +saveScore()
+  +findStatus()
+  +getDescription()
 }
 class Nurse {
-  -boolean name
-  +float email
-  +deleteUpdatedat()
-  +setLevel()
-  +processAmount()
+  #long address
+  +Date email
+  +cancelCode()
+  +updateAmount()
 }
-Nurse --|> Treatment
 Prescription --* Appointment
-Appointment --o Diagnosis
-Nurse --> Ward : "1"
-Ward --* Diagnosis
-note right of Appointment : Healthcare domain
+Appointment ..> Treatment : "0..1"
+Treatment ..|> Prescription
+Nurse --|> Ward
 @enduml

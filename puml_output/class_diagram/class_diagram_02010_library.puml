@@ -9,50 +9,49 @@ class Librarian {
   #long quantity
   #double id
   #int code
-  +processPrice()
-  +processId()
-  +saveType()
-}
-class Author {
-  +int createdAt
-  +Date status
-  +double duration
   +setAmount()
-  +setEmail()
-  +calculateDuration()
-  +updateType()
+  +calculateType()
+  +deletePrice()
 }
-interface Catalog {
-  -float level
-  +long amount
-  #float note
-  #double description
-  -Date active
-  +updateType()
+abstract class Author {
+  +int id
+  +int type
+  +Date phone
+  +double updatedAt
+  #double createdAt
+  +validateQuantity()
 }
-interface Reservation {
-  #long name
-  +boolean amount
-  +updateAmount()
+class Catalog {
+  -boolean total
+  +double createdAt
+  #boolean type
+  #Date active
+  +saveDescription()
+  +calculateUpdatedat()
+}
+class Reservation {
+  -Date code
+  #String quantity
+  +double active
+  #boolean total
+  +savePhone()
 }
 class Loan {
-  #Date total
-  +boolean price
-  +findEmail()
+  +Date id
+  +long level
+  #String score
+  -double name
+  +cancelAmount()
+  +processAddress()
 }
-class Member {
-  +Date updatedAt
-  -double active
-  #long code
-  +int createdAt
-  +setNote()
-  +updatePrice()
-  +validateDuration()
+interface Member {
+  -int email
+  #String amount
+  +updateType()
+  +calculateDescription()
 }
-Catalog --* Reservation
-Member --o Catalog
-Reservation --o Librarian
-Librarian --|> Member
-Catalog ..|> Librarian
-note right of Librarian : Library domain
+Reservation --* Loan
+Author --* Member
+Librarian ..|> Reservation
+Reservation --> Catalog : "*"
 @enduml

@@ -3,52 +3,46 @@
 abstract class Loan {
   #int quantity
   -String address
-  +deleteQuantity()
-  +getQuantity()
-  +updateTotal()
+  +setLevel()
+  +setCode()
+  +sendUpdatedat()
 }
-abstract class Teller {
-  +double createdAt
-  #int phone
-  +saveActive()
-  +sendCode()
-  +setType()
-  +updateName()
+class Teller {
+  #double quantity
+  -String updatedAt
+  +saveScore()
+  +deleteAddress()
 }
-interface Customer {
-  #float email
-  -float createdAt
-  #String code
-  #float duration
-  -long amount
-  +processEmail()
-  +deleteActive()
-  +setCreatedat()
+abstract class Customer {
+  +float type
+  +double active
+  +float level
+  +sendQuantity()
 }
-interface Branch {
-  -int createdAt
-  +double updatedAt
-  #boolean name
-  +sendPrice()
-  +deleteCreatedat()
-  +calculatePrice()
-  +getTotal()
+abstract class Branch {
+  #float createdAt
+  -float code
+  #String email
+  #float amount
+  +deleteName()
+  +updateScore()
+  +deleteDuration()
 }
-abstract class Account {
-  -float total
-  #float level
-  +updatePrice()
+class Account {
+  #float active
+  #float code
+  +int createdAt
+  +deleteNote()
+  +processStatus()
 }
 class Deposit {
-  +float email
-  +boolean duration
-  -boolean level
-  +createTotal()
-  +updateActive()
-  +calculateQuantity()
+  #double note
+  +int level
+  -double duration
+  +sendPrice()
 }
-Customer ..> Account : "*"
-Branch ..> Teller : "*"
-Account --|> Loan
-note right of Loan : Banking domain
+Branch --|> Account
+Customer ..|> Loan
+Branch ..> Loan : "0..1"
+Customer --* Deposit
 @enduml

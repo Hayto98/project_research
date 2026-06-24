@@ -3,32 +3,36 @@ skinparam monochrome true
 interface FuelLog {
   #float level
   #boolean address
-  +deleteStatus()
-  +saveDuration()
-  +savePrice()
+  +findId()
+  +updateName()
+  +calculateUpdatedat()
 }
 interface Package {
+  -Date duration
+  #String active
+  -float code
   #long note
-  -Date level
-  +processPhone()
+  #double address
+  +updateScore()
 }
-interface Customer {
-  #float level
-  #Date status
-  #long note
-  +int address
-  -float createdAt
-  +updatePrice()
-  +setName()
+abstract class Customer {
+  +long createdAt
+  +float level
+  +double phone
+  +String id
+  +deleteQuantity()
 }
-class Warehouse {
-  -long score
+interface Warehouse {
+  -boolean note
+  #double address
   -double type
-  +createActive()
-  +cancelPrice()
+  #float score
+  +int updatedAt
+  +updateQuantity()
+  +saveScore()
+  +deleteScore()
 }
-Warehouse ..|> Customer
-Package --* Customer
-Customer --* FuelLog
-note right of FuelLog : Logistics domain
+Customer ..> Package : "0..1"
+Package --o Customer
+Customer --o FuelLog
 @enduml

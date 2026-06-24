@@ -3,62 +3,62 @@ skinparam defaultFontSize 11
 class Housekeeping {
   #boolean note
   #boolean phone
-  +validateNote()
-  +validateType()
-  +savePhone()
+  +updateQuantity()
+  +processStatus()
+  +sendDescription()
 }
 abstract class Guest {
-  -Date amount
-  +double phone
-  +saveCreatedat()
-  +createType()
-  +calculateUpdatedat()
-  +cancelName()
+  +boolean type
+  -long phone
+  #int note
+  -double name
+  +validateAmount()
+  +cancelScore()
 }
-interface Reservation {
-  -boolean quantity
-  -String code
-  -String createdAt
-  +updatePhone()
+abstract class Reservation {
+  +boolean updatedAt
+  #float level
+  +double name
+  #double amount
+  +double quantity
+  +saveEmail()
 }
-interface Booking {
+class Booking {
+  +float score
+  -String amount
+  +long id
+  -float total
+  +validateNote()
+  +sendUpdatedat()
+  +getDuration()
+}
+class Amenity {
+  #Date id
+  +boolean total
   +float level
-  -String id
-  +long total
-  +validateUpdatedat()
-  +findQuantity()
-  +updateId()
-}
-abstract class Amenity {
-  +String code
-  #double active
-  +Date duration
-  +long quantity
-  #float createdAt
-  +saveNote()
+  +processCreatedat()
+  +updateDescription()
+  +deleteAddress()
 }
 class Room {
-  -String id
+  +Date status
   +String code
-  +getId()
-  +createDuration()
-  +sendStatus()
-  +processType()
+  #String address
+  -String name
+  +String note
+  +updateAmount()
+  +setName()
+  +sendTotal()
+  +cancelType()
 }
 class CheckOut {
-  +boolean amount
-  +boolean duration
-  +long phone
-  -long total
-  +deleteDuration()
-  +findPrice()
-  +sendAmount()
+  +long note
+  +Date type
+  +updateTotal()
+  +calculateLevel()
 }
-Reservation --> Housekeeping : "*"
-CheckOut --|> Guest
-Booking ..> Reservation : "0..1"
-Guest ..|> Booking
-Guest --o Reservation
-Booking ..|> CheckOut
-note right of Housekeeping : Hotel domain
+Housekeeping ..|> Amenity
+Amenity --* Guest
+Booking --* Reservation
+Guest ..> Amenity : "*"
 @enduml

@@ -6,33 +6,32 @@ skinparam defaultFontSize 13
 abstract class Teller {
   +float id
   #long type
-  +cancelId()
-  +getCode()
-  +updateCode()
+  +validateActive()
+  +updatePrice()
+  +findStatus()
 }
 class Transfer {
-  #long name
-  -Date id
-  -String level
-  +deleteTotal()
-  +sendCreatedat()
+  +String code
+  +boolean id
+  -long amount
+  +getType()
+  +sendAmount()
+  +createType()
 }
 class Branch {
-  -String total
-  +Date code
-  +boolean phone
-  #String updatedAt
-  +deleteCode()
-  +calculateQuantity()
+  +long total
+  -String active
+  #long createdAt
+  +findCode()
+  +processAmount()
 }
 class Card {
-  +String email
-  -String phone
-  #Date level
-  +validateDuration()
-  +cancelId()
+  +int active
+  +double level
+  -String id
+  +setQuantity()
+  +validateAmount()
 }
-Card ..|> Branch
-Teller ..|> Card
-note right of Teller : Banking domain
+Branch --|> Teller
+Transfer --> Card : "1"
 @enduml

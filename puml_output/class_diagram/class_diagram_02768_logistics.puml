@@ -7,58 +7,52 @@ class Warehouse {
   -double note
   +boolean address
   #int updatedAt
-  +cancelAmount()
-  +sendLevel()
-  +sendStatus()
-  +deleteCreatedat()
+  +cancelActive()
+  +cancelPrice()
+  +processUpdatedat()
+  +processCreatedat()
 }
-class FuelLog {
-  +String duration
-  +float address
-  #long price
-  +updateEmail()
-  +saveId()
-  +updateAmount()
-  +updateUpdatedat()
+interface FuelLog {
+  +int description
+  #boolean createdAt
+  +validatePrice()
+  +calculateCode()
+  +sendStatus()
 }
 class Driver {
-  #double active
-  #double status
-  -String email
-  -int description
-  +getCode()
+  -Date createdAt
+  -int score
+  +cancelScore()
+  +deleteLevel()
+  +setName()
 }
 class Customer {
-  -boolean phone
-  +double level
-  #String description
-  +setActive()
-  +findActive()
+  -Date createdAt
+  #Date updatedAt
+  +long id
   +findUpdatedat()
-  +setUpdatedat()
+  +sendCode()
 }
-interface Vehicle {
-  -boolean status
+abstract class Vehicle {
+  +int status
+  #int type
+  -boolean description
+  +float code
   -boolean name
-  +double type
-  +cancelStatus()
-  +processCreatedat()
-  +processId()
+  +getAddress()
+  +processEmail()
 }
 class Tracking {
-  -Date address
-  #Date score
-  #double duration
-  -float quantity
-  +calculateQuantity()
-  +updateName()
-  +deleteQuantity()
-  +calculateNote()
+  #int code
+  #int active
+  +String level
+  #double updatedAt
+  -boolean status
+  +saveDuration()
+  +setDescription()
+  +sendScore()
+  +validateAmount()
 }
-Driver ..|> Tracking
-Driver --* Customer
-Customer --> Vehicle : "0..1"
-Customer --o Driver
-Tracking --|> Vehicle
-note right of Warehouse : Logistics domain
+Customer --o FuelLog
+Warehouse --* Driver
 @enduml

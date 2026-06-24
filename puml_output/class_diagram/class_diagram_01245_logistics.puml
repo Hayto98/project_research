@@ -7,51 +7,56 @@ class Depot {
   +Date status
   +long id
   #long active
-  +processDuration()
-  +getCreatedat()
-  +sendDescription()
-  +calculateDescription()
+  +createName()
+  +getQuantity()
+  +processPhone()
+  +calculateEmail()
 }
 class Driver {
-  #double total
-  #double id
-  +Date description
-  +saveAmount()
+  #int total
+  -boolean description
+  +int quantity
+  +setScore()
+  +getPhone()
+  +getPrice()
+  +updateDuration()
 }
 class DeliveryNote {
+  #long address
+  -float quantity
   -Date note
-  #boolean score
-  -double quantity
-  +boolean price
-  +sendName()
-  +saveLevel()
+  +deleteEmail()
+  +deleteActive()
+  +updateDuration()
 }
-abstract class Warehouse {
-  -long updatedAt
-  +boolean note
-  #boolean description
-  -String total
-  #float phone
-  +createActive()
+interface Warehouse {
+  -int active
+  -int name
+  -long type
+  +createAmount()
+  +updateType()
+  +savePrice()
+  +cancelActive()
 }
-class Customer {
-  #String amount
-  +String name
-  +findDuration()
-  +setId()
-  +updateTotal()
+interface Customer {
+  #long name
+  +int active
+  +boolean id
+  +float email
+  +cancelEmail()
+  +cancelType()
 }
 interface Vehicle {
-  -float score
-  -String address
-  +setQuantity()
-  +saveUpdatedat()
-  +createDescription()
+  #double duration
+  #String code
+  #boolean id
+  -double updatedAt
+  +calculateId()
+  +cancelId()
+  +cancelStatus()
 }
-DeliveryNote --o Vehicle
+Vehicle --* Driver
+Driver --* Warehouse
+Vehicle --o DeliveryNote
 Driver --o DeliveryNote
-Customer --> Depot : "1"
-Warehouse --> Depot : "1"
-DeliveryNote --> Depot : "1..*"
-note right of Depot : Logistics domain
 @enduml

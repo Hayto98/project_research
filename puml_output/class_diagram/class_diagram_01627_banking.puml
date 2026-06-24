@@ -8,61 +8,55 @@ class Interest {
   -double phone
   -Date code
   +String id
-  +savePhone()
-  +calculateCreatedat()
+  +updatePhone()
+  +updateTotal()
 }
-class Teller {
-  +float code
-  #String note
-  +Date email
-  -float level
-  -boolean description
-  +deleteTotal()
-  +savePhone()
-  +createId()
+abstract class Teller {
+  -long updatedAt
+  #double note
+  +int code
+  +validateId()
 }
-abstract class Withdrawal {
+class Withdrawal {
   -Date level
-  -float updatedAt
-  -String note
-  +deleteAddress()
+  +double quantity
+  +boolean amount
+  +double total
+  -Date phone
+  +processPhone()
+  +saveLevel()
+  +processTotal()
 }
 class Statement {
-  +float type
-  -int updatedAt
-  +float status
-  +deleteAddress()
-  +validatePhone()
-  +cancelNote()
-  +findTotal()
+  +Date amount
+  +double address
+  +validateId()
+  +cancelStatus()
 }
 class Account {
-  -double description
-  #boolean quantity
-  +updatePrice()
-  +deleteLevel()
-  +getDuration()
-  +sendId()
+  +float updatedAt
+  -long active
+  -boolean price
+  +calculateDescription()
+  +findType()
+  +setNote()
+  +getTotal()
 }
 class Transaction {
-  +Date note
-  -int name
-  +boolean code
-  -float total
-  +Date createdAt
-  +findScore()
+  #boolean quantity
+  -int email
+  -int total
+  +findTotal()
 }
-abstract class Card {
-  +String createdAt
-  #String updatedAt
-  +saveQuantity()
-  +saveType()
-  +setEmail()
+interface Card {
+  -double createdAt
+  +String active
+  +validatePrice()
+  +deletePhone()
+  +updateNote()
+  +cancelDuration()
 }
-Card --|> Teller
-Teller ..> Interest : "0..1"
-Interest --* Transaction
-Interest --> Teller : "1"
-Card --> Transaction : "1"
-note right of Interest : Banking domain
+Interest --o Transaction
+Teller --> Interest : "*"
+Card ..> Interest : "1"
 @enduml

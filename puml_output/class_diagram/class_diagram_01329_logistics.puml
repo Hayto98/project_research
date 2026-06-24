@@ -6,60 +6,52 @@ class Manifest {
   +int id
   -int note
   -String active
-  +processDuration()
-  +setDescription()
+  +cancelQuantity()
+  +cancelType()
 }
-class Warehouse {
-  -Date active
-  +String score
-  +Date note
-  +Date status
-  #float updatedAt
-  +deleteCreatedat()
-  +findName()
+interface Warehouse {
+  -boolean description
+  #double amount
+  +updateStatus()
+}
+abstract class Shipment {
+  #String code
+  #boolean updatedAt
+  +findId()
+  +getStatus()
+  +sendEmail()
+}
+class Inventory {
+  #float price
+  +int name
+  +getActive()
+  +processActive()
+  +sendCreatedat()
   +getPrice()
 }
-class Shipment {
-  #int amount
-  -float active
-  +String total
-  +validateEmail()
-}
-abstract class Inventory {
-  +String amount
-  -String updatedAt
-  -boolean description
-  -String note
-  +getScore()
-  +calculateScore()
-  +deleteAmount()
-  +setStatus()
-}
 class FuelLog {
-  +Date status
-  -double id
-  +String score
-  +validateName()
+  #long code
+  -long phone
+  +setCreatedat()
+  +processDuration()
 }
 class Customer {
-  +Date status
-  +int id
+  #long status
+  +Date code
+  -String note
+  #double id
   #int email
-  +findEmail()
-  +createCreatedat()
+  +createEmail()
+  +createPhone()
 }
 class Package {
-  +int level
-  #double score
-  +deletePrice()
-  +findNote()
-  +updateUpdatedat()
+  +float description
+  #String status
+  +getStatus()
+  +calculateCode()
   +updateDuration()
+  +updatePrice()
 }
-Customer --o FuelLog
-Customer --> Inventory : "1"
-Manifest --|> Shipment
-Package ..> Inventory : "*"
-Shipment --* Inventory
-note right of Manifest : Logistics domain
+Package --|> Shipment
+Warehouse --|> Package
 @enduml

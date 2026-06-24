@@ -6,57 +6,46 @@ skinparam defaultFontSize 11
 class Driver {
   +long updatedAt
   #float address
-  +calculateStatus()
-  +processQuantity()
-  +deleteTotal()
+  +processLevel()
+  +setCreatedat()
+  +validateId()
 }
-interface Shipment {
-  #int phone
-  +Date type
-  #int note
-  +setStatus()
-  +deleteStatus()
-  +sendDuration()
+abstract class Shipment {
+  -boolean amount
+  -Date total
+  +String duration
+  #Date phone
+  +validateDuration()
+  +createPhone()
 }
 class Depot {
-  -double email
-  -double total
-  #long amount
-  +cancelTotal()
-  +processAmount()
-  +setPhone()
-  +updateEmail()
+  +float status
+  -double active
+  +float id
+  +deletePrice()
+  +cancelCode()
+  +deleteAmount()
 }
-class Tracking {
-  +boolean quantity
-  +float phone
-  -boolean code
-  #double level
-  +boolean price
-  +cancelStatus()
-  +calculatePhone()
+interface Tracking {
+  +String price
+  -int level
+  -String total
+  -Date type
+  +saveScore()
+  +processAmount()
+  +processStatus()
 }
 abstract class Customer {
-  +float email
-  -Date name
-  #int status
-  +Date amount
-  +Date code
-  +sendAmount()
-  +saveStatus()
-  +findPrice()
-  +deleteDescription()
+  -boolean duration
+  #double updatedAt
+  +processEmail()
 }
-abstract class Package {
-  #Date name
-  +long note
-  +int updatedAt
-  +createNote()
-  +setId()
+class Package {
+  #double total
+  -long phone
+  +createPhone()
 }
-Driver --|> Customer
-Depot --o Customer
-Driver --o Tracking
-Tracking ..> Depot : "1"
-note right of Driver : Logistics domain
+Driver --o Package
+Package --|> Shipment
+Package ..> Driver : "*"
 @enduml

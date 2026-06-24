@@ -6,50 +6,51 @@ abstract class CheckIn {
   -double createdAt
   +float duration
   #String type
-  +sendDuration()
+  +calculatePrice()
 }
-abstract class CheckOut {
-  -Date address
-  -long score
-  +updateAddress()
-  +cancelActive()
-  +sendStatus()
-}
-class Reservation {
-  -float quantity
-  #long name
-  #String updatedAt
-  +createTotal()
-  +findCode()
-  +sendAmount()
-  +setType()
-}
-interface Guest {
-  #String createdAt
-  -Date level
-  +long type
-  -double duration
+interface CheckOut {
+  -long code
+  +long address
   #boolean score
-  +processEmail()
+  #String quantity
+  +int price
+  +calculateEmail()
+  +deleteTotal()
+  +processDuration()
+}
+abstract class Reservation {
+  #double duration
+  #String name
+  #int price
+  +Date quantity
+  +findEmail()
+  +setPhone()
+  +deleteAmount()
+  +calculateStatus()
+}
+class Guest {
+  -double createdAt
+  -boolean type
+  #String code
+  -long phone
+  #float status
+  +setCode()
 }
 class Amenity {
-  #long name
-  #double address
-  +saveUpdatedat()
-  +setCreatedat()
-  +cancelPhone()
-}
-class Staff {
-  +boolean email
-  -long description
-  -float address
-  +calculateAmount()
-  +validateAmount()
+  -boolean address
+  -long level
+  +validatePhone()
   +getTotal()
-  +validateDuration()
 }
-Guest ..|> CheckOut
-Staff ..> Reservation : "1..*"
-Reservation --|> CheckOut
-note right of CheckIn : Hotel domain
+interface Staff {
+  -String quantity
+  #long amount
+  -long email
+  -double description
+  +calculateLevel()
+  +saveCreatedat()
+}
+CheckIn --* Guest
+Amenity --o CheckOut
+CheckOut ..> Staff : "1..*"
 @enduml

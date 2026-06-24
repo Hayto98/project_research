@@ -6,59 +6,63 @@ class Category {
   +int amount
   -int quantity
   -Date name
-  +deleteId()
-  +saveDescription()
-  +deleteName()
-  +calculatePrice()
+  +processUpdatedat()
+  +updateActive()
+  +processNote()
+  +createEmail()
 }
 class Shipment {
-  #long price
-  -String id
-  +calculateEmail()
+  -float name
+  +double total
+  +float price
+  +saveName()
+  +cancelEmail()
+  +saveDuration()
 }
-interface Coupon {
+class Coupon {
+  -boolean email
+  +float note
   +String active
   #int description
   #double code
-  #int price
-  -float createdAt
-  +findDescription()
-  +updateStatus()
-  +calculateUpdatedat()
-}
-class Cart {
-  +String id
-  +Date price
-  #Date status
-  #long total
-  +calculateQuantity()
-  +setName()
-}
-abstract class Review {
-  #String quantity
-  #long total
-  -float code
+  +findType()
   +setAmount()
-  +updateTotal()
 }
-interface Invoice {
-  +String quantity
-  +boolean address
-  #boolean price
-  +boolean name
-  +getType()
+abstract class Cart {
+  +int description
+  -float createdAt
+  +double status
+  +boolean price
+  +validateStatus()
+  +processDuration()
+  +findNote()
+  +processActive()
+}
+interface Review {
+  #float amount
+  +double price
+  #int quantity
+  -double status
+  +cancelActive()
+}
+class Invoice {
+  +int price
+  -boolean active
+  -Date updatedAt
+  -long status
+  +processId()
+  +deleteNote()
+  +sendNote()
+  +getLevel()
 }
 class Return {
-  #float id
-  +boolean email
-  #Date status
-  +findDuration()
+  +Date duration
+  -int name
+  +setName()
+  +findEmail()
 }
-Invoice ..> Return : "1"
+Invoice ..> Category : "1"
+Review ..> Return : "1"
+Invoice ..> Review : "1"
 Cart --o Category
-Review ..> Cart : "1..*"
-Invoice ..> Review : "*"
-Invoice ..> Coupon : "*"
-Category ..|> Invoice
-note right of Category : Ecommerce domain
 @enduml

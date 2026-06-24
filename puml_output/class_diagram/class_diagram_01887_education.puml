@@ -3,54 +3,56 @@ skinparam defaultFontSize 11
 class Classroom {
   #boolean code
   #long id
-  +validateNote()
-  +processCode()
+  +setEmail()
+  +saveAmount()
 }
-class Schedule {
-  #float description
-  #double id
-  -Date quantity
-  +setCreatedat()
-}
-abstract class Course {
-  +long id
-  -float level
-  -Date price
-  +double score
+abstract class Schedule {
+  +String phone
+  -boolean amount
+  +calculateName()
   +cancelDuration()
+  +saveTotal()
+  +processName()
 }
-abstract class Department {
-  -Date status
-  -double email
-  #float duration
-  -Date active
-  -long amount
-  +saveStatus()
+class Course {
+  #double price
+  -float address
+  +long id
+  +findTotal()
+  +findScore()
+  +cancelName()
+}
+class Department {
+  -String status
+  #boolean level
+  +long price
+  #double total
+  -Date duration
+  +validateTotal()
+  +cancelPhone()
+  +findCreatedat()
 }
 class Enrollment {
-  +boolean address
-  #String type
-  -boolean amount
-  -double score
-  -String level
-  +saveDuration()
+  #long email
+  -boolean total
+  +createCode()
+  +cancelCode()
 }
-interface Exam {
+class Exam {
+  -double note
+  -String level
+  +getAmount()
+}
+interface Attendance {
   #String address
   #String type
-  +processDuration()
-  +cancelAmount()
-  +deleteScore()
-}
-class Attendance {
-  #boolean description
-  +Date total
-  +cancelUpdatedat()
+  +deleteEmail()
+  +getId()
+  +findDescription()
 }
 Schedule ..> Attendance : "1"
-Department ..|> Classroom
-Course --o Department
-Exam --|> Enrollment
-Enrollment ..> Attendance : "1"
-note right of Classroom : Education domain
+Classroom --o Schedule
+Attendance --> Enrollment : "0..1"
+Exam --> Classroom : "0..1"
+Department ..|> Schedule
 @enduml

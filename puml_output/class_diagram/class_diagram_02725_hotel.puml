@@ -9,37 +9,32 @@ class Amenity {
   +double type
   -long updatedAt
   #float status
-  +deleteQuantity()
-  +validateStatus()
-  +createDuration()
+  +validateQuantity()
+  +getAmount()
+  +setCode()
 }
 class Invoice {
-  -boolean status
-  +long updatedAt
-  +validateAmount()
-  +createId()
+  #float status
+  #String quantity
+  +double createdAt
+  #String code
+  +cancelLevel()
+  +updateNote()
+  +findDescription()
 }
 class Booking {
-  #double score
-  #double status
+  #Date amount
+  #double quantity
+  #float id
+  +double duration
+  +updateId()
+}
+interface Guest {
+  #double level
   #int type
-  +float code
-  #double id
-  +updateName()
-  +saveActive()
-  +cancelQuantity()
-  +createScore()
+  +saveStatus()
+  +calculateDuration()
 }
-class Guest {
-  #Date updatedAt
-  #int level
-  -long price
-  -boolean code
-  +boolean status
-  +getQuantity()
-  +setId()
-}
-Invoice --* Guest
-Invoice --|> Amenity
-note right of Amenity : Hotel domain
+Guest --|> Amenity
+Booking --> Invoice : "0..1"
 @enduml

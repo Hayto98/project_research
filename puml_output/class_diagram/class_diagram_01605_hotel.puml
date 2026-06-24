@@ -9,55 +9,50 @@ class Invoice {
   -Date description
   -String createdAt
   #long total
-  +calculateDuration()
-  +cancelAddress()
-  +getCode()
-  +saveCode()
+  +calculateCode()
+  +createLevel()
+  +validateActive()
+  +processId()
 }
 class Housekeeping {
-  -double phone
-  +Date level
-  #String description
-  +Date total
-  +validateAddress()
-  +deleteDescription()
-  +calculateUpdatedat()
+  +Date code
+  -long duration
+  +cancelCreatedat()
+  +getId()
 }
-class Booking {
-  #double code
-  -float address
-  #long type
+abstract class Booking {
+  -long code
+  +int updatedAt
+  -int quantity
+  +calculateType()
+  +saveDescription()
+  +processType()
+}
+class Amenity {
+  -float type
   #long email
-  #int duration
-  +processUpdatedat()
+  #long code
+  #int note
+  +findActive()
 }
-interface Amenity {
+class Restaurant {
   -double description
   -long status
   -String updatedAt
   -int note
   #float total
-  +getUpdatedat()
-  +setAddress()
-  +deleteType()
-  +processEmail()
-}
-class Restaurant {
-  -String code
-  +double status
-  -double score
-  +findType()
-  +cancelDuration()
-  +createCreatedat()
+  +saveType()
+  +processName()
+  +sendUpdatedat()
+  +sendPrice()
 }
 class CheckOut {
-  +String quantity
-  +float score
-  +long status
-  +getEmail()
-  +saveName()
+  #double address
+  -long description
+  +saveDuration()
+  +updatePhone()
 }
-Invoice --|> Housekeeping
-Invoice ..|> CheckOut
-note right of Invoice : Hotel domain
+CheckOut --|> Invoice
+Restaurant --|> Amenity
+Invoice --* Amenity
 @enduml

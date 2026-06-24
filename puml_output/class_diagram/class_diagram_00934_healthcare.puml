@@ -7,69 +7,61 @@ abstract class Prescription {
   +int price
   +long score
   -boolean total
-  +sendUpdatedat()
-  +processAddress()
-  +getDescription()
-  +saveScore()
+  +validateStatus()
+  +createUpdatedat()
+  +updateCreatedat()
+  +processDuration()
 }
-class Doctor {
-  -int amount
-  -double email
-  -long score
-  +int code
-  #int note
-  +cancelStatus()
-  +sendDescription()
-  +saveCode()
+abstract class Doctor {
+  -int name
+  #float description
+  -Date score
+  #Date updatedAt
+  +deletePhone()
 }
 abstract class Treatment {
+  +int description
+  #int phone
+  #float price
+  #long level
+  #String email
+  +findStatus()
+  +getType()
+}
+abstract class Insurance {
   #String email
   +double address
-  +cancelNote()
-  +updateDuration()
-  +saveCreatedat()
+  +getQuantity()
+  +updateCode()
+  +deleteTotal()
 }
-class Insurance {
-  +String email
-  +long address
-  +cancelPhone()
+abstract class Ward {
+  +long duration
+  -String createdAt
+  +String description
+  +getPhone()
+  +sendActive()
+  +updateTotal()
+}
+class MedicalRecord {
+  -Date score
+  #Date phone
+  -String note
+  +float duration
+  +createPhone()
   +updatePhone()
-  +sendPhone()
-  +findLevel()
-}
-interface Ward {
-  +String note
-  #Date total
-  +Date price
-  #double code
-  +int description
-  +calculateCreatedat()
-  +validateName()
-  +calculateTotal()
-  +cancelName()
-}
-abstract class MedicalRecord {
-  #double updatedAt
-  +float active
-  -Date phone
-  +sendCreatedat()
-  +processUpdatedat()
-  +validateQuantity()
-  +saveLevel()
 }
 class Hospital {
-  -int id
-  +Date address
-  #float phone
-  +boolean active
-  +createUpdatedat()
-  +deleteDescription()
-  +createPrice()
+  -String status
+  -float createdAt
+  -boolean price
+  +double total
+  #int level
+  +updateNote()
+  +calculateStatus()
 }
-Treatment ..|> Prescription
-Insurance ..> Hospital : "*"
-Insurance --|> Treatment
-Doctor ..|> Treatment
-Treatment --o Ward
-note right of Prescription : Healthcare domain
+Ward --|> Insurance
+Hospital ..> Insurance : "*"
+Hospital ..|> Ward
+Insurance --* Doctor
 @enduml

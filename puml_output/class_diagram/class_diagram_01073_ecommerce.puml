@@ -7,65 +7,48 @@ class Cart {
   +int duration
   +double price
   #String createdAt
-  +processDescription()
+  +sendName()
 }
 class Invoice {
-  #Date id
-  #Date createdAt
-  +long status
-  +Date note
-  #long email
-  +setType()
+  +String price
+  #double id
+  +cancelName()
+  +cancelDescription()
+  +getDescription()
 }
-class Product {
+interface Product {
+  #Date phone
+  -String name
+  +deleteActive()
+}
+class Return {
   -int phone
   #String createdAt
   #float name
   +int updatedAt
-  +savePrice()
-  +updateTotal()
+  +deleteStatus()
+  +calculateDescription()
 }
-class Return {
-  +long amount
-  -float address
-  +boolean name
-  +double id
-  -Date price
-  +findDuration()
-  +deleteAddress()
-  +sendScore()
+abstract class Review {
+  +long total
+  #Date description
+  #String price
+  +updateCode()
 }
-class Review {
-  +boolean level
-  +int status
-  +float id
-  -double description
-  -String active
-  +findLevel()
-  +deleteScore()
-  +getType()
-  +setScore()
-}
-interface Order {
-  -String active
-  +double updatedAt
-  +String name
-  +findId()
-  +createUpdatedat()
-  +calculateName()
+abstract class Order {
+  +boolean quantity
+  +double email
+  +cancelScore()
+  +deleteName()
+  +createTotal()
 }
 interface Customer {
-  +String description
-  #float total
-  -long type
+  +boolean address
   #double active
-  +saveActive()
-  +calculateDuration()
-  +validateCreatedat()
+  #boolean score
+  +processName()
 }
-Return ..> Product : "0..1"
-Invoice --|> Order
-Order --|> Cart
-Cart ..> Review : "0..1"
-note right of Cart : Ecommerce domain
+Customer ..> Review : "0..1"
+Cart --|> Review
+Invoice --o Customer
 @enduml

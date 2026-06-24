@@ -6,65 +6,57 @@ skinparam defaultFontSize 11
 interface DeliveryNote {
   -Date duration
   -String status
-  +deleteQuantity()
-  +createTotal()
-  +createPhone()
-  +saveName()
+  +setLevel()
+  +processDescription()
+  +getNote()
+  +cancelPrice()
 }
-class Tracking {
-  #double updatedAt
-  +double address
-  +setPrice()
-  +deleteDescription()
-  +sendCreatedat()
+abstract class Tracking {
+  +long phone
+  #double name
+  +double amount
+  -float id
+  +processType()
 }
-abstract class Inventory {
-  -float description
-  +int email
-  #double updatedAt
-  +boolean price
-  +createNote()
-  +cancelCreatedat()
-  +sendUpdatedat()
-  +createDuration()
+class Inventory {
+  -int active
+  -int createdAt
+  #float total
+  +processDescription()
+  +validateType()
+  +updateCode()
+  +setQuantity()
 }
 class Route {
-  -int updatedAt
-  +float name
-  -String type
-  -String level
-  -float duration
-  +processDescription()
-  +findDescription()
-  +getCreatedat()
+  #double score
+  -float type
+  -boolean description
+  +findDuration()
+  +processPrice()
 }
-interface Package {
-  -float address
-  #Date price
-  +boolean description
-  -long quantity
-  +setPrice()
+class Package {
+  +double type
+  #String updatedAt
+  +deleteAmount()
+  +deleteEmail()
 }
-interface Shipment {
-  -boolean score
-  -boolean active
-  +validateId()
-  +calculatePrice()
-  +createDuration()
-  +updateCode()
+class Shipment {
+  -String address
+  -float name
+  +cancelQuantity()
+  +validateCode()
+  +deleteEmail()
 }
 class Driver {
-  +String quantity
-  +long duration
-  +Date address
-  -float updatedAt
-  -boolean description
-  +calculateType()
+  -long createdAt
+  -int score
+  +validateType()
+  +getAddress()
+  +getDescription()
 }
-DeliveryNote ..> Driver : "1"
-Shipment --o Route
-Inventory --* DeliveryNote
-Package ..> Driver : "1"
-Tracking --* Inventory
-note right of DeliveryNote : Logistics domain
+Shipment --> DeliveryNote : "1..*"
+Inventory --|> DeliveryNote
+Route ..> Package : "1"
+Driver --> Package : "*"
+Package --> Inventory : "*"
 @enduml

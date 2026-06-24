@@ -4,10 +4,10 @@ skinparam classBackgroundColor #FFFFFF
 skinparam classBorderColor #455A64
 skinparam defaultFontSize 13
 left to right direction
-actor "Admin" as Admin
-actor "Payment Gateway" as PaymentGateway
-actor "Delivery Service" as DeliveryService
-actor "Seller" as Seller
+actor "Admin" as A
+actor "Payment Gateway" as PG
+actor "Delivery Service" as DS
+actor "Seller" as S
 rectangle "Ecommerce System" {
   usecase "Make Payment" as UC_MakePayment
   usecase "Write Review" as UC_WriteReview
@@ -15,14 +15,14 @@ rectangle "Ecommerce System" {
   usecase "Cancel Order" as UC_CancelOrder
   usecase "Apply Coupon" as UC_ApplyCoupon
 }
-Admin --> UC_AddToCart
-Admin --> UC_CancelOrder
-Admin --> UC_WriteReview
-PaymentGateway --> UC_AddToCart
-PaymentGateway --> UC_WriteReview
-DeliveryService --> UC_AddToCart
-DeliveryService --> UC_MakePayment
-Seller --> UC_ApplyCoupon
-Seller --> UC_MakePayment
+A --> UC_AddToCart
+A --> UC_CancelOrder
+A --> UC_WriteReview
+PG --> UC_AddToCart
+PG --> UC_WriteReview
+DS --> UC_AddToCart
+DS --> UC_MakePayment
+S --> UC_ApplyCoupon
+S --> UC_MakePayment
 UC_WriteReview ..> UC_CancelOrder : <<include>>
 @enduml

@@ -6,38 +6,42 @@ abstract class Booking {
   -float price
   -Date amount
   +int level
-  +createAddress()
-  +cancelStatus()
+  +deleteLevel()
+  +createQuantity()
 }
 class Staff {
-  #long email
-  #float amount
-  -double phone
-  +findEmail()
+  -int createdAt
+  -Date updatedAt
+  +processCreatedat()
+  +processId()
+  +setPrice()
 }
 class Restaurant {
-  #long name
-  -float level
-  +int active
-  +calculateQuantity()
-  +validateAddress()
+  #boolean status
+  #long email
+  -float address
+  +int createdAt
+  +double name
+  +cancelId()
+  +saveCreatedat()
+  +updateId()
 }
 class Service {
   +boolean note
   #Date id
   -long email
-  +cancelDuration()
+  +getCode()
 }
-class Guest {
-  -Date price
-  -int address
-  -int updatedAt
-  +int note
-  +cancelPrice()
+interface Guest {
+  -long email
+  #double price
+  +double address
+  +String updatedAt
+  +calculateTotal()
+  +getStatus()
 }
-Booking --> Restaurant : "1"
-Service ..|> Booking
+Booking --> Service : "1"
+Restaurant --o Booking
+Guest ..|> Booking
 Restaurant --> Service : "*"
-Guest --|> Booking
-note right of Booking : Hotel domain
 @enduml

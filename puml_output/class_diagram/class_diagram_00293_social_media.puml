@@ -6,63 +6,66 @@ class Story {
   +String score
   -float address
   -Date quantity
-  +updateTotal()
-  +deletePrice()
-  +getActive()
-  +createEmail()
+  +processPrice()
+  +getName()
+  +getPrice()
+  +getAddress()
 }
 class Group {
-  -Date active
-  +String status
-  #float name
-  -double price
-  -boolean address
-  +processScore()
-  +findEmail()
-  +findDuration()
-  +updateDuration()
+  -boolean name
+  +boolean active
+  +boolean email
+  #double score
+  -long amount
+  +cancelEmail()
 }
 class Message {
-  +String updatedAt
-  +boolean price
-  +String description
-  -boolean name
-  -boolean code
-  +deleteEmail()
+  #boolean price
+  +boolean score
+  -double note
+  +double level
+  +Date email
+  +setDescription()
 }
-abstract class Report {
-  -Date address
-  +float price
-  +updateName()
+class Report {
+  +String status
+  -boolean score
+  +setId()
+  +updatePrice()
+  +processUpdatedat()
+  +getName()
 }
 class Follower {
-  #long email
-  -String phone
-  +calculateDuration()
-  +calculateStatus()
+  +int status
+  +int address
+  #String price
+  -long quantity
+  #long duration
+  +processName()
+  +createCode()
+  +createPrice()
+  +deleteDescription()
 }
-interface Profile {
-  -long id
-  -int level
-  +double phone
-  +saveNote()
-  +updateType()
-  +validateDescription()
+abstract class Profile {
+  #Date active
+  +String level
+  +createDuration()
+  +calculateScore()
+  +processDescription()
 }
-interface Like {
-  #double type
-  #boolean createdAt
-  +boolean amount
-  +Date description
-  #float total
-  +calculateDuration()
-  +cancelType()
+class Like {
+  +double price
+  -Date email
+  +boolean note
+  +findActive()
+  +sendEmail()
+  +calculateAddress()
+  +cancelAmount()
 }
-Group --* Message
-Like --|> Story
-Follower ..> Story : "1..*"
-Group --* Follower
-Story ..|> Group
-Follower --|> Report
-note right of Story : Social Media domain
+Follower ..|> Profile
+Profile --> Report : "*"
+Profile --|> Follower
+Follower ..> Story : "0..1"
+Report --> Follower : "*"
+Follower --* Group
 @enduml

@@ -5,47 +5,46 @@ interface Shipment {
   -double note
   #String active
   +Date id
-  +deleteLevel()
+  +processUpdatedat()
 }
-abstract class Tracking {
+interface Tracking {
+  +boolean email
   +boolean id
-  +boolean type
-  #String updatedAt
-  -float note
-  +calculateAddress()
-  +calculateStatus()
+  #String type
+  -float updatedAt
+  #int note
+  +calculateName()
+  +sendType()
+  +setAmount()
+  +sendStatus()
 }
 abstract class Manifest {
-  +double price
-  +float note
-  +int status
-  +Date id
-  -Date duration
-  +calculateCode()
+  -Date note
+  -float active
+  +updateUpdatedat()
+  +sendTotal()
+  +saveName()
+  +updateActive()
 }
-interface FuelLog {
+abstract class FuelLog {
+  #long description
+  #String updatedAt
+  -float status
+  +calculateStatus()
+}
+interface Driver {
   +Date score
   #double note
   #Date createdAt
   +int price
   +boolean level
-  +getCode()
-  +processLevel()
-  +createPrice()
-  +saveActive()
+  +calculateId()
+  +validatePrice()
+  +findNote()
+  +cancelCode()
 }
-interface Driver {
-  #Date price
-  +double email
-  +double code
-  +boolean phone
-  +saveQuantity()
-  +processAmount()
-  +cancelType()
-  +validateLevel()
-}
-Shipment --o Manifest
-Manifest --* Driver
-Manifest --> Shipment : "0..1"
-note right of Shipment : Logistics domain
+Manifest ..> FuelLog : "1..*"
+FuelLog --|> Manifest
+Manifest --o Shipment
+Shipment --|> FuelLog
 @enduml

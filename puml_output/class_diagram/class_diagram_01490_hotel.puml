@@ -9,43 +9,44 @@ abstract class Housekeeping {
   #Date duration
   -int quantity
   -boolean status
-  +getCode()
-  +createActive()
-  +sendNote()
+  +setName()
+  +processAmount()
+  +setQuantity()
 }
-interface Payment {
-  #float type
-  +int id
-  -boolean address
-  +validateEmail()
+class Payment {
+  #float score
+  +int createdAt
+  -boolean type
+  +long id
+  -Date address
+  +saveNote()
+  +calculateActive()
 }
-interface Reservation {
-  -boolean createdAt
-  #int active
-  #float phone
-  +updatePhone()
-  +processName()
+class Reservation {
+  -String score
+  -int createdAt
+  #boolean updatedAt
+  #boolean duration
+  -boolean phone
+  +updateStatus()
 }
-class Booking {
-  #String active
-  +boolean level
-  +long address
-  +saveDescription()
-  +calculateEmail()
-  +calculateType()
-  +createQuantity()
+interface Booking {
+  -float email
+  -double total
+  -long description
+  +calculateId()
+  +deleteLevel()
+  +findLevel()
 }
-class Restaurant {
+interface Restaurant {
   +int phone
   #String note
   #boolean name
   -float type
   #long description
-  +getLevel()
-  +setTotal()
+  +calculateEmail()
+  +getCode()
 }
-Payment ..> Restaurant : "1..*"
-Booking ..> Housekeeping : "0..1"
-Booking --> Restaurant : "0..1"
-note right of Housekeeping : Hotel domain
+Booking ..> Reservation : "0..1"
+Payment --o Reservation
 @enduml

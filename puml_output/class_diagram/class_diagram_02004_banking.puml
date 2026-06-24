@@ -7,42 +7,35 @@ class Teller {
   #long description
   #long status
   -boolean quantity
-  +saveActive()
-  +updateDescription()
-  +calculateLevel()
-  +calculateNote()
+  +findStatus()
+  +calculateActive()
+  +sendEmail()
+  +validateCreatedat()
 }
-class Deposit {
-  -Date id
-  +boolean active
-  #float status
-  -int price
-  +calculatePrice()
-  +sendId()
-  +setPrice()
-  +cancelId()
+abstract class Deposit {
+  -double note
+  #int quantity
+  #boolean phone
+  -int id
+  -double status
+  +getScore()
+  +processName()
+  +createAddress()
+  +processType()
 }
-class Loan {
-  -String email
-  #boolean updatedAt
-  #float total
-  #String phone
-  #Date name
-  +updateName()
-  +findCode()
-  +validateQuantity()
+interface Loan {
+  -Date address
+  +double price
+  +calculateId()
+  +findAmount()
+  +cancelEmail()
 }
-class Branch {
-  +Date note
-  -long id
-  +int amount
-  +deleteScore()
-  +deleteStatus()
-  +validateAmount()
-  +createTotal()
+interface Branch {
+  +String level
+  #float email
+  +processScore()
 }
-Loan --o Teller
-Loan --* Branch
-Deposit --o Teller
-note right of Teller : Banking domain
+Loan ..> Branch : "0..1"
+Deposit --o Loan
+Teller --|> Branch
 @enduml

@@ -8,46 +8,47 @@ abstract class Transaction {
   +double active
   -Date total
   +Date description
-  +cancelTotal()
-  +findCreatedat()
+  +setPrice()
+  +validateActive()
 }
-interface Customer {
+abstract class Customer {
+  -long duration
+  +int type
   #int createdAt
-  +int note
-  -Date address
-  -long code
-  #String updatedAt
-  +createPhone()
+  +updateStatus()
 }
-interface Account {
-  -int level
-  #double active
-  +String updatedAt
-  +String phone
-  #String address
-  +setDescription()
+abstract class Account {
+  #long address
+  #double score
+  #boolean name
+  #Date level
+  +long quantity
+  +updateTotal()
+  +validateCreatedat()
+  +validatePrice()
 }
-class Teller {
-  #Date address
-  #Date status
-  +validateNote()
+abstract class Teller {
+  +Date id
+  +String duration
+  +updateCode()
 }
 class Withdrawal {
-  -int amount
-  #boolean duration
-  +setEmail()
+  #Date status
+  #Date address
+  +float duration
+  +createEmail()
+  +deleteDuration()
+  +updateUpdatedat()
 }
 class Deposit {
-  +int status
-  #Date description
-  -Date address
-  +int id
-  +setStatus()
-  +updateQuantity()
-  +getDuration()
-  +cancelCode()
+  #boolean amount
+  #String email
+  +float createdAt
+  +findId()
+  +processStatus()
+  +deleteQuantity()
 }
-Customer --> Teller : "1..*"
-Transaction ..> Withdrawal : "*"
-note right of Transaction : Banking domain
+Account --|> Transaction
+Customer ..> Withdrawal : "1..*"
+Deposit ..|> Customer
 @enduml

@@ -6,40 +6,47 @@ abstract class Supplier {
   #float amount
   -Date description
   #boolean address
-  +sendType()
+  +findPrice()
 }
-interface Wishlist {
+abstract class Wishlist {
   #int quantity
   #Date address
   +float id
   #String description
-  +deleteTotal()
-  +saveStatus()
-  +saveType()
-  +cancelActive()
+  +saveAddress()
+  +sendUpdatedat()
+  +getAddress()
+  +validateType()
 }
 class Warehouse {
-  +float amount
-  #int email
-  #String score
+  -boolean duration
+  +float active
+  #int updatedAt
+  #String amount
+  -String level
   +getPrice()
-  +processName()
-  +getEmail()
-  +processLevel()
+  +calculateType()
+  +sendCreatedat()
+  +calculateId()
 }
 class Coupon {
-  -String duration
-  -boolean note
-  #Date active
-  +validateScore()
+  #float type
+  #float level
+  -Date createdAt
+  #float updatedAt
+  +getType()
+  +sendAddress()
+  +findDescription()
+  +setAddress()
 }
-interface Invoice {
-  #long name
-  #long id
-  -String phone
-  +calculatePrice()
+class Invoice {
+  -boolean score
+  -Date amount
+  -long name
+  +float id
+  +deleteAmount()
 }
-Supplier ..> Wishlist : "1"
-Supplier --* Invoice
-note right of Supplier : Ecommerce domain
+Supplier ..|> Invoice
+Invoice --|> Supplier
+Supplier --|> Warehouse
 @enduml

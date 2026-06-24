@@ -8,51 +8,44 @@ class Card {
   -float createdAt
   +double duration
   +String total
-  +updateNote()
+  +sendEmail()
 }
-class Transaction {
-  +boolean score
+abstract class Transaction {
+  +boolean createdAt
+  +Date score
   +Date description
-  +Date phone
-  +validateEmail()
+  #boolean phone
+  +findCode()
 }
-interface Customer {
+class Customer {
   -String phone
   +Date address
-  +validateAddress()
-  +setAmount()
-  +setTotal()
-  +validateCreatedat()
+  +findQuantity()
+  +createActive()
+  +cancelEmail()
+  +getStatus()
 }
 class Loan {
-  +boolean id
-  -long note
-  +Date price
-  +setUpdatedat()
+  +String total
+  #float address
+  +updateDuration()
+  +processTotal()
 }
-interface Beneficiary {
-  #long description
-  -int status
-  +double note
-  +long score
-  +cancelAddress()
-  +saveId()
+abstract class Beneficiary {
+  +Date score
+  #String note
+  +float quantity
+  +updateNote()
+  +createAmount()
 }
-interface Branch {
-  -float name
-  +float level
-  -float amount
-  -boolean updatedAt
-  -long createdAt
-  +calculateScore()
-  +deleteScore()
-  +saveNote()
-  +getTotal()
+class Branch {
+  #long note
+  -int duration
+  +getId()
+  +setType()
 }
-Transaction --* Loan
-Loan ..> Customer : "*"
-Loan --o Card
-Card --o Branch
-Transaction ..|> Customer
-note right of Card : Banking domain
+Transaction ..> Beneficiary : "1..*"
+Branch ..> Card : "*"
+Card ..|> Beneficiary
+Branch ..|> Beneficiary
 @enduml

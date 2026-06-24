@@ -8,66 +8,64 @@ class Catalog {
   -long level
   +float score
   +double amount
-  +deleteId()
-  +findQuantity()
-  +saveCreatedat()
-  +getType()
+  +findPhone()
+  +updateDuration()
+  +cancelDescription()
+  +deleteStatus()
 }
 class Shelf {
-  +int quantity
-  -boolean type
-  #String total
-  +findLevel()
-  +deleteStatus()
+  +long name
+  -double type
+  +int amount
+  +processId()
+  +getCreatedat()
+  +createPhone()
+  +processDuration()
 }
-class Publisher {
+interface Publisher {
+  +Date status
+  #boolean address
   -double createdAt
-  -Date level
-  #int score
-  +deleteStatus()
-  +setCreatedat()
-  +cancelNote()
+  +saveDescription()
+  +calculateStatus()
+  +getTotal()
 }
-abstract class Renewal {
-  #String phone
-  -boolean price
-  #long total
+class Renewal {
+  #Date status
+  #double duration
+  -Date createdAt
+  +createAmount()
+  +setQuantity()
+  +sendDuration()
+  +calculateStatus()
+}
+abstract class Branch {
   +long code
   -String email
-  +processNote()
-  +processAddress()
-  +cancelPrice()
-  +createPrice()
+  -double id
+  #double price
+  -Date level
+  +cancelActive()
+  +updateAddress()
+  +validateDescription()
 }
-class Branch {
-  -float description
-  -boolean email
-  +boolean score
-  +sendDescription()
-  +processUpdatedat()
-  +validateNote()
-  +cancelLevel()
-}
-class Reservation {
-  #float description
-  +int address
-  +sendLevel()
-  +cancelNote()
-  +processEmail()
+abstract class Reservation {
+  -float price
+  #float amount
+  -float updatedAt
+  -boolean description
+  +calculatePrice()
+  +processLevel()
 }
 interface Author {
-  +String level
-  #String status
-  +int type
-  -int address
-  +setUpdatedat()
-  +setType()
-  +updateCreatedat()
-  +calculateScore()
+  -boolean note
+  #long updatedAt
+  +int phone
+  +findType()
+  +findDescription()
+  +findLevel()
 }
-Reservation --* Author
-Catalog --o Publisher
-Branch --* Author
-Author ..|> Renewal
-note right of Catalog : Library domain
+Shelf --> Publisher : "*"
+Author ..> Renewal : "1..*"
+Branch --> Publisher : "1"
 @enduml

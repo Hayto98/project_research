@@ -7,50 +7,50 @@ class Transaction {
   -Date updatedAt
   +long amount
   +long quantity
-  +findCreatedat()
-  +updateScore()
-  +updateUpdatedat()
+  +calculateDescription()
+  +processActive()
+  +updateDescription()
 }
-abstract class Teller {
-  #float amount
-  +boolean createdAt
-  #int status
-  #int note
-  +calculateCode()
+interface Teller {
+  +int updatedAt
+  +double type
+  #float email
+  +calculateActive()
 }
-interface Branch {
-  #float price
-  #double name
-  -int createdAt
-  +String score
-  +getNote()
+class Branch {
+  #long name
+  -float price
+  +int code
+  +calculateLevel()
+  +cancelDuration()
 }
-class Statement {
-  -double id
-  +boolean note
-  -Date updatedAt
-  -float duration
-  +validateDuration()
-  +setAmount()
+abstract class Statement {
+  +float amount
+  -String code
+  -String name
+  -Date status
+  +cancelTotal()
+  +validateStatus()
 }
-interface Card {
+class Card {
+  -float name
   #boolean active
-  #boolean createdAt
-  -Date price
-  +sendEmail()
+  +int address
+  #float note
+  +float amount
+  +saveLevel()
+  +sendScore()
 }
-abstract class Deposit {
-  -float id
-  #boolean note
-  #int updatedAt
-  -String quantity
-  +saveAmount()
-  +cancelAddress()
+interface Deposit {
+  +float status
+  -int score
+  #long email
+  -float type
+  #boolean level
+  +sendAddress()
+  +calculateId()
 }
-Statement --|> Deposit
-Transaction --o Deposit
-Deposit --o Card
-Branch --|> Teller
-Deposit --o Teller
-note right of Transaction : Banking domain
+Deposit --> Teller : "1..*"
+Statement --o Deposit
+Transaction --|> Deposit
 @enduml

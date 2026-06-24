@@ -7,49 +7,52 @@ class Payment {
   #Date id
   #long amount
   -long active
-  +saveStatus()
-  +calculateScore()
-  +validateAddress()
-  +saveStatus()
+  +updatePhone()
+  +createPhone()
+  +deleteAmount()
+  +cancelAmount()
 }
-abstract class Category {
-  #Date updatedAt
-  -long status
-  #boolean level
-  +float type
-  +float total
-  +getId()
-  +findActive()
+class Category {
+  +float status
+  #String note
+  #Date total
+  -boolean updatedAt
+  +saveType()
+  +cancelLevel()
+  +saveActive()
+  +cancelUpdatedat()
 }
 abstract class Coupon {
-  #boolean score
-  +String status
-  +processId()
+  +String score
+  +Date active
+  #Date createdAt
+  -String description
+  +sendStatus()
 }
-class Warehouse {
-  +boolean duration
-  #double amount
-  #String createdAt
-  +calculateTotal()
+interface Warehouse {
+  -String code
+  -int status
+  +cancelNote()
+  +getUpdatedat()
 }
 class Order {
-  -double code
-  -float active
-  +String duration
-  +setStatus()
-  +processAddress()
+  +boolean level
+  #float code
+  +String id
+  #String total
+  -double active
+  +validateDescription()
+  +updateActive()
+  +getLevel()
+  +processPrice()
 }
-interface Product {
-  -int level
-  +long name
-  #float note
-  #Date amount
-  +boolean duration
-  +deleteEmail()
-  +deleteCode()
+class Product {
+  #boolean type
+  -boolean address
+  +setAmount()
 }
-Order --* Coupon
-Product --o Coupon
-Category --* Payment
-note right of Payment : Ecommerce domain
+Category --o Payment
+Coupon --> Category : "0..1"
+Category ..|> Coupon
+Payment ..> Order : "0..1"
 @enduml

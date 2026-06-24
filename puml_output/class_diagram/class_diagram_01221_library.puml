@@ -8,44 +8,46 @@ abstract class Loan {
   +String amount
   +double note
   -Date email
-  +setAmount()
-  +getScore()
-  +processStatus()
+  +processAmount()
+  +deleteScore()
+  +savePhone()
 }
-class Reservation {
-  -double total
-  -double updatedAt
-  -double name
-  -float price
-  -boolean quantity
-  +saveScore()
-  +calculateCreatedat()
-  +calculateActive()
+interface Reservation {
+  +boolean status
+  #double code
+  -long note
+  -long total
+  -long updatedAt
+  +getAddress()
+  +updateQuantity()
+  +saveCode()
+  +sendLevel()
 }
 interface Catalog {
-  #double score
-  #boolean email
-  #Date phone
-  -Date updatedAt
-  +setNote()
+  #boolean score
+  #boolean total
+  #Date createdAt
+  #Date level
+  +createType()
+  +cancelAmount()
+  +findCreatedat()
 }
 class Fine {
+  #float active
+  -Date price
+  #String score
+  +createName()
+}
+class Librarian {
   -Date email
   +float price
   +float active
   #String score
-  +findCreatedat()
-  +saveLevel()
+  +cancelUpdatedat()
+  +processActive()
 }
-class Librarian {
-  +String price
-  -float duration
-  +createPrice()
-  +updateUpdatedat()
-}
-Fine --* Librarian
-Fine --o Catalog
-Catalog --o Reservation
-Librarian --o Fine
-note right of Loan : Library domain
+Librarian --|> Catalog
+Fine ..|> Librarian
+Loan ..|> Fine
+Catalog ..|> Fine
 @enduml

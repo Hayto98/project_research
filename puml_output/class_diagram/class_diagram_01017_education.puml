@@ -5,35 +5,33 @@ interface Assignment {
   #double score
   #String address
   -long price
-  +findDuration()
+  +calculateDescription()
 }
 interface Attendance {
   +boolean phone
   #boolean type
   -String name
   +Date code
-  +saveTotal()
-  +deleteCode()
-  +processCode()
-  +getScore()
+  +findStatus()
+  +findAmount()
+  +saveQuantity()
+  +setDescription()
 }
-interface Teacher {
-  -String type
-  +boolean score
-  +updatePhone()
-  +getPrice()
+abstract class Teacher {
+  #boolean id
+  #String score
+  +createStatus()
+  +setTotal()
+  +cancelStatus()
+  +calculateEmail()
 }
-class Student {
-  #Date description
-  -long active
-  +int name
-  +double code
-  +int status
-  +getUpdatedat()
-  +deleteType()
-  +validateStatus()
+interface Student {
+  -String updatedAt
+  #Date phone
+  #double id
+  +calculateActive()
+  +sendLevel()
 }
-Teacher --* Student
-Attendance --> Assignment : "0..1"
-note right of Assignment : Education domain
+Assignment ..> Student : "*"
+Teacher ..|> Assignment
 @enduml

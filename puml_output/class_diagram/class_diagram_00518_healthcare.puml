@@ -6,42 +6,48 @@ skinparam defaultFontSize 11
 class Hospital {
   -Date createdAt
   -float status
-  +saveStatus()
-  +deleteDescription()
-  +getAddress()
-  +setDuration()
+  +cancelScore()
+  +findType()
+  +createPhone()
+  +calculateAddress()
 }
-abstract class Ward {
-  #float total
-  #double description
-  -Date level
-  #String active
-  +deleteDuration()
-  +cancelAddress()
-  +saveActive()
+class Ward {
+  #Date address
+  -long status
+  +validateCode()
+  +getEmail()
+  +getScore()
+  +setId()
 }
-interface Patient {
-  +double id
-  +long amount
-  +validateScore()
+abstract class Patient {
+  #float level
+  #boolean code
+  +String phone
+  +String amount
+  -String address
+  +setDescription()
+  +calculateCreatedat()
+  +sendAmount()
 }
 class Prescription {
   -long level
   -Date code
-  +updateDescription()
-  +sendPrice()
+  +saveNote()
+  +setType()
 }
 interface Appointment {
-  #long description
-  #long phone
-  +cancelActive()
-  +cancelScore()
-  +sendActive()
-  +updateLevel()
+  #long score
+  -boolean name
+  #boolean description
+  #boolean phone
+  #int address
+  +validateName()
+  +deleteScore()
+  +validateDuration()
+  +processStatus()
 }
-Appointment --o Prescription
-Ward --* Patient
-Appointment ..|> Patient
-Hospital --|> Ward
-note right of Hospital : Healthcare domain
+Patient --|> Ward
+Ward --o Hospital
+Ward ..> Appointment : "1"
+Appointment --* Hospital
 @enduml

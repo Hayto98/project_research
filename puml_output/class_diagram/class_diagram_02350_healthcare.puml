@@ -6,43 +6,43 @@ skinparam shadowing true
 class MedicalRecord {
   #long quantity
   -float duration
-  +deleteType()
-  +sendDescription()
-  +cancelTotal()
-  +cancelLevel()
+  +saveTotal()
+  +findId()
+  +findActive()
+  +setAmount()
 }
-abstract class Nurse {
-  #int phone
-  #Date email
-  +validateActive()
-  +saveName()
+interface Nurse {
+  +Date level
+  #long total
+  -boolean duration
+  +calculateActive()
+  +cancelDescription()
 }
 class Prescription {
-  +int email
-  +double active
-  -Date name
-  +findTotal()
-  +deletePhone()
+  -boolean active
+  #String name
+  +int description
+  +double amount
+  +validatePrice()
+  +createCode()
+  +saveDescription()
+  +saveTotal()
 }
-interface Ward {
-  #long status
-  +double level
-  +double name
-  +long email
-  #Date code
-  +deleteTotal()
-  +validateId()
-  +findLevel()
+abstract class Ward {
+  +boolean phone
+  +long level
+  #String total
+  +validatePhone()
+  +createDuration()
+  +findPhone()
 }
-class Treatment {
-  +float type
-  -String updatedAt
-  #boolean note
-  #Date status
-  +setStatus()
-  +deleteId()
+abstract class Treatment {
+  #float email
+  -long phone
+  +Date amount
+  +createId()
+  +deleteStatus()
 }
-MedicalRecord ..> Treatment : "1..*"
-Treatment --o MedicalRecord
-note right of MedicalRecord : Healthcare domain
+Ward --o Nurse
+MedicalRecord --* Nurse
 @enduml

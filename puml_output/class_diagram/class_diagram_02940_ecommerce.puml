@@ -8,44 +8,41 @@ class Review {
   +int price
   -long quantity
   #String createdAt
-  +processType()
+  +calculateAmount()
 }
-class Category {
-  -long duration
+abstract class Category {
+  -long phone
   +long description
   #Date note
   #Date updatedAt
-  +saveTotal()
-  +processPrice()
-  +cancelStatus()
+  +updateAddress()
+  +deleteType()
+  +deleteEmail()
 }
 abstract class Order {
-  +float status
-  -double type
-  -Date total
-  #String code
-  +sendName()
-  +setPhone()
+  -boolean price
+  #double status
+  +int total
+  -double email
+  -Date level
+  +saveDuration()
 }
-class Invoice {
-  -float name
-  #String amount
-  #double id
-  +float type
-  -boolean description
-  +validateStatus()
+interface Invoice {
+  -Date active
+  -Date name
+  -String status
+  +sendTotal()
+  +findActive()
 }
 class Supplier {
-  -String total
-  +int description
-  -String status
-  -int phone
-  +deleteUpdatedat()
-  +calculateType()
+  #String active
+  -Date status
+  +long note
+  -double updatedAt
+  +boolean address
+  +updateTotal()
 }
-Supplier --> Category : "1..*"
-Order --|> Invoice
-Invoice --|> Review
-Invoice ..> Category : "*"
-note right of Review : Ecommerce domain
+Review ..|> Category
+Invoice --o Review
+Category ..|> Supplier
 @enduml

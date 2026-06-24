@@ -8,60 +8,53 @@ class Doctor {
   #int status
   -String duration
   +boolean createdAt
-  +sendActive()
+  +findPrice()
 }
 interface Diagnosis {
   #int score
   +int createdAt
   #int id
   -double total
-  +sendAmount()
+  +calculateType()
 }
-abstract class Prescription {
+interface Prescription {
+  +boolean note
+  #double phone
   -long quantity
-  #double name
-  +boolean active
-  -boolean type
-  +setPrice()
-  +getDuration()
-  +sendCreatedat()
+  +saveEmail()
+  +getCode()
+  +createPrice()
+  +sendActive()
 }
 class Ward {
-  -String address
-  +boolean amount
-  -String updatedAt
-  +sendStatus()
-  +calculateActive()
-  +setActive()
-  +saveCreatedat()
+  #boolean price
+  +int id
+  +calculateCreatedat()
+  +processUpdatedat()
 }
 class Hospital {
-  +long updatedAt
-  -String description
-  -long price
-  +validateCode()
-  +calculateType()
-  +sendPrice()
-  +calculateAddress()
+  #float status
+  -boolean code
+  +double address
+  #boolean id
+  +calculateActive()
 }
 class Billing {
-  -double id
-  -double type
-  +Date createdAt
-  -Date address
-  +Date email
-  +processQuantity()
-  +getCreatedat()
-  +createTotal()
+  -int description
+  -long updatedAt
+  +float duration
+  +updateTotal()
+  +getStatus()
+  +setActive()
+  +processLevel()
 }
 class LabTest {
-  -float description
-  -double name
-  +createAmount()
+  #double total
+  -long type
+  +validateStatus()
 }
-Hospital --* Billing
+Doctor --o Billing
+Diagnosis --* Billing
+Billing --o Prescription
 Ward --o LabTest
-LabTest ..> Hospital : "1..*"
-LabTest --|> Prescription
-note right of Doctor : Healthcare domain
 @enduml

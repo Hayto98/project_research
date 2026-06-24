@@ -9,33 +9,33 @@ class Payment {
   +long type
   -double quantity
   -float id
-  +calculateTotal()
+  +processType()
 }
 abstract class Room {
-  -long total
-  -float description
-  -long amount
-  +float status
-  +saveQuantity()
-  +deleteCreatedat()
-  +processDescription()
-  +processCode()
+  -long quantity
+  -float total
+  -long description
+  +float amount
+  -float status
+  +validateCreatedat()
+  +sendDescription()
+  +validateDescription()
 }
-abstract class Invoice {
+class Invoice {
+  #boolean description
+  #boolean type
+  -double code
   +String level
-  -long duration
-  +double total
-  -String note
-  +deleteDescription()
+  -long email
+  +processType()
+  +calculateCreatedat()
 }
 class Restaurant {
-  +float code
-  -double email
-  +double quantity
-  +cancelTotal()
+  #String description
+  +Date duration
+  +calculateScore()
 }
-Invoice --> Restaurant : "1"
-Restaurant ..|> Invoice
-Payment --o Invoice
-note right of Payment : Hotel domain
+Payment --o Room
+Room --|> Restaurant
+Restaurant --* Room
 @enduml

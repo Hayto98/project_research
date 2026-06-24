@@ -9,60 +9,59 @@ class Tracking {
   #long phone
   +int quantity
   -boolean email
-  +saveNote()
-  +cancelActive()
-  +validateDuration()
-  +findNote()
+  +cancelPrice()
+  +setDuration()
+  +processTotal()
+  +deleteUpdatedat()
 }
-class DeliveryNote {
-  #String createdAt
-  -long note
-  +long quantity
-  +double amount
-  +float level
-  +setName()
-  +createTotal()
-  +calculatePrice()
+interface DeliveryNote {
+  +Date duration
+  #double note
+  -int name
+  -boolean level
+  +sendScore()
 }
 class Inventory {
-  #String address
-  -float email
-  +cancelStatus()
-  +createPrice()
+  -int address
+  -String code
+  +setTotal()
 }
-class Vehicle {
-  #int name
-  +float price
-  +sendActive()
-  +processLevel()
-  +getType()
-  +createPrice()
+abstract class Vehicle {
+  #String price
+  -float address
+  +boolean id
+  +long level
+  -int email
+  +saveEmail()
 }
-class Driver {
-  +Date phone
-  #Date description
-  +processAmount()
-  +cancelScore()
+abstract class Driver {
+  #boolean description
+  -boolean score
+  +double note
+  +saveCode()
+  +setAmount()
+  +saveEmail()
 }
-interface Customer {
-  -double price
-  +String description
-  #Date address
-  +String id
-  -float level
-  +cancelNote()
+class Customer {
+  +boolean description
+  #boolean id
+  -double createdAt
+  +float note
+  +saveType()
+  +setName()
+  +calculateType()
 }
 class Package {
-  -double email
-  -int amount
-  #double status
-  -double address
-  #String description
-  +calculateDuration()
-  +calculateName()
-  +saveName()
+  +long total
+  +boolean updatedAt
+  -int status
+  -long score
+  +validateId()
+  +deleteStatus()
 }
-Inventory --|> Tracking
-DeliveryNote ..|> Vehicle
-note right of Tracking : Logistics domain
+Customer --> Inventory : "0..1"
+Inventory --* Vehicle
+DeliveryNote --o Customer
+Vehicle ..> Package : "1"
+Driver --|> Vehicle
 @enduml

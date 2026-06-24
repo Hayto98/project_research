@@ -7,52 +7,42 @@ class Account {
   #long amount
   -Date email
   +String phone
-  +processQuantity()
+  +validateUpdatedat()
 }
 class Teller {
-  -Date address
-  #int description
-  #float code
-  -String score
-  +calculateType()
-  +processQuantity()
-  +cancelCreatedat()
+  +String quantity
+  +long address
+  +getCreatedat()
+  +setActive()
 }
 abstract class Statement {
-  #boolean amount
-  +double updatedAt
-  +savePhone()
-  +sendQuantity()
-  +findLevel()
-  +sendDuration()
+  -double email
+  #long price
+  +findAmount()
+  +createAddress()
 }
-interface Loan {
+class Loan {
+  #double level
+  #float id
+  -float total
+  +calculateStatus()
+  +getCode()
+  +createNote()
+}
+interface Deposit {
   #Date type
   #int address
-  +processDescription()
-}
-class Deposit {
-  #int active
-  -double type
-  #String email
-  +Date level
-  #Date address
-  +sendCreatedat()
-  +cancelQuantity()
-  +createAmount()
+  +validateName()
 }
 class Branch {
-  -float total
-  +Date note
-  #long type
-  +long name
-  -float active
-  +calculateDuration()
-  +createCode()
+  #Date price
+  -double active
+  -boolean type
+  +setActive()
+  +getName()
 }
-Teller --> Statement : "0..1"
-Branch --|> Deposit
-Statement ..|> Teller
-Loan --o Account
-note right of Account : Banking domain
+Loan --|> Deposit
+Account ..> Deposit : "1..*"
+Deposit --> Teller : "1..*"
+Statement --* Teller
 @enduml

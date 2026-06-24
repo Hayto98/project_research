@@ -3,62 +3,63 @@ skinparam shadowing true
 class Cart {
   #String updatedAt
   +Date score
-  +savePrice()
-  +createStatus()
-  +processUpdatedat()
-  +saveNote()
+  +cancelDuration()
+  +createNote()
+  +sendScore()
+  +updateLevel()
 }
-abstract class Category {
-  +double id
-  +int duration
-  +cancelName()
+class Category {
+  +int updatedAt
+  -String note
+  +boolean type
+  +float name
+  #float id
+  +sendId()
 }
-class Return {
+interface Return {
   #String duration
   +int level
-  +createName()
-  +deletePhone()
-  +calculateName()
+  +calculateScore()
+  +saveId()
+  +getUpdatedat()
 }
-abstract class Review {
+class Review {
+  +int price
   #double name
-  #Date amount
-  +createAddress()
-  +createName()
-  +calculateAmount()
-  +processQuantity()
+  #Date duration
+  #Date code
+  +validateAddress()
+  +cancelName()
+  +calculateName()
+  +processDescription()
 }
 class Shipment {
+  +double amount
+  +Date type
+  #double quantity
   #boolean name
-  +int note
-  #boolean duration
-  +boolean level
-  +getTotal()
+  +int address
+  +sendQuantity()
+  +updateDuration()
 }
 class Warehouse {
-  #String code
+  #double status
+  +Date note
+  +float code
   -int email
   -long price
-  +String type
-  #Date id
-  +createId()
-  +updateDescription()
-}
-interface Invoice {
-  +Date email
-  #String createdAt
-  +long total
-  -String amount
+  +processQuantity()
   +calculatePrice()
-  +calculateDuration()
-  +findUpdatedat()
-  +saveNote()
 }
-Shipment --> Invoice : "1..*"
-Cart --|> Invoice
-Review --> Shipment : "1..*"
-Review ..|> Invoice
-Warehouse --* Shipment
-Category --|> Cart
-note right of Cart : Ecommerce domain
+class Invoice {
+  #long id
+  +float updatedAt
+  -int description
+  +Date quantity
+  +createCode()
+}
+Return --o Cart
+Review --o Invoice
+Shipment ..|> Warehouse
+Warehouse --o Invoice
 @enduml

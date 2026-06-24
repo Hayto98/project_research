@@ -3,10 +3,10 @@ skinparam backgroundColor #FFFDE7
 skinparam classBackgroundColor #FFF9C4
 skinparam classBorderColor #F57F17
 left to right direction
-actor "Doctor" as Doctor
-actor "Receptionist" as Receptionist
-actor "Insurance Provider" as InsuranceProvider
-actor "Patient" as Patient
+actor "Doctor" as D
+actor "Receptionist" as R
+actor "Insurance Provider" as IP
+actor "Patient" as P
 rectangle "Healthcare System" {
   usecase "Examine Patient" as UC_ExaminePatient
   usecase "Issue Prescription" as UC_IssuePrescription
@@ -16,14 +16,14 @@ rectangle "Healthcare System" {
   usecase "Discharge Patient" as UC_DischargePatient
   usecase "Admit Patient" as UC_AdmitPatient
 }
-Doctor --> UC_IssuePrescription
-Receptionist --> UC_UpdateMedicalRecord
-Receptionist --> UC_IssuePrescription
-Receptionist --> UC_DischargePatient
-InsuranceProvider --> UC_IssuePrescription
-InsuranceProvider --> UC_UpdateMedicalRecord
-Patient --> UC_ExaminePatient
-Patient --> UC_ProcessInsuranceClaim
-Patient --> UC_AdmitPatient
+D --> UC_IssuePrescription
+R --> UC_UpdateMedicalRecord
+R --> UC_IssuePrescription
+R --> UC_DischargePatient
+IP --> UC_IssuePrescription
+IP --> UC_UpdateMedicalRecord
+P --> UC_ExaminePatient
+P --> UC_ProcessInsuranceClaim
+P --> UC_AdmitPatient
 UC_IssuePrescription ..> UC_ExaminePatient : <<extend>>
 @enduml

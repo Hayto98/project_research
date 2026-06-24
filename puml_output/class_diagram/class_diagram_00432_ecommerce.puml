@@ -4,52 +4,51 @@ class Order {
   -String duration
   +int address
   #long score
-  +findDescription()
-  +createCode()
+  +cancelName()
+  +getAmount()
 }
-interface Warehouse {
+class Warehouse {
+  +Date code
+  #boolean score
+  -String phone
   +Date note
-  #double id
-  +long price
-  -float level
-  +validateStatus()
+  +cancelTotal()
+  +processStatus()
+  +findType()
+  +sendAddress()
 }
 class Coupon {
+  -boolean status
+  +Date phone
+  +double note
   #float name
-  #boolean quantity
-  +int createdAt
-  #double updatedAt
-  #long note
-  +calculateTotal()
+  +saveAddress()
+  +findDuration()
 }
-class Category {
-  +long id
-  +long price
-  -int description
-  #int score
-  #long status
-  +findAmount()
-  +cancelScore()
-  +createLevel()
+abstract class Category {
+  -Date code
+  +Date price
+  -int total
+  +float updatedAt
+  +processCreatedat()
 }
 class Supplier {
+  #int updatedAt
+  #long quantity
+  -Date address
+  #int amount
+  +getCode()
+  +setPrice()
+  +processPhone()
+}
+class Cart {
   #long name
   +int updatedAt
   +String quantity
-  +processDescription()
-  +sendType()
+  +updateQuantity()
+  +cancelCode()
 }
-class Cart {
-  -int code
-  +double type
-  #long total
-  +String amount
-  #int address
-  +findCreatedat()
-}
-Category --|> Coupon
-Warehouse ..> Cart : "1"
-Warehouse --* Coupon
-Order --o Coupon
-note right of Order : Ecommerce domain
+Supplier --|> Category
+Category --> Order : "*"
+Category --* Warehouse
 @enduml

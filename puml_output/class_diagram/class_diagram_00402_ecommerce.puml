@@ -4,24 +4,28 @@ skinparam shadowing true
 class Wishlist {
   -Date code
   #double id
-  +calculateCode()
-  +getType()
-  +getPhone()
-  +calculateLevel()
+  +cancelCreatedat()
+  +getStatus()
+  +findNote()
+  +updateDuration()
 }
-interface Payment {
-  +Date duration
-  #double email
-  +String code
-  +findCode()
-  +updateName()
+abstract class Payment {
+  #boolean phone
+  +boolean total
+  +processAmount()
+  +updateCreatedat()
+  +updateStatus()
+}
+interface Order {
+  +Date code
+  +boolean id
+  +double price
+  +String duration
+  #String updatedAt
+  +validateDescription()
+  +saveEmail()
   +findId()
-  +cancelStatus()
-}
-abstract class Order {
-  #boolean status
-  -float code
-  +deleteTotal()
+  +findAmount()
 }
 class Review {
   +int description
@@ -29,19 +33,17 @@ class Review {
   -int code
   +double name
   #boolean type
-  +validateCreatedat()
-  +setDescription()
+  +createActive()
+  +sendEmail()
 }
-abstract class Category {
+class Category {
+  #long total
+  -float email
   +float price
-  +long active
-  +float phone
-  -float note
-  +processPhone()
-  +deleteAmount()
-  +deleteAmount()
+  +validateAddress()
+  +validateEmail()
 }
-Category --> Order : "0..1"
-Order --* Category
-note right of Wishlist : Ecommerce domain
+Order --* Review
+Payment ..|> Category
+Payment --> Wishlist : "1..*"
 @enduml

@@ -5,40 +5,41 @@ abstract class Message {
   #long note
   -String phone
   #Date updatedAt
-  +updateType()
-  +cancelLevel()
-  +getLevel()
+  +sendEmail()
+  +setPrice()
+  +findActive()
 }
-class User {
-  +double id
-  -float updatedAt
-  +long price
-  #long total
-  #long address
-  +saveDescription()
+interface User {
+  -String level
+  +boolean createdAt
+  +updateEmail()
+  +calculateName()
+  +findAddress()
+  +getPhone()
 }
-class Follower {
-  -int duration
-  #Date active
-  +updateDuration()
-  +setEmail()
+abstract class Follower {
+  #long quantity
+  +Date level
+  +Date duration
+  +calculateId()
 }
-class Report {
-  +Date quantity
-  -double type
-  -boolean price
-  +boolean amount
-  +boolean name
-  +calculateType()
+interface Report {
+  #Date amount
+  #float score
+  +long createdAt
+  -double updatedAt
+  +sendCreatedat()
+  +validateType()
+  +deleteLevel()
 }
 abstract class Group {
-  +double id
-  +Date level
-  #Date quantity
-  +calculateId()
-  +setType()
+  #float score
+  -double name
+  -boolean status
+  +calculatePrice()
+  +saveNote()
 }
-Follower --* User
-Group --* Follower
-note right of Message : Social Media domain
+Message --o Report
+Report --|> User
+Group ..|> Follower
 @enduml

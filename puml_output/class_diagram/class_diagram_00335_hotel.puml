@@ -8,55 +8,45 @@ interface Booking {
   #double price
   -float email
   +double level
-  +deleteStatus()
-  +cancelStatus()
-  +updateQuantity()
+  +setType()
+  +setActive()
+  +updateUpdatedat()
 }
 interface Payment {
-  -long phone
-  #Date name
-  +long type
-  #float quantity
-  #double active
-  +validateCode()
+  #double updatedAt
+  -float quantity
+  +deleteTotal()
 }
-interface Room {
-  -long code
-  +boolean price
-  +float note
-  +double duration
-  +String type
-  +sendStatus()
-  +deleteType()
-  +deleteStatus()
-  +processCreatedat()
+abstract class Room {
+  #Date score
+  +long quantity
+  #float total
+  #double email
+  +cancelLevel()
 }
-abstract class Restaurant {
-  -long score
-  -float code
-  +deleteType()
-  +findAddress()
-  +sendPrice()
-  +cancelActive()
+class Restaurant {
+  #float duration
+  +double note
+  +getCode()
+  +validatePhone()
+  +validateName()
+  +sendType()
 }
 abstract class CheckIn {
-  +double level
-  +boolean code
-  +findPrice()
-  +createScore()
-  +createName()
-  +saveQuantity()
+  -String name
+  +boolean score
+  -boolean amount
+  +float description
+  +sendName()
+  +getDuration()
 }
 class Reservation {
-  #float total
-  #double code
-  #float description
-  -String duration
-  +createId()
+  -String type
+  #float createdAt
+  +deleteAmount()
 }
-Booking ..|> CheckIn
-CheckIn --|> Payment
-Reservation --> CheckIn : "0..1"
-Restaurant ..> Room : "1..*"
-note right of Booking : Hotel domain
+Room --o CheckIn
+Payment ..> Restaurant : "1..*"
+CheckIn --> Restaurant : "*"
+CheckIn --> Booking : "1"
 @enduml

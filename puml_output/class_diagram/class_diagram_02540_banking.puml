@@ -4,39 +4,27 @@ skinparam defaultFontSize 11
 abstract class Teller {
   -boolean score
   +Date createdAt
-  +updateActive()
-  +validatePhone()
-  +cancelName()
+  +validateNote()
+  +updateNote()
+  +validateScore()
 }
 class Branch {
-  -double phone
-  +Date score
-  +Date active
-  -Date code
-  +validateActive()
-  +sendId()
-  +getActive()
+  #Date address
+  -boolean phone
+  +findQuantity()
 }
-class Transfer {
-  -boolean type
-  -String level
-  +double status
-  -long email
-  +double name
-  +deleteId()
-  +sendTotal()
+abstract class Transfer {
+  -Date status
+  #boolean phone
+  +String email
+  +findAmount()
 }
 abstract class Transaction {
-  +String id
-  #String address
-  #String email
-  #Date status
-  -Date name
-  +createEmail()
-  +setName()
-  +getUpdatedat()
+  -boolean email
+  -String name
+  +getId()
 }
-Branch --|> Transaction
 Transfer --o Teller
-note right of Teller : Banking domain
+Branch --|> Teller
+Transaction ..> Branch : "*"
 @enduml

@@ -6,62 +6,58 @@ class Library {
   +Date status
   #int code
   -float name
-  +deleteId()
-  +setScore()
+  +cancelType()
+  +saveAddress()
 }
-abstract class Attendance {
-  -String email
-  -double active
-  -Date score
-  -long name
-  -Date updatedAt
-  +deleteNote()
-  +updateActive()
+class Attendance {
+  -long score
+  #boolean type
+  +updateStatus()
 }
-interface Course {
-  +long active
-  #long note
-  +double phone
-  -boolean quantity
-  #Date type
-  +saveCreatedat()
-  +cancelEmail()
-  +findPrice()
-  +findCreatedat()
+abstract class Course {
+  -Date phone
+  -long type
+  +getActive()
+  +validateCode()
+  +getUpdatedat()
+  +createCode()
 }
-class Teacher {
-  +int status
-  -long code
-  +findName()
-  +getAddress()
+abstract class Teacher {
+  #Date active
+  -float level
+  -long price
+  +deleteQuantity()
+  +deleteCreatedat()
+  +createLevel()
+  +deleteName()
 }
-abstract class Assignment {
-  #double createdAt
-  +float address
-  +Date phone
-  -int code
-  +deleteScore()
-  +findPrice()
+class Assignment {
+  #int total
+  +String note
+  +String createdAt
+  +int email
+  -long price
+  +sendStatus()
+  +updateScore()
 }
 class Book {
-  -int score
-  #double quantity
-  -boolean level
-  -String phone
-  #Date active
-  +calculateUpdatedat()
-  +findTotal()
-  +cancelName()
+  -float address
+  +long type
+  +getLevel()
+  +deleteDescription()
+  +createPrice()
 }
-abstract class Grade {
-  -double note
-  -int level
-  +setLevel()
-  +processActive()
-  +updateDuration()
-  +sendQuantity()
+class Grade {
+  +boolean total
+  #double updatedAt
+  -boolean createdAt
+  +deleteStatus()
+  +setAmount()
+  +calculateDuration()
+  +findType()
 }
-Assignment --* Teacher
-Library ..|> Attendance
-note right of Library : Education domain
+Course --> Grade : "1..*"
+Teacher ..> Attendance : "*"
+Grade --> Course : "*"
+Library ..> Assignment : "1..*"
 @enduml

@@ -9,58 +9,58 @@ interface Payment {
   -Date description
   -long type
   -long id
-  +sendQuantity()
-  +savePhone()
-  +calculateScore()
+  +calculatePrice()
+  +createQuantity()
+  +findStatus()
 }
-abstract class Product {
+class Product {
+  -float score
+  #String total
+  -float price
   -Date name
   #String description
-  -boolean quantity
-  #double status
-  #String address
-  +saveStatus()
-  +createPhone()
+  +saveActive()
+  +getActive()
+  +cancelQuantity()
+  +setCreatedat()
 }
 class Wishlist {
-  +long score
-  +double phone
-  #boolean level
-  +saveAmount()
-  +saveCode()
-  +getScore()
+  -int status
+  #Date quantity
+  -float phone
+  +cancelTotal()
+  +sendPhone()
+  +sendNote()
 }
-class Review {
-  -long price
-  -String updatedAt
-  +float code
-  +cancelUpdatedat()
-  +saveAmount()
-  +validateCode()
-  +cancelCreatedat()
+abstract class Review {
+  +double amount
+  #Date code
+  #int id
+  +long phone
+  +processCreatedat()
+  +createEmail()
+  +deleteActive()
 }
 class Coupon {
-  -float duration
-  +long name
-  #float status
-  +saveId()
-  +saveNote()
+  -float total
+  +boolean updatedAt
+  +int amount
+  +getQuantity()
+  +calculateId()
 }
-class Return {
-  -Date email
-  #double status
-  +deleteAmount()
-  +getCode()
+interface Return {
+  -boolean note
+  #int createdAt
+  +validatePrice()
 }
-class Warehouse {
-  -Date address
-  #int email
-  +findAmount()
+abstract class Warehouse {
+  +double status
+  #float email
+  +deleteAddress()
+  +deleteScore()
+  +createEmail()
+  +validateQuantity()
 }
-Wishlist --* Coupon
-Wishlist ..|> Review
-Payment --* Coupon
-Product --o Coupon
-Wishlist ..> Payment : "1..*"
-note right of Payment : Ecommerce domain
+Warehouse --|> Return
+Wishlist --* Payment
 @enduml

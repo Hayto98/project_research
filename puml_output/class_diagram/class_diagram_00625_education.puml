@@ -6,43 +6,38 @@ skinparam ArrowColor #555555
 abstract class Library {
   #boolean active
   -long duration
-  +calculateTotal()
-  +cancelName()
-  +calculateActive()
+  +deleteAmount()
+  +findTotal()
+  +getAddress()
 }
-abstract class Teacher {
-  +long email
-  -String active
-  #boolean updatedAt
-  #float level
-  +sendUpdatedat()
-  +findCreatedat()
-  +validateAmount()
+interface Teacher {
+  -long price
+  -boolean active
+  +calculateActive()
+  +updateQuantity()
 }
 class Department {
-  #String updatedAt
-  -String level
-  +double score
-  +getUpdatedat()
-  +deleteName()
-  +getNote()
+  #Date price
+  +Date id
+  +long score
+  +String phone
+  +processPrice()
+  +saveDuration()
 }
-class Course {
-  -float description
-  #double phone
-  #int quantity
-  #long name
-  +sendType()
+interface Course {
+  +double total
+  #long status
+  +createScore()
 }
-interface Grade {
-  -boolean price
-  #long level
-  #boolean score
-  +updateTotal()
-  +saveAmount()
+class Grade {
+  +long name
+  +long note
+  +deleteNote()
+  +calculateQuantity()
+  +calculateType()
 }
-Teacher --o Course
-Teacher --|> Department
-Library --|> Course
-note right of Library : Education domain
+Course ..> Teacher : "1..*"
+Library --> Course : "0..1"
+Course --> Department : "1..*"
+Grade ..|> Teacher
 @enduml

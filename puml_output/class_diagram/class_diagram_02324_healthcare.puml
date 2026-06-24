@@ -9,44 +9,39 @@ class Nurse {
   #long description
   +int address
   #int status
-  +calculateType()
-  +processNote()
-  +getLevel()
+  +validateType()
+  +saveCode()
+  +sendCreatedat()
 }
-interface Billing {
-  +Date amount
-  +long type
-  -double level
-  +Date updatedAt
-  +calculateDuration()
-  +cancelStatus()
-  +setStatus()
-  +findPrice()
+abstract class Billing {
+  -int name
+  +Date level
+  +long phone
+  -double amount
+  +Date type
+  +processType()
+  +deleteDescription()
+  +setPhone()
+  +deleteQuantity()
 }
-abstract class Appointment {
-  +int status
-  +float level
-  +findCreatedat()
+class Appointment {
+  +String price
+  #int type
+  +deleteEmail()
+  +getDuration()
 }
-interface Doctor {
-  #String id
-  #String duration
-  +long code
-  +validateQuantity()
-  +updateScore()
+class Doctor {
+  +String createdAt
+  +String level
+  +deleteStatus()
 }
 class Ward {
-  #boolean status
-  +int name
-  -double address
-  +Date description
-  #boolean createdAt
-  +updateUpdatedat()
-  +findStatus()
+  -int phone
+  #long amount
+  -Date duration
+  +calculateId()
 }
-Doctor --> Nurse : "0..1"
-Doctor --o Appointment
-Appointment --o Ward
-Ward --|> Billing
-note right of Nurse : Healthcare domain
+Billing --> Ward : "0..1"
+Billing --o Doctor
+Nurse ..|> Billing
 @enduml

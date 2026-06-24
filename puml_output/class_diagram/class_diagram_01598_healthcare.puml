@@ -9,49 +9,51 @@ interface Insurance {
   +double type
   +int createdAt
   #double description
-  +deletePrice()
-  +sendLevel()
+  +processUpdatedat()
+  +sendUpdatedat()
 }
-class Treatment {
+abstract class Treatment {
   #int phone
-  +double type
-  -double amount
-  -float total
-  +createQuantity()
-  +processPrice()
+  -boolean duration
+  +int type
+  +deletePrice()
+  +calculateCode()
+  +cancelCode()
+  +calculateLevel()
 }
 class Diagnosis {
-  #boolean description
-  #boolean updatedAt
-  -double price
-  +cancelDuration()
-  +findCreatedat()
-  +getStatus()
-  +saveLevel()
+  #int quantity
+  +boolean note
+  #float price
+  +double phone
+  +deleteActive()
+  +findAmount()
+  +findName()
+  +setPhone()
 }
-interface Patient {
-  #float score
-  +Date email
-  -String amount
-  -boolean code
-  -Date duration
-  +sendNote()
+class Patient {
+  #double status
+  #long level
+  +validateType()
+  +processScore()
 }
 class Nurse {
-  +int name
-  +String description
-  +deletePhone()
-  +calculateUpdatedat()
+  +long score
+  #double status
+  #String phone
+  +setLevel()
+  +cancelStatus()
+  +calculateEmail()
+  +setType()
 }
 class Prescription {
-  +boolean id
-  #boolean active
-  +int updatedAt
-  +processStatus()
-  +saveUpdatedat()
-  +deletePrice()
+  +float code
+  -double status
+  +long description
+  +findType()
+  +cancelTotal()
 }
-Nurse --o Insurance
-Treatment ..|> Nurse
-note right of Insurance : Healthcare domain
+Insurance ..> Nurse : "1"
+Treatment --o Diagnosis
+Insurance ..|> Treatment
 @enduml

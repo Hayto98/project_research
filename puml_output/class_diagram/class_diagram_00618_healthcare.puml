@@ -8,56 +8,63 @@ class Ward {
   #boolean duration
   -double note
   #int amount
-  +updateAddress()
-  +updateLevel()
-  +cancelType()
+  +sendNote()
+  +saveCreatedat()
+  +findAddress()
 }
 interface Diagnosis {
-  #long id
-  +float level
-  +double address
-  #int duration
-  +saveAmount()
-  +validateLevel()
-  +sendScore()
+  #long duration
+  +float address
+  +double id
+  #int level
+  -Date score
   +deleteCode()
+  +sendLevel()
 }
-abstract class Patient {
-  -long type
-  -double email
-  +createStatus()
-  +saveActive()
+interface Patient {
+  -float code
+  -long note
+  -long duration
+  +deleteDescription()
+  +saveDuration()
+  +createCode()
+  +validateAddress()
 }
-abstract class MedicalRecord {
-  -int duration
-  -double email
+class MedicalRecord {
+  +double quantity
+  -Date email
   #Date price
-  #String name
-  +findDescription()
-  +sendDescription()
-  +cancelPhone()
+  +long name
+  #int duration
+  +processEmail()
+  +cancelName()
 }
 class Insurance {
-  #String type
-  -Date updatedAt
-  +cancelDuration()
-  +calculateActive()
+  #String id
+  -Date type
+  +boolean updatedAt
+  +setPrice()
+  +findPrice()
+  +setAmount()
+  +saveCreatedat()
 }
-class Prescription {
-  +int code
-  +String active
-  -boolean quantity
-  -String status
-  #boolean description
-  +setType()
+abstract class Prescription {
+  +Date active
+  +float quantity
+  +saveQuantity()
+  +calculateId()
 }
 class Hospital {
-  -float active
-  -boolean updatedAt
-  +findPrice()
-  +createAmount()
+  +double level
+  #String price
+  #Date id
+  #Date score
+  +validateDescription()
 }
-Patient ..> Insurance : "*"
+Hospital --o Diagnosis
+Hospital --> Patient : "0..1"
+Prescription --* MedicalRecord
+Diagnosis --* Ward
+Insurance ..> Prescription : "*"
 Ward ..|> Patient
-note right of Ward : Healthcare domain
 @enduml

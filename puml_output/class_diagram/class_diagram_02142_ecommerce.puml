@@ -7,47 +7,43 @@ class Wishlist {
   #long price
   #float code
   +float phone
-  +getLevel()
-  +cancelId()
+  +cancelTotal()
+  +cancelActive()
 }
 interface Supplier {
-  +long name
-  #String updatedAt
-  -boolean description
-  +Date quantity
-  +deleteDuration()
-  +setName()
-  +setPrice()
+  +Date duration
+  +int phone
+  +getLevel()
   +findQuantity()
+  +calculateActive()
 }
-abstract class Coupon {
-  +float description
-  #int total
-  #float duration
-  +getTotal()
+class Coupon {
+  #String score
+  +String name
+  -Date total
+  -double description
+  +validateCreatedat()
   +getPhone()
-  +createAddress()
-  +setEmail()
 }
 class Payment {
+  #double updatedAt
+  +long note
+  -long id
+  +calculateScore()
+}
+class Return {
   #String code
   -float address
-  +createCreatedat()
+  +setTotal()
 }
-interface Return {
+class Invoice {
   -long description
   +long type
   #String active
-  +findEmail()
+  +updateId()
 }
-class Invoice {
-  #Date duration
-  #boolean status
-  -int score
-  -int description
-  +findPrice()
-}
-Payment --o Invoice
-Wishlist --* Supplier
-note right of Wishlist : Ecommerce domain
+Invoice --* Supplier
+Return --> Wishlist : "0..1"
+Return --> Invoice : "1..*"
+Supplier ..|> Payment
 @enduml

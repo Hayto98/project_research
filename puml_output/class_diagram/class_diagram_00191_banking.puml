@@ -9,41 +9,35 @@ interface Teller {
   -double type
   -long updatedAt
   #Date price
-  +getCreatedat()
+  +updateCode()
 }
-abstract class Loan {
-  +float active
-  +double name
-  +int note
-  +float total
-  -long id
-  +calculateName()
-  +saveId()
+class Loan {
+  +double total
+  -float type
+  +String active
+  +calculateCode()
+  +validateQuantity()
 }
 class Account {
-  +int name
-  #int type
-  +processDuration()
-  +setEmail()
-  +getActive()
+  -String address
+  #String quantity
+  +String updatedAt
+  +createLevel()
 }
 abstract class Customer {
-  #int total
-  #double id
-  #boolean code
-  +createCode()
-  +findStatus()
-  +createScore()
+  #long createdAt
+  -float description
+  +deleteCreatedat()
 }
-interface Transaction {
-  +String phone
-  -boolean address
-  +findEmail()
-  +validateScore()
+class Transaction {
+  #double amount
+  #boolean total
+  -long id
+  +Date code
+  +long duration
+  +createAmount()
 }
-Transaction --o Loan
-Teller ..|> Customer
-Customer ..|> Transaction
-Account --o Customer
-note right of Teller : Banking domain
+Loan --o Teller
+Transaction ..> Loan : "1..*"
+Account --o Loan
 @enduml

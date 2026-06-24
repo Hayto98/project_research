@@ -4,31 +4,34 @@ skinparam shadowing true
 interface Teller {
   +int level
   #Date amount
-  +validateType()
+  +sendPhone()
 }
 abstract class Customer {
-  #int address
-  -double code
-  +validateLevel()
-  +sendQuantity()
-  +deletePhone()
+  -double score
+  -long id
+  #boolean address
+  #float code
+  -int createdAt
+  +findEmail()
+  +validateCode()
+  +cancelPhone()
 }
 class Statement {
-  #float quantity
-  #float phone
-  #String total
-  -int createdAt
-  +processQuantity()
-  +validateUpdatedat()
+  +double level
+  +int total
+  -long createdAt
+  -int active
+  +cancelDuration()
+  +updateStatus()
+  +setStatus()
 }
 class Withdrawal {
-  -int status
-  #double name
-  #Date id
-  +getLevel()
-  +calculatePhone()
+  #double type
+  #Date description
+  +deleteNote()
+  +processEmail()
 }
-Withdrawal --o Teller
-Customer --|> Withdrawal
-note right of Teller : Banking domain
+Statement --o Teller
+Teller ..> Customer : "0..1"
+Withdrawal --|> Teller
 @enduml

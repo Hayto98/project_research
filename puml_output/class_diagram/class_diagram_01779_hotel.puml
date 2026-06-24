@@ -7,53 +7,62 @@ interface Staff {
   -int active
   -long status
   +long description
-  +sendPrice()
-  +cancelType()
-  +processNote()
-  +setNote()
-}
-class Housekeeping {
-  #float quantity
-  -double status
+  +deleteEmail()
   +cancelAmount()
+  +deleteAmount()
+  +deleteUpdatedat()
 }
-class Room {
-  +boolean active
-  +String score
-  +float type
+abstract class Housekeeping {
+  #float note
+  -String code
+  #float duration
+  -double status
+  +float name
+  +createQuantity()
+  +getNote()
+}
+interface Room {
   +long description
-  +calculateName()
-  +createActive()
+  #int amount
+  -String status
+  -boolean id
+  -boolean updatedAt
+  +processQuantity()
+  +createDescription()
+  +setActive()
+  +updateTotal()
 }
 class Booking {
-  +double name
-  #float active
-  -Date phone
-  -String address
-  -Date email
-  +saveLevel()
-  +findPrice()
-  +calculateName()
+  +double id
+  #Date total
+  #boolean email
+  #long address
+  +cancelCreatedat()
+  +savePhone()
+  +cancelDescription()
+  +sendName()
 }
-abstract class Payment {
-  #float note
-  +boolean code
-  #int total
-  #String createdAt
-  +cancelType()
-  +getUpdatedat()
-  +processScore()
+class Payment {
+  #String code
+  -boolean total
+  -String createdAt
+  +double score
+  #Date updatedAt
+  +saveTotal()
+  +deleteQuantity()
+  +cancelName()
 }
-class Amenity {
-  #boolean price
-  +boolean address
-  +getQuantity()
-  +sendActive()
-  +createTotal()
+abstract class Amenity {
+  #boolean active
+  -String level
+  -boolean description
+  #float duration
+  +processLevel()
+  +updateLevel()
+  +saveType()
 }
-Room --* Booking
-Staff ..> Amenity : "0..1"
-Booking --o Staff
+Booking --|> Room
+Staff --o Housekeeping
+Amenity --o Staff
 Staff --> Booking : "1..*"
-note right of Staff : Hotel domain
 @enduml

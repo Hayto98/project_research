@@ -4,45 +4,44 @@ class Shelf {
   -int note
   -int address
   +float updatedAt
-  +createTotal()
-  +sendQuantity()
-  +saveTotal()
-  +getPrice()
+  +calculatePhone()
+  +calculateQuantity()
+  +cancelAmount()
+  +cancelAddress()
 }
-class Loan {
-  +Date type
-  -boolean price
-  +int email
-  -int quantity
-  #long name
-  +validateStatus()
+abstract class Loan {
+  -double price
+  -long amount
+  +processQuantity()
+  +sendEmail()
+  +createLevel()
 }
 class Renewal {
-  +int active
-  -int type
-  #Date quantity
-  -int phone
-  +cancelDescription()
-  +processActive()
+  #long createdAt
+  +long type
+  +String updatedAt
+  +getScore()
+  +saveType()
+  +deleteLevel()
 }
-class Member {
-  #float note
-  +long price
-  -String updatedAt
-  -float address
-  +sendQuantity()
-  +validateLevel()
+abstract class Member {
+  +long score
+  +float level
+  #Date phone
+  -int code
+  +getQuantity()
+  +getPrice()
 }
 class Reservation {
-  #float phone
-  +float total
-  +String updatedAt
-  #boolean active
-  +createQuantity()
+  +long active
+  #float name
+  +long address
+  -String note
+  -float price
+  +calculateActive()
+  +saveType()
 }
-Reservation ..> Member : "1..*"
-Renewal --o Loan
-Reservation ..> Shelf : "0..1"
-Member --> Renewal : "1..*"
-note right of Shelf : Library domain
+Renewal --* Loan
+Renewal --> Member : "0..1"
+Reservation --|> Loan
 @enduml

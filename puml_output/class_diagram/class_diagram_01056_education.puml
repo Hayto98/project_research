@@ -8,46 +8,34 @@ abstract class Attendance {
   -String phone
   +float price
   +boolean total
-  +calculateTotal()
-  +processName()
+  +saveCode()
+  +getAddress()
 }
-class Department {
-  +float type
-  #boolean status
-  #String amount
-  #long description
-  +boolean quantity
-  +deleteId()
+abstract class Department {
+  -String email
+  +int type
+  +updateCode()
+  +getDescription()
+  +setUpdatedat()
 }
-class Enrollment {
-  -Date amount
-  #String type
-  +saveActive()
-  +createTotal()
+interface Enrollment {
+  +boolean duration
+  #float phone
+  +getUpdatedat()
 }
-abstract class Student {
-  +long name
-  #Date duration
-  +int id
-  +double phone
-  +calculateType()
-  +cancelEmail()
-  +saveNote()
-  +saveScore()
+class Student {
+  +double id
+  -Date status
+  +getEmail()
 }
-abstract class Teacher {
-  #double amount
-  #int name
-  -Date email
-  #double type
-  +long id
-  +createActive()
-  +findTotal()
-  +deleteQuantity()
+interface Teacher {
+  +String total
+  #long note
+  +long phone
+  #Date name
+  +createScore()
+  +saveStatus()
 }
-Teacher --> Department : "1..*"
-Department --> Attendance : "0..1"
-Teacher --|> Student
-Department --> Enrollment : "1..*"
-note right of Attendance : Education domain
+Student --o Teacher
+Student ..> Enrollment : "*"
 @enduml

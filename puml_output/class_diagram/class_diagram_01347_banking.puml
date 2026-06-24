@@ -5,57 +5,61 @@ abstract class Statement {
   #long type
   #long status
   +Date phone
-  +validateStatus()
-  +calculateActive()
+  +validateDuration()
+  +setStatus()
 }
-interface Account {
+abstract class Account {
   #String name
   -int phone
   -int id
   #float amount
-  +setCreatedat()
-  +processType()
-  +getPhone()
+  +cancelEmail()
+  +validateLevel()
+  +cancelNote()
 }
 abstract class Interest {
-  #String createdAt
-  -float phone
-  +int code
-  +sendType()
+  -String name
+  #String phone
+  -float price
+  +int createdAt
+  +boolean active
+  +getCode()
+  +validateDescription()
+  +calculatePrice()
+  +processStatus()
 }
-interface Customer {
-  #float email
-  -String code
-  #long status
-  #double name
-  +validateAmount()
-  +getId()
+class Customer {
+  #float status
+  -String name
+  +validateDescription()
+  +sendPrice()
+  +getPhone()
 }
 class Card {
-  -int name
-  +float note
-  +float code
+  -float amount
+  +double name
   +String id
-  -boolean phone
-  +createCode()
-  +sendTotal()
-  +sendStatus()
-  +updateDescription()
+  -double email
+  +findId()
+  +createEmail()
 }
-abstract class Teller {
-  +float name
-  +double code
-  +long type
+class Teller {
+  #float name
+  -float address
   -String score
-  +findNote()
+  +calculatePrice()
+  +deleteEmail()
+  +updateName()
+  +setPrice()
 }
 class Transaction {
-  #long phone
-  +String total
-  +createCode()
+  +double note
+  -String address
+  +double name
+  +validateScore()
 }
-Card ..> Interest : "1..*"
-Card --* Teller
-Transaction --> Statement : "0..1"
-note right of Statement : Banking domain
+Statement ..> Transaction : "*"
+Interest --|> Card
+Interest --> Customer : "1..*"
+Statement ..> Interest : "1"
 @enduml

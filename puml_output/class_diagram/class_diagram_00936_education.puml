@@ -8,49 +8,47 @@ interface Department {
   +double type
   #float duration
   +String active
-  +calculateCreatedat()
-  +saveType()
-  +saveDescription()
+  +calculateCode()
+  +saveNote()
+  +validatePrice()
 }
-class Exam {
-  +String phone
-  #boolean level
-  #long price
-  +processAddress()
+abstract class Exam {
+  #double name
+  +String description
+  #boolean phone
+  +validateLevel()
+  +sendTotal()
+  +calculateAmount()
 }
 class Teacher {
+  +float price
   -boolean note
-  -double amount
-  -boolean type
-  #Date active
-  +double code
-  +processType()
-  +calculateActive()
+  +deleteEmail()
 }
-class Attendance {
-  -double name
-  #float amount
-  +deleteUpdatedat()
-  +findScore()
+abstract class Attendance {
+  +double note
+  -float quantity
+  -boolean name
+  +String type
+  +createCode()
 }
 class Classroom {
-  -long id
-  +boolean address
+  -String level
   -int amount
-  #double description
-  +sendScore()
+  +long duration
+  -float updatedAt
+  +boolean quantity
+  +setLevel()
+  +updateAddress()
+  +processType()
 }
 class Schedule {
-  +boolean code
-  #Date total
-  #String name
-  -float email
-  +sendNote()
+  -String phone
+  #float code
+  +calculateNote()
+  +saveTotal()
+  +cancelAmount()
 }
-Exam ..|> Schedule
-Schedule --o Exam
-Teacher --* Exam
-Department --> Exam : "0..1"
-Classroom --* Schedule
-note right of Department : Education domain
+Teacher --> Department : "*"
+Schedule ..|> Attendance
 @enduml

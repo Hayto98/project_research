@@ -8,52 +8,58 @@ class Billing {
   #int total
   +boolean updatedAt
   #String quantity
-  +findName()
-  +createEmail()
+  +deleteType()
+  +deleteNote()
 }
-abstract class Insurance {
-  #double name
-  #Date phone
-  #boolean level
-  -Date id
-  +boolean status
+class Insurance {
+  -String total
+  #float note
+  #Date name
+  #String phone
   +processEmail()
-  +getActive()
-}
-interface Diagnosis {
-  -String price
-  #String total
-  +float type
-  -double phone
-  -long duration
+  +setCreatedat()
   +processId()
+  +getCreatedat()
 }
-interface Appointment {
-  +float id
-  -double price
-  +processNote()
-  +updateScore()
+abstract class Diagnosis {
+  -long duration
+  +boolean score
+  #Date updatedAt
+  +validateLevel()
+  +saveName()
+  +setScore()
+  +setNote()
+}
+abstract class Appointment {
+  +float price
+  -double type
+  -long name
+  #String status
+  +cancelTotal()
+  +findDuration()
+  +createLevel()
+  +validateType()
 }
 class Doctor {
-  -int phone
-  +String email
-  +long active
-  +String id
-  +boolean quantity
-  +saveQuantity()
-  +cancelType()
-  +setQuantity()
+  -double price
+  +double id
+  +sendNote()
+  +setAddress()
+  +setStatus()
+  +validateName()
 }
 class Ward {
-  #int active
-  +double code
-  +findTotal()
-  +updateDuration()
-  +setScore()
-  +validateTotal()
+  +int active
+  +String id
+  -int quantity
+  +String type
+  +processNote()
+  +processDescription()
+  +deleteDescription()
 }
-Diagnosis ..> Appointment : "1"
-Billing ..|> Doctor
-Ward --* Billing
-note right of Billing : Healthcare domain
+Billing --|> Diagnosis
+Ward --> Billing : "1"
+Ward ..|> Insurance
+Appointment --o Doctor
+Ward ..|> Appointment
 @enduml

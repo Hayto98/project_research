@@ -9,41 +9,46 @@ abstract class Depot {
   -int duration
   -boolean email
   +double status
-  +findCode()
+  +updateId()
 }
 class Inventory {
-  -Date price
-  +int code
-  +setScore()
-  +cancelStatus()
-  +calculateQuantity()
-  +saveActive()
+  -Date id
+  +int price
+  -String code
+  +getPrice()
 }
 abstract class Warehouse {
-  #float level
+  -double active
+  #int total
+  #float type
   -int id
-  #boolean phone
-  -long total
-  +double amount
-  +validateNote()
-  +validateNote()
-  +sendNote()
+  +calculateScore()
+  +cancelStatus()
+  +saveName()
+  +cancelPrice()
 }
-abstract class Manifest {
-  #double phone
-  -boolean total
-  +int code
-  -double level
-  #float updatedAt
-  +updateCode()
-  +findType()
+class Manifest {
+  -float note
+  -boolean address
+  -long duration
+  #boolean active
+  +processAmount()
+  +validateActive()
+  +processLevel()
+  +createLevel()
 }
 class Tracking {
-  +float type
-  -int createdAt
-  +validateDuration()
+  -Date total
+  +int level
+  +float updatedAt
+  #double score
+  +String duration
+  +findDescription()
+  +createLevel()
+  +calculateNote()
+  +processDuration()
 }
-Depot --> Inventory : "*"
-Warehouse --> Depot : "0..1"
-note right of Depot : Logistics domain
+Inventory --* Depot
+Tracking ..> Inventory : "1"
+Inventory --* Manifest
 @enduml

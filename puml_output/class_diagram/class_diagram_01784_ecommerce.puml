@@ -5,51 +5,52 @@ skinparam classBorderColor #2C7DA0
 interface Shipment {
   +long status
   +long active
-  +deleteNote()
-  +findDescription()
-  +findCreatedat()
+  +saveAddress()
+  +cancelQuantity()
+  +updateId()
 }
 class Invoice {
+  +int updatedAt
+  #double quantity
   +double status
-  +long description
-  #Date amount
-  #boolean price
-  +getNote()
-  +createAddress()
-  +validateCode()
-  +calculateType()
+  +createQuantity()
 }
 interface Cart {
-  #Date status
-  +Date id
-  +validateQuantity()
-  +sendCreatedat()
+  +double id
+  -boolean note
+  +Date email
+  +Date address
+  #String active
+  +validateTotal()
 }
 class Wishlist {
-  -int quantity
-  -double type
-  -float id
-  +Date name
-  +createLevel()
-  +updateQuantity()
+  -long quantity
+  #double score
+  +String createdAt
+  -int description
+  +updateEmail()
+  +saveName()
+  +getPrice()
 }
-interface Customer {
-  +Date total
-  -float price
-  -String createdAt
-  #boolean type
-  +validateName()
-  +createLevel()
-  +processActive()
+class Customer {
+  -float email
+  #long level
+  -Date updatedAt
+  +calculateNote()
+  +sendCreatedat()
+  +processCreatedat()
+  +cancelEmail()
 }
 class Payment {
-  -boolean code
-  +long phone
-  +setAddress()
-  +getPrice()
-  +setPrice()
+  -boolean status
+  -boolean active
+  -String email
+  #String phone
+  -double name
+  +cancelAddress()
 }
-Wishlist --o Payment
-Invoice ..> Payment : "1..*"
-note right of Shipment : Ecommerce domain
+Shipment --|> Cart
+Wishlist --o Shipment
+Invoice ..> Wishlist : "*"
+Wishlist ..|> Invoice
 @enduml

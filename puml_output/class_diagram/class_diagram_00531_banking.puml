@@ -6,40 +6,43 @@ class Statement {
   #int price
   #long total
   #String score
-  +getNote()
+  +calculateEmail()
 }
-class Teller {
-  +Date level
-  #int code
-  -long email
-  -boolean createdAt
-  +double phone
-  +updatePrice()
+abstract class Teller {
+  +Date total
+  -int level
+  +setStatus()
+  +getActive()
+  +validateActive()
+}
+class Beneficiary {
+  -int quantity
+  -double total
+  +boolean description
+  +Date price
+  +sendTotal()
+  +findAmount()
+  +saveStatus()
+  +calculateCreatedat()
+}
+interface Loan {
+  +boolean price
+  +int phone
+  +int email
+  -long active
+  +getCreatedat()
+  +cancelUpdatedat()
+  +validateAddress()
+}
+interface Customer {
+  +Date email
+  +String code
+  +String id
+  #float note
   +calculateName()
-  +sendStatus()
+  +processQuantity()
+  +setType()
 }
-abstract class Beneficiary {
-  #Date total
-  #long address
-  +validateEmail()
-  +findActive()
-  +deleteLevel()
-  +setCreatedat()
-}
-class Loan {
-  #Date price
-  -boolean address
-  -long phone
-  +getNote()
-}
-class Customer {
-  #float status
-  #long id
-  -String name
-  +setAmount()
-  +deleteEmail()
-}
-Loan --o Beneficiary
-Beneficiary --o Teller
-note right of Statement : Banking domain
+Teller --* Customer
+Beneficiary --* Loan
 @enduml

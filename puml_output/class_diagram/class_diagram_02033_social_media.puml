@@ -6,64 +6,56 @@ interface Album {
   +double active
   #boolean status
   -String createdAt
-  +sendId()
-  +setNote()
-  +findPrice()
+  +sendQuantity()
+  +deleteStatus()
+  +findType()
 }
-abstract class Story {
+class Story {
+  -String note
+  -float price
+  +findDescription()
+}
+abstract class Hashtag {
   +boolean total
-  -String active
-  +setStatus()
-  +cancelPhone()
-  +calculateCode()
-  +updateNote()
+  -double status
+  +sendId()
 }
-class Hashtag {
+abstract class Group {
+  +float id
   +int level
-  -Date updatedAt
-  +cancelId()
-}
-class Group {
-  -long description
-  +boolean phone
-  -float active
-  +boolean status
-  #Date level
-  +validatePrice()
-  +sendLevel()
-  +validateLevel()
+  +createLevel()
+  +processAmount()
+  +findDescription()
 }
 class Comment {
-  -boolean quantity
-  +boolean active
-  -double code
-  +boolean email
-  #String createdAt
-  +cancelDescription()
-  +deletePrice()
-  +validateDescription()
+  -boolean active
+  #String total
+  -long description
+  +setDuration()
+  +calculateLevel()
+  +createId()
 }
-interface Post {
-  #double name
-  #long code
-  #double quantity
-  -String phone
+class Post {
+  -double updatedAt
+  #boolean active
+  -float score
+  #long email
+  +setTotal()
+  +setPrice()
+  +createLevel()
+  +sendActive()
+}
+interface Like {
+  -boolean email
   +boolean createdAt
-  +processStatus()
+  +validateName()
+  +createAddress()
+  +cancelAmount()
 }
-class Like {
-  +int level
-  +long updatedAt
-  -String note
-  #int phone
-  #float id
-  +sendQuantity()
-  +saveId()
-  +findScore()
-}
-Post --|> Like
-Like --|> Group
-Hashtag ..|> Like
-Comment --> Album : "0..1"
-note right of Album : Social Media domain
+Album --> Hashtag : "0..1"
+Story --* Group
+Story --> Comment : "*"
+Post --|> Album
+Like --* Hashtag
+Comment ..> Story : "*"
 @enduml

@@ -2,9 +2,9 @@
 skinparam monochrome true
 skinparam shadowing true
 left to right direction
-actor "Fleet Manager" as FleetManager
-actor "Warehouse Staff" as WarehouseStaff
-actor "Dispatcher" as Dispatcher
+actor "Fleet Manager" as FM
+actor "Warehouse Staff" as WS
+actor "Dispatcher" as D
 rectangle "Logistics System" {
   usecase "Deliver Package" as UC_DeliverPackage
   usecase "Track Shipment" as UC_TrackShipment
@@ -13,14 +13,14 @@ rectangle "Logistics System" {
   usecase "Report Issue" as UC_ReportIssue
   usecase "Load Package" as UC_LoadPackage
 }
-FleetManager --> UC_TrackShipment
-FleetManager --> UC_DeliverPackage
-FleetManager --> UC_ReportIssue
-WarehouseStaff --> UC_LoadPackage
-WarehouseStaff --> UC_TrackShipment
-WarehouseStaff --> UC_UpdateInventory
-Dispatcher --> UC_TrackShipment
-Dispatcher --> UC_ReportIssue
-Dispatcher --> UC_DeliverPackage
+FM --> UC_TrackShipment
+FM --> UC_DeliverPackage
+FM --> UC_ReportIssue
+WS --> UC_LoadPackage
+WS --> UC_TrackShipment
+WS --> UC_UpdateInventory
+D --> UC_TrackShipment
+D --> UC_ReportIssue
+D --> UC_DeliverPackage
 UC_ReportIssue ..|> UC_TrackShipment : <<include>>
 @enduml

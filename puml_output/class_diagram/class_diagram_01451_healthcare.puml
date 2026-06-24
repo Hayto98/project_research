@@ -5,66 +5,58 @@ class Nurse {
   -double createdAt
   #boolean score
   -int price
-  +validateCreatedat()
-  +cancelId()
-  +cancelPrice()
-  +cancelUpdatedat()
+  +createActive()
+  +deleteLevel()
+  +sendType()
+  +sendUpdatedat()
 }
 class Doctor {
-  +float updatedAt
-  #Date price
-  #double name
-  -boolean phone
-  +updateLevel()
+  #int duration
+  +boolean price
+  +createEmail()
+  +updateQuantity()
+  +findAddress()
 }
-class Billing {
-  -float quantity
-  +int updatedAt
-  #Date active
-  -long price
-  #int note
-  +getNote()
-  +updateDescription()
-  +sendNote()
-}
-abstract class MedicalRecord {
-  +String amount
-  #double id
-  #String note
-  #long duration
-  +processQuantity()
-  +validateCreatedat()
-}
-class Hospital {
-  #float amount
+abstract class Billing {
+  #Date phone
   #double status
-  #double score
-  +float phone
-  -float type
-  +findAmount()
-  +cancelType()
+  +sendActive()
+  +findNote()
+  +cancelNote()
+}
+interface MedicalRecord {
+  +boolean type
+  -double quantity
+  +calculateType()
+  +setAmount()
+  +updateDuration()
+  +getEmail()
+}
+interface Hospital {
+  #double address
+  +Date createdAt
+  +boolean phone
+  -float name
+  +saveCreatedat()
+  +calculateTotal()
+  +saveUpdatedat()
+  +createNote()
 }
 class Diagnosis {
-  +int active
-  #int level
-  +int email
-  #String amount
-  -float phone
-  +cancelPhone()
+  +String note
+  #double amount
+  +savePrice()
 }
 class Ward {
-  #Date note
-  -String description
-  #String duration
-  -Date quantity
-  +float total
-  +setCreatedat()
-  +processType()
+  +long type
+  #double quantity
+  #Date address
+  +setStatus()
+  +getUpdatedat()
 }
-Billing ..|> MedicalRecord
-Nurse ..|> Diagnosis
-Ward ..|> Diagnosis
-Nurse --* Doctor
-Billing ..> Diagnosis : "1"
-note right of Nurse : Healthcare domain
+Billing ..> MedicalRecord : "*"
+Hospital --|> MedicalRecord
+Ward ..|> MedicalRecord
+Diagnosis --> Doctor : "*"
+Hospital --> Diagnosis : "1..*"
 @enduml

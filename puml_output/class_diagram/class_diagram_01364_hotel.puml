@@ -5,51 +5,55 @@ class Amenity {
   #boolean createdAt
   #double active
   -boolean quantity
-  +processStatus()
-  +sendScore()
+  +createName()
+  +saveTotal()
 }
 class Reservation {
-  +Date updatedAt
-  -double duration
-  +deletePhone()
+  #float code
+  -double updatedAt
+  #String level
+  +long amount
+  +calculateName()
+  +processId()
+  +findAddress()
 }
 class Payment {
-  -long level
-  -int updatedAt
-  #String description
-  #Date phone
-  +calculateEmail()
-  +processType()
-  +saveAddress()
-  +validateId()
+  #String type
+  #Date quantity
+  -double total
+  -double description
+  +sendDuration()
+  +updateAmount()
+  +findQuantity()
+  +calculateCreatedat()
 }
-interface Guest {
+class Guest {
   +boolean level
   -long duration
   -double email
-  +getCreatedat()
-  +findName()
-  +validateId()
-  +findLevel()
+  +processCode()
+  +setDuration()
+  +sendLevel()
+  +calculateNote()
 }
-interface CheckIn {
-  -boolean address
-  -double name
-  +float score
-  -double createdAt
-  -float description
-  +cancelPrice()
+class CheckIn {
+  +boolean id
+  +int level
+  -boolean total
+  -double address
+  +getUpdatedat()
+  +sendCode()
+}
+abstract class Booking {
+  -Date quantity
+  +long level
+  +double price
+  -String type
+  +boolean note
   +processNote()
-  +validateId()
 }
-class Booking {
-  +boolean price
-  +Date email
-  -Date status
-  +deleteId()
-  +updateStatus()
-}
-CheckIn --* Amenity
-Booking --> CheckIn : "1"
-note right of Amenity : Hotel domain
+Booking ..|> Reservation
+Amenity --|> Reservation
+Booking --> Amenity : "1"
+Payment --> CheckIn : "1"
 @enduml

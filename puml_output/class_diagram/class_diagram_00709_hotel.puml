@@ -6,34 +6,36 @@ skinparam ArrowColor #555555
 abstract class Guest {
   -boolean duration
   +int type
-  +deleteStatus()
-  +createAddress()
-  +validateUpdatedat()
-  +findActive()
+  +updateQuantity()
+  +findId()
+  +findStatus()
+  +setStatus()
 }
 class Room {
-  -boolean status
-  +int total
-  +saveQuantity()
+  #String phone
+  #String updatedAt
+  -float active
+  -boolean createdAt
+  +findPhone()
+  +setUpdatedat()
 }
-abstract class CheckIn {
-  -long price
-  +Date total
-  -String amount
-  -double type
-  +boolean level
-  +findQuantity()
-  +deleteEmail()
-  +processAmount()
-}
-interface Amenity {
-  #boolean email
-  +boolean description
-  +String status
+class CheckIn {
+  #boolean price
+  #float duration
+  -double total
+  -int amount
+  #long type
   +calculateAmount()
-  +sendName()
 }
-Guest --> Amenity : "1"
-CheckIn ..> Guest : "0..1"
-note right of Guest : Hotel domain
+abstract class Amenity {
+  #long active
+  +long phone
+  +setActive()
+  +createCode()
+  +getCreatedat()
+  +getTotal()
+}
+Room --> Guest : "0..1"
+Guest ..> Amenity : "0..1"
+Amenity --> Guest : "1"
 @enduml

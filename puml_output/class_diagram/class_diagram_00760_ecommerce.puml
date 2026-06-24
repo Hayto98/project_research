@@ -7,55 +7,50 @@ class Customer {
   -boolean createdAt
   #float note
   #Date price
-  +cancelDescription()
-  +cancelQuantity()
+  +saveTotal()
+  +calculateLevel()
 }
-abstract class Invoice {
-  -Date note
-  #double description
-  +cancelType()
-  +setAmount()
-  +findTotal()
+interface Invoice {
+  #String level
+  -Date quantity
+  +long type
+  +processStatus()
+  +calculateLevel()
+  +deleteDescription()
+  +validateName()
 }
 class Shipment {
-  -float email
-  #double score
-  +getCreatedat()
-  +deletePhone()
+  -boolean total
+  -float status
+  #double id
+  +calculateId()
+  +createEmail()
 }
 class Wishlist {
-  -float id
-  -float phone
-  +findStatus()
-  +calculateDuration()
+  +long phone
+  -float quantity
+  -float status
+  +saveDescription()
+  +validateId()
 }
-class Category {
-  +double phone
-  -boolean name
-  +cancelAmount()
-  +deleteName()
-  +sendStatus()
-  +setPrice()
+abstract class Category {
+  -String active
+  +double name
+  +calculateActive()
+  +sendName()
+  +findLevel()
 }
-abstract class Supplier {
-  +boolean amount
-  +float name
-  -float type
-  #boolean status
-  +boolean code
-  +getLevel()
+interface Supplier {
+  +String amount
+  -double name
+  -int score
+  +getId()
 }
-abstract class Coupon {
-  -Date email
-  +String note
-  +long type
-  +int price
-  +getLevel()
-  +processQuantity()
-  +sendQuantity()
-  +getAddress()
+class Coupon {
+  -float description
+  #boolean name
+  +getScore()
 }
-Supplier --> Coupon : "*"
-Invoice --|> Category
-note right of Customer : Ecommerce domain
+Customer ..> Category : "*"
+Shipment --o Coupon
 @enduml

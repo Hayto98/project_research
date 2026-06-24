@@ -3,48 +3,47 @@ skinparam defaultFontSize 11
 interface Route {
   -float phone
   +int name
-  +findId()
-  +updateType()
-  +processStatus()
+  +getPrice()
+  +setCode()
+  +updateActive()
 }
-abstract class FuelLog {
-  #float level
-  +long quantity
-  +sendActive()
-  +sendScore()
-  +findType()
-  +validateAmount()
+class FuelLog {
+  #boolean note
+  #long status
+  #float price
+  +long active
+  -float code
+  +findQuantity()
+  +processUpdatedat()
+  +cancelDescription()
+  +findDescription()
 }
-interface Package {
-  +int createdAt
-  +Date active
-  #int quantity
-  +int email
-  +long type
-  +deleteLevel()
-  +processAmount()
+abstract class Package {
+  #float active
+  #long quantity
+  -String score
+  +deleteEmail()
+  +createScore()
 }
 interface Vehicle {
-  #long status
-  -double name
-  +Date type
-  -Date description
-  -float address
-  +processPrice()
-  +updateCreatedat()
-  +setNote()
-  +processPhone()
-}
-abstract class Depot {
-  +double status
+  -int description
+  +Date duration
   #boolean createdAt
-  +saveActive()
-  +updatePhone()
-  +getCode()
-  +createActive()
+  +createCode()
+  +calculateActive()
+  +deletePrice()
+  +createPhone()
 }
-Package --o FuelLog
-Depot --> FuelLog : "1"
-Route --> Vehicle : "*"
-note right of Route : Logistics domain
+class Depot {
+  +Date description
+  -Date address
+  -float phone
+  -double score
+  -int type
+  +setStatus()
+  +cancelQuantity()
+}
+Package --> Vehicle : "1"
+Route ..|> FuelLog
+Vehicle ..> Depot : "0..1"
 @enduml

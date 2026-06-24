@@ -6,40 +6,38 @@ skinparam defaultFontSize 11
 interface Course {
   -double status
   -boolean name
-  +saveId()
-  +setPrice()
-  +saveAmount()
-  +setName()
+  +cancelDuration()
+  +calculateLevel()
+  +sendStatus()
+  +sendTotal()
 }
-interface Library {
+class Library {
+  -double amount
+  #String code
   +float name
-  #float total
-  +Date level
-  +Date status
-  +sendActive()
-  +validateScore()
-  +cancelId()
+  #float quantity
+  +Date score
+  +createType()
+  +findScore()
 }
-class Exam {
-  -Date createdAt
-  #double id
-  +setDuration()
-  +validateAddress()
-  +cancelQuantity()
-  +createAmount()
+interface Exam {
+  +int score
+  +double level
+  #Date id
+  -double address
+  +deleteDescription()
 }
 class Assignment {
-  -double score
-  -String name
-  #long updatedAt
-  +float amount
-  +double duration
-  +validatePhone()
-  +findStatus()
-  +processQuantity()
-  +saveDuration()
+  +double level
+  #String quantity
+  +int duration
+  +long amount
+  +findType()
+  +validateDescription()
+  +deleteCode()
+  +updateActive()
 }
-Assignment --> Library : "0..1"
-Assignment --> Course : "1"
-note right of Course : Education domain
+Course --o Assignment
+Assignment --* Library
+Course ..> Library : "1..*"
 @enduml

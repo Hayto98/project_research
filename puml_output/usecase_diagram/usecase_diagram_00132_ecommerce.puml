@@ -4,10 +4,10 @@ skinparam classBackgroundColor #E8F4FA
 skinparam classBorderColor #2C7DA0
 skinparam ArrowColor #555555
 left to right direction
-actor "Seller" as Seller
-actor "Customer" as Customer
-actor "Delivery Service" as DeliveryService
-actor "Payment Gateway" as PaymentGateway
+actor "Seller" as S
+actor "Customer" as C
+actor "Delivery Service" as DS
+actor "Payment Gateway" as PG
 rectangle "Ecommerce System" {
   usecase "Apply Coupon" as UC_ApplyCoupon
   usecase "Track Order" as UC_TrackOrder
@@ -17,11 +17,11 @@ rectangle "Ecommerce System" {
   usecase "Make Payment" as UC_MakePayment
   usecase "Add To Cart" as UC_AddToCart
 }
-Seller --> UC_MakePayment
-Seller --> UC_ApplyCoupon
-Customer --> UC_Checkout
-DeliveryService --> UC_AddToCart
-PaymentGateway --> UC_AddToCart
-PaymentGateway --> UC_Checkout
+S --> UC_MakePayment
+S --> UC_ApplyCoupon
+C --> UC_Checkout
+DS --> UC_AddToCart
+PG --> UC_AddToCart
+PG --> UC_Checkout
 UC_Checkout ..|> UC_ManageInventory : <<include>>
 @enduml

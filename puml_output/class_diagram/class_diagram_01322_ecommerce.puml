@@ -9,48 +9,53 @@ class Warehouse {
   #boolean quantity
   +long amount
   +boolean description
-  +getLevel()
-  +saveLevel()
+  +updateActive()
+  +findStatus()
 }
-abstract class Customer {
+interface Customer {
   -float id
-  #double email
-  +getStatus()
+  +float duration
+  +String email
+  -boolean type
+  -String price
+  +saveActive()
   +getTotal()
-  +cancelQuantity()
-  +getTotal()
+  +saveType()
+  +processCreatedat()
 }
-interface Supplier {
-  -boolean total
-  +Date updatedAt
-  -int duration
-  +deleteTotal()
+abstract class Supplier {
+  +Date total
+  -int type
+  +float score
+  +calculateType()
+  +deleteLevel()
 }
 abstract class Coupon {
-  +float updatedAt
-  +String createdAt
-  -boolean type
-  +findDuration()
-  +saveQuantity()
-  +findId()
-  +saveTotal()
+  +String updatedAt
+  -boolean duration
+  -Date createdAt
+  #Date type
+  -float level
+  +deleteStatus()
 }
 abstract class Return {
-  -int id
-  -long description
-  +cancelType()
+  -long status
+  #String id
+  #float description
+  #double email
+  -long createdAt
+  +sendType()
 }
-abstract class Review {
-  #int id
-  +double updatedAt
-  #float score
-  +String type
-  +getCreatedat()
-  +cancelNote()
-  +validateQuantity()
+class Review {
+  +boolean active
+  -String amount
+  +float createdAt
+  #double note
+  -long code
+  +cancelStatus()
+  +createDuration()
 }
-Warehouse ..|> Coupon
 Warehouse --> Return : "0..1"
 Return ..|> Warehouse
-note right of Warehouse : Ecommerce domain
+Customer --o Return
 @enduml

@@ -7,39 +7,40 @@ class Treatment {
   +String total
   +int level
   #String score
-  +setScore()
-  +validateActive()
+  +calculateType()
+  +createAddress()
 }
-abstract class Appointment {
+interface Appointment {
+  -long active
+  #double price
   -boolean address
-  -boolean email
-  +Date quantity
-  #float note
-  +findPrice()
-  +setAddress()
-  +validateTotal()
-  +setCreatedat()
+  -boolean score
+  +processNote()
 }
-class Diagnosis {
-  +Date createdAt
-  +Date status
-  -float duration
-  +int score
-  -boolean name
-  +cancelAddress()
-  +updateScore()
+interface Diagnosis {
+  +int price
+  +double status
+  #int address
+  +Date score
+  +int total
+  +processPhone()
 }
 class Nurse {
-  -Date note
-  #String price
-  +saveDescription()
+  +long total
+  #int amount
+  +calculateNote()
+  +getCreatedat()
+  +updateLevel()
 }
 class Doctor {
-  +int name
-  +long active
-  +validatePhone()
+  -boolean price
+  +String phone
+  #int code
+  +String name
+  -float description
+  +sendPhone()
 }
-Treatment ..|> Appointment
-Diagnosis --o Doctor
-note right of Treatment : Healthcare domain
+Appointment ..> Treatment : "0..1"
+Appointment ..> Diagnosis : "1..*"
+Nurse --> Diagnosis : "0..1"
 @enduml

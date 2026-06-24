@@ -8,51 +8,49 @@ class Amenity {
   #int active
   #double address
   #boolean total
-  +saveAddress()
-  +processName()
-  +sendTotal()
+  +validatePrice()
+  +createActive()
+  +validateName()
 }
-interface Reservation {
+class Reservation {
+  #float active
+  #float total
   -double phone
-  #double id
-  +long name
-  -Date total
-  +String type
-  +saveEmail()
-  +calculateStatus()
-  +deleteDuration()
+  -double id
+  #double name
+  +saveCreatedat()
 }
 class Staff {
-  -String id
-  -double level
-  +saveQuantity()
+  #Date code
+  -double phone
+  +validateLevel()
 }
 class Booking {
-  -int type
-  -String amount
-  +setPrice()
-  +findLevel()
-  +validateStatus()
-}
-abstract class Guest {
-  -long code
+  +double id
   -String duration
-  #float description
-  #int phone
-  +validatePrice()
-  +processAmount()
-  +calculateDuration()
-  +updateId()
+  #long price
+  +validateId()
+  +cancelCode()
+  +getActive()
 }
-interface Invoice {
-  +long price
-  +double code
-  +String address
-  +processActive()
+class Guest {
+  -Date createdAt
+  #float price
+  -String name
+  #Date quantity
+  -Date code
+  +validatePhone()
+  +getLevel()
+  +validateCreatedat()
 }
-Invoice ..> Amenity : "0..1"
-Reservation --o Booking
-Reservation --* Staff
-Guest ..> Reservation : "0..1"
-note right of Amenity : Hotel domain
+class Invoice {
+  -long phone
+  -double total
+  +double name
+  #float createdAt
+  +updateDuration()
+  +findDuration()
+}
+Booking ..> Amenity : "1..*"
+Amenity ..|> Staff
 @enduml

@@ -6,62 +6,65 @@ skinparam defaultFontSize 11
 class Payment {
   -double quantity
   +Date status
-  +deleteId()
+  +deleteScore()
 }
-interface Invoice {
+class Invoice {
   +float level
   -String status
   -boolean address
   -long phone
   +float amount
-  +getEmail()
-  +getName()
+  +sendTotal()
+  +findCreatedat()
 }
 class Guest {
-  +float status
-  +Date level
+  #String email
+  #boolean price
+  +deleteUpdatedat()
+  +updateTotal()
+  +saveType()
+}
+interface Room {
+  #double name
+  -int description
+  #String amount
+  #double active
+  #String total
+  +updateName()
+  +setName()
+  +sendId()
+}
+abstract class Service {
+  #long updatedAt
+  #int active
+  -float score
   +Date phone
-  #double score
-  #double total
-  +updateDuration()
-  +getTotal()
-  +findCode()
-}
-class Room {
-  -double id
-  +boolean createdAt
-  +processScore()
-  +createAmount()
-  +calculateUpdatedat()
-}
-class Service {
-  +Date updatedAt
-  #boolean score
-  #boolean active
-  #boolean quantity
-  +validateLevel()
-  +processUpdatedat()
+  -long type
+  +createLevel()
+  +setAddress()
 }
 interface CheckIn {
-  +double price
-  -boolean description
-  #boolean active
-  +String duration
-  +createPhone()
-  +deleteActive()
-  +getUpdatedat()
+  -boolean status
+  -Date active
+  +boolean level
+  #Date description
+  +findEmail()
+  +createDuration()
+  +getEmail()
 }
-class Amenity {
-  #String score
-  -double quantity
-  +int active
+interface Amenity {
   +long amount
-  +String phone
-  +validateName()
-  +updateScore()
+  -long note
+  +Date type
+  #boolean active
+  +Date duration
+  +validateId()
+  +getAddress()
 }
-Guest --o Payment
-Invoice ..|> Guest
-Service --|> Invoice
-note right of Payment : Hotel domain
+Guest --> Service : "0..1"
+CheckIn --> Guest : "1"
+Guest ..|> Room
+Invoice --* Amenity
+Invoice ..|> Payment
+Guest ..|> Payment
 @enduml

@@ -6,45 +6,43 @@ interface Insurance {
   +double updatedAt
   -Date note
   #String createdAt
-  +calculateAddress()
-  +sendActive()
-  +saveLevel()
+  +createPrice()
+  +createActive()
+  +calculateActive()
 }
 interface Appointment {
   -boolean type
   #int address
   #float createdAt
   #boolean duration
-  +validateType()
+  +findCode()
 }
-class Nurse {
-  #float email
-  +long address
-  -String id
-  +processDescription()
+abstract class Nurse {
+  #float updatedAt
+  +long email
+  -String address
+  +double id
+  +sendTotal()
+  +createNote()
 }
 class Prescription {
-  +Date active
-  +int address
-  #String level
-  +int quantity
-  +calculateName()
-  +updateStatus()
-  +getActive()
-  +sendActive()
+  +boolean address
+  +String quantity
+  +double updatedAt
+  -String name
+  +saveDescription()
+  +cancelEmail()
 }
 class Hospital {
-  #Date email
-  -int description
-  +int price
-  +setId()
-  +findCode()
-  +setNote()
-  +cancelCode()
+  #Date description
+  -int email
+  +int duration
+  #boolean price
+  +validateId()
+  +updateActive()
+  +createTotal()
+  +deleteLevel()
 }
-Nurse --* Prescription
-Insurance --> Prescription : "0..1"
-Insurance ..> Nurse : "0..1"
-Appointment --> Hospital : "*"
-note right of Insurance : Healthcare domain
+Insurance --> Prescription : "1"
+Hospital --o Nurse
 @enduml

@@ -7,41 +7,42 @@ class Supplier {
   -int updatedAt
   +int status
   +long code
-  +setActive()
-  +deleteAddress()
+  +cancelStatus()
+  +createDescription()
 }
 class Review {
-  +String address
-  +boolean code
-  -boolean level
-  -long phone
-  +updateActive()
-  +cancelLevel()
-}
-class Warehouse {
+  +long createdAt
+  +String email
   +boolean address
-  #double level
-  +createCode()
-  +calculateTotal()
-  +sendName()
+  -boolean code
+  +calculateName()
+  +deletePhone()
+  +getActive()
 }
-class Return {
-  -float address
-  #boolean level
-  #String updatedAt
-  -String status
-  +int name
-  +saveLevel()
+interface Warehouse {
+  +float updatedAt
+  -boolean active
+  +boolean description
+  +validateScore()
+  +createQuantity()
+  +getName()
+  +createAddress()
+}
+abstract class Return {
+  #boolean score
+  #int name
+  #String createdAt
+  #Date total
+  +double address
+  +getNote()
 }
 class Cart {
-  -Date updatedAt
-  +long email
-  #Date total
-  +double code
-  #double phone
-  +getTotal()
+  -int createdAt
+  -float name
+  #double amount
+  +findCode()
 }
-Review --|> Return
-Cart --* Review
-note right of Supplier : Ecommerce domain
+Review --> Warehouse : "1"
+Return ..> Cart : "1"
+Supplier --* Return
 @enduml

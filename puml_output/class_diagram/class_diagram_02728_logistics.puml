@@ -9,66 +9,59 @@ interface Depot {
   +long id
   #int amount
   -String score
-  +deleteAddress()
+  +validateLevel()
+  +validateCode()
+  +calculateName()
+  +deleteAmount()
+}
+abstract class DeliveryNote {
+  +String email
+  +int type
+  +calculateUpdatedat()
+  +validateUpdatedat()
   +calculatePrice()
-  +sendCode()
-  +createType()
+  +validatePhone()
 }
-class DeliveryNote {
-  #Date status
-  -Date description
-  +sendCode()
-  +sendAddress()
-  +updatePhone()
-  +updateCreatedat()
-}
-abstract class Warehouse {
-  -int total
-  +double name
-  +saveCode()
-  +processStatus()
+interface Warehouse {
+  -boolean createdAt
+  +double phone
+  +double updatedAt
+  +float duration
+  +findActive()
 }
 class Route {
-  +int quantity
-  #float createdAt
-  +float level
-  +String updatedAt
-  +deleteDescription()
-  +saveEmail()
-  +calculateAmount()
+  +boolean type
+  -long status
+  +getTotal()
+  +processPrice()
 }
 class Shipment {
+  -float description
+  +int status
+  #float level
+  +processLevel()
+  +deleteScore()
+  +createLevel()
+}
+class Package {
   -long score
   #long description
   #int id
   #Date quantity
   -double phone
-  +updateCreatedat()
-  +sendCode()
-  +processCreatedat()
-  +saveCreatedat()
+  +getTotal()
+  +cancelDuration()
+  +deleteEmail()
+  +processActive()
 }
-abstract class Package {
-  +long quantity
-  +boolean name
-  #float description
-  +cancelActive()
+interface Driver {
+  #int type
+  -int createdAt
+  +deleteDescription()
+  +saveType()
+  +saveId()
 }
-class Driver {
-  #int id
-  +Date duration
-  +double note
-  #Date address
-  +String email
-  +cancelPrice()
-  +getUpdatedat()
-  +calculateName()
-}
-Warehouse ..> Package : "1"
-Route --|> Warehouse
-DeliveryNote --|> Package
-Driver ..> Package : "*"
-Depot ..> DeliveryNote : "0..1"
-Package --|> Route
-note right of Depot : Logistics domain
+Depot --|> Warehouse
+Shipment --> Package : "1"
+Shipment --|> Driver
 @enduml

@@ -1,10 +1,10 @@
 @startuml
 
 left to right direction
-actor "Dispatcher" as Dispatcher
-actor "Fleet Manager" as FleetManager
-actor "Customer" as Customer
-actor "Driver" as Driver
+actor "Dispatcher" as D
+actor "Fleet Manager" as FM
+actor "Customer" as C
+actor "Driver" as D1
 rectangle "Logistics System" {
   usecase "Assign Route" as UC_AssignRoute
   usecase "Report Issue" as UC_ReportIssue
@@ -12,12 +12,12 @@ rectangle "Logistics System" {
   usecase "Fuel Vehicle" as UC_FuelVehicle
   usecase "Update Inventory" as UC_UpdateInventory
 }
-Dispatcher --> UC_AssignRoute
-Dispatcher --> UC_UpdateInventory
-FleetManager --> UC_UpdateInventory
-FleetManager --> UC_FuelVehicle
-Customer --> UC_AssignRoute
-Customer --> UC_UpdateInventory
-Driver --> UC_ReportIssue
+D --> UC_AssignRoute
+D --> UC_UpdateInventory
+FM --> UC_UpdateInventory
+FM --> UC_FuelVehicle
+C --> UC_AssignRoute
+C --> UC_UpdateInventory
+D1 --> UC_ReportIssue
 UC_FuelVehicle ..|> UC_UpdateInventory : <<extend>>
 @enduml

@@ -7,48 +7,50 @@ interface Student {
   +String score
   -int createdAt
   +updateDescription()
-  +saveTotal()
+  +saveQuantity()
 }
-class Teacher {
-  -long email
+abstract class Teacher {
+  #Date active
+  +int email
+  -long level
   +String status
-  +Date amount
-  #boolean score
-  +saveDescription()
+  +updatePhone()
+  +getQuantity()
 }
-abstract class Attendance {
-  #Date status
-  -Date name
-  #double email
-  +getPrice()
-  +calculateActive()
-  +processId()
-  +setPhone()
+interface Attendance {
+  +String description
+  #float price
+  +validateAmount()
 }
-abstract class Grade {
-  #double email
-  -float quantity
-  -Date status
-  -long updatedAt
-  +saveAmount()
-}
-interface Library {
-  +float score
-  -double price
-  #Date email
-  +float phone
-  +deleteEmail()
-}
-class Assignment {
-  -Date phone
-  +int note
-  #Date id
+interface Grade {
+  -boolean level
   -String price
+  +Date type
+  -double name
+  -long duration
+  +updateName()
+  +processPrice()
   +createDescription()
 }
-Library --> Teacher : "*"
-Attendance --o Assignment
-Student ..|> Assignment
-Library ..> Assignment : "1..*"
-note right of Student : Education domain
+abstract class Library {
+  #long email
+  #float address
+  -long quantity
+  -String name
+  -double amount
+  +setActive()
+}
+class Assignment {
+  -float email
+  -String amount
+  #Date address
+  +saveScore()
+  +validateTotal()
+  +cancelTotal()
+  +getEmail()
+}
+Student --* Assignment
+Teacher --> Attendance : "0..1"
+Library --* Grade
+Attendance --|> Grade
 @enduml

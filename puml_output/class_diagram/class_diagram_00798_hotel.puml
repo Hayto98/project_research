@@ -4,51 +4,49 @@ class Reservation {
   -long code
   -Date phone
   -float score
-  +calculateCreatedat()
-  +createName()
-  +sendCode()
-  +cancelType()
+  +cancelCreatedat()
+  +processActive()
+  +deleteCreatedat()
+  +processQuantity()
 }
-abstract class Staff {
-  #String id
-  #long code
-  #int active
-  +processScore()
+interface Staff {
+  -int level
+  +String type
+  +updateId()
 }
-abstract class Restaurant {
-  -float score
-  +double createdAt
-  #long amount
-  +validateDescription()
-  +createDescription()
-  +processStatus()
-  +saveLevel()
+class Restaurant {
+  -Date name
+  +Date type
+  #int score
+  +calculateCode()
+  +calculateLevel()
 }
 class Housekeeping {
-  +int code
-  #float email
-  #Date status
-  +validateStatus()
-  +sendQuantity()
+  -int phone
+  -float active
+  +Date note
+  #int address
+  +String description
+  +cancelEmail()
+  +createPhone()
+  +getEmail()
 }
-abstract class Guest {
-  #float address
-  -long name
-  -double level
-  #Date phone
-  +cancelAmount()
+interface Guest {
+  -double phone
+  -long status
+  +String score
+  +findTotal()
   +sendPrice()
-  +cancelCode()
+  +getUpdatedat()
 }
 class Booking {
-  -int quantity
-  +float score
-  #Date address
-  +saveName()
-  +validateDescription()
+  #int total
+  #double price
+  #String score
+  #int quantity
+  +createQuantity()
+  +createId()
 }
-Staff --o Guest
-Housekeeping --|> Restaurant
-Restaurant --o Housekeeping
-note right of Reservation : Hotel domain
+Restaurant ..|> Staff
+Guest ..> Staff : "1"
 @enduml

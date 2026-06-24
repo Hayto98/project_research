@@ -8,25 +8,27 @@ interface Assignment {
   #double status
   +int active
   -double duration
-  +calculateUpdatedat()
+  +calculateQuantity()
 }
-interface Exam {
+class Exam {
   -long total
   -long level
   -float name
   +long code
-  +sendId()
-  +processDescription()
-  +processDuration()
+  +calculateActive()
+  +setName()
+  +validateUpdatedat()
 }
-abstract class Schedule {
-  -String level
-  +String score
-  +double duration
-  +deleteEmail()
-  +sendNote()
-  +createPrice()
-  +cancelCreatedat()
+class Schedule {
+  +String duration
+  +double type
+  #double amount
+  +long note
+  #float id
+  +calculatePhone()
+  +saveName()
+  +findUpdatedat()
+  +saveNote()
 }
 class Course {
   +int duration
@@ -34,32 +36,37 @@ class Course {
   #Date name
   +String code
   +String price
-  +cancelQuantity()
+  +cancelActive()
 }
 class Library {
-  -String type
-  +int price
-  +deleteEmail()
-  +findActive()
-  +saveTotal()
+  -String id
+  +int type
+  #long price
+  +deleteName()
+  +cancelName()
 }
-class Student {
-  #float phone
-  +int createdAt
-  +calculateAddress()
-  +saveActive()
+interface Student {
+  +int description
+  -long name
+  #boolean phone
+  -long createdAt
+  #int updatedAt
+  +validatePrice()
+  +calculateId()
+  +findNote()
 }
-abstract class Teacher {
-  +int active
-  -long updatedAt
-  -int phone
-  -String name
-  +calculateEmail()
+class Teacher {
+  +String quantity
+  -float address
+  #long updatedAt
+  -String level
+  +sendCreatedat()
+  +validateDescription()
+  +saveQuantity()
+  +saveDescription()
 }
-Assignment --o Library
-Course ..|> Exam
-Student --* Teacher
 Library --|> Teacher
 Student --o Assignment
-note right of Assignment : Education domain
+Assignment --> Teacher : "1..*"
+Schedule ..|> Assignment
 @enduml

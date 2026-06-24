@@ -5,61 +5,62 @@ interface Prescription {
   #String note
   +String type
   #double id
-  +cancelCode()
-  +cancelId()
-  +processUpdatedat()
+  +validateActive()
+  +getAmount()
+  +createAddress()
 }
 interface LabTest {
-  -String active
-  -Date email
-  -float duration
-  +savePrice()
-  +cancelActive()
-  +findAddress()
-  +calculateStatus()
+  #Date type
+  +boolean updatedAt
+  +deleteStatus()
+  +updateAmount()
+  +sendQuantity()
 }
-interface Hospital {
+abstract class Hospital {
+  #double address
+  #double price
+  +calculateType()
+  +saveCode()
+  +cancelPrice()
+}
+class Nurse {
   #String price
   #Date score
   -long amount
   #int level
-  +setCode()
-  +saveType()
-  +validateQuantity()
+  +deleteLevel()
+  +createAddress()
+  +validatePrice()
 }
-class Nurse {
-  -int id
-  #Date phone
-  -long address
-  +sendUpdatedat()
-  +getNote()
+abstract class Diagnosis {
+  -long quantity
+  -int duration
+  #Date updatedAt
+  -long id
+  +createStatus()
+  +validateNote()
 }
-class Diagnosis {
-  +double level
-  +long name
-  -long code
-  +saveDescription()
+class Treatment {
+  -String createdAt
+  -double updatedAt
+  -float name
+  #Date code
+  #long amount
+  +updateCode()
   +deleteScore()
-  +cancelTotal()
-}
-interface Treatment {
-  +int id
-  -float email
-  +int createdAt
-  +updateQuantity()
-  +processCreatedat()
-  +updatePhone()
 }
 interface Doctor {
-  +boolean active
-  -int address
-  +calculateQuantity()
-  +cancelScore()
-  +createEmail()
+  -int active
+  +int level
+  -float duration
+  +int amount
+  -int id
+  +deleteDuration()
+  +saveNote()
+  +findAddress()
 }
-Hospital --o LabTest
-Nurse --|> Diagnosis
-Doctor --* Diagnosis
-Prescription --o Diagnosis
-note right of Prescription : Healthcare domain
+Diagnosis ..> Prescription : "1..*"
+LabTest --* Diagnosis
+LabTest --o Hospital
+Hospital --> Diagnosis : "1..*"
 @enduml

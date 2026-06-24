@@ -8,53 +8,43 @@ interface Product {
   #double description
   #String id
   +boolean email
-  +cancelScore()
-  +cancelDuration()
+  +getQuantity()
+  +setAddress()
 }
 interface Cart {
   -Date type
   #long note
-  +calculateType()
+  +createDuration()
 }
-class Customer {
-  +boolean active
-  #boolean amount
-  -Date name
-  +deleteLevel()
+abstract class Customer {
+  +String duration
+  +boolean amount
+  #boolean active
+  +deleteType()
+  +validateEmail()
+  +validateQuantity()
+  +cancelName()
 }
-class Invoice {
-  #float price
-  +int phone
-  +String name
-  +createNote()
-  +cancelAddress()
-  +findLevel()
-  +processDuration()
+interface Invoice {
+  #long description
+  +boolean price
+  +processUpdatedat()
+  +processActive()
 }
 class Payment {
   -long quantity
-  -String updatedAt
-  +boolean score
-  +float type
-  +boolean address
-  +createScore()
-  +sendId()
-  +deleteActive()
-  +getName()
+  +boolean note
+  -long address
+  -long type
+  -String id
+  +findDescription()
 }
-abstract class Category {
-  #Date level
-  +long type
-  #int phone
-  +String duration
-  +getUpdatedat()
-  +sendDescription()
-  +cancelScore()
-  +deleteEmail()
+class Category {
+  -boolean active
+  #String type
+  +cancelDescription()
+  +updateNote()
 }
-Payment ..> Invoice : "0..1"
-Customer ..> Product : "0..1"
-Category --|> Payment
-Product --> Invoice : "1"
-note right of Product : Ecommerce domain
+Product ..> Invoice : "1..*"
+Payment --* Invoice
 @enduml

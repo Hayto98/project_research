@@ -7,35 +7,32 @@ class Assignment {
   #boolean id
   #long updatedAt
   -Date price
-  +updateQuantity()
-  +processQuantity()
-  +validatePrice()
+  +processPrice()
+  +setTotal()
+  +setActive()
 }
-interface Enrollment {
-  -String level
-  +Date description
-  #float amount
-  +processScore()
-  +setStatus()
-}
-class Schedule {
-  +double phone
-  +boolean status
-  +int active
+abstract class Enrollment {
+  +float phone
+  -String price
+  +Date updatedAt
   #float description
-  +saveNote()
-  +sendEmail()
-  +findId()
+  +sendCode()
+  +findType()
 }
-interface Classroom {
-  -String level
-  -float id
-  #String note
-  +String quantity
-  +createTotal()
+interface Schedule {
+  #long status
+  -String address
+  +calculateAddress()
+  +validateName()
+}
+class Classroom {
+  #boolean description
+  -Date score
+  +calculateActive()
+  +deleteName()
+  +getDuration()
+  +getActive()
 }
 Schedule --|> Classroom
-Classroom --* Assignment
-Schedule --> Enrollment : "0..1"
-note right of Assignment : Education domain
+Classroom --* Schedule
 @enduml

@@ -6,46 +6,46 @@ abstract class Course {
   #double id
   #int quantity
   #boolean updatedAt
-  +findDuration()
-  +cancelQuantity()
+  +getActive()
+  +validateActive()
 }
-class Schedule {
-  #double status
-  +Date phone
-  #String createdAt
-  +findId()
-  +cancelId()
-  +getLevel()
-  +calculateNote()
+interface Schedule {
+  #int description
+  #double createdAt
+  +Date status
+  #String phone
+  +calculateDescription()
+  +sendLevel()
+  +validateStatus()
+  +cancelType()
 }
 class Exam {
-  #int score
-  -Date updatedAt
-  +saveStatus()
-  +deleteQuantity()
+  -double id
+  +String level
+  +updateNote()
+  +findAddress()
 }
-interface Classroom {
-  #Date total
-  -int name
-  +String email
-  +getPhone()
-  +createStatus()
-  +setName()
+class Classroom {
+  #boolean status
+  #int amount
+  -String quantity
+  +cancelPrice()
+  +updateScore()
+  +calculateCode()
 }
 class Teacher {
-  +long description
+  -float status
+  -String phone
+  +String id
+  +sendAmount()
+}
+class Assignment {
   +float type
-  +getAddress()
+  +String createdAt
+  -boolean quantity
+  +setType()
+  +sendDescription()
 }
-interface Assignment {
-  #float description
-  -boolean updatedAt
-  #float score
-  +sendTotal()
-}
-Teacher ..> Exam : "1..*"
-Exam --|> Teacher
-Course --* Classroom
-Course ..> Assignment : "1"
-note right of Course : Education domain
+Teacher --* Assignment
+Assignment --> Course : "*"
 @enduml

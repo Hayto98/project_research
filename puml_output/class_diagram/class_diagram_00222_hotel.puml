@@ -7,45 +7,38 @@ interface CheckIn {
   -long code
   -Date active
   #double score
-  +saveStatus()
-  +processDescription()
-  +createCreatedat()
-  +getCreatedat()
+  +validatePrice()
+  +setStatus()
+  +deletePrice()
+  +findPhone()
 }
 class Staff {
-  +int updatedAt
-  +String id
-  +validateAddress()
-  +cancelActive()
-  +saveStatus()
+  +int id
+  +int createdAt
+  +int amount
+  +calculateLevel()
 }
-abstract class Guest {
-  -boolean active
-  #int address
-  +double phone
-  #Date createdAt
-  -int total
-  +getCode()
-  +setDescription()
-  +setCode()
-  +setScore()
+class Guest {
+  -double address
+  #float level
+  #long active
+  -Date status
+  +updateAmount()
+  +getPhone()
 }
 class Housekeeping {
-  #int status
-  -boolean description
-  +createTotal()
-  +processQuantity()
+  +double code
+  +String type
+  +int quantity
+  +getLevel()
 }
 class CheckOut {
-  #double code
-  +boolean amount
-  -boolean active
-  +boolean phone
-  +deleteId()
+  +boolean id
+  +double status
   +sendAddress()
+  +updatePhone()
 }
-Guest --* Housekeeping
-Staff --o CheckOut
-CheckOut --* CheckIn
-note right of CheckIn : Hotel domain
+Housekeeping --|> Guest
+Guest ..|> CheckIn
+CheckOut ..> Guest : "*"
 @enduml

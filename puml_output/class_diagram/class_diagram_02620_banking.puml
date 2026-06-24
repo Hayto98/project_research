@@ -8,41 +8,43 @@ interface Card {
   -boolean phone
   -boolean email
   #String price
-  +getTotal()
-  +calculateUpdatedat()
+  +deleteNote()
+  +updateEmail()
 }
-class Loan {
-  +float score
-  +boolean total
-  #double price
-  +int name
-  -boolean address
-  +createId()
-  +cancelUpdatedat()
-  +deleteActive()
+abstract class Loan {
+  #boolean quantity
+  -boolean active
+  -String note
+  +setStatus()
+  +setAmount()
+  +calculateAddress()
+}
+interface Statement {
+  +boolean description
+  +int updatedAt
+  #int total
+  -float price
+  -String quantity
   +deleteQuantity()
-}
-class Statement {
-  +int level
-  #int description
-  +setLevel()
-  +updatePrice()
+  +processPrice()
 }
 class Customer {
-  #Date address
-  +float amount
-  -int phone
-  +sendCreatedat()
+  -float status
+  -int level
+  -Date updatedAt
+  +findCode()
+  +createTotal()
 }
 class Withdrawal {
-  #double quantity
+  +Date createdAt
   -String id
-  #float status
-  +createPrice()
-  +sendNote()
+  #String score
+  #double duration
+  -String name
+  +createQuantity()
+  +calculateCode()
 }
-Statement --> Customer : "0..1"
-Customer ..|> Statement
-Statement ..> Loan : "*"
-note right of Card : Banking domain
+Customer --o Statement
+Withdrawal --o Loan
+Statement --* Loan
 @enduml

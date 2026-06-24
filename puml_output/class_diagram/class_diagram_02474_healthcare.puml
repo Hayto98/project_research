@@ -9,41 +9,38 @@ interface Patient {
   #float description
   -double duration
   #Date level
+  +createUpdatedat()
   +sendDescription()
-  +deleteStatus()
 }
-interface Diagnosis {
-  -String type
-  +boolean address
-  #int id
-  -boolean phone
-  +deleteLevel()
+class Diagnosis {
+  -long status
+  +long score
+  -String phone
+  +getQuantity()
+  +createId()
 }
-class Ward {
-  -Date status
-  -Date duration
-  #int quantity
-  -float email
-  +float active
-  +setLevel()
-  +deleteUpdatedat()
-  +processCode()
+interface Ward {
+  +boolean note
+  #long level
+  #float code
+  +validateEmail()
+  +saveStatus()
+  +deleteQuantity()
+  +setScore()
 }
 class Treatment {
-  #float createdAt
-  +double quantity
-  +double score
-  +Date amount
-  +createAddress()
+  -float email
+  +float total
+  #long address
+  +Date description
+  +setActive()
+  +findAddress()
 }
-interface Hospital {
-  -String description
-  +int status
-  -double name
-  +float level
-  +cancelTotal()
+abstract class Hospital {
+  +long description
+  #int quantity
+  +createDuration()
 }
-Ward ..> Diagnosis : "1..*"
-Ward --* Treatment
-note right of Patient : Healthcare domain
+Treatment ..> Patient : "1"
+Ward --> Hospital : "1..*"
 @enduml

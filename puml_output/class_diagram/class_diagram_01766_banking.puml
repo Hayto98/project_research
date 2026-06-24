@@ -6,64 +6,58 @@ skinparam ArrowColor #555555
 class Transfer {
   -long type
   +int description
-  +getCreatedat()
-  +findCreatedat()
+  +calculateEmail()
+  +processActive()
 }
 class Beneficiary {
-  -Date phone
-  #boolean description
-  -int email
-  +calculateType()
-  +createName()
-  +sendNote()
+  -Date amount
+  #boolean phone
+  -int description
+  -double email
+  +updateQuantity()
+  +cancelAddress()
+  +calculateEmail()
+  +createUpdatedat()
 }
 abstract class Branch {
-  #Date address
-  +boolean duration
-  +double type
-  #Date active
-  #long score
-  +findStatus()
+  #double level
+  #Date note
+  +boolean address
+  +double score
+  #Date type
+  +calculateActive()
   +sendName()
-  +updatePhone()
-  +setCreatedat()
+  +updateId()
 }
-interface Deposit {
-  +float type
-  -double status
-  -boolean id
-  +getEmail()
-  +saveDuration()
-  +updateCode()
+class Deposit {
+  +int createdAt
+  #boolean phone
+  +sendName()
+  +updateName()
 }
-abstract class Loan {
-  -int score
-  #String description
-  +long email
-  +String code
+class Loan {
+  #long note
+  +long price
+  #float phone
+  +validatePhone()
+  +createName()
+}
+class Withdrawal {
+  -int duration
+  #String email
+  +long code
+  +saveId()
+  +updateNote()
+}
+class Card {
+  +boolean description
+  +Date score
+  +validatePrice()
   +getDescription()
-  +sendStatus()
+  +findName()
+  +sendTotal()
 }
-interface Withdrawal {
-  +float note
-  +String level
-  +deleteLevel()
-  +createUpdatedat()
-  +createPrice()
-}
-abstract class Card {
-  #String status
-  #long duration
-  #double createdAt
-  +long id
-  +float active
-  +sendStatus()
-  +findPrice()
-  +setUpdatedat()
-}
-Deposit ..|> Withdrawal
-Deposit --|> Beneficiary
-Transfer --|> Deposit
+Transfer --* Withdrawal
 Card --> Beneficiary : "1..*"
-note right of Transfer : Banking domain
+Card ..|> Withdrawal
 @enduml

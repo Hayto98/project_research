@@ -6,54 +6,53 @@ skinparam ArrowColor #555555
 abstract class Insurance {
   #int status
   -Date note
-  +sendCreatedat()
-  +cancelPhone()
-  +deleteScore()
-  +validateTotal()
+  +getName()
+  +calculateActive()
+  +cancelNote()
+  +savePrice()
 }
 class Hospital {
-  +float name
-  +boolean createdAt
-  +findQuantity()
-  +createStatus()
-  +processStatus()
-  +sendQuantity()
+  +boolean score
+  +String phone
+  +String total
+  +processId()
+  +getCreatedat()
 }
 abstract class Nurse {
-  +String score
-  +String status
-  #double note
-  +sendPrice()
-  +processTotal()
+  #long quantity
+  -int status
+  #boolean type
+  #Date level
+  +calculateLevel()
 }
-class Diagnosis {
-  +Date total
-  #String type
-  -Date updatedAt
-  +updateQuantity()
-  +getCode()
-  +sendAmount()
-  +sendPrice()
+abstract class Diagnosis {
+  +boolean id
+  -int code
+  +getDuration()
+  +cancelQuantity()
+  +cancelCreatedat()
+  +validateAmount()
 }
-interface Treatment {
+class Treatment {
+  -Date type
+  #float updatedAt
+  -int id
+  -String active
+  +boolean status
+  +getCreatedat()
+  +createPrice()
+}
+interface Billing {
   #boolean updatedAt
   +String duration
   #Date phone
   #long status
-  +calculateQuantity()
-  +calculateActive()
-  +findUpdatedat()
-  +findPrice()
+  +updateEmail()
+  +getNote()
+  +calculateCode()
+  +saveTotal()
 }
-class Billing {
-  +Date level
-  -long phone
-  +calculateAddress()
-  +createLevel()
-  +findType()
-  +getCreatedat()
-}
-Nurse ..|> Billing
-Treatment --* Diagnosis
-note right of Insurance : Healthcare domain
+Billing --* Diagnosis
+Insurance --* Treatment
+Insurance --* Nurse
 @enduml

@@ -5,46 +5,43 @@ skinparam ArrowColor #555555
 abstract class Shelf {
   -Date email
   -boolean level
-  +validateAddress()
-  +validateNote()
+  +findCode()
+  +processCreatedat()
 }
 class Publisher {
-  #Date code
-  +long duration
-  #double active
-  -int phone
-  +deleteQuantity()
-  +validateName()
+  +Date note
+  #Date createdAt
+  -boolean address
+  #int code
+  +findPrice()
   +calculateCode()
-  +saveNote()
+  +updateAmount()
 }
 class Librarian {
-  -int total
-  -int description
-  +savePhone()
-  +validateName()
-  +cancelCode()
+  -String total
+  -String description
+  #float quantity
+  +cancelStatus()
+  +cancelActive()
+  +findNote()
+  +saveLevel()
 }
-class Member {
-  -double amount
-  #Date status
-  +float duration
-  +deleteQuantity()
-  +setPhone()
+abstract class Member {
+  +float address
+  #long updatedAt
+  #long email
+  +calculateId()
+  +processEmail()
+  +sendDuration()
 }
 class Branch {
-  #double quantity
-  +long type
-  +String name
-  +String amount
-  +double note
-  +setDuration()
-  +updatePrice()
-  +processCreatedat()
-  +getType()
+  +int level
+  +float active
+  +cancelCode()
+  +saveAmount()
 }
-Member ..|> Librarian
-Publisher ..> Member : "*"
-Branch --|> Librarian
-note right of Shelf : Library domain
+Shelf ..|> Publisher
+Librarian ..> Shelf : "1..*"
+Shelf ..> Member : "1..*"
+Member ..> Shelf : "0..1"
 @enduml

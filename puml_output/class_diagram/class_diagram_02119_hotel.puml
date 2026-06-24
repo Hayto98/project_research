@@ -9,50 +9,51 @@ abstract class Reservation {
   #long amount
   -Date level
   #Date note
-  +cancelQuantity()
-  +processScore()
+  +findName()
+  +findStatus()
 }
 class Service {
-  +boolean total
-  #Date quantity
-  +double type
-  +long amount
-  +setStatus()
-  +updateId()
-  +processPrice()
+  #boolean score
+  -double amount
+  +int duration
+  #boolean quantity
+  #int total
+  +processDuration()
+  +validateLevel()
+  +findQuantity()
+  +calculateUpdatedat()
 }
-interface Invoice {
-  +boolean code
-  +boolean active
-  #int price
-  +validateNote()
+class Invoice {
+  #float status
+  +double createdAt
+  +findStatus()
+  +sendLevel()
+  +updateNote()
+  +createScore()
 }
 class Staff {
-  +long code
-  #Date email
-  #String address
-  +boolean level
-  +calculateAddress()
-  +sendPrice()
+  +long status
+  #double active
+  -long amount
+  +long level
+  -long updatedAt
+  +cancelAddress()
 }
-class Amenity {
-  +boolean name
-  #String createdAt
+interface Amenity {
+  +double name
+  -boolean score
+  +calculateName()
+  +getDescription()
+  +createStatus()
+  +processPrice()
+}
+class Booking {
   +double total
-  +sendQuantity()
-  +createUpdatedat()
-  +updateName()
+  -boolean name
+  -long level
+  +validateNote()
+  +deletePhone()
 }
-abstract class Booking {
-  +long code
-  #double id
-  -int duration
-  -boolean level
-  #boolean note
-  +findQuantity()
-  +validatePhone()
-}
-Invoice ..> Staff : "0..1"
-Staff ..|> Reservation
-note right of Reservation : Hotel domain
+Staff --|> Booking
+Reservation --> Booking : "1"
 @enduml

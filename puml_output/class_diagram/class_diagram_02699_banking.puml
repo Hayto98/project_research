@@ -8,35 +8,33 @@ abstract class Branch {
   -double phone
   #Date updatedAt
   +long address
-  +setQuantity()
-  +processDuration()
+  +cancelStatus()
+  +getPrice()
 }
-abstract class Transfer {
-  #int name
-  -boolean quantity
-  +deleteCreatedat()
-  +updateDescription()
-  +cancelDuration()
-  +sendDuration()
+class Transfer {
+  #int duration
+  -boolean price
+  #boolean code
+  #double name
+  +int quantity
+  +validateCode()
+  +processEmail()
 }
-class Deposit {
-  -int price
-  -String phone
-  #Date level
-  #String createdAt
-  +processActive()
-  +setAddress()
-  +findDescription()
+interface Deposit {
+  +double quantity
+  +long price
+  +Date phone
+  #Date score
+  +validateAddress()
 }
-class Loan {
-  #boolean score
-  #double address
-  #double price
-  #boolean level
-  +long status
-  +validateDuration()
+abstract class Loan {
+  -float address
+  -Date description
+  +deleteAmount()
+  +findQuantity()
+  +updateName()
 }
-Transfer ..> Loan : "1..*"
-Transfer --o Deposit
-note right of Branch : Banking domain
+Loan --> Deposit : "1"
+Deposit --* Branch
+Branch --* Loan
 @enduml

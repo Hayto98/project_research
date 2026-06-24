@@ -5,45 +5,43 @@ skinparam shadowing true
 interface Interest {
   -float email
   #float updatedAt
-  +deleteAddress()
-  +calculateScore()
-  +validateDuration()
-  +findLevel()
+  +cancelLevel()
+  +sendStatus()
+  +findPhone()
+  +findQuantity()
 }
-class Transfer {
-  #String type
-  -float email
-  +Date updatedAt
-  #String address
-  +updateCreatedat()
-  +validateCreatedat()
+abstract class Transfer {
+  -Date duration
+  -float level
+  #float quantity
+  +boolean address
+  +updateAmount()
+  +calculateTotal()
+  +calculateDescription()
 }
 class Teller {
-  -Date id
-  #float createdAt
-  -boolean type
-  +saveActive()
-  +calculateAddress()
-  +updateAmount()
-  +setEmail()
+  #int amount
+  -float code
+  +String updatedAt
+  +String score
+  +validateUpdatedat()
+  +deleteName()
 }
 class Customer {
-  +boolean quantity
-  +double score
-  #Date status
-  #String email
-  +validateScore()
+  +long active
+  -Date total
+  #Date address
+  -float createdAt
+  #long amount
+  +validateAmount()
 }
-interface Withdrawal {
-  -long level
-  #float id
-  #Date amount
-  -float status
+class Withdrawal {
+  +long type
+  #boolean name
+  +getCode()
+  +processCode()
   +findId()
-  +findTotal()
-  +saveLevel()
 }
-Customer --|> Teller
-Withdrawal --> Interest : "0..1"
-note right of Interest : Banking domain
+Teller ..> Withdrawal : "*"
+Teller ..> Interest : "*"
 @enduml

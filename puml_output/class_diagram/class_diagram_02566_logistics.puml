@@ -9,61 +9,60 @@ interface Tracking {
   #double level
   +String quantity
   -int description
-  +cancelPrice()
-  +findCode()
-  +createUpdatedat()
-  +getId()
+  +findUpdatedat()
+  +sendScore()
+  +sendUpdatedat()
+  +cancelStatus()
 }
-abstract class Inventory {
-  +boolean createdAt
-  #String phone
-  +int type
-  #long total
-  #float level
-  +findAddress()
+class Inventory {
+  -int id
+  -float duration
+  -double note
+  +cancelStatus()
+  +calculateDuration()
+  +setCreatedat()
 }
-interface Warehouse {
-  #long amount
-  -String level
-  #String quantity
-  +validateDuration()
-  +saveActive()
-  +saveAmount()
+class Warehouse {
+  +Date createdAt
+  -boolean address
+  #int score
+  +sendDescription()
+  +findTotal()
 }
-class DeliveryNote {
-  #double score
-  #double status
-  +getDescription()
+interface DeliveryNote {
+  #long address
+  -boolean quantity
+  #boolean id
+  #int code
+  +createLevel()
+  +cancelStatus()
 }
-class Manifest {
+interface Manifest {
+  +float note
+  +float price
+  +setAmount()
+  +updateTotal()
+}
+interface Depot {
   +boolean updatedAt
   -int email
   -String price
-  +validateStatus()
-  +sendDuration()
-  +processCreatedat()
-  +getPrice()
+  +saveScore()
+  +createId()
+  +createPhone()
+  +getCreatedat()
 }
-class Depot {
-  +Date amount
-  -double note
-  #String id
-  +saveNote()
-  +deleteUpdatedat()
+interface FuelLog {
+  #float createdAt
+  +double name
+  +String price
+  #long quantity
+  -Date amount
+  +validateNote()
 }
-class FuelLog {
-  -boolean active
-  -long description
-  +float duration
-  -boolean score
-  +Date type
-  +findScore()
-  +sendCreatedat()
-  +processTotal()
-}
-Depot --o Manifest
-DeliveryNote --|> FuelLog
-Tracking ..> Warehouse : "0..1"
-Depot --|> FuelLog
-note right of Tracking : Logistics domain
+Inventory ..> FuelLog : "1"
+Depot --> DeliveryNote : "0..1"
+FuelLog --> Manifest : "*"
+FuelLog --> DeliveryNote : "1..*"
+Warehouse --* Tracking
 @enduml

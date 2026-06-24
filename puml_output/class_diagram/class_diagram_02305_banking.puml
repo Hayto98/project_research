@@ -6,38 +6,36 @@ skinparam defaultFontSize 13
 class Transaction {
   -Date description
   -double createdAt
-  +processAddress()
-  +processName()
-  +calculatePhone()
-  +saveType()
+  +calculateAmount()
+  +saveCreatedat()
+  +sendName()
+  +deleteEmail()
 }
-interface Teller {
-  -int note
-  #boolean level
-  -long quantity
-  -long email
-  +findPrice()
-  +findCreatedat()
+class Teller {
+  #long phone
+  -double type
+  +Date active
+  #double quantity
+  -long note
+  +setType()
+  +calculateDescription()
+  +calculateType()
 }
-class Customer {
-  #float price
-  #long address
-  -int total
-  +float name
-  +findType()
-  +deleteName()
+abstract class Customer {
+  #long phone
+  -float email
+  #String price
+  +updateTotal()
+  +updateType()
+  +sendStatus()
 }
 class Withdrawal {
-  -String type
-  -String duration
-  +boolean createdAt
-  +int id
-  +calculateQuantity()
-  +setCreatedat()
-  +setQuantity()
-  +validateActive()
+  -long type
+  #float description
+  -double name
+  +updatePrice()
+  +deleteDuration()
 }
-Customer --o Transaction
-Teller --|> Customer
-note right of Transaction : Banking domain
+Customer --|> Transaction
+Transaction --> Withdrawal : "*"
 @enduml

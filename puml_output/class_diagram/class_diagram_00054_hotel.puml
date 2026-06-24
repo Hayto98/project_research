@@ -8,44 +8,57 @@ abstract class Invoice {
   -int updatedAt
   #String code
   -double address
-  +validateStatus()
-  +deleteAddress()
+  +validateScore()
+  +validateEmail()
 }
 class Booking {
-  -String note
-  #Date code
-  #long duration
-  +processDescription()
-  +calculateQuantity()
+  #double name
+  -String amount
+  #Date note
+  #long code
+  +updateAmount()
+  +validateName()
 }
 class CheckOut {
-  -String quantity
-  #int amount
-  #long status
-  +sendTotal()
+  #Date quantity
+  +double createdAt
+  +float level
+  #int duration
+  #long amount
+  +validateStatus()
 }
 interface Payment {
-  #int address
-  -int id
-  +sendCreatedat()
+  -int active
+  +boolean id
+  +int address
+  #boolean level
+  #String amount
+  +calculateUpdatedat()
+  +getType()
+  +updateCode()
+  +sendTotal()
 }
 class Reservation {
-  +float total
-  +Date code
-  +findAddress()
-  +deleteDuration()
+  #long description
+  -Date name
+  #long updatedAt
+  -double status
+  +setAmount()
+  +cancelLevel()
+  +saveAmount()
+  +deleteUpdatedat()
 }
 class Staff {
-  #boolean status
-  -long quantity
-  -boolean phone
-  +processLevel()
-  +deletePrice()
-  +findPhone()
-  +cancelAddress()
+  -long phone
+  -boolean address
+  #long createdAt
+  +double score
+  +boolean code
+  +saveCreatedat()
 }
-Reservation --|> Booking
-Payment --o CheckOut
-Reservation ..|> CheckOut
-note right of Invoice : Hotel domain
+Booking ..|> Staff
+Staff --> Reservation : "*"
+Staff --> Payment : "*"
+Reservation ..|> Booking
+Reservation --> Staff : "1"
 @enduml

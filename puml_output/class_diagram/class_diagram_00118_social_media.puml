@@ -6,21 +6,23 @@ skinparam ArrowColor #555555
 abstract class Group {
   #Date updatedAt
   #long name
-  +deleteType()
+  +cancelLevel()
 }
-abstract class User {
-  -int note
-  -boolean description
-  +float active
-  +updateStatus()
-  +cancelAmount()
-  +validatePrice()
+class User {
+  +long note
+  #int createdAt
+  -int duration
+  +float description
+  #int quantity
+  +processType()
+  +processCreatedat()
+  +updateType()
 }
 class Report {
-  -int duration
-  +long description
-  +calculateScore()
-  +getId()
+  -int price
+  -float createdAt
+  #String updatedAt
+  +setAmount()
 }
 class Like {
   #double code
@@ -28,33 +30,31 @@ class Like {
   +float description
   -long createdAt
   #double quantity
-  +processCreatedat()
+  +sendCode()
 }
-interface Follower {
+class Follower {
   #int createdAt
   -long note
-  +cancelTotal()
-  +getUpdatedat()
+  +cancelActive()
+  +saveStatus()
 }
 abstract class Notification {
-  -float score
-  -long quantity
-  -String createdAt
-  +float total
-  +cancelAmount()
-  +findType()
-  +saveCreatedat()
-  +createType()
+  -float updatedAt
+  #long type
+  +processLevel()
+  +processStatus()
 }
 abstract class Post {
-  +String status
-  +long amount
-  -int code
-  +processPrice()
-  +findId()
+  #int note
+  #Date code
+  -Date amount
+  +long price
+  +deleteEmail()
+  +sendCode()
+  +updateScore()
+  +findName()
 }
-Notification --o Report
-Follower --|> Notification
-User --> Post : "*"
-note right of Group : Social Media domain
+Group --> User : "1"
+User --|> Group
+Report ..|> Post
 @enduml

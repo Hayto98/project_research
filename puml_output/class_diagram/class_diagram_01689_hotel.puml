@@ -7,54 +7,63 @@ interface Housekeeping {
   #String updatedAt
   +String active
   #long quantity
-  +sendNote()
-  +setPrice()
-  +getTotal()
+  +sendQuantity()
+  +processTotal()
+  +setDescription()
 }
-interface Invoice {
-  -int name
-  #int level
-  +processStatus()
+abstract class Invoice {
+  #String total
+  +float active
+  +saveTotal()
+  +validateQuantity()
+  +deleteEmail()
 }
-class CheckOut {
-  -boolean updatedAt
-  +int address
-  +validateEmail()
+interface CheckOut {
+  #String status
+  #float type
+  +int duration
+  +findQuantity()
+  +saveActive()
+  +saveEmail()
 }
-interface Reservation {
-  +float type
-  +String active
-  #Date description
-  #boolean price
-  +findNote()
-  +sendPhone()
+class Reservation {
+  #boolean address
+  -double email
+  +calculateCode()
+  +processActive()
 }
-interface Service {
-  #Date active
-  -long price
+class Service {
+  #int active
+  #double duration
+  +findDescription()
+  +sendQuantity()
+  +cancelQuantity()
+}
+interface Staff {
   -boolean quantity
   #String createdAt
   +int total
-  +getTotal()
-  +getDuration()
+  +float score
+  +float duration
+  +sendLevel()
+  +calculateId()
+  +saveType()
+  +updateAddress()
 }
-abstract class Staff {
-  -Date phone
-  #double duration
-  +saveUpdatedat()
-  +createNote()
-  +findAddress()
-  +deleteEmail()
+interface CheckIn {
+  -Date name
+  +long phone
+  -float level
+  #float price
+  -int type
+  +validateScore()
+  +processActive()
+  +setUpdatedat()
 }
-class CheckIn {
-  -long name
-  #float amount
-  +String phone
-  +validateCode()
-}
+Invoice --* CheckOut
+CheckOut --|> Staff
+Housekeeping --* CheckIn
+Staff --* Housekeeping
 Reservation ..> Service : "1..*"
 Service --> Reservation : "1"
-Staff --o Housekeeping
-Reservation --o Housekeeping
-note right of Housekeeping : Hotel domain
 @enduml

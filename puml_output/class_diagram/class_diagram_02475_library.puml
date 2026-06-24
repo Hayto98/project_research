@@ -3,44 +3,43 @@ skinparam monochrome true
 abstract class Loan {
   #String quantity
   #Date description
-  +updateCode()
+  +findAddress()
 }
-abstract class Librarian {
-  +double name
+class Librarian {
   #long status
-  +processStatus()
+  +double name
+  +Date duration
+  #String createdAt
+  #Date note
+  +setLevel()
+  +validateQuantity()
+  +cancelCreatedat()
 }
 class Shelf {
-  +String description
-  -int amount
-  #long total
-  +long level
-  +cancelTotal()
-  +sendAmount()
+  #long id
+  +long phone
+  +float createdAt
+  +setDuration()
+  +getName()
+  +calculatePrice()
+  +getActive()
 }
 class Renewal {
-  -String updatedAt
-  #double note
-  +int duration
-  +long id
-  -long total
-  +setName()
-  +findAmount()
+  +Date price
+  -double updatedAt
+  +Date note
+  -String level
+  +validateEmail()
+  +cancelAddress()
 }
-class Fine {
-  +int status
-  -double name
-  #int duration
-  +String type
-  #boolean note
-  +setQuantity()
-  +findLevel()
-  +setAmount()
-  +processTotal()
+abstract class Fine {
+  +double description
+  +float status
+  +boolean name
+  #Date amount
+  +savePrice()
 }
-Shelf --o Librarian
-Renewal --|> Shelf
-Shelf --o Renewal
-Shelf --o Fine
-note right of Loan : Library domain
+Renewal ..|> Loan
+Renewal ..> Fine : "0..1"
+Loan ..> Fine : "*"
 @enduml

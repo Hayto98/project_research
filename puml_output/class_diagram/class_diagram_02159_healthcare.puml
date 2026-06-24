@@ -5,47 +5,48 @@ class MedicalRecord {
   -String total
   +boolean note
   #String updatedAt
-  +updateCode()
-  +processDescription()
-  +updateDuration()
-  +deleteDuration()
+  +processPrice()
+  +createAddress()
+  +sendStatus()
+  +saveAmount()
 }
-interface Nurse {
-  #boolean id
-  -int email
-  +int total
-  #boolean createdAt
-  -Date type
-  +createDescription()
+class Nurse {
+  +long duration
+  -int description
+  -boolean note
+  +sendNote()
+  +updateActive()
+  +updateType()
 }
-abstract class Treatment {
-  +Date amount
-  #String score
-  #String quantity
-  +deletePhone()
+interface Treatment {
+  -int duration
+  +boolean active
+  -String name
+  #boolean email
+  +Date description
+  +validateActive()
 }
 class LabTest {
-  #double duration
-  #int description
-  -int updatedAt
-  +getAmount()
+  #float phone
+  +int amount
+  #double description
+  +saveAmount()
+  +saveAddress()
 }
-abstract class Patient {
-  #boolean level
-  +float note
-  #long phone
-  +deleteCreatedat()
-  +saveQuantity()
+class Patient {
+  #int amount
+  #double total
+  +getUpdatedat()
+  +deleteId()
+  +createTotal()
 }
-class Diagnosis {
-  #long note
-  -String name
-  #int code
-  +deleteAddress()
+interface Diagnosis {
+  +int level
+  +Date phone
+  #long score
+  +findAddress()
+  +deletePrice()
 }
-LabTest --> Patient : "*"
-Nurse ..|> Treatment
-MedicalRecord --> Nurse : "0..1"
-Treatment --o Patient
-note right of MedicalRecord : Healthcare domain
+MedicalRecord --* Treatment
+MedicalRecord ..|> Patient
 @enduml

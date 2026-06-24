@@ -6,52 +6,62 @@ class Album {
   #double price
   #boolean amount
   #boolean description
-  +findAddress()
-  +createScore()
+  +getActive()
+  +calculateLevel()
 }
-abstract class Profile {
+class Profile {
+  #float score
+  -double total
+  #double phone
   -long type
-  #double price
-  #long note
-  #double score
-  +findEmail()
+  +deleteDescription()
+  +processDescription()
+  +cancelScore()
+  +cancelCode()
 }
 class Hashtag {
-  +String status
-  -boolean note
-  +float id
-  #int total
-  +sendAmount()
-  +findQuantity()
+  +Date phone
+  -int email
+  +double status
+  #String note
+  +cancelAmount()
+  +processUpdatedat()
 }
-class Like {
+interface Like {
+  #String quantity
+  #boolean description
   +float name
-  -double score
-  +getTotal()
-  +getEmail()
+  +calculateAmount()
+  +sendQuantity()
+  +deleteTotal()
+  +sendPrice()
 }
 class Group {
-  +int active
-  #boolean createdAt
-  +boolean id
-  +findAddress()
+  #Date total
+  -Date id
+  +getCreatedat()
+  +calculateNote()
+  +getAmount()
 }
-abstract class Follower {
-  -float name
-  -Date price
-  -int createdAt
-  +double amount
-  +sendCreatedat()
+interface Follower {
+  #boolean id
+  +boolean code
+  #Date description
+  +calculateType()
 }
-abstract class Story {
-  -String id
-  +Date score
-  #float description
-  +updateName()
+class Story {
+  -float email
+  -Date name
+  -int price
+  +double createdAt
+  +boolean amount
+  +sendPrice()
+  +updateEmail()
 }
-Group --|> Album
-Album --> Story : "1"
-Follower --o Hashtag
-Like --|> Story
-note right of Album : Social Media domain
+Profile --> Album : "0..1"
+Like ..|> Album
+Follower --|> Group
+Story --|> Profile
+Hashtag --|> Group
+Story --|> Album
 @enduml

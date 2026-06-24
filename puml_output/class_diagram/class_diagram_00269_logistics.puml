@@ -5,39 +5,39 @@ skinparam classBorderColor #F57F17
 abstract class Depot {
   #double phone
   -double updatedAt
-  +createStatus()
-  +saveAddress()
+  +calculateScore()
+  +validateDescription()
 }
-interface Manifest {
-  +Date address
-  #Date updatedAt
-  #double level
-  #double duration
-  #long quantity
-  +updateCreatedat()
-  +setDescription()
-  +sendDescription()
-  +findCreatedat()
+class Manifest {
+  +long score
+  -String type
+  #boolean address
+  #boolean updatedAt
+  +createDescription()
+  +sendLevel()
+  +sendCreatedat()
+  +findUpdatedat()
 }
 class FuelLog {
-  -long email
-  -float address
-  #float code
-  +boolean status
-  #double note
+  #int updatedAt
+  -double createdAt
+  -long code
+  +boolean description
+  +double active
   +deleteName()
+  +findQuantity()
+  +updateAmount()
+  +createId()
 }
 class Customer {
-  +boolean status
-  +long email
-  -long level
-  +boolean quantity
-  +calculateNote()
-  +createUpdatedat()
-  +getTotal()
+  +Date id
+  #long description
+  #long name
+  #long updatedAt
+  +boolean address
+  +findCreatedat()
 }
-Manifest ..|> Depot
-FuelLog --|> Customer
-Customer --> FuelLog : "1"
-note right of Depot : Logistics domain
+FuelLog --> Depot : "1..*"
+Customer --* Manifest
+Manifest --o Depot
 @enduml

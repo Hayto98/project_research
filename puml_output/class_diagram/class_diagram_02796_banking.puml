@@ -7,39 +7,43 @@ abstract class Beneficiary {
   #float score
   #double phone
   -float active
-  +calculateDescription()
-  +calculateCode()
-  +saveCreatedat()
+  +deletePhone()
+  +saveTotal()
+  +deleteAmount()
 }
 class Withdrawal {
-  +boolean name
-  -int total
-  +long active
-  +findCode()
-  +findStatus()
+  -boolean code
+  #String createdAt
+  #double quantity
+  +int description
+  -int name
+  +cancelDescription()
 }
-interface Customer {
+class Customer {
   +Date phone
   +long name
   -String note
-  +findNote()
-  +cancelNote()
-  +getUpdatedat()
-  +processCode()
+  +updateScore()
+  +deleteLevel()
+  +saveAmount()
+  +savePrice()
 }
-class Account {
-  +boolean score
-  #double phone
-  +saveLevel()
-  +cancelId()
+abstract class Account {
+  +long updatedAt
+  +boolean type
+  +processQuantity()
+  +saveDuration()
+  +updateId()
 }
-class Interest {
-  #float createdAt
-  -int status
-  +setEmail()
+abstract class Interest {
+  -String level
+  +boolean duration
+  +float id
+  +deleteAddress()
+  +getLevel()
+  +cancelEmail()
 }
-Account --|> Customer
-Withdrawal --|> Customer
-Customer --o Withdrawal
-note right of Beneficiary : Banking domain
+Account --* Interest
+Beneficiary --* Withdrawal
+Beneficiary ..|> Customer
 @enduml

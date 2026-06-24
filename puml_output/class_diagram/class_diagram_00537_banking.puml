@@ -4,35 +4,36 @@ interface Account {
   #String duration
   #boolean id
   #float note
-  +deleteUpdatedat()
-  +calculateActive()
+  +updateType()
+  +validateNote()
 }
-interface Statement {
+abstract class Statement {
   +int email
   #double level
   +long description
   +long quantity
   -long phone
-  +setName()
-  +findTotal()
-  +calculatePrice()
+  +setDescription()
+  +saveId()
+  +deleteType()
 }
-class Transaction {
-  +long score
-  -double duration
-  -String level
-  -float description
-  +setQuantity()
-  +updateUpdatedat()
+abstract class Transaction {
+  -double price
+  -long id
+  +long address
+  +String description
+  #long status
+  +createNote()
+  +validateStatus()
 }
-interface Branch {
+class Branch {
   +boolean score
   #boolean active
   #float type
   +Date level
-  +setEmail()
+  +validatePhone()
 }
-Branch --o Statement
-Account --> Transaction : "*"
-note right of Account : Banking domain
+Transaction --o Branch
+Transaction ..> Statement : "1"
+Branch ..> Transaction : "*"
 @enduml

@@ -7,62 +7,65 @@ interface Author {
   +boolean phone
   +boolean amount
   -long status
-  +getScore()
-  +updateNote()
-  +deleteCreatedat()
+  +processQuantity()
+  +deleteType()
+  +calculatePrice()
 }
 class Book {
-  -double duration
-  #boolean price
-  -float updatedAt
-  -boolean quantity
-  +validateQuantity()
-  +saveCreatedat()
-  +saveStatus()
+  +float description
+  #Date createdAt
+  #boolean duration
+  #Date address
+  #long price
+  +saveName()
+  +cancelName()
+  +getCreatedat()
+  +calculateLevel()
 }
-class Renewal {
-  #boolean description
-  -Date score
-  +cancelQuantity()
-  +sendNote()
-  +updateQuantity()
-  +findCode()
-}
-class Shelf {
-  #float phone
-  #long id
+abstract class Renewal {
+  #float level
+  +Date active
+  +float address
+  +String phone
   +boolean quantity
-  +double address
-  +long price
-  +updateNote()
+  +createType()
+  +sendCreatedat()
+  +savePrice()
+  +createQuantity()
+}
+interface Shelf {
+  -Date updatedAt
+  #float quantity
+  +long code
+  -Date duration
+  -Date type
+  +calculateEmail()
+  +sendQuantity()
+  +cancelLevel()
 }
 class Loan {
-  -Date active
-  #double type
-  +boolean score
-  #float id
-  +int createdAt
-  +findPrice()
-}
-class Librarian {
-  #int active
-  #long price
+  #float updatedAt
+  #float email
   +Date id
-  #float type
-  +cancelPrice()
-  +createType()
-  +deleteCode()
-  +deleteCode()
+  #double createdAt
+  #double note
+  +deleteTotal()
+}
+interface Librarian {
+  +boolean price
+  #float level
+  +int type
+  +getDescription()
 }
 abstract class Catalog {
-  #int type
-  +float amount
-  +createQuantity()
-  +createStatus()
-  +sendActive()
-  +updateCreatedat()
+  +double address
+  #int active
+  #long price
+  +updatePhone()
 }
-Shelf ..> Author : "0..1"
-Author --|> Catalog
-note right of Author : Library domain
+Loan --* Shelf
+Shelf --|> Book
+Book --o Author
+Author --o Librarian
+Librarian --> Book : "0..1"
 @enduml

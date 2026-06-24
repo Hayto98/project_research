@@ -4,38 +4,47 @@ class Housekeeping {
   #String createdAt
   -String name
   -boolean id
-  +cancelDuration()
-  +sendDuration()
+  +getCode()
+  +validateActive()
 }
 interface CheckIn {
   -boolean email
   #boolean phone
   -double note
   -long quantity
-  +createStatus()
-  +deleteActive()
+  +updateLevel()
+  +cancelEmail()
 }
-abstract class Invoice {
-  -boolean createdAt
-  +long price
-  +updatePrice()
-  +setAmount()
-  +saveId()
-  +calculateAmount()
+class Invoice {
+  -float name
+  -int createdAt
+  #double price
+  +int score
+  #String level
+  +validateQuantity()
+  +createDescription()
+  +processLevel()
+  +setActive()
 }
-interface Service {
-  -Date name
-  -boolean quantity
-  #String duration
-  #double amount
-  -double price
-  +saveType()
+class Service {
+  #float name
+  -boolean amount
+  #String price
+  #double total
+  +getId()
+  +processScore()
+  +updateQuantity()
 }
 class CheckOut {
-  #boolean createdAt
-  -float description
-  +getAmount()
+  +String id
+  +String name
+  +float createdAt
+  +Date description
+  #float phone
+  +findNote()
+  +createLevel()
+  +setCreatedat()
 }
-Housekeeping ..> CheckOut : "1..*"
-note right of Housekeeping : Hotel domain
+Housekeeping ..> Invoice : "1"
+CheckOut ..> Housekeeping : "1..*"
 @enduml

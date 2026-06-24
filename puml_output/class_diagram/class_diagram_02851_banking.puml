@@ -9,42 +9,45 @@ class Transaction {
   +Date note
   -boolean name
   +String phone
-  +deleteScore()
-  +validateNote()
+  +validateCreatedat()
+  +getCreatedat()
 }
-abstract class Account {
-  +Date active
-  -double total
-  -Date address
+class Account {
+  #int price
+  +Date quantity
+  -double active
+  -Date total
+  +double address
+  +sendActive()
+  +getPhone()
+}
+abstract class Teller {
+  -boolean score
+  #int status
+  +Date id
+  +sendDuration()
+  +savePrice()
+  +cancelName()
+  +validatePhone()
+}
+interface Statement {
+  +long active
   +double createdAt
-  +cancelTotal()
-  +processDescription()
+  -int description
+  #double name
+  +processDuration()
+  +saveTotal()
+  +setDuration()
 }
-interface Teller {
-  #boolean id
-  +String price
-  +saveLevel()
-  +findCode()
-  +cancelAddress()
-  +findActive()
+abstract class Beneficiary {
+  -int price
+  +float createdAt
+  +setAddress()
+  +updateAddress()
+  +getName()
 }
-class Statement {
-  +double name
-  -int status
-  #double phone
-  +updateType()
-  +getPrice()
-  +updateNote()
-}
-class Beneficiary {
-  #float quantity
-  #float score
-  +getId()
-  +validateAddress()
-  +deleteQuantity()
-}
-Beneficiary ..|> Account
-Account --* Transaction
-Statement --> Beneficiary : "*"
-note right of Transaction : Banking domain
+Teller --|> Transaction
+Teller ..|> Beneficiary
+Teller --> Statement : "0..1"
+Account --|> Beneficiary
 @enduml

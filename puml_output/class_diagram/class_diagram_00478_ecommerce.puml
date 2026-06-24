@@ -5,61 +5,58 @@ abstract class Payment {
   +double duration
   #String address
   #String score
-  +deleteCode()
-  +setActive()
-  +saveAddress()
+  +createNote()
+  +validateQuantity()
+  +getType()
 }
-interface Coupon {
-  #float level
-  #boolean address
-  +calculateQuantity()
-  +createId()
+class Coupon {
+  -long active
+  -Date code
+  #float address
+  +boolean updatedAt
+  +deleteScore()
+  +setDescription()
 }
-interface Category {
-  -String amount
-  -float code
-  #long email
-  +findCode()
-  +processPhone()
-}
-abstract class Order {
-  +boolean duration
-  +Date price
-  -long phone
-  #String description
-  +Date id
-  +setPrice()
-  +sendPhone()
-}
-abstract class Warehouse {
-  +int code
-  -float total
-  #double createdAt
-  #String updatedAt
+class Category {
+  -Date code
+  -Date quantity
+  -double address
+  #Date amount
+  -long duration
   +updateActive()
+  +saveId()
+}
+interface Order {
+  #String quantity
+  +Date address
+  +updateUpdatedat()
+  +calculateCode()
+}
+interface Warehouse {
+  +int total
+  +int email
+  -float code
+  #double duration
+  +getCreatedat()
 }
 class Return {
-  #float score
-  -long total
-  #float createdAt
-  -double email
-  #long address
-  +createType()
-  +calculateLevel()
+  #Date active
+  #double quantity
+  +long note
+  +calculateUpdatedat()
+  +findType()
+  +setTotal()
 }
-interface Invoice {
-  +boolean note
-  -long total
-  -double phone
-  +String updatedAt
-  -int quantity
-  +sendPrice()
-  +sendDescription()
-  +saveScore()
+class Invoice {
+  #double total
+  -Date email
+  #boolean amount
+  -double quantity
+  +updateTotal()
+  +sendNote()
+  +processDescription()
+  +cancelType()
 }
-Category ..> Coupon : "1..*"
-Payment ..> Order : "1"
-Coupon --* Invoice
-Payment --o Invoice
-note right of Payment : Ecommerce domain
+Warehouse --* Category
+Category --|> Order
 @enduml

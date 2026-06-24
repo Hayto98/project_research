@@ -6,42 +6,40 @@ skinparam ArrowColor #555555
 class Cart {
   +int quantity
   +double name
-  +cancelPhone()
+  +updateQuantity()
 }
-abstract class Coupon {
+interface Coupon {
+  -Date note
+  +float address
   +float createdAt
   +float code
-  -boolean note
-  +boolean description
-  +findStatus()
+  +findUpdatedat()
+  +processPrice()
+  +getCode()
 }
 class Invoice {
-  -long id
-  -String updatedAt
-  #String email
-  +calculateAmount()
-  +validateAddress()
-  +saveAddress()
-  +validateQuantity()
+  #String description
+  +Date updatedAt
+  +cancelId()
+  +findCreatedat()
+  +cancelType()
 }
-class Wishlist {
+abstract class Wishlist {
+  -int id
+  -Date type
+  +deleteStatus()
+  +setEmail()
+  +findQuantity()
+}
+class Category {
+  +boolean createdAt
   -Date level
-  -Date createdAt
-  -boolean active
-  +setQuantity()
-  +saveDuration()
-  +processCreatedat()
+  +cancelDuration()
+  +setTotal()
+  +setId()
+  +cancelType()
 }
-abstract class Category {
-  +float phone
-  +Date name
-  +double code
-  +cancelLevel()
-  +processTotal()
-  +cancelCreatedat()
-  +validateAddress()
-}
-Cart ..> Coupon : "*"
-Category ..> Invoice : "*"
-note right of Cart : Ecommerce domain
+Cart ..> Invoice : "*"
+Coupon ..|> Wishlist
+Invoice --|> Cart
 @enduml

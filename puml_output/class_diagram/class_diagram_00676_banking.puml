@@ -9,34 +9,33 @@ class Beneficiary {
   +boolean email
   +boolean createdAt
   -Date duration
-  +sendActive()
+  +setAddress()
 }
-class Transaction {
-  +long code
-  -long status
-  +validateNote()
-  +sendTotal()
-  +setDuration()
-  +cancelDuration()
+interface Transaction {
+  +String name
+  -double code
+  +getQuantity()
+  +findAmount()
+  +updateTotal()
 }
-class Loan {
-  -String updatedAt
-  -int description
-  #double code
-  #double address
-  +int phone
-  +setUpdatedat()
-  +updatePrice()
+abstract class Loan {
+  +String code
+  #long level
+  -double id
+  +long note
+  +boolean updatedAt
+  +processPhone()
+  +processEmail()
+  +getAddress()
+  +findPhone()
 }
-abstract class Withdrawal {
-  -double status
-  #int name
-  +boolean note
-  -int phone
-  #boolean duration
-  +deleteName()
+class Withdrawal {
+  -Date status
+  #double updatedAt
+  -String level
+  +deleteStatus()
 }
-Withdrawal --|> Beneficiary
-Transaction --> Beneficiary : "1..*"
-note right of Beneficiary : Banking domain
+Loan --> Withdrawal : "1"
+Withdrawal --> Transaction : "0..1"
+Beneficiary --* Loan
 @enduml

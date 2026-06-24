@@ -9,43 +9,40 @@ interface Author {
   #float score
   -long updatedAt
   +int price
-  +createActive()
-  +calculatePrice()
-  +sendDuration()
+  +calculateScore()
+  +getScore()
+  +createDuration()
 }
-class Book {
-  #Date duration
-  #boolean description
-  +setAddress()
+abstract class Book {
+  #String status
+  +long description
+  -Date score
+  +setAmount()
+  +saveNote()
+  +processCreatedat()
+  +deleteCode()
 }
-abstract class Librarian {
-  +Date createdAt
-  #float phone
-  #String address
-  #boolean note
-  -String id
-  +saveCreatedat()
-  +setNote()
-  +updateType()
+class Librarian {
+  +long id
+  #int name
+  +Date score
+  -int status
+  -double note
+  +getTotal()
+  +createScore()
 }
-abstract class Shelf {
-  +float createdAt
-  +double updatedAt
-  #float duration
-  +getCode()
-  +calculateCreatedat()
-  +findAmount()
+class Shelf {
+  #float createdAt
+  -String type
+  +deleteAmount()
 }
 class Catalog {
-  #double updatedAt
-  +long price
-  #long createdAt
-  #Date phone
-  +boolean code
-  +getCreatedat()
+  #double address
+  +float type
+  -Date updatedAt
+  +processId()
 }
-Librarian ..|> Catalog
-Catalog --o Shelf
-Author --> Shelf : "*"
-note right of Author : Library domain
+Book ..> Librarian : "1..*"
+Catalog --> Book : "1"
+Author --* Book
 @enduml

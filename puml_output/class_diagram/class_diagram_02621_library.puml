@@ -5,54 +5,55 @@ interface Librarian {
   #boolean active
   +Date type
   +boolean phone
-  +validateEmail()
-  +setAmount()
+  +calculateCreatedat()
+  +sendAddress()
 }
 class Loan {
+  -long updatedAt
   +long description
-  #long address
-  -long email
-  +saveTotal()
-  +processCode()
-  +findScore()
+  #long level
+  +calculateScore()
+  +validateAmount()
+  +setScore()
 }
-class Shelf {
-  #Date note
-  #double level
-  -double total
-  +processAmount()
-}
-class Catalog {
-  #String quantity
-  -int level
-  +deleteActive()
-}
-class Branch {
-  #Date price
+abstract class Shelf {
+  #boolean code
+  -Date score
+  #Date createdAt
+  -double updatedAt
   -float note
-  -boolean type
-  +findName()
+  +sendType()
+}
+abstract class Catalog {
+  #boolean createdAt
+  #String name
+  -int quantity
+  +validateQuantity()
+}
+interface Branch {
+  -double amount
+  #Date price
+  +deleteTotal()
+  +processAddress()
+  +updateCode()
 }
 class Author {
-  +double code
-  -boolean address
-  +double price
-  +boolean id
-  +int email
-  +calculateCreatedat()
-  +processEmail()
-  +cancelLevel()
+  -String name
+  -Date updatedAt
+  +processName()
+  +setPrice()
+  +deleteCreatedat()
+  +setLevel()
 }
-interface Publisher {
-  #int type
-  -String description
-  +createScore()
-  +saveAmount()
+abstract class Publisher {
+  +boolean level
+  -float id
+  -int note
+  -long name
+  #boolean code
   +cancelCode()
 }
-Publisher --o Catalog
-Author ..|> Catalog
-Catalog --o Shelf
-Shelf --o Librarian
-note right of Librarian : Library domain
+Author --o Loan
+Librarian --* Shelf
+Author ..> Branch : "0..1"
 @enduml

@@ -5,56 +5,53 @@ skinparam ArrowColor #555555
 class Manifest {
   #double updatedAt
   #double description
-  +setAddress()
-  +deleteDescription()
-  +saveAddress()
-  +updateName()
+  +createId()
+  +cancelStatus()
+  +calculateName()
+  +setType()
 }
-interface Route {
-  #float note
-  +int name
-  #boolean updatedAt
-  #String duration
-  #long active
-  +deleteCode()
-  +processQuantity()
+class Route {
+  #String updatedAt
+  +float name
+  #double note
+  -Date score
+  +findId()
+  +updatePhone()
 }
 interface Vehicle {
+  #boolean phone
+  +int score
+  +updateQuantity()
+}
+abstract class Inventory {
+  +float score
+  #double active
+  +float id
   #double price
-  +float createdAt
-  +createDescription()
-  +updateCode()
-  +cancelType()
-  +processAmount()
+  +createCreatedat()
+  +deletePhone()
+  +validateNote()
 }
-class Inventory {
-  -Date name
-  +Date active
-  #double createdAt
-  +setUpdatedat()
-  +processNote()
+class Shipment {
+  #int type
+  -Date amount
+  +Date quantity
+  #double updatedAt
+  +String name
+  +deletePrice()
+  +createName()
 }
-interface Shipment {
+interface Package {
   +Date duration
   +boolean address
   +float total
-  +createType()
-  +findEmail()
-  +validateStatus()
+  +calculateScore()
+  +saveLevel()
+  +getAmount()
 }
-abstract class Package {
-  -int total
-  +long quantity
-  -float amount
-  +createAmount()
-  +calculateDuration()
-  +saveScore()
-  +sendType()
-}
-Route --* Vehicle
-Manifest ..> Package : "1..*"
-Route --o Shipment
-Inventory --|> Package
-Vehicle --* Shipment
-note right of Manifest : Logistics domain
+Package --* Vehicle
+Manifest ..> Inventory : "0..1"
+Package --* Inventory
+Route ..|> Inventory
+Route --o Vehicle
 @enduml

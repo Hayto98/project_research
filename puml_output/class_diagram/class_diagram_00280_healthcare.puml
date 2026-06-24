@@ -8,55 +8,58 @@ interface Billing {
   -long phone
   +boolean name
   -Date level
-  +sendId()
-  +updateDescription()
-  +calculatePhone()
-  +calculateQuantity()
+  +calculatePrice()
+  +processCode()
+  +calculateNote()
+  +validateCode()
 }
-class Appointment {
-  -boolean updatedAt
-  #boolean price
-  -int type
-  +String quantity
-  -String note
-  +validatePhone()
+abstract class Appointment {
+  +double total
+  #float quantity
+  -Date name
+  -float price
+  +updateTotal()
+  +deleteEmail()
+  +findPrice()
+  +updateCreatedat()
 }
-class Nurse {
-  #Date duration
-  #float id
-  #String price
-  +double email
-  +saveAddress()
-  +getLevel()
-}
-class MedicalRecord {
-  +int name
-  +Date updatedAt
-  #double duration
-  -double price
-  #long createdAt
-  +setStatus()
+interface Nurse {
+  +long updatedAt
+  -String id
+  #long status
+  #Date phone
+  +double code
+  +saveType()
+  +sendPrice()
   +setCreatedat()
-  +cancelActive()
+}
+interface MedicalRecord {
+  +Date description
+  -String note
+  +getAddress()
+  +sendDescription()
+  +calculateId()
 }
 class Prescription {
-  -float duration
-  #Date note
-  -Date price
-  -long email
-  +double createdAt
-  +validatePhone()
-  +processPrice()
+  +String price
+  +String active
+  +getDescription()
+  +validateUpdatedat()
+  +calculateCode()
+  +calculateUpdatedat()
 }
-interface Insurance {
-  #long address
-  -int active
-  -int id
-  #long createdAt
-  +cancelStatus()
-  +calculateActive()
+class Insurance {
+  #float code
+  #Date status
+  #String level
+  -boolean createdAt
+  +savePrice()
+  +createDuration()
+  +cancelPhone()
+  +saveNote()
 }
-Prescription --|> Nurse
-Billing --o Appointment
-note right of Billing : Healthcare domain
+Prescription ..> Nurse : "1..*"
+Nurse --o Billing
+Prescription --* Appointment
+Nurse --o MedicalRecord
 @enduml

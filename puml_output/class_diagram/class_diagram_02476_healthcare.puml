@@ -8,59 +8,59 @@ class Ward {
   +Date name
   -boolean status
   +Date phone
-  +processUpdatedat()
-  +saveScore()
-  +setCode()
+  +validateUpdatedat()
+  +updateCreatedat()
+  +calculateTotal()
 }
 class Appointment {
-  -Date updatedAt
-  -String active
-  #long description
-  +validateStatus()
-  +setDuration()
+  #int code
+  #Date status
+  +deleteType()
+  +getQuantity()
 }
-class Nurse {
-  +String address
-  #float note
-  #float status
-  #double price
-  +long quantity
-  +processName()
-  +getNote()
-  +validateDuration()
+interface Nurse {
+  #long quantity
+  +long price
+  +String code
+  +getQuantity()
+  +cancelCreatedat()
   +sendLevel()
 }
 class Insurance {
-  #String code
-  #int type
-  +getUpdatedat()
-  +sendCreatedat()
-  +getScore()
+  #float status
+  #float price
+  #double quantity
+  +long description
+  -double name
+  +updateActive()
 }
-class Patient {
-  +float active
-  -long address
-  #Date email
-  +int total
-  +updateDescription()
+abstract class Patient {
+  #String duration
+  +double active
+  #String amount
+  #int level
+  +updateActive()
+  +deleteAddress()
+  +findPrice()
 }
-interface MedicalRecord {
-  -Date duration
-  +int note
-  +long score
-  #Date name
-  +cancelUpdatedat()
+class MedicalRecord {
+  #boolean score
+  -Date name
+  +deleteName()
+  +setDuration()
+  +updateEmail()
 }
 class Billing {
-  #boolean email
-  -long level
-  +setCode()
-  +createQuantity()
+  +boolean address
+  #float name
+  -Date createdAt
+  #double id
+  #String updatedAt
+  +cancelDuration()
+  +validateCode()
+  +deleteScore()
+  +findScore()
 }
-Nurse --> Insurance : "0..1"
-MedicalRecord --> Insurance : "0..1"
-Billing ..|> MedicalRecord
-Ward ..> Appointment : "0..1"
+Patient ..> Appointment : "0..1"
 Patient --|> MedicalRecord
-note right of Ward : Healthcare domain
 @enduml

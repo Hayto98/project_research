@@ -7,61 +7,62 @@ class Attendance {
   +double note
   #double price
   #int status
-  +updateId()
-  +findDescription()
-  +validatePrice()
+  +processActive()
+  +findTotal()
+  +updatePrice()
 }
 class Classroom {
-  +String code
-  +String total
-  #int id
-  #long note
-  +calculateStatus()
-  +createName()
-  +saveQuantity()
-}
-class Book {
-  +boolean address
-  -boolean duration
+  -String price
+  -String code
+  +String phone
+  +float level
+  +getActive()
   +getNote()
-  +calculateNote()
-  +sendPhone()
-  +cancelType()
+}
+interface Book {
+  #Date total
+  #long status
+  -String quantity
+  -long name
+  +findDescription()
 }
 class Teacher {
-  -boolean level
-  +int description
-  #int code
-  #Date score
-  +findId()
-  +updateType()
+  #double id
+  +long note
+  #int total
+  #String level
+  +long phone
+  +deleteAddress()
 }
 class Department {
-  +Date id
-  -int type
-  +Date quantity
-  +int level
-  -int status
-  +processStatus()
-}
-abstract class Assignment {
-  +String updatedAt
-  +int description
-  -float quantity
   +boolean id
-  -int status
-  +calculateActive()
+  -String updatedAt
+  -Date type
+  +sendStatus()
+  +processNote()
+  +validateUpdatedat()
+}
+class Assignment {
+  +Date email
+  +int description
+  +setLevel()
+  +updateDuration()
+  +deleteTotal()
+  +findActive()
 }
 class Exam {
-  +int createdAt
-  -boolean quantity
-  -double description
-  -boolean duration
-  +createDescription()
-  +saveActive()
+  +float score
+  +int note
+  +String updatedAt
+  +double description
+  +boolean quantity
+  +deleteAddress()
+  +findNote()
+  +calculateCode()
 }
-Assignment --|> Exam
-Attendance --* Assignment
-Attendance --o Exam
-note right of Attendance : Education domain
+Attendance ..|> Book
+Book ..|> Classroom
+Attendance --o Classroom
+Department --o Book
+Book ..|> Department
 @enduml

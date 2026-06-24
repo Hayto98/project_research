@@ -3,10 +3,10 @@ skinparam shadowing false
 skinparam backgroundColor #F5F5F5
 skinparam defaultFontSize 13
 left to right direction
-actor "Delivery Service" as DeliveryService
-actor "Admin" as Admin
-actor "Payment Gateway" as PaymentGateway
-actor "Seller" as Seller
+actor "Delivery Service" as DS
+actor "Admin" as A
+actor "Payment Gateway" as PG
+actor "Seller" as S
 rectangle "Ecommerce System" {
   usecase "Apply Coupon" as UC_ApplyCoupon
   usecase "Checkout" as UC_Checkout
@@ -16,14 +16,14 @@ rectangle "Ecommerce System" {
   usecase "Cancel Order" as UC_CancelOrder
   usecase "Make Payment" as UC_MakePayment
 }
-DeliveryService --> UC_ApplyCoupon
-DeliveryService --> UC_TrackOrder
-Admin --> UC_Checkout
-PaymentGateway --> UC_Checkout
-PaymentGateway --> UC_BrowseProducts
-PaymentGateway --> UC_TrackOrder
-Seller --> UC_CancelOrder
-Seller --> UC_Checkout
-Seller --> UC_ApplyCoupon
+DS --> UC_ApplyCoupon
+DS --> UC_TrackOrder
+A --> UC_Checkout
+PG --> UC_Checkout
+PG --> UC_BrowseProducts
+PG --> UC_TrackOrder
+S --> UC_CancelOrder
+S --> UC_Checkout
+S --> UC_ApplyCoupon
 UC_CancelOrder ..|> UC_TrackOrder : <<extend>>
 @enduml

@@ -9,58 +9,61 @@ class Staff {
   -long address
   -float type
   #double duration
-  +createCreatedat()
-  +deleteType()
-  +sendActive()
-  +findAddress()
+  +sendAddress()
+  +saveNote()
+  +processUpdatedat()
+  +setCreatedat()
 }
-class Housekeeping {
-  #String description
-  +float note
-  -String amount
-  +findStatus()
-  +createName()
+abstract class Housekeeping {
+  +Date description
+  +int createdAt
+  -String duration
+  +Date note
+  +validateStatus()
 }
 class Reservation {
-  -String quantity
-  -Date description
-  +cancelNote()
-  +createUpdatedat()
-  +processName()
+  +long email
+  +double active
+  +sendCode()
 }
-class Restaurant {
-  -long note
-  -double quantity
-  #String updatedAt
-  +double type
-  -String email
-  +processQuantity()
-  +calculateName()
-  +updateStatus()
+interface Restaurant {
+  -String level
+  -Date note
+  -float quantity
+  -Date updatedAt
+  +createTotal()
+  +createScore()
+  +saveStatus()
 }
-interface Amenity {
+abstract class Amenity {
+  #String address
+  +double email
+  -String level
+  -double note
+  +findAmount()
+  +saveId()
+  +sendEmail()
+}
+class Guest {
   -boolean id
   #long price
   -float total
   +Date score
-  +cancelStatus()
-}
-class Guest {
-  #boolean quantity
-  #double price
-  +calculateScore()
-  +deleteTotal()
-  +setUpdatedat()
-  +saveQuantity()
+  +sendActive()
 }
 class Service {
-  -long createdAt
-  +String name
-  -double address
-  +findQuantity()
+  #boolean code
+  #double quantity
+  #double price
+  +getName()
+  +getPrice()
+  +getDescription()
+  +validateTotal()
 }
-Staff ..|> Reservation
-Guest ..|> Service
-Reservation --* Service
-note right of Staff : Hotel domain
+Housekeeping --|> Restaurant
+Housekeeping --* Guest
+Staff ..|> Amenity
+Guest --|> Housekeeping
+Reservation --* Restaurant
+Housekeeping --o Staff
 @enduml

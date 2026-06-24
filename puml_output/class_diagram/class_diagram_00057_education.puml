@@ -7,29 +7,31 @@ abstract class Classroom {
   +float status
   -long description
   #double score
-  +processLevel()
+  +calculateAmount()
 }
-class Book {
+interface Book {
+  -long updatedAt
   -Date name
-  +double type
-  #double phone
-  +calculatePhone()
+  +calculateAmount()
+  +deleteStatus()
 }
-interface Department {
-  -float id
-  #Date email
-  #int status
-  +savePhone()
+abstract class Department {
+  #int price
+  #Date phone
+  +sendAddress()
 }
-interface Assignment {
-  +float duration
-  +float note
-  #float price
-  -int address
-  #long type
-  +cancelEmail()
+class Assignment {
+  #double level
+  -long createdAt
+  -String status
+  +float phone
+  #float total
+  +validateCreatedat()
+  +sendActive()
+  +processDescription()
+  +setStatus()
 }
-Book --> Department : "0..1"
-Assignment ..> Book : "0..1"
-note right of Classroom : Education domain
+Book ..|> Department
+Book --o Assignment
+Book --* Classroom
 @enduml

@@ -3,36 +3,37 @@ skinparam defaultFontSize 11
 interface Branch {
   +double score
   #String price
-  +createPrice()
-  +findNote()
-  +cancelCode()
-  +getDuration()
+  +calculateScore()
+  +saveTotal()
+  +saveName()
+  +sendUpdatedat()
 }
-class Transaction {
-  -boolean address
-  #long duration
-  -int status
-  #Date id
-  -long phone
-  +sendActive()
-  +findNote()
+abstract class Transaction {
+  -long id
+  #long phone
+  +setName()
 }
 class Statement {
-  +int price
-  -double quantity
-  -float phone
-  +long score
+  #Date score
+  -long address
+  #Date level
+  +boolean updatedAt
+  +calculateTotal()
+  +getUpdatedat()
+  +deleteTotal()
+  +createQuantity()
+}
+abstract class Customer {
+  +double quantity
+  -double phone
+  +long level
   +String note
-  +cancelPhone()
-}
-class Customer {
-  #double type
-  -float price
-  #double phone
+  +boolean id
+  +saveAddress()
+  +createCreatedat()
   +getId()
-  +deleteAmount()
 }
-Branch ..|> Transaction
-Statement ..|> Transaction
-note right of Branch : Banking domain
+Statement --o Customer
+Customer --o Statement
+Transaction --|> Branch
 @enduml

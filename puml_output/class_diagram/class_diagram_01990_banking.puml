@@ -6,61 +6,52 @@ skinparam defaultFontSize 11
 class Card {
   +int status
   #boolean email
-  +calculateActive()
-  +createDuration()
   +setNote()
   +calculateType()
+  +updateQuantity()
+  +getScore()
 }
 class Account {
-  #float duration
-  -float type
-  -double id
-  -Date code
-  +savePhone()
-  +findLevel()
-  +cancelDuration()
-  +createScore()
+  #double note
+  -boolean total
+  +sendActive()
+  +deleteLevel()
+  +validateName()
 }
 class Beneficiary {
-  +String amount
-  #boolean total
-  #Date active
-  #Date id
-  +updatePhone()
-  +updateAmount()
-  +sendEmail()
-  +createAddress()
+  -double price
+  #Date duration
+  +processNote()
+  +sendPhone()
+  +validateTotal()
+  +saveDuration()
 }
-class Teller {
-  +double status
-  +String address
-  +String note
+interface Teller {
   #int score
-  +updateTotal()
-  +setDuration()
-  +saveTotal()
+  -boolean status
+  +String active
+  +boolean quantity
+  +processDuration()
+  +saveScore()
+  +createScore()
+  +updateAmount()
 }
 class Customer {
-  +double createdAt
-  #long amount
-  -float description
-  +createNote()
-  +saveLevel()
-  +updateQuantity()
+  +long email
+  #double address
+  -int duration
+  -float quantity
+  +setDescription()
+  +cancelTotal()
 }
 class Withdrawal {
-  -boolean score
-  +int total
-  +float code
-  +int email
-  +saveId()
-  +sendTotal()
-  +updateUpdatedat()
+  +boolean email
+  #Date updatedAt
+  -String total
+  +sendEmail()
+  +createCode()
 }
-Customer --o Withdrawal
-Teller --* Customer
-Beneficiary --> Customer : "1..*"
-Beneficiary --* Withdrawal
-Card --> Teller : "0..1"
-note right of Card : Banking domain
+Account ..> Teller : "1..*"
+Teller --* Beneficiary
+Withdrawal ..> Teller : "0..1"
 @enduml

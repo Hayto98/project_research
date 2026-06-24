@@ -6,35 +6,36 @@ skinparam defaultFontSize 11
 class Package {
   #Date quantity
   #Date level
-  +findActive()
-  +processUpdatedat()
-  +saveCreatedat()
-  +deleteDuration()
+  +updateScore()
+  +findLevel()
+  +findPrice()
+  +validateName()
 }
 class FuelLog {
-  +long name
-  -double note
-  +saveName()
-  +findId()
-  +findQuantity()
+  +Date amount
+  -String status
+  -long id
+  +setPhone()
+  +findCreatedat()
+  +findStatus()
+  +setUpdatedat()
 }
-abstract class Customer {
-  +String active
-  -double amount
-  -boolean level
-  -Date price
-  +createType()
-  +updatePhone()
-  +processType()
+class Customer {
+  +double price
+  +String email
+  -double active
+  -boolean amount
+  +saveUpdatedat()
+  +updateCreatedat()
+  +findCode()
+  +deleteCreatedat()
 }
-class Tracking {
-  -double duration
-  #boolean status
-  #float description
-  -String phone
-  +updateStatus()
+abstract class Tracking {
+  #String phone
+  #boolean type
+  -Date level
+  +setLevel()
 }
-Package --* Customer
-FuelLog ..|> Customer
-note right of Package : Logistics domain
+Customer ..> FuelLog : "1..*"
+Package ..|> Tracking
 @enduml

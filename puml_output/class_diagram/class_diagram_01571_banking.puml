@@ -4,36 +4,34 @@ skinparam shadowing true
 class Transfer {
   +int price
   -long email
-  +processDuration()
+  +deletePrice()
 }
-class Deposit {
+interface Deposit {
+  -int type
   -long score
-  -double code
-  #String type
-  +double amount
-  -int email
-  +deletePhone()
+  -long code
+  +calculateActive()
+  +getLevel()
+  +getEmail()
+  +updateAmount()
 }
-class Beneficiary {
-  -double total
-  +long name
-  +Date phone
-  -long updatedAt
-  +boolean code
-  +saveEmail()
+abstract class Beneficiary {
+  #double amount
+  -float name
+  #boolean duration
+  #String phone
+  -boolean id
+  +sendDescription()
+  +cancelDuration()
 }
 class Loan {
-  #boolean score
-  +float type
-  #int phone
-  #int address
-  +getCreatedat()
-  +validateType()
-  +cancelNote()
-  +updateScore()
+  #long type
+  -float createdAt
+  +boolean address
+  #float level
+  +validatePrice()
 }
-Beneficiary --|> Transfer
-Deposit ..|> Loan
-Deposit --> Transfer : "1..*"
-note right of Transfer : Banking domain
+Beneficiary --> Loan : "1..*"
+Loan --* Deposit
+Deposit ..|> Beneficiary
 @enduml

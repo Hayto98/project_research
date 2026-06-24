@@ -6,63 +6,54 @@ interface Album {
   +int description
   #double status
   +String quantity
-  +validateAddress()
-  +processCode()
+  +updateTotal()
+  +calculateCreatedat()
 }
-class Comment {
-  #boolean email
-  +float status
-  #boolean amount
-  -long level
-  +createId()
+abstract class Comment {
+  -Date email
+  +int phone
+  +deleteStatus()
+}
+interface Like {
+  -double score
+  -String note
+  +deleteScore()
+  +deleteActive()
+  +createLevel()
+  +getCode()
+}
+abstract class Story {
+  +boolean address
+  +String phone
   +processAmount()
-  +processLevel()
-  +calculateStatus()
+  +getDescription()
+  +createType()
 }
-class Like {
-  #long createdAt
-  +float active
-  #int name
-  -float status
-  +cancelActive()
-}
-interface Story {
-  -int createdAt
-  -Date duration
-  +updateType()
-  +findId()
-  +createNote()
-}
-abstract class Hashtag {
-  -float createdAt
-  #boolean score
-  +String description
-  -float active
-  +getQuantity()
+class Hashtag {
+  +Date code
+  +int level
+  -int active
+  -Date score
+  +sendId()
+  +processPhone()
+  +cancelCode()
 }
 class Post {
-  -String total
-  -long note
-  #Date duration
-  +setTotal()
-  +getId()
-  +calculateDuration()
-  +calculatePrice()
+  #int note
+  #boolean price
+  -float quantity
+  #boolean createdAt
+  +saveEmail()
+  +sendType()
 }
-class Follower {
-  -boolean type
-  +Date amount
-  +long code
-  -float total
-  -String email
-  +updateLevel()
-  +updateDuration()
+abstract class Follower {
+  #int name
+  #int quantity
+  +findLevel()
+  +processTotal()
+  +processLevel()
+  +validateName()
 }
-Follower --* Post
-Comment --* Hashtag
-Like ..> Follower : "1..*"
-Comment --|> Follower
-Post --|> Follower
-Follower ..|> Comment
-note right of Album : Social Media domain
+Like --> Follower : "*"
+Album ..> Post : "*"
 @enduml

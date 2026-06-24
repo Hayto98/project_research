@@ -6,40 +6,32 @@ skinparam defaultFontSize 11
 class FuelLog {
   +String description
   -Date email
-  +processQuantity()
-  +saveCreatedat()
+  +deleteActive()
+  +cancelAddress()
 }
-abstract class Shipment {
+class Shipment {
+  -float note
   #int total
   +String address
   +String status
   #Date name
-  +long note
-  +sendId()
-  +sendName()
-  +processId()
+  +findCode()
+  +getActive()
 }
 class Manifest {
-  +double quantity
-  #Date address
-  +boolean level
-  #long code
-  +float status
-  +validateAmount()
+  -Date active
+  +long name
+  +updateLevel()
+  +validateScore()
+  +processScore()
+  +updatePhone()
 }
 class Warehouse {
-  -int note
-  +double code
-  #Date email
-  #long score
-  +long description
-  +processTotal()
-  +sendNote()
-  +saveId()
-  +calculateStatus()
+  -float status
+  #Date name
+  +saveActive()
 }
-Warehouse --> FuelLog : "*"
-Manifest --|> Warehouse
-Shipment ..|> Manifest
-note right of FuelLog : Logistics domain
+Shipment --* FuelLog
+Shipment ..> Manifest : "1"
+Warehouse --|> Shipment
 @enduml

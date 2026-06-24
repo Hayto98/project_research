@@ -6,60 +6,54 @@ abstract class Account {
   -int description
   +boolean status
   -String active
-  +updateEmail()
+  +updateDescription()
 }
 class Loan {
-  #Date price
-  #int status
-  -Date duration
-  +cancelTotal()
-  +cancelScore()
+  #String createdAt
+  -Date price
+  +validateAmount()
+  +sendUpdatedat()
 }
-abstract class Teller {
-  +float level
-  -int status
-  +deleteCreatedat()
-  +saveAddress()
-  +validateId()
-  +setActive()
+class Teller {
+  +float duration
+  -int score
+  -int note
+  +Date status
+  -long active
+  +deleteQuantity()
 }
-class Customer {
+interface Customer {
+  -String email
   #String total
   -long price
-  +boolean email
-  -Date status
-  +calculateScore()
-  +saveLevel()
-  +updateActive()
-  +findScore()
+  +findUpdatedat()
+  +findCreatedat()
 }
 abstract class Branch {
-  +int quantity
-  -float note
-  +int amount
-  -long level
-  +float updatedAt
-  +getAmount()
-  +cancelPrice()
+  -long score
+  -int level
+  -float createdAt
+  #int active
+  +int type
+  +getName()
+  +deleteQuantity()
+  +validateQuantity()
 }
-interface Beneficiary {
-  +double status
-  -float id
-  +boolean level
-  +createPhone()
-  +saveStatus()
-  +cancelDescription()
+class Beneficiary {
+  #int name
+  #double active
+  #Date description
+  #float id
+  +updateName()
+  +updateDuration()
 }
 class Transfer {
-  +long status
-  #long note
-  -String email
-  +findName()
+  #long total
+  -Date address
+  -Date updatedAt
+  +validateActive()
 }
-Account --|> Branch
-Transfer ..|> Customer
-Loan --o Transfer
-Loan --> Branch : "1"
-Teller --|> Transfer
-note right of Account : Banking domain
+Loan ..|> Beneficiary
+Account ..> Customer : "1..*"
+Loan --> Teller : "1..*"
 @enduml

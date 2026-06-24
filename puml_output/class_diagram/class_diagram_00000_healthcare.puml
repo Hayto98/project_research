@@ -4,53 +4,52 @@ skinparam backgroundColor #F5F5F5
 class Hospital {
   +int code
   -Date score
-  +processDuration()
+  +deletePrice()
 }
-class Patient {
+interface Patient {
+  +String amount
   -int total
-  +Date description
-  -long id
-  +saveAmount()
-  +createPrice()
-  +processScore()
-  +sendTotal()
+  +updateScore()
+  +calculateScore()
 }
-abstract class Ward {
-  #float status
-  -Date note
-  #Date active
-  -int total
-  +sendId()
-  +createLevel()
-  +validateId()
-  +findId()
+class Ward {
+  #double amount
+  -String quantity
+  -boolean price
+  -boolean type
+  -Date total
+  +saveAddress()
+  +createDuration()
+  +createStatus()
+  +setName()
 }
 class MedicalRecord {
-  #int score
-  +Date id
-  #double quantity
-  +processScore()
-  +sendCreatedat()
-  +saveId()
+  #String id
+  -boolean duration
+  +int code
+  #float createdAt
+  +processId()
+  +setScore()
+  +processStatus()
+  +updateCreatedat()
 }
-class Billing {
-  +Date duration
-  #int type
-  +float price
-  +boolean address
-  -boolean score
-  +calculateLevel()
-  +updateDuration()
+abstract class Billing {
+  #double id
+  -long code
+  -String note
+  +sendStatus()
+  +processCode()
 }
-abstract class Appointment {
-  -Date status
-  -double description
-  +createPhone()
+class Appointment {
+  #double duration
+  #String level
+  +int createdAt
+  -Date total
+  -double updatedAt
+  +findScore()
 }
-Hospital --> Appointment : "1..*"
-Appointment --* Ward
-MedicalRecord --o Appointment
-Patient --* Appointment
-Patient --> Hospital : "1"
-note right of Hospital : Healthcare domain
+MedicalRecord --|> Hospital
+Billing ..> Ward : "1..*"
+Ward --o MedicalRecord
+MedicalRecord ..> Patient : "0..1"
 @enduml

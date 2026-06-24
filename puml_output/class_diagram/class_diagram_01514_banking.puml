@@ -8,55 +8,59 @@ abstract class Withdrawal {
   +Date id
   +String email
   #long price
-  +createPhone()
+  +setPrice()
 }
 class Branch {
-  +float price
-  +boolean status
-  #double phone
-  -double amount
-  +String type
-  +deletePhone()
-}
-class Interest {
-  -Date id
-  #boolean email
-  +boolean name
-  +double quantity
-  +sendNote()
-  +setType()
-}
-class Teller {
-  #Date score
-  -boolean createdAt
-  +sendScore()
-}
-class Transaction {
-  +long quantity
-  #float price
-  #String status
-  -boolean code
-  +validateDescription()
-  +createStatus()
-}
-interface Transfer {
-  -long status
-  #boolean active
-  -long email
+  #boolean phone
+  -int note
+  #Date price
+  -int status
   +setAddress()
-  +validateCreatedat()
-  +findId()
-  +findAmount()
+  +cancelDuration()
+}
+abstract class Interest {
+  -long type
+  -Date code
+  +long level
+  +boolean score
+  #long description
+  +validateTotal()
+  +sendType()
+  +cancelDuration()
+}
+interface Teller {
+  -boolean active
+  #int createdAt
+  +cancelEmail()
+  +validateName()
+  +processQuantity()
+  +cancelStatus()
+}
+interface Transaction {
+  #String active
+  #boolean email
+  +Date score
+  +findScore()
+  +saveCode()
+  +setStatus()
+}
+class Transfer {
+  #String phone
+  -boolean level
+  +deleteCode()
+  +createCreatedat()
 }
 class Statement {
-  #double name
-  #int total
-  +saveScore()
+  #Date level
+  +boolean amount
+  +sendCode()
+  +processStatus()
+  +saveDescription()
 }
-Transfer --|> Interest
-Statement --|> Transfer
-Transfer --* Teller
-Interest --* Statement
-Transfer --* Statement
-note right of Withdrawal : Banking domain
+Teller --o Interest
+Withdrawal --* Interest
+Branch --|> Transfer
+Transfer ..|> Statement
+Interest --|> Withdrawal
+Teller --o Transaction
 @enduml

@@ -6,52 +6,53 @@ skinparam defaultFontSize 13
 abstract class Attendance {
   -Date createdAt
   +long name
-  +validateCode()
+  +setEmail()
 }
-abstract class Course {
-  #long code
-  +Date status
-  +Date price
-  +sendId()
-  +deleteEmail()
-  +findEmail()
+class Course {
+  +Date updatedAt
+  +Date code
+  #long status
+  #String price
+  +long quantity
+  +updateQuantity()
+  +getCreatedat()
+  +cancelNote()
 }
 interface Book {
-  +Date level
-  -double note
-  +String name
-  +createDescription()
-  +createPrice()
-  +setActive()
+  +long name
+  -int code
+  -double type
+  +boolean note
+  #String amount
+  +createUpdatedat()
 }
-class Schedule {
-  -long active
-  #Date price
-  +deleteStatus()
-  +sendEmail()
-  +saveCode()
+abstract class Schedule {
+  #long phone
+  #String score
+  #long quantity
+  #float description
+  +long status
+  +updateLevel()
+  +findStatus()
+  +calculateQuantity()
+  +findNote()
 }
-interface Teacher {
-  -Date active
-  -String code
-  +int email
-  #String price
-  +cancelCreatedat()
-  +saveTotal()
-  +saveCreatedat()
+class Teacher {
+  #int active
+  #double id
+  #Date quantity
+  +validateLevel()
+  +validatePhone()
 }
-class Student {
+interface Student {
   +double active
   #String description
   #int address
-  +cancelName()
+  +deleteId()
+  +deleteDescription()
   +setPrice()
-  +getQuantity()
-  +updateId()
+  +createLevel()
 }
-Attendance --|> Book
-Course --> Attendance : "1"
-Student --|> Teacher
-Schedule --o Student
-note right of Attendance : Education domain
+Attendance --|> Schedule
+Book --|> Course
 @enduml

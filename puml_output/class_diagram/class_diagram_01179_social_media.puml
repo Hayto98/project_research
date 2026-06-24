@@ -5,52 +5,48 @@ skinparam classBorderColor #2C7DA0
 class Notification {
   +long total
   -Date price
-  +sendCreatedat()
-  +cancelDuration()
-  +updatePhone()
-  +createEmail()
+  +findDuration()
+  +cancelNote()
+  +updateQuantity()
+  +processEmail()
 }
-abstract class Message {
-  -float amount
-  +int total
-  +boolean duration
-  +double active
-  #Date description
-  +validateAmount()
-  +getType()
+interface Message {
+  #double phone
+  #double quantity
+  +double email
+  +createDescription()
+  +sendDescription()
 }
 class Post {
-  +String note
-  -float status
-  +getActive()
-}
-abstract class Hashtag {
+  -Date updatedAt
+  #int duration
   -int createdAt
-  #Date note
-  -double id
-  #double score
-  -long amount
-  +sendId()
-  +calculateDuration()
+  +double name
+  +createId()
+  +sendDuration()
+}
+class Hashtag {
+  +boolean status
+  -float amount
+  -int duration
+  #double phone
+  +float code
+  +createCode()
 }
 abstract class Album {
-  -double description
-  +double amount
-  +calculateActive()
-  +setAddress()
-  +sendName()
+  -long email
+  +boolean note
+  +double total
+  +setName()
+  +createCreatedat()
+  +saveAddress()
+  +processLevel()
 }
-class Follower {
-  -Date note
-  -boolean status
-  -long level
-  +saveDescription()
-  +getEmail()
-  +findAddress()
+abstract class Follower {
+  -boolean type
+  +long address
+  +processNote()
 }
-Notification --|> Hashtag
-Hashtag ..> Post : "0..1"
-Hashtag --* Follower
-Post --|> Follower
-note right of Notification : Social Media domain
+Message --|> Hashtag
+Notification ..> Post : "1..*"
 @enduml

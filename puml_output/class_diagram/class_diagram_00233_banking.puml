@@ -8,7 +8,7 @@ class Transfer {
   +long price
   +double updatedAt
   #String level
-  +setLevel()
+  +cancelEmail()
 }
 interface Statement {
   #double createdAt
@@ -16,23 +16,23 @@ interface Statement {
   +float amount
   -long active
   -Date email
-  +processType()
+  +cancelQuantity()
 }
 abstract class Transaction {
-  -String email
-  -boolean level
+  -String note
+  -boolean email
   +boolean type
-  #int note
+  #int duration
   +float score
-  +calculateCode()
+  +getStatus()
 }
-class Beneficiary {
-  #long code
-  #float updatedAt
-  #float active
-  +processEmail()
+abstract class Beneficiary {
+  +boolean description
+  #int amount
+  +setCode()
+  +getName()
+  +createNote()
 }
-Transaction --* Transfer
-Statement ..> Transfer : "1..*"
-note right of Transfer : Banking domain
+Beneficiary --* Transaction
+Statement --* Transaction
 @enduml

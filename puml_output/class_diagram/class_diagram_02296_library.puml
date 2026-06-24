@@ -5,38 +5,43 @@ interface Reservation {
   +String code
   -double status
   #Date level
-  +processName()
-  +findAmount()
-  +processActive()
-  +processQuantity()
+  +processTotal()
+  +savePhone()
+  +cancelDescription()
+  +createEmail()
 }
 class Loan {
-  -boolean address
-  -int price
-  -double note
-  +int amount
-  +calculateId()
-  +processActive()
-  +validateTotal()
-  +findLevel()
+  -double active
+  -float note
+  #int quantity
+  -boolean amount
+  -int phone
+  +validateName()
+  +createAddress()
+  +deleteAddress()
+  +sendAmount()
 }
-interface Branch {
-  #int description
-  +int updatedAt
-  -long score
-  -Date id
-  +Date note
-  +sendName()
+abstract class Branch {
+  #boolean id
+  #boolean type
+  -float active
+  +int phone
+  #String total
+  +findDescription()
+  +setLevel()
+  +deleteEmail()
+  +deleteAddress()
 }
 class Author {
-  -int total
-  +String level
-  #float status
-  +int address
-  +sendNote()
+  #String phone
+  -long duration
+  -boolean status
+  #String active
+  #long id
+  +validateQuantity()
+  +calculateLevel()
+  +deleteLevel()
 }
-Loan ..> Author : "*"
-Author ..|> Branch
-Branch ..> Loan : "1..*"
-note right of Reservation : Library domain
+Reservation --|> Branch
+Loan --> Reservation : "*"
 @enduml

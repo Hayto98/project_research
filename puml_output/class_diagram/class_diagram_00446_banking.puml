@@ -7,56 +7,54 @@ class Statement {
   #float duration
   -double amount
   -float total
-  +sendStatus()
+  +sendQuantity()
 }
 class Beneficiary {
+  #long amount
   #long updatedAt
   #String quantity
-  +String address
-  +setAddress()
+  +processQuantity()
 }
-interface Transaction {
-  -Date price
-  #long phone
-  +float description
-  +long email
-  +String updatedAt
-  +createActive()
+class Transaction {
+  -long address
+  +long type
+  +createId()
+  +saveName()
 }
-class Interest {
-  #float updatedAt
-  #boolean amount
-  +findDescription()
-  +updateDescription()
-  +cancelStatus()
+interface Interest {
+  +String createdAt
+  -boolean id
+  -Date address
+  +float status
+  +saveAddress()
+  +createUpdatedat()
 }
-abstract class Account {
-  +int createdAt
-  -boolean quantity
-  +setTotal()
-  +updateCode()
-  +calculateName()
-  +findLevel()
+interface Account {
+  -boolean description
+  +float createdAt
+  +Date duration
+  -float status
+  +validateNote()
 }
-class Card {
-  -Date email
-  -float id
-  +long quantity
-  +long total
-  #Date name
-  +cancelType()
-  +saveLevel()
+abstract class Card {
+  +float code
+  #float total
+  #Date createdAt
+  -boolean duration
+  -long price
+  +updateScore()
 }
 class Loan {
-  +float note
-  +String duration
-  +sendTotal()
-  +calculateId()
-  +processNote()
-  +findUpdatedat()
+  +long name
+  #Date type
+  +boolean total
+  -Date createdAt
+  #String phone
+  +calculateAmount()
 }
-Interest --* Loan
-Interest --|> Account
-Loan --o Card
-note right of Statement : Banking domain
+Beneficiary --|> Loan
+Interest --o Account
+Interest ..> Card : "1"
+Interest ..> Loan : "0..1"
+Beneficiary --o Interest
 @enduml

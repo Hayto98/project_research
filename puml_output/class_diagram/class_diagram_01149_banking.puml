@@ -5,31 +5,29 @@ skinparam defaultFontSize 13
 interface Teller {
   +long code
   +Date active
-  +deleteLevel()
+  +processUpdatedat()
 }
 interface Interest {
   #Date address
   -Date price
-  +updatePrice()
+  +updateDescription()
 }
-interface Transfer {
+abstract class Transfer {
   #boolean phone
   +int id
   #float price
   +Date name
   -String code
-  +findCode()
-  +getNote()
+  +setCode()
+  +cancelType()
 }
-abstract class Statement {
-  -float active
-  #float phone
-  +long createdAt
-  -float address
-  +sendDuration()
+class Statement {
+  -boolean note
+  -int price
+  +updateEmail()
+  +validateDescription()
+  +updateNote()
 }
-Teller ..> Statement : "1"
-Interest --* Teller
-Statement --o Interest
-note right of Teller : Banking domain
+Transfer --> Interest : "1"
+Transfer ..|> Teller
 @enduml

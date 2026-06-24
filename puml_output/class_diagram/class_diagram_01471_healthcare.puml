@@ -9,52 +9,52 @@ abstract class Nurse {
   -float status
   -Date name
   +double score
-  +saveLevel()
-  +deletePrice()
-  +validatePrice()
-  +processUpdatedat()
+  +sendDuration()
+  +getCode()
+  +deleteScore()
+  +calculateType()
 }
-class Hospital {
-  -double price
-  +String createdAt
-  +float id
-  +cancelDescription()
-  +deleteCreatedat()
+abstract class Hospital {
+  +double price
+  #int type
+  #Date updatedAt
+  #Date phone
+  +updateLevel()
 }
-class Ward {
-  #long price
-  #Date quantity
-  +String id
-  +processTotal()
-  +sendPrice()
-  +processPrice()
-  +setEmail()
+abstract class Ward {
+  #int code
+  +int name
+  +int amount
+  +updateLevel()
+  +updateActive()
+  +setId()
+  +createAmount()
 }
 class MedicalRecord {
-  +double email
-  +boolean address
-  +sendType()
-  +getLevel()
-  +deleteLevel()
+  -boolean type
+  -double duration
+  +validateLevel()
+  +getName()
+  +setDescription()
+  +setAmount()
 }
-interface Diagnosis {
+class Diagnosis {
+  +double code
+  +boolean email
+  -boolean address
+  +setUpdatedat()
+  +getCode()
+  +saveQuantity()
+  +savePrice()
+}
+interface Prescription {
   #Date createdAt
   +float quantity
   +Date note
   -long type
   #int email
-  +validateStatus()
+  +createActive()
 }
-interface Prescription {
-  +float description
-  #int address
-  #String type
-  +calculateLevel()
-  +getCode()
-  +sendType()
-  +findPhone()
-}
-Prescription --* Diagnosis
-Prescription ..|> Nurse
-note right of Nurse : Healthcare domain
+Diagnosis ..> Hospital : "0..1"
+Ward ..|> MedicalRecord
 @enduml

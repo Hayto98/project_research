@@ -8,46 +8,44 @@ class FuelLog {
   -boolean level
   +Date duration
   #float status
-  +cancelLevel()
+  +sendActive()
 }
-class Route {
+interface Route {
+  #int total
   +Date description
-  +boolean total
+  +boolean duration
   -Date id
-  +Date active
-  +double createdAt
-  +processScore()
-  +deleteStatus()
-  +processCreatedat()
-  +findAmount()
+  +cancelDescription()
+  +validateQuantity()
 }
-class Warehouse {
-  #float status
-  -int code
-  +double description
-  #long type
-  -float active
-  +updateUpdatedat()
+abstract class Warehouse {
+  +Date note
+  +int score
+  -String amount
+  +int status
+  -double type
+  +calculateNote()
+  +saveTotal()
+  +createScore()
 }
 abstract class DeliveryNote {
-  -Date duration
-  -long score
-  +float phone
-  #int code
-  +long price
-  +updateId()
+  #double note
+  #boolean id
+  -boolean createdAt
+  #boolean updatedAt
+  +processScore()
+  +getLevel()
+  +saveTotal()
 }
 abstract class Customer {
-  +String price
-  -String level
-  +boolean description
-  +createType()
-  +getQuantity()
-  +calculatePrice()
-  +setNote()
+  -boolean total
+  #String address
+  +String createdAt
+  -boolean score
+  +double description
+  +sendNote()
+  +processCode()
 }
-Customer ..|> Route
-FuelLog --> Warehouse : "0..1"
-DeliveryNote ..> Customer : "1"
-note right of FuelLog : Logistics domain
+FuelLog --> Customer : "*"
+Warehouse --|> DeliveryNote
 @enduml

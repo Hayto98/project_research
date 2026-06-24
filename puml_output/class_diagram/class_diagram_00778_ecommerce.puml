@@ -5,52 +5,59 @@ abstract class Category {
   #float id
   #double amount
   #int status
-  +cancelPhone()
+  +getCode()
 }
 class Wishlist {
-  +int name
-  +Date note
-  +boolean score
+  +int phone
+  +Date name
+  +boolean note
   -long updatedAt
-  +cancelCreatedat()
-  +cancelQuantity()
-  +sendNote()
+  +processId()
+  +setCode()
+  +cancelUpdatedat()
 }
 class Payment {
-  #float total
-  -boolean email
-  -float active
-  +Date address
-  +calculateStatus()
-  +processScore()
-  +saveAddress()
+  -Date score
+  -boolean note
+  #float address
+  -Date quantity
+  +calculateDuration()
+  +createAmount()
+  +findTotal()
+  +deleteScore()
 }
 interface Coupon {
-  #int email
-  -boolean score
-  +double type
-  +deleteDuration()
+  #boolean total
+  +float status
+  #long type
+  #Date address
+  +sendPrice()
+  +createScore()
+  +getDescription()
+  +createQuantity()
 }
-class Return {
-  -float amount
-  +String total
-  -boolean createdAt
-  +float price
-  +double code
-  +cancelAddress()
-  +deletePhone()
+interface Return {
+  +int type
+  #long score
+  +processUpdatedat()
+  +cancelCreatedat()
+  +calculateNote()
+  +saveCode()
 }
-interface Cart {
-  #Date duration
-  #Date active
-  #double total
-  #boolean quantity
-  +findPrice()
-  +getCreatedat()
-  +setQuantity()
+class Cart {
+  -float createdAt
+  +boolean code
+  -int note
+  -boolean name
+  -boolean updatedAt
+  +saveDescription()
+  +createQuantity()
+  +calculateDescription()
+  +cancelDescription()
 }
-Wishlist ..> Payment : "1"
-Coupon --> Payment : "*"
-Cart --> Coupon : "1"
-note right of Category : Ecommerce domain
+Return ..> Cart : "1..*"
+Cart --|> Coupon
+Wishlist ..> Category : "1..*"
+Wishlist --* Cart
+Cart --|> Return
 @enduml

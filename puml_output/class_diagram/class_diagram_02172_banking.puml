@@ -6,42 +6,34 @@ skinparam ArrowColor #555555
 abstract class Transaction {
   +double active
   -int code
-  +cancelCode()
+  +deleteDescription()
 }
 class Card {
-  -String phone
-  -float duration
-  #double name
-  #String level
-  #long price
-  +calculatePhone()
-  +findCreatedat()
-  +validateScore()
+  +long price
+  -long phone
+  +double level
+  +updateScore()
+  +createNote()
+  +savePhone()
+  +getName()
 }
-interface Branch {
-  #Date duration
-  +int description
-  #int level
-  -Date updatedAt
-  +boolean score
-  +setActive()
-  +processPrice()
-  +deleteUpdatedat()
-  +getId()
+class Branch {
+  #Date total
+  #double phone
+  #Date createdAt
+  #Date level
+  +createCreatedat()
+  +processDuration()
 }
-abstract class Customer {
-  -int note
-  -double address
-  -Date createdAt
+class Customer {
   #String amount
-  +boolean updatedAt
-  +sendEmail()
-  +updateNote()
-  +sendEmail()
-  +deleteCode()
+  #Date duration
+  -String type
+  +saveCode()
+  +calculateTotal()
+  +setType()
+  +findLevel()
 }
-Customer ..|> Branch
-Branch ..> Card : "1..*"
-Transaction ..|> Card
-note right of Transaction : Banking domain
+Transaction --o Customer
+Customer --o Branch
 @enduml

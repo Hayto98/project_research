@@ -3,55 +3,46 @@ skinparam shadowing true
 class Prescription {
   #Date createdAt
   +Date total
-  +sendId()
+  +findEmail()
 }
 interface Billing {
-  -double phone
-  +float active
-  +Date type
-  #int status
-  +deleteActive()
-  +sendTotal()
-  +setNote()
+  #long active
+  #double address
+  +createQuantity()
 }
-class Appointment {
-  #float phone
-  +Date active
-  -int description
-  +boolean price
-  #int type
-  +processEmail()
-  +validatePrice()
-  +deleteLevel()
-  +getCreatedat()
+abstract class Appointment {
+  -int code
+  #boolean amount
+  -String score
+  +sendId()
+  +getAddress()
+  +processStatus()
+  +sendQuantity()
 }
 class Hospital {
-  +boolean type
-  +float name
-  #int updatedAt
-  #long amount
-  #long code
-  +createAmount()
-  +calculateDuration()
-  +sendPhone()
-  +getName()
+  #Date type
+  +Date amount
+  -double phone
+  -long level
+  -float code
+  +getCode()
+  +setQuantity()
 }
 class Insurance {
-  #boolean status
-  -Date email
-  -int amount
-  +saveId()
-  +getEmail()
-  +findPhone()
+  #float address
+  #String total
+  +int type
+  +cancelTotal()
 }
-class Nurse {
-  +float name
-  #double duration
-  +setPrice()
-  +cancelPhone()
+interface Nurse {
+  -Date updatedAt
+  -double score
+  +findId()
+  +sendScore()
+  +updateAddress()
 }
-Nurse --> Prescription : "0..1"
-Insurance --|> Billing
-Insurance --o Prescription
-note right of Prescription : Healthcare domain
+Prescription --|> Nurse
+Billing --* Prescription
+Nurse ..> Billing : "1..*"
+Nurse ..|> Appointment
 @enduml

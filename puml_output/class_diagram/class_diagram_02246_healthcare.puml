@@ -9,53 +9,59 @@ class Appointment {
   +boolean duration
   -float note
   #long type
-  +calculateName()
-  +sendScore()
-  +saveAmount()
-  +findEmail()
+  +setNote()
+  +calculateId()
+  +createDescription()
+  +setCode()
 }
-class Doctor {
-  #long address
-  #boolean description
-  +saveActive()
+interface Doctor {
+  -boolean email
+  +Date createdAt
+  -boolean id
+  +validatePrice()
 }
-class MedicalRecord {
-  #float amount
-  -String active
-  +validateUpdatedat()
-  +cancelPhone()
+interface MedicalRecord {
+  +Date id
+  #int amount
+  -Date active
+  +float quantity
+  +updateAddress()
+  +setType()
+  +processUpdatedat()
 }
 class Patient {
-  +boolean amount
-  #double duration
-  #boolean type
-  +cancelTotal()
-  +getLevel()
-  +findActive()
+  #double type
+  #boolean status
+  -boolean score
+  +updateDuration()
+  +deleteUpdatedat()
+  +calculateDescription()
+  +findPrice()
 }
 abstract class Prescription {
   #Date description
   -String type
-  +saveQuantity()
+  +createType()
 }
 class Nurse {
-  +long name
-  #boolean code
-  +processEmail()
-  +findCreatedat()
-  +processPrice()
-}
-class Insurance {
-  #int address
+  -Date id
+  #long name
   -float code
-  +saveDuration()
-  +setQuantity()
-  +calculateLevel()
+  #Date duration
+  +validateTotal()
+  +calculateNote()
+  +saveAmount()
 }
+abstract class Insurance {
+  #String level
+  #int status
+  -float address
+  +saveUpdatedat()
+  +validateActive()
+  +validatePhone()
+}
+Patient ..> Prescription : "*"
 Insurance --|> Prescription
 MedicalRecord --> Patient : "*"
 Doctor --|> Nurse
-Prescription ..|> Doctor
-Doctor ..> Appointment : "0..1"
-note right of Appointment : Healthcare domain
 @enduml

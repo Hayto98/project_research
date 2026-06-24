@@ -8,38 +8,36 @@ interface Teacher {
   -float name
   -float createdAt
   +double updatedAt
-  +updatePrice()
-  +findId()
+  +saveNote()
+  +getActive()
 }
-class Student {
-  #String note
-  #Date updatedAt
-  -int email
-  +deleteCode()
-  +saveActive()
+abstract class Student {
+  -Date name
+  +long amount
+  +getQuantity()
 }
 abstract class Attendance {
-  +double email
-  -String name
-  +setTotal()
+  #String score
+  #boolean createdAt
+  -String description
+  +setUpdatedat()
+  +saveType()
+  +setDescription()
 }
 abstract class Enrollment {
-  -String active
-  -long code
-  +calculateScore()
+  -String code
+  #String name
+  -String status
+  -long total
+  +sendScore()
 }
-class Grade {
-  #String id
-  +int phone
-  #int description
-  -float active
-  -double email
+interface Grade {
+  -int type
+  #boolean id
+  +calculatePrice()
+  +updateName()
   +deleteScore()
-  +updateActive()
 }
-Attendance --o Grade
-Student --> Attendance : "1"
-Grade --o Attendance
-Grade ..|> Enrollment
-note right of Teacher : Education domain
+Student --* Attendance
+Enrollment ..|> Student
 @enduml

@@ -7,64 +7,58 @@ class Staff {
   -boolean active
   +boolean id
   -String email
-  +validateCreatedat()
-  +createPrice()
+  +calculateCreatedat()
+  +sendEmail()
 }
-abstract class Booking {
+class Booking {
+  #Date note
+  #int phone
   -double description
   -String type
   -long total
-  #String duration
-  +setName()
-  +cancelPrice()
+  +findStatus()
 }
 class Restaurant {
-  +int score
-  +String address
-  +int code
-  #String status
-  +setEmail()
-  +setName()
-  +getTotal()
-  +processUpdatedat()
+  -int name
+  -boolean level
+  +sendActive()
+  +getLevel()
+  +deleteStatus()
 }
 class Housekeeping {
-  #float phone
-  +String score
-  #Date name
-  +updateType()
-  +processLevel()
+  +int description
+  +Date status
+  +createName()
 }
 class Invoice {
-  -String quantity
-  +String level
-  +int phone
-  +long price
-  #int email
-  +saveDescription()
-  +setPrice()
+  -int status
+  +int name
+  -float level
+  #String total
+  +saveId()
+  +validateTotal()
 }
 interface Payment {
-  +long status
-  #boolean description
-  #int level
-  +calculateType()
-  +saveLevel()
-  +setQuantity()
-  +updateType()
+  #long createdAt
+  #double type
+  -float level
+  +getQuantity()
+  +calculateLevel()
+  +saveName()
 }
 class CheckIn {
-  -float address
-  -boolean type
-  #double level
-  #String email
-  #double total
-  +sendLevel()
-  +processEmail()
+  +long code
+  #int id
+  +float name
+  #int duration
+  +double amount
+  +validateEmail()
+  +createCreatedat()
 }
-CheckIn --o Staff
-Invoice --> Booking : "1..*"
-CheckIn ..|> Payment
-Staff --> Booking : "0..1"
-note right of Staff : Hotel domain
+Payment ..> CheckIn : "0..1"
+Staff ..> Restaurant : "0..1"
+Housekeeping --o CheckIn
+Payment --|> Invoice
+Restaurant --o Booking
+Booking ..> Housekeeping : "1..*"
 @enduml

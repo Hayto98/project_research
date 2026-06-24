@@ -5,35 +5,30 @@ class Loan {
   #float total
   +int id
   #Date name
-  +validateEmail()
+  +getStatus()
 }
-abstract class Member {
-  +double score
+class Member {
+  +Date note
+  -int address
+  -float score
   +String code
-  +String description
-  #int address
-  +processActive()
-  +calculateCode()
-  +findDescription()
-  +updateCreatedat()
+  +validateId()
 }
-class Renewal {
-  +long name
-  -double score
-  #double address
-  #Date code
-  +setCreatedat()
-  +getCode()
-  +processDuration()
+interface Renewal {
+  -String type
+  #int duration
+  +int active
+  +calculatePhone()
 }
-interface Librarian {
-  -String amount
-  +double name
-  #float status
-  #int total
-  +validateCreatedat()
+class Librarian {
+  -float code
+  #double id
+  #Date phone
+  -String email
+  +setName()
+  +createAddress()
 }
-Librarian --|> Loan
-Member ..|> Loan
-note right of Loan : Library domain
+Renewal --|> Loan
+Loan --* Member
+Loan --o Librarian
 @enduml

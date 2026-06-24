@@ -3,34 +3,35 @@ skinparam shadowing true
 class Order {
   +double note
   +float price
-  +getStatus()
-  +sendUpdatedat()
+  +saveId()
+  +updateUpdatedat()
 }
-class Supplier {
-  #String description
-  #float type
-  +boolean quantity
-  +createTotal()
-  +calculateType()
-  +getPhone()
-  +cancelActive()
+interface Supplier {
+  #double createdAt
+  -Date duration
+  +boolean description
+  +findDescription()
+  +validateName()
 }
-interface Review {
-  -double updatedAt
-  #String type
-  -Date quantity
-  +validateActive()
-  +validateDuration()
-  +validatePrice()
+class Review {
+  +double price
+  -double type
+  -boolean id
+  +long phone
+  #Date amount
+  +saveCreatedat()
+  +setScore()
+  +sendQuantity()
 }
-interface Invoice {
-  #String type
-  -float phone
-  #int amount
-  +validateScore()
-  +processUpdatedat()
-  +sendDescription()
+class Invoice {
+  -int price
+  #String level
+  -float description
+  #int type
+  +sendPhone()
+  +createNote()
+  +processNote()
 }
-Order ..|> Supplier
-note right of Order : Ecommerce domain
+Supplier ..|> Review
+Order --* Invoice
 @enduml

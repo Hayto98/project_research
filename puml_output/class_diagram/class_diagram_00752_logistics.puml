@@ -6,63 +6,57 @@ class FuelLog {
   #float updatedAt
   -Date email
   +Date active
-  +processNote()
+  +deleteActive()
 }
-class Tracking {
-  +Date price
-  #Date score
-  +float quantity
-  #String duration
-  +saveId()
+abstract class Tracking {
+  #boolean address
+  -float price
+  +updatePrice()
+  +calculateDescription()
+  +createLevel()
+  +cancelPrice()
 }
 class Inventory {
-  +long name
-  #int status
-  #float id
-  #boolean amount
-  #long level
-  +updateTotal()
-  +getTotal()
+  #float active
+  +Date code
+  +calculateQuantity()
 }
 class Warehouse {
-  #float note
-  #int phone
-  #Date updatedAt
-  #boolean total
-  -Date address
-  +sendId()
-  +sendDuration()
-  +saveScore()
-  +getEmail()
+  +String id
+  +long level
+  +setScore()
+  +saveType()
 }
 interface Package {
-  -long active
-  #float phone
-  -float total
-  #int type
-  +boolean address
-  +deleteAmount()
-  +getTotal()
-  +deletePrice()
+  -int amount
+  #boolean createdAt
+  -double total
+  -int id
+  +findTotal()
+  +deleteId()
+  +findQuantity()
+  +getQuantity()
 }
-interface Route {
-  #String name
-  #double address
-  -int total
-  +long createdAt
-  +deleteQuantity()
-  +processName()
+class Route {
+  #Date price
+  #String score
+  #Date id
+  -boolean active
+  +processScore()
+  +validateTotal()
+  +updateId()
+  +getAmount()
 }
 interface Driver {
-  -long total
-  +Date status
-  +int id
-  +findId()
-  +getPhone()
-  +sendLevel()
-  +deleteLevel()
+  -Date total
+  -float type
+  #int address
+  +boolean phone
+  +saveTotal()
+  +setLevel()
+  +setAmount()
 }
-Driver --> Package : "0..1"
-Package --|> Tracking
-note right of FuelLog : Logistics domain
+FuelLog ..|> Warehouse
+Warehouse --> Route : "1..*"
+FuelLog ..> Route : "1..*"
 @enduml

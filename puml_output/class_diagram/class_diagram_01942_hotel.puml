@@ -6,58 +6,55 @@ skinparam defaultFontSize 11
 class Housekeeping {
   #double active
   #String amount
-  +processTotal()
-  +sendAddress()
+  +cancelCode()
+  +findAmount()
 }
-class Reservation {
+interface Reservation {
+  +double id
+  #String note
   #double phone
   -float updatedAt
-  +double status
-  -long total
-  #long name
-  +findQuantity()
-  +cancelActive()
-  +getEmail()
+  +findActive()
+  +deleteLevel()
 }
-class Guest {
-  #float note
-  #boolean price
-  -String quantity
-  +float active
-  +updateActive()
-  +calculatePhone()
-  +createScore()
-  +findQuantity()
+abstract class Guest {
+  +long address
+  -boolean phone
+  -double quantity
+  -Date active
+  +deleteUpdatedat()
+  +deleteType()
+  +calculateActive()
 }
-class Room {
-  -int active
-  -float status
-  +getCreatedat()
-  +saveAmount()
+interface Room {
+  -long id
+  #boolean duration
+  #Date type
+  -long createdAt
+  #String price
+  +deleteCreatedat()
 }
 class Payment {
-  -Date createdAt
-  -long quantity
-  +double total
-  #double id
-  +validateDuration()
-  +createTotal()
-  +findTotal()
-  +validateEmail()
+  #Date amount
+  -Date name
+  #float createdAt
+  +long duration
+  -String quantity
+  +calculateDescription()
+  +processStatus()
+  +deleteCode()
 }
 class Invoice {
-  #Date level
-  +long status
-  +long total
-  #Date quantity
-  +Date active
-  +updateLevel()
-  +updateScore()
-  +calculateName()
-  +updateTotal()
+  -Date duration
+  -long total
+  -float level
+  -double phone
+  #String quantity
+  +findScore()
+  +findTotal()
+  +createQuantity()
+  +createLevel()
 }
-Reservation --> Room : "1..*"
-Housekeeping ..|> Invoice
-Payment ..> Housekeeping : "1"
-note right of Housekeeping : Hotel domain
+Guest --* Housekeeping
+Invoice ..> Housekeeping : "*"
 @enduml

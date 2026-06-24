@@ -8,46 +8,43 @@ interface Service {
   #int quantity
   #double note
   #float type
-  +sendQuantity()
-  +setActive()
-  +deleteCode()
-  +processTotal()
+  +findPrice()
+  +processDescription()
+  +updateName()
+  +calculateActive()
 }
-abstract class Payment {
-  +Date updatedAt
-  #boolean email
-  #Date active
-  -String name
-  #String address
-  +saveDuration()
-  +getEmail()
+class Payment {
+  #double type
+  -int total
+  +setCode()
+  +updateNote()
+  +saveEmail()
 }
 class Housekeeping {
-  +double amount
-  #boolean quantity
-  +long type
-  +updateNote()
-  +deleteUpdatedat()
-  +saveLevel()
+  #String duration
+  +Date email
+  #String status
+  +cancelUpdatedat()
+  +processAmount()
+  +updateStatus()
 }
 class Staff {
-  +boolean quantity
-  +float description
-  +calculateQuantity()
-  +createAmount()
-  +updateScore()
-  +updateAmount()
+  -float type
+  -int description
+  -int note
+  +Date createdAt
+  +cancelDescription()
+  +saveActive()
+  +processEmail()
 }
-abstract class CheckIn {
-  #float createdAt
-  -String email
-  -float score
-  +sendId()
-  +createLevel()
-  +saveStatus()
+class CheckIn {
+  #float description
+  #double status
+  -long score
+  -int id
+  +getCreatedat()
+  +findAddress()
 }
-Payment --o Service
-CheckIn --o Service
-Payment ..> CheckIn : "1..*"
-note right of Service : Hotel domain
+Staff ..|> Payment
+Housekeeping --|> CheckIn
 @enduml

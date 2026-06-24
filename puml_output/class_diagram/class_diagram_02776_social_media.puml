@@ -6,33 +6,34 @@ class Comment {
   #String description
   +double email
   -float price
-  +createPhone()
+  +calculateScore()
 }
 class Group {
+  -double total
   -double phone
   -double email
   -double quantity
-  +double note
-  #long type
-  +findScore()
+  +validateLevel()
 }
-interface Hashtag {
-  +double id
-  -Date code
-  +sendName()
+abstract class Hashtag {
+  #String code
+  +int score
+  -double level
+  #boolean duration
+  +updateNote()
 }
-abstract class Notification {
-  -int score
-  +Date address
-  +float createdAt
-  +String status
-  #String quantity
-  +getName()
-  +createNote()
-  +cancelAddress()
-  +findName()
+class Notification {
+  -long type
+  +String score
+  #String address
+  +String createdAt
+  #String status
+  +sendTotal()
+  +validatePrice()
+  +processQuantity()
+  +calculatePhone()
 }
-Hashtag ..|> Comment
-Hashtag ..> Group : "0..1"
-note right of Comment : Social Media domain
+Hashtag --|> Notification
+Comment ..|> Group
+Group --* Notification
 @enduml

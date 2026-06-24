@@ -3,64 +3,65 @@ skinparam defaultFontSize 13
 abstract class Category {
   -boolean description
   -boolean quantity
-  +deleteDuration()
-  +setStatus()
-  +findUpdatedat()
-  +processAmount()
+  +saveAddress()
+  +cancelType()
+  +saveDescription()
+  +calculateUpdatedat()
 }
-abstract class Customer {
-  -float note
-  #long price
-  +float score
-  +sendAmount()
-  +deleteTotal()
+interface Customer {
+  -int status
+  -int updatedAt
+  +createPrice()
+  +getCreatedat()
+  +calculateAmount()
+  +deleteLevel()
 }
 interface Invoice {
-  #float status
-  #double createdAt
-  #double score
-  +float price
-  +getAddress()
+  +float name
+  -boolean amount
+  -String score
+  +boolean level
+  +getActive()
+  +findTotal()
+  +updateScore()
+  +deleteId()
 }
-class Coupon {
-  +int id
-  #float address
-  -float total
-  #boolean type
-  +findDescription()
-  +setUpdatedat()
-  +cancelName()
+abstract class Coupon {
+  -String updatedAt
+  -double code
+  #boolean id
+  -String address
+  +boolean quantity
+  +getName()
+  +calculateUpdatedat()
+  +saveTotal()
 }
-abstract class Product {
-  +boolean duration
-  #float address
-  #double id
-  -double active
-  +setQuantity()
-  +setDuration()
-  +sendTotal()
+interface Product {
+  -Date description
+  -boolean code
+  -Date updatedAt
+  +boolean name
+  +saveDuration()
+  +processId()
 }
-abstract class Payment {
-  #float price
-  -double amount
-  #double phone
+interface Payment {
+  +boolean type
+  #double total
+  -boolean phone
+  #int status
+  #double quantity
+  +findCode()
+  +sendAmount()
+}
+abstract class Shipment {
+  -String level
+  +long note
+  #Date duration
+  +int status
+  #int phone
   +setPhone()
-  +validateId()
-  +getPhone()
-  +sendUpdatedat()
+  +setStatus()
 }
-class Shipment {
-  -Date amount
-  +long status
-  #Date level
-  +createTotal()
-  +calculateActive()
-}
-Product ..|> Category
-Invoice --* Shipment
-Customer ..|> Product
-Product ..|> Customer
-Product --* Coupon
-Shipment --|> Coupon
-note right of Category : Ecommerce domain
+Coupon --|> Payment
+Invoice ..> Payment : "0..1"
 @enduml

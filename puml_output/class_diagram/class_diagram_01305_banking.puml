@@ -6,39 +6,36 @@ skinparam defaultFontSize 11
 class Transfer {
   #Date note
   #String email
-  +sendAddress()
+  +calculateActive()
 }
 class Account {
-  #double quantity
-  +double updatedAt
-  +boolean email
-  #float createdAt
-  +calculateDuration()
-  +updateQuantity()
-  +cancelScore()
+  +long address
+  +boolean quantity
+  +calculateAddress()
+  +saveAmount()
+  +processPrice()
+  +findDuration()
 }
-abstract class Statement {
-  -float email
-  +double id
-  -boolean quantity
-  -Date level
-  +setStatus()
-  +processType()
-  +calculateCode()
-  +savePrice()
+interface Statement {
+  #long price
+  -String updatedAt
+  -Date quantity
+  #String note
+  +getUpdatedat()
+  +updatePrice()
+  +getStatus()
+  +cancelCode()
 }
 abstract class Transaction {
-  #Date description
-  +double price
-  #boolean quantity
-  +Date duration
-  +float score
-  +sendQuantity()
-  +processDuration()
-  +createLevel()
-  +processUpdatedat()
+  -double note
+  +Date code
+  -Date status
+  -boolean type
+  +setType()
+  +sendScore()
+  +getNote()
+  +findStatus()
 }
-Account --o Transaction
-Statement --* Transaction
-note right of Transfer : Banking domain
+Statement ..> Transaction : "1"
+Transaction --> Statement : "0..1"
 @enduml

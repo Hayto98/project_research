@@ -9,52 +9,52 @@ class Payment {
   -long type
   #double email
   +boolean total
-  +cancelType()
-  +deleteAmount()
-  +setEmail()
+  +saveDuration()
+  +getDuration()
+  +getActive()
 }
-class Order {
-  -double email
-  #double type
-  +long status
-  #long quantity
+abstract class Order {
+  -boolean amount
+  -long code
+  #Date email
+  +deleteQuantity()
+  +setTotal()
+  +setPhone()
+  +saveType()
+}
+abstract class Review {
   -boolean note
-  +setCreatedat()
-}
-class Review {
-  +Date type
-  +long total
-  +calculateCreatedat()
+  -double score
+  #boolean duration
+  +String code
+  +createAmount()
+  +saveTotal()
 }
 class Product {
-  +String email
-  -String price
-  #String quantity
-  +deleteQuantity()
-  +deleteEmail()
+  -int total
+  +int updatedAt
+  -double code
+  -String address
+  +double id
+  +validateStatus()
 }
-interface Customer {
-  #String status
-  #boolean active
-  #int price
-  +float score
-  -boolean quantity
-  +calculatePrice()
-  +createAddress()
-  +createTotal()
+class Customer {
+  -float amount
+  #double quantity
+  #String description
+  +sendScore()
+  +calculatePhone()
+  +calculateDuration()
+  +deleteQuantity()
 }
 interface Warehouse {
-  #String id
-  #double email
-  +getName()
-  +savePrice()
-  +deleteEmail()
-  +sendPrice()
+  -double updatedAt
+  #Date type
+  -long score
+  +findCreatedat()
+  +calculateQuantity()
+  +setActive()
 }
-Review ..> Order : "1"
-Order --o Warehouse
-Review --* Warehouse
-Customer ..|> Review
-Payment ..> Order : "1"
-note right of Payment : Ecommerce domain
+Payment --> Review : "1"
+Warehouse --> Product : "*"
 @enduml

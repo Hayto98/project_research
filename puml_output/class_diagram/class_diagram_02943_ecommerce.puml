@@ -6,64 +6,51 @@ skinparam ArrowColor #555555
 class Warehouse {
   +long duration
   -long code
-  +processUpdatedat()
-  +deleteId()
+  +createName()
+  +validateStatus()
 }
 class Product {
-  -boolean score
-  +float total
-  +String amount
-  #Date phone
-  +getTotal()
-  +processStatus()
-  +processDescription()
-  +saveTotal()
+  #double id
+  +float duration
+  -long address
+  +getUpdatedat()
+  +updateDuration()
 }
-abstract class Shipment {
-  -float createdAt
-  #long type
-  +Date score
-  #String code
-  +findEmail()
-  +sendDescription()
-  +validateEmail()
-  +getPhone()
+class Shipment {
+  +float name
+  #double total
+  -long note
+  +double status
+  #float score
+  +sendAddress()
 }
-abstract class Customer {
-  #String active
-  #int createdAt
-  +Date quantity
-  -int description
-  -boolean level
-  +cancelNote()
+class Customer {
+  -Date level
+  -float status
+  +saveCreatedat()
+  +updateQuantity()
 }
-interface Coupon {
+class Coupon {
+  -boolean phone
+  #Date price
+  +getQuantity()
+  +setTotal()
+}
+class Cart {
+  +Date level
+  -int id
+  -boolean description
+  +deleteDescription()
+}
+abstract class Order {
   -String phone
   +float type
   #long amount
   +float createdAt
   -int status
-  +validateCreatedat()
+  +createActive()
 }
-abstract class Cart {
-  +int code
-  #String email
-  -double id
-  +String address
-  #double description
-  +sendNote()
-  +cancelCode()
-  +setPrice()
-  +getAddress()
-}
-class Order {
-  +double phone
-  -Date id
-  #float email
-  +setId()
-}
-Order ..> Customer : "*"
-Shipment ..|> Customer
-Cart --o Warehouse
-note right of Warehouse : Ecommerce domain
+Customer --o Cart
+Warehouse --|> Shipment
+Shipment --|> Product
 @enduml

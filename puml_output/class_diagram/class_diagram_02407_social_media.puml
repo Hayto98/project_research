@@ -7,67 +7,59 @@ abstract class Group {
   #int updatedAt
   +Date address
   -Date createdAt
-  +updateDescription()
+  +cancelLevel()
 }
 class Report {
-  #float id
-  -boolean duration
-  +Date level
-  #String score
-  +validateCode()
-  +createId()
-  +processTotal()
-  +saveActive()
+  +String status
+  +Date address
+  -boolean id
+  +deleteType()
 }
-class Profile {
+interface Profile {
+  +long type
+  +double phone
+  +updateAddress()
+  +deleteStatus()
+  +findDuration()
+  +updateScore()
+}
+class Follower {
   +String phone
   -boolean createdAt
-  +saveNote()
-  +getPrice()
-  +getStatus()
-  +validateUpdatedat()
-}
-abstract class Follower {
-  -boolean score
-  -String quantity
-  -Date price
-  +boolean name
-  #int total
-  +sendActive()
+  +sendDuration()
+  +calculateTotal()
+  +processTotal()
+  +setName()
 }
 abstract class Message {
-  #Date name
-  +long type
-  #float duration
-  #double note
-  -String email
-  +setPhone()
-  +validateAmount()
-  +calculateDuration()
-  +saveAddress()
+  +double status
+  #double address
+  +saveName()
+  +setId()
+  +deleteNote()
 }
 abstract class Like {
-  -double updatedAt
-  -String price
-  -int address
-  +float score
-  #float code
-  +cancelAddress()
-  +updateLevel()
-  +findDescription()
+  #Date duration
+  +float total
+  +boolean status
+  #Date note
+  -double id
+  +validateUpdatedat()
 }
 class Album {
-  #Date updatedAt
-  +boolean price
-  #Date phone
-  #long score
-  +createScore()
-  +cancelActive()
+  -String email
+  #double score
+  +long id
+  -int quantity
+  -float note
+  +validateType()
+  +createPrice()
+  +sendQuantity()
 }
-Message ..|> Album
-Message --o Report
-Group --* Message
-Profile --|> Message
-Like --* Report
-note right of Group : Social Media domain
+Follower ..> Report : "*"
+Profile --|> Album
+Follower --o Album
+Group ..|> Follower
+Report ..> Like : "1..*"
+Message ..|> Profile
 @enduml

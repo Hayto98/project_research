@@ -9,50 +9,48 @@ abstract class CheckOut {
   +Date duration
   #float name
   +boolean active
-  +processLevel()
-  +validateAddress()
+  +deleteActive()
+  +cancelActive()
 }
 class Amenity {
+  #long amount
+  #boolean email
   #Date createdAt
   -long id
-  -long address
-  #Date active
-  +saveAddress()
-  +deleteNote()
-  +createDescription()
-}
-abstract class Reservation {
-  #boolean createdAt
-  #float quantity
-  #float amount
-  +getEmail()
-}
-abstract class Restaurant {
-  -long phone
-  +double price
-  +findActive()
-  +getType()
-  +findLevel()
-  +findCreatedat()
-}
-class Staff {
-  +String note
-  +double score
+  +deleteCreatedat()
+  +validateStatus()
   +cancelAmount()
-  +processStatus()
-  +cancelName()
+  +updateAddress()
+}
+class Reservation {
+  #float description
+  -float note
+  +int quantity
+  -int duration
+  +processName()
+}
+class Restaurant {
+  +double code
+  -Date phone
+  #float price
+  +double total
+  #Date address
+  +saveId()
+  +deleteNote()
+}
+abstract class Staff {
+  -boolean id
+  +double createdAt
+  +boolean price
+  +validateDescription()
 }
 interface Booking {
   -Date email
   -boolean type
   +String note
-  +processCode()
-  +deleteNote()
+  +sendName()
+  +createTotal()
 }
+Amenity --o Restaurant
 CheckOut ..|> Staff
-Reservation --* Amenity
-Restaurant --|> Amenity
-Booking --o CheckOut
-Staff --> Amenity : "*"
-note right of CheckOut : Hotel domain
 @enduml

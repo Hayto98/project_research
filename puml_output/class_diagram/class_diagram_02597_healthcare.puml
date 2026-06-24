@@ -8,64 +8,57 @@ class Treatment {
   +long amount
   -int status
   -float updatedAt
-  +processQuantity()
-  +processId()
-  +validateDuration()
+  +saveAmount()
+  +createQuantity()
+  +createName()
 }
 class Hospital {
+  #Date duration
+  #Date name
+  -float code
   #double description
-  #double score
-  +validateDuration()
+  +setEmail()
 }
-class Prescription {
-  +int score
-  #double status
-  +int type
-  +String id
-  -Date phone
-  +deleteUpdatedat()
-  +sendLevel()
-  +getStatus()
-  +createDuration()
+interface Prescription {
+  #String total
+  -float score
+  +cancelId()
 }
-interface Doctor {
-  #double name
-  +float createdAt
-  #boolean status
-  +String updatedAt
-  #int level
-  +deleteEmail()
+class Doctor {
+  +String level
+  +float note
+  -Date code
+  +setType()
+  +validateDescription()
+  +processDuration()
   +sendQuantity()
 }
 interface Ward {
-  +int total
-  -int description
-  +int price
-  #String id
-  +Date amount
-  +updatePrice()
-  +processActive()
-  +sendDuration()
+  #boolean status
+  -String quantity
+  +cancelEmail()
+  +savePrice()
 }
 class MedicalRecord {
-  -double id
-  #long email
-  +deleteEmail()
-  +deleteQuantity()
-  +saveAmount()
-  +processType()
-}
-class Billing {
-  #int total
-  +int createdAt
-  -String duration
-  #boolean note
+  +boolean type
+  +int description
   +long level
-  +setDuration()
-  +setActive()
+  +cancelAmount()
+  +calculateAmount()
+  +sendPrice()
 }
-Treatment ..> Hospital : "1"
-Doctor --o Treatment
-Ward ..> Billing : "0..1"
-note right of Treatment : Healthcare domain
+abstract class Billing {
+  #boolean duration
+  #int price
+  +int id
+  +deleteScore()
+  +cancelEmail()
+  +getTotal()
+  +findLevel()
+}
+Treatment ..> Billing : "1..*"
+Hospital --o Doctor
+Ward ..> Billing : "1..*"
+Prescription --o Billing
+MedicalRecord --o Prescription
 @enduml

@@ -4,29 +4,32 @@ skinparam shadowing true
 class Inventory {
   #float status
   #double updatedAt
-  +getDescription()
+  +setName()
 }
-interface Package {
+class Package {
   #float score
   +long note
-  +processUpdatedat()
-  +deletePrice()
+  +setPrice()
+  +cancelCode()
 }
 class Customer {
-  +int id
-  #boolean note
-  +boolean type
-  +int price
-  -long createdAt
-  +findQuantity()
+  #Date price
+  #String updatedAt
+  -float duration
+  +createPrice()
+  +updateDescription()
+  +deleteAddress()
+  +processUpdatedat()
 }
 interface Tracking {
-  -String address
   -long active
-  #Date name
-  +calculatePhone()
+  #Date code
+  +Date updatedAt
+  +calculateActive()
+  +sendStatus()
+  +deleteAddress()
 }
-Tracking --* Inventory
-Customer --> Inventory : "1"
-note right of Inventory : Logistics domain
+Inventory --|> Package
+Customer ..> Package : "1"
+Tracking ..|> Package
 @enduml

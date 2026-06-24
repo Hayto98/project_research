@@ -9,32 +9,37 @@ class Exam {
   -boolean name
   #int total
   -String updatedAt
-  +sendAmount()
-  +findAddress()
+  +saveActive()
+  +processCreatedat()
 }
 class Student {
-  #boolean score
-  -boolean duration
-  +createStatus()
-  +calculateNote()
-  +deleteDescription()
+  #long id
+  -String level
+  -double duration
+  +int type
+  +setScore()
+  +sendCode()
+  +saveLevel()
 }
 class Book {
-  -String id
-  #boolean price
-  #Date note
-  -boolean status
-  #double name
-  +saveActive()
-  +calculateId()
+  +boolean duration
+  #boolean note
+  #long status
+  #boolean name
+  -int level
+  +setScore()
+  +processCode()
+  +cancelCode()
+  +createDuration()
 }
-abstract class Attendance {
-  +double code
-  #int email
-  +String type
+class Attendance {
+  -boolean type
   +int updatedAt
-  -long duration
-  +calculateStatus()
+  +String code
+  +long name
+  +savePhone()
+  +getPhone()
+  +validateEmail()
 }
 class Enrollment {
   -double active
@@ -42,32 +47,30 @@ class Enrollment {
   #long price
   +boolean phone
   #String id
-  +findActive()
-  +calculateLevel()
-  +updateStatus()
+  +getActive()
+  +createDescription()
+  +findEmail()
 }
-interface Teacher {
-  #float name
-  +boolean score
-  +boolean level
-  +Date status
-  +cancelScore()
-  +updateDuration()
-  +setDescription()
-  +createQuantity()
+abstract class Teacher {
+  +boolean status
+  #String active
+  #float email
+  +setAddress()
+  +cancelEmail()
 }
 interface Library {
-  -double email
-  -int level
-  #int active
-  -Date type
-  #boolean address
-  +updateCreatedat()
-  +sendDuration()
-  +processPrice()
+  #String note
+  #int score
+  -long createdAt
+  +deleteCreatedat()
+  +saveType()
+  +getCode()
+  +validateTotal()
 }
-Enrollment --* Exam
-Exam --|> Book
-Enrollment --* Library
-note right of Exam : Education domain
+Attendance --o Book
+Attendance ..|> Library
+Teacher --* Student
+Teacher --> Enrollment : "1..*"
+Student --> Library : "*"
+Library ..|> Attendance
 @enduml

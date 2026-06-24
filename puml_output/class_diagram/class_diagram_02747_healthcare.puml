@@ -5,42 +5,42 @@ interface Patient {
   #String name
   #String type
   -boolean code
-  +deleteDuration()
-  +findTotal()
-  +saveDuration()
-  +getStatus()
+  +deleteScore()
+  +sendActive()
+  +createId()
+  +createLevel()
 }
-class Prescription {
-  -boolean name
-  -int active
-  +deleteType()
-}
-class LabTest {
-  -String duration
-  +int phone
-  #Date status
-  #String email
-  #double note
-  +getAmount()
-}
-class Treatment {
-  #int address
-  #int type
-  -long id
+abstract class Prescription {
+  +String status
+  #long id
+  +createScore()
+  +calculateType()
+  +updateDuration()
   +processUpdatedat()
-  +saveName()
-  +getActive()
-  +createPrice()
 }
-class Nurse {
+abstract class LabTest {
   #double type
-  +Date level
-  +deleteDuration()
-  +processNote()
-  +setLevel()
+  -String phone
+  +int status
+  #Date email
+  +saveTotal()
 }
-LabTest ..|> Nurse
-Patient --* Treatment
-Treatment --> Nurse : "1..*"
-note right of Patient : Healthcare domain
+abstract class Treatment {
+  #String name
+  +long amount
+  +validateTotal()
+  +calculateDescription()
+  +cancelType()
+  +updatePrice()
+}
+interface Nurse {
+  -double duration
+  -int description
+  #Date note
+  +updateDuration()
+}
+LabTest ..> Treatment : "1"
+Patient --> Treatment : "*"
+Prescription ..|> LabTest
+Nurse --o Treatment
 @enduml

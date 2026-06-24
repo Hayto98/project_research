@@ -6,65 +6,58 @@ skinparam shadowing true
 class Library {
   +double note
   #int phone
-  +validateQuantity()
-  +findDuration()
+  +saveScore()
+  +calculateTotal()
+  +createEmail()
   +calculateDescription()
-  +getPhone()
 }
-interface Classroom {
-  +int active
-  +boolean id
-  +double phone
-  +int createdAt
-  -String level
-  +sendUpdatedat()
-  +getType()
-  +updateDescription()
-  +deleteActive()
+class Classroom {
+  #float description
+  -int id
+  +int phone
+  +int type
+  #int level
+  +cancelEmail()
+  +validateCreatedat()
+  +validateAmount()
+  +validateId()
 }
-class Attendance {
-  #int updatedAt
-  #Date active
-  +float id
-  -boolean total
+abstract class Attendance {
+  +int id
+  #int type
+  -int updatedAt
   +cancelCreatedat()
-  +sendId()
-  +createActive()
+}
+class Course {
+  #int note
+  #Date score
+  +long total
+  +validateType()
+  +deleteActive()
+  +createDuration()
+  +setAmount()
+}
+interface Schedule {
+  #int total
+  #int note
+  -int price
+  #Date phone
   +sendNote()
 }
-abstract class Course {
-  #long duration
-  #int address
-  #int total
-  -int note
-  #Date price
-  +updateDuration()
-}
-class Schedule {
+interface Assignment {
+  -long createdAt
   +String description
-  +boolean address
-  -Date email
-  +setDescription()
-}
-class Assignment {
-  -int address
-  +boolean score
-  +boolean note
-  +double level
-  -Date phone
-  +saveLevel()
-  +deleteId()
-  +processAmount()
+  +findUpdatedat()
 }
 class Teacher {
-  -int status
-  #boolean duration
-  #Date description
-  +sendName()
-  +validateTotal()
-  +validateAmount()
+  #float status
+  +double description
+  +setAddress()
+  +sendCode()
+  +calculateAmount()
 }
-Attendance ..> Classroom : "1"
-Classroom ..> Course : "1"
-note right of Library : Education domain
+Course ..|> Classroom
+Schedule --> Classroom : "0..1"
+Course ..> Teacher : "1..*"
+Assignment ..|> Schedule
 @enduml

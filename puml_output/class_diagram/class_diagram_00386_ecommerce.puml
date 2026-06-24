@@ -7,55 +7,64 @@ class Invoice {
   -double createdAt
   #boolean level
   -double score
-  +validatePhone()
-  +cancelPrice()
-  +processDescription()
+  +calculateName()
+  +createAmount()
+  +validateActive()
 }
-interface Supplier {
-  -boolean active
-  +int score
-  +Date phone
-  -long description
-  +deleteAddress()
-  +processCreatedat()
-}
-abstract class Category {
-  -int quantity
-  +long email
-  -String amount
-  +setDescription()
+abstract class Supplier {
+  +float description
+  -boolean level
+  +int email
+  +Date active
+  -long phone
+  +calculateAddress()
   +updateAddress()
 }
-class Product {
-  -int phone
-  +long updatedAt
-  +setName()
-  +setTotal()
-  +updateEmail()
+class Category {
+  +long createdAt
+  +float price
+  +long amount
+  -String quantity
+  +String email
+  +updateCode()
+  +findType()
 }
-interface Order {
-  #float description
-  -double score
-  -Date status
-  #Date createdAt
-  +setDescription()
+class Product {
+  -int createdAt
+  +long name
+  -String phone
+  +String updatedAt
+  +sendEmail()
+  +deleteName()
+  +cancelDescription()
+  +cancelAmount()
+}
+class Order {
+  #float score
+  -double status
+  -Date createdAt
+  +validateId()
 }
 class Payment {
-  +int description
-  +boolean email
-  +validateDescription()
-  +calculateNote()
-  +validateQuantity()
+  +int code
+  +boolean description
+  #boolean email
+  +calculateCreatedat()
+  +sendDuration()
+  +getEmail()
 }
 abstract class Shipment {
-  #String amount
-  #String phone
-  -String email
-  +updateScore()
-  +findId()
+  -long phone
+  #String quantity
+  #String type
+  -String createdAt
+  #float amount
+  +processDuration()
+  +createType()
 }
+Payment --* Invoice
 Shipment --o Supplier
 Invoice --* Supplier
 Payment --* Product
-note right of Invoice : Ecommerce domain
+Product ..> Order : "0..1"
 @enduml

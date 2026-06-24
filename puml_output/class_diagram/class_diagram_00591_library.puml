@@ -6,49 +6,47 @@ skinparam defaultFontSize 11
 class Catalog {
   +double amount
   +String price
-  +validateActive()
+  +findQuantity()
 }
-class Librarian {
-  #Date total
-  #float note
-  +Date phone
-  #int price
-  +setDescription()
-  +validateCreatedat()
-  +createPhone()
+interface Librarian {
+  -long quantity
+  -boolean total
+  +cancelScore()
+  +saveStatus()
 }
 interface Publisher {
-  -long code
-  +double type
-  -double status
-  #long phone
-  +createAmount()
-}
-class Shelf {
-  +String active
-  #long updatedAt
   -int quantity
-  -long name
-  +validateNote()
+  -long code
+  #boolean description
+  +cancelStatus()
+  +findType()
+  +deleteActive()
+}
+interface Shelf {
+  -String phone
+  -long email
+  +savePrice()
+  +saveScore()
+  +sendTotal()
+  +calculateScore()
 }
 class Reservation {
-  #int level
-  +long email
-  +double quantity
-  +long amount
-  +int duration
-  +cancelUpdatedat()
+  +long level
+  +String address
+  +Date active
+  +getAddress()
+  +getTotal()
+  +updateEmail()
 }
-interface Member {
-  -double phone
-  -long duration
-  #int status
-  +deleteDuration()
-  +setCreatedat()
+class Member {
+  +Date address
+  -boolean note
+  +setTotal()
+  +getDuration()
+  +processUpdatedat()
 }
-Catalog --> Publisher : "1..*"
-Shelf --|> Publisher
-Shelf --|> Librarian
-Catalog --o Shelf
-note right of Catalog : Library domain
+Member --|> Librarian
+Publisher --o Catalog
+Catalog ..|> Publisher
+Librarian --|> Reservation
 @enduml

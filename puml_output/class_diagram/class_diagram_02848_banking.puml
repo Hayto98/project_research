@@ -7,52 +7,53 @@ class Deposit {
   +boolean name
   +double duration
   #String level
-  +cancelLevel()
+  +getStatus()
 }
-class Transaction {
+interface Transaction {
+  +String createdAt
   +int type
-  +long name
-  +Date level
-  +validateCode()
-  +processStatus()
-  +processUpdatedat()
+  -int name
+  +sendLevel()
+  +createActive()
+  +processCreatedat()
 }
-interface Loan {
-  #float duration
+class Loan {
+  +float status
+  -float type
+  #int updatedAt
+  #float total
   -boolean name
-  +float createdAt
-  -Date note
-  -boolean score
-  +updateType()
   +saveStatus()
-  +processCode()
-  +processCode()
+  +cancelAddress()
 }
-class Account {
-  +Date name
-  +int email
-  +long phone
-  #boolean level
-  +getDuration()
-  +saveAddress()
-}
-abstract class Teller {
-  +String status
-  -boolean total
+abstract class Account {
+  -Date updatedAt
+  +Date type
+  +boolean status
+  -String note
+  -long code
+  +createAddress()
   +calculateUpdatedat()
+  +validateCode()
 }
-abstract class Interest {
-  +long createdAt
-  -float address
-  +int price
-  -int description
-  +cancelNote()
-  +validateStatus()
-  +createId()
-  +deleteTotal()
+class Teller {
+  +String email
+  #float active
+  #long level
+  +validatePhone()
+  +updateUpdatedat()
+  +cancelCreatedat()
+  +setUpdatedat()
 }
-Interest --o Account
-Interest --|> Loan
-Account --* Loan
-note right of Deposit : Banking domain
+class Interest {
+  -boolean score
+  -float status
+  +long price
+  -int updatedAt
+  +calculateScore()
+}
+Deposit --o Transaction
+Transaction --> Teller : "*"
+Teller --* Account
+Deposit --|> Loan
 @enduml

@@ -6,43 +6,40 @@ skinparam defaultFontSize 13
 interface Hospital {
   +float duration
   -double description
-  +validateTotal()
-  +setUpdatedat()
+  +setEmail()
+  +findAmount()
 }
 class Billing {
+  #long description
+  #long address
   #Date id
-  #String address
-  #boolean score
-  +String level
-  +cancelQuantity()
+  +processNote()
 }
-abstract class MedicalRecord {
-  -float type
-  +double total
-  -long quantity
-  +setTotal()
-  +validateEmail()
+interface MedicalRecord {
+  #Date status
+  -Date code
+  +getTotal()
+  +validateTotal()
+  +processScore()
+  +getId()
 }
-class Nurse {
-  +String score
-  #long amount
-  -Date id
-  +String email
-  +processCreatedat()
-  +findTotal()
-  +createActive()
-  +setCreatedat()
+abstract class Nurse {
+  -Date price
+  #boolean updatedAt
+  #float total
+  #Date address
+  +getType()
+  +setNote()
 }
 class Doctor {
-  +float level
-  +String total
-  #int score
-  -int name
-  +cancelUpdatedat()
-  +processPrice()
+  #String name
+  -int level
+  +Date phone
+  -double amount
+  +saveId()
+  +calculateAmount()
 }
-Doctor --|> Nurse
-Hospital --o MedicalRecord
-Hospital ..> Billing : "0..1"
-note right of Hospital : Healthcare domain
+Billing --* Nurse
+Doctor ..|> Hospital
+MedicalRecord --> Doctor : "*"
 @enduml

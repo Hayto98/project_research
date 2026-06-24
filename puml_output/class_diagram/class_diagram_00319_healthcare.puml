@@ -5,36 +5,31 @@ interface Patient {
   -Date code
   #long quantity
   -float email
-  +setPrice()
-  +createId()
+  +cancelStatus()
+  +sendScore()
 }
-interface Hospital {
-  +float updatedAt
-  #int code
-  #Date createdAt
-  #long price
-  #float address
-  +updateDescription()
+class Hospital {
+  +String level
+  +double total
+  +validateQuantity()
+  +sendStatus()
+  +setAddress()
 }
-interface Doctor {
-  #long total
-  #long amount
-  +createCode()
-  +sendAddress()
+class Doctor {
+  -int id
+  #long createdAt
+  #long description
+  #Date duration
+  +updateLevel()
+  +setDescription()
 }
 interface Billing {
-  #boolean quantity
-  +long name
-  +Date price
-  +Date phone
-  +Date total
-  +deleteDescription()
-  +getCreatedat()
-  +calculatePrice()
-  +deleteAmount()
+  #Date score
+  -float type
+  -double quantity
+  #boolean name
+  +getNote()
 }
-Hospital ..> Billing : "*"
-Billing --> Hospital : "1..*"
-Billing --|> Patient
-note right of Patient : Healthcare domain
+Hospital --|> Doctor
+Billing ..> Patient : "0..1"
 @enduml

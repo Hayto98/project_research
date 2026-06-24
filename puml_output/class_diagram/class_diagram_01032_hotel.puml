@@ -8,38 +8,32 @@ abstract class Guest {
   +boolean name
   #double createdAt
   -Date description
-  +getEmail()
+  +sendTotal()
 }
-abstract class CheckOut {
-  +int level
+class CheckOut {
+  #double duration
+  +int type
   +Date amount
   #float note
-  -String duration
-  +boolean type
-  +calculateId()
-  +findActive()
-  +validateCode()
-  +saveCreatedat()
+  -String score
+  +getScore()
 }
-class Restaurant {
-  +long amount
-  +long score
-  +double status
-  #Date description
-  +Date quantity
-  +getPhone()
+abstract class Restaurant {
+  +double id
+  +float active
+  #String address
+  +boolean code
+  #long createdAt
+  +processDescription()
 }
 class Payment {
-  #Date level
-  #boolean type
-  +int status
-  -boolean phone
-  #Date duration
-  +createDescription()
-  +sendNote()
-  +deletePhone()
-  +calculateAddress()
+  +Date updatedAt
+  -int price
+  #double code
+  #double status
+  +setCode()
 }
-Guest --|> CheckOut
-note right of Guest : Hotel domain
+Payment ..> Restaurant : "0..1"
+CheckOut --> Payment : "*"
+Restaurant ..|> Payment
 @enduml

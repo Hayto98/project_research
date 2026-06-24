@@ -8,51 +8,46 @@ class Customer {
   #double address
   -long phone
   +int quantity
-  +validatePrice()
+  +saveScore()
   +createDuration()
-  +findTotal()
+  +validateLevel()
 }
 class Transfer {
-  -String price
-  -double note
-  +String name
-  +int updatedAt
-  +calculateDescription()
-  +updateName()
+  +long code
+  +float address
+  -double price
+  +String note
+  +int name
+  +getAddress()
+  +findPhone()
 }
 class Transaction {
-  #float level
-  -int status
-  #boolean score
-  -double type
-  +double createdAt
-  +setAmount()
-  +saveQuantity()
+  #Date status
+  #double score
+  +calculateDuration()
 }
-class Branch {
-  #int address
-  #Date active
-  -float updatedAt
-  +processLevel()
+abstract class Branch {
+  -double price
+  +double updatedAt
+  #int score
+  +setQuantity()
 }
 class Interest {
-  -int name
-  #long amount
-  #Date total
-  +int price
-  +double email
-  +setName()
+  #int address
+  #int amount
+  #Date duration
+  -float active
+  +createEmail()
 }
-class Account {
-  +boolean note
-  -Date code
-  +sendEmail()
-  +updateDescription()
-  +validateAddress()
-  +validateType()
+abstract class Account {
+  -double price
+  -long name
+  +Date amount
+  +processId()
+  +cancelUpdatedat()
+  +validateId()
 }
-Account ..|> Transaction
-Interest --|> Branch
-Customer ..> Transfer : "0..1"
-note right of Customer : Banking domain
+Transfer --> Branch : "1"
+Customer --|> Account
+Customer --|> Branch
 @enduml

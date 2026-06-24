@@ -4,43 +4,48 @@ class Housekeeping {
   -float createdAt
   #boolean price
   #double code
-  +processScore()
-  +createNote()
-  +saveEmail()
+  +createName()
+  +setDuration()
+  +saveActive()
 }
 class Reservation {
-  #long total
-  #float active
-  +findId()
+  #float email
+  +Date code
+  +int level
+  -boolean total
+  #int quantity
+  +updateLevel()
 }
 class Room {
-  -String active
-  #int duration
-  #long createdAt
-  #float id
-  +processDuration()
+  +double duration
+  #Date address
+  #float active
+  +processUpdatedat()
+  +saveNote()
 }
-class Service {
-  #boolean createdAt
-  +boolean note
-  +long duration
-  +findCreatedat()
-  +getLevel()
+abstract class Service {
+  +long score
+  +Date code
+  +String duration
+  +deleteLevel()
 }
 class Payment {
-  #long updatedAt
-  -boolean score
-  +setScore()
-  +validateStatus()
+  #int score
+  +float quantity
+  #float price
+  +setStatus()
+  +deleteDescription()
+  +saveType()
 }
-interface Invoice {
-  +long id
-  -int type
-  +createActive()
-  +getDuration()
-  +validateStatus()
+class Invoice {
+  -long type
+  +long name
+  +createUpdatedat()
+  +updateCode()
+  +savePhone()
 }
-Invoice --|> Reservation
-Payment ..> Service : "*"
-note right of Housekeeping : Hotel domain
+Housekeeping ..> Invoice : "0..1"
+Housekeeping --o Payment
+Invoice --* Service
+Payment --o Room
 @enduml

@@ -6,50 +6,56 @@ skinparam shadowing true
 class Grade {
   #int score
   -String quantity
-  +createId()
+  +validateAddress()
+  +sendTotal()
   +createQuantity()
-  +createPrice()
-  +getName()
+  +cancelAddress()
 }
 class Assignment {
-  +int code
-  -boolean address
-  +getPhone()
-  +sendAddress()
+  #float id
+  #long name
+  +int duration
+  -boolean code
+  #boolean active
+  +processName()
+  +getActive()
 }
 class Student {
-  -double id
-  -int score
-  +validateDescription()
-  +updateEmail()
-}
-abstract class Classroom {
-  -String active
-  -float email
-  -int id
-  #double description
-  #float code
-  +calculateType()
-}
-class Library {
-  #float type
-  -long amount
-  +processPhone()
-  +deleteLevel()
-  +setLevel()
-}
-class Attendance {
-  #float active
+  -double updatedAt
+  +int status
+  -float id
   +int note
-  -String id
-  +float type
-  #double total
-  +sendQuantity()
-  +calculateUpdatedat()
-  +cancelQuantity()
+  +getStatus()
+  +processType()
+  +saveCode()
 }
-Grade ..> Assignment : "1"
-Student --> Attendance : "1..*"
-Student --* Library
-note right of Grade : Education domain
+interface Classroom {
+  +float id
+  -float description
+  -int code
+  #double total
+  +deleteAmount()
+}
+abstract class Library {
+  #float score
+  -long status
+  -double type
+  -float amount
+  +cancelActive()
+  +deleteQuantity()
+}
+interface Attendance {
+  #String note
+  -Date active
+  #Date duration
+  +updateId()
+  +deleteLevel()
+  +processQuantity()
+  +processPrice()
+}
+Grade ..> Assignment : "*"
+Attendance --> Student : "1..*"
+Classroom --> Assignment : "1..*"
+Assignment ..> Grade : "0..1"
+Attendance --* Grade
 @enduml

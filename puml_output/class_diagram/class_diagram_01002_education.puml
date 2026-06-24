@@ -8,51 +8,54 @@ class Enrollment {
   #int score
   #boolean total
   #String quantity
-  +validateLevel()
-  +calculateTotal()
+  +getStatus()
+  +updateTotal()
 }
-class Book {
-  -long level
+interface Book {
+  -Date total
+  +long quantity
   -long type
-  #float amount
-  -boolean email
-  #Date createdAt
-  +processCode()
-  +setDuration()
+  -Date score
+  -boolean amount
+  +cancelCode()
+  +sendType()
 }
-interface Course {
-  #String status
-  -String updatedAt
-  +cancelName()
-  +updateNote()
-  +processDescription()
-  +setType()
+class Course {
+  +int duration
+  #String id
+  +setUpdatedat()
+  +updateEmail()
+  +saveDuration()
+  +saveEmail()
 }
-interface Assignment {
-  +long id
-  -Date phone
-  #double total
-  +cancelAddress()
-  +deleteLevel()
-  +createActive()
+class Assignment {
+  #String note
+  -double description
+  +long status
+  -Date type
+  #double createdAt
+  +getUpdatedat()
+  +setActive()
+  +setId()
 }
-abstract class Teacher {
-  +float active
-  -int note
-  -Date name
-  +processNote()
-  +createId()
-}
-interface Schedule {
-  #Date address
-  +boolean name
-  #String code
+class Teacher {
+  -Date level
+  #Date quantity
+  +boolean active
+  +saveTotal()
+  +deleteNote()
+  +deleteAddress()
   +sendDescription()
-  +updateStatus()
 }
-Teacher --|> Course
-Teacher ..> Assignment : "0..1"
-Assignment ..|> Teacher
-Assignment ..> Schedule : "*"
-note right of Enrollment : Education domain
+class Schedule {
+  -long total
+  +Date updatedAt
+  #int note
+  +saveEmail()
+  +getType()
+  +calculatePrice()
+}
+Teacher ..|> Enrollment
+Teacher ..|> Book
+Enrollment --> Course : "1..*"
 @enduml

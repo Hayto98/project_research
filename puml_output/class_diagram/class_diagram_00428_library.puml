@@ -7,36 +7,33 @@ class Renewal {
   #float description
   +Date score
   #float address
-  +findType()
   +setCode()
+  +cancelCode()
 }
 class Loan {
-  #int duration
-  #double note
-  -double code
-  +float status
-  -double amount
-  +validateLevel()
-  +getPhone()
-  +processQuantity()
+  #boolean status
+  -Date active
+  +processAmount()
+  +updateName()
+  +deleteLevel()
+  +sendActive()
 }
-interface Branch {
-  +long status
-  -int amount
-  +saveEmail()
+class Branch {
+  +float type
+  -double note
+  -long duration
+  +createAmount()
 }
-interface Publisher {
-  #long price
-  #int score
-  -String phone
-  #boolean email
-  +getLevel()
-  +setDuration()
-  +createStatus()
-  +saveUpdatedat()
+abstract class Publisher {
+  +long level
+  -int code
+  +Date status
+  -boolean amount
+  +saveCode()
+  +saveActive()
+  +deleteCode()
 }
-Publisher --o Branch
-Loan --* Publisher
-Publisher ..> Renewal : "*"
-note right of Renewal : Library domain
+Branch ..|> Publisher
+Branch --> Renewal : "*"
+Renewal --|> Branch
 @enduml

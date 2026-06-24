@@ -4,10 +4,10 @@ skinparam classBackgroundColor #E8F4FA
 skinparam classBorderColor #2C7DA0
 skinparam shadowing true
 left to right direction
-actor "Dispatcher" as Dispatcher
-actor "Driver" as Driver
-actor "Customer" as Customer
-actor "Warehouse Staff" as WarehouseStaff
+actor "Dispatcher" as D
+actor "Driver" as D1
+actor "Customer" as C
+actor "Warehouse Staff" as WS
 rectangle "Logistics System" {
   usecase "Load Package" as UC_LoadPackage
   usecase "Schedule Pickup" as UC_SchedulePickup
@@ -16,12 +16,12 @@ rectangle "Logistics System" {
   usecase "Update Inventory" as UC_UpdateInventory
   usecase "Report Issue" as UC_ReportIssue
 }
-Dispatcher --> UC_UpdateInventory
-Dispatcher --> UC_SchedulePickup
-Dispatcher --> UC_LoadPackage
-Driver --> UC_UpdateInventory
-Customer --> UC_UpdateInventory
-WarehouseStaff --> UC_SchedulePickup
-WarehouseStaff --> UC_DeliverPackage
+D --> UC_UpdateInventory
+D --> UC_SchedulePickup
+D --> UC_LoadPackage
+D1 --> UC_UpdateInventory
+C --> UC_UpdateInventory
+WS --> UC_SchedulePickup
+WS --> UC_DeliverPackage
 UC_TrackShipment ..> UC_LoadPackage : <<extend>>
 @enduml

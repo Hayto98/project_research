@@ -5,66 +5,63 @@ skinparam defaultFontSize 11
 class Treatment {
   #double active
   +String createdAt
-  +saveStatus()
-  +sendCreatedat()
-  +setCode()
+  +setScore()
+  +deleteQuantity()
+  +findPrice()
 }
 class Patient {
-  #float level
-  #Date address
-  -int score
-  -int code
-  +long id
-  +processAmount()
-  +setPhone()
-  +setType()
-  +sendActive()
-}
-abstract class Insurance {
-  +double id
-  +long name
-  +processStatus()
+  #Date code
+  #double name
+  +calculateUpdatedat()
+  +sendAmount()
   +saveLevel()
 }
-interface Nurse {
-  +String quantity
-  -String status
-  +setActive()
-  +processStatus()
-  +sendAmount()
+class Insurance {
+  +double active
+  +String type
+  +createPrice()
+  +processTotal()
+  +processUpdatedat()
 }
-abstract class LabTest {
+class Nurse {
+  #double code
+  +float type
+  +String score
+  +double active
+  +cancelAddress()
+  +setAddress()
+}
+class LabTest {
+  +int status
+  +long level
+  +Date score
+  -float name
+  +float quantity
+  +updateName()
+  +createStatus()
+  +createEmail()
+  +deleteId()
+}
+class Ward {
+  -float type
   #float description
   +double updatedAt
   #int phone
-  #float score
-  #boolean note
-  +setTotal()
-  +saveTotal()
-  +saveLevel()
+  #float active
+  +findEmail()
+  +cancelEmail()
+  +getAddress()
 }
-interface Ward {
+abstract class Billing {
   -String name
   +float duration
   #boolean total
   -boolean note
   -Date quantity
-  +saveDescription()
-  +processPrice()
+  +updateAddress()
+  +getStatus()
 }
-abstract class Billing {
-  -String total
-  +boolean note
-  #boolean name
-  -float active
-  +findStatus()
-  +processActive()
-  +calculateUpdatedat()
-  +processName()
-}
-LabTest ..|> Treatment
-Patient ..> Insurance : "1..*"
-Ward ..> Billing : "0..1"
-Nurse ..> LabTest : "1..*"
-note right of Treatment : Healthcare domain
+Billing --o Nurse
+Nurse --o Insurance
+Nurse --> Treatment : "*"
 @enduml

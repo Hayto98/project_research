@@ -7,35 +7,32 @@ interface Shipment {
   #long address
   #int code
   -float updatedAt
-  +processActive()
-  +setEmail()
+  +validateLevel()
+  +sendCode()
 }
-class Inventory {
-  +Date type
-  #boolean quantity
-  +boolean total
-  +sendDuration()
-  +cancelId()
+interface Inventory {
+  +Date email
+  -long phone
+  +setDescription()
+  +findStatus()
+  +validateStatus()
+  +calculateDuration()
 }
-class Manifest {
-  #String quantity
+interface Manifest {
+  +boolean active
+  #boolean duration
+  #Date level
+  +cancelNote()
+}
+abstract class Tracking {
   #String phone
-  +float updatedAt
-  +boolean note
-  -float address
-  +cancelUpdatedat()
-  +saveType()
+  #String updatedAt
+  +float note
+  +boolean address
+  +validateDescription()
+  +setActive()
+  +saveDuration()
 }
-class Tracking {
-  -double phone
-  +boolean amount
-  #int email
-  +deleteEmail()
-  +deleteCode()
-  +sendCreatedat()
-  +deleteScore()
-}
-Inventory --> Tracking : "*"
-Manifest --|> Shipment
-note right of Shipment : Logistics domain
+Inventory --o Manifest
+Shipment ..|> Manifest
 @enduml

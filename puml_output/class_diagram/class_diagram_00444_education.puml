@@ -4,37 +4,39 @@ skinparam shadowing true
 abstract class Classroom {
   -double id
   +boolean note
-  +updateActive()
-  +savePrice()
-  +processAddress()
-  +findNote()
+  +updateStatus()
+  +updateNote()
+  +setScore()
+  +deleteEmail()
 }
 abstract class Grade {
-  +String duration
-  +Date name
-  -long description
-  +String quantity
-  +findType()
-  +saveType()
-  +saveTotal()
+  +long address
+  +String note
+  +Date level
+  -long email
+  +String name
+  +deleteType()
+  +getId()
+  +cancelPrice()
 }
-class Exam {
-  #double total
-  #float code
-  +processId()
-  +cancelDescription()
-  +sendEmail()
+abstract class Exam {
+  #float amount
+  #boolean code
+  #float total
+  -double level
+  +boolean price
+  +createUpdatedat()
+  +sendAddress()
 }
 class Assignment {
   -String email
   #long level
   +Date total
   +float updatedAt
-  +createAddress()
-  +deleteQuantity()
+  +updateCode()
+  +getStatus()
 }
-Grade --> Classroom : "1"
-Assignment ..> Grade : "0..1"
+Exam --* Classroom
 Assignment --|> Classroom
-note right of Classroom : Education domain
+Classroom ..> Exam : "*"
 @enduml

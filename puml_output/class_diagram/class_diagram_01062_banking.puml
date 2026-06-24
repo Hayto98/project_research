@@ -8,58 +8,57 @@ class Customer {
   +Date price
   -Date level
   +boolean duration
-  +deleteActive()
-  +calculateId()
-  +deleteName()
-  +saveDuration()
+  +createCode()
+  +sendQuantity()
+  +processType()
+  +sendTotal()
 }
-abstract class Beneficiary {
-  +Date createdAt
-  #Date level
-  -double status
-  +deleteTotal()
-  +saveTotal()
+class Beneficiary {
+  #float duration
+  +int total
+  +saveAddress()
 }
-abstract class Account {
-  #long createdAt
-  #boolean code
-  +setQuantity()
+interface Account {
+  -String total
+  +String createdAt
+  #long description
+  #boolean duration
+  +String active
+  +findStatus()
+  +getDuration()
+  +sendLevel()
 }
 class Withdrawal {
   #Date status
   #int score
   #String id
-  +cancelType()
   +findName()
+  +validateUpdatedat()
 }
 class Transaction {
-  #int duration
-  -float score
-  -boolean active
-  #double note
-  +Date updatedAt
-  +findType()
+  -int type
+  #int score
+  -float active
+  +createUpdatedat()
+  +setScore()
+  +calculateQuantity()
+  +setType()
 }
-class Teller {
-  -float score
-  -String price
-  +Date status
-  -float phone
-  +updateName()
+interface Teller {
+  -boolean type
+  -float description
+  +processStatus()
 }
-interface Loan {
-  +long price
-  +Date amount
-  -double status
-  +saveName()
-  +validateUpdatedat()
-  +sendDuration()
-  +validateId()
+class Loan {
+  +float code
+  +String status
+  #boolean address
+  +double active
+  +setStatus()
+  +cancelEmail()
 }
-Beneficiary --* Withdrawal
-Customer --> Teller : "0..1"
-Beneficiary --|> Loan
-Beneficiary ..> Account : "*"
-Teller ..|> Beneficiary
-note right of Customer : Banking domain
+Loan ..> Customer : "1..*"
+Withdrawal ..> Loan : "1"
+Account --> Beneficiary : "1..*"
+Customer ..|> Withdrawal
 @enduml

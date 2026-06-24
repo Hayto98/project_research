@@ -8,38 +8,37 @@ interface Customer {
   +String email
   -double status
   +String createdAt
-  +saveCode()
+  +cancelPrice()
+  +findType()
   +processAmount()
-  +updateAmount()
 }
-interface Shipment {
-  +int total
-  #boolean amount
-  #double phone
-  #boolean duration
-  +float code
-  +deletePrice()
-  +cancelEmail()
-  +sendAddress()
+abstract class Shipment {
+  -boolean updatedAt
+  +Date amount
+  -boolean note
+  +cancelName()
+  +findType()
+  +setDescription()
+  +saveId()
 }
-interface Inventory {
-  +boolean code
-  +int duration
-  +boolean total
-  +long amount
-  +Date createdAt
-  +calculateQuantity()
-  +cancelId()
-  +processAmount()
-  +getDescription()
+class Inventory {
+  #long active
+  #Date id
+  -boolean email
+  #boolean description
+  #double price
+  +setId()
 }
 class Depot {
-  -boolean level
-  +float id
-  +calculatePrice()
+  +boolean amount
+  +long createdAt
+  +Date id
+  -double score
+  #float updatedAt
+  +getCode()
+  +calculateLevel()
+  +cancelPrice()
 }
-Inventory ..> Shipment : "0..1"
-Customer --|> Depot
-Shipment --|> Customer
-note right of Customer : Logistics domain
+Depot --|> Customer
+Shipment --|> Inventory
 @enduml

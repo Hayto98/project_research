@@ -8,48 +8,50 @@ interface Nurse {
   -boolean email
   -Date duration
   -boolean code
-  +deleteActive()
+  +getEmail()
 }
 interface Patient {
   -double score
   #boolean note
   -double duration
-  +getPhone()
-  +saveAddress()
-  +processScore()
-  +updateScore()
+  +calculateId()
+  +createEmail()
+  +processAddress()
+  +findCode()
 }
 class Appointment {
-  -Date name
-  -boolean type
-  +getEmail()
+  +float score
+  -float createdAt
+  -Date duration
+  -boolean code
+  +String status
+  +calculateDuration()
+  +processType()
+  +cancelDescription()
 }
-interface Billing {
-  +String price
-  -int address
-  #float level
-  #boolean code
-  #int note
-  +saveCreatedat()
-  +cancelAmount()
+abstract class Billing {
+  +float address
+  -int code
+  #float note
+  #boolean status
+  +validateNote()
+  +cancelPrice()
 }
 class Prescription {
-  #Date note
-  +int quantity
-  -double email
-  #String total
-  +cancelQuantity()
-  +sendNote()
-  +getAddress()
-  +findUpdatedat()
+  #long description
+  #long address
+  -boolean note
+  +findAddress()
+  +createNote()
 }
 class LabTest {
-  -String updatedAt
-  #float duration
-  #long code
-  +processCreatedat()
+  -Date status
+  +Date price
+  +float quantity
+  #int note
+  +int id
+  +findQuantity()
 }
-Prescription ..> Patient : "*"
-Nurse ..> Billing : "1..*"
-note right of Nurse : Healthcare domain
+Prescription --* LabTest
+Nurse ..> Billing : "0..1"
 @enduml

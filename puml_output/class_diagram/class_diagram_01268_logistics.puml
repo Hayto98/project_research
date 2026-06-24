@@ -8,44 +8,42 @@ interface Inventory {
   -boolean price
   #int type
   #double score
-  +setPrice()
-  +cancelDuration()
+  +deleteQuantity()
+  +calculateCode()
 }
-class Package {
-  +Date email
-  +long createdAt
-  +saveScore()
-  +validateActive()
-  +sendId()
+interface Package {
+  +Date name
+  +long email
+  #long createdAt
+  +getScore()
+  +getCreatedat()
+  +processName()
 }
 class FuelLog {
   -String level
   #Date id
   +boolean amount
   #long active
-  +getId()
-  +findStatus()
+  +savePhone()
+  +processCode()
 }
 class Vehicle {
-  +int amount
-  #int quantity
-  -long total
-  +createAddress()
+  -Date amount
+  -String duration
+  +createNote()
+  +cancelActive()
 }
 class Route {
-  #int createdAt
-  -boolean name
-  #float code
-  -boolean amount
-  #String phone
-  +sendLevel()
-  +createUpdatedat()
-  +calculateCreatedat()
-  +processPrice()
+  #double quantity
+  +float status
+  +String duration
+  #int address
+  -Date email
+  +deletePrice()
+  +cancelActive()
 }
-FuelLog --o Package
+FuelLog --o Inventory
 Route ..|> FuelLog
-Package ..> Route : "0..1"
-Package ..> Inventory : "1..*"
-note right of Inventory : Logistics domain
+Vehicle --o Package
+Vehicle --> FuelLog : "0..1"
 @enduml

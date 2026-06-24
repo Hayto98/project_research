@@ -6,59 +6,60 @@ class Order {
   +double score
   #double price
   +String level
-  +setQuantity()
+  +setStatus()
 }
 class Warehouse {
-  +Date name
-  +boolean code
-  +String level
-  +createActive()
-  +validateDuration()
-  +deleteNote()
-  +getId()
+  #String updatedAt
+  +String name
+  +calculateActive()
 }
-abstract class Payment {
+class Payment {
+  -boolean active
+  -boolean price
+  +deletePrice()
+  +processName()
+}
+class Supplier {
+  #long price
   +float createdAt
   -String address
   -double description
   -int status
-  #boolean phone
-  +getCreatedat()
-  +findActive()
-  +validateType()
-  +saveCode()
-}
-class Supplier {
-  -Date address
-  +boolean updatedAt
-  +updateDescription()
-  +deleteScore()
+  +findEmail()
+  +setAmount()
+  +updateActive()
+  +createTotal()
 }
 class Product {
-  +double type
-  #double code
-  -double note
-  +String updatedAt
-  -float quantity
-  +processPrice()
-  +setUpdatedat()
-  +cancelPhone()
+  -float type
+  +long code
+  #int updatedAt
+  #boolean id
+  +calculateNote()
+  +findPhone()
 }
 class Cart {
-  -int price
-  #int phone
-  #String score
-  +getEmail()
-  +sendPrice()
+  +Date note
+  -int type
+  -boolean code
+  -long duration
+  +cancelLevel()
+  +getTotal()
+  +deleteEmail()
+  +getType()
 }
-abstract class Review {
-  #boolean duration
-  #Date total
-  +calculateTotal()
+class Review {
+  #long type
+  +int price
+  -long code
+  #double updatedAt
+  +setPhone()
+  +getTotal()
 }
-Product ..> Warehouse : "0..1"
-Review --o Cart
-Cart ..> Supplier : "1..*"
-Supplier --> Order : "0..1"
-note right of Order : Ecommerce domain
+Order --|> Warehouse
+Payment --o Product
+Cart --o Review
+Order --> Product : "*"
+Cart --> Product : "1"
+Supplier --* Review
 @enduml

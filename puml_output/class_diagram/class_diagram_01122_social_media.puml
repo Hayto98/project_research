@@ -9,42 +9,44 @@ class Follower {
   +boolean name
   -Date code
   -long total
-  +processCreatedat()
-  +updateAmount()
-  +findId()
+  +validateUpdatedat()
+  +calculateUpdatedat()
+  +calculateNote()
 }
 class Group {
-  #String total
-  #boolean description
-  +findAddress()
-  +updateAmount()
-  +cancelName()
+  -float id
+  #Date createdAt
+  +boolean name
+  +calculateLevel()
 }
-abstract class Notification {
-  +Date phone
-  +boolean description
-  #float updatedAt
-  +cancelDuration()
-  +findActive()
-  +cancelQuantity()
-  +createNote()
+interface Notification {
+  #double address
+  #int updatedAt
+  -int amount
+  +int name
+  +createStatus()
 }
-class Message {
-  #int total
-  -int createdAt
-  +getEmail()
-  +updateEmail()
-  +getActive()
+interface Message {
+  +boolean level
+  #String active
+  #double quantity
+  #int score
+  #int note
+  +deleteId()
+  +saveQuantity()
+  +processStatus()
+  +updatePrice()
 }
 class User {
-  #float price
-  -String phone
-  +Date type
-  -double updatedAt
-  +createTotal()
-  +calculateStatus()
+  +long email
+  -long name
+  -int active
+  +createAddress()
+  +findLevel()
+  +calculateId()
 }
-Notification --|> Group
-Notification ..> Follower : "1"
-note right of Follower : Social Media domain
+Message ..> User : "0..1"
+Notification --o Message
+Follower --* Message
+Group ..> Follower : "1..*"
 @enduml

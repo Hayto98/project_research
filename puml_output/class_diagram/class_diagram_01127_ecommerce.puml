@@ -7,62 +7,57 @@ class Order {
   -String address
   #Date score
   +String phone
-  +findQuantity()
+  +updateAmount()
 }
 class Warehouse {
-  #long level
-  #int price
-  -Date total
-  +int code
-  #float name
+  #String price
+  +float level
+  #long duration
+  #int total
   +cancelPrice()
-  +getActive()
-  +calculateLevel()
-  +saveTotal()
+  +processDuration()
+  +setType()
+  +findStatus()
 }
-interface Invoice {
-  #float description
-  #Date price
-  -double address
-  #long level
-  -String duration
-  +updateAmount()
-  +savePhone()
+abstract class Invoice {
+  +double id
+  -double active
+  +boolean total
+  #Date score
+  -double level
+  +createName()
+  +validateId()
+  +validateStatus()
 }
-class Wishlist {
-  +boolean description
-  #String createdAt
-  -long id
-  +setUpdatedat()
+interface Wishlist {
+  -int updatedAt
+  +int amount
+  +String phone
+  +sendName()
 }
 class Customer {
-  +boolean id
-  #String active
-  #Date quantity
-  #Date type
-  +calculateScore()
-  +cancelName()
-  +setId()
-  +sendPhone()
+  -boolean code
+  #long updatedAt
+  +setDuration()
 }
 interface Shipment {
-  +Date note
-  +int createdAt
-  +deleteCode()
-  +savePhone()
+  #Date type
+  -float description
+  -boolean name
+  #String active
+  +updateDuration()
 }
-class Review {
-  -long updatedAt
-  #float address
-  -boolean quantity
-  #String createdAt
-  +String active
-  +createId()
+interface Review {
+  +Date score
+  +int name
+  +int note
+  +Date createdAt
+  +findId()
+  +validateUpdatedat()
+  +deleteAddress()
 }
-Order --o Customer
-Wishlist ..> Order : "1"
-Shipment --|> Invoice
-Shipment --|> Order
-Warehouse --* Invoice
-note right of Order : Ecommerce domain
+Invoice ..> Warehouse : "0..1"
+Invoice ..> Review : "1..*"
+Customer --|> Shipment
+Warehouse --|> Order
 @enduml

@@ -5,54 +5,50 @@ skinparam shadowing true
 abstract class Customer {
   #String active
   -double name
-  +cancelEmail()
-  +processUpdatedat()
+  +deletePhone()
+  +getCode()
 }
-abstract class Teller {
-  #long quantity
-  +int duration
-  -boolean amount
-  #float email
-  +double phone
-  +processStatus()
-  +createScore()
+class Teller {
+  +Date updatedAt
+  -long note
+  #long price
+  +int quantity
+  -boolean active
+  +deleteActive()
+  +processDuration()
 }
-interface Loan {
-  #String status
-  #int phone
-  +float email
-  +cancelEmail()
-  +getTotal()
-  +sendUpdatedat()
-  +saveType()
+abstract class Loan {
+  #int quantity
+  +Date score
+  +validateAddress()
+  +findPrice()
+  +processQuantity()
 }
 class Account {
+  +float note
+  #float email
+  +createStatus()
+  +updateStatus()
+  +validatePrice()
+  +sendCreatedat()
+}
+class Beneficiary {
   #double code
   -String phone
   +long level
   +int name
-  +sendPhone()
-  +findStatus()
-  +saveCreatedat()
+  +createDescription()
+  +saveScore()
+  +getActive()
 }
-class Beneficiary {
-  +double amount
-  +Date createdAt
-  +updateTotal()
-  +updateCode()
+class Interest {
+  #int phone
+  +double name
+  +Date amount
+  +saveNote()
+  +updateEmail()
 }
-abstract class Interest {
-  #float quantity
-  -double description
-  +double code
-  +sendCreatedat()
-  +deleteUpdatedat()
-  +sendNote()
-  +updateDuration()
-}
-Account --> Beneficiary : "1..*"
-Beneficiary ..> Account : "1..*"
-Loan --|> Account
-Interest ..|> Loan
-note right of Customer : Banking domain
+Customer ..> Account : "0..1"
+Loan --|> Teller
+Interest --o Account
 @enduml

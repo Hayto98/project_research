@@ -6,51 +6,48 @@ skinparam defaultFontSize 11
 class Coupon {
   +double code
   #long active
-  +createType()
-  +saveQuantity()
+  +updateLevel()
+  +validateUpdatedat()
 }
 class Order {
+  #boolean quantity
   #float score
   #long name
   -double address
-  -boolean active
-  +updateAddress()
-  +setEmail()
-  +validateQuantity()
-  +sendId()
+  +validateActive()
+  +findAmount()
+  +validateNote()
 }
 class Payment {
-  #int level
-  +boolean email
+  -boolean email
   +String phone
-  +saveDescription()
-  +updateQuantity()
+  +findName()
+  +validateAmount()
 }
 class Warehouse {
-  -long note
-  #long duration
-  -long phone
-  #long name
-  -int amount
-  +findScore()
-  +setDescription()
-  +findTotal()
+  +int name
+  #int score
+  +float updatedAt
+  +updatePrice()
+  +sendName()
+  +processTotal()
 }
-class Product {
-  #int price
-  #Date quantity
-  #boolean phone
-  +findEmail()
+abstract class Product {
+  -boolean duration
+  -long name
+  -Date amount
+  -long type
+  +calculateCreatedat()
+  +setCreatedat()
 }
-class Shipment {
-  +Date quantity
-  #double status
-  +processDescription()
-  +calculatePrice()
-  +sendCreatedat()
-  +updateCode()
+interface Shipment {
+  -boolean description
+  +double total
+  +createAmount()
+  +setAmount()
+  +setActive()
 }
-Order --o Shipment
-Payment --|> Coupon
-note right of Coupon : Ecommerce domain
+Product --|> Shipment
+Shipment ..|> Payment
+Coupon --|> Payment
 @enduml

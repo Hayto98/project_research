@@ -5,60 +5,65 @@ skinparam shadowing true
 class Driver {
   -String createdAt
   #Date note
-  +findAmount()
-  +getCreatedat()
-  +deleteAddress()
-  +setNote()
+  +calculateStatus()
+  +findId()
+  +cancelTotal()
+  +updateAddress()
 }
-interface DeliveryNote {
-  #int level
-  +float note
-  #long status
-  +int duration
-  +Date type
-  +setUpdatedat()
-  +calculateEmail()
+class DeliveryNote {
+  #Date address
+  #boolean status
+  -boolean note
+  +deleteQuantity()
+  +setAmount()
+  +processAddress()
+  +findEmail()
 }
-class Depot {
-  +long duration
-  -String id
-  +boolean price
-  +String createdAt
-  #Date code
-  +processCreatedat()
-  +validateLevel()
+abstract class Depot {
+  +String updatedAt
+  #int id
+  +int score
+  -long address
+  -Date code
+  +sendActive()
+  +setName()
+  +createPrice()
+  +findDescription()
 }
 class Tracking {
-  #float type
-  #long address
-  -String name
-  +String score
-  +Date price
-  +findPhone()
-  +cancelTotal()
+  -String description
+  +boolean address
+  +updateUpdatedat()
+  +deleteDescription()
 }
 class FuelLog {
+  -boolean createdAt
+  #String address
+  +boolean quantity
+  -boolean price
+  #long type
+  +updateActive()
+  +setLevel()
+  +deleteQuantity()
+  +sendStatus()
+}
+class Vehicle {
+  +long phone
+  -int total
   -int address
-  #int duration
-  +Date createdAt
-  +createLevel()
+  +updateCreatedat()
+  +deleteAddress()
 }
-interface Vehicle {
-  #boolean price
-  +float id
-  +sendNote()
+class Customer {
+  #double level
+  #String duration
+  #boolean active
+  +float name
+  +setAddress()
 }
-interface Customer {
-  +float price
-  -int code
-  +updateLevel()
-  +setDuration()
-  +deleteCreatedat()
-}
-Customer ..> Vehicle : "1"
-FuelLog --* Depot
-Depot --|> Customer
-DeliveryNote --o Vehicle
-Tracking --|> Depot
-note right of Driver : Logistics domain
+Customer ..> FuelLog : "1"
+Tracking ..|> Driver
+Customer ..|> Depot
+Vehicle --* Customer
+DeliveryNote --|> FuelLog
 @enduml

@@ -9,55 +9,63 @@ class Attendance {
   -String code
   -float email
   -boolean duration
-  +deleteType()
-  +getPrice()
-  +getPhone()
+  +validateCreatedat()
+  +cancelPrice()
+  +deleteActive()
 }
 class Grade {
-  +double address
-  +int duration
-  -String price
-  +updateTotal()
-  +validatePrice()
-  +saveUpdatedat()
+  -double id
+  +double phone
+  +int quantity
+  -String createdAt
+  -int address
+  +saveCreatedat()
+  +saveCode()
+  +cancelPrice()
+  +processPrice()
 }
 class Book {
   #boolean amount
   +float address
-  +findScore()
-  +cancelNote()
-  +validateStatus()
-  +createName()
+  +cancelDescription()
+  +processCreatedat()
+  +calculatePrice()
+  +processId()
 }
-interface Exam {
-  +Date status
+abstract class Exam {
+  +long status
   +Date quantity
-  +updateStatus()
-  +getStatus()
+  +Date name
+  #Date duration
+  +sendNote()
+  +deleteQuantity()
 }
 class Schedule {
-  -String amount
-  #float note
-  +updateActive()
+  +double id
+  -String name
+  +getTotal()
 }
 interface Course {
   +float total
   #float updatedAt
   +int quantity
-  +validateCode()
-  +cancelName()
-  +cancelPrice()
-  +setUpdatedat()
+  +calculateCreatedat()
+  +findNote()
+  +deleteId()
+  +validateActive()
 }
-interface Enrollment {
-  #int email
-  #double type
-  -String duration
-  +setLevel()
+class Enrollment {
+  -float status
+  #int updatedAt
+  #double amount
+  -String email
+  #boolean type
+  +updateUpdatedat()
 }
-Schedule ..|> Exam
-Grade --* Exam
-Exam --> Enrollment : "0..1"
+Book --o Schedule
+Enrollment ..|> Grade
+Exam --o Book
+Exam ..|> Schedule
 Grade ..> Attendance : "0..1"
-note right of Attendance : Education domain
+Enrollment --> Exam : "1..*"
 @enduml

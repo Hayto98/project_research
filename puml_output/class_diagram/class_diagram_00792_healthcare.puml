@@ -9,47 +9,47 @@ class Treatment {
   -long description
   +double score
   +float phone
-  +calculateName()
-  +setType()
-  +sendId()
-  +findPrice()
+  +validateLevel()
+  +saveName()
+  +validateDescription()
+  +deleteTotal()
 }
-abstract class MedicalRecord {
-  #float description
-  #String level
-  +validateNote()
-  +calculateCreatedat()
-  +setPrice()
-}
-interface Billing {
-  +Date active
-  +double updatedAt
-  -long level
-  +boolean type
+class MedicalRecord {
+  +Date type
   -Date score
-  +deleteActive()
-  +calculateTotal()
-  +processLevel()
-  +getDuration()
+  +deleteNote()
+  +validateCode()
+  +savePrice()
+  +updateScore()
+}
+class Billing {
+  +double phone
+  #Date note
+  #boolean total
+  #double createdAt
+  +processPrice()
+  +validateUpdatedat()
 }
 class Hospital {
-  #String active
+  -int id
+  #long price
+  #boolean note
+  +deleteScore()
+  +cancelScore()
+  +updateNote()
+  +cancelCreatedat()
+}
+abstract class Diagnosis {
   -long level
-  +calculateNote()
-  +createLevel()
-  +sendAddress()
-  +findAmount()
+  #double name
+  -double duration
+  -float code
+  #boolean score
+  +validateTotal()
+  +updateType()
+  +deleteUpdatedat()
 }
-interface Diagnosis {
-  -float quantity
-  #float description
-  #String name
-  +float status
-  +saveActive()
-  +savePhone()
-  +deleteDescription()
-}
-Hospital ..|> Billing
-Treatment --|> MedicalRecord
-note right of Treatment : Healthcare domain
+Billing --|> MedicalRecord
+Treatment --> Hospital : "1"
+MedicalRecord ..> Billing : "1..*"
 @enduml

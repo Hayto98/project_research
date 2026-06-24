@@ -9,34 +9,38 @@ class Doctor {
   +String phone
   +float amount
   +double name
-  +getDescription()
-}
-abstract class MedicalRecord {
-  -Date address
-  -long email
-  -int code
-  -double status
-  #boolean phone
-  +validateScore()
-  +getTotal()
   +saveId()
-  +deleteQuantity()
 }
-class Prescription {
-  +boolean status
-  -String updatedAt
-  +double duration
+class MedicalRecord {
+  #Date note
+  -long address
+  #double email
+  -double code
+  +long status
   +calculateDuration()
-  +validateStatus()
-  +getDuration()
+  +validateLevel()
+  +calculatePrice()
+  +saveActive()
+}
+abstract class Prescription {
+  +long score
+  +Date id
+  #int total
+  +Date level
+  +setStatus()
+  +saveStatus()
 }
 class Nurse {
-  #int type
-  -String code
-  +sendCreatedat()
+  #long code
+  +String amount
+  #boolean note
+  +float phone
+  +float price
+  +validatePhone()
+  +getStatus()
+  +processPhone()
+  +deleteId()
 }
-Prescription --o Nurse
-Nurse --o MedicalRecord
-Doctor --|> MedicalRecord
-note right of Doctor : Healthcare domain
+Nurse --|> Doctor
+MedicalRecord --> Nurse : "1..*"
 @enduml

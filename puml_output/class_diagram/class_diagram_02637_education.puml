@@ -4,16 +4,17 @@ skinparam defaultFontSize 13
 abstract class Attendance {
   #Date total
   #Date note
-  +findUpdatedat()
-  +getQuantity()
-  +createAmount()
+  +setCreatedat()
+  +processPrice()
+  +setName()
 }
 class Student {
-  -Date note
-  +String score
-  #double type
-  +processUpdatedat()
-  +findDuration()
+  #double amount
+  -Date name
+  +String duration
+  #double note
+  +validateUpdatedat()
+  +findAddress()
 }
 interface Schedule {
   #Date status
@@ -21,27 +22,29 @@ interface Schedule {
   #Date name
   #float address
   -Date updatedAt
-  +processNote()
-  +findNote()
-  +calculateDescription()
-  +getTotal()
+  +setQuantity()
+  +validateUpdatedat()
+  +findTotal()
+  +createTotal()
 }
-interface Classroom {
-  #String phone
-  +boolean type
-  -boolean score
-  +String address
-  +double price
-  +cancelName()
+abstract class Classroom {
+  -Date total
+  #double description
+  #long name
+  #double duration
+  #String note
+  +createStatus()
+  +findLevel()
 }
-interface Grade {
-  #boolean phone
-  -double quantity
-  +getQuantity()
-  +getEmail()
+abstract class Grade {
+  +boolean code
+  +boolean name
+  #String type
+  +cancelAddress()
+  +updateScore()
+  +setAddress()
 }
-Classroom --o Attendance
-Grade --> Schedule : "1..*"
-Grade --o Classroom
-note right of Attendance : Education domain
+Classroom --|> Student
+Schedule --* Attendance
+Classroom --|> Grade
 @enduml

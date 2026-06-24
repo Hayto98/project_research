@@ -6,42 +6,50 @@ skinparam ArrowColor #555555
 interface Reservation {
   #long address
   +int status
-  +findUpdatedat()
-  +setCreatedat()
-  +processActive()
-  +findUpdatedat()
+  +cancelUpdatedat()
+  +processPrice()
+  +findNote()
+  +calculateLevel()
 }
 class CheckOut {
-  #int total
-  +double phone
-  -long score
-  #double amount
-  #Date code
-  +setTotal()
+  -boolean active
+  +String updatedAt
+  #int id
+  +double total
+  -long duration
+  +calculateType()
+  +findName()
+  +cancelUpdatedat()
+  +calculateId()
 }
-abstract class Amenity {
-  #float level
-  #boolean name
-  #double duration
-  +createCode()
+class Amenity {
+  +long price
+  +boolean amount
+  -double name
+  +long score
+  #long total
+  +processId()
 }
-interface CheckIn {
-  +boolean price
-  +boolean name
-  -float quantity
-  #boolean phone
-  +cancelDuration()
+class CheckIn {
+  #long active
+  #double name
+  #float note
+  -String phone
+  #boolean description
+  +updateUpdatedat()
+  +calculateEmail()
+  +updateId()
+  +findEmail()
 }
-abstract class Room {
-  #float description
-  -String active
-  #boolean address
-  -String total
-  +findStatus()
+interface Room {
+  +int score
+  +int name
+  -double type
+  #int active
+  +processQuantity()
+  +setActive()
+  +sendTotal()
 }
-Amenity --o Reservation
-Room ..|> CheckOut
-CheckOut --* Room
-CheckIn --> CheckOut : "1..*"
-note right of Reservation : Hotel domain
+Reservation ..> CheckOut : "*"
+Reservation ..|> Room
 @enduml

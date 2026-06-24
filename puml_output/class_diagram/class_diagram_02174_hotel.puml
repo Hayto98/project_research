@@ -6,66 +6,64 @@ skinparam defaultFontSize 13
 interface CheckOut {
   +Date description
   +Date duration
-  +saveDescription()
-  +getTotal()
   +validateLevel()
-  +createType()
+  +getAmount()
+  +validateCode()
+  +deleteNote()
 }
-class Amenity {
-  -Date name
-  +boolean description
-  +long total
-  +setPhone()
-  +updateActive()
-  +updateName()
-  +processCreatedat()
+abstract class Amenity {
+  +String level
+  +double quantity
+  -Date type
+  +boolean name
+  +calculateScore()
+  +processTotal()
 }
 class Housekeeping {
-  -long note
-  +int amount
-  #int description
-  +updateAddress()
+  -Date updatedAt
+  +String active
+  +float duration
+  -int name
+  +sendLevel()
+  +createQuantity()
+}
+class Room {
+  +double amount
+  +float level
+  +sendLevel()
+  +saveNote()
+  +validatePhone()
+}
+class Payment {
+  -long status
+  +String code
+  #float score
+  +float total
+  -Date amount
+  +calculateCreatedat()
   +updateCode()
-  +deleteTotal()
-  +setCode()
+  +calculateType()
 }
-interface Room {
-  +boolean duration
-  +float amount
-  -Date note
-  -long address
-  -int status
-  +deleteQuantity()
-  +processAddress()
-  +deletePhone()
+abstract class Staff {
+  -float phone
+  #long description
+  +long quantity
+  +getActive()
+  +createCreatedat()
+  +calculateType()
+  +createLevel()
 }
-abstract class Payment {
-  -long phone
-  -int price
+class Service {
   #float address
-  +deletePhone()
-  +getLevel()
+  +int email
+  -String duration
+  #String score
+  +long createdAt
+  +findEmail()
+  +getPrice()
+  +createAmount()
 }
-class Staff {
-  +double phone
-  +boolean duration
-  -String level
-  +calculateQuantity()
-  +setDescription()
-}
-interface Service {
-  +float active
-  #float updatedAt
-  #float phone
-  +int duration
-  #int type
-  +createCode()
-  +getCreatedat()
-}
-Room --> Staff : "*"
-CheckOut ..|> Service
-Housekeeping ..> Staff : "1..*"
-Housekeeping --o CheckOut
-CheckOut --> Room : "1..*"
-note right of CheckOut : Hotel domain
+Room --> Amenity : "1..*"
+CheckOut --o Amenity
+Housekeeping ..|> CheckOut
 @enduml

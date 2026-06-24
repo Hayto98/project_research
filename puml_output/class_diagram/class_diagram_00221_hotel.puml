@@ -6,60 +6,57 @@ skinparam defaultFontSize 11
 class Service {
   #int description
   #String updatedAt
-  +calculateEmail()
-  +processId()
+  +getPhone()
+  +calculateDescription()
 }
 class Booking {
-  -int level
-  -String name
-  +Date status
-  +getQuantity()
-  +createPhone()
-  +cancelCreatedat()
+  -int id
+  -String createdAt
+  +Date updatedAt
+  -float name
+  +float status
+  +validateAmount()
+  +sendType()
+  +setCode()
 }
-interface Reservation {
-  -String price
-  +double level
-  +String phone
-  +boolean id
-  +createPhone()
-  +saveScore()
-  +validateId()
-  +processAddress()
+class Reservation {
+  -double score
+  #long level
+  +float active
+  +deleteNote()
+  +calculateAddress()
+  +findAmount()
 }
-interface Restaurant {
-  +double type
-  #int active
-  +long note
-  +float level
-  -String code
-  +saveName()
-  +sendPhone()
+class Restaurant {
+  -long createdAt
+  #float active
+  +findStatus()
+  +saveActive()
+  +processStatus()
 }
 class Guest {
-  #float name
-  -String phone
-  +float updatedAt
-  +createQuantity()
-  +getPrice()
-  +validateTotal()
+  #boolean address
+  #String level
+  +double type
+  #int score
+  +long note
+  +processAddress()
 }
 class Staff {
-  +double score
-  +long status
-  -double createdAt
-  +processTotal()
+  #Date amount
+  -long name
+  +saveEmail()
+  +updateTotal()
 }
 class CheckOut {
-  -Date type
-  #int level
-  #String duration
-  +boolean amount
-  +saveType()
-  +setType()
+  +double status
+  -double description
+  +boolean email
+  +Date score
+  #float quantity
+  +saveNote()
 }
-Service --|> Booking
-Staff --|> Reservation
-Reservation --> Booking : "*"
-note right of Service : Hotel domain
+Restaurant --* Service
+CheckOut --o Restaurant
+CheckOut --o Service
 @enduml

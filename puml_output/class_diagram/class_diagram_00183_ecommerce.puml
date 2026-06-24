@@ -7,50 +7,53 @@ class Invoice {
   #int createdAt
   #long email
   -float note
-  +sendAddress()
-  +findLevel()
+  +calculatePrice()
+  +cancelDuration()
 }
-abstract class Return {
-  #String description
+class Return {
   +Date updatedAt
-  +float address
-  +sendEmail()
-  +createAddress()
+  +float description
+  +float duration
+  #float address
+  -long code
+  +calculateCreatedat()
+  +findDuration()
+  +deleteName()
 }
-class Cart {
-  +double score
-  #float price
-  -boolean description
-  +boolean duration
-  +cancelScore()
-  +getEmail()
-  +sendEmail()
-  +deleteQuantity()
+interface Cart {
+  #int description
+  #double duration
+  #boolean createdAt
+  +Date price
+  -boolean note
+  +processUpdatedat()
+  +createQuantity()
+  +processTotal()
 }
-abstract class Wishlist {
-  #String address
-  #int createdAt
-  +createLevel()
-  +findActive()
-  +processCreatedat()
-  +deleteActive()
+class Wishlist {
+  -long createdAt
+  #float name
+  #float active
+  #boolean updatedAt
+  +cancelNote()
+  +deleteLevel()
+  +saveQuantity()
+  +findDuration()
 }
 class Payment {
   #Date name
   +double type
-  +createPrice()
+  +deleteCreatedat()
 }
-interface Supplier {
+abstract class Supplier {
   -Date updatedAt
   #long score
   +int note
   #long type
-  +calculateScore()
-  +cancelScore()
-  +setPhone()
+  +createDuration()
+  +sendDescription()
+  +setAddress()
 }
-Invoice --> Payment : "1..*"
-Return --o Payment
-Cart ..|> Invoice
-note right of Invoice : Ecommerce domain
+Cart --|> Return
+Payment ..> Supplier : "1..*"
 @enduml

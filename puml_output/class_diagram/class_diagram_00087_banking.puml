@@ -8,41 +8,40 @@ interface Card {
   +long address
   -int code
   #String amount
-  +calculateType()
-  +cancelEmail()
+  +validateLevel()
+  +getPhone()
 }
-class Teller {
-  +String score
-  +Date phone
-  +calculatePrice()
-  +setPrice()
+abstract class Teller {
+  +String name
+  +Date code
+  +float score
+  -double phone
+  +processType()
 }
 interface Customer {
   -long quantity
   -float amount
   -long price
   +int total
-  +calculateCreatedat()
-  +deleteDuration()
+  +deleteAmount()
+  +updateDescription()
 }
 class Interest {
-  #int note
-  -int duration
-  #Date id
-  +boolean email
-  -String price
-  +processStatus()
-  +processType()
-  +processEmail()
-  +validateActive()
+  +long level
+  -boolean type
+  +long note
+  +Date score
+  +savePrice()
+  +validateScore()
 }
-abstract class Loan {
-  #String level
-  -int id
-  +cancelStatus()
+class Loan {
+  -long type
+  #boolean status
+  -float note
+  #float duration
+  +boolean active
+  +getActive()
 }
-Loan ..|> Teller
-Interest --|> Loan
-Loan --> Customer : "*"
-note right of Card : Banking domain
+Customer --> Teller : "1"
+Loan --o Card
 @enduml

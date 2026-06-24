@@ -7,56 +7,48 @@ class Housekeeping {
   +String email
   -boolean price
   #double quantity
-  +processStatus()
-  +getUpdatedat()
-  +createPrice()
+  +processTotal()
+  +updateUpdatedat()
+  +processQuantity()
 }
-abstract class Invoice {
-  +float quantity
-  +boolean type
-  +long code
-  +String level
-  #double duration
-  +calculateActive()
-  +sendQuantity()
-  +validateStatus()
-  +updateDescription()
+class Invoice {
+  -String price
+  -long total
+  +float type
+  +boolean quantity
+  +createActive()
 }
 class Booking {
-  +long phone
-  +String status
+  -boolean type
   #Date price
-  +double note
-  +double duration
-  +saveEmail()
+  +sendPhone()
+  +cancelEmail()
+  +updateStatus()
 }
 class Amenity {
-  #int phone
-  #String name
-  +String status
-  #long duration
-  +validateUpdatedat()
-  +saveDuration()
-  +deleteUpdatedat()
+  #double note
+  #Date phone
+  -String status
+  -String price
+  +getDescription()
 }
 class CheckOut {
-  +long note
-  -double updatedAt
-  -Date total
-  #boolean status
-  +sendScore()
+  -long amount
+  +String type
+  #Date id
+  -boolean email
+  +float code
+  +calculateAddress()
 }
 class Reservation {
-  -boolean phone
-  #long price
-  +long duration
-  -long score
-  +calculateActive()
-  +createCreatedat()
-  +deleteActive()
+  +int phone
+  -Date address
+  #double updatedAt
+  +double amount
+  +savePhone()
 }
-CheckOut ..|> Invoice
-Invoice --> Amenity : "1"
-Reservation --> Invoice : "1"
-note right of Housekeeping : Hotel domain
+Booking --o Amenity
+Reservation --|> CheckOut
+CheckOut ..|> Reservation
+Reservation --* Booking
 @enduml

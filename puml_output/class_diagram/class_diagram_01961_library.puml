@@ -8,63 +8,55 @@ interface Renewal {
   #int level
   -int id
   #Date updatedAt
-  +calculateLevel()
-  +sendStatus()
+  +getAddress()
+  +deleteStatus()
 }
-abstract class Branch {
-  #String email
-  #float price
-  -int score
-  #String phone
-  #int duration
+interface Branch {
+  -double price
+  #boolean total
+  +deleteName()
+  +processPhone()
   +sendLevel()
-  +setId()
 }
-interface Member {
-  #String amount
-  -boolean name
-  +createTotal()
-  +updatePrice()
-  +savePrice()
+class Member {
+  #boolean createdAt
+  +Date name
+  +boolean updatedAt
+  +int score
+  +deleteLevel()
 }
-class Catalog {
+interface Catalog {
+  #boolean phone
+  -long score
+  +saveNote()
+  +calculateCode()
+  +updatePhone()
+  +saveDescription()
+}
+class Fine {
   #Date active
   -Date price
   -long level
   -Date id
   -String updatedAt
-  +findUpdatedat()
-  +validateQuantity()
-}
-abstract class Fine {
-  -int status
-  #String price
-  #int phone
-  #long updatedAt
-  +int amount
-  +saveNote()
-  +validateAddress()
-  +createUpdatedat()
-  +saveId()
+  +cancelUpdatedat()
+  +findAddress()
 }
 class Publisher {
-  #String name
-  #float email
-  +processActive()
-  +cancelLevel()
-  +updateDescription()
-  +updateAmount()
+  -float type
+  #int total
+  +float status
+  -int price
+  +saveDuration()
 }
 class Loan {
-  +String status
-  -int level
-  +findType()
+  -long amount
+  -int description
+  #float note
+  #String score
+  +validateType()
+  +updateName()
 }
-Renewal --* Catalog
-Renewal --|> Loan
-Member --* Branch
-Catalog ..> Publisher : "0..1"
-Renewal --* Publisher
-Catalog ..> Member : "1"
-note right of Renewal : Library domain
+Member --|> Publisher
+Loan ..> Fine : "*"
 @enduml

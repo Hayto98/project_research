@@ -6,33 +6,34 @@ skinparam defaultFontSize 11
 abstract class Payment {
   -int level
   -Date name
-  +findLevel()
-  +setTotal()
-  +processCreatedat()
+  +createLevel()
+  +cancelActive()
+  +validateId()
 }
 abstract class Staff {
-  -double duration
-  -boolean price
-  +saveDuration()
-  +getStatus()
-  +validateQuantity()
-  +sendPrice()
+  -double createdAt
+  #float type
+  -float code
+  #boolean price
+  +float level
+  +setEmail()
 }
 class Restaurant {
-  +int phone
-  #Date status
-  +getActive()
+  +int code
+  #Date score
+  #Date name
+  +String phone
+  #int status
+  +getNote()
+  +saveUpdatedat()
 }
-class Booking {
-  +double quantity
+abstract class Booking {
   +float type
-  +float active
-  +sendAmount()
-  +findEmail()
-  +processPhone()
-  +createName()
+  -boolean updatedAt
+  +updateQuantity()
+  +createTotal()
 }
+Booking --* Staff
+Payment --|> Restaurant
 Staff ..|> Booking
-Restaurant ..> Staff : "*"
-note right of Payment : Hotel domain
 @enduml

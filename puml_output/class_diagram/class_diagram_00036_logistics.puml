@@ -4,46 +4,40 @@ abstract class Tracking {
   -int amount
   +boolean level
   #long name
-  +createName()
-  +updatePhone()
-  +updateStatus()
-  +validateScore()
+  +validateAddress()
+  +saveId()
+  +calculateLevel()
+  +deleteId()
 }
 class Driver {
-  +String phone
-  +long total
-  +String address
-  #long score
-  -long type
-  +setActive()
+  -Date createdAt
+  -double status
+  -boolean phone
+  -double address
+  +validatePhone()
+  +validateCode()
 }
 class Customer {
+  -long name
+  #String quantity
+  +getScore()
+}
+class Warehouse {
   #int description
   +Date total
-  +updateLevel()
+  +saveNote()
   +deleteId()
-  +getPhone()
+  +cancelActive()
 }
-abstract class Warehouse {
-  #int createdAt
-  +String phone
-  #double code
-  +float price
-  -double level
-  +findName()
-  +setQuantity()
-  +cancelPrice()
-  +updateEmail()
+class Manifest {
+  -double id
+  #int phone
+  +findNote()
+  +deleteStatus()
+  +validateActive()
 }
-abstract class Manifest {
-  -String id
-  #boolean score
-  +findStatus()
-  +createUpdatedat()
-}
-Driver ..> Warehouse : "0..1"
-Customer --* Manifest
-Warehouse --> Tracking : "1..*"
-Manifest ..> Warehouse : "0..1"
-note right of Tracking : Logistics domain
+Warehouse --> Customer : "0..1"
+Driver ..> Tracking : "*"
+Tracking --o Customer
+Warehouse --|> Tracking
 @enduml

@@ -7,34 +7,32 @@ class Prescription {
   #int code
   -float phone
   -int price
-  +getCode()
+  +updateQuantity()
 }
-abstract class Diagnosis {
-  #Date duration
-  #boolean status
-  -float note
-  #String phone
-  -Date quantity
-  +setCreatedat()
-  +setNote()
-  +cancelId()
-  +updateId()
+class Diagnosis {
+  -boolean price
+  #boolean score
+  +deleteDuration()
 }
-interface Billing {
+class Billing {
+  -Date score
+  #boolean active
+  -String quantity
+  +String code
+  +validateActive()
+  +processCode()
+  +createScore()
+  +processName()
+}
+interface Ward {
   #double updatedAt
   -String note
   #boolean score
   -String code
-  +createPrice()
-  +setScore()
+  +saveStatus()
+  +sendType()
 }
-interface Ward {
-  +String id
-  #float address
-  -boolean phone
-  +updateActive()
-}
-Billing --|> Ward
-Ward ..> Diagnosis : "1..*"
-note right of Prescription : Healthcare domain
+Ward --> Prescription : "0..1"
+Prescription --* Diagnosis
+Diagnosis ..> Prescription : "*"
 @enduml

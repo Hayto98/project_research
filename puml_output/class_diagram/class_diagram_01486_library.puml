@@ -9,54 +9,50 @@ abstract class Publisher {
   #int status
   #Date total
   -int id
-  +processTotal()
+  +deleteDuration()
 }
-class Fine {
-  -double phone
-  #String note
-  -float level
-  -float type
-  +double createdAt
-  +processPhone()
-  +sendName()
+abstract class Fine {
+  -double type
+  #boolean phone
+  +deleteEmail()
+  +saveNote()
+  +validateType()
+  +getPhone()
 }
-class Catalog {
-  +float email
-  +Date id
-  #double price
-  #float total
-  +validateId()
-  +findType()
-  +sendDescription()
-  +updateQuantity()
+abstract class Catalog {
+  +double email
+  #boolean duration
+  +getId()
+  +sendPhone()
 }
-class Book {
-  #String level
-  #long price
-  +createTotal()
-  +saveLevel()
-  +processPrice()
+interface Book {
+  #long id
+  +Date phone
+  +cancelCreatedat()
+  +processAmount()
+  +setAmount()
+  +createNote()
 }
 class Member {
-  -int id
+  #int active
+  +Date type
+  -String phone
+  #String id
+  #double level
+  +findTotal()
+}
+interface Loan {
+  #boolean active
   -double email
-  +boolean active
+  +long quantity
   +float total
-  +sendCreatedat()
+  +getScore()
+  +calculateDuration()
+  +findStatus()
 }
-class Loan {
-  +Date note
-  #Date type
-  +float updatedAt
-  +double id
-  #Date phone
-  +processName()
-  +findActive()
-  +findPrice()
-  +deleteId()
-}
-Member --|> Fine
-Publisher --> Catalog : "0..1"
-Fine --> Member : "1..*"
-note right of Publisher : Library domain
+Catalog --* Fine
+Book --> Fine : "0..1"
+Member --> Publisher : "0..1"
+Catalog --o Book
+Loan ..|> Book
 @enduml

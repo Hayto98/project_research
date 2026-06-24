@@ -4,62 +4,68 @@ skinparam backgroundColor #F5F5F5
 interface Book {
   +long total
   -int id
-  +createEmail()
-  +processStatus()
-  +setPhone()
+  +setTotal()
+  +saveUpdatedat()
+  +deleteTotal()
 }
 class Grade {
-  +String level
-  +long price
-  +long email
-  +createStatus()
-  +cancelPhone()
-  +cancelAddress()
+  #float status
+  #float duration
+  -float phone
+  -int score
+  +String amount
+  +sendTotal()
+  +findCreatedat()
+  +findScore()
 }
 class Department {
-  #Date price
-  -double phone
-  -Date score
-  -boolean quantity
-  #double active
-  +cancelQuantity()
-  +getCode()
+  #long level
+  +Date phone
+  +setPrice()
+  +createPrice()
+  +calculateTotal()
+  +cancelPrice()
 }
-abstract class Exam {
-  -String description
-  #int code
-  +String active
-  +sendAddress()
-  +updateQuantity()
-  +sendDuration()
+class Exam {
+  -Date quantity
+  -boolean level
+  #double note
+  #int total
+  +updateDuration()
+  +updateCode()
+  +validateType()
 }
-abstract class Student {
-  -long updatedAt
-  -int address
-  #float active
+class Student {
+  +Date createdAt
+  +String description
+  +long code
+  #long active
+  +long type
+  +sendName()
+  +calculateTotal()
+  +processPrice()
+  +validateScore()
+}
+interface Teacher {
+  +Date code
   -long phone
-  +double code
-  +savePhone()
-  +processType()
-  +savePhone()
+  +double address
+  #long note
+  +getStatus()
+  +saveAmount()
+  +findActive()
 }
-class Teacher {
-  #long duration
+class Assignment {
+  #long address
   #int name
   +Date email
   +int createdAt
-  +saveActive()
+  +calculateUpdatedat()
 }
-interface Assignment {
-  -int id
-  -String price
-  -Date score
-  #String note
-  -double active
-  +getPrice()
-}
-Exam --> Department : "*"
-Teacher ..|> Student
-Department ..> Teacher : "0..1"
-note right of Book : Education domain
+Student --|> Exam
+Exam --> Student : "*"
+Assignment --o Exam
+Grade --|> Department
+Exam ..> Teacher : "1"
+Department --|> Exam
 @enduml

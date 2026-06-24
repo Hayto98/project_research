@@ -9,45 +9,44 @@ class Card {
   -Date address
   +boolean total
   -int level
-  +setDuration()
-  +processStatus()
-  +createScore()
+  +processAmount()
+  +createType()
+  +saveStatus()
 }
-abstract class Interest {
-  #int name
-  #double email
-  #long total
-  +validateEmail()
-  +setNote()
-  +createStatus()
-  +cancelTotal()
+interface Interest {
+  +long status
+  #boolean email
+  -Date score
+  +Date note
+  -boolean description
+  +processTotal()
+  +deleteCode()
+  +validateAmount()
 }
-interface Customer {
-  +double phone
-  #boolean address
-  +String total
-  +float note
-  #boolean code
-  +calculateQuantity()
-  +findQuantity()
-  +cancelAmount()
+class Customer {
+  -long email
+  #double status
+  -String total
+  +double active
+  #boolean note
+  +processName()
+  +saveId()
 }
-class Teller {
-  -double phone
-  +String updatedAt
-  +long amount
-  +deleteName()
-  +setPrice()
-  +createCode()
-  +createUpdatedat()
+interface Teller {
+  #int price
+  +float quantity
+  -int level
+  #boolean amount
+  +getId()
+  +cancelLevel()
 }
-class Withdrawal {
-  +double status
-  +long createdAt
-  +long id
-  +deleteDuration()
+abstract class Withdrawal {
+  -double code
+  +String status
+  +processCreatedat()
 }
-Withdrawal --|> Interest
-Withdrawal ..> Card : "1"
-note right of Card : Banking domain
+Teller --|> Customer
+Customer --|> Interest
+Interest ..|> Card
+Card --o Interest
 @enduml

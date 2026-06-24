@@ -6,61 +6,55 @@ class Account {
   #boolean description
   #double total
   #int duration
-  +cancelId()
-  +cancelName()
+  +savePrice()
+  +updateActive()
 }
-class Interest {
-  -boolean duration
-  +Date code
-  -double type
-  +double id
-  +deleteCreatedat()
-  +saveDescription()
+interface Interest {
+  #float name
+  #float address
+  +cancelCode()
 }
-interface Transaction {
-  #int name
-  #int type
-  #long total
+class Transaction {
+  -float active
+  +int id
+  +Date price
+  +boolean total
+  #long status
+  +sendName()
+}
+abstract class Beneficiary {
   -double active
-  +cancelQuantity()
-  +createId()
-  +findScore()
-}
-class Beneficiary {
-  -float name
-  -int email
-  +updateId()
+  #long description
+  #long quantity
+  +sendTotal()
+  +validateTotal()
+  +cancelAmount()
 }
 class Customer {
-  #boolean name
-  -String email
-  +float type
-  +cancelType()
-  +validateType()
-  +cancelPrice()
-  +sendScore()
+  -float name
+  -int email
+  +calculateType()
 }
 class Transfer {
-  +long note
-  -int createdAt
-  -long duration
-  -int amount
-  -String status
-  +getAddress()
-  +saveLevel()
-  +setName()
-  +validateTotal()
+  +boolean createdAt
+  #float description
+  +validateLevel()
+  +deleteActive()
+  +saveDuration()
 }
 interface Deposit {
-  #float createdAt
-  #float amount
-  +savePrice()
-  +getNote()
+  -boolean status
+  -boolean name
+  #Date note
+  -boolean type
+  -double phone
+  +saveAmount()
+  +findId()
 }
-Transfer ..|> Transaction
-Transaction ..> Customer : "*"
-Account --> Interest : "0..1"
-Beneficiary ..|> Customer
-Beneficiary --> Interest : "*"
-note right of Account : Banking domain
+Account --* Deposit
+Beneficiary --o Interest
+Transaction ..|> Beneficiary
+Transaction --o Account
+Deposit ..> Account : "1..*"
+Transfer --|> Customer
 @enduml

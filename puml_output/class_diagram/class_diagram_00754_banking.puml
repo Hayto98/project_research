@@ -7,14 +7,16 @@ abstract class Transfer {
   -int type
   #int score
   -double description
-  +setId()
+  +cancelEmail()
 }
-abstract class Transaction {
-  +long active
-  -float createdAt
-  #int name
-  -boolean total
-  +sendDescription()
+class Transaction {
+  +long phone
+  -float active
+  #int createdAt
+  -boolean name
+  +boolean total
+  +sendPrice()
+  +getName()
 }
 class Branch {
   #long amount
@@ -22,38 +24,42 @@ class Branch {
   -boolean name
   #float email
   #String quantity
-  +sendType()
-  +updateScore()
+  +cancelAmount()
+  +validateName()
 }
 class Withdrawal {
-  -int type
-  #int status
-  +boolean note
-  +getScore()
-  +calculateDescription()
+  -int createdAt
+  #int type
+  +boolean status
+  +String note
+  +findPhone()
+  +deleteStatus()
+  +findPrice()
+  +getQuantity()
 }
-interface Interest {
-  -long address
+class Interest {
   -long status
   -int type
-  +setAddress()
+  #boolean note
+  #String phone
+  +saveCreatedat()
 }
 class Beneficiary {
   +long score
   #String phone
   -Date id
-  +calculateStatus()
+  +processType()
 }
-abstract class Teller {
-  -Date amount
-  -String createdAt
-  +String code
-  #String address
-  #float price
-  +deleteDuration()
-  +validatePhone()
+class Teller {
+  -double note
+  #long amount
+  +String createdAt
+  +Date code
+  +Date address
+  +findId()
+  +sendActive()
 }
-Transfer ..> Interest : "0..1"
+Branch --|> Transaction
+Interest ..|> Beneficiary
 Withdrawal ..> Interest : "1"
-note right of Transfer : Banking domain
 @enduml

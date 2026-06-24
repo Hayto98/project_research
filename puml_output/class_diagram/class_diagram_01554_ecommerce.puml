@@ -8,54 +8,53 @@ interface Invoice {
   #float total
   -boolean duration
   #boolean note
-  +createTotal()
-  +setCode()
-  +processActive()
-  +sendLevel()
+  +cancelType()
+  +getNote()
+  +updateEmail()
+  +getType()
 }
 class Category {
-  -int type
-  +float createdAt
-  +double level
-  +String address
-  #double phone
-  +updateType()
-  +validateAddress()
+  +int active
+  -long score
+  -int address
+  +float note
+  +double type
+  +savePhone()
+  +getActive()
 }
-interface Shipment {
-  -Date type
-  +int price
-  #Date quantity
-  #boolean duration
-  +createPrice()
-  +createQuantity()
+abstract class Shipment {
+  -boolean createdAt
+  -double type
+  -long address
+  +updateEmail()
+  +cancelUpdatedat()
+  +cancelTotal()
+  +saveQuantity()
 }
-class Cart {
-  -boolean score
-  +boolean type
-  +float name
-  #int total
-  +findAddress()
-  +sendDescription()
-  +updateCode()
+interface Cart {
+  -int email
+  #Date price
+  -boolean quantity
+  +calculateId()
+  +setNote()
+  +processTotal()
+  +sendQuantity()
 }
 class Coupon {
-  #Date note
-  -String name
-  -double quantity
-  +validateType()
-  +cancelAddress()
+  -Date active
+  -boolean createdAt
+  +sendNote()
+  +cancelName()
 }
 class Warehouse {
-  #float status
   -Date description
-  +createLevel()
-  +processActive()
-  +saveTotal()
-  +sendEmail()
+  #float note
+  -String name
+  +cancelCreatedat()
+  +setPhone()
+  +deleteType()
 }
-Coupon ..|> Shipment
-Cart ..|> Shipment
-Warehouse --> Coupon : "*"
-note right of Invoice : Ecommerce domain
+Shipment --> Cart : "1..*"
+Shipment --|> Invoice
+Category ..> Cart : "*"
 @enduml

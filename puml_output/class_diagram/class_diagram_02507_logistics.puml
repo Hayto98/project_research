@@ -5,50 +5,47 @@ skinparam classBorderColor #6A1B9A
 abstract class Package {
   #String active
   +float email
-  +setNote()
-  +cancelUpdatedat()
-  +savePhone()
+  +getLevel()
+  +findLevel()
+  +deletePhone()
 }
-class Customer {
-  -long email
-  +String score
-  +updateCode()
-  +updatePhone()
-  +findId()
+abstract class Customer {
+  -float phone
+  #boolean id
+  -long code
+  +sendLevel()
 }
-abstract class Manifest {
-  #float score
-  +boolean name
-  -int updatedAt
-  +getId()
-  +validateDescription()
-  +getDuration()
+class Manifest {
+  #float updatedAt
+  +double code
+  +boolean createdAt
+  +int phone
+  +createDescription()
+  +createId()
 }
-class DeliveryNote {
-  +Date score
+abstract class DeliveryNote {
+  -float phone
   +String name
-  +findCreatedat()
-  +createTotal()
+  #int id
+  +calculatePrice()
 }
 class Depot {
+  +float code
+  #int status
+  +saveStatus()
+  +setQuantity()
+  +updateEmail()
+}
+class Warehouse {
   #Date note
   +double id
   -String description
   #double duration
   -double quantity
-  +validateDuration()
-}
-class Warehouse {
-  +String email
-  +boolean updatedAt
-  +boolean code
   +saveStatus()
-  +saveActive()
-  +getName()
 }
-Package --* Depot
-Customer --|> Depot
-Manifest ..> DeliveryNote : "*"
-Package --> DeliveryNote : "0..1"
-note right of Package : Logistics domain
+Depot ..|> Package
+Manifest ..> Customer : "1"
+Package ..|> Warehouse
+Depot --> Customer : "1..*"
 @enduml

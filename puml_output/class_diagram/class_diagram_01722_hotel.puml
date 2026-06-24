@@ -7,54 +7,46 @@ abstract class Amenity {
   #String updatedAt
   #Date level
   +long total
-  +sendDuration()
-  +processDuration()
+  +getDescription()
+  +processCreatedat()
 }
-class Room {
-  +Date email
-  #Date description
-  #float code
-  +Date name
-  #Date type
-  +validateCreatedat()
+interface Room {
+  +String duration
+  #String email
+  #boolean score
+  -float total
+  +Date level
+  +calculateStatus()
 }
-class Booking {
-  #long amount
-  +String id
-  #double name
-  -String quantity
-  +createDuration()
+interface Booking {
+  +long address
+  +String createdAt
+  +processDescription()
 }
 class Restaurant {
-  +Date description
-  +int total
-  +float id
-  #String quantity
-  -float amount
-  +sendPhone()
+  -String name
+  +long level
+  #long note
+  +saveQuantity()
+  +saveTotal()
+  +updateEmail()
+  +processCode()
 }
 class Invoice {
+  +float description
+  #String code
+  -float duration
+  +calculateDuration()
+}
+class Payment {
+  -int createdAt
   +float active
-  #long quantity
-  +int updatedAt
-  +updateNote()
-  +createQuantity()
-  +findPrice()
+  +calculateEmail()
+  +getStatus()
+  +sendNote()
 }
-abstract class Payment {
-  #int phone
-  -double score
-  -int updatedAt
-  -long total
-  +cancelPhone()
-  +createDuration()
-  +processPhone()
-  +createAddress()
-}
-Invoice --> Payment : "1..*"
-Payment --* Amenity
 Room --* Restaurant
-Booking --* Restaurant
-Restaurant --o Booking
-note right of Amenity : Hotel domain
+Booking --o Restaurant
+Booking ..> Payment : "0..1"
+Restaurant ..|> Invoice
 @enduml

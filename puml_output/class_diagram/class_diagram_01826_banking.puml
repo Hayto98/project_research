@@ -6,44 +6,38 @@ class Beneficiary {
   #Date id
   +long email
   +double address
-  +saveTotal()
-  +sendAmount()
-  +findDescription()
-  +deleteCreatedat()
+  +createType()
+  +validateLevel()
+  +setQuantity()
+  +cancelCreatedat()
 }
-class Statement {
-  -long score
-  +float duration
-  +Date code
-  #double description
-  +createAddress()
-  +sendId()
-  +saveUpdatedat()
-  +deleteStatus()
+interface Statement {
+  +boolean description
+  -boolean amount
+  #String createdAt
+  +saveCreatedat()
+  +findCode()
 }
 class Customer {
-  #long score
-  #double level
-  +calculateAmount()
+  -long score
+  -boolean type
+  +cancelScore()
 }
-interface Withdrawal {
+class Withdrawal {
+  #boolean status
+  #long id
+  #double name
+  +findAmount()
+}
+class Transfer {
   #int score
   +Date amount
   +float type
   +float email
-  +cancelStatus()
+  +sendLevel()
 }
-interface Transfer {
-  -Date total
-  +float updatedAt
-  +long code
-  #Date score
-  +setScore()
-  +validateEmail()
-  +findAmount()
-  +createId()
-}
-Beneficiary --|> Transfer
+Beneficiary --o Customer
+Statement --> Beneficiary : "1"
+Withdrawal ..|> Statement
 Customer --|> Withdrawal
-note right of Beneficiary : Banking domain
 @enduml

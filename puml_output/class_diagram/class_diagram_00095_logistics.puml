@@ -8,44 +8,43 @@ class Route {
   #double address
   #int active
   -long createdAt
-  +savePrice()
+  +processNote()
 }
-class Tracking {
-  +double code
-  -double total
-  #long amount
-  +saveNote()
-  +sendActive()
-  +deleteCode()
-  +calculateEmail()
+abstract class Tracking {
+  +double description
+  -double code
+  #long total
+  #double amount
+  +setQuantity()
+  +createDescription()
+  +deleteScore()
+  +cancelStatus()
 }
-interface FuelLog {
-  +Date total
-  #double email
-  +int duration
-  -Date level
-  +updateNote()
-  +saveLevel()
-  +sendScore()
+abstract class FuelLog {
+  -long duration
+  +Date quantity
+  #double total
+  +int email
+  +createLevel()
+  +deleteEmail()
+  +validateAmount()
 }
 class Depot {
-  -float score
-  -float quantity
-  +double price
-  +String note
-  +setUpdatedat()
-  +updateCode()
+  #boolean level
+  -boolean score
+  -double duration
+  -float id
+  -float address
+  +deletePrice()
+  +deleteAddress()
 }
-abstract class Driver {
-  -long price
-  +int status
-  +int quantity
-  +createDuration()
-  +processAddress()
-  +calculateName()
+class Driver {
+  +float code
+  #double updatedAt
+  +double level
+  +getNote()
 }
-Tracking --|> FuelLog
-Route ..> Tracking : "1..*"
-Driver --> Route : "1"
-note right of Route : Logistics domain
+FuelLog ..|> Route
+Tracking --* Driver
+FuelLog --* Depot
 @enduml

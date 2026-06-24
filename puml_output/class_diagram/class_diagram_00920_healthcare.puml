@@ -5,54 +5,55 @@ skinparam shadowing true
 abstract class Patient {
   +boolean active
   #float score
-  +processCreatedat()
-  +processPrice()
+  +saveAmount()
+  +updateDescription()
 }
-class Nurse {
-  #String amount
+abstract class Nurse {
+  +String amount
+  #String price
   +int duration
-  -int type
-  -long code
-  -Date status
-  +validatePrice()
+  -int score
+  -long type
+  +calculateUpdatedat()
+  +processPhone()
+  +createNote()
+  +validateLevel()
 }
 class Hospital {
-  #String active
-  #double createdAt
-  -double duration
-  -double status
-  -String name
-  +validateCode()
-  +createTotal()
-  +setDuration()
-  +setUpdatedat()
+  +Date price
+  #boolean createdAt
+  #boolean type
+  +Date active
+  +deleteType()
 }
 class Insurance {
-  +long price
-  +Date phone
-  #int total
-  +getPrice()
+  +double total
+  -String price
+  -double address
+  +boolean duration
+  +int active
+  +processUpdatedat()
 }
 abstract class Billing {
-  -float code
-  -int id
-  #boolean note
-  #float phone
+  #Date total
+  +String amount
+  +double phone
+  -double createdAt
+  +processPhone()
+}
+class Treatment {
+  +Date phone
+  #Date active
   -String status
-  +createPrice()
+  +long quantity
+  #double address
+  +setAmount()
+  +findName()
+  +cancelCreatedat()
+  +validateNote()
 }
-abstract class Treatment {
-  #Date updatedAt
-  +String quantity
-  -long name
-  -String createdAt
-  #long total
-  +createLevel()
-  +calculateEmail()
-}
-Treatment --|> Patient
-Patient --> Hospital : "0..1"
-Nurse --o Insurance
-Hospital --o Patient
-note right of Patient : Healthcare domain
+Patient --> Billing : "0..1"
+Insurance ..> Billing : "1"
+Patient --* Hospital
+Hospital ..> Patient : "1..*"
 @enduml

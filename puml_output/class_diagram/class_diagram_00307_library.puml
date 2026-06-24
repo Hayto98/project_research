@@ -7,41 +7,43 @@ class Librarian {
   #int description
   +double price
   #long note
-  +processActive()
-  +processEmail()
+  +sendCode()
+  +createDescription()
 }
-class Catalog {
-  +long quantity
+abstract class Catalog {
+  -String quantity
+  -String level
+  +Date name
   +int duration
-  +updateLevel()
-  +updateQuantity()
+  +findScore()
+  +getTotal()
 }
 class Fine {
-  #double note
-  -int email
-  +float description
-  +cancelDescription()
-  +saveLevel()
-  +deleteDescription()
+  +float email
+  -boolean description
+  #Date type
+  +Date score
+  #boolean level
+  +setType()
+  +updateScore()
 }
 abstract class Publisher {
   -long status
   +Date id
-  +getCreatedat()
-  +validateDescription()
-  +createId()
+  +updateDuration()
+  +sendEmail()
+  +createActive()
 }
-abstract class Shelf {
-  #String address
-  -int updatedAt
-  +double quantity
-  #Date total
-  +deleteCode()
-  +updateStatus()
-  +findActive()
-  +cancelType()
+class Shelf {
+  -int id
+  -double note
+  #String score
+  -int quantity
+  +cancelCode()
+  +createLevel()
 }
-Publisher ..|> Librarian
-Catalog ..> Publisher : "1"
-note right of Librarian : Library domain
+Publisher --|> Catalog
+Catalog ..> Librarian : "*"
+Librarian --|> Publisher
+Catalog --o Shelf
 @enduml

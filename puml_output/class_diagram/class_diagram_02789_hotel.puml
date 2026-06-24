@@ -6,38 +6,37 @@ skinparam shadowing true
 abstract class Staff {
   -double total
   #Date level
-  +sendActive()
-  +getQuantity()
-  +calculateStatus()
+  +saveType()
+  +getScore()
+  +setPrice()
 }
-class Guest {
-  #float updatedAt
-  +double id
-  +calculateCreatedat()
-  +processNote()
+interface Guest {
+  +long quantity
+  +float total
+  +setName()
+  +updatePhone()
 }
-interface Room {
-  +boolean phone
-  +boolean createdAt
-  +double name
-  -double level
+class Room {
+  #boolean amount
+  -long price
+  +String createdAt
+  +int type
+  #int note
   +getId()
+  +setNote()
 }
-class Invoice {
-  +boolean name
-  -float level
-  +getName()
-  +cancelEmail()
-  +deleteLevel()
+abstract class Invoice {
+  +String name
+  +boolean id
+  +processEmail()
+  +deleteCode()
 }
 class Payment {
-  +double duration
-  #double description
-  +double quantity
-  #float total
-  +updateLevel()
+  -int name
+  #boolean level
+  +saveType()
 }
-Room --> Staff : "1..*"
-Staff --|> Guest
-note right of Staff : Hotel domain
+Payment ..> Guest : "1..*"
+Invoice --o Guest
+Invoice --o Staff
 @enduml

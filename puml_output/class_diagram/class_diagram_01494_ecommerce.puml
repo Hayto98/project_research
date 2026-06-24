@@ -6,32 +6,38 @@ abstract class Return {
   +float code
   +long description
   +Date amount
-  +updateAddress()
-  +validateId()
-  +saveEmail()
+  +createScore()
+  +validateScore()
+  +saveScore()
 }
-interface Invoice {
-  -Date phone
-  +String active
-  +setActive()
-  +findLevel()
-  +validateUpdatedat()
+class Invoice {
+  -Date score
+  +String id
+  -String phone
+  #Date active
+  +findAddress()
+  +cancelPhone()
+  +setStatus()
 }
-class Coupon {
-  -boolean score
+interface Coupon {
   -int level
-  +validateCreatedat()
-  +updateDuration()
+  +Date type
+  #String amount
+  #float score
+  +setEmail()
 }
-class Cart {
-  -boolean address
-  #long note
-  +deleteTotal()
-  +setCreatedat()
-  +updateScore()
-  +saveNote()
+abstract class Cart {
+  +int level
+  +Date quantity
+  #Date total
+  -Date amount
+  #long score
+  +createNote()
+  +calculateCode()
+  +getEmail()
+  +calculateActive()
 }
-Cart ..|> Invoice
-Cart --* Return
-note right of Return : Ecommerce domain
+Invoice --o Cart
+Coupon --* Cart
+Invoice ..> Coupon : "*"
 @enduml

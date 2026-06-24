@@ -6,63 +6,54 @@ abstract class Profile {
   #boolean note
   +double level
   +String duration
-  +getPrice()
-  +validateActive()
-  +sendCode()
+  +setUpdatedat()
+  +deleteAmount()
+  +calculateName()
 }
-class Notification {
-  +int updatedAt
-  #int total
-  +boolean type
-  #long price
-  #Date quantity
-  +setType()
+interface Notification {
+  #float id
+  +Date type
+  +validateUpdatedat()
+  +setActive()
+  +updateQuantity()
+  +deleteAmount()
 }
-abstract class Album {
-  -boolean type
-  +float updatedAt
-  -Date id
-  +getDuration()
-  +deleteScore()
-  +sendActive()
+class Album {
+  #boolean updatedAt
+  -boolean createdAt
+  #String code
+  +deleteStatus()
 }
-class Post {
-  #int active
-  #long email
+abstract class Post {
+  #String description
+  -Date type
+  -String updatedAt
+  #int id
+  #boolean email
+  +updateCode()
+  +sendAddress()
+}
+interface Hashtag {
   #double createdAt
   -double status
-  +deleteStatus()
-  +deleteName()
-  +sendAmount()
-  +updateName()
+  #boolean updatedAt
+  -int phone
+  +validateQuantity()
 }
-class Hashtag {
-  +String id
-  +Date updatedAt
-  +Date score
-  +cancelPrice()
-  +sendCode()
-  +cancelDuration()
-  +sendEmail()
+class Message {
+  #int createdAt
+  +Date name
+  +float quantity
+  +processQuantity()
 }
-interface Message {
-  +long phone
-  +int price
-  -boolean name
-  +setAmount()
+class Follower {
+  -boolean total
+  +boolean level
+  +getScore()
+  +cancelActive()
+  +updateScore()
 }
-abstract class Follower {
-  #String price
-  #long note
-  +processCode()
-  +getDuration()
-  +updateAddress()
-}
-Post --o Profile
-Notification ..|> Profile
-Hashtag --o Album
-Hashtag --* Follower
-Post --> Message : "*"
-Album --* Hashtag
-note right of Profile : Social Media domain
+Album --|> Post
+Profile ..|> Album
+Notification --> Album : "1"
 @enduml

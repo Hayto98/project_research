@@ -6,32 +6,34 @@ class Housekeeping {
   -float type
   +long description
   -double total
-  +saveActive()
-  +findAddress()
-  +sendEmail()
+  +createType()
+  +validateDescription()
+  +findDuration()
 }
-abstract class CheckIn {
-  -float code
-  #long type
-  #double updatedAt
-  -double duration
-  +deletePrice()
-  +updateDuration()
+class CheckIn {
+  +String price
+  -float phone
+  #long code
+  #double type
+  +cancelCode()
+  +sendNote()
+  +validateQuantity()
 }
 abstract class Booking {
-  +long code
-  #Date status
-  +updateDuration()
-  +sendPrice()
-  +sendEmail()
+  #String duration
+  +String price
+  +long active
+  +updateDescription()
+  +findDescription()
+  +setAmount()
 }
 interface Staff {
-  +Date quantity
-  +long score
-  +updateNote()
-  +deleteLevel()
-  +cancelType()
-  +setDuration()
+  #int score
+  -double email
+  +double code
+  +boolean quantity
+  #double description
+  +sendActive()
 }
 class Payment {
   #int level
@@ -39,11 +41,12 @@ class Payment {
   #float duration
   #Date status
   -double createdAt
-  +saveCode()
-  +sendQuantity()
-  +calculateActive()
+  +cancelScore()
+  +updateAmount()
+  +getType()
 }
+Booking --> Staff : "1"
 Booking ..|> CheckIn
 Payment --> Staff : "0..1"
-note right of Housekeeping : Hotel domain
+Payment --|> CheckIn
 @enduml

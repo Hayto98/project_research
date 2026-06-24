@@ -7,61 +7,64 @@ interface Department {
   -double name
   -String note
   +long price
-  +validateName()
-  +deleteDuration()
+  +saveStatus()
+  +saveCreatedat()
 }
 class Student {
-  #Date email
-  #double type
-  +double active
-  +setStatus()
-  +validateScore()
-  +cancelPhone()
+  -double duration
+  #Date address
+  #Date amount
+  +deleteLevel()
+  +createCode()
+  +sendScore()
+  +processCreatedat()
 }
 interface Grade {
-  -boolean type
-  -Date level
-  +Date amount
-  -double code
-  -float score
-  +deleteCode()
+  #double status
+  -boolean duration
+  +float address
+  #boolean phone
+  +processUpdatedat()
 }
-class Teacher {
-  +float updatedAt
-  -int code
-  +double phone
-  +boolean email
-  +deleteName()
-  +cancelPrice()
+abstract class Teacher {
+  +float createdAt
+  +String total
+  #int type
+  #long quantity
+  +getType()
+  +findType()
 }
 class Assignment {
+  -int name
+  #int type
+  +Date createdAt
+  +boolean score
+  +deleteQuantity()
+  +setPrice()
+  +processEmail()
+  +createLevel()
+}
+interface Course {
   #Date score
   -float createdAt
   #String level
   +String status
   -double name
-  +processQuantity()
-  +createAmount()
+  +sendCreatedat()
+  +processDescription()
 }
-abstract class Course {
-  #float updatedAt
-  -int email
-  -double name
-  +deleteDescription()
-  +getName()
-  +updateLevel()
+class Attendance {
+  #Date type
+  -float amount
+  +boolean updatedAt
+  +updateDescription()
+  +updateEmail()
+  +calculateTotal()
+  +validateLevel()
 }
-abstract class Attendance {
-  -boolean updatedAt
-  +double note
-  #float quantity
-  +int type
-  +findAddress()
-}
-Assignment --* Department
-Department --o Course
-Course --|> Department
-Teacher ..|> Course
-Attendance ..> Course : "0..1"
-note right of Department : Education domain
+Grade ..|> Student
+Attendance --|> Department
+Student --o Assignment
+Assignment ..|> Grade
+Teacher --o Grade
 @enduml

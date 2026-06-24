@@ -5,32 +5,33 @@ skinparam shadowing true
 class Catalog {
   +int updatedAt
   #float type
-  +updateScore()
-  +sendDescription()
+  +sendNote()
+  +calculateLevel()
 }
-class Fine {
-  +long createdAt
-  -boolean active
-  +int id
-  -double phone
-  +processUpdatedat()
-  +processPhone()
+interface Fine {
+  #String updatedAt
+  -int address
+  -double createdAt
+  +sendId()
 }
-class Publisher {
-  #boolean createdAt
-  #double code
-  -Date price
-  +getId()
-  +createPrice()
+abstract class Publisher {
+  -boolean updatedAt
+  +int note
+  +double duration
+  #boolean level
+  #double phone
+  +cancelUpdatedat()
+  +findAddress()
+  +deleteNote()
 }
 class Reservation {
-  #long active
-  +double code
-  +int updatedAt
-  +cancelTotal()
+  +int price
+  #long name
+  +double description
+  +int active
+  +getQuantity()
 }
-Fine ..|> Reservation
-Fine --> Catalog : "0..1"
-Reservation ..> Publisher : "1..*"
-note right of Catalog : Library domain
+Publisher --* Catalog
+Fine ..|> Catalog
+Fine --o Publisher
 @enduml

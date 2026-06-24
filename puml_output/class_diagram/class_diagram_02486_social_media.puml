@@ -5,69 +5,60 @@ skinparam classBorderColor #E65100
 class Story {
   -float amount
   +float email
-  +calculateQuantity()
-  +createQuantity()
+  +updateAmount()
+  +processPhone()
 }
-class Message {
-  #Date active
-  +float createdAt
-  +float email
-  +deleteLevel()
-  +processScore()
-  +saveType()
-  +saveDuration()
+abstract class Message {
+  #int email
+  #Date quantity
+  #long phone
+  #Date amount
+  +saveStatus()
 }
 class Post {
+  +float amount
+  #boolean level
+  +int type
   +float score
-  #String id
-  +double updatedAt
-  +saveCreatedat()
-  +processPrice()
-  +getActive()
-  +getCreatedat()
+  #String phone
+  +deletePrice()
 }
-interface User {
-  +Date name
-  #Date score
-  +long price
-  +boolean code
-  +findNote()
-  +findPhone()
-  +createEmail()
+abstract class User {
+  #String type
+  +boolean price
+  #float name
+  +processQuantity()
+  +calculateType()
+  +calculatePrice()
 }
 abstract class Comment {
-  +boolean price
-  -double note
-  #float id
-  +double total
-  -double active
-  +getNote()
-  +validateDuration()
-  +calculateUpdatedat()
-  +cancelNote()
+  -int createdAt
+  #Date status
+  +updateId()
+  +calculateAmount()
+  +calculateStatus()
 }
 class Like {
-  #double level
-  -boolean code
-  #double email
-  +processType()
-  +setDuration()
-  +getAmount()
+  -String email
+  #float price
+  #double total
+  -int level
+  +saveAmount()
+  +cancelScore()
+  +updateCreatedat()
+  +processScore()
 }
 class Profile {
-  #String duration
-  #Date amount
-  +int email
-  -long quantity
-  #double note
-  +findLevel()
-  +deleteStatus()
-  +cancelPhone()
+  -float quantity
+  #double type
+  +boolean total
+  -long name
+  #int note
+  +findCreatedat()
 }
-Message ..|> User
-Story --* User
-Comment --|> Like
-Comment --> User : "1"
-Story ..> Post : "1"
-note right of Story : Social Media domain
+Post --> Comment : "*"
+Like --> Comment : "1..*"
+User --|> Profile
+Comment ..|> Story
+Message --> User : "0..1"
 @enduml

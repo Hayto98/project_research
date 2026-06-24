@@ -5,51 +5,53 @@ skinparam defaultFontSize 11
 class Booking {
   +int type
   #double email
-  +validateEmail()
-  +sendAddress()
-  +sendCreatedat()
+  +saveScore()
+  +calculateScore()
+  +sendQuantity()
 }
 class Payment {
-  +float price
-  -int code
-  +String level
-  +setPhone()
-  +calculateDuration()
+  +Date status
+  +String description
+  -int price
+  +validateId()
+  +saveTotal()
 }
-interface Guest {
-  -double address
-  #String id
-  +calculateTotal()
-  +sendScore()
+class Guest {
+  #boolean phone
+  +long price
+  +validateScore()
 }
-class Staff {
-  -double active
+abstract class Staff {
+  -boolean createdAt
   #long price
-  +findQuantity()
+  +findPrice()
 }
-class Service {
-  #float description
-  +long phone
-  #double id
-  +cancelName()
-  +getCreatedat()
+abstract class Service {
+  +Date total
+  -int level
+  #int phone
+  +Date active
+  +processEmail()
+  +validatePrice()
+  +updatePrice()
 }
-class Amenity {
+interface Amenity {
+  +boolean phone
+  +String type
+  +getAmount()
+  +sendLevel()
+}
+class Invoice {
   +long note
   +boolean code
   +Date price
-  +getScore()
-  +cancelUpdatedat()
+  +cancelTotal()
+  +getCreatedat()
 }
-class Invoice {
-  #boolean note
-  #long updatedAt
-  #float email
-  -Date code
-  +deleteEmail()
-  +setAddress()
-}
-Staff ..|> Booking
-Payment ..> Invoice : "1"
-note right of Booking : Hotel domain
+Payment --* Invoice
+Staff --* Payment
+Amenity --|> Service
+Service --> Invoice : "1..*"
+Amenity ..> Guest : "0..1"
+Payment --|> Guest
 @enduml

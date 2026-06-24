@@ -4,59 +4,58 @@ skinparam ArrowColor #555555
 class Notification {
   -boolean quantity
   #double updatedAt
-  +getDescription()
-  +findUpdatedat()
-  +processQuantity()
-  +processEmail()
+  +updateActive()
+  +createCreatedat()
+  +deleteType()
+  +deleteAddress()
 }
 abstract class Group {
-  +int total
-  +float quantity
-  +cancelDuration()
+  -Date note
+  -int email
+  +String duration
+  #Date code
+  +setPhone()
 }
 interface Profile {
   +int duration
   +double phone
   +boolean status
   #int email
-  +getCreatedat()
-  +setPrice()
-  +getAmount()
-  +setNote()
+  +cancelType()
+  +saveId()
+  +saveNote()
+  +createPhone()
 }
-class Follower {
-  #boolean type
-  #long address
+abstract class Follower {
+  #float amount
+  -float code
+  +saveAddress()
+}
+abstract class Report {
   -String price
-  +getEmail()
-  +createUpdatedat()
-  +findTotal()
+  #boolean score
+  #long level
+  +long email
+  +deleteAddress()
+  +cancelUpdatedat()
+  +getPhone()
 }
-class Report {
+class Comment {
   #boolean score
   +String quantity
   +boolean phone
-  +cancelPrice()
-  +saveDescription()
+  +validateActive()
+  +deleteAmount()
 }
-class Comment {
-  +long duration
+class Hashtag {
+  +long status
   -double note
-  +sendDuration()
-  +cancelPhone()
+  +cancelType()
+  +updateNote()
 }
-interface Hashtag {
-  -long address
-  -Date type
-  -double email
-  -float quantity
-  +calculateDescription()
-  +saveUpdatedat()
-  +getNote()
-  +getCode()
-}
-Profile --|> Comment
-Follower --|> Group
-Hashtag ..> Comment : "*"
-note right of Notification : Social Media domain
+Hashtag ..> Report : "1..*"
+Report --* Hashtag
+Comment --o Profile
+Profile --* Hashtag
+Comment --o Follower
 @enduml

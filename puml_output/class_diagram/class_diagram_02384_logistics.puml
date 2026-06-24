@@ -9,61 +9,52 @@ abstract class Customer {
   +Date score
   +float status
   #int id
-  +processAmount()
-  +calculateType()
+  +saveAmount()
+  +setCreatedat()
 }
 class Route {
-  #boolean type
-  +int score
-  -String id
-  +int amount
-  +String level
-  +getActive()
-  +setPrice()
-  +cancelActive()
-  +calculateDuration()
+  +Date type
+  +Date address
+  #int total
+  +double duration
+  +String id
+  +findLevel()
+  +getEmail()
 }
 class Tracking {
-  #String quantity
-  -boolean code
-  #int updatedAt
-  -boolean createdAt
-  #Date address
+  #int name
+  #double active
+  -String code
+  +Date price
+  +boolean total
+  +saveDuration()
+  +cancelEmail()
   +calculateAmount()
-  +findQuantity()
-  +setCode()
 }
-class Vehicle {
+interface Vehicle {
+  -Date price
+  +Date active
+  -String phone
+  +validatePrice()
+}
+class Warehouse {
   +String createdAt
   #Date type
   #float total
   #Date note
-  +saveStatus()
-  +createDuration()
-  +cancelCreatedat()
-  +cancelCreatedat()
+  +updateAddress()
+  +createPhone()
+  +validateAddress()
+  +setAmount()
 }
-class Warehouse {
+interface Shipment {
   -boolean level
-  +float code
-  -int name
-  -boolean score
-  -long updatedAt
-  +validateUpdatedat()
-  +findStatus()
-  +calculateName()
+  #String createdAt
+  #String id
+  +validateNote()
 }
-abstract class Shipment {
-  #float amount
-  +boolean quantity
-  +double type
-  #Date note
-  #double id
-  +setPrice()
-  +deleteTotal()
-  +cancelCode()
-}
-Customer --|> Shipment
-Vehicle ..|> Warehouse
-note right of Customer : Logistics domain
+Warehouse --* Customer
+Route --> Vehicle : "1..*"
+Tracking --* Shipment
+Shipment ..> Route : "1"
 @enduml

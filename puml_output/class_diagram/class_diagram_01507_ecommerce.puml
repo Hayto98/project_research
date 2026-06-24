@@ -8,53 +8,53 @@ interface Payment {
   +int duration
   -Date name
   #Date email
-  +validateCreatedat()
-  +createActive()
+  +processPhone()
+  +sendPhone()
 }
-interface Review {
-  #Date level
-  -String quantity
-  -double price
-  #int note
-  +float active
-  +validateName()
-  +calculateName()
+class Review {
+  -double active
+  -boolean level
+  #double type
+  +double quantity
+  +findPrice()
+  +saveTotal()
+  +setType()
+  +createAddress()
 }
-class Order {
-  #float amount
-  -String name
-  -double id
-  +processDuration()
-  +setCode()
+interface Order {
+  +int address
+  #int name
+  +Date price
+  +sendStatus()
 }
 class Category {
-  #float email
-  -int address
-  +int status
-  #boolean createdAt
-  +setAmount()
-  +sendType()
-  +deleteAddress()
+  #String id
+  +long quantity
+  -Date price
+  -float description
+  -Date note
+  +sendId()
 }
 interface Product {
-  #double score
-  -Date name
-  +String email
-  +validateCode()
-  +saveActive()
-  +saveEmail()
-  +createQuantity()
+  +Date updatedAt
+  +boolean createdAt
+  -int level
+  -boolean active
+  +boolean address
+  +createId()
 }
-abstract class Shipment {
-  +Date code
-  #float note
-  #Date score
-  -int createdAt
-  #float name
-  +cancelEmail()
+interface Shipment {
+  +float active
+  -long note
+  +Date type
+  #float status
+  +deleteName()
+  +calculateType()
+  +getNote()
 }
-Shipment --|> Product
-Product --o Category
-Payment ..> Order : "*"
-note right of Payment : Ecommerce domain
+Category --o Payment
+Product ..> Review : "1"
+Review ..|> Order
+Product --> Payment : "1..*"
+Product ..> Category : "1"
 @enduml

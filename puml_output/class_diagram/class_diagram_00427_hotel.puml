@@ -7,57 +7,59 @@ interface Amenity {
   -boolean level
   #long name
   +long note
-  +findCreatedat()
+  +cancelName()
 }
-abstract class Staff {
-  +boolean status
-  +String updatedAt
-  +String phone
-  +findAddress()
-  +saveAmount()
-  +cancelCreatedat()
-  +deleteAddress()
-}
-class Room {
-  #int status
-  -float createdAt
-  +int email
-  +updateStatus()
-  +calculateCreatedat()
-  +setAmount()
-  +cancelNote()
-}
-abstract class Invoice {
-  -long code
+class Staff {
+  #int description
   +float status
-  +double id
-  +calculateCreatedat()
-  +calculateAmount()
-  +updateCode()
-  +cancelId()
+  +String updatedAt
+  #double phone
+  #long createdAt
+  +createNote()
+  +validateDescription()
+}
+interface Room {
+  +String description
+  #Date address
+  +long id
+  +deletePrice()
+  +setActive()
+}
+class Invoice {
+  +double duration
+  +String type
+  +boolean updatedAt
+  +processLevel()
+  +sendEmail()
+  +validatePhone()
+  +getQuantity()
 }
 class Guest {
-  -long amount
-  +long id
-  +findPrice()
-  +calculateId()
-  +findType()
+  +float quantity
+  +double duration
+  +getAddress()
+  +calculateTotal()
+  +calculateNote()
+  +setNote()
 }
 class Restaurant {
-  -String quantity
-  -double type
-  +findCreatedat()
-  +findNote()
+  -String code
+  +String level
+  -long id
+  +deletePhone()
+  +validateScore()
 }
 class Booking {
-  #String type
-  -int description
-  -Date active
-  +validateCreatedat()
+  #Date total
+  -float id
+  -long type
+  +double code
+  -int name
+  +sendUpdatedat()
+  +setCreatedat()
 }
-Booking --|> Amenity
-Staff --o Room
-Invoice --o Amenity
-Amenity --o Restaurant
-note right of Amenity : Hotel domain
+Room ..|> Guest
+Invoice --> Staff : "1"
+Room --|> Restaurant
+Room --* Staff
 @enduml

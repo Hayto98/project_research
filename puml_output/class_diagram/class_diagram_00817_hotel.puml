@@ -7,50 +7,58 @@ interface Payment {
   #Date id
   -Date createdAt
   -int updatedAt
-  +cancelNote()
-  +cancelPrice()
+  +savePrice()
+  +deleteDuration()
 }
-class Booking {
-  #String total
-  -Date description
-  +validateType()
-  +updateLevel()
+interface Booking {
+  -Date code
+  #int id
+  -double total
+  +float description
+  #boolean name
+  +validatePhone()
 }
-class Reservation {
-  +Date type
-  +float duration
-  +findActive()
+abstract class Reservation {
+  #int code
+  +long description
+  -String id
+  +boolean active
+  -long note
+  +findDescription()
+  +findCreatedat()
 }
 abstract class Guest {
-  +int code
-  #long phone
-  -Date price
-  +cancelEmail()
-  +calculateStatus()
+  +long code
+  -boolean active
+  +validateTotal()
+  +updateDescription()
+  +calculateQuantity()
 }
 class Service {
-  #Date quantity
-  #Date email
-  +findCreatedat()
-  +calculateQuantity()
-  +createActive()
+  +float active
+  +float phone
+  +String createdAt
+  #Date price
+  +saveAddress()
 }
-class CheckIn {
-  +String price
-  #Date name
-  #String updatedAt
-  +calculateCode()
+abstract class CheckIn {
+  -float address
+  #double level
+  +calculateId()
+  +createTotal()
   +validateLevel()
+  +sendStatus()
 }
-class Amenity {
-  +long score
-  +float level
-  +int note
-  +Date name
-  #int total
-  +calculateUpdatedat()
+interface Amenity {
+  +Date id
+  #int quantity
+  +double description
+  +Date status
+  +long amount
+  +processNote()
+  +deleteScore()
 }
-Reservation ..> Booking : "0..1"
-Reservation ..|> Payment
-note right of Payment : Hotel domain
+Payment ..> Booking : "0..1"
+Guest --* CheckIn
+CheckIn ..|> Payment
 @enduml

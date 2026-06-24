@@ -7,44 +7,46 @@ class Driver {
   +double note
   #Date code
   #double total
-  +deleteTotal()
-  +getActive()
+  +setType()
+  +cancelType()
 }
-class FuelLog {
-  +Date address
-  +double email
-  +boolean amount
-  +Date price
-  +setAddress()
-  +processName()
-  +findUpdatedat()
+abstract class FuelLog {
+  #long active
+  -long email
+  +createPrice()
+  +findNote()
 }
 class Depot {
-  -float level
-  #Date price
-  -String amount
+  -double code
+  +float score
+  #int createdAt
+  +int email
+  #float status
+  +deleteScore()
+  +createActive()
+  +processAddress()
+  +calculateDescription()
+}
+class Route {
+  -float updatedAt
+  -double quantity
+  +validatePrice()
+  +cancelAddress()
+  +setDescription()
+  +findType()
+}
+class DeliveryNote {
+  #boolean address
+  #float price
+  #Date status
+  +String updatedAt
+  +sendScore()
+  +updateCode()
   +createPrice()
-  +calculateNote()
+  +getDuration()
 }
-abstract class Route {
-  -String code
-  #int email
-  #boolean level
-  #float address
-  +setActive()
-}
-abstract class DeliveryNote {
-  +int price
-  +long duration
-  #float score
-  +Date code
-  +int updatedAt
-  +updateDuration()
-  +setLevel()
-  +setPrice()
-  +saveLevel()
-}
-Depot ..> DeliveryNote : "1"
-Route --|> FuelLog
-note right of Driver : Logistics domain
+Route ..> Driver : "0..1"
+FuelLog --|> DeliveryNote
+Depot ..> FuelLog : "1"
+FuelLog ..|> Route
 @enduml

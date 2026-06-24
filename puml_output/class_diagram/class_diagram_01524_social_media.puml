@@ -6,66 +6,65 @@ class Group {
   #int level
   #String name
   +long score
-  +getAmount()
-  +setNote()
-  +validateEmail()
-  +findAmount()
+  +saveId()
+  +processUpdatedat()
+  +cancelStatus()
+  +deleteStatus()
 }
-interface Report {
+abstract class Report {
+  -String email
+  #double amount
+  #double note
   -String phone
-  #double address
-  #long id
-  -long note
-  #Date price
-  +deletePrice()
-  +processStatus()
-  +createPrice()
+  +processEmail()
+  +calculatePhone()
+  +validateDuration()
+  +saveCreatedat()
 }
-abstract class Profile {
-  #String level
-  +int quantity
-  #float email
-  +createCode()
-  +calculateScore()
-  +validatePhone()
+class Profile {
+  -double price
+  -Date note
+  #int status
+  +findCreatedat()
+  +createStatus()
+  +saveId()
 }
 class Post {
-  +Date duration
-  -double level
-  -float address
-  +validatePhone()
-  +setId()
-  +createName()
+  #Date level
+  +double email
+  #long quantity
+  +getTotal()
+  +processScore()
+  +findPhone()
 }
 interface Notification {
-  #String createdAt
-  -float code
-  #double duration
-  -String amount
-  #double phone
-  +saveActive()
-  +updateAmount()
+  -long createdAt
+  -float note
+  +String total
+  -String level
+  +processNote()
+  +getTotal()
+  +getType()
+  +processPhone()
 }
 class Story {
-  +Date total
-  -Date note
-  +validateActive()
-  +sendTotal()
-  +deletePrice()
-  +deleteActive()
+  -float phone
+  #double level
+  -String status
+  +saveQuantity()
+  +getAmount()
+  +updateNote()
+  +updateDescription()
 }
 class Album {
-  +float status
-  #long address
-  -int updatedAt
-  -Date duration
-  +Date name
-  +validateDescription()
+  -double score
+  +Date status
+  +updateScore()
+  +cancelUpdatedat()
+  +sendCreatedat()
 }
-Report ..|> Group
-Profile ..|> Group
-Post ..> Report : "*"
-Album --o Report
-Report ..> Story : "1..*"
-note right of Group : Social Media domain
+Notification --o Album
+Report --o Story
+Report ..|> Notification
+Post --* Group
 @enduml

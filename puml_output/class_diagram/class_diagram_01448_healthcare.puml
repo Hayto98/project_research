@@ -6,48 +6,51 @@ skinparam shadowing true
 class Insurance {
   -Date code
   +Date price
-  +updateId()
-  +saveScore()
-  +updateId()
+  +sendEmail()
+  +updatePrice()
+  +cancelScore()
 }
-class Nurse {
-  #long name
-  -double note
-  +int amount
+interface Nurse {
+  #int id
+  +double description
+  +Date active
+  +updateLevel()
+  +sendName()
   +sendLevel()
 }
 class Treatment {
-  #double name
-  #long duration
-  +sendCode()
-  +updateActive()
-  +getQuantity()
-  +cancelName()
+  +String name
+  +Date score
+  -float amount
+  +validateName()
+  +createUpdatedat()
+  +validatePhone()
 }
-abstract class Hospital {
-  #String code
-  #long score
-  +updatePhone()
-  +cancelDescription()
+class Hospital {
+  +double quantity
+  +String level
+  +saveUpdatedat()
 }
 class Billing {
-  #long quantity
-  -long phone
   +long updatedAt
-  -boolean active
-  +validateQuantity()
-  +deleteEmail()
+  -long phone
+  +boolean description
+  +validateAddress()
+  +findQuantity()
+  +createAddress()
 }
 class Diagnosis {
-  -boolean id
-  +float duration
-  -String total
-  +saveLevel()
-  +processNote()
-  +validateStatus()
+  +long duration
+  -int createdAt
+  +String phone
+  #float quantity
+  +cancelCreatedat()
+  +deleteId()
+  +findDescription()
+  +setName()
 }
-Treatment --o Nurse
-Treatment --o Hospital
-Nurse --o Diagnosis
-note right of Insurance : Healthcare domain
+Insurance ..> Billing : "1..*"
+Diagnosis --o Billing
+Hospital --|> Treatment
+Nurse ..|> Treatment
 @enduml

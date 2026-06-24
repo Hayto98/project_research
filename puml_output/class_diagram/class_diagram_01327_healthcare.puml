@@ -9,56 +9,60 @@ interface Hospital {
   +double active
   #String description
   #String total
-  +setPhone()
-  +saveEmail()
-  +calculateId()
+  +getType()
+  +sendPhone()
+  +sendDuration()
 }
 class Appointment {
-  #float name
-  -float level
-  -float price
-  +cancelDescription()
-  +calculateTotal()
+  #float id
+  -float email
+  -float amount
+  +float name
+  #float price
+  +cancelCreatedat()
+  +sendPrice()
 }
 abstract class Diagnosis {
-  -long email
-  -int level
+  -long type
+  -int email
   -Date name
   +float updatedAt
   -double active
-  +getLevel()
-  +cancelCode()
-  +setPrice()
-  +validateDuration()
+  +savePhone()
+  +processId()
+  +sendActive()
+  +processAmount()
 }
 class LabTest {
-  -String status
-  #float level
+  #boolean phone
+  #int amount
+  -double total
+  +Date status
   #boolean address
-  -long amount
-  #long type
-  +calculateAddress()
-  +getName()
+  +findCreatedat()
+  +cancelActive()
+  +createAmount()
+  +createCode()
 }
-class Doctor {
-  -Date type
-  +Date email
-  -double phone
-  +float address
-  #boolean id
-  +deleteActive()
+abstract class Doctor {
+  -long id
+  #long name
+  -Date level
+  #float price
+  +processDescription()
 }
 class Patient {
-  #boolean email
-  #float address
-  -boolean status
-  +long quantity
-  -boolean total
-  +getDuration()
-  +updatePrice()
-  +getUpdatedat()
+  #float price
+  +double id
+  #long status
+  -String description
+  +calculateQuantity()
+  +processNote()
+  +sendQuantity()
 }
-Patient --|> Hospital
-Hospital --* Diagnosis
-note right of Hospital : Healthcare domain
+Doctor --* Appointment
+LabTest --* Doctor
+Hospital ..|> Doctor
+Patient --|> LabTest
+Appointment ..> Hospital : "1"
 @enduml

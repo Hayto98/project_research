@@ -8,58 +8,60 @@ abstract class Message {
   -long note
   -String id
   +int code
-  +createEmail()
-  +savePrice()
-  +saveTotal()
+  +setActive()
+  +validateAmount()
+  +calculateScore()
 }
-class Follower {
-  #int email
+abstract class Follower {
+  #String status
+  #int quantity
+  -boolean email
   -boolean name
-  -boolean note
-  +double status
-  +validateQuantity()
-  +cancelId()
-  +deleteAddress()
-  +createActive()
+  +double note
+  +validateScore()
+  +updateLevel()
+  +findDescription()
+  +updateDuration()
 }
-interface Profile {
-  #float note
-  #long level
-  -double active
-  +double duration
-  -long phone
-  +updateScore()
-  +saveId()
-  +saveQuantity()
+class Profile {
+  -boolean email
+  #float active
+  -long level
+  #float price
+  +deletePrice()
+  +createName()
+  +getDuration()
 }
 class Report {
-  #double id
-  +boolean status
-  -boolean updatedAt
-  +Date email
+  #Date email
+  #long duration
+  +long phone
+  +boolean updatedAt
+  +int id
+  +createLevel()
+  +sendCode()
+  +deleteQuantity()
+}
+interface User {
+  #int duration
+  #double createdAt
+  -double type
+  -long description
+  +Date status
   +findDescription()
-  +findLevel()
-  +cancelStatus()
-  +sendUpdatedat()
+  +updateQuantity()
+  +findAddress()
 }
-abstract class User {
-  #long type
-  #float phone
-  +double email
-  -long status
-  +saveAddress()
+abstract class Comment {
+  #double phone
+  -float score
+  -String name
+  -float address
+  +String createdAt
+  +calculateNote()
+  +findEmail()
 }
-class Comment {
-  +int price
-  +int type
-  -int status
-  #int note
-  #boolean name
-  +setNote()
-}
-User ..|> Report
-Report --* Message
-User --|> Comment
-Report --* User
-note right of Message : Social Media domain
+Profile ..> Follower : "0..1"
+Comment --|> User
+Message --* Report
 @enduml

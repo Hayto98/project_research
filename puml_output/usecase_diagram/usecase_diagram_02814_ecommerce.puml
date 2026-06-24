@@ -3,10 +3,10 @@ skinparam backgroundColor #FFFFFF
 skinparam roundCorner 15
 skinparam ArrowColor #555555
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Customer" as Customer
-actor "Delivery Service" as DeliveryService
-actor "Admin" as Admin
+actor "Payment Gateway" as PG
+actor "Customer" as C
+actor "Delivery Service" as DS
+actor "Admin" as A
 rectangle "Ecommerce System" {
   usecase "Add To Cart" as UC_AddToCart
   usecase "Cancel Order" as UC_CancelOrder
@@ -17,15 +17,15 @@ rectangle "Ecommerce System" {
   usecase "Write Review" as UC_WriteReview
   usecase "Manage Inventory" as UC_ManageInventory
 }
-PaymentGateway --> UC_WriteReview
-PaymentGateway --> UC_CancelOrder
-Customer --> UC_CancelOrder
-Customer --> UC_MakePayment
-DeliveryService --> UC_Checkout
-DeliveryService --> UC_MakePayment
-DeliveryService --> UC_WriteReview
-Admin --> UC_WriteReview
-Admin --> UC_TrackOrder
-Admin --> UC_ManageInventory
+PG --> UC_WriteReview
+PG --> UC_CancelOrder
+C --> UC_CancelOrder
+C --> UC_MakePayment
+DS --> UC_Checkout
+DS --> UC_MakePayment
+DS --> UC_WriteReview
+A --> UC_WriteReview
+A --> UC_TrackOrder
+A --> UC_ManageInventory
 UC_CancelOrder ..|> UC_ApplyCoupon : <<include>>
 @enduml

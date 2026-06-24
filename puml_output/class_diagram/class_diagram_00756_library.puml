@@ -5,44 +5,43 @@ skinparam classBorderColor #F57F17
 class Shelf {
   #double phone
   -float address
-  +deleteTotal()
-  +deleteType()
+  +deleteScore()
+  +findType()
 }
-class Publisher {
-  -long type
-  +long description
-  +Date status
-  +String active
-  +cancelCreatedat()
-  +saveDescription()
+abstract class Publisher {
+  -int type
+  +boolean updatedAt
+  -long email
+  +calculateScore()
 }
 class Fine {
-  #int level
-  #Date score
-  -int email
-  #int price
-  +getPrice()
-}
-interface Librarian {
-  +Date email
-  +Date note
-  #long description
-  +double duration
-  +double address
+  #int name
+  +boolean amount
+  -boolean createdAt
+  +saveType()
   +processScore()
+  +validatePrice()
 }
-interface Loan {
-  +Date status
-  -Date type
-  -double price
-  +long name
-  +deleteCode()
-  +setAddress()
-  +createCreatedat()
+abstract class Librarian {
+  #int active
+  +String total
+  -boolean description
+  +sendUpdatedat()
+  +calculateScore()
+  +deleteDuration()
+  +validateCreatedat()
 }
-Librarian --o Shelf
-Loan --* Fine
-Librarian --* Publisher
-Loan --> Shelf : "1..*"
-note right of Shelf : Library domain
+class Loan {
+  -int createdAt
+  -Date status
+  +double phone
+  #boolean duration
+  +deleteTotal()
+  +setStatus()
+  +sendName()
+}
+Librarian --|> Shelf
+Librarian --o Loan
+Shelf --* Fine
+Publisher --|> Shelf
 @enduml

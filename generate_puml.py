@@ -108,11 +108,11 @@ def rand_fields(n_min=2, n_max=5):
 def rand_methods(n_min=1, n_max=4, verbs=None):
     verbs = verbs or ["get", "set", "update", "delete", "create", "validate", "calculate",
                        "process", "send", "cancel", "save", "find"]
-    methods = []
-    for _ in range(random.randint(n_min, n_max)):
-        v = random.choice(verbs)
-        methods.append(f"  +{v}{random.choice(FIELD_NAMES).capitalize()}()")
-    return methods
+    n = random.randint(n_min, n_max)
+    # Build unique (verb, field) combos to avoid duplicate method signatures
+    combos = list({(v, f) for v in verbs for f in FIELD_NAMES})
+    chosen = random.sample(combos, k=min(n, len(combos)))
+    return [f"  +{v}{f.capitalize()}()" for v, f in chosen]
 
 
 def pick_domain():
@@ -161,7 +161,6 @@ def generate_class_diagram():
             label = f' : "{card}"'
         lines.append(f"{a[0]} {sym} {b[0]}{label}")
 
-    lines.append(f"note right of {classes[0][0]} : {dname.replace('_',' ').title()} domain")
     lines.append("@enduml")
     return "\n".join(lines), dname
 
@@ -213,8 +212,19 @@ def generate_usecase_diagram():
     usecases = random.sample(d["actions"], k=min(len(d["actions"]), random.randint(5, 8)))
 
     lines = ["@startuml", maybe_style(), "left to right direction"]
+    # Build unique aliases for actors (deduplicate by initials collision)
+    used_actor_aliases = {}
+    safe_actors_uc = []
     for a in actors:
-        lines.append(f'actor "{a}" as {a.replace(" ", "")}')
+        base = "".join(w[0] for w in a.split()).upper()
+        if base in used_actor_aliases:
+            used_actor_aliases[base] += 1
+            alias = f"{base}{used_actor_aliases[base]}"
+        else:
+            used_actor_aliases[base] = 0
+            alias = base
+        safe_actors_uc.append((a, alias))
+        lines.append(f'actor "{a}" as {alias}')
 
     lines.append(f'rectangle "{dname.replace("_"," ").title()} System" {{')
     uc_aliases = []
@@ -224,10 +234,15 @@ def generate_usecase_diagram():
         lines.append(f'  usecase "{uc}" as {alias}')
     lines.append("}")
 
-    for a in actors:
+    # Track actor→usecase links to avoid duplicates
+    uc_links_used = set()
+    for actor_name, actor_alias in safe_actors_uc:
         n_links = random.randint(1, min(3, len(uc_aliases)))
-        for uc, alias in random.sample(uc_aliases, n_links):
-            lines.append(f"{a.replace(' ', '')} --> {alias}")
+        for uc, uc_alias in random.sample(uc_aliases, n_links):
+            link_key = (actor_alias, uc_alias)
+            if link_key not in uc_links_used:
+                uc_links_used.add(link_key)
+                lines.append(f"{actor_alias} --> {uc_alias}")
 
     if len(uc_aliases) >= 2 and random.random() < 0.6:
         u1, u2 = random.sample(uc_aliases, 2)
@@ -290,9 +305,17 @@ def generate_component_diagram():
         if random.random() < 0.7:
             lines.append(f"{alias} --> {db_alias}")
 
+    # Avoid duplicate directed links between components
+    comp_links_used = set()
     n_links = random.randint(2, len(aliases) - 1) if len(aliases) > 2 else 1
-    for _ in range(n_links):
+    attempts = 0
+    while len(comp_links_used) < n_links and attempts < n_links * 5:
+        attempts += 1
         a, b = random.sample(aliases, 2)
+        link_key = (a[1], b[1])
+        if link_key in comp_links_used:
+            continue
+        comp_links_used.add(link_key)
         iface = random.choice(["REST", "gRPC", "MQ", "HTTP"])
         lines.append(f"{a[1]} ..> {b[1]} : {iface}")
 
@@ -321,8 +344,13 @@ def generate_state_diagram():
             lines.append(f"{states[i]} : entry / log {entity.lower()}")
 
     if random.random() < 0.5 and len(states) > 2:
-        a, b = random.sample(states, 2)
-        lines.append(f"{a} --> {b} : revert")
+        # Build existing transitions set to avoid creating a duplicate revert
+        existing_transitions = {(states[i], states[i + 1]) for i in range(len(states) - 1)}
+        candidates = [(a, b) for a in states for b in states
+                      if a != b and (a, b) not in existing_transitions]
+        if candidates:
+            a, b = random.choice(candidates)
+            lines.append(f"{a} --> {b} : revert")
 
     lines.append(f"{states[-1]} --> [*]")
     lines.append("@enduml")
@@ -338,10 +366,86 @@ GENERATORS = {
     "state_diagram": generate_state_diagram,
 }
 
+
+# ---------------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------------
+def validate_puml(code: str, diagram_type: str = "") -> list[str]:
+    """
+    Kiểm tra tính hợp lệ cơ bản của một đoạn PlantUML.
+    Trả về list[str] chứa các lỗi tìm thấy (rỗng = hợp lệ).
+    """
+    errors = []
+    lines = [ln.strip() for ln in code.splitlines() if ln.strip()]
+
+    # --- Structural checks ---
+    if not lines or lines[0] != "@startuml":
+        errors.append("Missing or misplaced @startuml")
+    if not lines or lines[-1] != "@enduml":
+        errors.append("Missing or misplaced @enduml")
+
+    body = [l for l in lines if l not in ("@startuml", "@enduml")]
+    if not body:
+        errors.append("Diagram body is empty")
+        return errors
+
+    # --- Duplicate line check ---
+    # Activity diagrams intentionally repeat template lines (conditions, fork blocks);
+    # exclude them to avoid false positives.
+    ACTIVITY_TEMPLATES = {
+        ":continue process;", ":handle error;",
+        "else (no)", "else (yes)",
+    }
+    _is_activity_template = lambda l: (
+        l.startswith(":log ") or l.startswith(":notify ") or
+        l.startswith("if (") or l in ACTIVITY_TEMPLATES
+    )
+    non_trivial = [l for l in body if not l.startswith("skinparam") and l not in
+                   ("start", "stop", "left to right direction", "}", "{",
+                    "fork", "fork again", "end fork", "endif")
+                   and not _is_activity_template(l)]
+    seen = set()
+    for line in non_trivial:
+        if line in seen:
+            errors.append(f"Duplicate line detected: {line!r}")
+        seen.add(line)
+
+    # --- Type-specific checks ---
+    joined = "\n".join(body)
+    if diagram_type == "class_diagram":
+        if "class " not in joined and "interface " not in joined and "abstract " not in joined:
+            errors.append("class_diagram: no class/interface/abstract found")
+    elif diagram_type == "sequence_diagram":
+        if "->" not in joined:
+            errors.append("sequence_diagram: no message arrows found")
+    elif diagram_type == "usecase_diagram":
+        if "usecase" not in joined:
+            errors.append("usecase_diagram: no usecase declarations found")
+        if "actor" not in joined:
+            errors.append("usecase_diagram: no actor declarations found")
+    elif diagram_type == "activity_diagram":
+        if "start" not in joined:
+            errors.append("activity_diagram: missing 'start'")
+        if "stop" not in joined:
+            errors.append("activity_diagram: missing 'stop'")
+    elif diagram_type == "component_diagram":
+        if "component" not in joined:
+            errors.append("component_diagram: no component declarations found")
+    elif diagram_type == "state_diagram":
+        if "[*]" not in joined:
+            errors.append("state_diagram: missing initial/final [*] pseudostate")
+
+    return errors
+
 if __name__ == "__main__":
     random.seed(42)
     for label, fn in GENERATORS.items():
         code, domain = fn()
-        print(f"=== {label} ({domain}) ===")
+        errors = validate_puml(code, diagram_type=label)
+        status = "✅ OK" if not errors else f"❌ {len(errors)} error(s)"
+        print(f"=== {label} ({domain}) [{status}] ===")
+        if errors:
+            for e in errors:
+                print(f"  [ERROR] {e}")
         print(code)
         print()

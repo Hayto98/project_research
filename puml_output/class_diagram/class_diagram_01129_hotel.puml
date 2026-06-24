@@ -3,52 +3,51 @@ skinparam defaultFontSize 11
 abstract class Restaurant {
   +String type
   -boolean phone
-  +validateCode()
-  +calculateUpdatedat()
+  +createActive()
+  +deletePhone()
 }
-abstract class Invoice {
-  +double note
-  -float score
-  +setQuantity()
-  +setPrice()
-  +createDuration()
-  +saveUpdatedat()
+class Invoice {
+  -float updatedAt
+  -float type
+  -String code
+  -String note
+  -long description
+  +findUpdatedat()
+  +getTotal()
 }
-interface Reservation {
-  #long note
-  #String phone
+abstract class Reservation {
   -boolean code
-  +createPhone()
-  +findDuration()
-  +saveScore()
+  -long score
+  -Date email
+  #Date duration
+  +processDescription()
+  +cancelUpdatedat()
+  +validateQuantity()
+  +setType()
 }
-abstract class CheckOut {
-  +long amount
-  -Date description
-  -long phone
-  -Date createdAt
-  +setActive()
+class CheckOut {
+  #long description
+  -long email
+  #String quantity
+  +updateNote()
 }
 class Room {
   -double active
   +double quantity
   #int name
-  +processAmount()
-  +calculateScore()
-  +updateDescription()
-  +saveQuantity()
+  +validateLevel()
+  +createName()
+  +cancelName()
+  +deleteScore()
 }
-class Amenity {
-  +boolean level
-  -int score
-  #Date note
-  -float updatedAt
-  +savePhone()
-  +validateCode()
+abstract class Amenity {
+  -boolean description
+  #Date quantity
+  -int level
+  +updateNote()
+  +createQuantity()
 }
-Restaurant ..|> CheckOut
-Amenity --|> Restaurant
 Room ..|> CheckOut
-Room --o Amenity
-note right of Restaurant : Hotel domain
+Amenity --* Reservation
+Amenity ..> Restaurant : "*"
 @enduml

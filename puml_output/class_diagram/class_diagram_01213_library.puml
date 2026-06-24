@@ -7,54 +7,63 @@ class Shelf {
   -long phone
   #boolean status
   #long price
-  +findAmount()
+  +getActive()
 }
-abstract class Loan {
-  #float updatedAt
-  -long id
-  +sendCode()
-  +createDuration()
-  +calculatePrice()
-}
-interface Publisher {
-  #String note
-  #double status
+class Loan {
+  #long status
+  #String updatedAt
+  -boolean id
+  -float quantity
+  -boolean active
   +validateType()
-  +sendDescription()
-  +savePhone()
-  +calculateCode()
+}
+abstract class Publisher {
+  #double duration
+  #Date name
+  +calculateCreatedat()
+  +sendName()
+  +saveActive()
+  +setLevel()
 }
 class Reservation {
-  #double description
-  -boolean active
-  +updateLevel()
-  +calculateEmail()
+  -boolean code
+  #int description
+  +float name
+  #double level
+  -boolean note
+  +getDuration()
+  +findAmount()
+  +sendNote()
 }
 interface Book {
-  -int total
-  +long updatedAt
-  #long address
-  +boolean quantity
-  +calculateAddress()
-  +findDuration()
+  -Date quantity
+  -String note
+  #boolean amount
+  #double score
+  +calculateCreatedat()
   +validateDescription()
-  +calculateDescription()
+  +getStatus()
+  +createTotal()
 }
 interface Renewal {
-  -float score
-  #boolean description
-  +setAddress()
-}
-interface Member {
-  +float description
-  -long amount
+  #Date description
+  #boolean price
   +float duration
-  +String price
-  +cancelUpdatedat()
-  +saveUpdatedat()
-  +processActive()
+  -float code
+  +getDescription()
 }
+class Member {
+  +boolean duration
+  -int phone
+  -long description
+  +float amount
+  +cancelTotal()
+  +getCreatedat()
+}
+Publisher ..|> Book
+Renewal --o Loan
+Book --|> Renewal
 Book --|> Shelf
 Publisher ..> Shelf : "0..1"
-note right of Shelf : Library domain
+Publisher ..|> Reservation
 @enduml

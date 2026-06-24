@@ -7,55 +7,51 @@ abstract class Attendance {
   +double address
   +boolean note
   +Date duration
-  +validateNote()
-  +createId()
+  +processStatus()
+  +saveAmount()
 }
 class Teacher {
-  +boolean email
-  +String type
-  +int amount
-  +savePhone()
+  -double updatedAt
+  #Date amount
+  +updateName()
+  +findPrice()
 }
-abstract class Exam {
+class Exam {
+  +Date id
+  -double createdAt
+  +findNote()
+}
+class Schedule {
+  #boolean status
   #int code
-  +String quantity
-  +findActive()
-  +saveUpdatedat()
-  +updateUpdatedat()
-}
-interface Schedule {
-  +Date phone
-  -String updatedAt
-  #float id
-  +validateQuantity()
-  +createLevel()
-  +cancelScore()
+  +int quantity
+  +saveScore()
+  +processPrice()
 }
 class Book {
-  #double duration
-  +String name
-  +deletePrice()
-  +cancelDuration()
-  +updateName()
+  -long price
+  -long code
+  #boolean active
+  +findDuration()
+  +calculateId()
 }
-class Classroom {
-  #float email
-  -double id
-  -int quantity
-  +cancelPrice()
-  +validatePrice()
+interface Classroom {
+  +Date price
+  #boolean status
+  +validateQuantity()
+  +createNote()
+  +saveCode()
 }
-class Assignment {
-  #double phone
-  +long email
-  #Date id
-  +int type
-  +boolean level
-  +setId()
+interface Assignment {
+  #Date name
+  -float amount
+  #String createdAt
   +setCreatedat()
-  +cancelScore()
+  +sendDescription()
+  +setActive()
 }
-Book --o Teacher
+Schedule ..|> Assignment
 Teacher --o Book
-note right of Attendance : Education domain
+Exam ..> Schedule : "1"
+Classroom --* Schedule
 @enduml

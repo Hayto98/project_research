@@ -8,61 +8,63 @@ class Prescription {
   #Date level
   #String active
   #String updatedAt
-  +validateName()
-  +sendCode()
+  +validateScore()
+  +deleteLevel()
 }
 class Nurse {
-  -Date name
-  -String note
-  +String total
-  +boolean type
-  +Date code
-  +getPrice()
-  +createId()
-}
-abstract class Hospital {
-  -double note
-  +float active
-  #float duration
-  +cancelDuration()
-  +processType()
+  -String code
+  -double level
+  +getCode()
+  +findNote()
   +saveType()
+  +calculateScore()
+}
+class Hospital {
+  +boolean status
+  +Date duration
+  +calculateLevel()
+  +setName()
 }
 abstract class Diagnosis {
-  +long score
-  #float active
-  +float status
-  +calculateLevel()
+  #float id
+  -float note
+  -double amount
+  +float level
+  +setPhone()
+  +findUpdatedat()
+  +sendCode()
 }
-class MedicalRecord {
+abstract class MedicalRecord {
+  +long price
+  #float updatedAt
+  +float score
+  #boolean active
+  +double status
+  +setActive()
+}
+interface Billing {
   #int amount
   #boolean total
   +boolean phone
   -String name
   #float score
-  +cancelEmail()
-  +updateNote()
-  +findLevel()
-  +saveEmail()
-}
-interface Billing {
-  -boolean phone
-  #Date code
+  +validateStatus()
   +getCode()
-  +sendPrice()
-  +setActive()
-  +deleteAmount()
+  +deleteId()
+  +validateAmount()
 }
 class Treatment {
-  -Date level
-  -int email
-  +setPhone()
-  +setPhone()
-  +setPrice()
-  +updateQuantity()
+  -boolean level
+  #Date email
+  #float status
+  -String phone
+  +boolean code
+  +createAddress()
+  +findPrice()
+  +calculateAddress()
+  +cancelDuration()
 }
-Diagnosis --> Nurse : "0..1"
-Hospital --o Treatment
-Treatment --* Billing
-note right of Prescription : Healthcare domain
+Nurse ..> Prescription : "1..*"
+Diagnosis --* Billing
+Nurse --|> Diagnosis
 @enduml

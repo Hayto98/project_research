@@ -6,59 +6,60 @@ skinparam defaultFontSize 11
 class Doctor {
   #int score
   +double description
-  +validateCode()
-  +cancelNote()
-  +sendName()
-  +validateAddress()
+  +saveType()
+  +setEmail()
+  +findNote()
+  +findUpdatedat()
 }
-class Insurance {
-  -Date description
-  +Date name
-  +saveStatus()
+abstract class Insurance {
+  +String phone
+  +Date address
+  +getPhone()
 }
 class Diagnosis {
-  +double status
-  -float amount
-  -Date duration
-  #boolean type
-  +String active
-  +createTotal()
+  -String status
+  +String id
+  +deleteDescription()
+  +getCode()
+  +validateType()
+  +validateUpdatedat()
 }
-abstract class Billing {
-  #double phone
-  +long status
-  #double level
+class Billing {
+  #String type
+  -double price
+  -Date active
+  -long amount
+  +String code
+  +sendAmount()
+  +updateEmail()
+  +updateDuration()
+  +deleteCode()
+}
+abstract class Ward {
+  +String code
+  -boolean duration
+  -double name
+  +long note
+  #long quantity
+  +updatePrice()
+}
+class Nurse {
+  #boolean amount
+  #int type
+  +validateCreatedat()
+  +cancelAmount()
+  +saveAmount()
+  +saveNote()
+}
+class Hospital {
+  #int id
   -String total
-  +findDuration()
+  -Date phone
+  +sendStatus()
 }
-class Ward {
-  -int quantity
-  -Date amount
-  -String id
-  +float email
-  +String price
-  +processLevel()
-  +cancelCreatedat()
-}
-abstract class Nurse {
-  -boolean score
-  +Date note
-  +boolean createdAt
-  +validateDescription()
-  +validateCode()
-  +createId()
-  +calculateDescription()
-}
-interface Hospital {
-  -long description
-  +int email
-  +saveType()
-  +cancelCreatedat()
-  +sendScore()
-}
-Billing --|> Nurse
-Doctor ..|> Billing
-Billing ..> Diagnosis : "1"
-Hospital ..> Diagnosis : "*"
-note right of Doctor : Healthcare domain
+Insurance --|> Ward
+Nurse --* Insurance
+Diagnosis ..|> Hospital
+Insurance --> Nurse : "1..*"
+Hospital --o Nurse
 @enduml

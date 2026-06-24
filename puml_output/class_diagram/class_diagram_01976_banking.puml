@@ -5,63 +5,58 @@ skinparam classBorderColor #6A1B9A
 class Withdrawal {
   -long amount
   +float type
-  +getPhone()
-  +getType()
-  +createDescription()
-  +cancelUpdatedat()
+  +setPrice()
+  +updateActive()
+  +saveScore()
+  +sendTotal()
 }
-class Statement {
-  +long email
-  +boolean status
-  -double phone
-  #Date createdAt
-  +double duration
-  +processDuration()
+abstract class Statement {
+  -String description
+  #long updatedAt
+  +long id
+  +long type
+  +findDescription()
 }
-abstract class Customer {
-  +Date duration
-  -float price
-  +long email
-  -float quantity
-  +cancelCode()
-  +updatePhone()
-  +calculateNote()
+class Customer {
+  #long description
+  #double type
+  -long status
+  +Date note
+  -float total
+  +validateAmount()
+  +deleteName()
 }
 class Interest {
-  #double email
-  +Date name
-  +findId()
+  -double updatedAt
+  +float phone
+  +sendAddress()
 }
-abstract class Teller {
-  -double phone
-  #int id
-  +Date note
-  +Date status
-  #int quantity
-  +createId()
+class Teller {
+  -String description
+  -float code
+  +boolean id
+  -float total
+  -double price
+  +setLevel()
+  +calculateUpdatedat()
 }
-interface Transfer {
-  #String note
-  +double name
-  #Date createdAt
-  +sendUpdatedat()
-  +saveNote()
-  +getCode()
+class Transfer {
+  #int name
+  -float email
+  +int id
+  +saveAddress()
 }
-class Loan {
-  +int amount
-  #String score
-  -long updatedAt
+abstract class Loan {
+  +int score
+  +Date updatedAt
+  +float note
+  #int name
   +validateCreatedat()
-  +processName()
-  +calculatePrice()
-  +processPhone()
 }
-Loan --o Teller
-Customer --|> Withdrawal
 Withdrawal --* Interest
-Interest --|> Statement
-Interest ..|> Withdrawal
-Customer ..> Loan : "1..*"
-note right of Withdrawal : Banking domain
+Interest ..> Customer : "0..1"
+Interest --o Withdrawal
+Loan --o Interest
+Loan --> Customer : "*"
+Customer --|> Withdrawal
 @enduml

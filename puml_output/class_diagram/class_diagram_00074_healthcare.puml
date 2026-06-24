@@ -6,33 +6,36 @@ class Billing {
   -boolean score
   #String duration
   -long amount
-  +findActive()
-  +calculateCreatedat()
-  +findNote()
+  +validateTotal()
+  +createDescription()
+  +sendScore()
 }
 class Ward {
-  -long email
-  -boolean createdAt
-  +boolean duration
-  +createName()
+  -long code
+  -boolean description
+  +boolean email
+  +long createdAt
+  +String score
+  +getActive()
+  +findStatus()
 }
-class Insurance {
-  #Date type
-  #float total
-  -int address
-  +cancelAddress()
+abstract class Insurance {
+  #boolean address
+  -boolean email
+  #float amount
+  +float status
+  -String duration
+  +calculateCode()
+  +cancelPrice()
 }
 interface Nurse {
-  #float duration
-  +double level
-  #boolean updatedAt
-  +boolean email
-  #Date id
-  +createNote()
-  +updateType()
-  +deleteName()
+  -float active
+  +double address
+  +String quantity
+  +createUpdatedat()
+  +sendType()
+  +processQuantity()
 }
-Billing ..|> Insurance
-Nurse ..|> Ward
-note right of Billing : Healthcare domain
+Billing --o Insurance
+Nurse --> Billing : "1..*"
 @enduml

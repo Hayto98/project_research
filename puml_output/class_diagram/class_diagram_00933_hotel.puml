@@ -8,44 +8,43 @@ abstract class Staff {
   +int code
   +long createdAt
   -long total
-  +findActive()
+  +saveLevel()
 }
-abstract class Restaurant {
+interface Restaurant {
   -String email
-  #Date description
-  +long address
-  -float code
-  +calculateTotal()
-  +setQuantity()
+  #Date duration
+  +long description
+  -float address
+  #Date code
+  +deleteEmail()
+  +calculateQuantity()
 }
-interface Guest {
-  #String quantity
-  #String active
-  #long name
-  +createPhone()
-  +setId()
+abstract class Guest {
+  +float quantity
+  -boolean score
+  +saveLevel()
 }
 class CheckIn {
-  +Date email
-  +Date type
-  +processScore()
+  -long quantity
+  +float updatedAt
+  +createEmail()
 }
 class Booking {
-  +int status
+  +Date email
+  +Date type
+  +cancelCode()
+}
+interface Amenity {
+  -String description
+  +float status
   #long quantity
-  -Date phone
-  +processTotal()
+  +updateAddress()
+  +cancelStatus()
+  +calculateAmount()
 }
-abstract class Amenity {
-  #float total
-  -String code
-  +long status
-  +getStatus()
-  +findDuration()
-  +cancelDescription()
-}
-Restaurant ..> Guest : "*"
-CheckIn --> Amenity : "1..*"
-CheckIn ..> Restaurant : "1"
-note right of Staff : Hotel domain
+CheckIn ..|> Booking
+CheckIn --|> Staff
+Amenity --|> CheckIn
+Staff ..> Guest : "1..*"
+Staff ..> Amenity : "0..1"
 @enduml

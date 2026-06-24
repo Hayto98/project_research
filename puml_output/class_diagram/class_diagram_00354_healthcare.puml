@@ -6,48 +6,49 @@ skinparam defaultFontSize 11
 class Insurance {
   -Date active
   #long duration
-  +getNote()
-  +deleteEmail()
+  +processCode()
+  +saveStatus()
 }
-class Hospital {
-  -int updatedAt
-  -float score
-  #Date type
-  +findActive()
-  +updateStatus()
-  +updateAddress()
-  +validateQuantity()
+abstract class Hospital {
+  +boolean email
+  #double quantity
+  -int amount
+  +getName()
+  +setAddress()
+  +saveDescription()
+  +findDuration()
 }
-class Nurse {
-  #double active
-  #int quantity
-  +processDuration()
-  +findNote()
+abstract class Nurse {
+  -long status
+  -float updatedAt
+  +boolean address
+  +setPhone()
+  +getAddress()
+  +createId()
 }
-class MedicalRecord {
-  +float total
-  +boolean amount
-  +cancelEmail()
+interface MedicalRecord {
+  +String createdAt
+  -float note
+  +int level
+  +sendAmount()
+  +saveLevel()
 }
 class LabTest {
-  #long note
-  #String type
-  +processPrice()
-  +calculateId()
-  +validateUpdatedat()
-  +deleteName()
+  #long name
+  #String status
+  -double note
+  -double type
+  +validateDuration()
 }
 class Ward {
-  #Date total
+  #double name
+  #Date amount
   #long level
-  #boolean quantity
-  +sendTotal()
-  +updateType()
+  +setAddress()
+  +cancelActive()
+  +sendQuantity()
 }
-Ward ..> MedicalRecord : "*"
-LabTest --|> Ward
-Insurance --* Ward
-MedicalRecord --|> Nurse
-Ward ..> LabTest : "*"
-note right of Insurance : Healthcare domain
+LabTest ..|> MedicalRecord
+MedicalRecord ..> Ward : "*"
+Ward --> MedicalRecord : "1"
 @enduml

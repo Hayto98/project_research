@@ -6,47 +6,38 @@ skinparam defaultFontSize 13
 class Shipment {
   -boolean score
   +boolean active
-  +findPrice()
+  +calculateType()
+  +saveDescription()
+}
+abstract class Order {
+  -long quantity
+  #Date address
+  +double note
+  -int level
+  +updateType()
+}
+class Customer {
+  #double updatedAt
+  #boolean total
+  +Date createdAt
+  #long email
+  +cancelAddress()
+  +savePrice()
+}
+abstract class Review {
+  +String email
+  -double description
+  -long code
+  +setUpdatedat()
+}
+interface Coupon {
+  -long quantity
+  +double active
+  +boolean id
+  +cancelEmail()
   +validateQuantity()
 }
-class Order {
-  -int address
-  +int type
-  -float duration
-  -int createdAt
-  #double level
-  +findEmail()
-  +sendPrice()
-}
-interface Customer {
-  #int active
-  -boolean quantity
-  +sendDescription()
-  +createDuration()
-  +cancelDescription()
-  +setCode()
-}
-class Review {
-  #int type
-  -float quantity
-  #String address
-  -long name
-  +double active
-  +sendUpdatedat()
-  +setAmount()
-}
-class Coupon {
-  #Date phone
-  #double level
-  #boolean description
-  +Date id
-  -double note
-  +processActive()
-  +cancelName()
-  +validateId()
-  +processAmount()
-}
-Coupon ..> Order : "*"
-Coupon --|> Shipment
-note right of Shipment : Ecommerce domain
+Review --> Customer : "0..1"
+Shipment --> Review : "*"
+Coupon ..> Order : "1..*"
 @enduml

@@ -9,33 +9,31 @@ interface Enrollment {
   +String level
   #Date score
   #Date code
-  +validateQuantity()
+  +findTotal()
 }
 class Library {
-  -boolean active
-  #Date id
-  #long level
-  +deletePhone()
-  +sendPrice()
-  +calculatePrice()
-  +findStatus()
+  +double phone
+  #Date updatedAt
+  #boolean active
+  -double id
+  +createLevel()
+  +processScore()
 }
-abstract class Assignment {
-  #boolean note
-  +long total
-  #String amount
-  +validateDescription()
-  +sendDuration()
-  +sendPrice()
-  +cancelCreatedat()
+class Assignment {
+  -Date price
+  #double duration
+  +float status
+  #boolean type
+  +long createdAt
+  +deleteDuration()
 }
 class Schedule {
-  +int level
-  -Date code
-  +float quantity
-  +sendEmail()
+  #float active
+  +String score
+  +boolean price
+  +saveTotal()
 }
-Library --o Schedule
-Assignment ..> Enrollment : "1..*"
-note right of Enrollment : Education domain
+Enrollment --o Schedule
+Enrollment --> Assignment : "1"
+Assignment ..|> Enrollment
 @enduml

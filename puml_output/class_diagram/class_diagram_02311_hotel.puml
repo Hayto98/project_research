@@ -8,53 +8,55 @@ interface Guest {
   +double quantity
   #String status
   #int address
-  +findStatus()
+  +getDuration()
 }
 class Reservation {
-  +boolean price
-  +String level
+  +boolean amount
+  +String price
   +long email
-  +validateAmount()
-  +getUpdatedat()
+  +createAmount()
+  +calculateAddress()
 }
-abstract class CheckIn {
-  #Date note
-  -boolean createdAt
-  -int status
-  +cancelActive()
-  +cancelLevel()
-  +processCode()
-  +deleteScore()
+class CheckIn {
+  +String type
+  #Date amount
+  -boolean note
+  +deleteAddress()
+  +deleteAmount()
+  +setPhone()
+  +getScore()
 }
-class Payment {
-  #float id
-  -long note
-  -int amount
-  -long phone
-  -float total
-  +validateName()
+interface Payment {
+  +double code
+  +boolean description
+  -Date score
+  -Date email
+  -long total
+  +processActive()
+  +deleteActive()
+  +deleteCreatedat()
+  +calculateAmount()
 }
-abstract class Amenity {
-  +Date phone
-  #float active
-  +long status
-  +validateNote()
-  +setActive()
-  +findEmail()
-  +updatePhone()
+class Amenity {
+  #Date name
+  +String note
+  #float createdAt
+  #float phone
+  +calculateCreatedat()
 }
-interface Booking {
-  -String note
-  +int createdAt
-  -float type
-  +Date active
-  +validateDescription()
-  +processNote()
+abstract class Booking {
+  +long note
+  #float status
+  #long active
+  #Date email
+  +cancelNote()
+  +getActive()
+  +findActive()
+  +calculateLevel()
 }
-Booking --> Guest : "*"
-Guest ..> Reservation : "0..1"
-Guest --* Booking
-Guest ..|> CheckIn
-Guest ..|> Amenity
-note right of Guest : Hotel domain
+Guest ..|> Booking
+CheckIn ..> Guest : "0..1"
+CheckIn --o Reservation
+Payment ..> Booking : "1"
+Amenity --|> Payment
 @enduml

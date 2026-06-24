@@ -7,66 +7,63 @@ class Warehouse {
   +double name
   -boolean note
   #float price
-  +setUpdatedat()
-  +cancelAmount()
-  +processStatus()
+  +updateName()
+  +processPrice()
+  +deleteUpdatedat()
 }
 class Invoice {
-  -int quantity
-  #long createdAt
-  -long duration
-  +String id
-  #Date total
-  +sendAddress()
-  +updateLevel()
-  +setAmount()
+  +long status
+  +double createdAt
+  -int active
+  #long type
+  -long quantity
+  +findNote()
+  +cancelDuration()
 }
-interface Return {
-  -boolean note
-  +boolean level
+class Return {
+  #float createdAt
+  +double level
+  #Date code
+  #long amount
+  +validateActive()
+  +validateCode()
+  +findUpdatedat()
+  +calculateScore()
+}
+abstract class Shipment {
+  #double active
+  #Date score
+  +updateAmount()
+  +calculateEmail()
+}
+class Category {
+  #double quantity
+  -int createdAt
   -float email
-  +setActive()
-  +sendScore()
-  +calculateUpdatedat()
-  +getAmount()
-}
-class Shipment {
-  -double createdAt
-  +double email
   +Date type
-  +boolean active
-  +findPhone()
+  +setId()
+  +createAddress()
 }
-interface Category {
+class Order {
   #String code
   -String note
   #long level
   -double duration
-  +setActive()
+  +createPhone()
 }
-class Order {
+interface Customer {
+  -String price
   +Date status
   -long active
   -Date code
-  -String type
-  #int id
-  +savePhone()
-  +setCode()
-  +validateStatus()
-  +sendDuration()
-}
-abstract class Customer {
-  -String id
-  +boolean type
-  +float total
-  -int amount
-  +int code
+  +cancelTotal()
+  +validateTotal()
   +updateType()
-  +findQuantity()
+  +cancelAmount()
 }
-Order ..> Customer : "1"
-Warehouse --o Customer
-Return --o Shipment
-Shipment --|> Return
-note right of Warehouse : Ecommerce domain
+Order --|> Return
+Warehouse --|> Return
+Category --o Customer
+Shipment --o Warehouse
+Shipment --> Invoice : "1"
 @enduml

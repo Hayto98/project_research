@@ -7,36 +7,27 @@ abstract class Hospital {
   #long status
   #int phone
   #String note
-  +processId()
-  +createCode()
+  +cancelQuantity()
+  +updateActive()
 }
-interface Billing {
-  +float phone
-  #float quantity
-  -int duration
-  #long active
-  -Date amount
-  +processPhone()
-  +updateType()
+class Billing {
+  #long level
+  -long type
+  +processCode()
+  +setQuantity()
 }
-abstract class Doctor {
-  -long id
-  +String code
-  #String phone
-  -float name
-  #String note
-  +deleteId()
-  +processScore()
+interface Doctor {
+  -float updatedAt
+  #long address
+  +double note
+  -double description
+  +getType()
 }
 class Ward {
-  #Date type
-  -int name
-  -long price
-  +processStatus()
-  +findDuration()
-  +updateTotal()
+  -int note
+  +boolean phone
+  +validateName()
 }
-Doctor ..> Ward : "*"
-Hospital --> Doctor : "1..*"
-note right of Hospital : Healthcare domain
+Billing --|> Hospital
+Ward --> Doctor : "1"
 @enduml

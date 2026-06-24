@@ -5,32 +5,33 @@ abstract class Publisher {
   #Date createdAt
   #int address
   -float code
-  +validateDescription()
-  +cancelStatus()
-  +calculateStatus()
+  +findCode()
+  +validateCreatedat()
+  +validateActive()
 }
-abstract class Author {
-  #Date score
-  +String address
+class Author {
+  +Date status
+  #int total
+  +long address
+  -Date score
   -long description
-  #long code
-  +updateName()
-  +deleteUpdatedat()
-  +validateCode()
+  +calculateEmail()
+  +getName()
 }
 class Librarian {
-  #double updatedAt
-  #String email
-  -float note
-  +setNote()
+  #int address
+  +float code
+  -double createdAt
+  +getAmount()
+  +deleteNote()
+  +createNote()
+  +processAddress()
 }
 class Loan {
-  +String code
-  +boolean quantity
-  +processStatus()
+  -String status
+  +long note
+  +deleteNote()
 }
-Loan --> Librarian : "1..*"
-Publisher --* Librarian
-Loan ..|> Author
-note right of Publisher : Library domain
+Publisher ..> Author : "1"
+Librarian ..> Loan : "*"
 @enduml

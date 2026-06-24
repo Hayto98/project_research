@@ -8,39 +8,30 @@ interface Ward {
   -long duration
   +float id
   +double phone
-  +deleteScore()
-  +deleteDescription()
-  +getQuantity()
+  +validateQuantity()
+  +getCreatedat()
+  +saveAddress()
 }
 class Prescription {
-  +double code
-  #String description
-  -int price
-  +cancelId()
-  +deleteQuantity()
-  +createName()
-  +findScore()
+  #Date quantity
+  +String name
+  +calculateCode()
+  +saveId()
 }
-class Billing {
-  -long score
-  #int email
-  -String createdAt
-  +float status
-  +String updatedAt
-  +setId()
-  +calculateDescription()
+abstract class Billing {
+  -boolean phone
+  +int updatedAt
+  +createQuantity()
+  +setUpdatedat()
+  +updateId()
 }
 interface Doctor {
-  #long quantity
-  -int score
-  -Date price
-  #Date code
-  +double email
-  +calculateScore()
-  +deleteActive()
+  #long score
+  +Date price
+  #boolean duration
+  +createScore()
 }
-Ward ..> Billing : "1..*"
-Billing --o Doctor
-Billing ..|> Prescription
-note right of Ward : Healthcare domain
+Billing ..|> Doctor
+Doctor ..|> Ward
+Prescription --> Ward : "0..1"
 @enduml

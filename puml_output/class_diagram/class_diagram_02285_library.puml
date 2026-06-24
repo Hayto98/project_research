@@ -6,68 +6,67 @@ skinparam defaultFontSize 11
 class Publisher {
   -int total
   -long address
-  +processAmount()
-  +setAmount()
-  +cancelType()
-  +processPhone()
+  +getId()
+  +processNote()
+  +deleteScore()
+  +findNote()
 }
-interface Catalog {
-  -float note
+class Catalog {
+  -float type
+  #boolean phone
+  -String id
+  +String note
+  +float status
+  +calculateAmount()
+  +calculateCode()
+  +createTotal()
+  +saveActive()
+}
+class Shelf {
+  #boolean address
+  #Date duration
+  +long price
+  -double note
+  #String quantity
+  +findAmount()
+  +createDescription()
+  +sendQuantity()
+}
+abstract class Fine {
+  +String quantity
+  -String level
+  +String name
+  -double phone
+  +getAddress()
+}
+class Loan {
+  +Date level
   #boolean status
-  +setAmount()
-  +setStatus()
-  +findType()
-  +processPrice()
+  -long type
+  +Date createdAt
+  #long updatedAt
+  +saveId()
 }
-interface Shelf {
-  #Date note
-  -long address
-  #boolean level
-  #Date price
-  +validatePrice()
-  +processActive()
-}
-class Fine {
-  -long total
-  #Date active
-  +long level
-  +String price
-  +setUpdatedat()
-  +setNote()
-  +processCode()
-  +calculateQuantity()
-}
-abstract class Loan {
-  +String type
-  #boolean createdAt
-  +createName()
-  +findLevel()
-  +validateStatus()
-  +getTotal()
-}
-interface Librarian {
+abstract class Librarian {
   +int score
   -double note
   -long quantity
   -double total
-  +validateCreatedat()
-  +createPhone()
-  +saveEmail()
+  +createActive()
+  +sendEmail()
+  +findScore()
 }
 class Member {
-  #String level
+  #String address
+  #String email
   #String name
-  #String score
   #int active
-  +sendQuantity()
-  +updatePhone()
-  +getId()
-  +updateTotal()
+  +getScore()
+  +calculatePhone()
+  +validateDescription()
+  +processDuration()
 }
-Member --|> Librarian
+Publisher ..|> Member
+Member --> Fine : "1"
 Member --> Shelf : "0..1"
-Publisher ..> Member : "0..1"
-Librarian --* Publisher
-Loan --* Publisher
-note right of Publisher : Library domain
 @enduml

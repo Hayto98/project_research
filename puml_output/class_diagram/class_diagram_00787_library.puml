@@ -7,59 +7,58 @@ class Reservation {
   +boolean quantity
   -String description
   #Date id
-  +getType()
-  +saveEmail()
+  +updateCreatedat()
+  +updatePrice()
 }
-interface Librarian {
-  +long createdAt
-  +int address
-  -boolean id
-  +getName()
-  +createPhone()
+abstract class Librarian {
+  +float active
+  +long description
+  +int createdAt
+  -boolean address
+  +updateDuration()
+  +savePhone()
 }
-interface Book {
+class Book {
+  -String level
+  #double price
   #float address
   #int phone
-  #String type
-  #int id
-  -Date total
-  +setLevel()
+  +findType()
 }
 class Catalog {
-  -float note
-  +String code
-  #int active
-  -boolean description
-  +setTotal()
-  +updateUpdatedat()
-  +updateDescription()
-  +cancelEmail()
+  +float id
+  #float status
+  +long level
+  +String phone
+  #int note
+  +processId()
+  +getName()
+  +validateUpdatedat()
+  +cancelStatus()
 }
 abstract class Loan {
-  #Date phone
-  +String status
-  -double name
-  #Date score
-  -int address
-  +sendId()
+  #float updatedAt
+  -double createdAt
+  -long description
+  +savePhone()
 }
 class Author {
-  +Date createdAt
-  +Date code
-  +createNote()
+  #Date code
+  -int id
+  #String total
+  #String price
+  +cancelEmail()
 }
 class Member {
-  #long type
-  #long level
-  -double id
-  +findScore()
-  +updateTotal()
+  #String name
+  -double description
+  +saveAddress()
+  +validateName()
 }
-Librarian ..|> Catalog
-Book ..> Member : "*"
-Reservation --o Loan
-Reservation --o Member
-Librarian --|> Author
-Catalog --> Reservation : "0..1"
-note right of Reservation : Library domain
+Loan --> Reservation : "1..*"
+Loan --* Book
+Catalog ..|> Loan
+Author ..|> Loan
+Catalog --> Author : "0..1"
+Catalog --* Librarian
 @enduml

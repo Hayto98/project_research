@@ -8,37 +8,33 @@ class Invoice {
   -double type
   #int active
   +float id
-  +validateTotal()
-  +saveNote()
-  +findCode()
+  +updateTotal()
+  +cancelCreatedat()
+  +validatePrice()
 }
 abstract class Review {
-  #float total
-  +long phone
-  #long status
-  +findActive()
-  +processScore()
-  +getDescription()
-  +processStatus()
+  -long total
+  #String createdAt
+  +saveScore()
 }
 interface Return {
-  +double score
-  +Date duration
+  +double note
+  +Date active
+  #Date duration
+  #float id
+  +calculateDescription()
+  +calculateLevel()
+  +sendLevel()
+  +saveActive()
+}
+interface Cart {
+  +Date total
   -Date address
-  #int total
-  -float level
-  +cancelPrice()
-  +sendEmail()
+  #int name
+  -float price
+  +findLevel()
+  +findEmail()
 }
-abstract class Cart {
-  -Date email
-  -float duration
-  +validateTotal()
-  +getStatus()
-  +saveNote()
-}
-Cart --* Invoice
-Return ..> Invoice : "0..1"
-Review --o Cart
-note right of Invoice : Ecommerce domain
+Return --|> Review
+Return --o Cart
 @enduml

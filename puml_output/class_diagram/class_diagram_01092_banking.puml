@@ -6,37 +6,36 @@ abstract class Teller {
   #double name
   -float status
   #Date total
-  +cancelUpdatedat()
   +findUpdatedat()
-  +createNote()
-  +calculateDuration()
+  +updateStatus()
+  +updateQuantity()
+  +validateType()
 }
-abstract class Loan {
+class Loan {
   -Date note
+  +double total
+  -Date price
   #String updatedAt
-  #float type
-  +deleteUpdatedat()
+  +calculateAddress()
 }
-interface Customer {
+class Customer {
   -String name
   -String status
   +long quantity
-  +setCode()
-  +createDuration()
-  +validateStatus()
-  +getUpdatedat()
+  +setStatus()
+  +processAmount()
+  +calculateScore()
+  +createNote()
 }
-abstract class Interest {
-  +boolean createdAt
-  +long score
-  -boolean note
-  #double total
-  +createActive()
-  +createUpdatedat()
-  +setType()
+interface Interest {
+  #float status
+  -int id
+  #double updatedAt
+  -int total
+  +createQuantity()
+  +findActive()
 }
-Loan --|> Teller
-Customer ..|> Loan
-Interest --> Loan : "1"
-note right of Teller : Banking domain
+Customer --> Loan : "1..*"
+Loan --o Teller
+Interest ..|> Customer
 @enduml

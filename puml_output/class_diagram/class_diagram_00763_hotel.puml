@@ -6,54 +6,46 @@ interface Housekeeping {
   #float amount
   #String description
   +Date address
-  +cancelStatus()
-  +sendId()
+  +deleteUpdatedat()
+  +validateId()
 }
-abstract class Service {
-  +int email
-  -Date createdAt
-  #int code
-  -Date price
-  -double duration
-  +cancelPhone()
+interface Service {
+  -int note
+  +double duration
+  +createCode()
+  +setLevel()
+  +findActive()
 }
 class Booking {
-  +Date updatedAt
-  -boolean createdAt
-  +int quantity
-  #int code
-  +updateAddress()
+  +boolean phone
+  #Date price
+  -int name
+  +long duration
+  +findId()
 }
 class Reservation {
-  +long amount
-  +boolean name
-  -boolean total
-  -float phone
-  -double active
-  +sendAddress()
+  #String createdAt
+  +long level
+  +double amount
+  +setUpdatedat()
+  +calculateQuantity()
 }
 class Restaurant {
-  #int duration
-  +float code
-  #double updatedAt
-  -int score
-  +int email
-  +findStatus()
-  +findCode()
-  +setLevel()
-  +getPrice()
+  #double status
+  -double address
+  +boolean id
+  -String type
+  +getQuantity()
+  +findNote()
+  +processDuration()
+  +deletePhone()
 }
 class Guest {
-  +String note
-  -float status
-  -double updatedAt
-  +double id
-  +setDuration()
-  +validateStatus()
+  +int description
+  +Date type
+  -Date note
+  +sendStatus()
 }
-Guest ..|> Service
-Booking ..|> Reservation
-Restaurant --> Reservation : "1"
-Reservation ..|> Service
-note right of Housekeeping : Hotel domain
+Housekeeping --|> Restaurant
+Reservation --> Booking : "1..*"
 @enduml

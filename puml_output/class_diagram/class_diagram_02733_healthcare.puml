@@ -6,54 +6,51 @@ interface Patient {
   #double note
   -Date address
   +String id
-  +saveAmount()
-  +setId()
-  +deleteAmount()
+  +cancelPrice()
+  +saveAddress()
+  +findType()
 }
 class LabTest {
-  -double duration
-  -float description
-  #Date active
-  +createEmail()
-  +cancelCode()
-  +findScore()
+  +float description
+  #int amount
+  +validateDescription()
+  +getScore()
 }
-class Ward {
-  +Date note
-  +Date level
-  -double score
-  +sendUpdatedat()
-  +cancelCreatedat()
-  +saveActive()
-  +sendDescription()
+abstract class Ward {
+  #Date type
+  #int phone
+  +Date email
+  -boolean score
+  #int code
+  +updateAddress()
 }
-class Doctor {
-  +String note
-  -String phone
-  +float status
-  #boolean name
-  +sendUpdatedat()
+abstract class Doctor {
+  #boolean score
+  #int total
+  +float active
+  -double updatedAt
+  -String createdAt
+  +getType()
 }
 class Appointment {
-  #long quantity
-  #String note
-  #int name
-  +float status
-  +saveDuration()
-  +cancelType()
-  +createLevel()
-  +validateTotal()
+  -long status
+  -float amount
+  #String code
+  +Date updatedAt
+  -float duration
+  +createType()
 }
 class Diagnosis {
-  #Date total
-  -boolean type
-  -long phone
-  +boolean quantity
-  #float amount
-  +createLevel()
+  -float price
+  #long level
+  -long type
+  +findAmount()
+  +validateName()
+  +cancelId()
+  +setPrice()
 }
+LabTest --> Doctor : "*"
+Ward --> Patient : "1"
+Ward ..|> Appointment
 Ward --o LabTest
-Appointment ..> Ward : "*"
-LabTest --* Patient
-note right of Patient : Healthcare domain
 @enduml

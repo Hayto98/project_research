@@ -1,10 +1,10 @@
 @startuml
 skinparam defaultFontSize 11
 left to right direction
-actor "Insurance Provider" as InsuranceProvider
-actor "Receptionist" as Receptionist
-actor "Nurse" as Nurse
-actor "Lab Technician" as LabTechnician
+actor "Insurance Provider" as IP
+actor "Receptionist" as R
+actor "Nurse" as N
+actor "Lab Technician" as LT
 rectangle "Healthcare System" {
   usecase "Book Appointment" as UC_BookAppointment
   usecase "Examine Patient" as UC_ExaminePatient
@@ -14,13 +14,13 @@ rectangle "Healthcare System" {
   usecase "Update Medical Record" as UC_UpdateMedicalRecord
   usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
 }
-InsuranceProvider --> UC_DischargePatient
-Receptionist --> UC_IssuePrescription
-Receptionist --> UC_UpdateMedicalRecord
-Receptionist --> UC_ProcessInsuranceClaim
-Nurse --> UC_ExaminePatient
-LabTechnician --> UC_BookAppointment
-LabTechnician --> UC_IssuePrescription
-LabTechnician --> UC_ExaminePatient
+IP --> UC_DischargePatient
+R --> UC_IssuePrescription
+R --> UC_UpdateMedicalRecord
+R --> UC_ProcessInsuranceClaim
+N --> UC_ExaminePatient
+LT --> UC_BookAppointment
+LT --> UC_IssuePrescription
+LT --> UC_ExaminePatient
 UC_ProcessInsuranceClaim ..> UC_ExaminePatient : <<include>>
 @enduml

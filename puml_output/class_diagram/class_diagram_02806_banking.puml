@@ -8,51 +8,48 @@ class Transfer {
   -float phone
   #String name
   +boolean description
-  +findEmail()
-  +validateAmount()
+  +updateScore()
+  +validateAddress()
 }
 class Branch {
-  +double active
-  -float createdAt
-  +double email
-  #float score
-  +deleteNote()
-  +processDuration()
+  #int email
+  #long active
+  -String quantity
+  +cancelId()
+  +cancelType()
+  +findTotal()
+  +setUpdatedat()
 }
-interface Beneficiary {
-  -boolean phone
-  -long price
-  #String note
-  #int updatedAt
-  +validateCreatedat()
-  +validateAddress()
-  +setPhone()
-  +findCode()
+abstract class Beneficiary {
+  #boolean description
+  -long note
+  -double level
+  +updateLevel()
+  +findName()
 }
 class Customer {
-  -long amount
-  -Date duration
-  +setActive()
+  -long duration
+  #int name
+  -Date score
+  #float updatedAt
+  +processAmount()
+  +processStatus()
+  +updateScore()
 }
 class Account {
-  +int amount
-  -float name
-  -int total
-  #int phone
-  +cancelLevel()
-  +sendId()
+  #int score
+  -long code
+  -Date amount
+  +createAddress()
 }
-class Teller {
-  +float code
-  -long total
-  +float type
-  -boolean active
-  #String duration
-  +getCode()
+interface Teller {
+  +double email
+  -int amount
+  +validateAddress()
+  +validateDescription()
 }
-Customer --> Branch : "0..1"
-Transfer --|> Teller
-Teller --> Customer : "1..*"
-Branch --> Beneficiary : "1"
-note right of Transfer : Banking domain
+Branch ..|> Account
+Account --|> Teller
+Transfer --o Account
+Transfer --o Customer
 @enduml

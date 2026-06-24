@@ -7,58 +7,55 @@ class Department {
   +int total
   +int type
   +long name
-  +updateUpdatedat()
+  +sendNote()
 }
-interface Course {
+class Course {
   +boolean active
   -float createdAt
   -boolean description
   -double note
   -Date email
-  +sendNote()
-  +setLevel()
+  +getScore()
+  +createName()
 }
-abstract class Assignment {
-  +boolean amount
-  #long address
-  +float description
-  -long createdAt
-  -long duration
+class Assignment {
+  +int active
+  +boolean type
+  #long amount
+  +float address
+  -long description
   +sendPhone()
-  +calculateName()
-  +createAddress()
-  +getType()
+  +validateName()
+  +setAddress()
+  +setQuantity()
 }
-abstract class Library {
-  #Date updatedAt
-  #int status
-  +int price
-  +updateTotal()
+class Library {
+  #double name
+  +int email
+  #float address
+  +double duration
+  #Date type
+  +findTotal()
+  +updateType()
 }
-abstract class Classroom {
-  +Date description
-  #String email
-  #float code
+class Classroom {
+  -float createdAt
+  #Date total
+  +setLevel()
+  +validateTotal()
+  +validatePrice()
+}
+class Schedule {
   #float phone
-  +saveUpdatedat()
-  +processAmount()
-  +calculateScore()
-  +deleteType()
+  #String id
+  +createType()
+  +processDuration()
+  +validateUpdatedat()
+  +processUpdatedat()
 }
-interface Schedule {
-  #float duration
-  #boolean total
-  #String price
-  +boolean score
-  -double name
-  +sendTotal()
-  +saveName()
-  +sendPrice()
-}
-Schedule ..|> Classroom
-Assignment ..> Library : "1..*"
-Classroom --> Assignment : "*"
-Schedule --o Assignment
-Course --o Schedule
-note right of Department : Education domain
+Classroom --o Course
+Classroom --> Library : "*"
+Library ..> Schedule : "1"
+Classroom --> Schedule : "1"
+Course --o Classroom
 @enduml

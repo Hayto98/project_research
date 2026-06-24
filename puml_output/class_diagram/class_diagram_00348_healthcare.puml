@@ -6,31 +6,33 @@ skinparam defaultFontSize 11
 class Nurse {
   -long address
   +String type
-  +findCode()
+  +getActive()
 }
-interface Prescription {
+class Prescription {
   -double updatedAt
   #int description
   -float active
   -boolean price
-  +saveLevel()
+  +calculateUpdatedat()
 }
-class Diagnosis {
-  +boolean amount
-  #String active
-  +long email
-  #float createdAt
-  #long name
-  +saveCreatedat()
+interface Diagnosis {
+  +float note
+  +int amount
+  #Date active
+  +int email
+  +calculateTotal()
+  +findStatus()
+  +saveType()
 }
 class MedicalRecord {
-  -long createdAt
-  +double address
-  +calculateLevel()
-  +saveLevel()
+  #String createdAt
+  +long email
+  +calculatePhone()
+  +findEmail()
+  +saveEmail()
   +deleteActive()
 }
-Prescription --* Nurse
-Nurse ..> Prescription : "1"
-note right of Nurse : Healthcare domain
+MedicalRecord ..> Diagnosis : "0..1"
+Nurse --> Diagnosis : "0..1"
+Nurse --|> Prescription
 @enduml

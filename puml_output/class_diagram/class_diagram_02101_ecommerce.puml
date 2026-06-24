@@ -6,66 +6,58 @@ skinparam shadowing true
 class Cart {
   -Date amount
   -Date phone
-  +findTotal()
-  +processStatus()
+  +calculateDescription()
+  +updateEmail()
 }
-class Payment {
-  #Date phone
-  #int score
-  #String address
-  +double name
-  +createLevel()
-  +updateAddress()
-  +processUpdatedat()
+abstract class Payment {
+  -boolean createdAt
+  -String email
+  +deleteUpdatedat()
+  +updatePrice()
 }
 class Invoice {
-  #long level
-  #String price
-  -Date updatedAt
-  #float id
-  +findStatus()
-  +calculateDescription()
-  +calculateNote()
-  +validateScore()
-}
-abstract class Supplier {
-  +String description
-  #long total
-  +calculateName()
-  +setActive()
-}
-abstract class Order {
-  +String address
-  #String amount
-  +int total
-  -String active
+  +Date email
   +long duration
-  +cancelId()
-  +sendDuration()
-  +deleteType()
-  +updateDuration()
+  #double createdAt
+  +Date address
+  +Date type
+  +calculateUpdatedat()
+  +updateAmount()
+  +cancelEmail()
+}
+class Supplier {
+  -boolean status
+  -float price
+  +Date description
+  +double level
+  +String note
+  +processNote()
+  +processDuration()
+  +createPrice()
+}
+class Order {
+  -long active
+  #Date type
+  +getAddress()
+  +findPrice()
 }
 class Return {
-  +double type
-  #int email
-  -int code
-  -int id
-  +findName()
-  +validateUpdatedat()
+  +int status
+  -String code
+  +calculatePhone()
+  +processTotal()
 }
-class Review {
-  +float status
-  +long email
-  -boolean address
-  +sendTotal()
-  +getType()
-  +sendCode()
-  +cancelId()
+interface Review {
+  #double active
+  +boolean description
+  +processDescription()
+  +validateName()
+  +sendAddress()
 }
-Cart --* Return
-Cart --o Review
-Review ..> Order : "1"
-Order --> Invoice : "*"
-Invoice ..|> Cart
-note right of Cart : Ecommerce domain
+Review --> Return : "1"
+Review ..|> Cart
+Supplier ..|> Order
+Supplier --o Payment
+Payment ..|> Order
+Return --* Cart
 @enduml

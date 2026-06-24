@@ -3,67 +3,65 @@ skinparam defaultFontSize 11
 abstract class Beneficiary {
   +long phone
   -boolean name
-  +findActive()
-  +calculateAddress()
-  +calculateScore()
+  +validateTotal()
+  +updateNote()
+  +cancelCreatedat()
 }
 class Branch {
-  -long name
-  +float quantity
-  -double email
-  +processDescription()
-  +validateDuration()
+  -long score
+  -String createdAt
+  -double amount
+  +double name
+  +long quantity
+  +sendDescription()
+  +sendCreatedat()
+  +saveActive()
 }
-class Withdrawal {
-  #long score
-  +boolean price
+abstract class Withdrawal {
+  #float status
   #Date level
-  +int status
-  #float type
-  +calculateStatus()
-  +findPhone()
-  +getDescription()
+  +int type
+  #float address
+  -double updatedAt
+  +setCode()
 }
 class Interest {
-  -float type
-  #String name
-  +double duration
-  +String total
-  -Date address
-  +findActive()
-  +createPrice()
+  #double description
+  -String name
+  +getAddress()
+  +calculateTotal()
+  +deleteType()
+  +cancelScore()
 }
-interface Customer {
-  #int note
-  #long score
-  #String quantity
-  +calculateName()
-  +setCode()
-  +findStatus()
-  +cancelPhone()
+class Customer {
+  +double name
+  #boolean id
+  +Date type
+  #long level
+  +createLevel()
+  +sendQuantity()
+  +cancelDuration()
+  +updateCreatedat()
 }
-interface Statement {
-  -String type
-  -long id
-  #long score
-  +int note
-  -boolean description
-  +validateType()
-  +findAddress()
+class Statement {
+  -double score
+  +String quantity
+  #String description
+  #String email
+  #Date code
+  +findPrice()
+  +validateUpdatedat()
+  +updatePhone()
 }
-interface Transaction {
-  -int name
-  +String note
-  -int price
-  -boolean code
-  +processName()
-  +validateStatus()
+abstract class Transaction {
+  -float score
+  #int level
+  +setStatus()
+  +sendType()
+  +createAmount()
 }
-Beneficiary --> Customer : "1"
-Withdrawal --* Transaction
-Transaction --> Customer : "0..1"
+Customer ..|> Withdrawal
+Branch --> Interest : "0..1"
 Withdrawal ..> Interest : "1..*"
-Branch --> Interest : "1"
-Customer --|> Interest
-note right of Beneficiary : Banking domain
+Customer ..> Statement : "1..*"
 @enduml

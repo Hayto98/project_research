@@ -5,41 +5,45 @@ skinparam classBorderColor #2C7DA0
 class Package {
   #Date level
   +long note
-  +getType()
+  +processName()
 }
-class DeliveryNote {
-  +boolean code
-  #long address
-  -int type
-  +getCreatedat()
+abstract class DeliveryNote {
+  +boolean createdAt
+  #long code
+  -int address
+  +String type
+  +setPhone()
+  +getActive()
 }
 interface Customer {
   +float status
   #long updatedAt
-  +getAddress()
-  +calculatePrice()
-  +cancelType()
-  +saveCreatedat()
+  +sendTotal()
+  +validateScore()
+  +calculateQuantity()
+  +processType()
 }
-class Driver {
-  #String note
-  -String code
-  -float description
-  -boolean email
-  -double level
-  +processCode()
+interface Driver {
+  +long createdAt
+  +boolean code
+  +double price
+  +float note
+  -float level
+  +processEmail()
+  +calculatePhone()
+  +processTotal()
+  +updateActive()
 }
-interface Inventory {
-  +Date price
-  #long score
-  #float duration
-  #boolean level
-  +boolean createdAt
-  +setDescription()
-  +createDuration()
+abstract class Inventory {
+  -Date score
+  #double price
+  +processActive()
+  +setAmount()
+  +sendId()
+  +validateTotal()
 }
-DeliveryNote --|> Package
-Customer --* Driver
-Customer ..|> DeliveryNote
-note right of Package : Logistics domain
+Customer --> Package : "0..1"
+Package --* DeliveryNote
+Inventory ..> Customer : "0..1"
+Package ..> Inventory : "1..*"
 @enduml

@@ -8,59 +8,48 @@ abstract class Publisher {
   #int description
   #float id
   +int code
-  +getTotal()
+  +updatePrice()
 }
-interface Reservation {
+abstract class Reservation {
   +float score
   +double phone
-  +deleteAddress()
+  +calculateAddress()
 }
 class Catalog {
-  #String note
-  -int address
-  -String description
-  +getStatus()
-  +sendActive()
+  +Date createdAt
+  +long note
+  +long address
+  +getScore()
 }
-interface Shelf {
-  #Date quantity
-  #String duration
-  +float address
+class Shelf {
+  #Date status
+  #double active
+  +createQuantity()
+  +validateDescription()
+  +validateScore()
+}
+interface Author {
   #String active
-  +String amount
-  +createEmail()
-  +cancelAmount()
+  +String id
+  -long createdAt
   +updateCreatedat()
-  +processNote()
+  +sendActive()
+  +cancelDescription()
 }
-class Author {
-  +int score
-  #long createdAt
-  #String phone
-  +double code
-  +double email
-  +validateEmail()
-  +saveName()
-  +processScore()
-}
-interface Loan {
-  +String description
-  +float code
-  +Date price
-  #double total
-  +deleteNote()
-  +sendAddress()
-  +validateAmount()
+class Loan {
+  -boolean createdAt
+  -boolean type
+  +long note
+  +getDescription()
 }
 class Book {
-  -double active
-  #int address
-  +String score
-  +saveAmount()
-  +getAddress()
+  #String createdAt
+  +double active
+  +double phone
+  +updateTotal()
+  +validateAmount()
+  +findStatus()
 }
-Shelf ..|> Loan
-Author --|> Reservation
-Book --|> Shelf
-note right of Publisher : Library domain
+Shelf --> Author : "1..*"
+Book ..|> Loan
 @enduml

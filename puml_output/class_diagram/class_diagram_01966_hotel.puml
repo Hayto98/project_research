@@ -8,59 +8,53 @@ class CheckOut {
   -float description
   +Date id
   +String type
-  +processDescription()
-  +updateType()
-  +findName()
-  +deleteEmail()
+  +validateUpdatedat()
+  +getEmail()
+  +updateStatus()
+  +updateAddress()
 }
-class Invoice {
-  #Date total
-  -boolean createdAt
-  +Date email
-  #float note
-  +setUpdatedat()
-  +calculateAmount()
-  +sendAddress()
-  +findActive()
+abstract class Invoice {
+  #long amount
+  -Date email
+  +sendId()
+  +validateAmount()
+  +processTotal()
+  +validateActive()
 }
-abstract class Reservation {
+class Reservation {
+  +double note
+  +boolean status
+  +getPrice()
+  +calculateDescription()
+  +createDescription()
+}
+abstract class Staff {
   +String duration
   +Date score
   -float email
   +long status
   +float price
-  +saveName()
-  +updateDuration()
-  +calculateAmount()
+  +cancelDuration()
+  +getActive()
+  +deleteTotal()
 }
-class Staff {
-  #int total
-  #int createdAt
-  +int quantity
-  +deleteDuration()
-  +createDuration()
-  +cancelScore()
-}
-interface Booking {
-  +int createdAt
-  #long active
-  +int phone
-  -String note
-  +createAddress()
+class Booking {
+  +int duration
+  -Date price
+  +long amount
+  +sendUpdatedat()
+  +calculateTotal()
 }
 class Housekeeping {
-  #float status
-  #float description
-  -long phone
-  -float score
-  +int note
-  +validateAmount()
-  +saveLevel()
-  +saveDuration()
+  #boolean description
+  -boolean quantity
+  #Date amount
+  +saveNote()
+  +findTotal()
+  +createUpdatedat()
 }
-Booking --> Reservation : "1..*"
-Invoice ..|> CheckOut
-CheckOut ..> Staff : "*"
-Staff ..> Reservation : "1"
-note right of CheckOut : Hotel domain
+Staff ..|> CheckOut
+Booking ..|> Reservation
+Invoice --|> Reservation
+CheckOut --* Reservation
 @enduml

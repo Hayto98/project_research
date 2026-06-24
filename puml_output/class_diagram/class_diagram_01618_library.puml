@@ -5,55 +5,61 @@ interface Loan {
   +String score
   #double description
   #long duration
-  +findType()
+  +createTotal()
 }
-class Branch {
-  -boolean id
-  +float active
-  +cancelActive()
-  +updateAmount()
-  +getId()
-  +createPhone()
+abstract class Branch {
+  #long id
+  #String duration
+  +savePrice()
+  +updateNote()
+  +processActive()
+  +validateStatus()
 }
-interface Fine {
-  -double note
-  #Date type
-  -String score
-  -float address
-  #int duration
-  +calculateName()
+class Fine {
+  #long id
+  #boolean quantity
+  +calculateAmount()
+  +findActive()
+  +saveActive()
+  +deleteEmail()
 }
 class Librarian {
-  #boolean createdAt
-  +Date level
-  +long email
-  #Date updatedAt
-  +calculateTotal()
-  +processNote()
+  -float price
+  #int total
+  +double score
+  +long type
+  -int code
+  +validateTotal()
+  +sendNote()
+  +cancelActive()
 }
 interface Catalog {
-  +double price
-  +boolean total
-  +Date level
-  #boolean email
-  +validateAmount()
-  +saveCode()
+  #int amount
+  -float email
+  -float active
+  +sendLevel()
+  +calculateAmount()
+  +setPhone()
+  +updateCreatedat()
 }
 class Reservation {
+  -String total
+  #int duration
+  #Date score
+  #boolean email
+  +float status
+  +updateType()
+  +updatePhone()
+  +getLevel()
+}
+class Renewal {
   #boolean type
   +String phone
   +int note
   +long level
-  +updateAddress()
+  +updateStatus()
 }
-class Renewal {
-  #int amount
-  -float duration
-  +int id
-  +getCreatedat()
-}
-Reservation --|> Renewal
-Librarian --* Loan
-Catalog --|> Reservation
-note right of Loan : Library domain
+Renewal ..|> Branch
+Reservation ..> Branch : "0..1"
+Catalog ..> Reservation : "1"
 @enduml

@@ -5,56 +5,60 @@ skinparam classBorderColor #455A64
 class Restaurant {
   #float score
   -long amount
-  +deleteCreatedat()
+  +processUpdatedat()
 }
 class Invoice {
-  #double total
-  +float code
-  +setNote()
-  +findName()
+  +Date score
+  -int name
+  +String total
+  +createTotal()
+  +deleteNote()
+  +calculateNote()
+  +processName()
 }
-class Room {
-  #double note
-  #int duration
+abstract class Room {
+  +boolean active
+  -double note
+  #Date description
+  #int type
+  #double name
+  +deleteTotal()
+}
+interface Guest {
+  #String price
+  #Date amount
+  -Date score
+  +saveQuantity()
+  +deleteType()
   +getCreatedat()
-  +cancelPrice()
-  +processDuration()
-  +findUpdatedat()
-}
-abstract class Guest {
-  -int level
-  #boolean description
-  +savePhone()
+  +validateDescription()
 }
 abstract class Housekeeping {
-  -double score
-  -long price
-  +float amount
-  +validateTotal()
-  +cancelTotal()
-  +validateQuantity()
-  +calculateLevel()
+  -String quantity
+  #float type
+  #double address
+  +updateEmail()
+  +saveDuration()
+  +setNote()
 }
-interface CheckOut {
-  -String score
-  +float email
-  +sendDescription()
-  +validateActive()
-  +updateUpdatedat()
-  +sendScore()
+class CheckOut {
+  #long price
+  -String level
+  +float active
+  #Date name
+  +calculateDuration()
+  +findPhone()
+  +deleteCode()
+  +findPrice()
 }
 class Service {
-  -boolean status
-  +boolean total
-  -float email
-  -double active
-  +boolean amount
-  +processId()
-  +deleteEmail()
-  +getNote()
-  +validateAddress()
+  #double active
+  +double score
+  -boolean name
+  +updateEmail()
+  +calculatePrice()
 }
-Service --> CheckOut : "*"
-Service --o Restaurant
-note right of Restaurant : Hotel domain
+Housekeeping --* Guest
+Guest --> Invoice : "*"
+Guest ..|> Restaurant
 @enduml

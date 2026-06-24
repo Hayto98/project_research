@@ -6,60 +6,62 @@ interface Beneficiary {
   #String code
   +boolean address
   #float score
-  +calculateType()
+  +calculateCode()
 }
 abstract class Customer {
-  #double total
-  #boolean price
-  +double quantity
-  -long phone
-  +setType()
-  +findUpdatedat()
+  #float score
+  #Date phone
+  #long total
+  #double price
+  #boolean quantity
+  +deleteActive()
+  +saveCreatedat()
 }
 class Teller {
-  -int active
-  #double phone
-  -String price
-  +createDescription()
+  #long code
+  +boolean type
+  -double updatedAt
+  +sendLevel()
+  +processPrice()
+  +getCode()
+  +processTotal()
 }
 class Loan {
-  -String address
-  #String id
-  -double phone
-  +Date amount
-  -double code
-  +calculateAddress()
+  +Date code
+  #int email
+  +calculateCreatedat()
+  +processName()
+  +calculateTotal()
+  +calculateType()
 }
 class Withdrawal {
+  #String code
+  -double address
+  +Date id
+  +getId()
+  +deleteQuantity()
+  +updateEmail()
+  +setEmail()
+}
+class Transaction {
   #Date type
   #double createdAt
   #Date price
   #String amount
-  +calculateCreatedat()
-  +deleteName()
-}
-abstract class Transaction {
-  -double note
-  +Date total
-  #long updatedAt
-  +double address
-  +double description
-  +calculateScore()
+  +getAddress()
   +deleteType()
-  +setQuantity()
-  +setActive()
 }
 class Branch {
-  -String phone
-  +long note
-  +boolean duration
-  #Date description
-  -int id
-  +findCreatedat()
+  -double name
+  +float total
+  #Date type
+  +updateQuantity()
+  +setLevel()
+  +createActive()
 }
-Customer --o Beneficiary
-Beneficiary --* Loan
-Withdrawal ..|> Transaction
-Loan ..> Branch : "1"
-note right of Beneficiary : Banking domain
+Beneficiary --> Transaction : "1..*"
+Branch --o Beneficiary
+Beneficiary --o Loan
+Loan ..|> Withdrawal
+Branch --|> Loan
 @enduml

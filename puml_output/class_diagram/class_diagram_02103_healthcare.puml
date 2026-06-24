@@ -6,39 +6,47 @@ abstract class Ward {
   -long name
   #Date id
   -int total
-  +deleteId()
+  +validateLevel()
 }
-abstract class Doctor {
-  -float type
-  -boolean note
-  #double address
-  +deleteId()
+class Doctor {
+  #Date type
+  +double active
+  +calculateName()
+  +deleteAmount()
+  +createEmail()
+  +saveName()
 }
 interface MedicalRecord {
-  -Date code
-  #long score
-  +double duration
-  +Date address
+  #String status
+  #Date description
+  -long id
+  #Date quantity
+  -int code
+  +setDescription()
+  +setCode()
   +processNote()
-  +cancelScore()
-  +validateAmount()
+  +cancelPhone()
 }
 abstract class Prescription {
-  -int duration
-  -long note
-  -float total
-  +boolean level
-  +setPhone()
-  +deleteAmount()
-  +calculateUpdatedat()
+  -boolean duration
+  -double score
+  #float phone
+  -double amount
+  +long total
+  +getAddress()
+  +sendStatus()
+  +validatePhone()
 }
-abstract class Appointment {
-  #int active
-  #double price
+interface Appointment {
+  -int status
+  -boolean phone
   +boolean description
-  +updateEmail()
-  +validatePrice()
+  #double amount
+  +getCode()
+  +saveNote()
 }
-MedicalRecord ..|> Ward
-note right of Ward : Healthcare domain
+Prescription --> Doctor : "0..1"
+Doctor --* MedicalRecord
+Prescription --* Ward
+Ward --* Doctor
 @enduml

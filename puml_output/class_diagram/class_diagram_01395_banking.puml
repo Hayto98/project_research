@@ -5,59 +5,62 @@ skinparam ArrowColor #555555
 interface Interest {
   +double id
   #int note
-  +saveStatus()
-  +cancelPrice()
-  +setUpdatedat()
+  +updatePhone()
+  +deleteId()
+  +updateAddress()
 }
 class Customer {
-  #int quantity
-  -int amount
-  #double status
-  +processNote()
-  +saveDescription()
-}
-interface Branch {
+  #long code
+  +Date updatedAt
+  +boolean amount
+  +long active
   +boolean createdAt
-  #long description
-  +deleteScore()
-  +setTotal()
-  +saveId()
+  +setCode()
+  +saveUpdatedat()
+  +findStatus()
+  +deleteAddress()
+}
+abstract class Branch {
+  +boolean description
+  #long score
+  #long status
+  +boolean createdAt
+  +double duration
+  +cancelName()
 }
 abstract class Account {
   +long name
   #Date level
-  +deleteTotal()
-  +deleteCode()
-  +sendAddress()
+  +saveTotal()
+  +calculateAddress()
+  +findAmount()
 }
 class Transaction {
-  -int code
-  +String description
-  +saveType()
-  +setPrice()
+  +boolean active
+  #float address
+  +getLevel()
 }
 class Statement {
-  -float note
-  -int level
-  -int updatedAt
-  #boolean quantity
-  #double code
-  +updateNote()
-  +updatePrice()
+  +double updatedAt
+  +double code
+  #double id
+  #boolean createdAt
+  #Date type
+  +getNote()
+  +processNote()
 }
-abstract class Card {
-  -Date updatedAt
-  #double note
-  +boolean email
-  #long code
-  -boolean duration
-  +setUpdatedat()
+class Card {
+  #boolean email
+  #double createdAt
+  +int note
+  -int amount
+  +processTotal()
+  +sendCode()
+  +processPrice()
+  +saveAmount()
 }
-Statement --> Transaction : "1..*"
-Customer ..|> Branch
-Transaction --* Branch
-Account --|> Interest
-Statement --> Account : "1..*"
-Account ..> Card : "1..*"
-note right of Interest : Banking domain
+Card ..> Transaction : "1"
+Statement --> Card : "0..1"
+Branch ..> Statement : "*"
+Customer --> Transaction : "1..*"
 @enduml

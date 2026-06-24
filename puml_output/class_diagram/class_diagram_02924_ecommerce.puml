@@ -6,36 +6,35 @@ skinparam ArrowColor #555555
 class Wishlist {
   #long total
   +boolean amount
-  +createName()
-  +deleteUpdatedat()
-  +calculateAmount()
+  +validateAmount()
+  +saveEmail()
+  +sendDescription()
 }
-interface Review {
-  #int status
-  #Date email
-  +int address
-  +calculateTotal()
-  +findLevel()
-  +getCode()
-  +setActive()
+class Review {
+  +Date price
+  -boolean amount
+  -Date level
+  +saveUpdatedat()
+  +updatePhone()
 }
 class Payment {
-  +float note
-  +int quantity
-  +String type
-  -String description
-  #float status
-  +setDuration()
-  +sendStatus()
-  +createTotal()
+  -Date level
+  #String type
+  +String total
+  +getPhone()
+  +processTotal()
+  +findTotal()
 }
 class Supplier {
-  +float score
-  #int duration
-  +validateUpdatedat()
-  +sendId()
+  +String description
+  -String status
+  #float level
+  #float createdAt
+  #float active
+  +updateCreatedat()
+  +processAmount()
+  +setPhone()
 }
-Payment --o Wishlist
-Wishlist --> Payment : "1..*"
-note right of Wishlist : Ecommerce domain
+Payment ..|> Review
+Wishlist ..> Payment : "0..1"
 @enduml

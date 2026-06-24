@@ -6,52 +6,49 @@ skinparam defaultFontSize 11
 class Course {
   -String name
   +float level
-  +sendUpdatedat()
+  +sendAmount()
+  +sendNote()
+  +createDuration()
   +calculateActive()
-  +validateCode()
-  +updateStatus()
 }
-abstract class Grade {
-  -Date score
-  +int price
-  -long id
+class Grade {
+  -long updatedAt
+  #double status
+  +findDescription()
+}
+class Teacher {
   -float amount
-  +getEmail()
-}
-abstract class Teacher {
-  -Date id
-  -boolean level
-  +getName()
-  +updateEmail()
-  +createCode()
+  #boolean description
+  +String note
+  -double phone
+  +deletePhone()
 }
 class Library {
-  #long quantity
-  +long email
-  +int status
-  +String address
-  -int amount
-  +cancelQuantity()
-  +sendNote()
+  +int total
+  #float level
+  #long address
+  -String id
+  +findDuration()
 }
-interface Classroom {
-  +Date address
-  +double createdAt
-  +String phone
-  #float duration
-  +deleteCode()
-  +cancelDuration()
-  +cancelAddress()
+abstract class Classroom {
+  #long email
+  +long status
+  +int address
+  +String amount
+  +createScore()
+  +updateStatus()
+  +findDescription()
 }
 class Attendance {
-  -boolean level
-  +int name
-  -boolean active
-  +findNote()
-  +processQuantity()
-  +setPhone()
+  -String duration
+  #String quantity
+  -int address
+  +boolean createdAt
+  -int phone
+  +savePrice()
 }
-Library --> Attendance : "1"
-Grade --* Teacher
-note right of Course : Education domain
+Grade ..|> Classroom
+Classroom --> Course : "*"
+Classroom ..|> Grade
+Library --> Classroom : "1..*"
 @enduml

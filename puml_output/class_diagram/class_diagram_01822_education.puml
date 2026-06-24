@@ -6,45 +6,51 @@ skinparam defaultFontSize 11
 class Enrollment {
   #float email
   #String level
-  +findId()
-  +validateEmail()
+  +setCode()
+  +updatePrice()
 }
-abstract class Department {
-  -String description
-  #float duration
-  -float updatedAt
-  +createTotal()
-  +sendTotal()
-  +setActive()
+class Department {
+  +double type
+  +boolean amount
+  -float description
+  -long score
+  +updateNote()
+  +getPrice()
+  +cancelCreatedat()
+  +cancelEmail()
 }
 interface Exam {
   #String quantity
   -double status
-  +getEmail()
-  +createDuration()
+  +processCode()
+  +deleteName()
 }
-abstract class Grade {
-  #Date name
-  -long email
-  +findName()
-  +saveTotal()
+class Grade {
+  -int level
+  #String id
+  #double name
+  #boolean email
+  #int note
+  +validateDuration()
 }
-interface Schedule {
-  +double name
-  #int address
-  -String description
-  +cancelDuration()
+class Schedule {
+  +boolean type
+  +boolean updatedAt
+  #Date email
+  +calculateNote()
 }
 class Classroom {
-  +String createdAt
-  #String note
-  -String price
-  +validatePhone()
-  +setLevel()
+  +int price
+  -long status
+  +boolean id
+  -double code
+  #long phone
+  +processPhone()
+  +findNote()
+  +createCreatedat()
 }
-Grade --* Schedule
-Exam ..|> Enrollment
-Grade --> Department : "1"
+Department --|> Schedule
 Enrollment ..|> Department
-note right of Enrollment : Education domain
+Exam --* Department
+Grade ..|> Department
 @enduml

@@ -9,49 +9,42 @@ interface Supplier {
   -float status
   -double amount
   -Date createdAt
-  +deleteName()
+  +saveAddress()
 }
-interface Shipment {
+class Shipment {
   +float level
   -String phone
   -long price
-  +sendDuration()
-  +updateNote()
-  +saveAddress()
-  +saveCode()
+  +sendAmount()
+  +setPhone()
+  +updateStatus()
+  +processTotal()
 }
 class Customer {
-  -String quantity
-  #int name
-  +double score
-  #float createdAt
-  +processStatus()
-  +saveAddress()
-  +calculateCode()
+  #Date address
+  -String duration
+  +findActive()
+  +createPhone()
+}
+interface Wishlist {
+  -String status
+  #long type
+  -String total
+  +createActive()
+  +setEmail()
+  +sendType()
   +processAddress()
 }
-class Wishlist {
-  +double price
-  #boolean active
-  -boolean updatedAt
-  -float type
-  #boolean id
-  +cancelDescription()
-  +getActive()
-  +cancelUpdatedat()
+abstract class Warehouse {
+  -Date active
+  #float updatedAt
+  -boolean type
+  -float id
+  #boolean code
+  +createId()
+  +getCode()
+  +cancelType()
 }
-class Warehouse {
-  #boolean name
-  #Date price
-  -boolean amount
-  #double email
-  -boolean phone
-  +cancelDescription()
-  +cancelPhone()
-  +updateTotal()
-  +setActive()
-}
-Customer --> Wishlist : "1"
-Wishlist --o Supplier
-note right of Supplier : Ecommerce domain
+Supplier --|> Shipment
+Wishlist ..> Supplier : "*"
 @enduml

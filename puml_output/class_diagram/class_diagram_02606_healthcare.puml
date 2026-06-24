@@ -4,31 +4,32 @@ skinparam roundCorner 15
 interface Patient {
   -boolean duration
   -int description
-  +saveNote()
-  +findActive()
+  +findStatus()
+  +deleteEmail()
 }
-class Treatment {
-  #long status
-  #String name
-  -float id
-  +String updatedAt
-  +findType()
+abstract class Treatment {
+  +String email
+  +Date status
+  +getCreatedat()
+  +getType()
+  +createName()
 }
 class Prescription {
-  #String amount
-  -long type
-  +updateEmail()
+  -Date id
+  +int type
+  +setId()
+  +validateId()
+  +deleteEmail()
+  +saveCode()
 }
 class Appointment {
-  -double level
-  +boolean email
-  #float note
-  +String duration
-  -float description
-  +processTotal()
+  -double updatedAt
+  #float email
+  +sendCode()
+  +getPrice()
+  +cancelActive()
 }
-Appointment ..|> Patient
-Treatment --* Prescription
-Prescription --* Treatment
-note right of Patient : Healthcare domain
+Treatment --o Appointment
+Patient ..> Prescription : "0..1"
+Patient --|> Treatment
 @enduml

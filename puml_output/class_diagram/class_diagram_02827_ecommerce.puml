@@ -9,37 +9,31 @@ class Warehouse {
   -boolean duration
   #double amount
   +boolean level
-  +validateCreatedat()
-  +createLevel()
+  +saveCreatedat()
+  +calculateLevel()
 }
 class Return {
-  -boolean level
-  +String status
-  -float description
-  -Date id
-  +createQuantity()
-  +setAmount()
-  +setCode()
-  +cancelUpdatedat()
+  #boolean level
+  #int description
+  +double address
+  #int status
+  +deleteId()
 }
-interface Coupon {
-  #Date address
-  +String amount
-  +createEmail()
-  +getQuantity()
+abstract class Coupon {
+  +String type
+  +boolean quantity
+  +boolean level
+  +long code
+  +sendUpdatedat()
+  +processNote()
 }
 class Review {
-  -long description
-  -int phone
-  +String address
-  #String name
-  -float email
-  +setId()
-  +processType()
-  +deleteActive()
-  +setName()
+  #long createdAt
+  +Date email
+  +updateScore()
+  +setType()
+  +cancelCreatedat()
 }
-Warehouse --* Review
-Coupon ..> Review : "0..1"
-note right of Warehouse : Ecommerce domain
+Coupon --* Review
+Warehouse --o Return
 @enduml

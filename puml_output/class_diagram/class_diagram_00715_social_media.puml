@@ -7,33 +7,32 @@ class Report {
   -double updatedAt
   #Date active
   +boolean level
-  +processUpdatedat()
+  +cancelQuantity()
+  +processPrice()
+}
+abstract class Comment {
+  #String createdAt
+  -long active
+  +sendAmount()
+  +cancelEmail()
+  +getScore()
   +calculateName()
 }
-class Comment {
-  -boolean price
-  +boolean quantity
-  +findPrice()
-  +sendActive()
-  +setDuration()
+abstract class Profile {
+  +boolean duration
+  -String address
+  +calculateName()
+  +getName()
 }
-interface Profile {
-  #int name
-  -float level
-  #double note
-  #String duration
-  +calculateCreatedat()
-  +saveStatus()
-  +calculateTotal()
-  +findScore()
+interface Story {
+  -Date id
+  -float type
+  #boolean total
+  -String createdAt
+  -double status
+  +deleteCreatedat()
 }
-class Story {
-  +long note
-  -String type
-  +saveTotal()
-  +calculatePrice()
-}
-Report ..|> Comment
-Story ..> Profile : "0..1"
-note right of Report : Social Media domain
+Report ..> Story : "*"
+Story --o Profile
+Story --* Report
 @enduml

@@ -3,54 +3,59 @@ skinparam defaultFontSize 11
 class Ward {
   #String quantity
   #float level
-  +setStatus()
-  +createActive()
-  +calculateScore()
+  +sendType()
+  +updateName()
+  +updateCreatedat()
 }
-abstract class Billing {
-  -double amount
-  +boolean quantity
-  +setAddress()
+class Billing {
+  +int active
+  -long total
+  -String score
+  #float level
+  +updateName()
 }
-interface Treatment {
+class Treatment {
   #Date name
   -long email
   -String createdAt
-  +sendUpdatedat()
-  +deleteTotal()
-  +cancelUpdatedat()
+  +cancelAmount()
+  +findAddress()
+  +validateCode()
 }
-interface Diagnosis {
-  -double address
-  +double createdAt
-  +int quantity
-  +double email
-  -long level
-  +validateUpdatedat()
+abstract class Diagnosis {
+  -float active
+  #int duration
+  #long type
+  +setCreatedat()
+  +saveTotal()
+  +createEmail()
 }
 interface Nurse {
-  +String amount
-  #float price
-  +long active
-  +setScore()
-  +deleteDescription()
-  +findTotal()
-  +findNote()
+  -int address
+  +String note
+  -float createdAt
+  +createQuantity()
+  +cancelDescription()
+  +deleteTotal()
+  +setName()
 }
 class Prescription {
-  -double createdAt
-  #Date price
-  +long id
-  +deleteTotal()
+  +double duration
+  #boolean score
+  #String createdAt
+  +getCode()
 }
 class LabTest {
-  #boolean total
-  #boolean address
-  +Date type
-  +setUpdatedat()
-  +cancelAddress()
+  +float total
+  #double code
+  #double score
+  -int description
+  +createDuration()
+  +updateActive()
 }
-LabTest --* Nurse
-Treatment ..> Ward : "1..*"
-note right of Ward : Healthcare domain
+Diagnosis ..> Nurse : "0..1"
+Treatment --|> Nurse
+Billing --|> Diagnosis
+Nurse --o Billing
+Treatment --o Prescription
 @enduml

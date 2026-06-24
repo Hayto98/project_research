@@ -6,34 +6,31 @@ class Amenity {
   -int duration
   +float amount
   #boolean updatedAt
-  +sendPrice()
+  +createStatus()
 }
-class Room {
+abstract class Room {
+  -double total
   #long updatedAt
-  #boolean duration
+  #boolean level
   -float createdAt
-  -int note
-  -boolean type
-  +updatePrice()
-  +saveType()
+  +processPrice()
+  +sendCreatedat()
+  +getStatus()
 }
-class Service {
-  +double phone
-  #float total
-  +long name
-  +sendStatus()
-  +validateDescription()
+interface Service {
+  +int createdAt
+  -Date price
+  -float type
+  +sendEmail()
 }
 abstract class Booking {
-  -long type
-  -boolean duration
-  -double description
-  +deleteEmail()
-  +getPhone()
-  +calculateAmount()
-  +cancelPrice()
+  #String quantity
+  -int description
+  +getQuantity()
+  +saveTotal()
+  +calculateDescription()
+  +processUpdatedat()
 }
-Room --* Service
-Booking --* Amenity
-note right of Amenity : Hotel domain
+Booking ..|> Service
+Booking --* Room
 @enduml

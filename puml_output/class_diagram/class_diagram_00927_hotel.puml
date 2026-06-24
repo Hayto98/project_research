@@ -5,62 +5,63 @@ skinparam classBorderColor #2C7DA0
 class Guest {
   #String type
   #float description
-  +processAmount()
-  +createPrice()
-  +deleteActive()
+  +findActive()
+  +saveUpdatedat()
+  +deleteScore()
 }
 class Invoice {
-  -Date description
-  -long type
-  -double createdAt
-  +float address
-  +processNote()
-  +saveCreatedat()
+  -float description
+  +long active
+  -Date createdAt
+  -long quantity
+  -double duration
   +sendStatus()
-  +processId()
 }
-class CheckIn {
-  +int id
-  #Date duration
-  -double total
-  #double phone
-  +validateType()
-  +processName()
-  +saveDescription()
+abstract class CheckIn {
+  +Date note
+  +long createdAt
+  +String active
+  #double status
+  -float type
+  +processDuration()
 }
-class Reservation {
-  #int code
-  +boolean id
-  -long address
-  #long active
-  +saveAmount()
-  +saveScore()
-  +sendCreatedat()
+abstract class Reservation {
+  +Date type
+  #float phone
+  +long level
+  -String duration
+  +long active
+  +findEmail()
+  +updateQuantity()
 }
 class Room {
-  #String createdAt
-  -Date note
-  #long status
-  -long id
-  +updateAddress()
-  +cancelAddress()
-  +processAmount()
-  +saveNote()
+  #int address
+  #float duration
+  #boolean active
+  +long email
+  +sendId()
+  +deletePrice()
+  +calculateStatus()
 }
-abstract class Payment {
-  -long level
-  +String createdAt
-  +createCreatedat()
-  +cancelAddress()
+class Payment {
+  -Date duration
+  #long name
+  +processStatus()
+  +sendActive()
+  +findEmail()
+  +setNote()
 }
 class Booking {
-  +Date status
-  -long createdAt
-  #boolean name
-  -double updatedAt
-  +validateStatus()
+  #double duration
+  -String address
+  #boolean type
+  +long amount
+  +processUpdatedat()
+  +cancelStatus()
+  +processActive()
 }
-Guest --o Reservation
-Payment ..> Invoice : "1"
-note right of Guest : Hotel domain
+Payment --> Invoice : "1..*"
+CheckIn --* Payment
+Guest --|> Invoice
+Booking ..|> Invoice
 @enduml

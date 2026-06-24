@@ -8,63 +8,59 @@ class Vehicle {
   -long score
   #double price
   +float type
-  +getId()
-  +createLevel()
+  +cancelTotal()
+  +updatePrice()
 }
 class Customer {
-  +Date total
-  -Date quantity
-  #String description
-  +Date updatedAt
-  -String score
-  +findActive()
-  +deleteLevel()
-  +calculateAddress()
+  -float type
+  #int total
+  +processId()
+  +getEmail()
 }
-abstract class Inventory {
-  #float address
-  -String type
-  #String code
-  +findDuration()
-  +updateScore()
+class Inventory {
+  #boolean id
+  +Date createdAt
+  #float type
+  -Date code
+  -Date email
+  +sendEmail()
+  +findQuantity()
+  +sendLevel()
+  +cancelCode()
 }
-abstract class Tracking {
-  #long address
-  #float name
-  -Date type
-  -long duration
-  #Date description
-  +setScore()
-  +validateQuantity()
+class Tracking {
+  #boolean code
+  +Date score
+  #boolean name
+  -double createdAt
+  +calculateEmail()
+  +sendActive()
+  +validateUpdatedat()
 }
 class Depot {
-  -int createdAt
-  +boolean phone
-  +calculateActive()
-  +deleteStatus()
-  +updateActive()
-  +calculateCode()
+  -Date phone
+  #boolean duration
+  #int quantity
+  +saveActive()
 }
 class Shipment {
-  +long note
-  -String level
-  #boolean address
-  #int description
-  +createDescription()
-  +setDuration()
-  +createPrice()
-}
-class Route {
-  +float id
-  #Date code
-  -String quantity
+  -int quantity
+  +boolean code
+  -double createdAt
   #int phone
-  +saveNote()
+  +deleteAddress()
 }
-Shipment --> Inventory : "1..*"
-Shipment --* Depot
-Customer ..|> Tracking
-Vehicle ..> Inventory : "1..*"
-Depot --* Route
-note right of Vehicle : Logistics domain
+interface Route {
+  #Date code
+  +int createdAt
+  -double phone
+  +Date note
+  #boolean address
+  +createType()
+  +cancelName()
+}
+Inventory --|> Customer
+Depot --o Inventory
+Shipment --* Customer
+Vehicle --* Route
 @enduml

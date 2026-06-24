@@ -4,64 +4,61 @@ skinparam defaultFontSize 11
 interface Album {
   +Date quantity
   -long name
-  +cancelDuration()
-  +createAddress()
-  +calculateDescription()
-  +processNote()
+  +getCode()
+  +setPhone()
+  +validateAmount()
+  +validateDuration()
 }
-interface Follower {
-  #float active
-  +Date type
-  #int createdAt
-  #float score
-  +validateNote()
-  +savePhone()
-  +calculateQuantity()
+abstract class Follower {
+  #long type
+  #double note
+  #int active
+  +calculateType()
+  +sendUpdatedat()
 }
 class Profile {
-  +long name
-  -double price
-  #float type
-  #double status
-  #boolean phone
-  +sendName()
-  +getCreatedat()
-  +validatePhone()
+  #long address
+  -Date phone
+  -float note
+  +findName()
+  +findAmount()
 }
 class Like {
-  +String code
-  +double score
-  #Date createdAt
-  +createLevel()
-  +setPhone()
-  +cancelCreatedat()
+  -float duration
+  -double type
+  #float status
+  #double phone
+  #boolean name
+  +findPrice()
+  +calculateEmail()
+  +setName()
 }
-interface Post {
-  +long email
-  -double id
-  +double quantity
-  -long note
-  #boolean status
-  +sendAddress()
-  +setTotal()
+class Post {
+  #int phone
+  +String id
+  +double updatedAt
+  #Date code
+  +findCreatedat()
+  +updateCode()
+  +findName()
 }
 class Report {
-  #String name
-  #float price
-  +String active
-  +updateAmount()
-  +deleteScore()
+  +long duration
+  #double createdAt
+  #String type
+  +long email
+  +deletePrice()
+  +saveType()
+  +validateEmail()
 }
-class User {
-  +Date active
-  +Date email
-  +float code
-  -float address
-  +calculateAmount()
-  +saveUpdatedat()
+abstract class User {
+  +double quantity
+  +int active
+  #String score
+  -Date createdAt
+  #boolean address
+  +calculateDescription()
 }
-Follower --* Album
-User ..> Album : "1"
-Report ..> Like : "1..*"
-note right of Album : Social Media domain
+Album ..|> Follower
+Follower --> User : "0..1"
 @enduml

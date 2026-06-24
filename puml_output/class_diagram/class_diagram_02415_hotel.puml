@@ -8,64 +8,60 @@ class Room {
   -boolean email
   #float active
   -boolean address
-  +createUpdatedat()
-  +getUpdatedat()
+  +createQuantity()
+  +processDuration()
 }
-interface CheckIn {
+class CheckIn {
+  #long active
+  +double type
   +String note
-  #float quantity
-  +float status
-  #int total
-  +float name
-  +createUpdatedat()
-  +cancelEmail()
-  +setName()
-  +updateAddress()
+  +sendAmount()
 }
-interface Staff {
-  #float level
-  #float total
-  +validateStatus()
-  +updateAmount()
-  +updateCreatedat()
+class Staff {
+  -int amount
+  #long score
+  +String total
+  +validateScore()
+  +calculateStatus()
 }
 interface Invoice {
-  -boolean phone
-  -Date price
-  -float updatedAt
-  #boolean duration
-  +int createdAt
-  +createName()
+  #float level
+  #float total
+  +createAmount()
+  +setStatus()
+  +updateStatus()
 }
 class Housekeeping {
-  +int duration
+  #long createdAt
+  #float score
   -int price
-  +processStatus()
-  +sendAmount()
-  +deleteName()
-  +updateName()
+  +getStatus()
+  +cancelNote()
+  +findActive()
 }
-abstract class Restaurant {
-  +int description
-  #int amount
-  #float note
-  -boolean code
-  -int type
-  +deleteNote()
-  +updateActive()
+interface Restaurant {
+  #boolean email
+  +long active
+  +long level
+  #float description
+  #String amount
+  +calculateType()
+  +cancelStatus()
+  +createCode()
+  +saveCode()
 }
 class Booking {
-  -double description
-  +float address
-  +double phone
-  #Date type
-  +calculateCode()
-  +updateAddress()
-  +findCreatedat()
-  +calculateCode()
+  +int note
+  #String status
+  -double active
+  +int amount
+  -String description
+  +cancelNote()
+  +sendId()
+  +createUpdatedat()
+  +sendType()
 }
-CheckIn --o Restaurant
-Housekeeping --|> Booking
-Housekeeping --|> CheckIn
-note right of Room : Hotel domain
+Housekeeping --> Invoice : "*"
+CheckIn ..|> Booking
+Invoice --> CheckIn : "1..*"
 @enduml

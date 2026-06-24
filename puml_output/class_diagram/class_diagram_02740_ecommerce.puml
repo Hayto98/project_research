@@ -7,64 +7,63 @@ class Wishlist {
   +boolean quantity
   +boolean duration
   #double address
-  +processUpdatedat()
-  +findCreatedat()
-  +setAddress()
-  +validateDescription()
+  +findActive()
+  +createScore()
+  +updateScore()
+  +updateDescription()
 }
-abstract class Invoice {
-  #long duration
-  +double code
-  +Date active
-  #double email
-  #float status
-  +findPhone()
-  +cancelPhone()
+class Invoice {
+  #String address
+  #long description
+  #String note
+  #long score
+  +sendName()
+  +saveQuantity()
 }
 interface Return {
-  +double email
-  #boolean note
-  +float updatedAt
-  #boolean amount
-  +setAmount()
-  +findUpdatedat()
-  +saveName()
-  +processActive()
+  -Date updatedAt
+  #int phone
+  +int level
+  -Date email
+  #float active
+  +setQuantity()
 }
 interface Warehouse {
-  #int id
-  -long note
-  +cancelPhone()
-  +setUpdatedat()
-  +setEmail()
+  #boolean code
+  #String amount
+  +Date updatedAt
+  #double name
+  #int type
+  +deleteName()
+  +validateAddress()
+  +findName()
 }
-abstract class Order {
-  -float level
-  -String address
-  #int amount
-  +getScore()
+class Order {
+  -Date updatedAt
+  -int status
+  +createCode()
+  +getId()
+  +createId()
 }
-class Payment {
+abstract class Payment {
+  #float score
+  #String createdAt
+  +createStatus()
+}
+class Customer {
   #Date duration
   -double phone
   +int active
   +double level
   +Date score
-  +updateAmount()
-  +updatePrice()
-  +getEmail()
-  +validateAddress()
+  +updateStatus()
+  +deleteScore()
+  +deleteAddress()
+  +sendDuration()
 }
-class Customer {
-  -String note
-  +Date name
-  -int score
-  #float email
-  +processEmail()
-  +validateScore()
-  +cancelActive()
-}
-Warehouse ..|> Invoice
-Warehouse --> Order : "1"
-note right of Wishlist : Ecommerce domain
+Wishlist --* Return
+Return --* Wishlist
+Customer --o Payment
+Wishlist ..> Order : "1..*"
+Warehouse ..|> Wishlist
 @enduml

@@ -6,34 +6,31 @@ skinparam defaultFontSize 11
 class Depot {
   #long note
   -boolean updatedAt
-  +createName()
-  +setType()
+  +getNote()
+  +deleteNote()
 }
 class Tracking {
-  #int status
-  #int total
-  +deleteTotal()
-  +deleteCreatedat()
-  +findAddress()
+  #int address
+  #int score
+  -int status
+  -int level
+  +Date total
+  +getAmount()
+  +validateActive()
+  +getType()
 }
-interface Inventory {
-  #int status
-  -int quantity
-  +calculateScore()
-  +processNote()
-  +calculateStatus()
-  +findCode()
+class Inventory {
+  -boolean createdAt
+  -double total
+  -String duration
+  #String type
+  +processEmail()
 }
-class FuelLog {
-  #float name
-  +long updatedAt
-  -boolean total
-  +Date address
-  +Date id
-  +createPhone()
-  +processTotal()
+abstract class FuelLog {
+  #float updatedAt
+  -float total
+  +getScore()
 }
-FuelLog ..|> Depot
-Depot --* Tracking
-note right of Depot : Logistics domain
+Inventory --> Tracking : "0..1"
+Depot ..|> Inventory
 @enduml

@@ -7,62 +7,54 @@ abstract class Teller {
   +long code
   +boolean email
   +Date updatedAt
-  +cancelEmail()
+  +findDescription()
 }
-abstract class Branch {
+class Branch {
+  +Date price
   +Date email
-  +Date level
   -Date id
-  -long price
+  -long duration
   -String updatedAt
-  +updatePhone()
-  +getStatus()
+  +updateCode()
+  +validateType()
 }
-abstract class Transaction {
-  -double status
-  #float amount
-  +int active
-  #String total
-  +sendScore()
-  +updateEmail()
-  +setAmount()
-  +findStatus()
+class Transaction {
+  +int name
+  #double status
+  -double note
+  #float quantity
+  +updateDescription()
+  +findTotal()
 }
-abstract class Withdrawal {
-  #String score
-  -int amount
-  +updateCreatedat()
-  +saveDescription()
-  +updateCreatedat()
-  +updateStatus()
-}
-interface Interest {
-  +double description
-  +String address
+interface Withdrawal {
+  #Date duration
+  #boolean type
+  +deleteCreatedat()
   +cancelType()
-  +deleteAddress()
-  +getTotal()
-  +validateStatus()
+}
+class Interest {
+  #Date status
+  +Date type
+  +long id
+  +createType()
+  +cancelCreatedat()
 }
 class Transfer {
-  +String total
-  #double quantity
-  #long name
-  #int description
-  +updateAmount()
-  +deleteUpdatedat()
-  +processQuantity()
-  +calculateTotal()
+  +float description
+  +boolean createdAt
+  +float level
+  +calculateName()
+  +processDuration()
 }
 abstract class Deposit {
-  #Date address
-  +float price
-  #double quantity
-  -double code
-  +cancelActive()
+  -boolean code
+  -int active
+  +cancelTotal()
+  +deleteTotal()
+  +cancelCreatedat()
 }
-Interest ..> Teller : "1"
-Transaction --o Teller
-Withdrawal ..> Deposit : "1"
-note right of Teller : Banking domain
+Teller --* Deposit
+Withdrawal ..> Transaction : "1"
+Interest ..|> Branch
+Teller --o Transfer
 @enduml

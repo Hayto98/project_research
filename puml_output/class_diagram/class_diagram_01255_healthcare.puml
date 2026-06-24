@@ -9,50 +9,48 @@ interface Prescription {
   -Date note
   -float phone
   #int level
-  +createNote()
-  +cancelAddress()
+  +cancelPhone()
+  +createName()
 }
-abstract class Diagnosis {
-  +long id
-  +long name
-  -Date price
-  +long createdAt
-  +deleteId()
-  +deleteActive()
-  +validateType()
-  +sendPhone()
+interface Diagnosis {
+  #double total
+  +String quantity
+  -int id
+  -double name
+  +processDescription()
 }
-abstract class Hospital {
-  -Date active
-  +float createdAt
-  +saveCreatedat()
+interface Hospital {
+  -boolean amount
+  -double id
+  +boolean duration
+  +float active
+  -Date phone
+  +findType()
 }
-abstract class Patient {
-  #boolean note
-  -boolean phone
+class Patient {
+  #long total
+  #boolean createdAt
+  #long note
+  +createPrice()
+}
+class Billing {
   #String score
-  +updatePhone()
-  +sendScore()
-  +saveScore()
-  +sendEmail()
+  +double duration
+  -String level
+  +int email
+  +validateAmount()
+  +updateUpdatedat()
 }
-interface Billing {
-  -String code
-  +int total
-  +createStatus()
-  +setCreatedat()
-}
-interface Treatment {
-  #double quantity
-  +double note
-  #long updatedAt
+class Treatment {
+  #float level
+  -Date createdAt
+  #int quantity
   +saveType()
-  +setScore()
-  +saveType()
-  +validateTotal()
+  +validateCode()
+  +createPrice()
+  +deleteType()
 }
+Treatment ..> Patient : "*"
+Prescription ..> Billing : "*"
 Hospital ..|> Patient
-Diagnosis --> Billing : "*"
-Billing --* Diagnosis
-note right of Prescription : Healthcare domain
 @enduml

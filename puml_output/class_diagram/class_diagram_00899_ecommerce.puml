@@ -6,42 +6,44 @@ class Customer {
   #double id
   -String address
   -Date total
-  +createTotal()
+  +findCreatedat()
 }
-interface Order {
+abstract class Order {
   #boolean address
   #double price
-  +processNote()
-  +validateScore()
+  +validateName()
+  +validateDescription()
 }
-interface Coupon {
-  +Date level
-  +float duration
-  +saveDuration()
-  +sendDuration()
+abstract class Coupon {
+  #boolean score
+  #String level
+  #int duration
+  -Date code
+  +processDescription()
+  +calculateDuration()
+}
+class Category {
+  +float description
+  -Date code
+  #String active
+  -int name
+  +double status
+  +setActive()
+  +deleteAmount()
+  +findUpdatedat()
   +deleteQuantity()
 }
-interface Category {
-  #Date total
-  +String description
-  +float code
-  +findId()
-  +validateUpdatedat()
-  +getNote()
-}
 abstract class Invoice {
-  #long duration
-  +boolean status
-  +String price
+  +String phone
   +boolean email
-  +long phone
-  +createAddress()
-  +saveType()
-  +updateTotal()
+  +long name
+  #Date active
+  +findCreatedat()
+  +saveDescription()
+  +setEmail()
 }
+Category --o Order
 Invoice ..> Order : "0..1"
 Customer --o Category
 Invoice --o Customer
-Customer --|> Invoice
-note right of Customer : Ecommerce domain
 @enduml

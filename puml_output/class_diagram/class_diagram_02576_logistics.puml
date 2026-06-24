@@ -4,55 +4,52 @@ class DeliveryNote {
   #float status
   #int active
   +Date address
-  +saveEmail()
-  +cancelType()
-  +createNote()
-  +findId()
+  +calculateUpdatedat()
+  +findCreatedat()
+  +getCode()
+  +findActive()
 }
 class Inventory {
-  -boolean quantity
-  #long active
+  +Date id
+  +long description
+  #Date note
+  -long quantity
   -double code
-  -Date amount
-  #double updatedAt
-  +setTotal()
-  +processId()
-  +updateCode()
+  +processPhone()
+  +saveAmount()
+  +createPhone()
+  +calculateUpdatedat()
+}
+abstract class Depot {
+  #long id
+  +float createdAt
+  +long code
+  #boolean duration
+  -String name
+  +updateAmount()
+  +processPrice()
+  +calculateCode()
+  +saveTotal()
+}
+class Route {
+  -long price
+  +double id
+  -float phone
+  #double amount
+  #float updatedAt
+  +cancelName()
+  +validateDescription()
+  +deleteLevel()
+}
+class Vehicle {
+  -long phone
+  -double total
+  -String status
+  +int id
   +saveId()
-}
-class Depot {
-  +float code
-  -int status
-  -int address
-  -float type
-  +findId()
-  +validateAmount()
-  +updateType()
-  +createStatus()
-}
-abstract class Route {
-  -long note
-  -Date score
-  +String phone
-  -long email
-  +calculateType()
-  +getStatus()
-  +deleteAmount()
-  +getCode()
-}
-abstract class Vehicle {
-  +float level
-  #double price
-  #boolean name
-  #Date duration
-  -String email
-  +saveQuantity()
-  +calculateNote()
-  +findStatus()
+  +setDescription()
 }
 Vehicle --> Route : "*"
-Vehicle ..> DeliveryNote : "*"
-DeliveryNote ..> Inventory : "*"
-Route ..|> Inventory
-note right of DeliveryNote : Logistics domain
+DeliveryNote ..> Route : "1..*"
+Inventory ..> Route : "1..*"
 @enduml

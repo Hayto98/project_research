@@ -8,60 +8,52 @@ class Teller {
   -Date name
   -Date code
   +boolean id
-  +sendTotal()
+  +calculateActive()
 }
-class Transaction {
-  +float status
-  +Date score
-  +processAddress()
-  +getPrice()
-  +createType()
-  +getType()
+abstract class Transaction {
+  #float level
+  #Date score
+  +float name
+  +setAmount()
 }
 class Withdrawal {
-  -boolean level
-  #Date total
-  +float price
-  +validateCode()
-  +getCode()
-  +createCode()
-  +findType()
+  -String note
+  -String address
+  +Date name
+  #double price
+  -long quantity
+  +findTotal()
+  +saveAmount()
 }
 class Interest {
+  -String id
+  #double code
+  +updateQuantity()
+}
+interface Branch {
   #float code
   #int active
   +long amount
   #String duration
-  +deleteEmail()
-  +deletePhone()
-}
-class Branch {
-  +Date address
-  -int note
-  +String name
-  +sendName()
+  +getEmail()
   +validateAddress()
 }
 class Customer {
-  +Date updatedAt
-  #String amount
-  #boolean email
-  +float active
-  +saveAmount()
-  +calculateAmount()
+  #String updatedAt
+  +Date description
+  -int address
+  +String note
+  +createUpdatedat()
+  +saveEmail()
 }
-interface Deposit {
-  +long amount
-  +double note
-  +float type
-  #boolean createdAt
-  +setDescription()
-  +saveAddress()
-  +calculateCode()
+class Deposit {
+  +int id
+  -boolean active
+  +Date score
+  #String phone
+  +updateQuantity()
 }
-Deposit --o Teller
-Transaction --o Interest
-Branch --o Deposit
-Customer ..> Deposit : "0..1"
-note right of Teller : Banking domain
+Customer ..|> Deposit
+Interest --> Transaction : "1..*"
+Transaction ..> Interest : "*"
 @enduml

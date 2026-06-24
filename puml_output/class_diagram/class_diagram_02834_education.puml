@@ -8,36 +8,39 @@ class Enrollment {
   -String note
   #double level
   #String createdAt
-  +getQuantity()
-  +saveLevel()
+  +saveId()
+  +getNote()
 }
-class Teacher {
-  -double address
-  -double email
-  -long total
-  +cancelCode()
-  +calculateLevel()
+interface Teacher {
+  -float level
+  -double score
+  -double duration
+  -double amount
+  +getNote()
+  +calculateType()
+  +sendNote()
+  +sendDescription()
 }
-class Book {
-  +boolean note
-  +String price
-  +double name
-  +setLevel()
+interface Book {
+  #String total
+  #int level
+  +sendPrice()
+  +calculateCode()
+  +cancelType()
+  +getName()
 }
-abstract class Department {
+class Department {
+  +String duration
+  -String createdAt
+  +getCode()
+}
+abstract class Student {
   -double score
   +double duration
   -double updatedAt
-  +saveTotal()
+  +createType()
 }
-class Student {
-  +boolean updatedAt
-  -float phone
-  +float note
-  +setNote()
-  +validateDescription()
-}
-Department --* Student
-Student ..> Department : "0..1"
-note right of Enrollment : Education domain
+Teacher ..|> Student
+Book --|> Department
+Student ..|> Book
 @enduml

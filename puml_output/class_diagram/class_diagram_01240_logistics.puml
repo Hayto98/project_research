@@ -4,39 +4,35 @@ interface Route {
   #String address
   +float updatedAt
   +double name
-  +sendCreatedat()
-  +saveQuantity()
-  +saveScore()
+  +saveActive()
+  +getName()
+  +saveNote()
 }
 class DeliveryNote {
-  #double quantity
-  -String createdAt
-  #int email
-  -int note
-  -boolean price
-  +processTotal()
-  +findDuration()
+  -Date total
+  #boolean quantity
+  -boolean createdAt
+  +getPrice()
+  +createType()
+  +calculateQuantity()
+  +deleteDuration()
 }
-abstract class Warehouse {
-  +double description
-  +long code
-  +float name
-  #long createdAt
-  -Date address
-  +processStatus()
-  +setDescription()
-  +deleteQuantity()
+class Warehouse {
+  #int type
+  -Date description
+  -Date duration
+  +processType()
+  +saveType()
+  +setCreatedat()
+  +createCreatedat()
 }
-abstract class Shipment {
-  #Date price
-  -float name
-  +int level
-  +getTotal()
-  +getDuration()
-  +sendAmount()
+class Shipment {
+  +double createdAt
+  +long address
+  +setAmount()
+  +saveActive()
 }
-DeliveryNote --o Route
-DeliveryNote ..> Shipment : "1..*"
-Warehouse ..|> Route
-note right of Route : Logistics domain
+Shipment --> Warehouse : "1..*"
+Shipment --|> Route
+DeliveryNote ..> Route : "1..*"
 @enduml

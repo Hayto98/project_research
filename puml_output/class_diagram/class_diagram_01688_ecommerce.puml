@@ -6,45 +6,48 @@ interface Order {
   +long price
   -double address
   -float score
-  +getScore()
-  +validateStatus()
-  +processDuration()
+  +deleteNote()
+  +saveActive()
+  +validateScore()
 }
-abstract class Wishlist {
-  +int total
-  -Date code
-  +processId()
-  +updateType()
+class Wishlist {
+  +int duration
+  -Date note
+  +double id
+  +float total
+  +Date code
+  +saveAmount()
+  +findActive()
+  +cancelQuantity()
+  +saveNote()
 }
-abstract class Invoice {
+class Invoice {
+  #String score
+  +int email
   -float note
-  #double createdAt
-  #boolean quantity
-  +boolean type
-  +String email
-  +processScore()
-  +validatePhone()
+  #boolean total
+  -float id
+  +processLevel()
+  +findDuration()
+  +cancelLevel()
 }
 abstract class Product {
-  +float note
   +Date id
   +int description
   #String amount
   #long total
-  +deletePhone()
-  +cancelStatus()
-  +validateActive()
-  +updateAmount()
+  -int status
+  +setId()
+  +validateId()
+  +sendPhone()
 }
-class Return {
-  #double address
-  -boolean type
-  +float email
-  #double updatedAt
-  +int code
-  +calculateAddress()
+interface Return {
+  -Date amount
+  -long status
+  +float type
+  +savePrice()
 }
-Order ..> Invoice : "*"
-Product --> Wishlist : "*"
-note right of Order : Ecommerce domain
+Invoice ..> Wishlist : "*"
+Wishlist ..> Return : "1"
+Product --|> Invoice
 @enduml

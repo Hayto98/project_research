@@ -7,61 +7,56 @@ class Teacher {
   +float note
   -boolean address
   -int id
-  +setTotal()
+  +processAmount()
+  +getPhone()
   +validateScore()
-  +sendId()
 }
-class Attendance {
-  -int updatedAt
-  +float id
-  #double duration
-  #String name
-  +float active
-  +sendName()
+interface Attendance {
+  +String id
+  +String type
+  +saveCode()
 }
 class Schedule {
-  +double name
-  -boolean type
-  #Date level
-  +processLevel()
-  +cancelId()
-  +saveAmount()
+  +float level
+  +float price
+  #float code
+  +deleteQuantity()
 }
 class Exam {
-  +float duration
-  +Date id
-  -Date total
-  +String status
-  +saveCode()
-  +processDuration()
-  +saveTotal()
-  +sendId()
+  +double type
+  -boolean duration
+  +calculateAmount()
+  +setCode()
+  +getCode()
 }
 interface Enrollment {
-  #boolean quantity
-  #Date price
-  +findQuantity()
+  -boolean amount
+  +double status
+  +processUpdatedat()
 }
-abstract class Assignment {
-  -long updatedAt
+class Assignment {
+  #Date name
+  -boolean duration
+  +boolean type
+  +long code
+  -Date note
+  +updateId()
+}
+class Classroom {
+  +long note
+  -float updatedAt
   -float total
   -long name
-  -Date duration
-  -Date amount
-  +deleteAmount()
+  -Date level
+  +sendPrice()
+  +calculateEmail()
+  +createCode()
+  +processUpdatedat()
 }
-interface Classroom {
-  +String total
-  #double note
-  -int active
-  #Date type
-  +String price
-  +deleteId()
-  +findNote()
-  +saveEmail()
-  +processDuration()
-}
-Teacher --o Enrollment
-Exam --* Assignment
-note right of Teacher : Education domain
+Assignment --o Exam
+Exam --o Enrollment
+Exam --|> Teacher
+Enrollment --o Exam
+Attendance ..> Enrollment : "1"
+Teacher ..|> Exam
 @enduml

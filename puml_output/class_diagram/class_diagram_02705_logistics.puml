@@ -7,59 +7,57 @@ class Shipment {
   #boolean description
   #boolean total
   +int note
-  +findScore()
-  +findCreatedat()
-  +deleteDescription()
+  +sendUpdatedat()
+  +getCreatedat()
+  +validateTotal()
 }
 class Route {
-  +boolean email
-  #long score
-  -double phone
-  +boolean price
-  +deleteDuration()
-  +setPrice()
-  +cancelCode()
+  -boolean description
+  #long createdAt
+  -float quantity
+  +findDescription()
 }
-class Manifest {
-  #int score
-  #double description
-  +cancelPhone()
-  +savePhone()
-  +findNote()
+interface Manifest {
+  +boolean quantity
+  +double price
+  #String createdAt
+  #long email
   +setAddress()
 }
 class Driver {
-  +String description
+  #Date total
+  -float note
+  #float phone
+  +setDescription()
+  +findStatus()
+  +validateScore()
+  +cancelPhone()
+}
+abstract class Depot {
   -String score
   +double status
-  -double duration
-  #long total
-  +cancelId()
-}
-class Depot {
-  +boolean name
-  #boolean email
-  +boolean id
-  +updateName()
-  +setTotal()
-  +createName()
+  +float description
+  +calculateAmount()
 }
 class DeliveryNote {
-  -String type
-  -String email
-  +float createdAt
-  +setCreatedat()
-  +saveScore()
+  +boolean quantity
+  -Date status
+  +int id
+  #boolean amount
+  #String description
+  +createScore()
+  +updateCode()
+  +processQuantity()
 }
 class Customer {
-  +double quantity
-  -int address
-  -float phone
-  +validateEmail()
-  +setName()
-  +sendEmail()
+  -long quantity
+  +long name
+  +long id
+  +int active
+  +String updatedAt
+  +validatePrice()
+  +calculateDuration()
 }
-Shipment --|> Route
-Route --> Depot : "*"
-note right of Shipment : Logistics domain
+Route --* Manifest
+Manifest --o Shipment
 @enduml

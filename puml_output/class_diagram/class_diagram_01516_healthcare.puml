@@ -5,43 +5,49 @@ skinparam classBorderColor #33691E
 class Prescription {
   -long code
   -double quantity
-  +deleteAmount()
-  +createAddress()
+  +saveQuantity()
+  +deleteScore()
 }
-abstract class Ward {
-  #float type
-  #String score
+class Ward {
+  #boolean type
+  +boolean quantity
+  #String duration
   -boolean note
-  #long status
-  +validateTotal()
+  +cancelStatus()
+  +sendLevel()
+  +createActive()
 }
-class Treatment {
-  +boolean phone
-  #int active
-  +saveScore()
-  +saveAddress()
-  +sendType()
-  +getTotal()
+abstract class Treatment {
+  #boolean code
+  +double phone
+  #boolean active
+  #long name
+  +saveId()
+  +deleteStatus()
+  +setNote()
+  +processAmount()
 }
 class MedicalRecord {
+  -boolean updatedAt
+  +int score
+  +long note
+  +float level
+  +updatePrice()
+  +saveId()
+  +sendActive()
+}
+abstract class Patient {
   -double email
-  #String updatedAt
-  +String score
-  -int note
-  +getName()
-  +cancelNote()
-  +processEmail()
+  -int score
+  +long price
+  #long updatedAt
+  -boolean quantity
+  +updatePhone()
+  +saveUpdatedat()
+  +findAddress()
+  +saveId()
 }
-interface Patient {
-  +String updatedAt
-  -Date quantity
-  -double address
-  #Date note
-  #double phone
-  +getNote()
-  +sendUpdatedat()
-}
+Patient --|> Ward
 Prescription --|> Treatment
 MedicalRecord --o Treatment
-note right of Prescription : Healthcare domain
 @enduml

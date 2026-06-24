@@ -8,66 +8,57 @@ class Book {
   +float score
   -long description
   +boolean type
-  +updateActive()
-  +findAmount()
-  +saveId()
+  +validateNote()
+  +findPrice()
+  +saveDescription()
 }
 class Fine {
-  +int address
+  -double email
   +boolean type
-  +double description
-  #float note
-  -float level
-  +setCreatedat()
-  +getUpdatedat()
-  +saveCode()
-  +createPhone()
+  +saveTotal()
+  +sendCreatedat()
+  +cancelTotal()
+  +processCreatedat()
 }
 class Librarian {
-  -Date name
-  +double price
-  #double description
-  #float active
-  +getCreatedat()
-  +updateDuration()
-  +updateName()
-  +getEmail()
+  -boolean duration
+  -float code
+  +getName()
+  +validatePhone()
+  +deleteLevel()
+  +saveNote()
 }
 class Publisher {
-  -long code
-  #int description
-  +Date level
-  #double address
-  +long score
+  #String code
+  #long email
+  +double phone
+  +getDescription()
+  +calculateActive()
+}
+abstract class Loan {
+  -boolean price
+  #Date active
+  +getDescription()
+  +saveEmail()
   +sendId()
+  +createScore()
 }
-class Loan {
-  #String createdAt
-  -Date code
-  #double amount
-  +sendType()
-  +findEmail()
-  +setPhone()
+interface Branch {
+  #int name
+  -String id
+  #float email
+  +saveQuantity()
+  +createLevel()
 }
-class Branch {
-  #double price
+class Member {
+  +Date total
   #double quantity
-  +String score
-  +String type
-  +getName()
-  +processType()
-  +getAmount()
-  +createName()
+  +long amount
+  +validateDescription()
 }
-interface Member {
-  +int name
-  +double level
-  #double total
-  +setDescription()
-  +getActive()
-}
-Fine --* Book
-Loan ..> Branch : "0..1"
-Member --* Fine
-note right of Book : Library domain
+Book ..> Fine : "0..1"
+Branch --|> Fine
+Loan --> Fine : "1"
+Member ..> Publisher : "*"
+Member --* Loan
 @enduml

@@ -8,50 +8,57 @@ abstract class Warehouse {
   #float createdAt
   #float price
   #float amount
-  +saveScore()
-  +deleteTotal()
-  +sendStatus()
-  +saveCreatedat()
+  +validateLevel()
+  +sendDuration()
+  +createStatus()
+  +cancelType()
 }
 class Invoice {
-  +String active
-  +boolean total
-  -Date description
-  #double phone
-  -int status
-  +saveCreatedat()
-  +setScore()
+  #double score
+  +boolean status
+  -String createdAt
+  +String phone
+  +boolean type
+  +findStatus()
+  +validateTotal()
+  +sendName()
+  +getNote()
 }
 class Shipment {
-  #long total
-  #Date address
-  #double level
-  +cancelPhone()
-  +deleteTotal()
-  +validateQuantity()
-  +createLevel()
+  +Date createdAt
+  +double code
+  -long score
+  +getScore()
+  +createType()
+  +setActive()
 }
 abstract class Product {
-  +boolean amount
-  #int note
-  +calculatePhone()
+  -long duration
+  #boolean phone
+  #double description
+  #Date total
+  +Date address
+  +cancelQuantity()
+  +validateId()
 }
-abstract class Coupon {
-  -boolean updatedAt
-  #double level
-  +cancelPhone()
-  +findLevel()
+interface Coupon {
+  -long score
+  -float level
+  +int status
+  +processId()
+  +findType()
+  +cancelPrice()
 }
-class Cart {
-  #String phone
-  -float updatedAt
-  +calculateType()
-  +validateCode()
-  +createDescription()
+abstract class Cart {
+  +long duration
+  +boolean phone
+  +long quantity
+  +saveCode()
+  +cancelCode()
+  +findType()
 }
-Coupon --> Invoice : "1"
-Product --> Warehouse : "1"
-Warehouse --* Product
-Invoice --> Coupon : "*"
-note right of Warehouse : Ecommerce domain
+Warehouse ..|> Shipment
+Shipment ..|> Coupon
+Coupon --o Warehouse
+Cart --> Warehouse : "1"
 @enduml

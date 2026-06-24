@@ -6,47 +6,49 @@ skinparam defaultFontSize 11
 class Package {
   -double quantity
   -float total
-  +saveScore()
-  +validateScore()
-  +deleteType()
-  +calculatePhone()
+  +setQuantity()
+  +setScore()
+  +calculateDuration()
+  +findType()
 }
 class Shipment {
-  -boolean address
-  -boolean email
-  #long amount
-  +cancelId()
-  +updateNote()
-  +createAmount()
-}
-interface Customer {
   #long type
-  #Date quantity
-  #String phone
-  +cancelActive()
-  +findAddress()
-  +sendActive()
+  #Date price
+  #int phone
+  +sendPrice()
+  +cancelType()
+  +sendAddress()
+}
+class Customer {
+  -boolean level
+  #String note
+  +Date active
+  #double phone
+  +calculateAddress()
+  +createEmail()
+  +createUpdatedat()
 }
 class Driver {
-  +String email
-  #Date amount
-  +boolean updatedAt
-  +Date score
-  +cancelPrice()
-  +validateDuration()
+  #float quantity
+  #float phone
+  #long address
+  #float name
+  #boolean email
+  +createDescription()
+  +updateNote()
+}
+class Warehouse {
+  +Date amount
+  #int updatedAt
+  #String level
+  #double score
   +findQuantity()
-  +findEmail()
+  +findLevel()
+  +sendActive()
+  +setActive()
 }
-interface Warehouse {
-  #Date address
-  #long score
-  -String note
-  +setName()
-  +cancelCode()
-  +validateStatus()
-  +validateCode()
-}
-Warehouse --* Package
-Warehouse --> Driver : "0..1"
-note right of Package : Logistics domain
+Customer ..> Warehouse : "0..1"
+Customer --> Driver : "1..*"
+Customer --o Package
+Package --> Warehouse : "1"
 @enduml

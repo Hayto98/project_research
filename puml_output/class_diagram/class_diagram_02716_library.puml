@@ -6,37 +6,36 @@ skinparam ArrowColor #555555
 class Branch {
   +long level
   +String description
-  +sendUpdatedat()
-  +getName()
-  +calculateCreatedat()
+  +calculateActive()
+  +processDuration()
+  +saveStatus()
 }
-interface Renewal {
-  +float total
-  -int type
-  +getId()
-  +cancelCreatedat()
-  +createDescription()
-  +updateLevel()
+class Renewal {
+  #float price
+  #String createdAt
+  +sendDescription()
+  +getDescription()
+  +deleteActive()
+  +updateActive()
 }
 class Reservation {
-  +int active
-  #double duration
-  +long note
-  #long email
-  +cancelEmail()
-  +processEmail()
-  +updateQuantity()
-  +processAddress()
+  #int type
+  -float id
+  +int level
+  +validateLevel()
+  +createQuantity()
+  +createUpdatedat()
 }
 interface Author {
-  #boolean id
-  #String code
-  #Date total
-  -long description
-  -String address
-  +getName()
+  -Date email
+  -double id
+  #Date description
+  -double price
+  -float score
+  +updateLevel()
+  +getId()
 }
-Branch --> Reservation : "0..1"
-Author ..|> Reservation
-note right of Branch : Library domain
+Author --|> Reservation
+Branch --> Renewal : "0..1"
+Reservation --> Author : "1"
 @enduml

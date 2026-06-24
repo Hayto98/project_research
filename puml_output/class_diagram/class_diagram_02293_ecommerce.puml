@@ -5,44 +5,43 @@ class Wishlist {
   -int note
   #float price
   #float active
-  +cancelCreatedat()
-  +calculateScore()
-  +validateType()
-  +validatePrice()
+  +saveDuration()
+  +processActive()
+  +calculateLevel()
+  +sendScore()
 }
-class Cart {
-  -Date updatedAt
-  -String note
-  #String type
-  +createId()
-  +processPrice()
-  +updatePrice()
+interface Cart {
+  +int type
+  -double address
+  -Date price
+  -String updatedAt
+  +calculateStatus()
 }
-class Review {
-  -long description
-  #String total
-  +boolean address
-  #boolean status
-  +String type
-  +createScore()
+interface Review {
+  +double email
+  +float id
+  #float type
+  -int price
+  +createActive()
+  +updateName()
+  +saveLevel()
+  +validateUpdatedat()
 }
 class Order {
-  +Date duration
-  #int price
-  +processAddress()
-  +getUpdatedat()
+  #boolean level
+  +String id
+  +long amount
+  #int active
+  +setPhone()
 }
-class Payment {
-  #double level
-  #Date createdAt
-  #float address
-  +deleteLevel()
-  +validateLevel()
-  +updateStatus()
-  +deleteAddress()
+abstract class Payment {
+  #Date active
+  +float amount
+  +setEmail()
+  +calculateTotal()
+  +processCreatedat()
+  +updateDuration()
 }
-Cart ..|> Review
-Payment ..|> Cart
-Payment --|> Wishlist
-note right of Wishlist : Ecommerce domain
+Review ..> Cart : "0..1"
+Payment --> Review : "*"
 @enduml

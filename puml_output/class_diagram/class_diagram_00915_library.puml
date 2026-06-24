@@ -8,29 +8,34 @@ abstract class Branch {
   #String active
   #long duration
   +boolean note
-  +processEmail()
+  +validateName()
 }
-interface Reservation {
+class Reservation {
   -long duration
   +Date updatedAt
   -long note
-  +createLevel()
-  +sendPrice()
+  +validateAmount()
+  +savePrice()
 }
-class Publisher {
-  #Date createdAt
-  -boolean code
-  +calculateNote()
-  +processPhone()
+interface Publisher {
+  #int email
+  -float code
+  -double createdAt
+  -String level
+  +Date quantity
+  +createNote()
 }
 class Renewal {
-  #float status
-  +String name
-  #double price
-  +validateId()
-  +cancelNote()
-  +getDuration()
+  -String score
+  #double amount
+  +float code
+  #float note
+  +String phone
+  +calculatePhone()
+  +getType()
+  +processTotal()
+  +cancelId()
 }
-Branch --* Reservation
-note right of Branch : Library domain
+Publisher --o Renewal
+Branch --> Renewal : "1..*"
 @enduml

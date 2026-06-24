@@ -9,59 +9,64 @@ interface CheckIn {
   +long address
   -int code
   #String level
-  +processQuantity()
+  +cancelCode()
 }
-interface Invoice {
+class Invoice {
   -long total
   #float amount
   +int duration
   -double code
-  +deletePrice()
-  +createScore()
-  +calculateLevel()
+  +processUpdatedat()
+  +calculateCode()
+  +validateAmount()
 }
-class Payment {
-  -int id
-  -String active
-  +processAmount()
-  +findCreatedat()
+interface Payment {
+  +double level
+  +int description
+  -int code
+  #int id
+  +long quantity
+  +createLevel()
+  +saveNote()
 }
 class Booking {
-  #boolean duration
-  -double updatedAt
-  -boolean createdAt
-  #long code
-  +cancelLevel()
-  +updateScore()
+  #long price
+  #float type
+  #int score
+  #boolean active
+  #Date quantity
+  +deleteAmount()
+  +saveAmount()
+}
+interface Guest {
+  -boolean phone
+  -long price
+  -String note
+  -long total
+  -float address
   +cancelDuration()
+  +findCode()
+  +saveTotal()
+  +deleteAddress()
 }
-class Guest {
-  -double note
-  -long score
-  #long type
-  -long phone
-  +long price
-  +calculatePrice()
-  +savePhone()
-  +updateActive()
-}
-abstract class Housekeeping {
-  #boolean level
-  +int address
-  -double price
-  +validateCreatedat()
-  +createName()
-  +deleteName()
-  +updateName()
-}
-interface Restaurant {
+interface Housekeeping {
+  +double updatedAt
+  -double level
+  -int address
+  -String price
   +String code
-  +boolean quantity
-  +boolean duration
-  +cancelId()
+  +processQuantity()
+  +sendAmount()
 }
-Guest --|> Invoice
-Payment --* CheckIn
-CheckIn ..|> Guest
-note right of CheckIn : Hotel domain
+class Restaurant {
+  +String quantity
+  +boolean code
+  +updateNote()
+}
+CheckIn ..> Guest : "1"
+Invoice ..|> Guest
+CheckIn --|> Payment
+Payment --> CheckIn : "0..1"
+Guest --> Payment : "0..1"
+Invoice ..> Payment : "1"
 @enduml

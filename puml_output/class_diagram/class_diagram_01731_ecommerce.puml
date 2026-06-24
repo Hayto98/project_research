@@ -7,38 +7,39 @@ abstract class Warehouse {
   +long duration
   #int name
   +double type
-  +createDescription()
+  +processAddress()
 }
 class Product {
-  #Date address
-  +int price
-  +sendPhone()
+  -Date status
+  #int duration
+  +boolean address
+  +getPrice()
 }
 interface Customer {
   #int score
-  #boolean phone
-  +setPrice()
-  +cancelUpdatedat()
-  +processCode()
+  #boolean status
+  #Date duration
+  -String phone
+  +processId()
+  +findAddress()
+  +processScore()
+  +processTotal()
 }
 class Cart {
-  -long status
-  #long phone
-  -long description
-  #String total
-  +long email
-  +updateName()
-  +deleteScore()
+  #String score
+  -float total
+  +updateEmail()
+  +findCreatedat()
 }
 class Return {
-  -long id
-  +long score
-  +boolean amount
-  -float quantity
-  +findId()
-  +processLevel()
+  #String duration
+  +long address
+  #int total
+  +String email
+  +calculatePrice()
+  +validateId()
 }
-Warehouse ..> Cart : "0..1"
-Customer ..|> Warehouse
-note right of Warehouse : Ecommerce domain
+Warehouse --* Product
+Cart ..|> Customer
+Customer --> Product : "*"
 @enduml

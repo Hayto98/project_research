@@ -4,33 +4,31 @@ class Invoice {
   -double note
   +Date address
   +boolean amount
-  +sendCode()
+  +calculatePrice()
 }
 class Restaurant {
+  +int total
   -String note
   #float phone
   #int active
-  +float amount
-  -String score
-  +findType()
-  +findAmount()
+  +setQuantity()
+  +processScore()
 }
-abstract class Reservation {
-  #boolean level
-  +long address
-  #float price
-  +findCreatedat()
+class Reservation {
+  #int description
+  -float type
+  +processEmail()
+  +calculateName()
 }
-interface Guest {
-  -long active
-  +int note
-  -double level
-  -String description
-  +validateQuantity()
-  +updateScore()
-  +processPhone()
+abstract class Guest {
+  #int quantity
+  #long name
+  +updateAddress()
+  +createName()
+  +findPhone()
+  +calculateAmount()
 }
-Restaurant --> Guest : "1..*"
-Guest ..|> Invoice
-note right of Invoice : Hotel domain
+Invoice --* Guest
+Guest --|> Restaurant
+Reservation --* Restaurant
 @enduml

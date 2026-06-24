@@ -5,55 +5,45 @@ class Exam {
   +int code
   -int price
   -float name
-  +cancelUpdatedat()
+  +processEmail()
 }
 class Attendance {
-  -int amount
-  -long updatedAt
-  #float id
-  #float address
-  +boolean active
-  +setLevel()
-  +processCreatedat()
-  +deleteDescription()
+  +float active
+  #String note
+  -long amount
+  +calculateNote()
+  +cancelAddress()
+  +setEmail()
 }
 interface Classroom {
-  #double status
+  +boolean level
+  -int address
+  +validateCreatedat()
+  +findDescription()
+}
+class Course {
   #long phone
-  +sendPhone()
+  +boolean type
+  +setId()
+  +cancelUpdatedat()
+  +createDuration()
 }
-interface Course {
-  #Date note
-  +Date description
-  #double price
-  -double createdAt
-  +double status
-  +setLevel()
-  +updateAmount()
-  +setScore()
-  +findName()
-}
-class Assignment {
+abstract class Assignment {
+  #Date price
   +Date createdAt
-  +boolean duration
-  -Date type
-  -Date email
-  +int status
-  +createAddress()
-  +getTotal()
-  +deleteActive()
-  +deleteUpdatedat()
+  #double status
+  +cancelQuantity()
+  +calculateNote()
+  +getAddress()
+  +deleteEmail()
 }
 abstract class Student {
-  #double note
-  -long score
-  +findEmail()
-  +deleteTotal()
-  +createId()
-  +updateStatus()
+  +String level
+  #Date updatedAt
+  +setActive()
 }
-Assignment --o Student
-Student ..> Classroom : "1"
-Course ..> Student : "0..1"
-note right of Exam : Education domain
+Student ..|> Course
+Attendance --* Course
+Exam ..> Attendance : "0..1"
+Assignment ..> Course : "*"
 @enduml

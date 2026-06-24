@@ -7,41 +7,38 @@ class Shipment {
   -long price
   +long active
   #Date level
-  +getStatus()
-  +calculateAmount()
+  +validateType()
+  +setDuration()
 }
 class FuelLog {
-  +int code
-  +Date updatedAt
-  #String id
-  +String createdAt
-  +boolean active
-  +getDuration()
-  +getActive()
+  +boolean price
+  -String amount
+  +processCode()
+  +createTotal()
 }
-interface Driver {
+class Driver {
+  #Date updatedAt
+  +String description
+  +int level
+  +updatePrice()
+  +findUpdatedat()
+}
+class Manifest {
   +boolean id
   +String duration
-  +findType()
-  +sendPhone()
-  +findEmail()
+  +calculateStatus()
+  +updateScore()
+  +cancelLevel()
 }
-interface Manifest {
-  +boolean id
-  #long amount
-  +saveCode()
-  +updateQuantity()
+abstract class Route {
+  +boolean email
+  #long id
+  +Date level
+  +int amount
+  +setAmount()
+  +sendEmail()
+  +deleteActive()
 }
-class Route {
-  #double name
-  +String address
-  #long type
-  -double quantity
-  #long status
-  +deleteQuantity()
-}
-Manifest --o Route
-Driver ..> Manifest : "1"
-Manifest --> FuelLog : "1"
-note right of Shipment : Logistics domain
+Driver --* Manifest
+Shipment ..|> Manifest
 @enduml

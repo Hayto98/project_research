@@ -5,36 +5,32 @@ skinparam shadowing true
 abstract class Enrollment {
   +long note
   +double updatedAt
-  +updateTotal()
-  +cancelId()
-  +saveCode()
+  +sendEmail()
+  +findAmount()
+  +processEmail()
 }
 class Student {
-  #String phone
-  +double address
-  -long level
-  +int code
-  +Date active
-  +validateQuantity()
-  +sendType()
+  -long quantity
+  -String total
+  +getCreatedat()
 }
-interface Library {
+class Library {
+  +int note
+  +Date phone
+  +long quantity
+  +createStatus()
+  +getAmount()
+  +getId()
+}
+interface Schedule {
   -boolean phone
   +String type
   -long quantity
-  +deleteCode()
-  +saveCode()
-  +deleteTotal()
-  +createQuantity()
+  +getEmail()
+  +findNote()
+  +getAmount()
+  +getType()
 }
-class Schedule {
-  #int level
-  +int total
-  -float updatedAt
-  #boolean note
-  +saveNote()
-}
-Schedule --* Enrollment
-Enrollment --* Schedule
-note right of Enrollment : Education domain
+Schedule --* Student
+Enrollment --* Library
 @enduml

@@ -4,7 +4,7 @@ skinparam roundCorner 15
 interface Beneficiary {
   #Date duration
   #long id
-  +findScore()
+  +calculateDescription()
 }
 interface Branch {
   -int type
@@ -12,26 +12,26 @@ interface Branch {
   +Date createdAt
   -float amount
   #String level
-  +sendName()
-  +getName()
-  +findPhone()
+  +validateType()
+  +getScore()
+  +setCode()
 }
 class Withdrawal {
-  #int price
-  -double note
-  +String email
-  +updateEmail()
+  +boolean name
+  +double phone
+  +sendPrice()
+  +validateAddress()
+  +sendType()
+  +cancelDescription()
 }
-interface Customer {
-  #String duration
-  +boolean active
-  -int description
-  +updateAmount()
-  +saveScore()
-  +createDuration()
+class Customer {
+  #String type
+  +long code
+  #boolean id
+  #int active
+  +processCreatedat()
+  +calculateStatus()
 }
-Customer ..> Withdrawal : "*"
-Withdrawal ..|> Customer
-Withdrawal --o Beneficiary
-note right of Beneficiary : Banking domain
+Beneficiary --* Withdrawal
+Branch --* Withdrawal
 @enduml

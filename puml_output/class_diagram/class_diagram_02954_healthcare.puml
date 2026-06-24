@@ -6,62 +6,59 @@ class LabTest {
   #double type
   #String duration
   -float price
-  +findLevel()
+  +updateScore()
 }
-abstract class Hospital {
-  -float quantity
-  #float phone
-  #double code
-  +deleteEmail()
+interface Hospital {
+  #float updatedAt
+  #double quantity
+  #double phone
+  +Date code
+  -String note
+  +saveId()
+}
+abstract class Appointment {
+  #long score
+  #double status
+  #Date total
+  #boolean email
+  #String address
+  +deleteId()
+  +processName()
+  +findStatus()
+}
+abstract class Ward {
+  +int active
+  +float email
+  +String level
   +getId()
-  +getTotal()
-  +processScore()
-}
-class Appointment {
-  -String email
-  #double address
-  +Date duration
-  #long type
-  -float id
-  +updateStatus()
-  +deleteCode()
-}
-class Ward {
-  -boolean total
-  #float description
-  +String phone
-  #float type
-  -double score
-  +updateId()
-  +cancelActive()
-  +saveDescription()
-  +createDuration()
+  +calculateQuantity()
+  +validateCreatedat()
 }
 class Nurse {
-  -String status
-  #int total
-  -long description
-  +String score
-  #long type
-  +deleteEmail()
+  -double phone
+  +String duration
+  #boolean id
+  #int code
+  -boolean address
+  +getCreatedat()
+  +calculateAmount()
+  +processNote()
 }
 class Diagnosis {
-  +long createdAt
-  -long note
-  -long level
-  +calculateStatus()
-  +validateUpdatedat()
+  #int description
+  -long duration
+  +String type
+  #long price
+  #boolean id
+  +saveAddress()
 }
 class MedicalRecord {
-  +long note
-  -int status
-  +updateDescription()
-  +findAmount()
+  -Date updatedAt
+  #double createdAt
+  +findScore()
 }
-MedicalRecord ..> Nurse : "1..*"
-Ward --> Nurse : "0..1"
-Appointment ..> MedicalRecord : "1..*"
-LabTest --o Diagnosis
-LabTest ..|> Hospital
-note right of LabTest : Healthcare domain
+Appointment --* MedicalRecord
+Diagnosis ..|> MedicalRecord
+Ward --* LabTest
+Hospital --|> MedicalRecord
 @enduml

@@ -7,58 +7,63 @@ abstract class Account {
   #double status
   #long active
   #int score
-  +setActive()
+  +updateName()
+  +deleteStatus()
+}
+interface Transfer {
+  +double active
+  #int updatedAt
+  -int email
+  +createCode()
+  +saveQuantity()
+}
+abstract class Statement {
+  #long address
+  -boolean email
+  -float type
+  +calculateUpdatedat()
   +updateActive()
-}
-class Transfer {
-  +int amount
-  +int type
-  -int duration
-  -long total
-  +sendAddress()
   +createActive()
-  +processScore()
-  +calculateId()
+  +setScore()
 }
-class Statement {
-  #double phone
-  -long total
+abstract class Interest {
+  #double total
   -long createdAt
-  #boolean email
-  +boolean description
-  +updateQuantity()
+  -long email
+  #boolean description
+  +setAddress()
+  +deletePhone()
 }
-class Interest {
-  -double createdAt
-  -String duration
-  #long type
-  +validateScore()
+class Teller {
+  +int quantity
+  #double email
+  -double description
+  +saveEmail()
+  +sendUpdatedat()
+  +processDescription()
+  +createPhone()
 }
-abstract class Teller {
-  #String type
-  +int level
-  +getEmail()
-  +validateAddress()
+class Deposit {
+  +int name
+  +long type
+  -float score
+  -double duration
+  +int createdAt
+  +cancelDescription()
+  +sendNote()
+  +validateType()
+  +sendCode()
 }
-abstract class Deposit {
-  -float createdAt
-  -boolean note
-  -float updatedAt
-  +cancelScore()
+abstract class Card {
+  #int status
+  -float score
+  #float duration
+  #Date type
+  +boolean id
+  +createPrice()
 }
-class Card {
-  #float score
-  +double id
-  -float updatedAt
-  #String email
-  -String code
-  +setPrice()
-  +updateStatus()
-  +saveAmount()
-}
-Statement ..|> Deposit
-Teller --* Interest
-Statement --* Teller
-Account --* Statement
-note right of Account : Banking domain
+Card --|> Teller
+Statement --* Account
+Card ..> Account : "*"
+Transfer ..> Account : "0..1"
 @enduml

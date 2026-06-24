@@ -6,37 +6,44 @@ interface Hashtag {
   #double duration
   #Date price
   +boolean updatedAt
-  +validateAmount()
-  +saveActive()
+  +findQuantity()
+  +findId()
 }
-abstract class Story {
-  #boolean updatedAt
-  +float email
-  #int code
-  +createPrice()
-  +findPrice()
-  +processAmount()
-  +findTotal()
+interface Story {
+  #int updatedAt
+  -long duration
+  -Date email
+  -double code
+  +Date description
+  +sendCode()
+  +cancelStatus()
+  +findStatus()
+  +getAmount()
 }
 abstract class Group {
-  -boolean type
-  +int id
-  +calculateId()
-  +savePrice()
+  +int total
+  #float active
+  +getPhone()
+  +setName()
 }
 abstract class Post {
-  +boolean duration
+  +boolean name
   #Date description
-  +updateAmount()
-  +cancelLevel()
+  -float code
+  +Date updatedAt
+  -String createdAt
+  +findTotal()
+  +getCreatedat()
+  +processUpdatedat()
+  +validatePrice()
 }
-abstract class Like {
-  #double email
-  #int name
-  +setAddress()
+interface Like {
+  #long status
+  +double address
+  +createCode()
+  +validateEmail()
+  +saveDescription()
 }
-Group --o Story
-Hashtag ..|> Story
-Story --|> Hashtag
-note right of Hashtag : Social Media domain
+Story --|> Like
+Hashtag ..> Story : "0..1"
 @enduml

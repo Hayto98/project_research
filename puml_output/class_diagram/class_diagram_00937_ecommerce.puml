@@ -8,58 +8,57 @@ class Return {
   +double updatedAt
   +double status
   #double score
-  +calculateDuration()
-  +processCreatedat()
-  +createQuantity()
-  +deleteTotal()
+  +createEmail()
+  +saveCode()
+  +getPrice()
+  +findUpdatedat()
 }
-class Supplier {
-  -String type
-  #String createdAt
-  +int updatedAt
-  +processEmail()
-  +findCode()
-  +getQuantity()
-  +validatePhone()
+abstract class Supplier {
+  -String email
+  +double quantity
+  #int amount
+  +validateUpdatedat()
+  +deleteQuantity()
 }
 class Payment {
-  -String note
-  -String id
-  #double level
-  #String name
-  +double address
-  +saveType()
-  +validatePhone()
+  -long description
+  #Date note
+  +processQuantity()
 }
 class Warehouse {
-  +boolean id
   +String phone
-  +getAmount()
+  #String email
+  -double type
+  +float note
+  +updateDuration()
+  +calculateDuration()
+  +findActive()
+  +sendPrice()
 }
-interface Wishlist {
-  -String amount
-  +Date description
-  #float active
-  +getDescription()
-  +setId()
-}
-abstract class Invoice {
-  +long updatedAt
-  +double price
-  +createPrice()
-  +createTotal()
-  +sendLevel()
-  +saveAmount()
-}
-interface Cart {
+class Wishlist {
   +Date type
-  -long price
-  -long quantity
-  -String updatedAt
-  +calculateStatus()
-  +validatePrice()
+  -long score
+  +validateCode()
+  +sendAmount()
+  +deleteNote()
 }
-Invoice ..|> Cart
-Wishlist --|> Return
-note right of Return : Ecommerce domain
+class Invoice {
+  +String createdAt
+  #int level
+  #Date code
+  +float score
+  +validateCode()
+  +getScore()
+}
+class Cart {
+  +float amount
+  +String createdAt
+  +getId()
+}
+Return ..> Invoice : "0..1"
+Warehouse --* Supplier
+Supplier --o Warehouse
+Payment --o Invoice
+Payment --> Warehouse : "0..1"
+Wishlist ..> Payment : "*"
 @enduml

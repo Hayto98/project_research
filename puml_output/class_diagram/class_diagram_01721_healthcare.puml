@@ -9,59 +9,56 @@ class Prescription {
   -Date quantity
   +String status
   -int level
-  +calculateQuantity()
+  +processType()
 }
-interface Nurse {
+class Nurse {
   #boolean name
   #long quantity
-  +findCreatedat()
-  +processId()
+  +setCode()
+  +calculateNote()
 }
-class Appointment {
-  +double active
-  #String updatedAt
-  #boolean description
-  +deletePrice()
-  +deleteUpdatedat()
-  +cancelName()
-  +updateName()
+abstract class Appointment {
+  #int id
+  #float amount
+  +cancelTotal()
+  +cancelQuantity()
 }
-abstract class LabTest {
-  +double email
-  +double note
-  -boolean phone
-  +calculateName()
-  +sendPrice()
+class LabTest {
+  +String description
+  -int price
+  -double duration
+  -float updatedAt
+  +double name
+  +cancelCreatedat()
 }
 class Diagnosis {
-  +float quantity
-  #String id
-  #boolean note
-  -double createdAt
-  +Date address
+  #Date total
+  -int name
+  #boolean active
+  +calculatePhone()
+  +processCode()
+  +sendCode()
   +sendEmail()
-  +deleteStatus()
-  +deleteAddress()
-  +createDuration()
 }
-class Billing {
-  #boolean price
-  +float status
-  +calculatePrice()
-  +getScore()
-  +processNote()
-  +sendNote()
+interface Billing {
+  +Date createdAt
+  #Date code
+  #double total
+  #float price
+  +setLevel()
+  +createPhone()
+  +createEmail()
 }
 class Insurance {
-  +String duration
-  #String price
-  -long total
-  +sendLevel()
-  +updateType()
+  +boolean email
+  #String createdAt
+  -double status
+  -String price
+  +saveAmount()
+  +sendQuantity()
+  +sendPrice()
+  +deletePrice()
 }
-Appointment ..|> LabTest
-Appointment --> Diagnosis : "1..*"
-Nurse ..|> Appointment
-Insurance ..|> Appointment
-note right of Prescription : Healthcare domain
+Nurse --o Diagnosis
+LabTest --|> Nurse
 @enduml

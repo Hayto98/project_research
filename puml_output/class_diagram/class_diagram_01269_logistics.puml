@@ -6,33 +6,32 @@ interface Route {
   +boolean price
   -long updatedAt
   -boolean id
-  +setType()
+  +setDescription()
 }
-class Inventory {
-  +float level
-  +int duration
-  +saveUpdatedat()
+abstract class Inventory {
+  #String status
+  +int level
   +createType()
+  +validatePrice()
 }
-interface Warehouse {
-  -float duration
+class Warehouse {
+  -String type
+  #float active
+  +double total
   -double description
-  -Date type
-  #String id
-  -Date active
-  +updateActive()
-  +calculateName()
-  +findPhone()
+  +findStatus()
+  +sendActive()
+  +createPhone()
+  +calculateAmount()
 }
-class Package {
-  #boolean phone
-  #int quantity
-  #long total
-  -double amount
-  +validateUpdatedat()
-  +processAmount()
+interface Package {
+  #long createdAt
+  -long active
+  -long price
+  -float name
+  +calculateUpdatedat()
+  +calculateDuration()
 }
-Route ..|> Warehouse
-Route --|> Package
-note right of Route : Logistics domain
+Warehouse --o Inventory
+Inventory ..|> Package
 @enduml

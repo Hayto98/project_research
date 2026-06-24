@@ -4,10 +4,10 @@ skinparam classBackgroundColor #F3E5F5
 skinparam classBorderColor #6A1B9A
 skinparam defaultFontSize 11
 left to right direction
-actor "Manager" as Manager
-actor "Housekeeper" as Housekeeper
-actor "Chef" as Chef
-actor "Guest" as Guest
+actor "Manager" as M
+actor "Housekeeper" as H
+actor "Chef" as C
+actor "Guest" as G
 rectangle "Hotel System" {
   usecase "Check Out" as UC_CheckOut
   usecase "Check In" as UC_CheckIn
@@ -17,16 +17,16 @@ rectangle "Hotel System" {
   usecase "Cancel Reservation" as UC_CancelReservation
   usecase "Request Service" as UC_RequestService
 }
-Manager --> UC_CheckOut
-Manager --> UC_ProcessPayment
-Manager --> UC_RequestService
-Housekeeper --> UC_CheckOut
-Housekeeper --> UC_CheckIn
-Housekeeper --> UC_CancelReservation
-Chef --> UC_CancelReservation
-Chef --> UC_ProcessPayment
-Guest --> UC_CleanRoom
-Guest --> UC_CancelReservation
-Guest --> UC_OrderRoomService
+M --> UC_CheckOut
+M --> UC_ProcessPayment
+M --> UC_RequestService
+H --> UC_CheckOut
+H --> UC_CheckIn
+H --> UC_CancelReservation
+C --> UC_CancelReservation
+C --> UC_ProcessPayment
+G --> UC_CleanRoom
+G --> UC_CancelReservation
+G --> UC_OrderRoomService
 UC_OrderRoomService ..|> UC_ProcessPayment : <<extend>>
 @enduml

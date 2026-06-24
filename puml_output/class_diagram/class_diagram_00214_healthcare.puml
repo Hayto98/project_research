@@ -5,34 +5,32 @@ abstract class LabTest {
   #float price
   +String email
   +double note
-  +calculateScore()
-  +deleteDuration()
-  +deleteName()
+  +saveCode()
+  +saveActive()
+  +createNote()
 }
 class Doctor {
-  +boolean quantity
-  #boolean updatedAt
-  #float description
-  +sendUpdatedat()
+  -float name
+  #int quantity
+  #float updatedAt
   +deletePhone()
-  +setCode()
-  +findAmount()
+  +cancelTotal()
 }
-class Appointment {
-  +String quantity
-  -String level
-  +String price
-  +deleteType()
+interface Appointment {
+  +Date active
+  +long updatedAt
+  #int description
+  -boolean phone
+  -String status
+  +createAmount()
 }
 class Treatment {
-  #Date duration
-  +double amount
-  +sendTotal()
-  +getId()
-  +getUpdatedat()
+  +double status
+  -Date active
+  +Date id
+  +createUpdatedat()
+  +getActive()
 }
-Appointment ..|> Treatment
-LabTest --> Treatment : "*"
-Appointment ..> Doctor : "1..*"
-note right of LabTest : Healthcare domain
+Treatment --> Doctor : "*"
+LabTest --|> Treatment
 @enduml

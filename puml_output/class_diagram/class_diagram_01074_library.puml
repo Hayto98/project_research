@@ -8,38 +8,33 @@ class Publisher {
   -boolean score
   -double email
   #boolean amount
-  +updateAddress()
-  +saveUpdatedat()
-  +deleteDescription()
-  +updateType()
+  +processAddress()
+  +getDuration()
+  +getTotal()
+  +calculateLevel()
 }
-abstract class Branch {
-  #Date code
-  -int active
-  #double address
-  +createLevel()
-  +calculateActive()
-  +calculateCode()
-  +cancelPrice()
+class Branch {
+  -float description
+  -float duration
+  +String updatedAt
+  +validateTotal()
+  +validatePrice()
+  +validateLevel()
 }
-interface Catalog {
+class Catalog {
+  #float price
+  -Date note
+  #double quantity
+  +getCode()
+}
+abstract class Renewal {
   -boolean phone
   -long email
   #double active
   +Date duration
-  +sendNote()
-  +validateAddress()
+  +getStatus()
+  +setAddress()
 }
-class Renewal {
-  #Date note
-  +long amount
-  +boolean address
-  -Date duration
-  #String level
-  +sendDescription()
-  +processUpdatedat()
-}
-Branch --* Publisher
-Publisher --|> Catalog
-note right of Publisher : Library domain
+Catalog --|> Branch
+Renewal ..> Branch : "0..1"
 @enduml

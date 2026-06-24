@@ -8,62 +8,55 @@ class Statement {
   +String email
   -float description
   #boolean name
-  +processLevel()
+  +cancelCode()
 }
-class Card {
+interface Card {
+  -float name
   #long email
-  +double type
-  +setAmount()
+  +setNote()
+  +findEmail()
 }
 class Deposit {
-  -double amount
-  -float score
-  +int type
-  +double phone
-  +findStatus()
-  +processNote()
-  +updateId()
-  +createCode()
+  #long amount
+  +boolean updatedAt
+  +validateStatus()
+  +processStatus()
+  +processLevel()
+  +processType()
 }
-class Beneficiary {
-  +double name
-  #String email
-  +double status
-  +createActive()
-  +calculateId()
-  +sendAddress()
-  +validateScore()
-}
-abstract class Account {
-  #double amount
-  -boolean code
-  -int score
-  +float status
-  -double id
-  +validateName()
-  +deleteId()
-}
-class Teller {
-  -long score
-  #boolean level
-  +calculateLevel()
-  +getCode()
-  +updateQuantity()
+abstract class Beneficiary {
+  -float description
+  -Date duration
   +findActive()
 }
-interface Transaction {
-  +Date amount
-  -long address
-  +float id
-  #String code
-  #float active
-  +validateEmail()
-  +validateStatus()
-  +getPrice()
+abstract class Account {
+  #float id
+  +int quantity
+  +float code
+  +deleteStatus()
+  +cancelEmail()
+  +createPhone()
 }
-Account --o Card
-Card ..> Transaction : "1"
-Statement ..|> Account
-Statement --|> Teller
-note right of Statement : Banking domain
+abstract class Teller {
+  #Date createdAt
+  -long total
+  +updateDuration()
+  +findType()
+  +deleteId()
+  +findPrice()
+}
+class Transaction {
+  +boolean score
+  +Date note
+  +boolean type
+  -double amount
+  +validateQuantity()
+  +cancelStatus()
+  +processPhone()
+}
+Beneficiary --* Card
+Statement --|> Card
+Statement ..> Teller : "1"
+Account --o Transaction
+Deposit --> Teller : "*"
 @enduml

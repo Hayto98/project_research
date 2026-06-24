@@ -7,48 +7,51 @@ interface Insurance {
   -Date note
   #Date status
   #long price
-  +deleteType()
-  +validateId()
-  +getActive()
+  +findId()
+  +cancelCode()
+  +findCode()
 }
 class Hospital {
-  #double duration
-  +float amount
-  +float total
-  +sendId()
+  +boolean active
+  +Date quantity
+  +createEmail()
+  +sendType()
+  +savePrice()
+  +calculateAmount()
 }
 class Nurse {
-  +String phone
-  -String description
-  +long status
-  +float level
-  -String amount
-  +updateDescription()
-  +cancelPhone()
-  +createEmail()
-  +deleteName()
+  #float level
+  +int id
+  +updateTotal()
+  +getEmail()
+  +setPrice()
+  +processCreatedat()
 }
-abstract class Prescription {
-  #long createdAt
-  #long email
-  #long level
-  +setLevel()
-  +saveAmount()
-  +saveCode()
-  +updateScore()
+class Prescription {
+  -String amount
+  +long id
+  +float name
+  +validateId()
+  +validateUpdatedat()
+  +deleteTotal()
 }
 class Doctor {
-  +String quantity
-  -boolean type
-  +calculateDescription()
-  +updateActive()
-}
-class Diagnosis {
-  -boolean description
-  +double price
+  -int level
+  +double phone
+  +int email
   +deleteCreatedat()
+  +findDuration()
+  +setTotal()
+}
+interface Diagnosis {
+  #Date duration
+  #Date address
+  +Date price
+  +int code
+  +updateUpdatedat()
 }
 Diagnosis ..|> Prescription
-Diagnosis ..> Nurse : "*"
-note right of Insurance : Healthcare domain
+Insurance --> Nurse : "0..1"
+Prescription ..|> Hospital
+Diagnosis --* Doctor
 @enduml

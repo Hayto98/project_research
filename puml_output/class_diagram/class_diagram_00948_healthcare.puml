@@ -7,62 +7,59 @@ interface Appointment {
   #boolean amount
   +boolean type
   #Date createdAt
-  +deleteTotal()
-  +findCode()
-  +processUpdatedat()
-  +cancelStatus()
+  +createCode()
+  +getPhone()
+  +validateTotal()
+  +getType()
 }
-class Prescription {
-  -boolean amount
-  +boolean quantity
-  +long status
-  -int description
-  +long createdAt
-  +cancelAddress()
+abstract class Prescription {
+  -int level
+  #Date status
+  -String updatedAt
+  +findName()
+  +sendId()
 }
 abstract class Doctor {
-  -int createdAt
-  #String total
-  +cancelAddress()
-  +processId()
-  +deleteLevel()
-  +findActive()
+  -int score
+  +long description
+  #String address
+  +sendScore()
+  +processCode()
+  +getTotal()
 }
-class Diagnosis {
-  #double name
-  -long price
-  #double status
-  +saveUpdatedat()
-  +getType()
-  +calculateId()
-  +calculateType()
+abstract class Diagnosis {
+  -String amount
+  +boolean status
+  #boolean note
+  +boolean address
+  +saveEmail()
+  +processType()
 }
 class Insurance {
-  +boolean address
-  #int active
-  +createName()
-  +calculatePhone()
-  +calculateDescription()
+  +float type
+  -double email
+  +double duration
+  -long score
+  #Date updatedAt
+  +findQuantity()
 }
-class MedicalRecord {
-  #String score
-  -int level
-  +Date amount
-  +deleteUpdatedat()
-  +saveEmail()
+interface MedicalRecord {
+  -long duration
+  +double updatedAt
+  +deleteLevel()
+  +deleteId()
+  +updateEmail()
 }
 class Ward {
-  -boolean description
-  +double id
-  +setUpdatedat()
+  -int updatedAt
+  +Date score
+  #int amount
+  +int code
   +deleteCreatedat()
-  +findAddress()
+  +saveStatus()
+  +setName()
 }
-MedicalRecord --* Doctor
-Ward ..|> Insurance
-Prescription ..|> Doctor
-MedicalRecord ..|> Insurance
-Doctor ..> Prescription : "1"
-Doctor --|> Insurance
-note right of Appointment : Healthcare domain
+Appointment --> Diagnosis : "1"
+Diagnosis --|> Doctor
+Prescription ..> Ward : "0..1"
 @enduml

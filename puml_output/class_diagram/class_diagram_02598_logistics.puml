@@ -6,32 +6,31 @@ class Customer {
   +float description
   -String quantity
   +boolean email
-  +saveQuantity()
-  +setActive()
-  +calculateAddress()
-  +saveNote()
+  +validatePrice()
+  +cancelAddress()
+  +setStatus()
+  +saveTotal()
 }
-class DeliveryNote {
-  -String id
-  #int phone
-  +boolean status
-  +setCreatedat()
+interface DeliveryNote {
+  -String address
+  -String note
+  #int description
+  +boolean amount
+  #String id
+  +processActive()
 }
 interface Warehouse {
   -String level
   #String updatedAt
-  +saveDuration()
+  +cancelPrice()
 }
-class Package {
+interface Package {
+  #long duration
+  #double quantity
   #int code
-  #int score
-  #boolean phone
-  #Date note
-  +validateDuration()
-  +calculateStatus()
+  +getDuration()
+  +cancelActive()
 }
-Warehouse --* Package
-Customer --o DeliveryNote
-DeliveryNote --* Package
-note right of Customer : Logistics domain
+Warehouse --> Package : "*"
+Customer --* Warehouse
 @enduml

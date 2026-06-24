@@ -3,9 +3,9 @@ skinparam shadowing false
 skinparam backgroundColor #F5F5F5
 skinparam shadowing true
 left to right direction
-actor "Customer" as Customer
-actor "Fleet Manager" as FleetManager
-actor "Dispatcher" as Dispatcher
+actor "Customer" as C
+actor "Fleet Manager" as FM
+actor "Dispatcher" as D
 rectangle "Logistics System" {
   usecase "Load Package" as UC_LoadPackage
   usecase "Track Shipment" as UC_TrackShipment
@@ -13,11 +13,11 @@ rectangle "Logistics System" {
   usecase "Deliver Package" as UC_DeliverPackage
   usecase "Assign Route" as UC_AssignRoute
 }
-Customer --> UC_DeliverPackage
-Customer --> UC_SchedulePickup
-Customer --> UC_LoadPackage
-FleetManager --> UC_SchedulePickup
-Dispatcher --> UC_LoadPackage
-Dispatcher --> UC_TrackShipment
+C --> UC_DeliverPackage
+C --> UC_SchedulePickup
+C --> UC_LoadPackage
+FM --> UC_SchedulePickup
+D --> UC_LoadPackage
+D --> UC_TrackShipment
 UC_SchedulePickup ..> UC_AssignRoute : <<include>>
 @enduml

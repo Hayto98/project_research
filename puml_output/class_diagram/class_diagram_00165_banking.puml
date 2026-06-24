@@ -5,44 +5,39 @@ abstract class Teller {
   +int name
   -float level
   +long type
-  +validateScore()
-  +processEmail()
+  +saveCreatedat()
+  +calculatePrice()
 }
-class Transaction {
-  -long score
-  +Date amount
-  #String address
-  +processId()
-  +getId()
-  +deleteUpdatedat()
+abstract class Transaction {
+  -float description
+  -long level
+  +Date createdAt
+  #String amount
+  +validateType()
+  +cancelQuantity()
+  +updateDuration()
 }
 class Account {
-  #boolean description
-  +float amount
-  +int status
-  +int total
-  +sendDuration()
-  +cancelCode()
-  +processNote()
+  -Date description
+  -float updatedAt
+  +calculateAddress()
+  +updateUpdatedat()
 }
-interface Transfer {
+abstract class Transfer {
+  +int code
+  -boolean description
+  +sendCreatedat()
+}
+abstract class Beneficiary {
   -boolean id
   +double type
   +Date duration
   +float total
-  +updateActive()
-  +getNote()
-  +updateTotal()
-  +createCreatedat()
+  +sendLevel()
+  +sendType()
+  +findAddress()
+  +createUpdatedat()
 }
-class Beneficiary {
-  +Date description
-  -float price
-  +boolean name
-  #int score
-  +createLevel()
-}
-Account --|> Teller
-Teller ..> Account : "0..1"
-note right of Teller : Banking domain
+Transfer --o Transaction
+Account ..|> Transaction
 @enduml

@@ -6,63 +6,55 @@ skinparam defaultFontSize 13
 abstract class Interest {
   +boolean note
   #int level
-  +cancelNote()
-  +createId()
+  +sendActive()
+  +deleteDuration()
 }
 class Branch {
-  +double code
-  +Date duration
-  +processEmail()
-  +calculateDescription()
-  +processAmount()
+  +float amount
+  +int code
+  +createCode()
+  +sendDuration()
+  +getCreatedat()
+  +setEmail()
 }
-class Transfer {
-  +Date duration
-  +double active
-  #String type
-  #String name
-  #float address
-  +findScore()
+abstract class Transfer {
+  #long price
+  #float description
+  -boolean note
+  #double amount
+  +validateTotal()
 }
 class Transaction {
-  -double price
-  +float code
-  #long createdAt
-  +Date quantity
-  +savePrice()
-  +getTotal()
+  #String code
+  #String total
+  +sendUpdatedat()
 }
-class Card {
-  +boolean status
-  #int amount
-  #String quantity
-  +sendPhone()
-  +deleteQuantity()
-  +validateStatus()
+interface Card {
+  +Date phone
+  -float price
+  -double code
+  +setActive()
 }
-abstract class Statement {
-  #String id
-  -Date active
+interface Statement {
+  -Date amount
+  +Date updatedAt
+  +String price
+  +long name
+  +cancelAmount()
+}
+interface Account {
   #long level
-  -float address
-  +Date code
-  +setAddress()
-  +findQuantity()
-  +deleteName()
+  +long code
+  -String email
+  +sendName()
+  +processName()
+  +cancelName()
   +findDuration()
 }
-class Account {
-  -Date note
-  #long duration
-  #String description
-  -double updatedAt
-  -float email
-  +deleteUpdatedat()
-}
-Interest --> Account : "1"
-Statement --|> Card
-Account --* Transfer
-Card ..|> Statement
-Card --o Interest
-note right of Interest : Banking domain
+Card --|> Transfer
+Statement --* Interest
+Statement --* Account
+Transfer ..> Interest : "*"
+Interest --* Statement
+Statement ..|> Transfer
 @enduml

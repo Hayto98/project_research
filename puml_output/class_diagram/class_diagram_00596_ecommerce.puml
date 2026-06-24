@@ -6,61 +6,55 @@ interface Invoice {
   -double score
   +boolean id
   -double phone
-  +processActive()
-  +cancelTotal()
+  +deleteId()
+  +cancelCode()
 }
-abstract class Supplier {
+interface Supplier {
+  +float total
+  #String type
   +double quantity
   +long active
-  -int type
-  +String description
-  #double status
-  +findName()
-  +sendActive()
-  +updatePhone()
-  +setLevel()
+  -int level
+  +processCode()
 }
-interface Shipment {
-  +String active
-  #float id
-  +calculateName()
-  +calculateQuantity()
+abstract class Shipment {
+  +boolean name
+  #Date active
+  +boolean level
+  +String createdAt
+  +boolean phone
+  +getAddress()
+  +savePhone()
 }
-class Coupon {
+abstract class Coupon {
+  -long status
+  +int amount
+  +String quantity
   -long duration
-  +int quantity
-  +String status
-  +createLevel()
-  +setName()
-  +updatePhone()
+  +processQuantity()
 }
 class Order {
-  -long duration
-  #float createdAt
-  +getUpdatedat()
-  +processName()
+  -boolean email
+  +String code
+  +double createdAt
+  +long note
+  +validateLevel()
+  +sendAmount()
 }
 class Customer {
-  -float score
-  +double code
-  #Date id
-  +getPrice()
-  +deletePhone()
-  +deleteId()
-  +updateEmail()
+  -Date address
+  #double updatedAt
+  +calculateStatus()
 }
-class Wishlist {
-  #boolean status
-  -float createdAt
-  #double note
-  -int level
-  -boolean quantity
-  +calculateCode()
-  +calculateQuantity()
-  +updateCreatedat()
-  +findCreatedat()
+abstract class Wishlist {
+  +Date phone
+  -int description
+  -Date id
+  +updateDescription()
 }
-Shipment ..|> Customer
-Supplier --o Order
-note right of Invoice : Ecommerce domain
+Supplier ..> Shipment : "*"
+Wishlist --o Order
+Shipment --* Supplier
+Order --o Coupon
+Invoice --* Coupon
 @enduml

@@ -5,63 +5,64 @@ skinparam defaultFontSize 13
 class Post {
   -String updatedAt
   -boolean status
-  +getLevel()
-  +saveActive()
-}
-class Profile {
-  -int createdAt
-  -double price
-  +sendScore()
-  +findAddress()
-  +validateScore()
-}
-class Like {
-  +int status
-  -long amount
-  +Date duration
-  +int price
-  +updateName()
   +updatePrice()
-  +sendId()
+  +calculateStatus()
+}
+interface Profile {
+  -long status
+  +long createdAt
+  +sendAmount()
+  +calculateCreatedat()
+  +setPrice()
+  +createUpdatedat()
+}
+interface Like {
+  +Date address
+  #Date score
+  +String email
+  #double duration
+  +saveAddress()
+  +processScore()
 }
 class Hashtag {
-  -Date quantity
-  #long createdAt
-  -long phone
-  #String address
-  #Date note
-  +cancelDuration()
-  +calculateCode()
-  +cancelTotal()
+  #long status
+  +float updatedAt
+  +float level
+  +double active
+  +validateCreatedat()
 }
-class Notification {
-  #float duration
+abstract class Notification {
+  -Date createdAt
+  #long phone
   -long address
-  +String id
-  +double type
-  +Date price
-  +cancelName()
-  +sendNote()
+  #String note
+  +findUpdatedat()
+  +getQuantity()
+  +deleteAmount()
 }
 class Message {
-  -double createdAt
-  -int id
-  +getActive()
-  +deleteCreatedat()
-  +cancelLevel()
-  +findPrice()
+  -Date createdAt
+  -long price
+  +String address
+  +double id
+  +Date type
+  +findDescription()
+  +calculateId()
 }
-class Follower {
-  #int price
-  +Date phone
-  #Date total
-  #int description
+interface Follower {
+  -long status
+  +double id
+  +boolean createdAt
+  +int level
+  #boolean address
+  +processName()
+  +deleteCode()
   +getStatus()
+  +getUpdatedat()
 }
-Like ..|> Profile
-Like --> Notification : "1"
-Profile ..> Hashtag : "1..*"
-Profile --* Like
-Message --o Profile
-note right of Post : Social Media domain
+Like --o Message
+Profile ..|> Message
+Post ..> Message : "0..1"
+Post --|> Follower
+Follower --> Message : "1..*"
 @enduml

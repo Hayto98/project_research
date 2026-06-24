@@ -8,55 +8,60 @@ class MedicalRecord {
   #long note
   +float level
   -boolean status
-  +deleteScore()
+  +createCode()
 }
-class Nurse {
-  #float email
-  #double type
-  +float level
-  +processStatus()
+interface Nurse {
+  -Date description
+  #double email
+  +updateDescription()
+  +updateCreatedat()
+  +sendTotal()
+  +deleteLevel()
 }
-interface Hospital {
-  -long amount
-  #boolean id
-  -int level
-  #int price
-  +setPhone()
-  +validateName()
-  +validateScore()
+abstract class Hospital {
+  +String active
+  #String email
+  +sendPhone()
+  +findQuantity()
+  +createUpdatedat()
+  +deleteId()
 }
-class LabTest {
-  #long duration
-  -Date quantity
-  +findCreatedat()
-  +processEmail()
-  +updateActive()
-}
-interface Billing {
-  +long address
-  #Date email
+interface LabTest {
+  -String amount
+  -boolean updatedAt
+  -Date address
+  #String code
   #long phone
-  +createAddress()
-  +validateScore()
+  +getPrice()
+  +getName()
+  +updateQuantity()
 }
-class Appointment {
-  -boolean level
-  +double amount
-  +double code
-  +setUpdatedat()
+class Billing {
+  #Date createdAt
+  #float note
+  +long email
+  -long duration
+  +saveScore()
+  +updateScore()
 }
-class Insurance {
-  #boolean createdAt
-  #Date note
-  +double level
-  +double id
-  #Date description
-  +cancelName()
-  +calculateAddress()
-  +cancelScore()
+interface Appointment {
+  #String updatedAt
+  #int email
+  #Date address
+  #boolean score
+  +findNote()
+  +cancelAddress()
 }
-Insurance --* Hospital
-Appointment --|> Nurse
-LabTest ..|> Nurse
-note right of MedicalRecord : Healthcare domain
+interface Insurance {
+  +String total
+  +long code
+  #double duration
+  +updateCreatedat()
+  +updateScore()
+}
+Insurance --|> LabTest
+Insurance --> Nurse : "1"
+LabTest --o Nurse
+Billing --* Appointment
+Billing --o MedicalRecord
 @enduml

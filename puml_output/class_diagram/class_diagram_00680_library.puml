@@ -9,57 +9,51 @@ interface Librarian {
   -double description
   +long active
   +long status
-  +findUpdatedat()
-  +createTotal()
-  +sendPhone()
+  +cancelName()
+  +validateNote()
+  +processDescription()
 }
-class Fine {
-  #boolean updatedAt
+abstract class Fine {
+  -String id
+  +Date note
+  #float updatedAt
   +float total
-  -String level
-  -double id
-  #long code
-  +saveEmail()
-  +calculateScore()
+  +processCode()
+  +sendName()
+  +createPrice()
 }
 interface Member {
-  +String phone
-  #String price
-  -long amount
-  +long createdAt
-  +createDuration()
+  -long description
+  -boolean email
+  +int price
+  +String active
+  +validateLevel()
 }
 class Renewal {
-  -long amount
-  #String type
-  -int description
-  +setCode()
-  +processPrice()
-  +deleteNote()
-  +cancelTotal()
+  #long status
+  +int quantity
+  -int code
+  -long level
+  +setTotal()
 }
 class Shelf {
-  -int code
-  +float address
-  +String duration
+  -boolean status
+  -long code
+  #double note
   +long price
-  +boolean description
-  +updateName()
-  +setAddress()
-  +deletePrice()
+  #String amount
+  +setLevel()
+  +validateUpdatedat()
+  +validateCreatedat()
+  +validateNote()
 }
 class Reservation {
-  +Date total
-  +boolean price
-  +int email
-  #long updatedAt
-  +boolean description
-  +calculateStatus()
-  +calculateCreatedat()
+  +boolean name
+  -int email
+  +validatePhone()
 }
-Reservation --o Fine
-Member ..|> Renewal
-Renewal --|> Member
-Librarian --o Fine
-note right of Librarian : Library domain
+Fine --|> Renewal
+Renewal --o Reservation
+Member ..|> Fine
+Librarian --> Reservation : "1"
 @enduml

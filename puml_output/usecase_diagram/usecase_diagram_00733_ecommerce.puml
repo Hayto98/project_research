@@ -4,9 +4,9 @@ skinparam classBackgroundColor #FFFFFF
 skinparam classBorderColor #455A64
 skinparam shadowing true
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Admin" as Admin
-actor "Delivery Service" as DeliveryService
+actor "Payment Gateway" as PG
+actor "Admin" as A
+actor "Delivery Service" as DS
 rectangle "Ecommerce System" {
   usecase "Manage Inventory" as UC_ManageInventory
   usecase "Add To Cart" as UC_AddToCart
@@ -14,10 +14,10 @@ rectangle "Ecommerce System" {
   usecase "Track Order" as UC_TrackOrder
   usecase "Make Payment" as UC_MakePayment
 }
-PaymentGateway --> UC_TrackOrder
-Admin --> UC_ManageInventory
-Admin --> UC_MakePayment
-Admin --> UC_TrackOrder
-DeliveryService --> UC_ManageInventory
+PG --> UC_TrackOrder
+A --> UC_ManageInventory
+A --> UC_MakePayment
+A --> UC_TrackOrder
+DS --> UC_ManageInventory
 UC_MakePayment ..> UC_TrackOrder : <<extend>>
 @enduml

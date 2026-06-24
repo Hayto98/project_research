@@ -8,63 +8,55 @@ class Librarian {
   #double duration
   #boolean description
   #long level
-  +calculateType()
+  +createDuration()
 }
-interface Reservation {
+abstract class Reservation {
   +String email
   #int amount
   #float id
-  +createCode()
-  +validateLevel()
-  +sendName()
-  +getStatus()
+  +setTotal()
+  +processAddress()
+  +processAmount()
+  +cancelId()
 }
-abstract class Shelf {
-  +String total
-  #double name
-  #int description
-  #boolean quantity
-  +findEmail()
-  +cancelStatus()
+interface Shelf {
+  -long id
+  -String status
+  +cancelDuration()
+  +cancelAddress()
 }
-interface Author {
+class Author {
+  #boolean type
+  +Date amount
+  +validateActive()
+  +calculateTotal()
+  +cancelDuration()
+}
+class Renewal {
   #Date email
   -boolean name
   +boolean total
   -String updatedAt
   -String status
-  +updatePhone()
-  +saveLevel()
-  +deleteLevel()
+  +setActive()
+  +processDuration()
+  +updateTotal()
 }
-class Renewal {
-  #double price
-  +String address
-  -int status
-  +double phone
-  +createLevel()
-}
-class Member {
-  -int email
-  #boolean score
-  #Date note
-  #float phone
-  +getScore()
-  +cancelNote()
-  +cancelPhone()
-  +calculateName()
+interface Member {
+  -Date level
+  -float createdAt
+  #String quantity
+  +sendDescription()
+  +validatePrice()
+  +updateEmail()
 }
 class Fine {
-  #boolean updatedAt
-  -String quantity
-  +String level
-  +deleteDuration()
+  +double phone
+  +long updatedAt
+  +setId()
+  +saveScore()
 }
-Fine --* Renewal
-Shelf --> Renewal : "*"
-Renewal --|> Reservation
-Librarian --|> Renewal
-Fine --> Shelf : "0..1"
-Librarian --* Member
-note right of Librarian : Library domain
+Renewal --o Fine
+Shelf ..|> Fine
+Renewal --> Member : "*"
 @enduml

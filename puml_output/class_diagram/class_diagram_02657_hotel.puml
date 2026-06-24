@@ -5,35 +5,32 @@ skinparam ArrowColor #555555
 abstract class Housekeeping {
   #int price
   #Date address
-  +saveDuration()
+  +findLevel()
 }
-class Room {
-  #long phone
-  -float address
-  +int amount
-  #Date name
-  +createDuration()
-  +updateTotal()
-  +validateName()
+interface Room {
+  +String score
+  #long email
+  -float phone
+  +int address
+  +setTotal()
+  +findDescription()
+  +calculateNote()
 }
-class Payment {
-  +int code
-  #long createdAt
-  -boolean note
-  -float address
+abstract class Payment {
   +Date name
-  +cancelAmount()
-  +findAmount()
-  +setAmount()
-  +findUpdatedat()
+  -Date address
+  #boolean type
+  #long code
+  +calculateAddress()
 }
-abstract class Invoice {
-  #long updatedAt
-  #float total
-  +deleteNote()
+class Invoice {
+  #Date address
+  +Date total
+  +String updatedAt
+  +Date level
+  +updateEmail()
+  +createAddress()
 }
-Invoice --> Housekeeping : "*"
-Housekeeping --> Invoice : "0..1"
-Payment --> Room : "1"
-note right of Housekeeping : Hotel domain
+Invoice --* Payment
+Housekeeping --o Invoice
 @enduml

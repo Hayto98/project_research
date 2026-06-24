@@ -3,34 +3,39 @@ skinparam shadowing true
 class Amenity {
   -long total
   #float address
-  +findNote()
+  +processPhone()
+  +setDuration()
+}
+abstract class Booking {
+  #boolean email
+  -boolean amount
+  +Date description
+  +String status
+  -float type
+  +calculateDuration()
+  +updateCreatedat()
+  +setPhone()
+}
+abstract class Staff {
+  +long updatedAt
+  -String code
+  -double name
+  +findTotal()
+  +setQuantity()
   +findPrice()
-}
-class Booking {
-  #boolean description
-  -boolean status
-  +Date type
-  +setTotal()
-}
-class Staff {
-  -double createdAt
-  +double updatedAt
-  -float code
-  -float name
-  #double description
-  +findQuantity()
-  +createEmail()
+  +setNote()
 }
 class Room {
-  +String id
-  +String name
-  -Date note
-  +long status
-  #long score
-  +findCode()
+  +Date quantity
+  +float email
+  -String createdAt
+  #float note
+  +cancelStatus()
+  +findNote()
+  +updateName()
+  +calculateEmail()
 }
-Room --o Booking
-Amenity ..|> Booking
-Booking --> Room : "*"
-note right of Amenity : Hotel domain
+Booking ..> Room : "1..*"
+Amenity ..> Staff : "1"
+Room --o Staff
 @enduml

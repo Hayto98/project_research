@@ -7,50 +7,45 @@ class Tracking {
   +boolean email
   #long name
   #double note
-  +getAmount()
+  +updateActive()
 }
 class Vehicle {
+  #double type
   -float total
   #Date score
-  #String level
   #String updatedAt
-  #boolean type
-  +findDuration()
-  +saveLevel()
-  +updateLevel()
+  +calculateStatus()
 }
-class Customer {
-  #boolean phone
-  #Date email
-  +String level
-  #double code
-  +saveAmount()
+interface Customer {
+  -long duration
+  #boolean level
+  -float updatedAt
+  #long name
+  +updatePhone()
 }
 interface Manifest {
-  #boolean active
-  #String name
-  +double level
-  +calculateAmount()
+  +float code
+  #int price
+  +findPrice()
+  +calculateEmail()
 }
 class Package {
-  #long score
-  -double type
-  +long note
-  +float amount
-  +double updatedAt
-  +deleteQuantity()
+  #String code
+  -Date note
+  +sendAddress()
+  +processType()
 }
 interface DeliveryNote {
-  -String phone
-  -double createdAt
-  #double code
-  #int email
-  +calculateCode()
-  +cancelPrice()
+  -int note
+  -String amount
+  +double updatedAt
+  +int address
+  -boolean email
+  +createTotal()
+  +setCode()
+  +sendPhone()
 }
-Package --* Manifest
-Manifest --|> Tracking
-Tracking --> Vehicle : "*"
-Package ..|> Customer
-note right of Tracking : Logistics domain
+Tracking --* Customer
+Tracking --o Manifest
+DeliveryNote ..> Manifest : "0..1"
 @enduml

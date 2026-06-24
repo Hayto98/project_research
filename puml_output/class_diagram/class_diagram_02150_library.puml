@@ -6,53 +6,46 @@ class Branch {
   #int duration
   -String level
   #boolean status
-  +deleteCreatedat()
-  +cancelAddress()
+  +processUpdatedat()
+  +updateDescription()
 }
-abstract class Member {
-  -float phone
-  #boolean score
+interface Member {
+  -double total
+  #boolean phone
+  +String level
   +String description
-  +String email
-  +getQuantity()
-  +findUpdatedat()
-  +getName()
+  +cancelTotal()
+  +updateLevel()
+  +createLevel()
 }
-abstract class Catalog {
-  -int createdAt
-  -Date score
+class Catalog {
+  +int name
   #double price
-  +deleteCreatedat()
-  +createCode()
+  +updateType()
+  +createQuantity()
+  +getAmount()
 }
-class Renewal {
-  +double code
-  #boolean id
-  +float duration
-  +String name
-  +updatePhone()
-  +validatePhone()
+abstract class Renewal {
+  +int description
+  -String createdAt
+  +boolean quantity
+  +getActive()
+}
+class Book {
+  #String note
+  +String level
   +updateStatus()
-  +calculateAmount()
+  +findCode()
+  +deleteCode()
+  +processStatus()
 }
-interface Book {
-  #int email
-  +double duration
-  #String description
-  #String code
-  +updatePhone()
-  +createAddress()
+class Publisher {
+  #Date price
+  #long amount
+  +calculateScore()
+  +validateCreatedat()
+  +cancelPrice()
 }
-abstract class Publisher {
-  #Date duration
-  +boolean createdAt
-  -float code
-  +updateCode()
-}
-Book ..|> Branch
-Publisher --o Branch
-Publisher ..> Member : "1..*"
-Book --> Catalog : "1..*"
-Catalog ..> Publisher : "*"
-note right of Branch : Library domain
+Publisher ..|> Member
+Renewal --|> Book
 @enduml

@@ -7,69 +7,60 @@ interface Story {
   -long level
   +long status
   #boolean note
-  +cancelScore()
-  +createPhone()
-  +saveNote()
+  +createId()
+  +cancelActive()
+  +getCreatedat()
 }
 class Comment {
-  +long active
-  +long level
-  +boolean status
-  -boolean duration
-  +calculateActive()
-  +sendDuration()
-  +setPhone()
+  #Date note
+  +Date phone
+  #String quantity
+  -float active
+  +saveCreatedat()
 }
 class Notification {
-  +double email
-  +String code
-  +int description
-  #Date updatedAt
-  +findAmount()
+  -String score
+  -Date address
+  #Date price
+  -Date active
+  #String code
+  +deleteAddress()
+  +deleteNote()
 }
-interface Follower {
-  -Date total
+abstract class Follower {
+  #Date id
+  #String amount
+  #Date level
+  +updateNote()
+  +deletePhone()
+}
+abstract class Profile {
+  -Date duration
   +Date quantity
   -double code
   #long id
   +long createdAt
-  +sendAmount()
-  +findCreatedat()
-  +savePrice()
-  +calculateDescription()
-}
-class Profile {
-  #long email
-  +String description
-  -float name
-  #float level
-  #String total
-  +setType()
-  +createType()
-  +updateAddress()
-  +saveName()
+  +createDescription()
+  +findLevel()
+  +deleteScore()
+  +saveDescription()
 }
 class User {
-  +Date total
-  +boolean type
-  +int price
-  +validateEmail()
-  +validatePrice()
-  +deleteAddress()
-  +saveType()
+  #int price
+  +int description
+  -Date quantity
+  -int note
+  +long email
+  +calculateQuantity()
 }
 class Message {
-  +long level
-  +float note
-  +Date code
-  -String createdAt
-  +processLevel()
-  +setType()
-  +sendCreatedat()
-  +setStatus()
+  #String quantity
+  #float type
+  +float createdAt
+  #double address
+  -double name
+  +sendUpdatedat()
 }
-Notification --o User
-User --> Message : "0..1"
-Story ..> User : "1"
-note right of Story : Social Media domain
+Profile ..|> Comment
+Follower --* Notification
 @enduml

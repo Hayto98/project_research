@@ -6,57 +6,56 @@ skinparam ArrowColor #555555
 abstract class Deposit {
   -boolean phone
   -double code
-  +findScore()
-  +processCreatedat()
-  +calculateAmount()
-  +calculateAddress()
+  +sendUpdatedat()
+  +getCreatedat()
+  +cancelQuantity()
+  +updateDescription()
 }
-class Beneficiary {
-  #boolean updatedAt
-  +double quantity
-  -double code
-  -double createdAt
-  +saveScore()
-}
-abstract class Interest {
-  -boolean duration
-  -String note
-  -String level
+abstract class Beneficiary {
+  -float price
+  +long address
+  #String level
+  +validateStatus()
   +calculateDescription()
-  +createLevel()
-  +getActive()
+}
+interface Interest {
+  -double type
+  +Date email
+  #double note
+  +setPhone()
+  +calculateAmount()
 }
 abstract class Account {
-  -int amount
-  #double code
-  +sendQuantity()
-  +createScore()
-  +sendDescription()
+  -double active
+  +long quantity
+  #String code
+  #Date note
+  -float score
+  +validateDescription()
 }
 class Withdrawal {
-  #int amount
-  -boolean total
-  +cancelUpdatedat()
-  +createCode()
+  #double email
+  #long createdAt
+  +cancelPhone()
+  +createEmail()
+  +setAddress()
 }
 interface Statement {
+  -Date amount
+  +double name
+  #int duration
+  +updateLevel()
+  +saveStatus()
+}
+class Branch {
   -float name
   +int phone
   -double duration
-  +createQuantity()
-  +calculateAmount()
-  +findQuantity()
+  +findScore()
+  +getStatus()
+  +cancelPrice()
 }
-class Branch {
-  #float level
-  +double name
-  +long score
-  -Date createdAt
-  +validateNote()
-  +createEmail()
-}
-Branch --o Deposit
-Statement ..|> Withdrawal
-Branch --> Statement : "*"
-note right of Deposit : Banking domain
+Account ..> Beneficiary : "1..*"
+Deposit --> Interest : "1"
+Withdrawal ..> Beneficiary : "1"
 @enduml

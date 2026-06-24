@@ -7,39 +7,41 @@ class Room {
   #boolean price
   +int amount
   +int name
-  +sendCode()
+  +deletePhone()
 }
-class CheckOut {
-  #boolean quantity
-  -String price
-  -int phone
-  +findPrice()
+interface CheckOut {
+  -float code
+  #double updatedAt
+  +sendQuantity()
+  +sendActive()
+  +processLevel()
 }
-abstract class CheckIn {
-  #float address
-  #String updatedAt
-  +getName()
-  +updateActive()
-}
-class Housekeeping {
-  -boolean quantity
-  +double id
-  +String type
+class CheckIn {
+  #boolean createdAt
+  #boolean id
+  +float price
+  -float note
   +getDescription()
-  +sendId()
-  +findType()
-  +savePrice()
+  +deleteUpdatedat()
 }
-interface Guest {
-  -float amount
-  #int type
-  +deleteQuantity()
-  +deleteStatus()
-  +findType()
-  +validateDuration()
+interface Housekeeping {
+  +int createdAt
+  #String id
+  +getNote()
+  +updateAddress()
 }
-Guest --|> CheckOut
-Guest ..> Housekeeping : "1..*"
-Room --> Housekeeping : "0..1"
-note right of Room : Hotel domain
+class Guest {
+  +float email
+  -String level
+  +boolean name
+  +float type
+  #double id
+  +getQuantity()
+  +getType()
+  +calculateAddress()
+  +sendName()
+}
+Guest --o CheckOut
+CheckOut ..|> CheckIn
+Room --* Housekeeping
 @enduml

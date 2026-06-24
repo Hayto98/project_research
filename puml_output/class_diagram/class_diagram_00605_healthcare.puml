@@ -8,59 +8,57 @@ class Diagnosis {
   +double createdAt
   -String level
   #boolean score
-  +cancelAmount()
-  +findStatus()
+  +processEmail()
+  +calculateAddress()
 }
 class Patient {
-  +String type
-  -Date name
-  #long updatedAt
-  +Date total
-  -Date email
-  +getUpdatedat()
+  +int type
+  -long duration
+  +deleteQuantity()
 }
 class Treatment {
-  -boolean description
-  #double type
-  +sendScore()
-  +getId()
+  +String status
+  +int price
+  -double name
+  #Date score
+  +createDescription()
+  +createUpdatedat()
+  +findAddress()
+  +getScore()
 }
-class Billing {
-  +int amount
-  -double note
-  +processDuration()
-  +updateType()
+interface Billing {
+  +Date id
+  +double duration
+  +sendId()
+  +cancelId()
 }
-class Insurance {
-  +Date price
-  +String address
-  #double score
-  +createPrice()
+abstract class Insurance {
+  #long type
+  +double updatedAt
+  -Date duration
+  +cancelName()
+  +updateAmount()
 }
 class Hospital {
-  +boolean address
-  +Date phone
-  #double status
-  #int email
+  +long score
   #double price
-  +findScore()
-  +cancelCreatedat()
-  +processTotal()
-  +createQuantity()
+  +calculateStatus()
+  +setPhone()
 }
-interface LabTest {
-  -Date id
-  #double active
-  +boolean status
-  -double address
-  +savePhone()
-  +validateId()
-  +cancelAmount()
+abstract class LabTest {
+  +boolean phone
+  +Date status
+  #double email
+  #int price
+  +getId()
+  +saveDescription()
+  +updateCreatedat()
+  +validateStatus()
 }
-LabTest --o Patient
-Patient ..> Billing : "0..1"
-Diagnosis ..> Hospital : "0..1"
-Hospital ..|> Diagnosis
-Diagnosis ..> Insurance : "*"
-note right of Diagnosis : Healthcare domain
+Insurance --o Patient
+Billing ..> Treatment : "1..*"
+Insurance --* Hospital
+Diagnosis --|> Insurance
+Treatment ..> LabTest : "*"
+LabTest --> Patient : "*"
 @enduml

@@ -6,35 +6,37 @@ skinparam defaultFontSize 13
 abstract class Comment {
   -double code
   #float phone
-  +calculateTotal()
-  +processPhone()
-  +calculateNote()
+  +getDescription()
+  +processLevel()
+  +cancelCreatedat()
 }
-interface Like {
-  #boolean level
-  -long email
-  +long score
-  -String id
-  +updateCreatedat()
-  +saveAddress()
+abstract class Like {
+  #String total
+  #boolean note
+  -long address
+  +long email
+  +setUpdatedat()
+  +setType()
+  +createScore()
 }
-interface Profile {
-  #int status
-  -String email
-  #long address
-  +int type
-  -double phone
-  +validateLevel()
+class Profile {
+  -double level
+  -Date type
+  +long status
+  +Date email
+  +processCreatedat()
+  +validateNote()
+  +sendNote()
 }
 class Notification {
-  -boolean status
-  #Date updatedAt
-  -String active
-  +saveNote()
-  +deleteLevel()
+  +int name
+  #boolean phone
+  -boolean duration
+  #Date active
+  -String description
+  +cancelDuration()
+  +sendCode()
 }
-Profile --> Like : "1"
-Like ..|> Profile
-Notification ..> Comment : "*"
-note right of Comment : Social Media domain
+Notification --o Like
+Comment --> Notification : "0..1"
 @enduml

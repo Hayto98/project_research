@@ -8,57 +8,56 @@ class Product {
   -double description
   +Date note
   -String type
-  +createName()
+  +setTotal()
 }
 class Return {
-  +Date total
-  -Date address
-  +validateCode()
+  #double code
+  #boolean total
+  #boolean address
+  +long status
+  +calculateCode()
 }
-abstract class Review {
-  #String status
+class Review {
   +long amount
-  +deleteStatus()
+  #float status
+  +processUpdatedat()
 }
-abstract class Category {
-  -boolean id
-  -float description
-  -double address
-  -String amount
-  +sendScore()
-}
-interface Payment {
-  -Date type
-  +Date address
-  +float code
-  -String phone
+class Category {
+  -boolean phone
   -float id
-  +cancelType()
-  +cancelEmail()
-  +validateNote()
+  -double description
+  -String address
+  +boolean amount
+  +getStatus()
+  +validateUpdatedat()
+  +calculateName()
+  +cancelStatus()
 }
-class Shipment {
-  +long quantity
-  -String description
-  -double score
-  -int updatedAt
-  #boolean phone
-  +createStatus()
-  +cancelEmail()
+class Payment {
+  #String address
+  -String createdAt
+  +createId()
+  +sendType()
+  +sendAddress()
+  +getQuantity()
+}
+abstract class Shipment {
+  -Date phone
+  +float note
+  #int code
+  #long level
+  +deleteName()
 }
 class Wishlist {
-  #String name
-  -double score
-  +int note
-  #float phone
-  +updateStatus()
-  +processQuantity()
-  +deleteAmount()
-  +sendNote()
+  -int total
+  #boolean type
+  +validateAddress()
+  +validateEmail()
 }
-Category ..> Wishlist : "0..1"
-Payment ..> Product : "1..*"
-Return ..|> Product
-Category --|> Product
-note right of Product : Ecommerce domain
+Review --* Return
+Product --o Payment
+Wishlist --> Review : "1"
+Review --|> Category
+Return --> Shipment : "*"
+Wishlist --|> Return
 @enduml

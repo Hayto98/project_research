@@ -8,69 +8,57 @@ abstract class Amenity {
   #int price
   +Date createdAt
   -long description
-  +cancelId()
-  +updateCode()
-  +sendTotal()
-  +cancelLevel()
+  +cancelActive()
+  +findTotal()
+  +saveUpdatedat()
+  +sendUpdatedat()
 }
-abstract class Reservation {
-  #long status
-  +long type
-  +long description
-  +validateLevel()
-  +sendDescription()
-  +findNote()
-}
-abstract class Housekeeping {
-  #boolean level
-  +int total
-  #long amount
-  +boolean id
-  +updateDescription()
-  +findActive()
+class Reservation {
+  #float code
+  #double score
+  #float total
+  +setStatus()
   +validateUpdatedat()
-  +cancelLevel()
+}
+class Housekeeping {
+  -long updatedAt
+  #boolean address
+  +Date code
+  -double level
+  +getCode()
+  +getAddress()
+  +findId()
 }
 class Staff {
-  +boolean createdAt
-  -int address
-  +double score
-  #boolean id
-  +Date status
-  +calculateEmail()
-  +saveAddress()
+  +boolean updatedAt
+  -int phone
+  +deleteType()
+  +saveUpdatedat()
 }
-class Booking {
-  +Date quantity
-  -Date id
-  -long score
-  +int code
-  +cancelQuantity()
-  +sendEmail()
+interface Booking {
+  +float updatedAt
+  -Date level
+  #float description
+  +String price
+  +createUpdatedat()
+  +findActive()
 }
 class Invoice {
-  #boolean id
-  -long createdAt
-  +String description
-  -boolean address
-  +boolean amount
-  +processActive()
+  +Date type
+  #int score
+  -long level
   +getUpdatedat()
-  +getActive()
+  +setUpdatedat()
+  +calculateCreatedat()
 }
 class Room {
-  -Date amount
-  +boolean createdAt
-  -long price
-  -double address
-  -String duration
-  +createEmail()
+  +Date score
+  -Date code
+  +calculatePhone()
+  +findEmail()
+  +savePhone()
 }
-Invoice --|> Booking
-Staff ..|> Amenity
-Staff ..> Housekeeping : "0..1"
-Staff ..> Invoice : "1..*"
-Amenity --> Room : "1"
-Reservation --> Amenity : "0..1"
-note right of Amenity : Hotel domain
+Booking ..|> Room
+Room --* Booking
+Booking --|> Housekeeping
 @enduml

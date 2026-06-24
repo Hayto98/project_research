@@ -8,57 +8,53 @@ class Comment {
   -int address
   #int id
   +String updatedAt
-  +updateNote()
-  +updateCreatedat()
+  +findAddress()
+  +updateAddress()
 }
-class Like {
-  -String createdAt
-  +long name
-  +calculateTotal()
+abstract class Like {
+  +float createdAt
+  +Date description
+  +double score
+  +updateDuration()
 }
-abstract class User {
-  #float name
-  -boolean score
-  +getQuantity()
-  +cancelScore()
-  +validateCode()
+class User {
+  -String price
+  +boolean total
+  +cancelActive()
+  +calculatePrice()
+  +deleteTotal()
 }
-abstract class Group {
-  #boolean status
-  +int code
-  +sendAddress()
+class Group {
+  #long quantity
+  #String level
+  +calculateId()
+  +validateId()
+  +cancelStatus()
+  +updatePhone()
 }
-abstract class Hashtag {
-  +float quantity
-  #float phone
-  #int createdAt
-  #double email
-  +cancelLevel()
-  +cancelCode()
+interface Hashtag {
+  -double description
+  -long code
+  -int score
+  +updatePrice()
+  +saveType()
+  +deleteType()
 }
-class Report {
-  +long description
-  #boolean total
-  #Date level
-  +String price
-  #boolean id
-  +saveActive()
-  +validateName()
+interface Report {
+  #boolean duration
+  #String note
+  +double updatedAt
+  +updateEmail()
+  +findAmount()
 }
-interface Notification {
-  +String total
-  -int duration
-  -String email
-  +String quantity
-  +sendLevel()
-  +createDuration()
-  +createCreatedat()
-  +processPrice()
+abstract class Notification {
+  #boolean updatedAt
+  #Date address
+  +calculateId()
 }
-Notification --* Comment
-User ..> Group : "0..1"
-Notification ..|> Report
-Report --> Hashtag : "1"
-Comment --> User : "0..1"
-note right of Comment : Social Media domain
+Hashtag ..|> Report
+Report --> Notification : "1..*"
+Comment --> Report : "1..*"
+Group --* Notification
+User --|> Like
 @enduml

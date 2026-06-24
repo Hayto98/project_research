@@ -6,58 +6,57 @@ class Billing {
   +Date score
   #String note
   #int phone
-  +updateUpdatedat()
-  +calculateName()
-  +saveId()
+  +createScore()
+  +updateStatus()
+  +calculateQuantity()
 }
 class Insurance {
+  +String createdAt
   #boolean id
-  #String status
-  +cancelUpdatedat()
-  +setAddress()
-  +findLevel()
+  +processEmail()
 }
-class Appointment {
-  #float address
-  #Date active
-  #float level
-  +String note
-  +updateNote()
-  +saveAmount()
-  +saveCreatedat()
+interface Appointment {
+  #boolean level
+  -long updatedAt
+  -Date code
+  #boolean address
+  +findDuration()
+  +updateCode()
+  +saveUpdatedat()
+  +saveDescription()
 }
 class Treatment {
+  -Date phone
+  +Date createdAt
+  +sendDuration()
+  +updateCreatedat()
+}
+class Ward {
   +double description
   +String address
   +long code
   +int price
-  +createPhone()
-  +createActive()
+  +validateAddress()
+  +validatePrice()
 }
-abstract class Ward {
-  -boolean active
-  #int price
-  +float note
-  +cancelCode()
-}
-abstract class Doctor {
-  #Date note
-  #Date status
-  #double price
-  #Date code
-  +createAddress()
-  +processQuantity()
-  +deleteNote()
-  +processAddress()
+class Doctor {
+  -double active
+  -boolean total
+  #int amount
+  +float duration
+  +setPhone()
 }
 class MedicalRecord {
-  #long createdAt
-  +float quantity
-  +calculateTotal()
-  +calculatePrice()
+  +boolean level
+  #Date email
+  #boolean note
+  -Date status
+  #double price
+  +findQuantity()
+  +createName()
+  +findScore()
 }
-Doctor --|> Ward
-Treatment --> Ward : "0..1"
-Billing ..|> Doctor
-note right of Billing : Healthcare domain
+Treatment --* MedicalRecord
+Billing --|> Doctor
+Insurance ..> Appointment : "1..*"
 @enduml

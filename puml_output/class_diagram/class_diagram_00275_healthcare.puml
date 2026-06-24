@@ -4,35 +4,34 @@ skinparam ArrowColor #555555
 class Appointment {
   -String createdAt
   -int price
-  +createType()
-  +saveActive()
-  +calculateScore()
+  +deleteEmail()
+  +calculateLevel()
+  +createQuantity()
 }
-class Diagnosis {
-  -double quantity
-  -float phone
-  +String active
-  +Date type
-  +saveCode()
-  +setId()
+abstract class Diagnosis {
+  #double score
+  -double phone
+  -float level
+  +String quantity
+  +Date duration
+  +validatePrice()
+  +validateTotal()
 }
-interface Nurse {
-  +Date type
-  -Date score
-  +calculateScore()
-  +setDescription()
+class Nurse {
+  -boolean id
+  +Date name
+  +updateScore()
+  +deleteDescription()
+  +calculateNote()
+  +getAddress()
 }
-abstract class Prescription {
-  #int amount
-  +long note
-  +double address
-  #String score
-  +createDescription()
-  +sendActive()
-  +calculateDuration()
-  +sendPrice()
+interface Prescription {
+  -int description
+  -long type
+  +cancelType()
+  +setCreatedat()
+  +validateNote()
 }
-Nurse ..> Diagnosis : "1"
-Diagnosis ..> Nurse : "1"
-note right of Appointment : Healthcare domain
+Nurse --o Appointment
+Appointment ..> Nurse : "*"
 @enduml

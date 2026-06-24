@@ -5,62 +5,64 @@ skinparam shadowing true
 interface Patient {
   +Date phone
   #long amount
-  +cancelAddress()
-  +cancelNote()
-  +validatePhone()
-  +processAmount()
+  +findUpdatedat()
+  +saveCreatedat()
+  +findName()
+  +deletePrice()
 }
-abstract class Treatment {
-  #int address
-  +int id
-  +double updatedAt
-  +createAmount()
-  +deleteUpdatedat()
-  +calculatePrice()
+class Treatment {
+  -String type
+  +boolean amount
+  +int duration
+  +String description
+  +calculateTotal()
+  +getDescription()
+  +updateLevel()
+  +calculateScore()
 }
 class Insurance {
+  #long updatedAt
+  +int price
+  +long level
+  +validateScore()
+  +setPrice()
+}
+interface Hospital {
+  -boolean createdAt
   -Date description
-  +long createdAt
-  +updateDescription()
-  +validateNote()
-  +createScore()
+  #Date address
+  -Date note
+  +deleteType()
+  +sendName()
+  +getId()
 }
-class Hospital {
-  -float quantity
-  +float type
-  +String level
-  #double code
-  +findUpdatedat()
-  +calculateQuantity()
-  +findNote()
-}
-interface Nurse {
-  -int quantity
-  -int email
-  #String description
-  +long code
-  +saveStatus()
-  +processPrice()
-  +updateCode()
-  +getAmount()
+class Nurse {
+  -Date description
+  +double status
+  -Date level
+  -boolean type
+  +processDescription()
+  +validateAddress()
+  +calculateStatus()
 }
 class MedicalRecord {
-  #int active
-  -boolean quantity
-  #double email
-  #float code
-  -String createdAt
-  +sendCreatedat()
+  -int type
+  #String description
+  +findCreatedat()
+  +cancelCreatedat()
 }
-abstract class LabTest {
-  #String name
-  +float createdAt
-  +Date active
-  +int status
-  +createTotal()
-  +setType()
+class LabTest {
+  +Date price
+  -boolean updatedAt
+  -float code
+  -String name
+  #int amount
+  +getAddress()
+  +calculateDuration()
 }
-LabTest --* MedicalRecord
-LabTest --> Insurance : "1..*"
-note right of Patient : Healthcare domain
+Nurse --|> Hospital
+Patient ..|> Nurse
+Hospital --> MedicalRecord : "1..*"
+Patient --> Treatment : "1"
+Nurse ..|> Patient
 @enduml

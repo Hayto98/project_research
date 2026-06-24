@@ -5,59 +5,65 @@ skinparam shadowing true
 interface MedicalRecord {
   #Date description
   +long type
-  +getDescription()
-  +validateQuantity()
-  +findId()
+  +getDuration()
+  +deleteNote()
+  +findPhone()
 }
-abstract class Insurance {
-  -boolean duration
-  -boolean name
-  +processCreatedat()
-  +updateCreatedat()
+class Insurance {
+  -boolean id
+  -boolean note
+  +double code
+  +int name
+  +calculatePhone()
+  +createActive()
 }
 class Billing {
-  +float address
-  +Date type
-  +float score
-  #Date amount
-  +sendAddress()
+  #Date score
+  +float amount
+  #long status
+  #double updatedAt
+  +int name
+  +calculateAmount()
+  +setActive()
+  +cancelType()
+  +updateAddress()
 }
-interface Treatment {
-  -float updatedAt
-  #String duration
-  +Date active
-  #String score
-  +float type
-  +updateTotal()
-  +validateName()
-  +setName()
+class Treatment {
+  +double name
+  -String duration
+  +String phone
+  +processAddress()
+  +updatePrice()
 }
-class Hospital {
-  -boolean duration
-  #String type
-  +deleteCode()
+interface Hospital {
+  +String total
+  -String level
+  -long name
+  #Date active
+  +double status
+  +createStatus()
+  +getType()
 }
-abstract class Ward {
-  #Date note
-  +double address
-  +sendCode()
-  +findQuantity()
+class Ward {
+  #float note
+  +boolean address
+  -int createdAt
+  -float code
+  #String description
+  +calculatePrice()
+  +cancelAddress()
+  +setType()
+  +getAddress()
 }
-abstract class Patient {
-  #double address
-  +long createdAt
-  #String code
-  -boolean description
-  -int name
-  +saveQuantity()
-  +setTotal()
-  +createAmount()
-  +createId()
+class Patient {
+  +long total
+  +Date email
+  +deleteDescription()
+  +setDescription()
+  +calculateDuration()
+  +calculateDescription()
 }
-Hospital --> MedicalRecord : "0..1"
 Treatment --|> Insurance
 Treatment --> Hospital : "1"
 MedicalRecord ..|> Hospital
-Ward --> Insurance : "1..*"
-note right of MedicalRecord : Healthcare domain
 @enduml

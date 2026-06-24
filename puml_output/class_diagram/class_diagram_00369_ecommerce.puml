@@ -4,44 +4,45 @@ skinparam backgroundColor #F5F5F5
 class Return {
   -int active
   +int total
-  +sendQuantity()
-  +saveDuration()
-  +updatePhone()
+  +sendAmount()
+  +getNote()
+  +processNote()
 }
-class Customer {
-  #double status
-  -int email
-  +Date duration
-  -float description
-  +boolean price
-  +calculateAmount()
-  +findAddress()
+interface Customer {
+  +long phone
+  +int quantity
+  -boolean note
   +saveName()
+  +deleteScore()
+  +updateUpdatedat()
+  +setCode()
 }
 class Warehouse {
+  -int active
+  #float phone
+  +processNote()
+  +calculateId()
+  +processActive()
+}
+interface Wishlist {
   #int active
   #boolean total
-  +calculateTotal()
-  +calculateUpdatedat()
-  +getCreatedat()
-  +findStatus()
-}
-class Wishlist {
-  +String type
-  +long score
-  #boolean email
-  -double note
-  +saveCreatedat()
+  +createDuration()
+  +setNote()
+  +updateEmail()
+  +processPrice()
 }
 class Payment {
-  +Date status
-  -double address
-  #Date duration
-  +deleteType()
-  +sendLevel()
-  +updateAmount()
+  -Date status
+  #float code
+  -float quantity
+  +validatePhone()
+  +getLevel()
+  +updateStatus()
+  +setTotal()
 }
-Customer --* Payment
-Warehouse ..> Customer : "0..1"
-note right of Return : Ecommerce domain
+Payment --o Wishlist
+Return --|> Customer
+Customer --* Return
+Return ..> Payment : "1..*"
 @enduml

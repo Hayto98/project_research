@@ -7,65 +7,57 @@ class Room {
   #float score
   -String amount
   -double type
-  +saveId()
-  +deletePrice()
+  +calculateTotal()
+  +deleteTotal()
 }
 class Service {
-  -String status
-  +String quantity
-  +String name
-  #String total
-  -String createdAt
-  +getEmail()
+  +long price
+  +double id
+  #int duration
+  +cancelEmail()
+  +setName()
+  +getLevel()
 }
 class Payment {
-  -double duration
-  #Date price
-  +long status
-  -long updatedAt
-  +int type
-  +setName()
+  +String name
+  +long type
+  +updateCode()
 }
-class Reservation {
-  +float address
-  +Date type
-  #float score
-  +boolean createdAt
-  +int email
-  +findPrice()
-  +deleteAmount()
-  +setPhone()
-  +setTotal()
+abstract class Reservation {
+  #Date status
+  +long updatedAt
+  -long type
+  +int score
+  +String total
+  +saveId()
 }
-class Staff {
-  -double amount
-  -double score
-  #boolean duration
-  #boolean active
-  +String updatedAt
-  +sendAddress()
-  +setLevel()
-  +createAddress()
-  +createScore()
+abstract class Staff {
+  +float type
+  +Date score
+  #float createdAt
+  +boolean email
+  +findPhone()
 }
-class Booking {
-  -float active
-  -String code
-  -String email
-  +saveUpdatedat()
+abstract class Booking {
+  -String description
+  #Date amount
+  -Date status
+  +float phone
+  #int code
+  +processTotal()
+  +cancelQuantity()
 }
-abstract class Guest {
-  #Date id
-  -String amount
-  -int name
-  +boolean score
-  +saveLevel()
-  +sendAddress()
-  +saveCode()
-  +processAddress()
+class Guest {
+  -boolean active
+  -String score
+  #boolean level
+  -long amount
+  -boolean status
+  +deleteScore()
+  +createUpdatedat()
+  +getLevel()
 }
-Service --> Payment : "1"
-Booking --o Room
-Booking --o Reservation
-note right of Room : Hotel domain
+Reservation --|> Guest
+Payment --|> Room
+Booking ..> Service : "*"
 @enduml

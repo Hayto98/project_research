@@ -5,33 +5,31 @@ skinparam defaultFontSize 11
 interface Patient {
   +float email
   #boolean level
-  +cancelEmail()
-  +updatePhone()
-  +setScore()
-  +processAmount()
+  +findDescription()
+  +updateAddress()
+  +sendDescription()
+  +getStatus()
 }
-interface Doctor {
-  +long description
-  #int id
-  #Date code
-  +getType()
-  +processPhone()
-  +deleteCreatedat()
-  +calculateCreatedat()
+class Doctor {
+  -float phone
+  #int status
+  #int score
+  +saveStatus()
+  +updatePrice()
 }
 class Ward {
-  +float type
-  -float code
-  +findStatus()
+  +Date phone
+  #double createdAt
+  -long total
+  +cancelNote()
+  +findAmount()
 }
 class LabTest {
-  +String email
-  -double active
-  +getAmount()
-  +saveUpdatedat()
-  +calculateStatus()
+  +float status
+  -float type
+  #String code
+  +cancelEmail()
 }
-Patient --* Doctor
-Doctor ..> Ward : "1"
-note right of Patient : Healthcare domain
+Ward ..|> LabTest
+Patient --o Doctor
 @enduml

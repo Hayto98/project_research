@@ -7,53 +7,46 @@ class Fine {
   #String level
   +Date quantity
   -long type
-  +sendAddress()
-  +getStatus()
+  +updateNote()
+  +deleteTotal()
 }
-abstract class Librarian {
-  #Date quantity
-  +long code
-  +getAddress()
-  +findScore()
-  +findActive()
-  +calculateCreatedat()
+class Librarian {
+  #String status
+  #long note
+  +saveLevel()
 }
 class Member {
-  +double id
-  #long price
-  +double type
-  +getPhone()
+  -int total
+  +int name
+  +float address
+  -float active
+  +processActive()
+  +calculateCode()
+  +setId()
+  +validateLevel()
 }
-abstract class Renewal {
-  -Date updatedAt
-  -int level
-  -Date name
-  +float code
-  +validateQuantity()
-  +createDescription()
-  +setEmail()
-  +setType()
+class Renewal {
+  +long price
+  #double status
+  +deleteAddress()
+  +findName()
+  +savePhone()
 }
 class Loan {
-  #boolean score
-  +long quantity
-  +int active
-  +deleteAddress()
-  +cancelScore()
+  #double email
+  -long amount
+  -int phone
+  +long level
+  +getStatus()
 }
-class Branch {
-  #float phone
-  -double total
-  +String price
-  +int score
-  +Date description
-  +saveTotal()
-  +createLevel()
-  +validateScore()
+abstract class Branch {
+  -boolean score
+  #boolean amount
+  +long duration
+  +processActive()
+  +cancelNote()
 }
-Librarian ..|> Fine
-Renewal --* Loan
-Member --* Loan
-Branch --|> Fine
-note right of Fine : Library domain
+Branch --> Member : "1..*"
+Renewal --o Member
+Renewal ..|> Branch
 @enduml

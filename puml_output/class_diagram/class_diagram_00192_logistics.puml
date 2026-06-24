@@ -6,52 +6,50 @@ class DeliveryNote {
   -float note
   -float updatedAt
   +float description
-  +processLevel()
-  +setStatus()
-  +updateId()
+  +cancelCode()
+  +deleteUpdatedat()
+  +updateQuantity()
 }
 class Package {
-  #boolean email
-  #boolean type
-  #boolean address
-  +long status
-  +createAddress()
-  +setScore()
-}
-abstract class Route {
-  #double createdAt
-  -float amount
-  -long duration
-  -boolean level
-  -float price
-  +findLevel()
-  +validateActive()
-  +findPrice()
+  #String createdAt
+  -long id
   +cancelActive()
+  +createActive()
+  +validateId()
+  +updateNote()
+}
+interface Route {
+  -Date quantity
+  -String createdAt
+  +saveAmount()
+  +processPhone()
+  +cancelNote()
+  +deleteScore()
 }
 class Vehicle {
-  +boolean createdAt
-  -float amount
-  -int phone
-  -int score
-  #boolean address
-  +findLevel()
+  -float price
+  -long score
+  -boolean note
+  +setActive()
+  +createDuration()
+  +cancelType()
 }
-class FuelLog {
-  #String score
-  -String email
-  +saveId()
-  +deleteTotal()
+interface FuelLog {
+  #double active
+  #int price
+  +float duration
+  -Date updatedAt
+  +validateScore()
+  +processDuration()
+  +findDuration()
 }
-class Depot {
-  #Date address
-  +Date note
-  +int code
-  #long status
-  +setCode()
+abstract class Depot {
+  #float amount
+  #float phone
+  -String createdAt
+  #long name
+  +sendCode()
 }
-Depot --> Vehicle : "0..1"
-Package ..> DeliveryNote : "1..*"
-Package --* Vehicle
-note right of DeliveryNote : Logistics domain
+Package ..|> DeliveryNote
+Vehicle --* DeliveryNote
 @enduml

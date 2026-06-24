@@ -3,62 +3,65 @@ skinparam ArrowColor #555555
 class Customer {
   #Date code
   +String status
-  +saveDuration()
-  +validateDuration()
-  +findPhone()
+  +updatePhone()
+  +validateActive()
+  +createActive()
 }
-class Driver {
-  +boolean note
-  #int description
-  -Date status
-  +saveCreatedat()
-  +setEmail()
-  +validateCreatedat()
+interface Driver {
+  +int quantity
+  #boolean amount
+  +long note
+  #Date description
+  +getAmount()
+  +processActive()
+  +getType()
 }
-interface Inventory {
-  -int quantity
-  +double code
-  -boolean updatedAt
-  #Date duration
-  -double total
-  +sendCode()
-  +cancelTotal()
+class Inventory {
+  -String createdAt
+  +long active
+  -double level
+  +int price
+  +deletePrice()
+  +cancelAmount()
+  +updateAddress()
+  +deleteType()
 }
-interface Shipment {
-  +float description
+abstract class Shipment {
+  +double createdAt
+  +Date active
+  +String code
   +float total
-  #Date amount
-  +Date score
-  +long name
-  +setTotal()
-  +deletePhone()
-  +validateDuration()
+  +float note
+  +cancelName()
 }
 class Manifest {
-  -double name
-  -Date level
-  +validateActive()
-  +updateCode()
+  -long address
+  #String status
+  +String total
+  #Date description
+  +saveName()
+  +getNote()
+  +sendUpdatedat()
+  +createScore()
 }
-interface Tracking {
-  #double score
-  -long email
-  +createPrice()
-  +saveStatus()
-  +validatePhone()
+class Tracking {
+  #boolean code
+  -Date active
+  -long duration
+  +cancelName()
+  +findName()
+  +sendUpdatedat()
 }
 class Depot {
-  -boolean active
-  #double id
-  +cancelDuration()
-  +setAddress()
-  +sendDescription()
-  +processDuration()
+  -String price
+  #String status
+  -boolean address
+  #double phone
+  +getName()
+  +processEmail()
+  +validateActive()
+  +sendLevel()
 }
-Customer --> Depot : "*"
-Driver --* Inventory
-Tracking --> Manifest : "0..1"
-Manifest --> Depot : "1..*"
-Inventory ..|> Shipment
-note right of Customer : Logistics domain
+Tracking --> Inventory : "0..1"
+Shipment --o Manifest
 @enduml

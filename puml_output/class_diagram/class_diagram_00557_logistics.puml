@@ -5,68 +5,63 @@ interface Depot {
   -String email
   -boolean total
   +double name
-  +saveLevel()
-  +processType()
-  +deleteId()
-  +cancelStatus()
+  +sendDescription()
+  +updatePhone()
+  +findName()
+  +getId()
 }
-interface Vehicle {
-  +boolean phone
-  -long address
-  #float type
-  +String name
-  #long code
-  +getStatus()
+abstract class Vehicle {
+  #double id
+  -Date level
+  #float status
+  +saveStatus()
+  +cancelCode()
+  +processQuantity()
 }
-interface Inventory {
+class Inventory {
+  -Date score
+  +String price
+  +processCode()
+  +calculateEmail()
+  +validateId()
+}
+interface Shipment {
   -float score
   -double duration
   #boolean amount
-  +updateAmount()
-  +validateUpdatedat()
-  +sendDuration()
-  +updateQuantity()
-}
-class Shipment {
-  #boolean description
-  #String active
-  #boolean quantity
-  +deletePrice()
-  +updateCode()
-  +createType()
-  +setNote()
+  +sendId()
+  +setActive()
+  +processUpdatedat()
+  +findQuantity()
 }
 class Package {
-  #boolean name
-  #double level
-  -float email
-  -double type
-  -double address
-  +sendActive()
+  +int quantity
+  #long name
+  #boolean score
+  +createNote()
 }
-class Manifest {
-  #String createdAt
-  #boolean id
-  +int description
-  +getLevel()
-  +deletePrice()
-  +cancelLevel()
-  +setScore()
+interface Manifest {
+  -String description
+  -long price
+  -Date createdAt
+  +Date code
+  #boolean quantity
+  +validateUpdatedat()
+  +calculateName()
+  +getCreatedat()
 }
-class Route {
-  +String level
-  -String email
-  +Date score
-  #Date duration
-  +updateId()
-  +validateName()
-  +createPhone()
-  +setQuantity()
+interface Route {
+  +boolean note
+  #Date total
+  +int duration
+  +String quantity
+  #int type
+  +findStatus()
 }
-Inventory --> Package : "0..1"
-Route --* Depot
-Vehicle --o Depot
-Inventory ..> Depot : "1..*"
-Package --o Manifest
-note right of Depot : Logistics domain
+Vehicle ..> Route : "*"
+Depot ..|> Package
+Shipment --> Package : "1"
+Package --|> Manifest
+Manifest --> Inventory : "1..*"
+Package ..|> Inventory
 @enduml

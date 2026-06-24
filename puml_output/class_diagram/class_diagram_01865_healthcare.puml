@@ -6,49 +6,52 @@ class Hospital {
   -float active
   +double price
   #boolean description
-  +calculateCode()
-  +deleteId()
-  +findName()
+  +findAmount()
+  +validatePhone()
+  +findId()
 }
-abstract class Insurance {
-  #double code
-  -long description
-  +float name
-  +updateQuantity()
-  +processDuration()
-  +createLevel()
-  +saveLevel()
+class Insurance {
+  +int note
+  +boolean description
+  +validateStatus()
+  +deleteName()
+  +updateLevel()
+  +findAddress()
 }
-class Prescription {
-  -boolean updatedAt
-  -double score
-  +double status
-  -String description
-  #double code
-  +processScore()
+abstract class Prescription {
+  #Date quantity
+  #float type
+  #String email
+  +updateAmount()
+  +deletePhone()
+  +updateStatus()
+  +createStatus()
 }
 class Doctor {
-  +double active
-  +int price
-  +updateTotal()
-  +saveLevel()
+  -double code
+  +double type
+  -String score
+  +setCode()
+  +calculateDuration()
+  +saveId()
+  +deletePrice()
 }
-class LabTest {
+interface LabTest {
+  -int id
+  +boolean active
+  +int price
+  -float duration
+  +getActive()
+  +findDuration()
+}
+interface MedicalRecord {
   -Date description
   +long status
   -int level
-  +createCode()
+  +deleteId()
 }
-class MedicalRecord {
-  -double amount
-  +float updatedAt
-  +String total
-  +calculateId()
-  +cancelEmail()
-  +processAddress()
-}
-Prescription ..> Hospital : "*"
-Insurance --|> Hospital
-Doctor --> Insurance : "1..*"
-note right of Hospital : Healthcare domain
+Hospital ..|> Insurance
+Insurance ..> MedicalRecord : "*"
+Doctor ..|> MedicalRecord
+Hospital --> MedicalRecord : "1..*"
 @enduml

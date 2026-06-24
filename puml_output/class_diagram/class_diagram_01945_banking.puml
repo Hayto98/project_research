@@ -5,47 +5,56 @@ abstract class Branch {
   #boolean price
   -int description
   #float code
-  +getLevel()
+  +calculateType()
 }
-interface Statement {
+class Statement {
   #boolean name
   #boolean updatedAt
   +long score
   -double id
   -int amount
-  +updateAddress()
+  +processDuration()
 }
 class Interest {
-  #double amount
-  +int duration
-  -Date note
-  +updateEmail()
-  +getName()
-  +savePrice()
-  +sendDescription()
+  #Date duration
+  -Date createdAt
+  -String amount
+  +long score
+  +findAddress()
+  +validateAddress()
+  +processName()
+  +saveEmail()
 }
-interface Transaction {
-  -int level
+abstract class Transaction {
+  -int duration
   #float status
-  +deleteDuration()
-  +calculateDescription()
+  +int level
+  +findType()
+  +findStatus()
+  +validateCreatedat()
+  +sendEmail()
 }
 class Deposit {
-  +int amount
-  +String duration
-  +setActive()
+  +String amount
+  #boolean name
+  +String createdAt
+  +cancelId()
+  +setDuration()
+  +setLevel()
+  +updateType()
 }
 abstract class Teller {
-  -Date description
-  #long amount
-  -long total
-  -String address
-  +validateId()
-  +saveLevel()
+  -String email
+  +long duration
+  #String quantity
+  #boolean score
+  +cancelActive()
+  +validateDescription()
+  +processEmail()
 }
-Deposit --> Teller : "*"
 Transaction --> Branch : "1"
 Transaction ..> Statement : "0..1"
 Transaction --o Teller
-note right of Branch : Banking domain
+Interest --o Deposit
+Deposit ..> Transaction : "*"
 @enduml

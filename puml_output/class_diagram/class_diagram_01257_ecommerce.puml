@@ -9,43 +9,38 @@ class Review {
   -float total
   -String active
   +boolean code
-  +processName()
+  +setPrice()
 }
-class Category {
-  +long quantity
-  +int level
-  +updateTotal()
-  +processTotal()
-  +processAddress()
-  +createNote()
+abstract class Category {
+  -Date code
+  #int name
+  +calculateLevel()
+  +createPhone()
+  +createCreatedat()
 }
-class Product {
-  -double amount
-  -int phone
-  +updateCreatedat()
-  +sendUpdatedat()
+abstract class Product {
+  -Date total
+  -long type
+  -long duration
+  +validateQuantity()
 }
-abstract class Customer {
-  +int score
-  #String phone
-  -double price
-  -String name
-  -int status
-  +calculateType()
-  +sendScore()
-  +setEmail()
+class Customer {
+  +int total
+  #int type
+  -Date description
+  -Date score
+  +processType()
+  +cancelName()
+  +saveEmail()
 }
-abstract class Warehouse {
-  -double code
-  +long price
-  +Date address
-  #boolean description
-  +saveQuantity()
-  +processAddress()
+interface Warehouse {
+  #String description
+  -double updatedAt
+  +updatePrice()
+  +updateEmail()
+  +updateStatus()
 }
-Customer --o Category
-Category ..|> Warehouse
-Category --* Customer
-Warehouse ..|> Product
-note right of Review : Ecommerce domain
+Customer --> Warehouse : "1"
+Product --> Customer : "1..*"
+Review --* Customer
 @enduml

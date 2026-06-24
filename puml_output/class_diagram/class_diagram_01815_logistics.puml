@@ -7,59 +7,56 @@ class Manifest {
   #double phone
   -long price
   +String email
-  +sendScore()
-  +findStatus()
-  +saveUpdatedat()
-  +deleteAmount()
+  +updateNote()
+  +setActive()
+  +getCreatedat()
+  +saveDescription()
 }
 class DeliveryNote {
-  +long updatedAt
-  #double active
-  +sendPrice()
-  +setActive()
+  +float amount
+  +boolean duration
+  +long status
+  +findId()
+  +cancelAmount()
+  +processType()
+  +cancelStatus()
 }
-class FuelLog {
-  #String active
-  #String duration
-  +validateLevel()
+interface FuelLog {
+  #Date status
+  #Date active
+  +createLevel()
 }
 class Tracking {
-  #Date createdAt
-  +float quantity
-  #float duration
-  #int score
-  +saveCode()
-  +getEmail()
-  +deleteUpdatedat()
+  #Date address
+  +long level
+  +setTotal()
+  +cancelPrice()
 }
-class Customer {
-  #double quantity
-  #float score
-  +sendAddress()
-  +findTotal()
-  +validateActive()
+interface Customer {
+  #float level
+  #int createdAt
+  -Date status
+  +saveLevel()
 }
-interface Package {
+class Package {
+  -boolean description
+  #double updatedAt
+  #float level
+  -boolean status
+  +getActive()
+  +getPrice()
+  +setNote()
+}
+class Depot {
   -double createdAt
   -float name
   #float description
-  +cancelEmail()
-  +findDuration()
-  +findId()
+  +sendActive()
+  +cancelPrice()
+  +deleteEmail()
 }
-class Depot {
-  -long level
-  -boolean price
-  +int type
-  +getCode()
-  +saveStatus()
-  +processEmail()
-  +calculateTotal()
-}
-Tracking --o Package
-FuelLog --> DeliveryNote : "*"
-DeliveryNote ..|> FuelLog
-Customer ..> FuelLog : "1"
-Depot --> Package : "1..*"
-note right of Manifest : Logistics domain
+Package ..> Customer : "1"
+Manifest --> DeliveryNote : "*"
+Tracking --* FuelLog
+Tracking ..|> Customer
 @enduml

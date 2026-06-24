@@ -8,42 +8,39 @@ class Shipment {
   +long description
   #long type
   #int id
-  +createActive()
-  +validateActive()
-  +getDuration()
-  +updateCode()
+  +createQuantity()
+  +updateNote()
+  +saveCreatedat()
+  +cancelDuration()
 }
-class Driver {
-  +String phone
-  +double type
-  #long duration
-  #Date description
-  #int amount
-  +processScore()
+interface Driver {
+  #String duration
+  -double createdAt
+  +cancelCode()
+  +processStatus()
+  +setLevel()
+}
+class DeliveryNote {
+  #long name
+  #Date code
+  #int type
+  +cancelQuantity()
+  +cancelPrice()
+  +setCreatedat()
+}
+interface Package {
+  #boolean total
+  #boolean id
+  #boolean quantity
+  +processAddress()
+  +getId()
+}
+interface Inventory {
+  #float price
+  #String phone
   +deleteTotal()
-  +getQuantity()
+  +getStatus()
 }
-interface DeliveryNote {
-  -float type
-  #long active
-  #float status
-  +findCreatedat()
-}
-class Package {
-  #double phone
-  -String updatedAt
-  +float active
-  +float address
-  #float type
-  +setNote()
-}
-class Inventory {
-  +Date level
-  +Date code
-  +boolean total
-  +saveEmail()
-}
-Package --* Shipment
-DeliveryNote ..|> Driver
-note right of Shipment : Logistics domain
+Inventory ..> Package : "1..*"
+Driver --o DeliveryNote
 @enduml

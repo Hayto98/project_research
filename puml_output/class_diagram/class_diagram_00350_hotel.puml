@@ -5,63 +5,56 @@ skinparam classBorderColor #E65100
 class CheckIn {
   #float score
   #boolean price
-  +getPhone()
-  +setDescription()
-  +cancelName()
-  +updateEmail()
+  +savePhone()
+  +findCode()
+  +updateCreatedat()
+  +deleteTotal()
 }
-interface Service {
-  +int amount
-  #String phone
-  -float updatedAt
-  #double total
-  +setPhone()
+class Service {
+  -Date duration
+  #long name
+  +long updatedAt
+  +cancelCreatedat()
+  +findId()
 }
 class Reservation {
-  #float description
-  #String email
-  +double quantity
-  -float score
-  #boolean updatedAt
-  +setId()
-  +savePrice()
+  -String email
+  +long active
+  +createType()
+  +updateQuantity()
+  +sendDuration()
 }
-interface Restaurant {
-  -int phone
-  -double updatedAt
-  -String name
-  -String price
-  -int active
-  +saveStatus()
-  +getUpdatedat()
-  +processPhone()
+abstract class Restaurant {
+  +float email
+  #float quantity
+  #String level
+  +deleteDuration()
 }
 class Amenity {
-  #boolean code
-  #boolean createdAt
-  +createScore()
+  #Date code
+  #boolean id
+  -Date price
+  +sendLevel()
+  +validateNote()
+  +calculateStatus()
 }
 class Payment {
-  -int total
-  +double duration
-  +double score
-  +Date createdAt
-  -long level
-  +getAddress()
+  -String price
+  -String note
+  -int amount
+  -Date address
+  +String type
+  +getId()
+  +updateTotal()
 }
-abstract class Staff {
-  -String description
-  -String phone
-  #String active
-  +int status
-  +validateStatus()
-  +deleteDescription()
-  +cancelLevel()
-  +findAddress()
+class Staff {
+  #boolean code
+  #boolean createdAt
+  +deleteName()
 }
-Restaurant ..> CheckIn : "1"
-Staff ..|> Payment
-Reservation ..> Staff : "1..*"
-CheckIn --> Staff : "1"
-note right of CheckIn : Hotel domain
+Service --o Restaurant
+Restaurant --> Payment : "0..1"
+Restaurant ..|> Staff
+CheckIn --|> Restaurant
+Payment --* Reservation
 @enduml

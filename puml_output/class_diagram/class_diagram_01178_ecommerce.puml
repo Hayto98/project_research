@@ -3,43 +3,48 @@ skinparam ArrowColor #555555
 class Shipment {
   -int address
   #float price
-  +cancelCreatedat()
+  +getCode()
 }
 class Coupon {
-  +float amount
-  #double email
-  +setDuration()
+  -String name
+  #double amount
+  +getType()
 }
-abstract class Product {
-  -int phone
-  -long code
-  #int duration
-  +processDescription()
-  +findDescription()
+interface Product {
+  +double updatedAt
+  -float phone
+  #int code
+  +double level
+  #int quantity
+  +deletePrice()
+  +processType()
 }
-abstract class Category {
-  #long address
-  #int phone
-  #Date type
-  #String email
-  +Date code
-  +sendId()
+class Category {
+  #int type
+  #Date email
+  #String code
+  +Date quantity
+  +findPrice()
 }
-abstract class Supplier {
-  #double type
-  -int score
-  +calculateDuration()
-  +saveCode()
-  +cancelNote()
-  +processAmount()
+class Supplier {
+  +boolean id
+  -double type
+  #Date score
+  +boolean note
+  -double phone
+  +createUpdatedat()
+  +saveStatus()
 }
-interface Warehouse {
-  #float email
-  -double active
-  +findEmail()
-  +findDuration()
+class Warehouse {
+  #float active
+  -Date phone
+  #String type
+  #float createdAt
+  +findNote()
+  +validateDescription()
+  +sendActive()
 }
-Supplier --|> Product
-Supplier --> Coupon : "0..1"
-note right of Shipment : Ecommerce domain
+Supplier --|> Coupon
+Warehouse --* Supplier
+Shipment ..> Supplier : "*"
 @enduml

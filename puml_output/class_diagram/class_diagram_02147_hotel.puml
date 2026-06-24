@@ -6,45 +6,44 @@ skinparam shadowing true
 class Housekeeping {
   +boolean level
   -boolean code
-  +processDuration()
-  +saveLevel()
-  +saveCode()
+  +setDuration()
+  +saveAmount()
+  +sendActive()
 }
-class Booking {
-  -long price
-  +String description
-  +String name
-  +int score
-  +cancelAmount()
-  +saveType()
-  +saveAddress()
-  +createType()
+interface Booking {
+  -Date amount
+  +String address
+  +sendName()
 }
-abstract class Invoice {
-  -Date total
-  +Date email
-  +cancelPrice()
-  +updatePrice()
-}
-class Amenity {
-  #long address
-  +long duration
-  +boolean active
-  #long description
-  #int phone
-  +calculateEmail()
-  +sendEmail()
+class Invoice {
+  +int status
+  -boolean updatedAt
+  +Date name
+  +sendPrice()
+  +findEmail()
+  +validateScore()
   +getNote()
-  +setName()
 }
-interface CheckOut {
-  +String note
-  #boolean active
-  +boolean duration
-  +cancelPhone()
-  +cancelDescription()
+abstract class Amenity {
+  #float id
+  +boolean total
+  #float email
+  -int score
+  #float amount
+  +sendPrice()
+  +updateId()
+  +updateTotal()
+  +deletePhone()
 }
-Amenity ..> Invoice : "*"
-Amenity --o Booking
-note right of Housekeeping : Hotel domain
+abstract class CheckOut {
+  #long address
+  +long active
+  +boolean description
+  #long phone
+  +getStatus()
+  +findLevel()
+}
+Amenity --> Invoice : "1..*"
+Housekeeping --|> Amenity
+Housekeeping ..> Booking : "*"
 @enduml

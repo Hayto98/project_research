@@ -7,67 +7,59 @@ interface Insurance {
   #double updatedAt
   #double code
   +long name
-  +sendAmount()
-  +updateStatus()
-  +findId()
+  +cancelAmount()
+  +validateQuantity()
+  +findAddress()
 }
 class Doctor {
-  #float score
-  -String type
-  +float address
-  #boolean status
-  #long level
-  +findAddress()
-  +getEmail()
-  +validateDescription()
-  +deleteCode()
+  #float name
+  #float price
+  +findQuantity()
+  +cancelDuration()
+  +sendDuration()
+  +setStatus()
 }
-class Treatment {
+abstract class Treatment {
+  -Date code
+  -String duration
+  #long active
+  -int quantity
+  +updateCode()
+  +findNote()
+}
+class MedicalRecord {
   #float address
   #boolean total
   #float name
-  +findQuantity()
-  +createDescription()
-}
-class MedicalRecord {
-  +double phone
-  #String code
-  -double level
-  -int description
-  -String status
-  +createName()
-  +cancelPrice()
-  +createStatus()
+  +deleteType()
+  +processDescription()
 }
 class Prescription {
-  -int quantity
-  -double name
-  +saveEmail()
-  +cancelAmount()
-  +processEmail()
+  #float id
+  #String type
+  +int phone
+  +createPhone()
 }
-interface Patient {
-  -int email
-  #Date address
-  +Date id
-  +getQuantity()
-  +processPrice()
-  +findNote()
+abstract class Patient {
+  -int price
+  -String duration
+  +calculateLevel()
+  +validateAddress()
+  +validatePrice()
 }
 class Nurse {
-  -Date phone
-  +double updatedAt
-  #long description
-  -long duration
-  -double createdAt
-  +deleteAddress()
-  +createEmail()
+  +double email
+  +double status
+  -Date duration
+  -Date level
+  -boolean quantity
+  +cancelCode()
+  +deleteName()
 }
-MedicalRecord --> Patient : "1..*"
-Patient --o Nurse
-Treatment --> Doctor : "*"
-Nurse --* Prescription
-Insurance --* Doctor
-Treatment --* Patient
-note right of Insurance : Healthcare domain
+Doctor --* Treatment
+Patient ..> Prescription : "1"
+Nurse ..|> Treatment
+Patient ..|> Nurse
+Patient --|> Treatment
+Treatment ..> MedicalRecord : "*"
 @enduml

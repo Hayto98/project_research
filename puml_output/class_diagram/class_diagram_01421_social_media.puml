@@ -7,49 +7,48 @@ class Message {
   -double price
   -Date email
   -String level
-  +findAddress()
-  +updateScore()
-  +deleteAddress()
+  +deleteType()
+  +setEmail()
+  +processScore()
 }
-abstract class Post {
-  +double duration
-  +int active
-  #Date email
-  #int phone
-  +float address
-  +savePhone()
-  +saveDuration()
+class Post {
+  #boolean address
+  #long total
+  -Date type
+  +updateDuration()
+  +findAmount()
+  +findNote()
 }
 class Report {
-  -int code
-  +Date amount
-  +updateDescription()
-  +cancelTotal()
-}
-class Profile {
-  -boolean phone
-  #double level
+  #long amount
   #boolean score
-  +String active
-  +String address
-  +sendDuration()
-  +sendLevel()
+  +boolean updatedAt
+  +getLevel()
 }
-class Follower {
-  #boolean active
-  #float score
-  +sendQuantity()
+interface Profile {
+  #float email
+  +int description
+  +boolean code
+  +sendPrice()
+  +deleteQuantity()
+  +sendCreatedat()
+  +cancelId()
+}
+interface Follower {
+  +int price
+  +Date active
+  +boolean duration
+  #boolean description
+  +updateActive()
+  +calculateActive()
 }
 interface User {
-  -boolean type
-  +long code
-  +Date note
-  -long duration
-  #boolean name
-  +saveScore()
+  #Date score
+  -double quantity
+  +findName()
 }
-User ..> Message : "1..*"
-Report --* Message
-Report ..> Profile : "1"
-note right of Message : Social Media domain
+User ..> Profile : "1"
+Report --|> Follower
+Report ..> Message : "*"
+Follower ..> Message : "0..1"
 @enduml

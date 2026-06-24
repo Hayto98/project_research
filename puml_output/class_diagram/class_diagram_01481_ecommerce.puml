@@ -6,31 +6,33 @@ skinparam defaultFontSize 13
 interface Review {
   -boolean name
   -Date status
-  +createEmail()
-  +updateActive()
-  +validateEmail()
-  +createDescription()
+  +cancelAddress()
+  +sendAddress()
+  +sendEmail()
+  +findDuration()
 }
 class Product {
+  +int quantity
   #String description
-  +Date amount
-  +processAddress()
-  +deleteDuration()
+  +Date address
+  +double name
+  +updateQuantity()
+  +updateType()
+  +cancelPrice()
 }
 interface Warehouse {
   +Date phone
   -float updatedAt
   +boolean active
-  +saveTotal()
+  +sendPrice()
 }
-interface Wishlist {
+abstract class Wishlist {
   +boolean description
   #int type
-  +setLevel()
-  +createType()
+  +getType()
+  +cancelActive()
 }
+Wishlist --o Warehouse
 Review --|> Warehouse
 Warehouse --o Product
-Review --|> Product
-note right of Review : Ecommerce domain
 @enduml

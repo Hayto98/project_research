@@ -5,50 +5,54 @@ abstract class LabTest {
   #double createdAt
   #boolean duration
   #Date code
-  +saveId()
-  +calculateActive()
-  +calculateStatus()
-  +sendLevel()
-}
-class Diagnosis {
-  #Date note
-  #boolean score
   +setScore()
-  +createDuration()
+  +findType()
+  +processName()
+  +createPrice()
 }
-class Prescription {
-  +int level
-  +double quantity
-  +boolean description
-  -Date name
-  +setType()
-  +savePrice()
+interface Diagnosis {
+  #Date status
+  #Date score
+  #int quantity
+  +boolean name
+  -boolean note
+  +validateScore()
+}
+interface Prescription {
+  +double description
+  +boolean name
+  -Date id
+  #boolean amount
+  +getDescription()
+  +findTotal()
 }
 class Treatment {
-  +Date phone
-  +float price
-  +double code
-  #int score
-  +setActive()
-  +getType()
-  +saveName()
+  +String price
+  +Date status
+  +float address
+  +double phone
+  #int duration
+  +cancelStatus()
+  +cancelDescription()
+  +createDescription()
 }
-interface Billing {
-  #Date quantity
-  -long price
-  #boolean total
-  #int level
-  +long active
-  +calculateType()
+class Billing {
+  -double name
+  #Date price
+  -long quantity
+  #boolean level
+  #int total
+  +findCode()
+  +saveId()
 }
 abstract class Hospital {
+  +int type
+  +boolean amount
   +int updatedAt
-  +boolean description
-  +int total
-  +deleteNote()
-  +getTotal()
+  +float description
+  +double total
+  +updateEmail()
 }
 Hospital ..> Treatment : "0..1"
 Treatment --* LabTest
-note right of LabTest : Healthcare domain
 @enduml

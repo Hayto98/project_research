@@ -6,40 +6,41 @@ class Shipment {
   #String note
   #long status
   +long email
-  +deleteDuration()
+  +validateCreatedat()
 }
-class Route {
-  -Date address
-  +String status
-  +Date level
-  +saveDescription()
-  +deleteAddress()
-  +setEmail()
-  +validateDescription()
+interface Route {
+  +String duration
+  -Date createdAt
+  +String address
+  +updateId()
 }
-class FuelLog {
-  #long createdAt
-  -boolean price
-  +double type
+abstract class FuelLog {
   -long amount
-  +calculateScore()
-  +createPhone()
-  +processAddress()
-}
-abstract class Depot {
-  #Date code
-  -long phone
-  +getScore()
+  +int address
+  -int code
+  +getId()
+  +createNote()
   +sendActive()
-  +processScore()
+  +deleteScore()
+}
+interface Depot {
+  -long email
+  #long score
+  -boolean name
+  -Date type
+  +findActive()
+  +validateScore()
+  +saveDescription()
 }
 abstract class Customer {
-  +Date id
-  -String type
+  #Date code
+  -long phone
+  +processQuantity()
   +calculateDescription()
+  +setScore()
 }
-FuelLog --o Customer
-Route ..|> Customer
-Depot --o Route
-note right of Shipment : Logistics domain
+Customer --> Depot : "*"
+Shipment --o Customer
+Route --|> FuelLog
+Shipment ..> Depot : "0..1"
 @enduml

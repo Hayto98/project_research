@@ -8,33 +8,32 @@ class Amenity {
   #float email
   #long description
   #double note
-  +deleteActive()
-  +cancelCreatedat()
-  +updateQuantity()
+  +validateQuantity()
+  +findPrice()
+  +getCode()
 }
 class Reservation {
-  -Date code
-  -boolean total
-  +float quantity
-  +findType()
+  +boolean quantity
+  -Date address
+  #float amount
+  +setAmount()
+  +setNote()
+  +sendPrice()
 }
 class CheckIn {
-  -boolean status
-  -String level
-  -float active
-  +boolean type
-  +setDescription()
-  +deleteName()
-  +calculatePrice()
+  #Date code
+  -long type
+  +deleteUpdatedat()
 }
-class Room {
-  +int phone
-  +float quantity
-  +createCode()
-  +getUpdatedat()
-  +sendPhone()
+interface Room {
+  +boolean price
+  #boolean score
+  #float phone
+  -float id
+  +int duration
+  +sendPrice()
+  +setAmount()
 }
-CheckIn --> Room : "*"
-Reservation --> CheckIn : "0..1"
-note right of Amenity : Hotel domain
+Room --|> Reservation
+Amenity --* Reservation
 @enduml

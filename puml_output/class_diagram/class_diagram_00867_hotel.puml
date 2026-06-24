@@ -6,62 +6,53 @@ skinparam ArrowColor #555555
 class Invoice {
   #float level
   +float code
-  +updateTotal()
-  +saveStatus()
-  +getAmount()
+  +updateStatus()
+  +calculateQuantity()
+  +deleteStatus()
 }
 class Amenity {
-  +float status
-  -int code
-  #double address
-  +double description
+  #long amount
+  +Date description
   +calculateLevel()
-  +saveCreatedat()
-  +saveLevel()
-  +calculateAddress()
 }
-class Restaurant {
-  -long status
-  +int code
-  #double type
-  +setPrice()
-  +validateType()
+interface Restaurant {
+  #double description
+  +double status
+  -double email
+  #Date updatedAt
+  +saveUpdatedat()
+  +cancelActive()
 }
 abstract class CheckOut {
-  #String note
-  +boolean quantity
-  +long total
-  -String amount
-  +cancelStatus()
-  +getQuantity()
-  +validateId()
+  #float email
+  -long description
+  -float status
+  +int code
+  +createEmail()
+  +getName()
+  +createUpdatedat()
+  +calculateStatus()
 }
 class Service {
-  #Date email
-  +boolean status
-  +cancelCreatedat()
+  -double price
+  #long phone
+  +setQuantity()
+  +updateLevel()
+  +processNote()
+  +setNote()
 }
 class Housekeeping {
-  #String id
-  +int type
-  -Date status
-  +calculateStatus()
-  +setScore()
-  +sendNote()
+  +long code
+  -String active
+  +findType()
+  +setId()
+  +getUpdatedat()
 }
 class Payment {
-  +long active
-  #String phone
-  +sendType()
-  +updateUpdatedat()
-  +processId()
-  +getTotal()
+  +long quantity
+  +long phone
+  +getAmount()
 }
-CheckOut --* Amenity
-Service ..> Housekeeping : "0..1"
-Invoice --|> Payment
-Amenity --> Restaurant : "1..*"
-Restaurant --* Invoice
-Invoice ..> Service : "0..1"
-note right of Invoice : Hotel domain
+Service --> Invoice : "0..1"
+Payment ..|> Invoice
 @enduml

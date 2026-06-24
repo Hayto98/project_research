@@ -8,56 +8,60 @@ class Catalog {
   +float amount
   #long name
   #double phone
-  +createQuantity()
-  +cancelAmount()
-  +getUpdatedat()
-  +calculateCode()
+  +findCreatedat()
+  +calculatePhone()
+  +deleteUpdatedat()
+  +validateQuantity()
 }
-interface Reservation {
-  #float duration
-  -long phone
-  #long address
-  +validatePhone()
-  +saveCode()
-  +getScore()
+class Reservation {
+  +boolean total
+  -long code
+  #float active
+  +findCreatedat()
+  +cancelScore()
+  +updateLevel()
+  +saveScore()
 }
 class Member {
-  -Date updatedAt
-  +long description
-  +boolean phone
-  +double active
-  #Date name
-  +saveName()
+  -int code
+  #int id
+  #long score
+  #String description
+  +createType()
+  +saveAddress()
+  +validateLevel()
+  +deleteCode()
 }
 class Publisher {
-  +float code
-  +long email
-  +findAmount()
-  +deleteQuantity()
-}
-abstract class Shelf {
-  -float duration
-  +String code
-  +deletePrice()
-  +sendDuration()
+  #float type
+  #String status
   +sendTotal()
-  +findStatus()
+}
+class Shelf {
+  #int id
+  +long description
+  -float phone
+  +boolean createdAt
+  +processDescription()
 }
 class Fine {
-  #long active
-  #double duration
-  +sendStatus()
+  -float price
+  #boolean description
+  +deleteType()
+  +updateName()
+  +sendLevel()
+  +findAddress()
 }
 class Renewal {
-  -double score
-  +float description
-  +float address
-  -float total
-  +processDuration()
-  +calculateUpdatedat()
+  #int price
+  #Date code
+  #long active
+  #Date status
+  +saveCreatedat()
+  +findAmount()
 }
-Catalog --o Publisher
-Renewal --|> Catalog
 Publisher --|> Reservation
-note right of Catalog : Library domain
+Renewal ..|> Member
+Publisher --> Fine : "*"
+Reservation --|> Renewal
 @enduml

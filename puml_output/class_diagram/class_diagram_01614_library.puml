@@ -5,58 +5,60 @@ skinparam classBorderColor #6A1B9A
 class Branch {
   +int quantity
   #int phone
-  +deleteStatus()
-  +getDescription()
+  +sendStatus()
+  +deleteLevel()
 }
-abstract class Author {
-  +boolean id
-  +float score
-  -long updatedAt
-  +getAddress()
+class Author {
+  -Date name
+  +String description
+  +setType()
+  +sendActive()
 }
 class Librarian {
-  -long id
-  -String code
-  +float note
-  -long updatedAt
-  +cancelNote()
-  +findCode()
-  +updateCode()
+  -String address
+  -String active
+  +double id
+  #Date score
+  +findActive()
+  +findScore()
 }
-interface Member {
-  #String score
-  #long address
-  +createCode()
-  +calculateQuantity()
+class Member {
+  -float createdAt
+  -boolean type
+  +cancelName()
+  +deleteId()
+  +setDescription()
+  +deleteAddress()
 }
 class Renewal {
-  #double quantity
-  -float note
-  +double type
+  #String score
+  #long address
+  +createQuantity()
+  +getLevel()
+}
+abstract class Reservation {
+  -boolean address
+  -float updatedAt
+  -float quantity
+  +double note
+  +sendAddress()
+  +findDescription()
+  +saveAmount()
+  +createActive()
+}
+interface Fine {
+  #int id
+  #long price
+  +double status
+  -Date code
+  #int createdAt
+  +findActive()
   +createDuration()
-  +processAddress()
-  +cancelTotal()
-  +getPrice()
+  +sendPhone()
 }
-class Reservation {
-  #long createdAt
-  +double duration
-  +findLevel()
-  +updateAddress()
-  +processPrice()
-  +validateNote()
-}
-class Fine {
-  +double type
-  -int name
-  +float code
-  +saveEmail()
-  +setType()
-}
-Renewal ..> Fine : "*"
-Reservation --> Author : "*"
-Branch ..|> Librarian
-Member --o Librarian
-Renewal --|> Author
-note right of Branch : Library domain
+Author ..> Reservation : "0..1"
+Reservation --|> Member
+Renewal --|> Branch
+Member ..|> Fine
+Fine ..|> Branch
 @enduml

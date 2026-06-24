@@ -4,58 +4,60 @@ class Transfer {
   #String status
   #float createdAt
   #boolean level
-  +cancelPrice()
+  +cancelActive()
 }
-class Teller {
-  -int email
-  #float updatedAt
-  +calculateTotal()
-  +saveUpdatedat()
-  +processPrice()
-  +findUpdatedat()
+abstract class Teller {
+  +Date id
+  -double email
+  -Date updatedAt
+  +double note
+  +updateScore()
+  +validateNote()
+  +findStatus()
+  +updateEmail()
 }
-abstract class Statement {
-  +boolean score
-  -long quantity
+class Statement {
+  -double level
   -long active
-  +getId()
-  +setDuration()
-  +cancelStatus()
+  +String updatedAt
+  +boolean note
+  +createPhone()
 }
 class Withdrawal {
-  -String phone
-  +double level
-  +deleteDuration()
+  -String level
+  +boolean type
+  -String id
+  +int createdAt
+  +getAmount()
+  +validateAddress()
 }
-abstract class Account {
-  +Date updatedAt
-  -String amount
-  +createAddress()
-  +getNote()
-  +updateActive()
+class Account {
+  +float quantity
+  #String address
+  #long name
+  +boolean note
+  +updateDescription()
+  +updateLevel()
 }
 class Customer {
-  +long description
-  -int score
-  -long level
-  -boolean createdAt
-  +getActive()
-  +findTotal()
-  +findTotal()
+  #Date price
+  #double quantity
+  +boolean email
+  +deleteType()
+  +processAddress()
   +processLevel()
+  +validateUpdatedat()
 }
-class Branch {
-  +Date level
-  #double score
-  #float price
-  +long code
-  +processQuantity()
-  +setDescription()
+interface Branch {
+  -Date quantity
+  +String level
+  #boolean score
+  +validateActive()
+  +saveType()
+  +updateUpdatedat()
+  +processDescription()
 }
-Account ..|> Withdrawal
-Customer ..> Transfer : "1"
-Statement ..|> Customer
-Branch --|> Withdrawal
-Teller ..> Withdrawal : "1"
-note right of Transfer : Banking domain
+Withdrawal --|> Statement
+Branch ..> Customer : "0..1"
+Withdrawal --o Account
 @enduml

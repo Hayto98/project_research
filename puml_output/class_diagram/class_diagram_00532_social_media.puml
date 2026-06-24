@@ -5,30 +5,35 @@ skinparam classBorderColor #2C7DA0
 class Group {
   #long quantity
   +boolean id
-  +updateNote()
-  +calculateNote()
+  +updateDescription()
+  +saveAmount()
 }
-class Hashtag {
-  -String updatedAt
-  -float active
-  -boolean email
-  +validateEmail()
+abstract class Hashtag {
+  -String description
+  -float duration
+  -boolean updatedAt
+  #String active
+  -Date email
+  +updatePhone()
+  +findScore()
+  +validateDuration()
 }
-class Like {
-  +Date active
-  #String score
-  +String note
-  +boolean duration
-  +updateCode()
+interface Like {
+  +boolean active
+  +int name
+  #float level
+  +boolean id
+  -int code
+  +processScore()
+  +setDuration()
 }
-interface Profile {
-  -float createdAt
-  #boolean amount
-  -long updatedAt
-  +String level
-  +deleteActive()
-  +validateUpdatedat()
-  +findUpdatedat()
+class Profile {
+  +String quantity
+  -float price
+  +boolean address
+  +sendNote()
+  +setCreatedat()
+  +createScore()
 }
 abstract class Report {
   -Date createdAt
@@ -36,18 +41,16 @@ abstract class Report {
   #float description
   #boolean type
   -double status
-  +setCreatedat()
+  +processAmount()
 }
 class Post {
-  +long description
-  +String duration
-  +validateTotal()
-  +calculateLevel()
-  +setActive()
-  +getDescription()
+  +int status
+  -String description
+  +getScore()
 }
+Like --o Profile
+Report --> Group : "1"
+Hashtag ..|> Report
 Like --o Hashtag
 Hashtag --* Profile
-Like ..|> Profile
-note right of Group : Social Media domain
 @enduml

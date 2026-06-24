@@ -6,64 +6,59 @@ skinparam shadowing true
 class FuelLog {
   +String total
   -int description
-  +sendName()
-  +updateEmail()
-  +setCode()
+  +findDuration()
+  +cancelDescription()
+  +processCreatedat()
 }
-abstract class Depot {
-  -long address
-  #Date updatedAt
-  +float createdAt
-  +double quantity
-  +sendPrice()
-  +findPrice()
-  +findType()
-  +findStatus()
+class Depot {
+  -boolean email
+  -long status
+  #int code
+  +cancelAddress()
+  +updateEmail()
 }
 class DeliveryNote {
-  #Date description
-  -boolean note
-  +double duration
-  +boolean type
-  #double email
-  +processDuration()
-  +getName()
-  +saveDescription()
+  #double amount
+  #Date type
+  +updateScore()
+  +deleteAmount()
+  +setActive()
+  +calculateStatus()
 }
-interface Route {
-  +boolean name
-  #double status
-  -boolean id
-  +validateCreatedat()
-  +getDescription()
+abstract class Route {
+  #double description
+  +double active
+  +getStatus()
+  +deleteActive()
 }
-abstract class Customer {
-  +float email
-  -Date name
-  +float note
-  +updateActive()
-  +processEmail()
+class Customer {
+  -double duration
+  #boolean description
+  +String price
+  #Date name
+  +boolean note
+  +calculateId()
+  +updateUpdatedat()
 }
 class Tracking {
-  +String active
-  +int score
-  #int updatedAt
+  -boolean duration
+  +long level
+  +float note
+  +deleteType()
+}
+class Shipment {
+  -Date description
+  +float email
+  +int name
+  #boolean note
   -Date createdAt
-  +long price
-  +getStatus()
+  +getAmount()
+  +processPrice()
+  +cancelUpdatedat()
 }
-interface Shipment {
-  +boolean amount
-  +int quantity
-  #boolean status
-  +String updatedAt
-  +sendEmail()
-  +updateUpdatedat()
-  +deletePrice()
-}
-Customer --|> FuelLog
-DeliveryNote --|> Customer
-Tracking ..> DeliveryNote : "*"
-Depot --* Tracking
-note right of FuelLog : Logistics domain
+Customer ..> Shipment : "0..1"
+Depot ..|> Route
+FuelLog ..|> Shipment
+Shipment ..|> Customer
+Route --|> Tracking
 @enduml

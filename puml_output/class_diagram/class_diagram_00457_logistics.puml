@@ -3,63 +3,56 @@ skinparam defaultFontSize 13
 interface Tracking {
   +float quantity
   -Date name
-  +updateEmail()
-  +createActive()
+  +sendEmail()
+  +deleteTotal()
 }
-interface Warehouse {
-  +float score
-  -float level
-  +setAmount()
-  +deleteName()
-  +getAddress()
-  +cancelPhone()
+class Warehouse {
+  -float active
+  -String level
+  +int id
+  +float createdAt
+  +updateCode()
 }
 class Package {
-  +long type
-  -int active
-  -int address
-  +updateName()
-  +setTotal()
+  #boolean email
+  -String level
+  -long description
+  +double type
+  +deleteAddress()
+  +processPrice()
 }
 class Route {
-  -double updatedAt
-  +int level
-  #int score
-  +Date active
-  +getPhone()
-  +validateScore()
-  +processType()
-  +createType()
+  -int total
+  #boolean code
+  +createPrice()
+  +calculateNote()
+  +createCode()
 }
 interface Shipment {
-  +double amount
-  #boolean status
+  -long id
+  #double total
+  -long duration
+  +deleteType()
+  +findPrice()
+  +findUpdatedat()
+  +findActive()
+}
+class FuelLog {
   #long phone
   +double type
-  #String address
-  +setActive()
-  +saveQuantity()
-  +validateQuantity()
-  +saveId()
+  +sendNote()
+  +saveCode()
+  +deleteEmail()
 }
-interface FuelLog {
-  -String address
-  -long name
-  +getQuantity()
-  +createDuration()
+interface DeliveryNote {
+  #Date price
+  -long code
+  +saveType()
+  +updatePhone()
+  +updateActive()
 }
-class DeliveryNote {
-  +Date total
-  +long status
-  +boolean amount
-  +sendType()
-  +setCode()
-}
-Tracking ..|> FuelLog
-Shipment ..|> Route
-Shipment --* DeliveryNote
-FuelLog ..> DeliveryNote : "1"
-Route --o FuelLog
-Package ..> Shipment : "1"
-note right of Tracking : Logistics domain
+Tracking --|> Package
+Package --* Tracking
+Package ..> Shipment : "0..1"
+Warehouse --o DeliveryNote
 @enduml

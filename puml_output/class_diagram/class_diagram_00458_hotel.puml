@@ -9,43 +9,37 @@ interface CheckIn {
   #boolean amount
   #float email
   -double updatedAt
-  +updateName()
-  +getCode()
-  +deleteAddress()
+  +sendDescription()
+  +cancelNote()
+  +processQuantity()
 }
 class Invoice {
-  +long phone
-  -float id
-  +processAmount()
-  +validateLevel()
-  +findName()
-}
-interface Service {
-  +double level
-  #Date description
+  -String amount
+  -String address
   +calculateScore()
+  +deleteName()
+}
+class Service {
+  +double amount
+  #Date phone
+  #String name
+  -boolean score
+  -Date description
+  +findQuantity()
 }
 class Payment {
-  +boolean address
-  #boolean duration
-  +processId()
-  +getEmail()
-  +getLevel()
+  #float level
+  -double active
+  +deleteNote()
 }
 class Room {
-  -int note
-  -int status
-  #String duration
-  #boolean total
-  -float price
+  -double level
+  +double phone
   +createDuration()
-  +calculateQuantity()
-  +updatePrice()
-  +getDescription()
+  +sendCode()
+  +saveNote()
+  +sendScore()
 }
-Payment --* Room
-Room --* Payment
-Service --> Invoice : "1..*"
-CheckIn ..> Service : "*"
-note right of CheckIn : Hotel domain
+Room --> CheckIn : "1..*"
+Payment --> Service : "*"
 @enduml

@@ -3,48 +3,41 @@ skinparam defaultFontSize 11
 class Treatment {
   #float status
   +float level
-  +validateEmail()
-  +validateUpdatedat()
-  +updateDuration()
-  +createType()
+  +processStatus()
+  +calculateType()
+  +cancelPhone()
+  +sendPhone()
 }
-interface Ward {
-  +int price
-  #int note
-  -long email
-  -String total
-  +Date duration
-  +setCode()
-  +cancelAmount()
-  +processQuantity()
-  +sendActive()
+class Ward {
+  #boolean duration
+  -double quantity
+  -long type
+  +createDuration()
+  +validateNote()
+  +deleteScore()
+  +cancelPrice()
 }
 class Billing {
-  #Date note
-  +float type
-  #Date score
-  +long active
-  +saveId()
-  +getCode()
+  +String address
+  #int type
+  -Date id
+  -boolean description
+  #Date level
+  +saveScore()
+  +saveAmount()
   +getUpdatedat()
 }
-class Diagnosis {
-  #long type
-  #String id
-  -String score
-  #long amount
-  #float note
-  +calculateCode()
-  +deleteTotal()
-  +updateNote()
+abstract class Diagnosis {
+  #String code
+  +String quantity
+  +int level
+  +updateEmail()
 }
-class Hospital {
-  -long description
-  +float total
-  +setScore()
-  +savePhone()
+abstract class Hospital {
+  -boolean score
+  -boolean amount
+  +deleteCreatedat()
 }
-Billing --> Ward : "*"
-Billing --o Treatment
-note right of Treatment : Healthcare domain
+Hospital ..> Billing : "1..*"
+Diagnosis ..|> Treatment
 @enduml

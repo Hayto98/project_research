@@ -6,63 +6,63 @@ skinparam defaultFontSize 11
 abstract class Transfer {
   -long level
   +long code
-  +updateCreatedat()
-  +deleteType()
+  +processPrice()
+  +saveNote()
 }
 class Card {
-  #float type
-  -Date name
-  #Date amount
-  +calculateAmount()
-  +findLevel()
-  +sendCode()
-  +saveAddress()
+  #float amount
+  -Date duration
+  #Date type
+  -double name
+  +Date level
+  +saveUpdatedat()
 }
 class Statement {
-  -long quantity
-  #int note
-  +float address
-  -Date type
-  +createLevel()
-  +sendCode()
+  #boolean address
+  -double quantity
+  -long note
+  +setActive()
+  +processAmount()
 }
-class Beneficiary {
-  -float code
-  +double amount
-  #boolean active
-  +boolean email
-  #boolean quantity
-  +setQuantity()
-  +createId()
-  +validateAmount()
-  +findTotal()
+abstract class Beneficiary {
+  +float email
+  +double level
+  +int active
+  +cancelUpdatedat()
+  +calculatePhone()
+  +cancelCode()
 }
 class Customer {
-  +double code
-  -boolean phone
-  +long name
-  -String email
-  +findActive()
-  +processDescription()
-  +calculateAmount()
+  -long active
+  +long amount
+  +Date duration
+  -int note
+  #long status
+  +cancelId()
 }
 class Interest {
+  -double status
+  +boolean type
+  #long note
+  #boolean id
+  +getEmail()
+  +calculateCode()
+  +deleteScore()
+  +createEmail()
+}
+class Branch {
   +Date note
   #Date price
   +boolean amount
   -int quantity
   -float address
-  +createCreatedat()
-  +sendQuantity()
-  +cancelId()
-  +processUpdatedat()
+  +createId()
+  +validateAddress()
+  +saveNote()
+  +createDescription()
 }
-class Branch {
-  #double total
-  +Date status
-  +saveScore()
-  +sendCreatedat()
-}
-Beneficiary --o Customer
-note right of Transfer : Banking domain
+Customer --o Transfer
+Card --> Statement : "1"
+Beneficiary --|> Customer
+Interest ..|> Beneficiary
 @enduml

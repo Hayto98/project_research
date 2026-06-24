@@ -3,58 +3,53 @@ skinparam ArrowColor #555555
 class Schedule {
   #double phone
   -boolean name
-  +findId()
-  +validateNote()
+  +validateTotal()
   +processCode()
+  +createActive()
 }
-interface Classroom {
-  #Date amount
-  #float note
-  +int active
-  -long id
-  +float status
-  +setTotal()
-  +saveId()
-  +validateName()
-  +createNote()
+abstract class Classroom {
+  #String code
+  +Date active
+  #Date note
+  +int amount
+  -long score
+  +getUpdatedat()
+  +setPrice()
 }
-class Book {
+abstract class Book {
+  -Date total
+  +float id
+  +saveTotal()
+  +sendUpdatedat()
+  +cancelQuantity()
+}
+class Attendance {
   -long price
   +float amount
   -Date total
   -String type
   #int quantity
-  +deleteAmount()
-  +sendPhone()
-  +sendAmount()
-  +calculateDescription()
+  +setLevel()
+  +getDescription()
+  +deleteScore()
+  +updateAmount()
 }
-interface Attendance {
-  +float level
-  +long updatedAt
-  #boolean score
-  +boolean note
-  -long type
-  +setPhone()
-  +cancelId()
-}
-abstract class Library {
-  +double quantity
-  -float description
-  -int level
-  #String createdAt
-  #float code
-  +sendAddress()
+interface Library {
+  #double score
+  #float amount
+  +boolean price
+  -double description
+  +sendDescription()
+  +validateId()
 }
 class Exam {
-  #long score
-  -String phone
-  +calculateAddress()
-  +cancelAmount()
-  +sendTotal()
-  +saveNote()
+  -int active
+  +long type
+  +cancelQuantity()
 }
-Classroom --|> Exam
-Book --> Exam : "1"
-note right of Schedule : Education domain
+Exam --> Book : "0..1"
+Classroom --> Exam : "1"
+Classroom --o Attendance
+Book --> Classroom : "1"
+Library --> Schedule : "1..*"
 @enduml

@@ -7,61 +7,62 @@ class Branch {
   #Date note
   #int description
   -Date type
-  +cancelLevel()
+  +deleteLevel()
 }
-class Deposit {
-  +float createdAt
-  -float email
-  +double level
-  -long address
-  +createTotal()
-  +validateLevel()
-  +getDuration()
+interface Deposit {
+  #long active
+  -String quantity
+  -float createdAt
+  +double email
+  +setTotal()
+  +validateAmount()
+  +validateStatus()
 }
 class Beneficiary {
-  -float description
-  -int type
-  +long createdAt
-  +calculateActive()
-  +sendScore()
+  +double phone
+  +double level
+  -int id
+  +long name
+  #int description
+  +createDescription()
+  +setAddress()
+  +sendAmount()
+  +setTotal()
 }
 class Loan {
-  #int phone
-  #long id
-  +processEmail()
-  +getPrice()
+  +double id
+  #long level
+  +double updatedAt
+  +Date address
+  +processQuantity()
+  +updateQuantity()
+  +createId()
 }
-class Transfer {
-  +double name
-  #boolean note
-  -double score
-  +int total
-  +sendCreatedat()
-  +cancelNote()
-  +cancelEmail()
-  +sendPhone()
+abstract class Transfer {
+  +int description
+  -float price
+  #int active
+  #double quantity
+  #Date type
+  +calculateActive()
+  +saveScore()
+  +deleteUpdatedat()
 }
-interface Customer {
-  #String status
-  -Date code
-  +int duration
-  -int active
-  #long updatedAt
-  +createType()
-  +calculatePrice()
-  +getDescription()
-  +savePhone()
+abstract class Customer {
+  #Date code
+  #Date status
+  +cancelScore()
+  +setName()
 }
-class Withdrawal {
-  -String email
-  #int price
-  +double createdAt
-  +Date level
-  +validateNote()
+abstract class Withdrawal {
+  #long description
+  #float address
+  -long createdAt
+  +processCreatedat()
+  +setActive()
+  +calculateCode()
+  +processType()
 }
-Transfer --* Loan
-Deposit --> Branch : "0..1"
-Branch --> Beneficiary : "1"
-Branch ..|> Customer
-note right of Branch : Banking domain
+Deposit --* Customer
+Branch ..> Beneficiary : "1..*"
 @enduml

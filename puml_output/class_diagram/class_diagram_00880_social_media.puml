@@ -5,58 +5,56 @@ skinparam defaultFontSize 13
 class Comment {
   #long address
   #float quantity
-  +validateUpdatedat()
+  +processCreatedat()
 }
-abstract class Group {
-  +long amount
-  #boolean description
-  +createQuantity()
-  +saveName()
+class Group {
+  #int total
+  +long name
+  #boolean amount
+  +calculateScore()
+  +findScore()
 }
 class Message {
-  -long duration
-  #double name
-  #int code
-  +float score
-  +String createdAt
-  +setCreatedat()
-  +updateCreatedat()
+  +double note
+  -boolean name
+  -Date code
+  +int score
+  +findNote()
 }
-abstract class Post {
-  #Date score
-  #long note
-  +getNote()
+class Post {
+  +Date createdAt
+  -String updatedAt
+  +sendLevel()
+  +sendDuration()
+  +saveDescription()
+  +saveActive()
 }
-interface User {
-  -long duration
-  #float level
-  -Date amount
-  +cancelDescription()
-  +getAddress()
+class User {
+  #boolean id
+  +boolean note
+  +getStatus()
+  +validateName()
 }
 class Notification {
-  #int duration
-  -String level
-  +Date score
-  +Date code
-  #int status
-  +processPhone()
-  +sendScore()
-  +sendEmail()
+  -boolean amount
+  #boolean description
+  +boolean name
+  #float address
+  +boolean duration
+  +getAddress()
+  +processCode()
 }
 class Hashtag {
-  -double updatedAt
-  #long duration
-  #double amount
-  #int level
-  +processStatus()
-  +processAmount()
-  +saveId()
-  +calculateNote()
+  -float updatedAt
+  #float quantity
+  +saveType()
+  +deleteEmail()
+  +calculateActive()
 }
-Message --> Group : "1"
-Group ..> Comment : "1"
-Post --o Comment
-Post --* Notification
-note right of Comment : Social Media domain
+Hashtag --* User
+Message ..> Hashtag : "0..1"
+Notification ..|> Group
+Hashtag ..|> Notification
+Hashtag --o Post
+User --> Message : "*"
 @enduml

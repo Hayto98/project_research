@@ -8,33 +8,37 @@ abstract class Attendance {
   -long email
   -float score
   -Date price
-  +sendLevel()
-  +getLevel()
+  +getCreatedat()
+  +saveDuration()
 }
 class Book {
+  +float description
   #String note
   +Date amount
-  -Date level
-  +setDescription()
+  +saveUpdatedat()
+  +updateNote()
+  +cancelTotal()
 }
 class Grade {
-  -double price
-  +String note
-  +boolean createdAt
-  +createDuration()
-  +createType()
-  +getActive()
-  +sendAmount()
+  -float email
+  #Date updatedAt
+  +long price
+  +getName()
+  +saveQuantity()
+  +savePhone()
+  +cancelNote()
 }
-class Library {
-  #int quantity
+interface Library {
+  -String quantity
+  -String duration
+  #int type
   +String name
-  +deletePhone()
-  +calculateId()
-  +savePrice()
+  #boolean amount
+  +calculateAddress()
+  +processScore()
+  +processStatus()
 }
-Attendance --o Library
-Grade --* Attendance
-Grade ..|> Library
-note right of Attendance : Education domain
+Attendance ..> Grade : "*"
+Grade --|> Library
+Book --* Library
 @enduml

@@ -7,66 +7,62 @@ abstract class Hashtag {
   -float id
   #int status
   +int price
-  +calculateId()
-  +updateQuantity()
-  +setCode()
-  +createStatus()
+  +calculateCode()
+  +setName()
+  +processActive()
+  +setTotal()
 }
-abstract class Follower {
-  -String phone
-  -double name
-  +updateQuantity()
-  +cancelPrice()
-  +deleteActive()
+class Follower {
+  -String email
+  -String status
+  +validateEmail()
+  +calculatePhone()
+  +calculateAmount()
 }
-class Group {
-  +Date total
-  +int id
-  +long email
-  -Date level
-  +cancelStatus()
-  +cancelLevel()
-  +updateStatus()
-  +updateQuantity()
+interface Group {
+  #long createdAt
+  -double quantity
+  #Date price
+  +Date amount
+  +processCode()
+  +findNote()
+  +updateId()
 }
 class Post {
-  +boolean id
-  #boolean name
-  +String updatedAt
-  +getQuantity()
-  +processStatus()
-  +setScore()
-  +validateType()
+  #double id
+  #float email
+  +boolean level
+  +validateEmail()
+  +processDuration()
 }
-abstract class Story {
-  +double name
-  #double level
-  +long email
-  #String code
-  +double price
-  +getDescription()
-  +saveDescription()
+class Story {
+  +String description
+  #Date id
+  #int name
+  +createDuration()
 }
-interface Notification {
-  -long amount
-  #String level
-  #long score
-  -String status
-  +int note
-  +createNote()
+class Notification {
+  -double note
+  -Date status
+  +boolean level
+  -String phone
+  +updatePrice()
+  +calculateCode()
+  +createUpdatedat()
+  +deleteActive()
 }
 class Report {
-  #double name
-  #long createdAt
-  #long note
-  +String total
-  -Date price
-  +saveCreatedat()
-  +calculatePhone()
-  +findUpdatedat()
+  +String duration
+  +Date name
+  +boolean updatedAt
+  -float total
+  +processEmail()
+  +validateType()
 }
-Story --|> Group
-Group --* Notification
-Notification ..|> Follower
-note right of Hashtag : Social Media domain
+Story --o Hashtag
+Group --> Report : "1"
+Story --o Group
+Hashtag ..|> Follower
+Hashtag ..> Group : "*"
+Group --|> Post
 @enduml

@@ -5,48 +5,47 @@ class Amenity {
   +int status
   #boolean type
   +double code
-  +updateCreatedat()
-  +saveLevel()
+  +updateDescription()
+  +calculateNote()
 }
 interface Staff {
   -float description
   +int type
-  +validateUpdatedat()
+  +getPrice()
 }
-abstract class Booking {
-  #double total
-  -String phone
-  #double id
-  +deleteNote()
-  +getUpdatedat()
-  +getStatus()
-  +getUpdatedat()
+class Booking {
+  -float price
+  +boolean createdAt
+  -double total
+  +sendDescription()
 }
-class Housekeeping {
-  #double description
-  #Date phone
-  -double level
-  +getPhone()
-  +saveId()
-  +setStatus()
+abstract class Housekeeping {
+  +String amount
+  +float note
+  +int name
+  #int updatedAt
+  -Date id
+  +findPrice()
+  +sendCreatedat()
+  +validateType()
 }
-class CheckIn {
-  -boolean quantity
-  #boolean total
-  #int email
-  #int duration
-  +processType()
+interface CheckIn {
+  +Date total
+  +Date email
+  #long name
+  -float phone
+  -double id
+  +saveActive()
+  +getNote()
+  +calculateAmount()
 }
-class Restaurant {
-  #float total
-  #boolean status
-  #int address
-  +findEmail()
+interface Restaurant {
+  -Date level
+  -int createdAt
+  #float name
+  +cancelCreatedat()
+  +deleteEmail()
 }
-Housekeeping ..|> CheckIn
-Booking --|> Staff
-Amenity --* Restaurant
-Amenity --|> Housekeeping
-CheckIn --|> Booking
-note right of Amenity : Hotel domain
+Booking --> CheckIn : "0..1"
+Amenity --> Booking : "*"
 @enduml

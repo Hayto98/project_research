@@ -5,63 +5,53 @@ abstract class Doctor {
   +String name
   #float code
   -Date id
-  +deleteAddress()
-  +sendScore()
+  +validateQuantity()
+  +calculateTotal()
 }
-interface Appointment {
+class Appointment {
   -boolean type
   -double name
-  +updateNote()
-  +saveAmount()
-  +getType()
+  +processPrice()
+  +sendCode()
+  +setScore()
 }
-interface MedicalRecord {
-  +boolean price
-  -String type
-  -long active
-  #int status
-  #boolean updatedAt
-  +updateId()
-  +setId()
-  +findActive()
+class MedicalRecord {
+  -double type
+  -boolean active
+  +updateCreatedat()
 }
-abstract class Hospital {
-  +double name
-  #String status
-  +setName()
-  +validateTotal()
-  +setPrice()
-  +createDescription()
+interface Hospital {
+  +double description
+  -boolean score
+  +Date email
+  +sendEmail()
+  +updatePrice()
+  +calculateLevel()
 }
 class Diagnosis {
-  -Date status
-  #Date description
-  +double code
-  #int name
-  +updateStatus()
+  #String active
+  +String price
+  +findActive()
 }
 class Treatment {
-  +double active
-  -Date email
-  -boolean name
-  +deletePrice()
-  +findDescription()
-  +deleteUpdatedat()
+  -long status
+  +long name
+  -String phone
+  +String total
+  +long code
+  +createName()
+  +createStatus()
 }
 class Billing {
-  #long description
-  #String total
-  +Date price
-  +int note
-  +sendCreatedat()
+  -Date updatedAt
+  +Date status
+  +saveId()
   +processCreatedat()
-  +findAmount()
+  +saveEmail()
 }
-Hospital --o MedicalRecord
-MedicalRecord ..|> Appointment
-Diagnosis --* Doctor
-Doctor --o Appointment
-Hospital --|> Diagnosis
-Appointment --|> Treatment
-note right of Doctor : Healthcare domain
+Billing ..> Hospital : "*"
+Diagnosis ..|> MedicalRecord
+Treatment ..> Hospital : "0..1"
+Appointment --|> Billing
+MedicalRecord ..> Appointment : "*"
 @enduml

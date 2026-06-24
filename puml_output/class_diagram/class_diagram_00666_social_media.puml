@@ -5,41 +5,42 @@ skinparam shadowing true
 class Profile {
   #int description
   -boolean id
-  +deleteStatus()
+  +updateType()
 }
 class Follower {
+  -double price
   -boolean score
   #float description
   +String type
-  +float note
-  #int total
-  +processUpdatedat()
-  +createId()
   +deleteTotal()
+  +deleteLevel()
 }
-class Like {
-  +long level
-  #double amount
-  #double email
-  #boolean status
-  +getScore()
+interface Like {
+  -String email
+  +double note
+  +long updatedAt
+  +saveStatus()
+  +validateAddress()
 }
-abstract class Comment {
-  -double active
-  #Date updatedAt
-  +saveId()
-  +cancelType()
+class Comment {
+  #boolean email
+  #String price
+  +boolean note
+  +createType()
+  +deleteNote()
+  +createUpdatedat()
+  +updateCode()
 }
-interface Group {
-  +int address
-  -Date phone
-  #float createdAt
-  -double active
-  +sendPrice()
+class Group {
+  #long price
+  #long createdAt
+  #Date id
+  #long type
+  +calculateDescription()
+  +saveLevel()
 }
-Like ..> Group : "*"
-Profile --o Group
-Profile --* Comment
-Like ..> Profile : "1"
-note right of Profile : Social Media domain
+Follower --* Group
+Comment --|> Group
+Group --> Comment : "1..*"
+Like --|> Comment
 @enduml

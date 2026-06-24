@@ -7,36 +7,36 @@ abstract class Category {
   -float phone
   #long note
   #double active
-  +saveDuration()
-  +processLevel()
-  +findAddress()
+  +setScore()
+  +setPrice()
+  +setId()
 }
-interface Cart {
+abstract class Cart {
+  -Date score
+  +double note
   +float price
   -double address
-  +float total
-  #float amount
-  -double type
-  +validateDuration()
-  +calculateQuantity()
+  +findLevel()
 }
-class Invoice {
-  +double active
-  -double phone
-  -boolean updatedAt
-  +float amount
-  -boolean name
-  +validateCode()
-  +cancelAddress()
+abstract class Invoice {
+  -boolean createdAt
+  #float phone
+  -Date price
+  #int quantity
+  +String id
+  +saveName()
+  +updateCode()
 }
-interface Shipment {
-  #boolean phone
-  #float duration
-  +setCreatedat()
-  +validateAddress()
+class Shipment {
+  -float quantity
+  +boolean level
+  -boolean createdAt
+  #String type
+  -float description
+  +getAmount()
+  +cancelActive()
+  +deleteUpdatedat()
 }
-Cart --> Shipment : "*"
-Invoice ..> Shipment : "*"
-Category --|> Cart
-note right of Category : Ecommerce domain
+Category --* Shipment
+Invoice ..|> Cart
 @enduml

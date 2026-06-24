@@ -3,54 +3,50 @@ skinparam shadowing true
 interface Route {
   #String duration
   +Date address
-  +saveUpdatedat()
+  +cancelScore()
 }
 class Inventory {
+  #String note
   +float createdAt
   #float phone
-  +long note
-  -long active
-  -float id
-  +findPhone()
-  +validateTotal()
-  +calculateAmount()
+  +long duration
+  +updateTotal()
+  +cancelId()
+  +processAddress()
 }
 class Tracking {
-  +float id
-  -boolean price
-  +double duration
-  +int updatedAt
-  #float quantity
-  +updateAmount()
-  +validateType()
-  +setAddress()
-}
-abstract class Vehicle {
-  +Date price
-  #boolean status
-  -long description
-  -float duration
-  +deleteCode()
-}
-class FuelLog {
-  #boolean code
-  -boolean phone
-  +boolean duration
-  +calculateStatus()
-  +validatePhone()
-  +getLevel()
-}
-class Depot {
-  #double id
-  +long quantity
-  #double email
-  +String address
-  +sendName()
-  +validateDescription()
-  +setAddress()
+  +double phone
+  +double total
+  +int price
+  -float amount
   +deleteTotal()
 }
-Depot ..|> Tracking
-Vehicle --> Inventory : "*"
-note right of Route : Logistics domain
+abstract class Vehicle {
+  #float price
+  -int updatedAt
+  +long description
+  +getType()
+  +saveCreatedat()
+  +calculateQuantity()
+  +calculatePhone()
+}
+abstract class FuelLog {
+  +Date description
+  #boolean price
+  +updateTotal()
+  +deleteAmount()
+  +sendDescription()
+}
+class Depot {
+  +long code
+  #String quantity
+  #boolean updatedAt
+  +deleteDescription()
+  +validateNote()
+  +savePrice()
+  +findName()
+}
+Vehicle --* Route
+Tracking --> Route : "0..1"
+Tracking --* Depot
 @enduml

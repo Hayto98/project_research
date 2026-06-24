@@ -5,63 +5,61 @@ skinparam classBorderColor #6A1B9A
 class Deposit {
   -double email
   #String address
-  +createDescription()
-  +getCreatedat()
-  +processScore()
-  +getId()
+  +createQuantity()
+  +validateCreatedat()
+  +deleteNote()
+  +saveNote()
 }
 abstract class Interest {
-  -String total
-  +int id
-  -float updatedAt
-  #double level
-  -double amount
-  +findLevel()
-  +updateId()
-  +getEmail()
-  +updateEmail()
+  -double id
+  +int total
+  +createLevel()
 }
-interface Loan {
+class Loan {
+  -double status
+  #boolean createdAt
+  -Date description
+  #int quantity
+  +String total
+  +processActive()
+  +calculateDescription()
+  +cancelUpdatedat()
+}
+class Withdrawal {
   +int updatedAt
   -int level
   +Date note
   #String code
   +String amount
-  +calculateLevel()
-  +sendScore()
-  +sendLevel()
-  +validateDescription()
+  +validateType()
+  +findType()
+  +deleteTotal()
+  +deleteAmount()
 }
-class Withdrawal {
-  #int total
+interface Teller {
+  +double description
+  #int name
   -int updatedAt
-  +float price
-  +updateDescription()
+  +float total
+  +validateNote()
 }
-class Teller {
-  -Date total
-  +boolean email
-  +getActive()
-  +calculateCreatedat()
+class Transaction {
+  -double active
+  #int name
+  #int total
+  +createUpdatedat()
 }
-abstract class Transaction {
+abstract class Account {
+  +double price
+  -double duration
   -double type
-  +long name
-  #boolean note
-  -Date duration
-  +Date price
-  +calculateTotal()
+  +calculatePhone()
+  +findName()
 }
-class Account {
-  +int score
-  #boolean price
-  #String type
-  +processAmount()
-  +cancelDescription()
-  +cancelDescription()
-  +calculatePrice()
-}
-Account --|> Loan
-Withdrawal --* Account
-note right of Deposit : Banking domain
+Loan --|> Transaction
+Transaction --o Deposit
+Withdrawal ..|> Interest
+Transaction --o Teller
+Account --|> Withdrawal
+Interest --> Teller : "1"
 @enduml

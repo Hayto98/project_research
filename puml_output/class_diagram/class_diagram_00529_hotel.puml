@@ -4,50 +4,52 @@ skinparam backgroundColor #F5F5F5
 class Staff {
   #Date address
   -boolean code
-  +createDuration()
-  +calculateName()
+  +updateQuantity()
+  +deleteCreatedat()
 }
 interface Reservation {
-  #long price
-  +boolean level
-  +boolean createdAt
-  +validateUpdatedat()
-  +processUpdatedat()
+  #long name
+  +boolean active
+  +boolean updatedAt
+  +long price
+  +double createdAt
+  +saveAmount()
+  +createAmount()
 }
 abstract class Booking {
-  #long price
-  #String description
-  -Date id
-  -double active
-  +saveActive()
-  +calculateScore()
-  +getId()
-  +validatePhone()
+  #String id
+  -Date active
+  -double email
+  +updatePhone()
+  +calculateActive()
+  +getPhone()
+  +getStatus()
 }
-class Restaurant {
-  #int active
-  #long address
-  #boolean updatedAt
-  +sendEmail()
-  +processPrice()
+interface Restaurant {
+  -String id
+  #Date address
+  +sendQuantity()
+  +findEmail()
 }
 class CheckOut {
-  #long name
-  -int active
-  +int description
-  +saveActive()
-  +processCreatedat()
+  +boolean amount
+  -double phone
+  -int score
+  +validateType()
+  +calculateEmail()
 }
 interface Guest {
-  #float total
-  +int type
-  -double level
-  #long amount
-  +int note
-  +createStatus()
+  +float active
+  +int quantity
+  +Date address
+  +processActive()
+  +calculateLevel()
+  +sendDuration()
+  +sendLevel()
 }
-Restaurant --o CheckOut
-Staff --* Booking
-Booking --> Guest : "1"
-note right of Staff : Hotel domain
+Guest --o Restaurant
+Restaurant --o Reservation
+Guest ..|> Staff
+Restaurant --> Guest : "1..*"
+Staff --|> Reservation
 @enduml

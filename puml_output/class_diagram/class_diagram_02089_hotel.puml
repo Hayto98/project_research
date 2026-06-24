@@ -5,55 +5,50 @@ skinparam classBorderColor #33691E
 class Invoice {
   -int address
   -long score
-  +setStatus()
-  +sendAmount()
+  +validateEmail()
+  +cancelScore()
 }
 class Staff {
-  #int description
-  #boolean duration
-  +long email
-  #double level
-  +validateDuration()
-  +createUpdatedat()
+  +long updatedAt
+  +boolean quantity
+  +Date description
+  +validateAmount()
 }
-abstract class Amenity {
-  -Date id
-  +Date price
-  +sendAmount()
-  +saveScore()
+interface Amenity {
+  +String updatedAt
+  -long phone
+  #String email
+  #Date duration
+  +boolean price
+  +validatePrice()
+  +getCreatedat()
 }
 class Restaurant {
   -int level
   -boolean updatedAt
-  +findCreatedat()
-  +processScore()
-  +calculateNote()
-  +calculatePhone()
+  +processAddress()
+  +updateCreatedat()
+  +cancelDescription()
+  +sendEmail()
 }
-interface CheckIn {
-  +double quantity
-  -double duration
-  #int amount
-  +String note
-  +boolean updatedAt
-  +sendActive()
+abstract class CheckIn {
+  -long note
+  +double total
+  +int phone
+  -double active
+  -boolean duration
+  +calculateAddress()
+  +setUpdatedat()
+}
+class CheckOut {
+  -boolean active
+  -int duration
+  +long status
   +setPrice()
-}
-interface CheckOut {
-  -double createdAt
-  +boolean name
-  #float address
-  #int score
-  -float duration
+  +cancelLevel()
   +setDuration()
-  +calculateType()
-  +findDuration()
-  +setType()
 }
-Amenity --* CheckOut
-Restaurant --* CheckOut
-CheckIn --|> Amenity
-CheckOut --|> Invoice
-Amenity ..> Restaurant : "0..1"
-note right of Invoice : Hotel domain
+Restaurant ..|> CheckOut
+CheckIn --> CheckOut : "0..1"
+Amenity --o CheckIn
 @enduml

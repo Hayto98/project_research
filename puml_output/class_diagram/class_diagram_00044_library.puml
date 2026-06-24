@@ -7,62 +7,65 @@ abstract class Catalog {
   +boolean quantity
   -float note
   #double updatedAt
-  +validateLevel()
+  +saveCreatedat()
+  +getDuration()
   +getCode()
-  +deleteCreatedat()
-  +cancelScore()
+  +processScore()
 }
-abstract class Reservation {
-  #float type
-  +boolean updatedAt
-  #String note
-  -double duration
-  +cancelScore()
+class Reservation {
+  #boolean amount
+  #float createdAt
+  +cancelId()
+  +findActive()
+  +setCreatedat()
+  +processDuration()
 }
-class Fine {
-  -Date id
-  +long amount
-  #String phone
-  +cancelQuantity()
-  +sendStatus()
-  +sendDescription()
-  +setAmount()
+interface Fine {
+  +boolean type
+  #long amount
+  #int code
+  +int duration
+  -float price
+  +validatePrice()
+  +processQuantity()
+  +findCode()
+  +findUpdatedat()
 }
 class Librarian {
-  +float level
-  +boolean active
-  +Date duration
-  +int phone
-  +saveStatus()
+  +int duration
+  -long quantity
+  #boolean active
+  #boolean status
+  -String description
+  +calculatePrice()
 }
 class Publisher {
-  +float address
-  -boolean updatedAt
-  +double total
-  #String createdAt
-  #double score
-  +cancelDescription()
-  +validatePrice()
+  #String description
+  -double score
+  -Date status
+  +getDuration()
+  +savePrice()
 }
-interface Member {
-  #float price
-  -boolean note
-  -float description
-  #long active
-  +setTotal()
-  +setScore()
+abstract class Member {
+  -boolean duration
+  +double total
+  #String code
+  +getUpdatedat()
+  +processPrice()
+  +validateType()
+  +savePrice()
 }
 class Renewal {
-  #String level
-  +float phone
-  +double type
-  -String code
-  +setStatus()
-  +sendScore()
+  +float price
+  #boolean address
+  #float duration
+  -boolean note
+  +updateQuantity()
+  +deleteEmail()
+  +cancelName()
+  +deleteName()
 }
-Reservation --> Member : "0..1"
-Renewal --o Publisher
-Member --|> Fine
-Catalog --* Fine
-note right of Catalog : Library domain
+Renewal --o Catalog
+Catalog --> Member : "0..1"
+Fine --* Publisher
 @enduml

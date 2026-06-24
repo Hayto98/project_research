@@ -8,52 +8,55 @@ abstract class Invoice {
   #float createdAt
   -boolean updatedAt
   -int level
-  +createType()
-  +cancelPrice()
-  +processPhone()
-  +deletePrice()
+  +sendAddress()
+  +validateName()
+  +findUpdatedat()
+  +createPrice()
 }
-class CheckOut {
-  -double price
-  #long description
-  +setPrice()
+abstract class CheckOut {
+  +double amount
+  +float price
+  -double name
+  #long active
+  +createPhone()
 }
 abstract class Booking {
+  -double code
   #boolean email
-  +int code
-  +calculateLevel()
-  +sendDuration()
-  +processAmount()
+  #double duration
+  #int createdAt
+  +float updatedAt
+  +calculateDescription()
+  +cancelCode()
+  +setId()
 }
 class Guest {
-  +double type
-  #Date id
-  +Date address
   #Date level
-  +calculateScore()
-  +updateLevel()
+  +Date id
+  #Date duration
+  +double type
+  +deleteUpdatedat()
+  +savePrice()
 }
-interface Room {
-  #long email
+class Room {
   -String id
+  #String level
   #String code
-  +sendNote()
+  #double address
+  +createPrice()
 }
 class Housekeeping {
-  -String phone
-  +float address
-  +Date score
-  -boolean id
-  #boolean level
-  +updateStatus()
-  +updatePhone()
-  +createScore()
-  +processAmount()
+  +int score
+  +Date id
+  -boolean address
+  #boolean total
+  +saveNote()
+  +createPhone()
+  +cancelNote()
+  +deleteCode()
 }
-Invoice --o CheckOut
-Room --* Guest
-Booking ..> Invoice : "1"
-Invoice --o Room
-Housekeeping ..|> Invoice
-note right of Invoice : Hotel domain
+Room ..|> Guest
+Guest ..> Invoice : "0..1"
+Guest --o Room
+Booking --|> Housekeeping
 @enduml

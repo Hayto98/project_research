@@ -4,15 +4,16 @@ skinparam shadowing true
 class Category {
   -Date updatedAt
   +Date code
-  +saveDescription()
+  +createType()
 }
-abstract class Order {
-  #String quantity
-  +Date price
-  #int createdAt
-  +calculateDescription()
-  +getAmount()
-  +sendTotal()
+class Order {
+  +Date createdAt
+  #int quantity
+  -double price
+  +float duration
+  +float code
+  +getCreatedat()
+  +calculateQuantity()
 }
 class Warehouse {
   -long description
@@ -20,46 +21,41 @@ class Warehouse {
   +float name
   -double email
   -float code
-  +createAddress()
-  +setCode()
+  +validateAmount()
+  +findQuantity()
 }
-interface Wishlist {
-  #float status
-  -int type
-  #Date address
-  +validateNote()
-  +deleteName()
-  +processDuration()
+class Wishlist {
+  +Date level
+  #float updatedAt
+  +calculateName()
+  +getUpdatedat()
+  +updateScore()
+  +getDescription()
 }
-interface Invoice {
-  -String description
-  -float phone
-  +double amount
-  +getStatus()
-  +setScore()
-  +processPhone()
-  +createPrice()
+class Invoice {
+  +String address
+  -boolean duration
+  #float note
+  +validateType()
+  +saveQuantity()
 }
-abstract class Shipment {
-  #double score
-  -boolean amount
-  #long phone
-  #float code
-  #int status
-  +deleteStatus()
+class Shipment {
+  +double phone
+  #Date code
+  -String duration
+  +validateId()
 }
-class Cart {
-  +double code
-  -boolean active
-  -int quantity
-  -Date description
-  +updateName()
-  +calculateAddress()
-  +getName()
+interface Cart {
+  #float phone
+  +long email
+  #Date price
+  #boolean score
+  #String total
+  +sendUpdatedat()
 }
-Category --> Invoice : "*"
-Category --|> Order
-Category --|> Cart
-Shipment ..|> Warehouse
-note right of Category : Ecommerce domain
+Warehouse ..> Invoice : "1..*"
+Invoice ..|> Cart
+Cart ..|> Category
+Category --* Order
+Category --* Invoice
 @enduml

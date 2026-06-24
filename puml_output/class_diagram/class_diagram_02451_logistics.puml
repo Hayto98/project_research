@@ -5,49 +5,48 @@ skinparam classBorderColor #455A64
 interface Tracking {
   +float description
   -double createdAt
-  +sendDuration()
+  +findDuration()
 }
-class Customer {
-  +float quantity
-  +double status
-  -double updatedAt
-  +calculateStatus()
-  +calculateLevel()
-  +sendAmount()
-  +setLevel()
+interface Customer {
+  +float createdAt
+  +String quantity
+  +sendScore()
 }
-class Driver {
-  +float address
-  #float active
-  -int price
-  +String total
-  +sendStatus()
+abstract class Driver {
+  +Date type
+  #int price
+  -long status
+  #boolean level
+  -Date amount
+  +updateDuration()
+  +cancelType()
+  +saveLevel()
+  +sendActive()
 }
 class Inventory {
-  -double quantity
-  +float code
-  +cancelDescription()
-  +findCreatedat()
+  #String updatedAt
+  +String code
+  -String id
+  +saveAmount()
+  +setType()
+  +saveLevel()
 }
 class Manifest {
-  #long createdAt
-  -long total
-  +getDescription()
-  +setCreatedat()
-  +validateActive()
+  +double createdAt
+  #long phone
+  -long status
+  +setAmount()
+  +updatePrice()
+  +getEmail()
 }
 class Warehouse {
-  #int updatedAt
-  #int email
-  -double id
-  -boolean quantity
-  #float description
-  +validatePrice()
-  +createPrice()
-  +createPrice()
+  #double address
+  +long active
+  +long code
+  +processEmail()
+  +findPhone()
 }
-Driver ..> Customer : "0..1"
-Warehouse ..|> Tracking
-Customer --o Tracking
-note right of Tracking : Logistics domain
+Driver --o Inventory
+Manifest --* Driver
+Inventory ..> Driver : "*"
 @enduml

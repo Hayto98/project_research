@@ -7,29 +7,38 @@ class Room {
   +boolean description
   #long score
   #long duration
-  +validateScore()
-  +saveEmail()
-  +calculateStatus()
+  +deleteTotal()
+  +getPrice()
+  +calculateCreatedat()
 }
-abstract class Amenity {
-  #boolean email
-  +long level
-  +boolean code
-  +Date price
-  +saveDescription()
+interface Amenity {
+  #long price
+  -boolean status
+  +float note
+  #double active
+  +findEmail()
+  +createQuantity()
 }
 class Housekeeping {
-  +String amount
-  -boolean phone
-  +createPrice()
-  +createScore()
+  +int status
+  #long description
+  +String email
+  +updateAmount()
+  +sendAmount()
+  +findAddress()
 }
 class Payment {
-  -float duration
-  +Date status
-  +setCreatedat()
+  -float quantity
+  +Date score
+  +String id
+  +float level
+  +double status
+  +cancelName()
+  +cancelId()
+  +findQuantity()
+  +getId()
 }
-Payment ..> Amenity : "1..*"
-Housekeeping --* Amenity
-note right of Room : Hotel domain
+Payment --o Amenity
+Payment ..|> Housekeeping
+Amenity --> Payment : "*"
 @enduml

@@ -4,40 +4,38 @@ skinparam defaultFontSize 11
 abstract class Billing {
   +float price
   -boolean updatedAt
-  +deleteDescription()
-  +saveStatus()
-  +calculateLevel()
+  +sendLevel()
+  +updateType()
+  +getPrice()
 }
-interface MedicalRecord {
-  -long updatedAt
-  #int price
-  +calculateCode()
+class MedicalRecord {
+  #boolean price
+  +int level
+  +calculateTotal()
+  +deleteCode()
+  +findQuantity()
+  +deleteEmail()
 }
 class Doctor {
-  -int status
-  +float description
-  #Date phone
-  +deleteLevel()
-  +deleteStatus()
-  +findCode()
+  -int price
+  +Date code
+  +cancelUpdatedat()
+  +createAmount()
 }
-class Diagnosis {
-  -long level
-  +String phone
-  #String address
-  +validateLevel()
+abstract class Diagnosis {
+  #Date id
+  #float quantity
+  +Date description
+  +validateDescription()
 }
 class Treatment {
-  +long id
-  #boolean description
-  -long address
-  +sendPhone()
-  +calculateActive()
-  +getDescription()
-  +getNote()
+  -long description
+  +String level
+  #String phone
+  +long address
+  +getTotal()
+  +setName()
 }
-Diagnosis ..> Treatment : "1"
-Doctor ..|> MedicalRecord
-Treatment --> Doctor : "0..1"
-note right of Billing : Healthcare domain
+Doctor --* Billing
+Treatment --* Diagnosis
 @enduml

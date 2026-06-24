@@ -9,34 +9,35 @@ interface Account {
   #Date score
   #float updatedAt
   +String quantity
-  +saveName()
-  +deletePhone()
+  +cancelDuration()
+  +cancelScore()
 }
 class Transaction {
-  #boolean score
-  -double name
-  +double amount
-  +boolean active
-  +int id
-  +getActive()
+  #String phone
+  +Date duration
+  #String type
+  +processType()
+  +getLevel()
+  +createName()
+  +validatePhone()
 }
-class Withdrawal {
-  -int createdAt
-  -double total
-  +String name
-  +deleteDuration()
-  +saveNote()
+interface Withdrawal {
+  +float amount
+  #int name
+  +validateType()
+  +sendPrice()
 }
 class Deposit {
-  #float note
-  -Date code
-  +float id
-  #boolean score
-  +calculateQuantity()
-  +deleteScore()
-  +saveCode()
+  +String name
+  +int price
+  #Date createdAt
+  -Date quantity
+  -long note
+  +calculateTotal()
+  +cancelUpdatedat()
+  +getLevel()
+  +updateScore()
 }
-Account --|> Transaction
-Deposit ..> Withdrawal : "1..*"
-note right of Account : Banking domain
+Account --o Withdrawal
+Transaction --> Withdrawal : "1..*"
 @enduml

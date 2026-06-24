@@ -3,39 +3,41 @@ skinparam monochrome true
 interface Member {
   #long duration
   #int createdAt
-  +processPrice()
+  +getDuration()
 }
-class Reservation {
-  +Date total
-  +float updatedAt
-  -double address
-  +setName()
+abstract class Reservation {
+  +Date quantity
+  +float amount
+  -double total
+  #String updatedAt
+  +Date address
+  +createDuration()
 }
 abstract class Renewal {
-  +float code
-  -float email
-  +double updatedAt
-  #long name
-  -long active
-  +createCreatedat()
-  +calculateScore()
+  +Date email
+  +String updatedAt
+  +findTotal()
+  +deleteId()
+  +updateDuration()
 }
-class Catalog {
-  -long createdAt
-  +Date active
-  +deletePhone()
+abstract class Catalog {
+  +double note
+  #String phone
+  +int description
+  #double email
+  +setLevel()
+  +validatePrice()
+  +getPrice()
 }
 class Publisher {
-  #long note
-  -double price
+  -float phone
   -Date status
-  +int id
-  +updatePhone()
-  +cancelDuration()
+  +String email
+  +deletePhone()
+  +validateName()
+  +findAmount()
 }
-Reservation --> Renewal : "*"
-Catalog --|> Reservation
-Catalog ..|> Renewal
-Publisher ..|> Catalog
-note right of Member : Library domain
+Reservation ..> Publisher : "0..1"
+Reservation --> Renewal : "0..1"
+Renewal --o Catalog
 @enduml

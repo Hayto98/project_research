@@ -7,54 +7,56 @@ class Branch {
   #Date duration
   -int total
   #float price
-  +processLevel()
-  +saveScore()
+  +calculateAmount()
+  +cancelActive()
 }
-class Reservation {
-  +long email
-  -int quantity
-  +findCode()
-  +createName()
-  +calculateType()
+interface Reservation {
+  -long id
+  +Date email
+  -Date quantity
+  +long createdAt
+  +validateStatus()
 }
-class Loan {
-  -Date name
-  +float status
-  +setLevel()
+abstract class Loan {
+  -Date quantity
+  +float level
+  #String id
+  +Date name
+  #boolean status
+  +setName()
+  +createCode()
+  +createStatus()
+  +processTotal()
 }
-interface Author {
-  +int id
-  -float amount
-  -float score
-  -String note
-  +int phone
-  +getNote()
+class Author {
+  -float description
+  -String price
+  +processPrice()
+  +processAddress()
 }
-abstract class Shelf {
-  #float amount
-  +double updatedAt
-  #double code
-  +cancelAddress()
+class Shelf {
+  +int note
+  +String total
+  +deleteAmount()
+  +setId()
 }
-interface Member {
-  +Date description
-  +String address
-  #int updatedAt
-  #float id
-  +deleteId()
-  +saveScore()
-  +createDescription()
+abstract class Member {
+  #long duration
+  +Date address
+  +findAddress()
+  +saveDescription()
+  +processName()
 }
 class Book {
-  +long name
-  #long note
-  +String phone
-  #float quantity
-  +calculateActive()
-  +deleteActive()
-  +getNote()
+  +boolean status
+  -float level
+  +setName()
+  +setAmount()
 }
-Loan --> Author : "0..1"
 Loan --|> Reservation
-note right of Branch : Library domain
+Book --* Member
+Member --o Branch
+Member --* Loan
+Reservation --> Loan : "1..*"
+Reservation ..> Branch : "1..*"
 @enduml

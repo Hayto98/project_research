@@ -8,44 +8,43 @@ class Enrollment {
   #float price
   +int id
   +int quantity
-  +sendType()
-  +processScore()
-  +deletePhone()
-  +saveAmount()
+  +calculatePrice()
+  +findActive()
+  +cancelAmount()
+  +setType()
 }
 class Assignment {
-  -long name
-  #boolean score
-  +Date duration
-  +Date level
-  -long description
-  +validateQuantity()
+  #String updatedAt
+  +Date note
+  +long name
+  +cancelDuration()
+  +getQuantity()
+  +saveId()
 }
 class Classroom {
-  #int phone
-  #Date active
-  #String price
-  +calculateQuantity()
-  +calculateEmail()
+  #float quantity
+  +long status
+  #double phone
+  #int duration
+  #Date id
+  +findName()
 }
-abstract class Student {
-  #long duration
-  #float active
-  +float name
-  #long quantity
-  +boolean updatedAt
-  +processNote()
+interface Student {
+  -Date price
+  -float quantity
+  #double total
   +validatePrice()
-  +findScore()
 }
-abstract class Department {
+interface Department {
+  #long updatedAt
   +boolean score
-  -double level
-  +setEmail()
-  +getActive()
+  -double quantity
+  #double duration
+  +saveName()
+  +sendUpdatedat()
   +sendAmount()
 }
-Student --> Enrollment : "1"
-Enrollment ..|> Assignment
-note right of Enrollment : Education domain
+Enrollment --> Assignment : "1..*"
+Student --|> Classroom
+Classroom --> Enrollment : "0..1"
 @enduml

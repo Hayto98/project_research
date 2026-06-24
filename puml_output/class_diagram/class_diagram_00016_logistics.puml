@@ -6,52 +6,57 @@ skinparam defaultFontSize 11
 class Route {
   #Date score
   +double status
-  +cancelDuration()
-  +cancelPhone()
-  +setType()
-  +createAddress()
+  +findLevel()
+  +deleteDescription()
+  +setId()
+  +savePrice()
 }
 class Package {
-  -int email
-  #long amount
-  +saveEmail()
+  -int type
+  #Date quantity
+  +getDescription()
 }
 class Warehouse {
-  +double score
-  #float updatedAt
-  #String quantity
-  +sendTotal()
-  +getCode()
+  +Date address
+  #long createdAt
+  +Date email
+  +processNote()
+  +deleteType()
 }
-abstract class Shipment {
+interface Shipment {
+  #float quantity
+  #String status
+  +float type
+  +updateDuration()
+  +getLevel()
+  +cancelPrice()
+  +createDuration()
+}
+interface FuelLog {
   #Date total
   #float address
   -int price
-  +saveActive()
+  +updateAddress()
 }
-class FuelLog {
-  -int duration
-  +long status
-  +double type
-  +double code
-  +getId()
-}
-class Tracking {
-  -float active
-  +boolean note
-  +long total
-  +setAmount()
-  +cancelCode()
-  +deleteEmail()
-  +sendEmail()
+interface Tracking {
+  #String quantity
+  -int status
+  +long type
+  +sendCreatedat()
+  +validateQuantity()
 }
 abstract class Vehicle {
-  +float total
-  #String phone
-  +getStatus()
+  -boolean name
+  +boolean id
+  +calculateQuantity()
+  +saveCode()
+  +processAddress()
+  +validatePhone()
 }
-FuelLog --|> Warehouse
-Vehicle ..> FuelLog : "1"
-Tracking --|> Warehouse
-note right of Route : Logistics domain
+Route --o Warehouse
+Route --> Package : "1"
+Package --> Warehouse : "1..*"
+Tracking ..> Shipment : "1"
+Shipment ..|> Warehouse
+Vehicle --|> Tracking
 @enduml

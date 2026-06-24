@@ -5,38 +5,38 @@ skinparam classBorderColor #F57F17
 abstract class Doctor {
   -boolean note
   -String duration
-  +findPhone()
-  +sendNote()
-  +validateQuantity()
-  +deleteName()
+  +deleteType()
+  +findType()
+  +createAmount()
+  +setAddress()
 }
-class Treatment {
-  +Date description
-  +int active
-  #int name
-  +savePhone()
-  +calculatePhone()
-  +findEmail()
-  +calculateActive()
+abstract class Treatment {
+  #int quantity
+  +boolean amount
+  +String name
+  #String status
+  +findDescription()
+  +findAddress()
 }
-class Nurse {
-  +int note
-  #float score
-  #boolean updatedAt
-  #double active
-  +saveDuration()
+interface Nurse {
+  #String phone
+  #Date price
+  -double duration
+  #int email
+  #boolean level
+  +setType()
+  +findStatus()
 }
 interface Diagnosis {
-  #long phone
-  +double quantity
-  -Date status
-  +createCode()
-  +setUpdatedat()
-  +calculateTotal()
-  +cancelName()
+  +Date name
+  -int active
+  -double createdAt
+  #float phone
+  #double quantity
+  +getType()
+  +processAmount()
+  +processNote()
 }
-Treatment --* Diagnosis
-Doctor ..> Diagnosis : "1..*"
-Doctor --> Nurse : "1"
-note right of Doctor : Healthcare domain
+Diagnosis --> Treatment : "1"
+Nurse ..|> Diagnosis
 @enduml

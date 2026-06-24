@@ -3,34 +3,36 @@ skinparam ArrowColor #555555
 abstract class Ward {
   +String duration
   #double level
-  +findScore()
-  +saveQuantity()
+  +calculateDescription()
+  +calculatePrice()
 }
-abstract class Prescription {
-  #boolean name
-  #float phone
-  -boolean duration
-  +updateScore()
-  +calculateName()
-  +createCode()
+class Prescription {
+  #Date updatedAt
+  #long name
+  +boolean phone
+  -String level
+  -String address
+  +sendStatus()
+  +calculateNote()
 }
-interface Doctor {
-  -double createdAt
-  +Date description
-  +Date score
-  +updateCode()
+class Doctor {
+  +String price
+  #String name
+  #long status
+  -String level
+  +setCreatedat()
+  +calculateScore()
+  +findUpdatedat()
+  +cancelNote()
 }
-class Hospital {
-  #int quantity
-  -long id
-  +Date price
-  +int email
-  +saveNote()
-  +createStatus()
-  +validateName()
+abstract class Hospital {
+  #double createdAt
+  -Date amount
+  +float updatedAt
+  -float quantity
+  +calculatePrice()
 }
 Ward ..|> Doctor
 Hospital --o Doctor
 Hospital ..> Ward : "*"
-note right of Ward : Healthcare domain
 @enduml

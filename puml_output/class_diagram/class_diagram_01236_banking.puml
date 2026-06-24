@@ -9,52 +9,43 @@ abstract class Teller {
   #boolean level
   #Date status
   +Date duration
-  +processPrice()
-  +sendId()
-  +updatePhone()
+  +deleteActive()
+  +processType()
+  +getScore()
 }
 class Card {
-  -int updatedAt
-  +int level
-  +float duration
-  #float id
-  #float createdAt
-  +updateName()
-  +savePhone()
-  +processScore()
-  +deleteLevel()
+  #int phone
+  #int id
+  +int price
+  +getTotal()
+  +findNote()
+  +createNote()
 }
-abstract class Transfer {
+class Transfer {
+  +String score
+  #long price
+  +calculatePrice()
+  +saveAddress()
+  +getCode()
+  +processAddress()
+}
+abstract class Branch {
   -boolean code
   +Date name
   -double address
   -Date duration
-  +sendLevel()
-  +getType()
-  +cancelScore()
-}
-class Branch {
-  +float status
-  #double createdAt
-  -int code
-  -boolean quantity
-  #String type
-  +deleteId()
-  +calculateCode()
-  +getStatus()
-  +getTotal()
+  +calculateDuration()
+  +savePrice()
+  +calculateId()
 }
 abstract class Beneficiary {
-  #long email
-  #double note
-  +double code
+  +long price
   -String status
-  -long active
-  +calculateScore()
-  +updateCreatedat()
+  #double createdAt
+  +sendNote()
+  +cancelPhone()
+  +sendAmount()
 }
-Card ..> Branch : "1..*"
-Card ..|> Beneficiary
-Beneficiary --> Branch : "1..*"
-note right of Teller : Banking domain
+Teller ..|> Branch
+Teller ..> Beneficiary : "1"
 @enduml

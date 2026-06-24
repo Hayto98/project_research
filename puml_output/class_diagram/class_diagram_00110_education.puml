@@ -4,39 +4,37 @@ class Attendance {
   +String id
   +float description
   #float updatedAt
-  +sendAmount()
-  +updateNote()
-  +validatePhone()
+  +cancelAmount()
+  +calculateAddress()
+  +validateStatus()
 }
-interface Classroom {
-  #long level
-  #boolean name
-  +validateScore()
-  +cancelCreatedat()
-  +processId()
+class Classroom {
+  #boolean address
+  #float phone
+  -float status
+  -boolean name
+  #float duration
+  +validateUpdatedat()
+  +calculateLevel()
 }
-abstract class Course {
+class Course {
+  #int price
   +double type
-  +boolean duration
+  +boolean level
   -Date description
   #int code
-  -long score
-  +sendActive()
-  +createCode()
-  +validateQuantity()
+  +findScore()
+  +getScore()
+  +createQuantity()
 }
-class Department {
-  +float status
-  #String createdAt
-  -String duration
-  #double name
-  +findCode()
-  +cancelAddress()
-  +findTotal()
-  +setAddress()
+interface Department {
+  -String code
+  +Date address
+  +String quantity
+  +float id
+  +cancelType()
 }
-Attendance ..|> Department
-Attendance --* Course
-Course --> Classroom : "1..*"
-note right of Attendance : Education domain
+Attendance --o Course
+Department --|> Course
+Course --o Department
 @enduml

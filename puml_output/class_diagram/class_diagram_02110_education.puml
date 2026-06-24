@@ -6,63 +6,68 @@ skinparam ArrowColor #555555
 class Student {
   #boolean duration
   -boolean price
-  +sendScore()
-  +createId()
-  +saveAddress()
+  +getScore()
+  +saveActive()
+  +setTotal()
 }
 class Library {
-  -float createdAt
-  #float name
-  +cancelDuration()
-  +cancelDescription()
+  -float status
+  #float code
+  +float createdAt
+  #boolean name
+  +sendCreatedat()
+  +calculateLevel()
 }
-abstract class Classroom {
+interface Classroom {
   #Date updatedAt
   -String phone
-  +processCode()
-  +createAddress()
-  +createLevel()
-}
-interface Assignment {
-  -int phone
-  +Date note
-  +createName()
-  +updateAmount()
   +calculateAmount()
+  +getDuration()
+  +sendStatus()
 }
-interface Course {
-  -String id
-  -int active
-  #int email
-  -long type
-  +setUpdatedat()
-  +sendCreatedat()
-  +setPrice()
-  +setUpdatedat()
+class Assignment {
+  +Date address
+  -Date email
+  #Date score
+  -double active
+  +createScore()
+  +createTotal()
+}
+class Course {
+  +boolean name
+  #float updatedAt
+  #float amount
+  #float total
+  +setName()
+  +createDescription()
+  +findStatus()
 }
 class Enrollment {
+  -long price
+  #double status
+  +int duration
+  #Date amount
+  +String updatedAt
+  +validateEmail()
+  +processScore()
+  +createScore()
+  +updateId()
+}
+class Grade {
   #long score
   #boolean name
   -float type
   -int address
   #Date note
-  +sendDuration()
-  +sendScore()
-  +findNote()
-  +calculateLevel()
+  +getCreatedat()
+  +setId()
+  +saveActive()
+  +sendStatus()
 }
-class Grade {
-  +boolean note
-  #long phone
-  +findLevel()
-  +cancelNote()
-  +saveLevel()
-  +createPhone()
-}
-Student --> Grade : "0..1"
-Classroom --* Student
-Library --> Assignment : "0..1"
-Library ..|> Student
-Course ..|> Enrollment
-note right of Student : Education domain
+Enrollment --o Assignment
+Course --|> Classroom
+Grade --* Assignment
+Library ..> Course : "1..*"
+Assignment --> Enrollment : "*"
+Enrollment --* Course
 @enduml

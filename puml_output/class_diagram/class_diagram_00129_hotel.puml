@@ -6,50 +6,47 @@ skinparam ArrowColor #555555
 class Service {
   -String name
   -boolean status
-  +createQuantity()
+  +updateLevel()
 }
 class Invoice {
+  -float id
   -float address
-  -float type
-  +cancelNote()
-  +getDuration()
-  +cancelType()
+  -boolean type
+  +savePhone()
+  +deleteStatus()
+  +findDescription()
+  +processId()
 }
-class CheckIn {
-  #long amount
-  +boolean level
-  +Date price
-  -long description
-  #Date total
-  +setPhone()
-  +getId()
-  +deleteEmail()
-  +getActive()
+abstract class CheckIn {
+  +float price
+  -boolean amount
+  -String duration
+  +createTotal()
 }
-class Restaurant {
+abstract class Restaurant {
+  +String score
+  +Date note
+  -String status
+  #Date phone
+  +getName()
+}
+interface Booking {
   -boolean id
   -float description
-  +getDescription()
-  +calculateUpdatedat()
-  +saveScore()
+  +calculateTotal()
+  +calculateLevel()
+  +processCode()
 }
-class Booking {
-  +float createdAt
-  -float total
-  +boolean duration
-  +int email
-  +createUpdatedat()
-  +setDuration()
-}
-interface Payment {
+class Payment {
+  -int updatedAt
+  #float score
   -String status
-  #int name
-  +String price
-  -boolean level
-  +getPrice()
-  +savePrice()
+  -float address
+  +boolean createdAt
+  +setLevel()
+  +validateType()
 }
-Service --> Booking : "1"
-Service --|> Invoice
-note right of Service : Hotel domain
+CheckIn --|> Invoice
+Booking --* Payment
+Service ..> Payment : "*"
 @enduml

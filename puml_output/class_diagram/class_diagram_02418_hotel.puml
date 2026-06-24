@@ -8,69 +8,58 @@ abstract class Reservation {
   #String type
   #double email
   +String quantity
-  +setActive()
-  +setUpdatedat()
-  +calculateEmail()
+  +deleteQuantity()
+  +deleteType()
+  +createDescription()
 }
 class CheckIn {
-  #double name
-  #float note
-  +float description
-  -Date score
-  +setId()
-  +createUpdatedat()
+  #long total
+  +double email
+  #int id
+  +sendActive()
+  +deleteActive()
 }
-abstract class CheckOut {
-  #boolean type
-  #String price
-  +saveNote()
+interface CheckOut {
+  +String email
+  -int createdAt
+  +setUpdatedat()
   +findLevel()
-  +calculateCreatedat()
-  +saveId()
+  +sendName()
+  +updateScore()
 }
-class Room {
+abstract class Room {
+  #float type
+  #double note
+  +sendDuration()
+  +setName()
+}
+class Amenity {
   +Date address
   -String total
   +long phone
   +String duration
   #int price
-  +cancelQuantity()
-  +sendStatus()
-  +deleteAmount()
-  +createActive()
+  +findUpdatedat()
+  +updateLevel()
+  +sendQuantity()
+  +findEmail()
 }
-class Amenity {
-  -float status
-  #long level
-  +boolean createdAt
-  -boolean phone
-  +validateNote()
-  +calculateDuration()
-  +deletePrice()
-  +createCreatedat()
-}
-interface Booking {
-  +double code
-  +boolean address
-  -String note
+class Booking {
+  +long amount
+  +Date quantity
+  #int active
+  +createPrice()
+  +deletePhone()
   +sendStatus()
-  +sendTotal()
-  +sendId()
-  +validateNote()
 }
 class Service {
-  #float phone
-  -long createdAt
-  +findAmount()
-  +findName()
-  +createScore()
-  +createDuration()
+  -long level
+  -double address
+  #float active
+  +sendScore()
+  +findScore()
 }
-Room ..> Service : "1..*"
-CheckIn --o Service
-Reservation ..|> CheckOut
-Service ..|> Booking
-Reservation ..> Booking : "0..1"
-Booking ..|> CheckOut
-note right of Reservation : Hotel domain
+Amenity --|> CheckIn
+CheckOut --o Booking
+Reservation --|> Room
 @enduml

@@ -8,55 +8,61 @@ class DeliveryNote {
   -int level
   -int active
   #Date address
-  +processName()
+  +validateName()
 }
 class Warehouse {
-  -int code
-  +long duration
-  +boolean updatedAt
-  +boolean name
-  +validateNote()
-  +createAddress()
-  +findStatus()
+  #Date email
+  +long code
+  +String level
+  -int updatedAt
+  +cancelLevel()
 }
-class Inventory {
-  #long total
-  +Date quantity
-  +validateTotal()
-  +calculateName()
+interface Inventory {
+  #String phone
+  #Date note
+  -String quantity
+  -long address
+  +updateName()
+  +deleteStatus()
+  +cancelScore()
 }
-class Shipment {
-  +double updatedAt
-  +Date quantity
-  +processTotal()
+interface Shipment {
+  +int address
+  #String total
+  #int price
+  +updateType()
+  +findActive()
+  +saveId()
 }
 class Manifest {
-  #long code
-  +String name
-  #String description
-  #double updatedAt
-  +cancelDescription()
-  +setNote()
-  +findType()
-  +createUpdatedat()
+  +boolean total
+  +Date updatedAt
+  -float email
+  +String code
+  #String name
+  +sendScore()
+  +processId()
+  +findLevel()
+  +setType()
 }
 class Customer {
-  +Date phone
+  #Date type
+  #long quantity
+  #long updatedAt
   #float email
-  +int score
-  +createEmail()
-  +getCreatedat()
-  +processDuration()
-  +sendId()
+  +Date score
+  +validateCreatedat()
 }
-class Depot {
-  -int price
-  #Date createdAt
-  #Date phone
-  +validateName()
-  +validateDescription()
+abstract class Depot {
+  #boolean email
+  +long name
+  +double createdAt
+  +long type
+  +saveAddress()
+  +findDuration()
+  +validatePrice()
 }
-Shipment ..> Customer : "1..*"
-Warehouse --o Shipment
-note right of DeliveryNote : Logistics domain
+Inventory --* DeliveryNote
+Warehouse --o DeliveryNote
+Customer --* Depot
 @enduml

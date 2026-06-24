@@ -5,33 +5,31 @@ interface Inventory {
   +float address
   -Date note
   +validateDuration()
-  +setPhone()
+  +findDescription()
 }
-abstract class Shipment {
-  +int createdAt
-  #long type
-  +deleteDescription()
-  +calculateStatus()
-  +updateScore()
-  +sendCreatedat()
+class Shipment {
+  +int type
+  #long id
+  -int createdAt
+  +float duration
+  +calculateDescription()
+  +deleteQuantity()
+  +deleteAddress()
+  +cancelAmount()
 }
-class DeliveryNote {
-  +double level
-  #boolean email
-  +boolean code
-  +processDescription()
-  +deleteId()
+interface DeliveryNote {
+  #Date name
+  +int amount
+  -Date email
+  +processId()
+  +saveAddress()
 }
-interface Manifest {
-  -String address
-  -int score
-  #String price
-  +findScore()
-  +updateAmount()
-  +findStatus()
-  +getScore()
+abstract class Manifest {
+  +Date amount
+  -boolean id
+  -long score
+  +updateEmail()
 }
-Inventory --|> Shipment
-Inventory --> DeliveryNote : "0..1"
-note right of Inventory : Logistics domain
+Inventory --o DeliveryNote
+Shipment ..> Inventory : "1"
 @enduml

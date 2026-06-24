@@ -8,16 +8,17 @@ abstract class Schedule {
   +double note
   +String address
   +boolean score
-  +getDuration()
-  +processDuration()
-  +createType()
+  +calculateEmail()
+  +saveTotal()
+  +findUpdatedat()
 }
-class Book {
-  -String price
-  +float updatedAt
-  +findPhone()
-  +sendDescription()
-  +sendAmount()
+abstract class Book {
+  +long type
+  +String code
+  -float id
+  #long price
+  +createStatus()
+  +updateType()
 }
 abstract class Enrollment {
   +long price
@@ -25,32 +26,41 @@ abstract class Enrollment {
   +float amount
   #long total
   #String description
-  +updateScore()
+  +sendId()
 }
-class Exam {
-  +int level
-  -long email
-  +updateDescription()
-  +cancelTotal()
+interface Exam {
+  +int duration
+  -long level
+  +int name
+  +float email
+  +calculateScore()
+  +sendTotal()
+  +deleteActive()
+  +saveType()
 }
 class Department {
   -double type
-  +float phone
-  +calculateTotal()
-  +processPrice()
-  +calculateNote()
-  +findLevel()
+  -double updatedAt
+  #double score
+  #boolean duration
+  #String total
+  +saveScore()
+  +cancelDuration()
+  +processNote()
 }
-interface Teacher {
-  -Date duration
-  #int quantity
-  +createDescription()
-  +getName()
-  +createTotal()
-  +createEmail()
+class Teacher {
+  -long quantity
+  -float description
+  +boolean name
+  +boolean score
+  +int duration
+  +calculateStatus()
+  +saveUpdatedat()
+  +sendPrice()
 }
-Department --> Book : "0..1"
-Book ..> Enrollment : "*"
 Schedule --* Exam
-note right of Schedule : Education domain
+Enrollment --o Book
+Schedule --> Enrollment : "1"
+Book --|> Teacher
+Teacher ..|> Book
 @enduml

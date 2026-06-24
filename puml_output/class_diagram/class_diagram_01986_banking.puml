@@ -4,52 +4,49 @@ skinparam defaultFontSize 13
 class Deposit {
   -long id
   -int amount
-  +cancelAddress()
-  +validateType()
-  +deleteNote()
+  +updateCreatedat()
+  +setAmount()
+  +getPrice()
 }
-class Statement {
-  -float name
-  #int status
-  +getPhone()
-  +updateAmount()
-  +updateTotal()
+interface Statement {
+  +String phone
+  +String type
+  -float amount
+  #int note
+  +cancelTotal()
+  +processAddress()
+  +getPrice()
 }
-interface Beneficiary {
-  #Date phone
-  -float id
-  +calculateDuration()
-  +cancelAmount()
+class Beneficiary {
+  #String amount
+  -String createdAt
+  #Date total
+  +processScore()
+  +deleteTotal()
+  +setLevel()
 }
 abstract class Card {
-  +double id
-  +double status
-  #boolean duration
-  -String active
-  -float level
-  +calculatePrice()
+  +float total
+  +boolean type
+  +float id
+  +getPhone()
 }
-abstract class Interest {
-  #Date duration
-  +float note
-  +String createdAt
-  #long name
-  +findAddress()
-  +updateStatus()
+class Interest {
+  +double score
+  -double active
+  -boolean quantity
+  -float name
+  #int phone
+  +createType()
 }
 class Customer {
-  +String code
-  -int amount
-  +long note
-  #float active
-  -Date price
-  +findCreatedat()
-  +savePrice()
-  +findActive()
-  +cancelEmail()
+  +Date id
+  -int email
+  +updateActive()
 }
-Deposit --|> Card
-Statement --|> Customer
-Interest ..> Statement : "0..1"
-note right of Deposit : Banking domain
+Deposit --o Statement
+Interest --|> Card
+Deposit ..|> Card
+Deposit --> Beneficiary : "1..*"
+Customer --o Interest
 @enduml

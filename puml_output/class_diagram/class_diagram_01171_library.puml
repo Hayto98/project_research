@@ -9,59 +9,59 @@ interface Reservation {
   +boolean description
   +Date type
   -boolean duration
-  +cancelUpdatedat()
+  +findDescription()
 }
-abstract class Librarian {
-  -int active
-  +boolean updatedAt
-  +processNote()
-  +createType()
-  +findActive()
+class Librarian {
+  +boolean status
+  -double active
+  -long updatedAt
+  -Date quantity
+  #Date score
+  +validateName()
+  +sendEmail()
+  +sendAmount()
+  +processLevel()
 }
-abstract class Author {
-  #Date createdAt
-  -float score
-  +float total
-  #String updatedAt
-  -boolean name
-  +cancelNote()
-  +sendDuration()
-  +updateStatus()
-  +deleteStatus()
+class Author {
+  #String quantity
+  -boolean id
+  +saveDuration()
+  +getActive()
+  +createName()
+  +setAddress()
 }
 interface Branch {
-  +double amount
-  -float code
-  -float active
-  #int score
-  +sendActive()
-  +saveScore()
-  +setPrice()
+  #float status
+  #long description
+  #float duration
+  +setDescription()
+  +findType()
 }
-class Loan {
-  #boolean description
-  +long type
-  #Date name
-  -Date createdAt
-  #long total
-  +sendDuration()
-  +calculateType()
-  +saveLevel()
+interface Loan {
+  -float total
+  #int note
+  +sendQuantity()
+  +createDescription()
+  +sendType()
 }
-class Fine {
-  #boolean amount
-  +long status
-  +processPhone()
+interface Fine {
+  -int price
+  -String email
+  +updateEmail()
+  +sendQuantity()
 }
-class Member {
-  -String createdAt
-  +float email
-  +calculatePhone()
+interface Member {
+  #Date email
+  -long active
+  #boolean type
+  +sendName()
+  +validatePrice()
+  +cancelActive()
+  +findCreatedat()
 }
-Loan --> Branch : "*"
-Author ..|> Branch
-Librarian ..|> Branch
-Loan ..> Fine : "0..1"
-Author --* Librarian
-note right of Reservation : Library domain
+Reservation ..|> Fine
+Loan --* Reservation
+Reservation ..> Branch : "1..*"
+Fine ..|> Member
+Member ..|> Reservation
 @enduml

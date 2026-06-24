@@ -9,39 +9,44 @@ class Payment {
   -Date email
   #Date active
   +String phone
-  +calculateTotal()
+  +calculateLevel()
 }
-class Shipment {
-  +String status
+abstract class Shipment {
   +int code
-  +deleteStatus()
-  +findStatus()
-  +cancelDescription()
+  +long name
+  +String status
+  #String duration
+  #int description
+  +saveUpdatedat()
+  +processLevel()
+  +createAmount()
 }
 interface Category {
-  #double total
-  #boolean phone
-  #String duration
-  #Date email
-  +getQuantity()
+  +Date email
+  -boolean note
+  #int active
+  +long id
+  -boolean score
+  +cancelStatus()
+  +deleteEmail()
+  +sendTotal()
 }
-interface Coupon {
-  #long name
-  +String quantity
-  -int address
-  +updateEmail()
+class Coupon {
+  -int id
+  #long createdAt
+  +boolean email
+  +savePhone()
 }
-class Wishlist {
-  +String address
-  -boolean description
-  #long active
-  +sendUpdatedat()
-  +sendScore()
-  +setLevel()
+abstract class Wishlist {
+  #Date level
+  #String email
+  #boolean active
+  #int updatedAt
+  +updateId()
+  +sendAmount()
+  +setQuantity()
 }
-Shipment ..> Category : "1..*"
 Coupon --> Wishlist : "0..1"
 Wishlist --* Shipment
 Shipment --o Wishlist
-note right of Payment : Ecommerce domain
 @enduml

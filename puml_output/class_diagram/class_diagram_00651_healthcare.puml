@@ -3,39 +3,34 @@ skinparam defaultFontSize 13
 class Nurse {
   #int id
   +int description
-  +sendPrice()
+  +findDuration()
 }
 abstract class Diagnosis {
-  #long note
-  +boolean name
-  +float id
-  +double duration
-  +getQuantity()
-  +deleteUpdatedat()
-  +saveDescription()
-  +deleteEmail()
+  #long quantity
+  +boolean note
+  +float name
+  +double id
+  -float level
+  +validateDescription()
 }
-interface MedicalRecord {
-  #long email
-  #double quantity
-  -boolean description
-  #int address
-  +validateId()
-  +processUpdatedat()
-  +getName()
-}
-abstract class Insurance {
-  #int quantity
-  #float name
-  -Date createdAt
-  +double price
-  +getName()
-  +sendScore()
+class MedicalRecord {
+  -boolean updatedAt
+  -long description
+  -boolean amount
+  +createNote()
   +validateScore()
-  +validateActive()
 }
-Insurance ..> MedicalRecord : "1"
-MedicalRecord ..|> Insurance
-Nurse ..|> Diagnosis
-note right of Nurse : Healthcare domain
+class Insurance {
+  -String phone
+  -int active
+  +String score
+  -Date updatedAt
+  -float address
+  +deleteNote()
+  +createNote()
+  +cancelNote()
+}
+Diagnosis --o MedicalRecord
+Nurse --> Diagnosis : "*"
+Nurse --> Insurance : "1..*"
 @enduml

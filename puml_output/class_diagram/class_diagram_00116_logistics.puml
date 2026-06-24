@@ -6,50 +6,48 @@ class Vehicle {
   #int phone
   #boolean total
   +boolean level
-  +sendCreatedat()
-  +validateQuantity()
+  +createDescription()
   +sendId()
-  +validateQuantity()
+  +cancelId()
+  +getNote()
 }
 interface Tracking {
-  #float code
-  -String phone
-  +saveName()
-  +validateDuration()
-  +createAddress()
-  +findId()
+  #boolean address
+  +String quantity
+  +deleteEmail()
+  +updateNote()
+  +saveStatus()
 }
 class Depot {
+  -boolean price
+  -long name
+  +updateAmount()
+}
+class Manifest {
   -int type
   -Date code
-  +cancelStatus()
-  +calculateCode()
-}
-abstract class Manifest {
-  -String status
-  #float level
-  +updatePhone()
+  +cancelActive()
+  +cancelUpdatedat()
 }
 class Route {
-  +Date id
-  -Date email
-  #boolean type
+  +boolean code
+  +int total
+  #long name
+  #int status
+  #double price
+  +calculateScore()
+}
+abstract class Inventory {
+  +int level
+  -Date amount
+  +double description
+  #int email
   -int note
-  +long amount
-  +calculateActive()
-  +deleteNote()
+  +findLevel()
+  +deletePrice()
 }
-class Inventory {
-  #int note
-  #Date price
-  -String level
-  +validateEmail()
-  +calculatePrice()
-  +setPhone()
-}
-Tracking --* Manifest
-Tracking ..> Depot : "1..*"
-Manifest --o Depot
-Tracking ..> Route : "1"
-note right of Vehicle : Logistics domain
+Inventory ..> Manifest : "0..1"
+Route --|> Depot
+Depot --* Inventory
+Manifest --|> Inventory
 @enduml

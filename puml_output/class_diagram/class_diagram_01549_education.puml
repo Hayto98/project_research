@@ -6,57 +6,59 @@ skinparam defaultFontSize 13
 interface Assignment {
   -boolean total
   #float duration
-  +createEmail()
-  +getActive()
-  +findCreatedat()
-  +processId()
-}
-interface Enrollment {
-  +Date score
-  -double address
-  -long duration
-  +setUpdatedat()
-  +findTotal()
+  +findScore()
+  +validateAmount()
+  +updateActive()
   +updateNote()
-  +setNote()
 }
-interface Teacher {
+class Enrollment {
+  #long id
+  -long score
+  -double createdAt
+  +int address
+  #double description
+  +calculateAmount()
+  +findNote()
+}
+abstract class Teacher {
   -boolean total
   -int score
-  +processDescription()
-  +validatePhone()
+  +sendCode()
+  +setType()
 }
 class Course {
-  +String total
-  #String updatedAt
-  #Date quantity
-  +sendEmail()
-  +findUpdatedat()
+  -int quantity
+  +boolean updatedAt
+  +boolean total
+  #double level
+  +updateId()
+  +deleteAddress()
+  +updateAmount()
+}
+interface Attendance {
+  +Date name
+  +float status
+  -boolean phone
+  +double id
   +cancelQuantity()
-  +getStatus()
+  +setDuration()
 }
-class Attendance {
-  -boolean createdAt
-  +double code
-  +processNote()
-  +getTotal()
+abstract class Student {
+  +double total
+  #float quantity
+  +saveTotal()
+  +savePrice()
 }
-class Student {
-  #float total
-  +Date score
-  -double amount
-  +createName()
-  +createNote()
+class Book {
+  -float type
+  -double description
+  #int email
+  -Date name
+  +findPhone()
+  +processCreatedat()
+  +cancelType()
+  +updateAddress()
 }
-abstract class Book {
-  -int email
-  #String active
-  +String score
-  +calculateQuantity()
-  +getPhone()
-}
-Assignment ..|> Course
-Teacher --o Assignment
-Attendance ..|> Teacher
-note right of Assignment : Education domain
+Enrollment ..|> Assignment
+Course --|> Teacher
 @enduml

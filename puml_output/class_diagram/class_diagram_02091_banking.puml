@@ -4,45 +4,45 @@ skinparam roundCorner 15
 class Account {
   #String description
   #float type
-  +cancelNote()
-  +cancelAmount()
-  +createCode()
+  +getQuantity()
+  +processTotal()
+  +sendActive()
 }
 class Transfer {
-  -float score
-  -int note
+  -float code
+  -int status
+  -boolean id
+  #float note
+  +getQuantity()
+}
+class Deposit {
+  -long note
+  +int total
+  #long createdAt
+  +long address
+  +deleteType()
+  +getAddress()
+  +deleteDescription()
+  +createDuration()
+}
+interface Loan {
+  -Date amount
+  -boolean score
+  -String email
+  -long type
+  +float name
+  +deleteId()
+  +getCode()
   +sendDuration()
-  +findActive()
-  +getDuration()
-  +setEmail()
-}
-abstract class Deposit {
-  +float createdAt
-  #long address
-  +long price
-  -Date quantity
-  -boolean description
-  +sendTotal()
-  +deleteScore()
-  +createType()
-  +getType()
-}
-class Loan {
-  #Date status
-  -String price
-  #int quantity
-  #Date description
-  #long total
-  +createType()
-  +createQuantity()
+  +sendCreatedat()
 }
 class Interest {
-  +int code
-  #boolean phone
-  #String id
-  +getPhone()
+  -double level
+  -long phone
+  -Date amount
+  +cancelStatus()
+  +createAmount()
 }
-Account --o Loan
-Account ..|> Transfer
-note right of Account : Banking domain
+Transfer ..> Interest : "1"
+Account ..> Interest : "1..*"
 @enduml

@@ -2,10 +2,10 @@
 skinparam monochrome true
 skinparam defaultFontSize 13
 left to right direction
-actor "Fleet Manager" as FleetManager
-actor "Dispatcher" as Dispatcher
-actor "Driver" as Driver
-actor "Customer" as Customer
+actor "Fleet Manager" as FM
+actor "Dispatcher" as D
+actor "Driver" as D1
+actor "Customer" as C
 rectangle "Logistics System" {
   usecase "Assign Route" as UC_AssignRoute
   usecase "Fuel Vehicle" as UC_FuelVehicle
@@ -14,12 +14,12 @@ rectangle "Logistics System" {
   usecase "Track Shipment" as UC_TrackShipment
   usecase "Schedule Pickup" as UC_SchedulePickup
 }
-FleetManager --> UC_LoadPackage
-Dispatcher --> UC_TrackShipment
-Dispatcher --> UC_AssignRoute
-Driver --> UC_TrackShipment
-Customer --> UC_SchedulePickup
-Customer --> UC_FuelVehicle
-Customer --> UC_UpdateInventory
+FM --> UC_LoadPackage
+D --> UC_TrackShipment
+D --> UC_AssignRoute
+D1 --> UC_TrackShipment
+C --> UC_SchedulePickup
+C --> UC_FuelVehicle
+C --> UC_UpdateInventory
 UC_UpdateInventory ..> UC_AssignRoute : <<include>>
 @enduml

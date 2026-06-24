@@ -7,54 +7,51 @@ class Route {
   -int description
   +boolean note
   #int updatedAt
-  +processNote()
+  +validateName()
 }
 abstract class DeliveryNote {
-  #Date name
-  -float id
-  +deleteType()
-  +saveCode()
-  +processUpdatedat()
-  +calculateDuration()
+  +Date id
+  -Date name
+  +double duration
+  +double email
+  #float note
+  +setDuration()
 }
 class Inventory {
-  #String type
-  +int level
-  #float email
-  +Date code
-  +validateNote()
+  +boolean level
+  +Date email
+  #String code
+  -double id
+  +Date description
+  +cancelId()
+  +processQuantity()
+  +findAmount()
+  +createId()
 }
 class Depot {
-  #double phone
-  +float name
-  +Date total
-  +float amount
-  #float code
-  +createCode()
-  +validateActive()
-  +updateEmail()
+  +float score
+  +Date price
+  +calculateType()
 }
-class FuelLog {
-  +String description
-  +float level
-  +String quantity
-  -long address
-  +setLevel()
-  +saveAddress()
-  +cancelCreatedat()
-  +validatePrice()
+interface FuelLog {
+  +long quantity
+  -float code
+  #float phone
+  #Date active
+  +setType()
+  +cancelActive()
+  +updateLevel()
 }
-abstract class Shipment {
-  #double email
-  -int type
-  #int status
-  -String createdAt
-  +saveCreatedat()
-  +validateNote()
+class Shipment {
+  +String code
+  -long duration
+  +updateName()
+  +cancelActive()
+  +calculateUpdatedat()
+  +updatePhone()
 }
-Shipment --o Inventory
-Depot --o Inventory
-FuelLog ..> Route : "*"
-Depot ..|> FuelLog
-note right of Route : Logistics domain
+FuelLog --* DeliveryNote
+Shipment --o Depot
+FuelLog --* Inventory
+Depot --> Route : "0..1"
 @enduml

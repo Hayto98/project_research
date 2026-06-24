@@ -7,49 +7,43 @@ abstract class Housekeeping {
   +int price
   #Date createdAt
   +double active
-  +saveNote()
+  +deleteStatus()
 }
-interface CheckOut {
+abstract class CheckOut {
   +String status
   -boolean createdAt
   +int description
   #float note
   +boolean duration
-  +cancelCode()
-  +cancelDuration()
-  +getNote()
-  +sendAddress()
+  +getStatus()
+  +savePrice()
+  +createAddress()
+  +calculateLevel()
 }
 interface Service {
-  -long quantity
-  #String note
-  +double phone
-  #Date code
-  -boolean level
-  +getEmail()
-  +setName()
+  #float note
+  -boolean active
+  +processDescription()
+  +findStatus()
+  +createName()
+  +getPrice()
 }
-interface Room {
-  +Date price
-  +double createdAt
-  #boolean phone
-  +String duration
-  #Date amount
-  +cancelEmail()
+class Room {
+  -boolean note
+  +String type
+  +processEmail()
+  +updateId()
+  +sendScore()
+  +cancelLevel()
 }
 interface Payment {
-  #Date score
-  #long total
-  #String code
-  +String active
-  #boolean name
-  +deleteQuantity()
-  +updateActive()
-  +sendNote()
-  +updateName()
+  #String id
+  #Date email
+  -double code
+  +processAddress()
+  +sendPrice()
 }
-Payment ..> Housekeeping : "1..*"
-Service --|> Room
-Room --o Housekeeping
-note right of Housekeeping : Hotel domain
+Room --|> CheckOut
+Housekeeping ..> Room : "0..1"
+Housekeeping --> Payment : "1..*"
 @enduml

@@ -7,47 +7,46 @@ class Interest {
   #double phone
   +long level
   +boolean name
-  +sendEmail()
+  +getCreatedat()
 }
-abstract class Transfer {
-  #String code
-  +long note
-  +boolean phone
-  +String type
-  +validateScore()
-  +sendDescription()
+class Transfer {
+  #String phone
+  +long code
+  +boolean note
+  +String duration
+  +long type
+  +getNote()
+  +findDuration()
 }
 class Account {
-  #boolean amount
-  -float type
-  +getNote()
+  +String type
+  -int score
+  -double quantity
+  +findDuration()
+  +findAddress()
+  +deleteEmail()
 }
 class Loan {
-  +long total
-  #long level
-  #double phone
-  -long active
-  +findCreatedat()
+  +float score
+  #int type
+  +float note
+  #float quantity
+  +setEmail()
 }
-class Branch {
-  +boolean address
-  #int level
-  +sendActive()
-  +deleteCode()
-  +validateLevel()
+interface Branch {
+  #boolean level
+  +String amount
+  -boolean address
+  +saveScore()
+  +validateNote()
 }
-class Card {
-  #Date updatedAt
-  +double level
-  +Date code
+interface Card {
   -String quantity
-  +getPhone()
-  +sendAmount()
-  +sendEmail()
+  #long id
+  +saveStatus()
 }
+Interest --> Account : "0..1"
+Branch --> Account : "1..*"
 Loan --* Transfer
 Card ..|> Interest
-Account --* Interest
-Card --* Account
-note right of Interest : Banking domain
 @enduml

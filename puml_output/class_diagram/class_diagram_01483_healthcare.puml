@@ -5,33 +5,34 @@ skinparam shadowing true
 class Prescription {
   -int phone
   -float name
-  +deleteType()
-  +setType()
+  +deletePhone()
+  +createCode()
 }
-class Hospital {
-  #String code
-  +float level
-  +long createdAt
-  #long updatedAt
-  +processDescription()
+abstract class Hospital {
+  #long type
+  +boolean amount
+  +updateStatus()
+  +validateActive()
 }
-interface Ward {
-  +double note
-  #double price
-  #String updatedAt
-  +float active
-  #float id
-  +createLevel()
-  +cancelId()
-  +getLevel()
+class Ward {
+  +double status
+  +boolean email
+  #float phone
+  +saveStatus()
+  +calculateStatus()
+  +updateAddress()
+  +calculateLevel()
 }
-class Billing {
-  #float email
-  +long updatedAt
-  +updateName()
-  +deleteCode()
+abstract class Billing {
+  #double updatedAt
+  #String active
+  +float id
+  #float status
+  #Date type
+  +calculateLevel()
+  +findCreatedat()
+  +findEmail()
 }
-Billing --|> Ward
-Prescription --o Ward
-note right of Prescription : Healthcare domain
+Prescription --* Ward
+Prescription ..|> Hospital
 @enduml

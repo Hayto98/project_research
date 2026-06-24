@@ -4,44 +4,42 @@ skinparam shadowing true
 interface Ward {
   #long type
   -double level
-  +setDuration()
-  +processActive()
+  +validateEmail()
+  +setId()
 }
-interface Diagnosis {
+abstract class Diagnosis {
   +int status
   +float active
   #String updatedAt
   -Date id
   -double address
-  +findTotal()
-  +sendActive()
-  +processAddress()
+  +updateScore()
+  +createId()
+  +getPhone()
 }
-class Hospital {
+interface Hospital {
+  #float address
+  #long name
+  #double total
   +String price
   +double phone
-  -boolean active
-  -boolean level
-  -String total
-  +getAddress()
-  +saveLevel()
-  +calculateId()
-  +updateDescription()
+  +setId()
+  +validateName()
+  +findEmail()
+  +deleteDescription()
 }
-class Appointment {
-  -boolean code
-  +String note
-  +String type
-  #float active
-  +sendPhone()
-  +setUpdatedat()
+abstract class Appointment {
+  -Date type
+  #double name
+  +deleteEmail()
 }
 class Nurse {
-  +long createdAt
-  #double email
-  +createName()
+  -Date name
+  -boolean email
+  -boolean code
+  +createAddress()
+  +findId()
 }
-Diagnosis ..> Hospital : "1"
-Appointment --* Diagnosis
-note right of Ward : Healthcare domain
+Nurse --> Diagnosis : "1..*"
+Ward ..|> Diagnosis
 @enduml

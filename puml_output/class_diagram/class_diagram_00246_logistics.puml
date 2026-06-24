@@ -6,16 +6,18 @@ abstract class FuelLog {
   +float quantity
   +boolean name
   #boolean id
-  +cancelPrice()
-  +validateTotal()
+  +getCode()
+  +createEmail()
 }
-class DeliveryNote {
-  -long level
-  -int score
-  +String quantity
-  +sendType()
-  +createPhone()
-  +calculateCreatedat()
+abstract class DeliveryNote {
+  -long total
+  -int status
+  +String description
+  -boolean quantity
+  +deleteCreatedat()
+  +processStatus()
+  +saveCode()
+  +saveNote()
 }
 abstract class Package {
   #int updatedAt
@@ -23,48 +25,39 @@ abstract class Package {
   #int quantity
   -long type
   #String name
-  +cancelDuration()
+  +processId()
 }
 interface Warehouse {
   +boolean active
   +boolean description
-  +calculateName()
-  +findAddress()
-  +processActive()
+  +saveCode()
+  +cancelPrice()
+  +setUpdatedat()
 }
 class Customer {
-  -boolean updatedAt
-  -Date duration
-  +long description
-  -long level
-  #int active
-  +sendLevel()
-  +getPhone()
-  +findPhone()
-  +findType()
+  +int active
+  +double code
+  #double total
+  #String updatedAt
+  -long duration
+  +getCreatedat()
+  +deleteAddress()
+  +validateLevel()
 }
-class Manifest {
-  -Date duration
-  -Date description
-  -int createdAt
-  #float phone
-  +boolean status
-  +processDescription()
-  +processLevel()
-  +calculateDuration()
-  +processPhone()
+abstract class Manifest {
+  #double phone
+  -double duration
+  +cancelNote()
+  +createAmount()
 }
 interface Driver {
-  -int status
-  +boolean name
-  #float description
-  +getQuantity()
-  +savePrice()
-  +updateEmail()
+  #long quantity
+  +Date type
+  +saveDuration()
 }
-Manifest --> DeliveryNote : "1..*"
-Driver --|> Package
-DeliveryNote --|> Manifest
-Package --* Warehouse
-note right of FuelLog : Logistics domain
+Warehouse --o DeliveryNote
+Manifest --o Customer
+Customer ..> Warehouse : "1..*"
+Customer ..|> Manifest
+FuelLog ..|> Driver
 @enduml

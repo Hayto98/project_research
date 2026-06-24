@@ -5,59 +5,51 @@ skinparam ArrowColor #555555
 class Service {
   #double type
   #boolean status
-  +cancelStatus()
-  +sendActive()
+  +processId()
+  +updateName()
 }
-class CheckOut {
-  #Date createdAt
-  +float name
-  -String email
-  +createUpdatedat()
-  +getCreatedat()
-  +cancelEmail()
-  +updateQuantity()
+interface CheckOut {
+  +long level
+  #Date amount
+  +float createdAt
+  +updateActive()
+  +createPrice()
+  +processAddress()
+  +calculateType()
 }
 class Payment {
-  #String id
-  #double amount
-  -long phone
-  #boolean note
-  +getUpdatedat()
-}
-class Room {
-  +String updatedAt
-  +boolean phone
-  +int status
-  +int quantity
-  +sendActive()
-  +processName()
-}
-class Restaurant {
-  +Date address
-  +Date name
-  +sendActive()
-  +updateActive()
+  +float name
+  -String createdAt
+  -String email
+  +cancelId()
   +setActive()
 }
+abstract class Room {
+  -long score
+  #boolean total
+  +findType()
+}
+class Restaurant {
+  -String address
+  #Date email
+  -String updatedAt
+  +processAddress()
+}
 class Booking {
-  -Date amount
-  -int active
-  #Date name
-  +double note
-  +calculateCreatedat()
+  #int createdAt
+  #boolean amount
+  -float duration
+  +cancelNote()
 }
 class Housekeeping {
-  +Date code
-  -long score
-  +saveCreatedat()
-  +cancelActive()
-  +deleteAddress()
+  #boolean name
+  +boolean duration
+  +Date status
+  #long email
+  +saveDescription()
+  +validateQuantity()
+  +sendQuantity()
 }
-Booking ..|> Service
-Booking --> Restaurant : "0..1"
-Housekeeping ..> Room : "1..*"
-Restaurant --|> Room
-Housekeeping ..|> Booking
-Room --o Payment
-note right of Service : Hotel domain
+Room ..> Payment : "*"
+CheckOut ..> Restaurant : "1"
 @enduml

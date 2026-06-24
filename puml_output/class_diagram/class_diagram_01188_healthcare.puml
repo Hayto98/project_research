@@ -8,49 +8,45 @@ class Insurance {
   #String price
   #double status
   -double duration
-  +updateId()
-  +sendId()
-  +calculateLevel()
-  +saveAmount()
+  +createEmail()
+  +validateNote()
+  +setName()
+  +createDescription()
 }
 class Hospital {
-  -String updatedAt
-  +double note
-  #int id
-  +deleteCode()
+  -boolean level
+  +long amount
+  +int description
+  -boolean createdAt
+  +float updatedAt
+  +validateCreatedat()
 }
-interface Appointment {
+class Appointment {
   #double status
   +Date updatedAt
   #int email
   -Date total
   #float duration
-  +saveLevel()
-  +setCode()
-  +findAddress()
-  +sendQuantity()
+  +updatePhone()
+  +processEmail()
+  +sendType()
+  +createPhone()
 }
-interface Patient {
+class Patient {
+  +Date active
+  +String quantity
+  #long id
+  #String createdAt
+  +sendType()
+}
+abstract class Billing {
+  #int level
   #float createdAt
-  +String name
-  +sendCode()
-  +getTotal()
-  +updateLevel()
+  +int type
+  +createDescription()
+  +calculateNote()
 }
-class Billing {
-  #int updatedAt
-  -long active
-  -Date name
-  +String description
-  -double createdAt
-  +cancelQuantity()
-  +deleteStatus()
-  +findActive()
-  +saveId()
-}
-Hospital ..|> Billing
-Insurance --|> Hospital
-Billing --|> Appointment
-Appointment ..> Billing : "1..*"
-note right of Insurance : Healthcare domain
+Appointment ..> Billing : "1"
+Insurance --o Patient
+Patient ..|> Appointment
 @enduml

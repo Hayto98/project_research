@@ -6,50 +6,52 @@ class Ward {
   #boolean active
   -boolean createdAt
   +boolean phone
-  +getId()
+  +processQuantity()
 }
 class Prescription {
-  +int duration
-  #boolean name
-  +int code
-  +deleteCode()
-  +createType()
+  +float updatedAt
+  +int name
+  +setLevel()
 }
-abstract class Insurance {
-  -boolean score
-  +int code
-  #float price
-  +deleteDescription()
+class Insurance {
+  -boolean code
+  +boolean quantity
+  #String type
+  +sendName()
+  +sendQuantity()
+  +processAmount()
+  +sendId()
 }
-class Patient {
-  +Date code
-  #long quantity
-  -float total
-  -double note
-  -String type
-  +cancelCreatedat()
-  +cancelDuration()
-  +calculateCreatedat()
+interface Patient {
+  +float amount
+  -String description
+  +sendPrice()
+  +calculateQuantity()
+  +sendType()
 }
-abstract class LabTest {
-  -double updatedAt
-  +String address
-  -long active
-  -double quantity
-  +cancelPhone()
-  +cancelTotal()
-  +cancelEmail()
+interface LabTest {
+  -double type
+  +long id
+  #int address
+  #boolean duration
+  -int quantity
+  +validatePrice()
+  +calculateType()
+  +deleteId()
+  +validateTotal()
 }
-abstract class Treatment {
-  +float quantity
-  +double total
-  #boolean address
-  -boolean price
-  +setNote()
-  +saveScore()
+class Treatment {
+  -double address
+  +String active
+  -long quantity
+  +sendName()
+  +cancelAddress()
+  +findName()
+  +findCode()
 }
-Insurance --|> Prescription
-Treatment ..> LabTest : "1..*"
-Patient --* LabTest
-note right of Ward : Healthcare domain
+LabTest --o Insurance
+Insurance ..> Treatment : "*"
+Insurance --|> Patient
+Prescription ..> Patient : "*"
+LabTest ..|> Treatment
 @enduml

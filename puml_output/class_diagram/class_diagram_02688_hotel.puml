@@ -4,43 +4,46 @@ class Room {
   #long price
   #float description
   #float level
-  +processType()
-  +processNote()
+  +findActive()
+  +validateName()
 }
-interface Restaurant {
-  -Date code
-  +Date updatedAt
-  +getId()
-  +processScore()
-  +sendCode()
+abstract class Restaurant {
+  -Date duration
+  +Date level
+  -String name
+  +double code
+  #boolean updatedAt
+  +sendEmail()
 }
 class CheckOut {
-  +String type
-  #Date email
+  #long email
+  +Date code
+  -Date id
+  -float active
+  -float score
   +sendAddress()
+  +getId()
 }
-class Invoice {
-  #Date phone
-  -Date type
-  +float amount
-  +Date email
-  -Date level
-  +cancelName()
-  +deletePhone()
-  +calculatePrice()
-  +findScore()
+interface Invoice {
+  +long code
+  -double id
+  #boolean phone
+  #String note
+  +String name
+  +createUpdatedat()
+  +saveName()
+  +createLevel()
 }
-class Amenity {
-  #double status
-  #boolean quantity
-  +processDescription()
-  +cancelLevel()
-  +saveEmail()
-  +cancelUpdatedat()
+interface Amenity {
+  #long note
+  #boolean description
+  -Date email
+  -float updatedAt
+  +int status
+  +getStatus()
+  +sendId()
 }
-Room --> CheckOut : "1..*"
-Invoice ..|> Room
-Restaurant --* Amenity
 CheckOut ..|> Room
-note right of Room : Hotel domain
+CheckOut ..> Invoice : "1"
+Invoice --* Restaurant
 @enduml

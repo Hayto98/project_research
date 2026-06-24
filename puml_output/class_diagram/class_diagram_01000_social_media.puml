@@ -6,54 +6,58 @@ skinparam defaultFontSize 11
 class User {
   #double address
   +boolean note
-  +cancelUpdatedat()
-  +calculateScore()
-  +findLevel()
+  +cancelActive()
+  +findAddress()
+  +findAmount()
 }
-class Like {
-  -long address
-  +double phone
-  -Date name
-  +calculateId()
-  +saveLevel()
-  +validateUpdatedat()
+interface Like {
+  -long createdAt
+  +double address
+  -Date phone
+  -double name
+  +cancelScore()
 }
-abstract class Story {
-  #double email
-  +long level
-  +long address
-  -double createdAt
-  +boolean code
-  +updatePhone()
-  +calculateEmail()
-  +setPrice()
-  +processId()
+interface Story {
+  #long updatedAt
+  #int price
+  #Date total
+  +Date email
+  +deleteEmail()
+  +deleteId()
+  +processUpdatedat()
+  +findQuantity()
 }
 class Follower {
+  +long note
+  -float type
+  -String name
+  #double duration
+  +sendTotal()
+  +saveScore()
+  +findUpdatedat()
+  +findType()
+}
+interface Notification {
   -String email
   +long level
   -boolean active
   +float type
   -Date total
-  +getCode()
-}
-class Notification {
-  #String price
-  +long level
-  +calculateName()
-  +getAmount()
+  +updateActive()
 }
 class Message {
-  #long total
-  -double type
-  -double name
-  #float level
-  +double updatedAt
-  +processPhone()
-  +calculateAmount()
-  +cancelLevel()
+  +long duration
+  +double code
+  +String price
+  +long level
+  +getPhone()
+  +saveDescription()
+  +deletePhone()
+  +findEmail()
 }
-User --> Story : "1"
-Notification ..|> Like
-note right of User : Social Media domain
+User ..> Follower : "0..1"
+Notification --* Story
+Follower --o Message
+Message --o Like
+Story --* Follower
 @enduml

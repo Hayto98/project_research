@@ -2,9 +2,9 @@
 skinparam monochrome true
 skinparam defaultFontSize 11
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Admin" as Admin
-actor "Delivery Service" as DeliveryService
+actor "Payment Gateway" as PG
+actor "Admin" as A
+actor "Delivery Service" as DS
 rectangle "Ecommerce System" {
   usecase "Checkout" as UC_Checkout
   usecase "Track Order" as UC_TrackOrder
@@ -13,12 +13,12 @@ rectangle "Ecommerce System" {
   usecase "Add To Cart" as UC_AddToCart
   usecase "Browse Products" as UC_BrowseProducts
 }
-PaymentGateway --> UC_WriteReview
-PaymentGateway --> UC_TrackOrder
-Admin --> UC_Checkout
-Admin --> UC_ApplyCoupon
-DeliveryService --> UC_Checkout
-DeliveryService --> UC_ApplyCoupon
-DeliveryService --> UC_TrackOrder
+PG --> UC_WriteReview
+PG --> UC_TrackOrder
+A --> UC_Checkout
+A --> UC_ApplyCoupon
+DS --> UC_Checkout
+DS --> UC_ApplyCoupon
+DS --> UC_TrackOrder
 UC_AddToCart ..> UC_WriteReview : <<extend>>
 @enduml

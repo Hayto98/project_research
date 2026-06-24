@@ -7,36 +7,30 @@ abstract class Catalog {
   #double id
   #String phone
   +double description
-  +findStatus()
-  +cancelType()
+  +saveDescription()
+  +createPhone()
 }
-class Shelf {
-  +float status
-  #String address
-  +getActive()
-  +calculateActive()
-  +deleteId()
-  +sendStatus()
+interface Shelf {
+  #String updatedAt
+  #Date name
+  -String status
+  #double address
+  #int amount
+  +sendAmount()
 }
 class Author {
-  #boolean updatedAt
-  -double id
-  -boolean quantity
-  +String active
-  -float createdAt
-  +deleteDescription()
-  +setAddress()
+  +long note
+  #int updatedAt
+  +getStatus()
+  +calculateQuantity()
+  +sendAddress()
 }
-abstract class Book {
-  +long type
-  #double id
-  -boolean level
-  +int active
-  -int address
-  +deleteScore()
-  +createNote()
+interface Book {
+  +int name
+  #int quantity
+  +saveCreatedat()
 }
-Shelf --> Book : "*"
-Book --o Author
-note right of Catalog : Library domain
+Book --|> Shelf
+Catalog --* Author
+Catalog --> Shelf : "*"
 @enduml

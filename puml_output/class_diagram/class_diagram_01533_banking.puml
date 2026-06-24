@@ -8,45 +8,39 @@ class Teller {
   +String duration
   +long phone
   #double status
-  +setCreatedat()
-  +cancelActive()
-  +saveId()
-  +sendAmount()
+  +createPhone()
+  +sendEmail()
+  +validateActive()
+  +createDescription()
 }
 class Transaction {
-  +long amount
-  #boolean active
-  +setName()
+  #int phone
+  -boolean code
+  #boolean amount
+  +validatePhone()
 }
 class Account {
+  #double phone
   +long price
   -long type
-  +long level
-  -String duration
-  +validateDescription()
-  +deleteDuration()
-  +findName()
+  +long score
+  +validateEmail()
+  +calculatePhone()
+  +createAmount()
+  +saveQuantity()
 }
-abstract class Statement {
-  -double address
-  #String description
-  -long active
+class Statement {
+  -int total
+  #long note
+  +findCode()
+  +processTotal()
+}
+interface Beneficiary {
   -double email
-  -float level
-  +deleteName()
+  -float address
+  +createCode()
 }
-class Beneficiary {
-  +int total
-  -String status
-  #String phone
-  +double code
-  -long email
-  +processPrice()
-  +sendCode()
-  +setDescription()
-}
-Transaction --* Statement
-Beneficiary --> Teller : "1..*"
-Account --|> Transaction
-note right of Teller : Banking domain
+Teller --o Account
+Statement --* Teller
+Transaction --o Beneficiary
 @enduml

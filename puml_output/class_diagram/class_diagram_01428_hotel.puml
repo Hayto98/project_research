@@ -8,43 +8,43 @@ class Guest {
   #int price
   #boolean total
   #Date code
-  +setUpdatedat()
-  +saveDescription()
+  +createAddress()
+  +validateNote()
 }
 class Reservation {
-  -int price
-  #long description
-  #long quantity
-  -boolean id
-  #String note
-  +sendEmail()
-  +deleteNote()
-  +createDescription()
-  +updateDuration()
+  -int level
+  -String note
+  +findQuantity()
+  +saveAddress()
+  +saveDescription()
+  +deleteCreatedat()
 }
-class Booking {
-  #boolean id
-  +double code
-  -boolean name
-  +savePhone()
+interface Booking {
+  #long type
+  +double active
+  -int status
+  +boolean note
+  +calculateUpdatedat()
+  +setPrice()
 }
 class Payment {
+  #boolean code
+  +double name
+  +setPhone()
+  +saveId()
+  +saveUpdatedat()
+  +createAmount()
+}
+class CheckIn {
   -Date createdAt
   +int amount
   -float type
   -float code
-  +deleteScore()
-  +findDescription()
+  +findPhone()
+  +getDescription()
 }
-class CheckIn {
-  -double quantity
-  -float id
-  +calculateId()
-  +findScore()
-  +validateLevel()
-}
-Guest ..|> CheckIn
-Guest --> Payment : "1..*"
-Payment --o Guest
-note right of Guest : Hotel domain
+Reservation --> Guest : "1"
+Booking --o Guest
+Payment --* Booking
+Payment ..> Guest : "1..*"
 @enduml

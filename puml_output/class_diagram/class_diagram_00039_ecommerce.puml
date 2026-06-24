@@ -9,48 +9,52 @@ abstract class Category {
   #long total
   -String phone
   +float createdAt
-  +findScore()
-  +cancelCreatedat()
+  +calculateLevel()
+  +createTotal()
 }
-class Warehouse {
+interface Warehouse {
+  -long code
+  #long name
   -Date address
-  -double type
-  +processQuantity()
-  +deleteCode()
-  +createNote()
-  +updatePrice()
+  +setPrice()
+  +findActive()
+  +sendDescription()
+  +processDescription()
 }
 class Order {
-  +float total
-  -double description
-  +deletePhone()
-  +deleteEmail()
-  +setName()
+  +Date quantity
+  -Date note
+  +calculatePrice()
 }
-interface Invoice {
-  +int email
-  #double createdAt
-  #String score
-  -Date type
-  -long code
-  +cancelEmail()
+class Invoice {
+  +float description
+  -float id
+  +long total
+  +String note
+  #float phone
+  +deleteCreatedat()
+  +calculateNote()
+  +deleteTotal()
+  +setCreatedat()
 }
 interface Wishlist {
-  -long code
-  #float phone
-  +findNote()
-  +validateCode()
-  +cancelDuration()
-  +processType()
+  #String duration
+  -Date code
+  -long status
+  +boolean description
+  -boolean type
+  +getType()
 }
 class Shipment {
-  -boolean status
-  -String code
-  +String createdAt
-  +getDescription()
+  -float address
+  +float score
+  #float note
+  #double level
+  +saveTotal()
+  +processStatus()
+  +createDescription()
+  +findEmail()
 }
-Invoice ..> Shipment : "0..1"
-Category --o Shipment
-Wishlist ..> Shipment : "0..1"
-note right of Category : Ecommerce domain
+Category ..|> Shipment
+Order --* Wishlist
 @enduml

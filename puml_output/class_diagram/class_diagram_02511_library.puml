@@ -3,46 +3,48 @@ skinparam ArrowColor #555555
 class Fine {
   #boolean active
   -int note
-  +updateTotal()
-  +cancelNote()
+  +processPrice()
+  +getPhone()
 }
 interface Member {
-  +float total
   -String score
-  #long price
-  +createName()
+  #long amount
+  #Date total
+  -float price
+  -String createdAt
+  +validateDuration()
+  +saveStatus()
+}
+class Catalog {
+  +double type
+  +float id
+  -int phone
+  +deleteLevel()
+  +cancelStatus()
+  +deleteActive()
   +updateAddress()
-  +deleteCreatedat()
-  +processId()
 }
-interface Catalog {
-  +boolean name
-  #Date type
-  -float createdAt
-  +double price
-  +processUpdatedat()
-  +getScore()
-}
-interface Renewal {
-  -boolean price
-  +double createdAt
-  +processLevel()
-  +deleteEmail()
-  +calculateTotal()
-  +calculateAmount()
+class Renewal {
+  +double updatedAt
+  #String id
+  -double score
+  -boolean level
+  +long price
+  +cancelCreatedat()
+  +deleteScore()
+  +validateStatus()
+  +createCreatedat()
 }
 class Loan {
-  +int updatedAt
-  -int level
-  #boolean price
-  -double status
-  +createScore()
-  +cancelNote()
-  +getActive()
-  +deleteAmount()
+  +int level
+  -int price
+  #boolean status
+  +calculateTotal()
+  +sendScore()
+  +updateCode()
 }
-Renewal --> Catalog : "0..1"
-Renewal --> Member : "1"
-Fine --> Catalog : "1"
-note right of Fine : Library domain
+Renewal ..> Catalog : "*"
+Fine ..> Member : "0..1"
+Catalog --* Renewal
+Loan --o Member
 @enduml

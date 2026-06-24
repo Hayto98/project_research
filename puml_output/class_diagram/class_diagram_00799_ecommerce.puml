@@ -9,69 +9,56 @@ class Supplier {
   -String name
   -long level
   #String updatedAt
-  +validateDuration()
+  +processStatus()
 }
-class Order {
+interface Order {
+  #int price
+  #double active
+  +boolean type
+  +getQuantity()
+  +processAmount()
+  +sendEmail()
+}
+class Product {
+  -int status
+  #double type
+  -double quantity
+  -double note
+  #boolean amount
+  +validateUpdatedat()
+  +getDuration()
+}
+class Category {
+  +double note
+  +boolean score
+  +sendPhone()
+  +deletePhone()
+}
+interface Invoice {
+  +float updatedAt
   #boolean active
-  #long type
-  #String amount
-  +long level
-  -String createdAt
-  +createNote()
-  +deleteType()
-  +updatePrice()
-  +validatePrice()
-}
-abstract class Product {
-  #Date score
-  -float amount
-  #int type
-  -String quantity
-  #float name
-  +validateActive()
-  +processUpdatedat()
-}
-interface Category {
+  +float email
   -int amount
   #Date type
-  #Date status
-  +float score
-  +getActive()
-}
-class Invoice {
-  +double description
-  +double score
-  -String createdAt
-  #String name
-  +String updatedAt
-  +createId()
-  +deleteAddress()
-  +calculateDuration()
-  +cancelEmail()
+  +setActive()
 }
 class Coupon {
-  +long description
-  +long code
-  +Date status
-  +Date type
-  +validateCreatedat()
-  +setTotal()
-  +findScore()
-  +findType()
+  -int active
+  #int quantity
+  +updateStatus()
 }
 class Payment {
-  #String phone
-  +String createdAt
-  -long id
-  -int active
-  +setLevel()
-  +saveCreatedat()
-  +setCode()
-  +savePhone()
+  +String amount
+  -long total
+  #String level
+  +float name
+  -double code
+  +saveTotal()
+  +setType()
+  +sendStatus()
 }
-Invoice ..|> Payment
-Payment --|> Order
-Supplier --|> Product
-Order --|> Payment
-note right of Supplier : Ecommerce domain
+Order --|> Supplier
+Category --* Supplier
+Supplier ..|> Product
+Coupon ..> Order : "*"
 @enduml

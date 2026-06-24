@@ -6,65 +6,60 @@ skinparam defaultFontSize 11
 interface Member {
   -boolean updatedAt
   +String phone
-  +validateLevel()
+  +updateQuantity()
 }
-abstract class Catalog {
-  #Date code
-  +float total
-  +saveQuantity()
-  +cancelQuantity()
-  +updateCode()
+class Catalog {
+  #long name
+  #long code
+  +Date total
+  +float duration
+  -long address
+  +deletePrice()
 }
-class Fine {
-  -int name
-  -Date note
-  +boolean score
-  #String duration
-  +updateAddress()
+interface Fine {
+  -Date price
+  +boolean amount
+  +validatePhone()
 }
 class Loan {
+  -String address
+  #long email
   +Date price
-  -int score
-  #Date active
-  #boolean address
-  +cancelCreatedat()
-  +deletePrice()
-  +calculatePrice()
+  #float active
+  +deleteDescription()
+  +cancelNote()
+  +validateCreatedat()
 }
 abstract class Branch {
-  #float email
-  -String score
-  #double type
-  #int duration
-  -float code
-  +sendStatus()
-  +findId()
-  +validatePhone()
+  -String price
+  #float note
+  -String level
+  #double email
+  #int type
+  +processScore()
+  +getName()
+  +processNote()
+  +cancelQuantity()
+}
+interface Shelf {
+  #float id
+  #long address
+  +calculateEmail()
+  +validateUpdatedat()
+  +sendName()
+}
+class Librarian {
+  -Date type
+  #Date code
+  +double id
+  #long amount
+  +getLevel()
   +createName()
+  +calculateName()
+  +createNote()
 }
-abstract class Shelf {
-  +long code
-  #boolean phone
-  #String type
-  -float duration
-  #long id
-  +setNote()
-  +validateAddress()
-  +validateCode()
-  +deleteTotal()
-}
-abstract class Librarian {
-  #double updatedAt
-  +int amount
-  #long status
-  #Date type
-  +long level
-  +cancelEmail()
-  +processCreatedat()
-  +deleteCreatedat()
-}
-Branch --* Catalog
-Branch --* Shelf
-Catalog --> Branch : "*"
-note right of Member : Library domain
+Fine ..|> Member
+Shelf --o Loan
+Librarian ..> Loan : "0..1"
+Catalog --o Member
 @enduml

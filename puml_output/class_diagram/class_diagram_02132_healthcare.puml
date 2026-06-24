@@ -6,35 +6,28 @@ skinparam defaultFontSize 11
 interface Doctor {
   #double duration
   #boolean code
-  +getType()
+  +setName()
 }
-class Prescription {
-  +long level
-  +long note
-  +findPrice()
-  +processLevel()
-  +setPhone()
-  +validateId()
+abstract class Prescription {
+  -int score
+  -boolean name
+  -Date note
+  -double id
+  +deletePhone()
 }
 class Treatment {
-  #int quantity
-  +boolean duration
-  +Date id
-  -String type
-  +Date status
-  +createDuration()
+  -Date id
+  -String code
+  -String active
+  #int note
+  +createUpdatedat()
+  +processPrice()
 }
 class Ward {
-  #String score
-  #float status
-  +int note
-  #int active
-  +saveAddress()
-  +deleteAmount()
-  +updateType()
-  +findTotal()
+  -boolean amount
+  +long code
+  +calculateAmount()
 }
-Prescription --> Treatment : "*"
-Treatment --* Prescription
-note right of Doctor : Healthcare domain
+Prescription ..> Doctor : "0..1"
+Ward --* Treatment
 @enduml

@@ -5,44 +5,41 @@ skinparam ArrowColor #555555
 interface Schedule {
   -int description
   -float type
-  +createTotal()
+  +deleteName()
 }
-class Attendance {
-  -double description
-  +Date note
-  -double quantity
-  +boolean active
-  +sendActive()
-  +calculateName()
-  +cancelDescription()
+abstract class Attendance {
+  -long quantity
+  #double description
+  +processDuration()
+  +cancelUpdatedat()
+  +sendDescription()
+  +saveTotal()
 }
-interface Exam {
-  #Date phone
-  #float level
-  +createAddress()
-  +cancelNote()
-  +cancelCreatedat()
+class Exam {
+  +boolean description
+  #int level
+  #String email
+  -float active
+  #boolean total
+  +getNote()
+  +validateDuration()
+  +setPhone()
 }
-class Course {
+abstract class Course {
+  -float id
+  -String address
   #String price
-  +double email
-  #String level
-  #float status
-  +getId()
-  +saveType()
-  +findPrice()
-  +getLevel()
+  +updateEmail()
 }
-class Student {
-  #float note
-  #long name
-  #Date active
-  +int price
-  -int email
-  +setId()
+interface Student {
+  +String score
+  #double type
+  +calculateEmail()
+  +getStatus()
+  +savePrice()
+  +getType()
 }
-Exam --> Attendance : "1..*"
-Schedule --|> Attendance
-Schedule ..> Exam : "*"
-note right of Schedule : Education domain
+Course --> Schedule : "*"
+Exam --> Student : "0..1"
+Attendance ..|> Course
 @enduml

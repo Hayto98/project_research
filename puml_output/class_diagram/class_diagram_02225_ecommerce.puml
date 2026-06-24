@@ -6,35 +6,33 @@ abstract class Customer {
   #int createdAt
   #String description
   -long active
-  +saveDuration()
+  +validatePrice()
 }
-class Payment {
-  -long status
-  +boolean price
-  #double note
-  +findId()
-  +deleteName()
-  +calculateType()
-  +cancelStatus()
+interface Payment {
+  #double updatedAt
+  -double status
+  +sendLevel()
+  +validateStatus()
+  +saveNote()
 }
-class Supplier {
-  -String address
+interface Supplier {
+  -boolean total
+  #Date id
+  +String description
+  -long name
   -String price
-  #String code
-  -float score
-  +createScore()
-  +createNote()
-  +saveScore()
+  +validateDuration()
 }
 class Wishlist {
-  +double amount
-  -float address
-  +float quantity
-  +getPhone()
-  +savePrice()
+  #long code
+  -Date id
+  #long quantity
+  +Date address
+  +long score
+  +updateStatus()
+  +deleteActive()
+  +deleteName()
 }
 Payment --* Customer
-Payment --o Wishlist
-Supplier ..> Wishlist : "1..*"
-note right of Customer : Ecommerce domain
+Wishlist ..|> Payment
 @enduml

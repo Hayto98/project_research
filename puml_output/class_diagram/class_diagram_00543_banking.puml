@@ -6,59 +6,58 @@ class Account {
   +long quantity
   +boolean address
   -String code
-  +processType()
-  +findNote()
-  +sendEmail()
+  +calculateAmount()
+  +sendCreatedat()
+  +saveDescription()
 }
-class Interest {
+abstract class Interest {
+  #long amount
+  +int price
   -long createdAt
-  +int amount
-  #float email
-  #long description
-  #long active
-  +getScore()
+  +int duration
+  +updateAddress()
+  +deleteCreatedat()
+  +cancelEmail()
 }
-interface Transaction {
+class Transaction {
   #double type
   +float code
   +boolean description
   #double amount
-  +deleteNote()
+  +validateCreatedat()
 }
-class Customer {
-  -int duration
+abstract class Customer {
+  -int id
   -boolean description
-  +saveQuantity()
-  +cancelStatus()
+  +setScore()
+  +getNote()
 }
-class Withdrawal {
-  #double description
-  #String amount
-  #int id
-  -long code
-  +updateEmail()
-  +setName()
-  +createId()
+interface Withdrawal {
+  #int email
+  +String duration
+  +createNote()
 }
 interface Statement {
-  -Date name
-  #String email
+  +long status
+  +String updatedAt
+  -String email
   #boolean quantity
-  -double score
-  -long phone
-  +calculateAmount()
-  +getActive()
+  -String active
+  +deleteTotal()
+  +saveUpdatedat()
+  +updateAmount()
 }
-interface Beneficiary {
-  +double id
-  #int quantity
-  #int status
-  +validateScore()
+class Beneficiary {
+  #long phone
+  -long type
+  -int status
+  -int active
+  +deleteTotal()
 }
+Withdrawal --|> Interest
+Transaction --|> Account
+Customer ..|> Statement
+Statement --|> Interest
+Transaction --o Withdrawal
 Statement --> Customer : "1..*"
-Customer --* Statement
-Account ..> Withdrawal : "1"
-Statement --|> Account
-Beneficiary ..> Account : "1..*"
-note right of Account : Banking domain
 @enduml

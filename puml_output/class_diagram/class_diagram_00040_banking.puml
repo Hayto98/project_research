@@ -9,48 +9,43 @@ abstract class Beneficiary {
   +Date phone
   #double level
   -Date updatedAt
-  +deleteActive()
-  +updateTotal()
-  +cancelActive()
-}
-abstract class Loan {
-  +int address
-  +String note
-  +double description
-  #long active
-  #boolean status
+  +findPhone()
   +findPrice()
+  +cancelType()
+}
+class Loan {
+  #double level
+  #int active
+  #float type
+  +String price
+  +int address
+  +saveType()
 }
 class Branch {
-  +String id
-  #float price
-  -String duration
-  #int address
-  +String note
-  +processAddress()
-  +sendPhone()
+  +double active
+  +double phone
+  #boolean score
+  +long code
+  -int price
+  +findPrice()
 }
 class Customer {
-  #boolean status
+  +String score
+  +double updatedAt
+  +createDescription()
+  +createAmount()
+  +calculateNote()
+}
+class Transaction {
+  #boolean duration
   -float id
-  +sendCode()
-  +validateQuantity()
-  +setTotal()
-  +sendDuration()
+  +getDuration()
+  +findDuration()
+  +setDescription()
+  +deleteCode()
 }
-abstract class Transaction {
-  -double duration
-  -boolean code
-  -String amount
-  #boolean total
-  -Date type
-  +createType()
-  +calculatePrice()
-  +saveActive()
-  +updateEmail()
-}
-Beneficiary ..> Loan : "1"
-Transaction --> Loan : "*"
-Loan ..|> Customer
-note right of Beneficiary : Banking domain
+Branch --o Beneficiary
+Transaction --o Customer
+Transaction ..|> Beneficiary
+Customer --o Transaction
 @enduml

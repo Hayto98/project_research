@@ -8,34 +8,37 @@ abstract class Post {
   #String price
   +int score
   +boolean duration
-  +validateType()
-  +deleteTotal()
-  +deletePrice()
+  +deleteCode()
+  +calculateDescription()
+  +validateDescription()
 }
 abstract class User {
-  #int description
-  -Date level
-  +float quantity
-  +cancelQuantity()
-  +updateId()
-  +processDuration()
+  #double total
+  #int amount
+  +boolean price
+  +savePrice()
+  +deleteAddress()
+  +calculateScore()
 }
-interface Group {
-  #int createdAt
-  #double address
-  +long id
-  #int level
-  +saveQuantity()
-  +findPrice()
+class Group {
+  -float duration
+  #Date quantity
+  #Date updatedAt
+  -Date id
+  +saveCreatedat()
+  +getUpdatedat()
 }
 class Notification {
-  +String type
-  #int price
-  -double note
-  +validateId()
+  -Date level
+  +boolean createdAt
+  +Date type
+  -float amount
+  +validateAmount()
+  +processActive()
+  +getId()
+  +sendScore()
 }
-Post --> User : "1..*"
-Notification ..|> User
-User --> Notification : "1"
-note right of Post : Social Media domain
+User --> Post : "0..1"
+Group --|> User
+Group --* Post
 @enduml

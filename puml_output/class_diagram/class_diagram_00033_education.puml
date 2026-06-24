@@ -4,44 +4,40 @@ abstract class Enrollment {
   +float id
   +String updatedAt
   #int description
-  +setId()
-  +sendQuantity()
+  +getLevel()
+  +processNote()
 }
 class Schedule {
-  #boolean email
-  #double phone
-  +int price
-  +saveCreatedat()
+  -double createdAt
+  #boolean active
+  #double duration
+  +int email
+  +calculateUpdatedat()
 }
 class Book {
-  #double quantity
-  +long note
-  +int createdAt
-  +int name
-  #int id
-  +cancelScore()
-  +sendTotal()
-  +getQuantity()
+  #double total
+  #int quantity
+  +updatePrice()
 }
-class Library {
-  -boolean active
-  -String duration
-  -Date code
-  +double price
-  #String phone
-  +calculateLevel()
-  +processType()
-  +validateName()
+interface Library {
+  +Date id
+  +float address
+  -boolean updatedAt
+  #boolean description
+  -String active
+  +updateTotal()
+  +processLevel()
+  +createId()
 }
-class Attendance {
-  -Date id
-  #float createdAt
-  +setEmail()
-  +sendAmount()
-  +findActive()
+interface Attendance {
+  -boolean price
+  -String phone
+  +validatePrice()
+  +setUpdatedat()
+  +sendCode()
 }
-Book --* Enrollment
-Book --|> Library
-Book --|> Attendance
-note right of Enrollment : Education domain
+Enrollment --o Book
+Attendance --o Library
+Book ..|> Enrollment
+Attendance --|> Enrollment
 @enduml

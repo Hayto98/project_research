@@ -8,61 +8,54 @@ interface Reservation {
   -String price
   +String updatedAt
   #String phone
-  +processName()
-  +getPrice()
+  +deleteActive()
+  +saveId()
 }
-abstract class Amenity {
-  -boolean type
-  -double id
-  +boolean code
-  +createEmail()
-  +findTotal()
+class Amenity {
+  -boolean total
+  -double amount
+  +boolean type
+  #float id
+  +long code
+  +validateTotal()
+  +processLevel()
+  +deleteNote()
 }
 class Booking {
-  +int id
+  #boolean duration
   #long status
-  #int active
-  #String quantity
-  +saveActive()
+  +validateQuantity()
 }
 class Restaurant {
-  #String duration
-  #boolean address
-  +int level
-  +saveDuration()
-  +sendType()
-  +calculateAmount()
-  +setCreatedat()
+  #boolean duration
+  +float code
+  #float id
+  +findDescription()
+  +createActive()
 }
-interface CheckOut {
+class CheckOut {
+  +boolean score
+  #double description
+  +calculateCode()
+  +saveLevel()
+  +saveAddress()
+  +createAddress()
+}
+class CheckIn {
   #String score
   +String name
   -float createdAt
   -float duration
-  +sendType()
-  +processCode()
-  +getCreatedat()
+  +cancelAmount()
+  +deleteActive()
+  +saveStatus()
 }
-class CheckIn {
-  -double amount
-  +double active
-  -long status
-  #boolean price
-  -int duration
-  +cancelUpdatedat()
-  +deleteUpdatedat()
+abstract class Staff {
+  -boolean name
+  -int createdAt
+  +deleteAmount()
 }
-class Staff {
-  +String status
-  -long note
-  +processAmount()
-  +saveAddress()
-}
-CheckOut ..|> Restaurant
-Reservation --> Restaurant : "0..1"
-Restaurant ..> Booking : "1..*"
-Booking ..> Reservation : "0..1"
-Restaurant ..> Reservation : "0..1"
-CheckOut --|> Staff
-note right of Reservation : Hotel domain
+Staff --o Booking
+Amenity --o Restaurant
+Booking --> CheckIn : "1..*"
 @enduml

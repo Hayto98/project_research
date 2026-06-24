@@ -5,41 +5,36 @@ class Ward {
   -Date phone
   -double total
   +Date status
-  +deleteEmail()
+  +validateQuantity()
 }
 class Treatment {
-  -float active
-  -double address
-  +long status
   #Date type
-  #float email
-  +saveTotal()
+  #long active
   +findLevel()
 }
-interface Patient {
-  -double quantity
-  -Date level
-  +getPrice()
-  +saveId()
-  +validateTotal()
+abstract class Patient {
+  -Date email
+  #boolean duration
+  #int note
+  #double createdAt
+  +createQuantity()
 }
-class Nurse {
-  #long description
-  #float note
-  -float level
-  +double amount
-  +updatePhone()
+interface Nurse {
+  #String note
+  -double total
+  +boolean phone
+  -int name
+  -double price
+  +sendUpdatedat()
+  +deleteCode()
 }
-class Doctor {
-  #Date note
-  +Date amount
-  #boolean total
-  +setAmount()
-  +deleteId()
-  +calculateActive()
+abstract class Doctor {
+  +long type
+  #float status
+  +deleteScore()
+  +sendCode()
+  +setCode()
 }
-Doctor ..> Ward : "0..1"
-Nurse --* Doctor
-Treatment --* Doctor
-note right of Ward : Healthcare domain
+Nurse ..> Ward : "1..*"
+Ward ..|> Treatment
 @enduml

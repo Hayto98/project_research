@@ -6,60 +6,58 @@ class Return {
   +long id
   #double status
   #long level
-  +createUpdatedat()
+  +updateLevel()
+  +sendNote()
+  +setDuration()
   +saveUpdatedat()
-  +calculateScore()
-  +validateStatus()
 }
-abstract class Category {
-  #String createdAt
-  -long level
-  +Date name
-  +int price
-  +int updatedAt
-  +validateLevel()
-  +findDescription()
-  +validateDescription()
-  +deleteScore()
+class Category {
+  #float score
+  +boolean phone
+  +double status
+  +boolean note
+  +long active
+  +savePhone()
+  +cancelName()
+  +calculateAddress()
 }
 class Review {
+  #Date createdAt
+  +float note
+  -int address
+  +calculatePrice()
+  +updateScore()
+}
+class Coupon {
   -float amount
   #boolean createdAt
-  +saveDescription()
-  +deleteEmail()
+  +calculateTotal()
+  +cancelDuration()
 }
-interface Coupon {
-  -Date duration
-  #int name
-  +String id
-  #boolean total
-  +sendCode()
+class Shipment {
+  #String email
+  #float score
+  +float address
+  +findAmount()
+  +cancelPrice()
+  +saveStatus()
+  +processScore()
 }
-interface Shipment {
+class Customer {
+  #float code
+  +boolean score
+  +calculateDescription()
+}
+interface Order {
   +Date amount
   #long name
   #Date description
-  +calculateAmount()
-  +processStatus()
+  +getAddress()
+  +updateType()
 }
-class Customer {
-  -boolean createdAt
-  -Date code
-  -String note
-  +updateUpdatedat()
-  +processLevel()
-  +setTotal()
-  +updateEmail()
-}
-class Order {
-  +Date code
-  +String price
-  #boolean note
-  #Date description
-  -String score
-  +createCreatedat()
-}
-Shipment --|> Customer
-Shipment --|> Order
-note right of Return : Ecommerce domain
+Return ..|> Order
+Category ..> Return : "*"
+Review --* Shipment
+Customer --|> Coupon
+Coupon ..> Category : "0..1"
 @enduml

@@ -5,48 +5,53 @@ skinparam classBorderColor #E65100
 class LabTest {
   -int phone
   +Date name
-  +sendName()
-  +sendUpdatedat()
+  +createDescription()
+  +getName()
 }
 class Diagnosis {
-  +boolean type
-  -String amount
-  +findCode()
-  +calculateCreatedat()
-  +findAmount()
-  +setUpdatedat()
+  +float quantity
+  +boolean status
+  -String type
+  +updateAmount()
+  +processPhone()
+  +setCreatedat()
+  +getActive()
 }
 class Prescription {
-  +boolean phone
-  +String duration
-  +Date name
-  -float id
-  +findEmail()
+  -long createdAt
+  -Date amount
+  +String code
+  +boolean updatedAt
+  +String description
+  +saveUpdatedat()
 }
-class Doctor {
-  +String level
-  -float createdAt
-  +createStatus()
-  +processAmount()
-  +saveEmail()
+abstract class Doctor {
+  +boolean email
+  #Date amount
+  +getEmail()
+  +deletePhone()
 }
 class Treatment {
-  +int active
-  #Date status
-  +deleteUpdatedat()
+  #long phone
+  +boolean quantity
+  +float status
+  #float note
+  +int amount
+  +validateStatus()
   +deleteDescription()
-  +sendType()
 }
-abstract class Hospital {
-  -double status
-  -double amount
-  #boolean price
-  #int note
-  -boolean createdAt
-  +savePhone()
+class Hospital {
+  #double updatedAt
+  -double description
+  +int level
+  +updateAmount()
+  +deletePrice()
+  +processActive()
+  +saveScore()
 }
+Doctor ..> Hospital : "0..1"
+Doctor --|> Treatment
+Hospital ..|> Prescription
 LabTest --> Hospital : "0..1"
 Hospital --> Doctor : "0..1"
-Hospital --|> Diagnosis
-note right of LabTest : Healthcare domain
 @enduml

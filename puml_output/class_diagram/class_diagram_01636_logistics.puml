@@ -7,54 +7,59 @@ class Inventory {
   #String email
   -long note
   +int address
-  +updateName()
-  +getQuantity()
-  +saveEmail()
+  +sendNote()
+  +savePhone()
+  +saveId()
 }
 class Package {
-  -float duration
-  #String level
-  +savePhone()
-  +getCode()
-  +getAddress()
+  -Date name
+  -float id
+  +Date email
+  +String status
+  +createPrice()
+  +calculatePhone()
+  +calculateLevel()
 }
-abstract class FuelLog {
-  +boolean level
-  +boolean active
-  -long phone
-  -Date status
-  +getAddress()
+interface FuelLog {
+  #double status
+  -double amount
+  #String score
+  +long updatedAt
+  +deleteStatus()
+  +findAddress()
+  +processPhone()
 }
 class Warehouse {
-  +int createdAt
-  -boolean phone
+  -boolean level
   -int score
-  +getType()
-  +validateCreatedat()
+  +String name
+  #Date updatedAt
+  +processStatus()
+  +validateType()
+  +setQuantity()
+  +sendId()
 }
 class Manifest {
   -long description
   -boolean phone
   +Date price
-  +cancelId()
+  +deleteDescription()
 }
 class Tracking {
-  #int createdAt
-  #String code
-  -boolean type
-  -double duration
-  +validateDescription()
-  +validateUpdatedat()
-  +setNote()
+  +String active
+  -int email
+  +validateTotal()
+  +saveId()
 }
 class DeliveryNote {
-  #Date price
-  #Date createdAt
-  -Date description
-  +cancelDescription()
+  -int total
+  +float quantity
+  -float address
+  #int description
+  +sendScore()
+  +setCode()
 }
-Manifest --> Inventory : "1..*"
-Warehouse --* FuelLog
-Tracking ..> Package : "*"
-note right of Inventory : Logistics domain
+Package ..> Manifest : "1..*"
+Tracking --|> Manifest
+Manifest ..> Package : "0..1"
 @enduml

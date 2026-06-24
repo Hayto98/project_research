@@ -6,55 +6,56 @@ skinparam shadowing true
 interface Patient {
   #long score
   +boolean status
-  +getDescription()
-  +setType()
-  +cancelUpdatedat()
-  +setName()
+  +saveEmail()
+  +setLevel()
+  +deleteEmail()
+  +getUpdatedat()
 }
-interface Insurance {
-  -float total
-  #float phone
-  +getPrice()
-  +sendDescription()
-  +setPhone()
+class Insurance {
+  -float duration
+  -long updatedAt
+  #float code
+  -String name
+  -boolean status
+  +validateId()
+  +updateTotal()
 }
 class Ward {
   #float address
   #boolean score
   +Date type
   #int phone
-  +findAddress()
-  +deleteId()
-  +getScore()
+  +setCode()
+  +findQuantity()
+  +createCreatedat()
 }
-abstract class Hospital {
-  +float price
-  #double total
-  +double email
-  #float active
-  +deleteEmail()
-  +cancelTotal()
-  +getType()
+class Hospital {
+  -double score
+  -long note
+  +getStatus()
 }
-class Diagnosis {
-  #boolean description
-  -String amount
-  -long score
-  #String price
-  +Date id
-  +cancelTotal()
-  +updateUpdatedat()
-  +calculateStatus()
+interface Diagnosis {
+  -boolean code
+  -String total
+  #double active
+  +double address
+  +int amount
+  +createLevel()
+  +findEmail()
+  +processCode()
+  +deleteStatus()
 }
-class Billing {
-  -Date email
-  #float name
-  -long price
-  +setId()
+interface Billing {
+  +int name
+  #long quantity
+  #double address
+  +int active
+  +findType()
+  +validateEmail()
+  +saveQuantity()
+  +createNote()
 }
-Hospital ..|> Billing
-Insurance --* Diagnosis
-Billing --> Patient : "0..1"
-Diagnosis ..> Insurance : "0..1"
-note right of Patient : Healthcare domain
+Ward --o Patient
+Hospital --* Ward
+Billing ..> Diagnosis : "1"
 @enduml

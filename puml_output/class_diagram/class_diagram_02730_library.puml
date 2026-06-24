@@ -6,43 +6,41 @@ skinparam shadowing true
 class Renewal {
   +String score
   +int quantity
-  +cancelStatus()
+  +processEmail()
 }
 class Book {
-  -String quantity
-  #long status
-  +processCode()
-  +setCreatedat()
-  +sendNote()
+  +float name
+  #long quantity
+  -double status
+  +float note
+  +processActive()
 }
-class Reservation {
-  -float active
-  #double description
-  -float name
-  +int id
-  -String note
-  +calculateAmount()
-  +deleteCode()
-  +findId()
+interface Reservation {
+  #String code
+  -long note
+  #double active
+  -float description
+  +int name
+  +calculateTotal()
+  +processCreatedat()
+  +setUpdatedat()
+  +sendPhone()
 }
-class Catalog {
-  -float price
-  #String description
-  #int quantity
-  -boolean active
-  +int id
-  +savePrice()
+abstract class Catalog {
+  -double amount
+  -boolean code
+  +Date id
+  +updateNote()
+  +processScore()
+  +sendAmount()
 }
-abstract class Shelf {
-  -double price
-  #Date amount
-  +cancelUpdatedat()
-  +updateScore()
-  +sendAddress()
+class Shelf {
+  +float name
+  +float updatedAt
+  #Date address
+  -double code
+  +saveCode()
 }
-Reservation --o Shelf
-Renewal --o Book
-Shelf ..> Renewal : "0..1"
-Catalog --* Book
-note right of Renewal : Library domain
+Reservation ..> Catalog : "1..*"
+Shelf ..|> Book
 @enduml

@@ -7,52 +7,61 @@ class Beneficiary {
   -String total
   +long active
   +boolean type
+  +updateCode()
+  +sendAmount()
   +sendPhone()
-  +saveStatus()
-  +calculateAmount()
 }
-interface Card {
-  +int description
-  #float status
-  #long amount
-  +createQuantity()
+class Card {
+  +String amount
+  +Date score
+  #long createdAt
+  +long description
+  -long status
+  +setQuantity()
 }
 class Teller {
-  +double quantity
-  #int email
-  +processAddress()
+  -long updatedAt
+  #float total
+  -boolean createdAt
+  #Date id
+  +calculateCreatedat()
+  +calculateDuration()
+  +updateQuantity()
 }
 class Customer {
-  +Date address
-  +int score
-  -Date amount
+  +int createdAt
+  #float status
+  -double description
+  -boolean phone
+  #float active
+  +deleteDescription()
+  +createPhone()
+}
+class Interest {
+  #String total
+  #float phone
+  -Date active
+  +deleteDuration()
+}
+abstract class Branch {
+  -String address
+  +String score
+  -boolean name
+  -String type
   -String total
-  +saveTotal()
-  +processAddress()
+  +updateUpdatedat()
 }
-interface Interest {
-  +double duration
-  -boolean status
-  #String name
-  +saveScore()
-  +setNote()
-  +processPrice()
+class Loan {
+  -String updatedAt
+  +double phone
+  +Date code
+  +float email
+  +boolean active
+  +createLevel()
+  +validatePhone()
 }
-class Branch {
-  #Date score
-  -long type
-  +deleteStatus()
-}
-abstract class Loan {
-  +long id
-  -int email
-  -String name
-  -long active
-  -String score
-  +calculateUpdatedat()
-  +saveId()
-}
-Interest ..> Branch : "0..1"
-Branch --* Beneficiary
-note right of Beneficiary : Banking domain
+Customer ..|> Card
+Card --|> Branch
+Loan --* Interest
+Beneficiary ..> Loan : "*"
 @enduml

@@ -7,63 +7,67 @@ interface Book {
   #float status
   -int duration
   #int id
+  +calculateDuration()
   +sendPrice()
-  +cancelQuantity()
-  +getDuration()
-  +saveActive()
+  +saveCode()
+  +getCode()
 }
 class Student {
-  +long address
-  +long updatedAt
-  #Date total
-  +updateActive()
-  +setCode()
-  +findDescription()
+  +int duration
+  -int active
+  +findId()
+  +calculateName()
+  +calculateLevel()
+  +processQuantity()
 }
-interface Teacher {
-  -Date quantity
-  -float type
-  +validatePhone()
-  +processUpdatedat()
-  +calculateCreatedat()
-  +cancelLevel()
+class Teacher {
+  #int createdAt
+  #boolean active
+  #float status
+  +long code
+  +cancelCode()
+  +createType()
+  +saveLevel()
+  +findScore()
 }
-class Course {
-  #String total
-  -boolean email
-  -double phone
-  -int status
-  +boolean price
-  +cancelType()
-  +saveScore()
-  +validateAddress()
-  +createNote()
+abstract class Course {
+  +float phone
+  #boolean note
+  +float updatedAt
+  #double price
+  +findUpdatedat()
+  +calculateScore()
+  +processStatus()
+  +setQuantity()
 }
 class Exam {
+  +int name
+  #Date quantity
+  -boolean phone
+  -Date total
+  #long level
+  +getNote()
+  +setScore()
+  +sendCode()
+}
+class Assignment {
   +int amount
   #int active
-  +validateCreatedat()
+  +processStatus()
 }
-abstract class Assignment {
+class Grade {
+  #int type
   -long email
   -int code
   -float quantity
   +boolean total
-  -long amount
-  +updateActive()
-  +setName()
+  +setEmail()
+  +processPrice()
+  +validateNote()
 }
-interface Grade {
-  -int amount
-  -boolean status
-  #String level
-  #long quantity
-  #String score
-  +validatePhone()
-  +findQuantity()
-}
-Teacher ..|> Course
-Teacher --|> Book
-Grade --* Exam
-note right of Book : Education domain
+Book ..> Grade : "*"
+Student --|> Book
+Exam --|> Teacher
+Course --o Student
+Exam --|> Grade
 @enduml

@@ -7,52 +7,55 @@ class Restaurant {
   #String code
   +String score
   +Date amount
-  +calculateQuantity()
-  +deleteName()
-  +sendId()
+  +sendScore()
+  +calculateStatus()
+  +createQuantity()
 }
 class Guest {
-  +long note
-  #float code
-  -String price
-  +findStatus()
-  +findEmail()
-  +cancelEmail()
-  +calculateType()
+  -int score
+  -String id
+  +setDescription()
+  +sendPhone()
+  +setCreatedat()
+  +cancelType()
 }
-class Staff {
-  -double createdAt
-  +Date id
-  +validatePhone()
+abstract class Staff {
+  #long type
+  #long status
+  +deleteType()
+  +validateUpdatedat()
+  +saveNote()
+  +createLevel()
 }
 class CheckIn {
-  #float code
-  #boolean type
-  +Date status
-  #int duration
-  +saveNote()
-  +createActive()
-  +calculateCreatedat()
-  +saveName()
+  +Date id
+  +long price
+  -Date level
+  +findQuantity()
+  +validateStatus()
 }
-interface Housekeeping {
-  #boolean updatedAt
-  +String status
-  #float total
-  #Date score
-  +processStatus()
+class Housekeeping {
+  -Date status
+  -float code
+  -boolean active
+  -int id
+  #String description
+  +processDuration()
+  +updateScore()
+  +validateEmail()
 }
-class Service {
-  -int createdAt
-  -String email
-  -String note
-  +Date active
-  +getNote()
-  +findCreatedat()
+abstract class Service {
+  -String level
+  #long id
+  -int status
+  -double active
+  #long code
+  +deleteCreatedat()
+  +calculateEmail()
 }
-Restaurant ..|> CheckIn
-Service --* Staff
-Restaurant --|> Housekeeping
-Staff ..|> Restaurant
-note right of Restaurant : Hotel domain
+Restaurant ..> Guest : "0..1"
+Restaurant ..> CheckIn : "0..1"
+Housekeeping --|> Staff
+CheckIn ..> Guest : "1..*"
+Staff --> Restaurant : "1"
 @enduml

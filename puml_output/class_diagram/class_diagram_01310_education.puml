@@ -6,50 +6,55 @@ skinparam ArrowColor #555555
 abstract class Schedule {
   +int duration
   -Date description
-  +validateTotal()
+  +validateScore()
 }
 abstract class Book {
-  -Date note
-  #int id
-  +int active
-  -float updatedAt
-  +long createdAt
-  +calculateQuantity()
-  +sendTotal()
-  +setAmount()
-  +deleteTotal()
-}
-abstract class Exam {
-  #int createdAt
-  -Date amount
-  +int total
-  +float phone
-  -long description
-  +calculateQuantity()
-  +cancelType()
-}
-interface Classroom {
-  #double score
-  -int duration
+  +double score
+  #Date price
   +float note
-  #Date total
-  +String phone
-  +deleteDuration()
-  +findId()
+  +int id
+  -float updatedAt
+  +findCreatedat()
 }
-class Student {
-  +boolean type
-  #long total
-  +deleteTotal()
-  +findAmount()
+interface Exam {
+  +int price
+  #Date quantity
+  -double active
+  #double total
+  +int status
+  +findCode()
+  +findPhone()
+  +sendAmount()
+  +saveNote()
+}
+abstract class Classroom {
+  -long description
+  +double createdAt
+  +deleteUpdatedat()
+  +sendCreatedat()
+  +saveActive()
+}
+abstract class Student {
+  +float total
+  #Date phone
+  +String duration
+  #int quantity
+  +boolean description
+  +sendId()
 }
 class Attendance {
-  #float score
-  -Date note
-  +cancelId()
+  +float total
+  -Date createdAt
+  +int active
+  #String address
+  #float amount
+  +savePrice()
+  +deleteLevel()
+  +setActive()
+  +calculateTotal()
 }
-Student --* Exam
-Student ..> Book : "0..1"
-Classroom --|> Student
-note right of Schedule : Education domain
+Attendance --> Schedule : "1"
+Book ..> Student : "1..*"
+Exam ..|> Student
+Attendance --o Book
 @enduml

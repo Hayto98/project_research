@@ -8,45 +8,46 @@ class Manifest {
   -boolean type
   -float amount
   -long duration
-  +validatePhone()
-  +findDescription()
-  +sendScore()
+  +processStatus()
+  +setCreatedat()
+  +findCode()
 }
-interface Package {
+class Package {
   +int score
   #String level
   -long total
   -boolean quantity
   -boolean price
-  +sendTotal()
-  +deleteEmail()
-  +saveCreatedat()
-  +saveLevel()
+  +createNote()
+  +calculateLevel()
+  +calculateDuration()
+  +calculateQuantity()
 }
 class Route {
-  #Date id
-  +boolean level
-  +int phone
-  +validateScore()
+  +Date createdAt
+  #long level
+  #Date status
+  +boolean description
+  +getTotal()
+  +updateUpdatedat()
 }
 class Shipment {
-  -boolean code
-  -int note
-  #float score
-  +deleteLevel()
-  +validateType()
-  +findCreatedat()
+  #Date amount
+  -float code
+  +processId()
+  +calculateQuantity()
+  +createCode()
 }
-class Customer {
+interface Customer {
+  #int amount
+  +String level
+  -long address
   -long type
-  #long phone
-  +processDescription()
-  +saveScore()
-  +findAmount()
-  +setPhone()
+  +processLevel()
+  +deleteDuration()
+  +getEmail()
 }
-Customer ..> Shipment : "*"
+Customer --|> Package
+Route ..> Shipment : "*"
 Route --> Customer : "*"
-Manifest --|> Route
-note right of Manifest : Logistics domain
 @enduml

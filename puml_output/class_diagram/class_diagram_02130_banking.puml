@@ -8,39 +8,43 @@ interface Transaction {
   +int createdAt
   +Date amount
   -Date name
-  +findUpdatedat()
-  +findCode()
-  +saveQuantity()
+  +createTotal()
+  +sendNote()
+  +sendUpdatedat()
 }
 class Deposit {
-  #Date amount
-  #Date email
-  +deleteLevel()
+  #Date address
+  #Date code
+  #String amount
+  +boolean email
+  +findNote()
+  +processPrice()
+  +validateQuantity()
 }
 class Withdrawal {
-  +boolean updatedAt
-  +float amount
-  +setPhone()
-  +createScore()
-  +updateLevel()
+  -boolean email
+  +Date status
+  #boolean phone
+  +getAmount()
 }
-class Account {
-  #Date active
-  #double total
-  -boolean updatedAt
-  -String createdAt
-  #float phone
-  +cancelNote()
+abstract class Account {
+  #long updatedAt
+  +boolean createdAt
+  +boolean phone
+  -float price
+  -int address
+  +deleteEmail()
+  +cancelActive()
+  +getName()
 }
-class Transfer {
-  #long phone
-  +double level
-  +double active
-  +deleteDuration()
-  +findName()
-  +cancelDescription()
-  +processScore()
+interface Transfer {
+  -int amount
+  #Date type
+  +boolean code
+  +double price
+  +saveAmount()
 }
-Account --* Withdrawal
-note right of Transaction : Banking domain
+Withdrawal --> Account : "1..*"
+Account ..> Transfer : "0..1"
+Transaction ..|> Transfer
 @enduml

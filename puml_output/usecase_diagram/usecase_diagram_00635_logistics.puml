@@ -3,10 +3,10 @@ skinparam backgroundColor #FFFFFF
 skinparam classBackgroundColor #F3E5F5
 skinparam classBorderColor #6A1B9A
 left to right direction
-actor "Fleet Manager" as FleetManager
-actor "Warehouse Staff" as WarehouseStaff
-actor "Driver" as Driver
-actor "Customer" as Customer
+actor "Fleet Manager" as FM
+actor "Warehouse Staff" as WS
+actor "Driver" as D
+actor "Customer" as C
 rectangle "Logistics System" {
   usecase "Report Issue" as UC_ReportIssue
   usecase "Track Shipment" as UC_TrackShipment
@@ -14,14 +14,14 @@ rectangle "Logistics System" {
   usecase "Deliver Package" as UC_DeliverPackage
   usecase "Update Inventory" as UC_UpdateInventory
 }
-FleetManager --> UC_TrackShipment
-FleetManager --> UC_FuelVehicle
-FleetManager --> UC_UpdateInventory
-WarehouseStaff --> UC_TrackShipment
-Driver --> UC_UpdateInventory
-Driver --> UC_TrackShipment
-Driver --> UC_DeliverPackage
-Customer --> UC_TrackShipment
-Customer --> UC_UpdateInventory
+FM --> UC_TrackShipment
+FM --> UC_FuelVehicle
+FM --> UC_UpdateInventory
+WS --> UC_TrackShipment
+D --> UC_UpdateInventory
+D --> UC_TrackShipment
+D --> UC_DeliverPackage
+C --> UC_TrackShipment
+C --> UC_UpdateInventory
 UC_ReportIssue ..|> UC_UpdateInventory : <<include>>
 @enduml

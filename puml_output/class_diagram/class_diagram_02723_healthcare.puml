@@ -6,60 +6,54 @@ class Treatment {
   -Date amount
   +Date createdAt
   -Date email
-  +sendActive()
+  +createStatus()
 }
-class Billing {
-  #int address
-  -int duration
-  +sendAmount()
-  +updateTotal()
-  +getDescription()
+interface Billing {
+  -boolean id
+  +long address
+  +updateCode()
+  +updateLevel()
 }
-class Diagnosis {
-  #boolean email
-  +float total
-  #int address
-  +double name
-  #String phone
-  +createUpdatedat()
-  +createQuantity()
-  +cancelNote()
-  +updatePrice()
+interface Diagnosis {
+  +int createdAt
+  #boolean total
+  #float name
+  +deleteCreatedat()
+  +cancelCreatedat()
+  +findLevel()
+  +calculateTotal()
 }
 class LabTest {
-  -double id
-  #String phone
-  +calculateUpdatedat()
-  +deletePhone()
-  +validateLevel()
+  #int phone
+  +double status
+  +calculateStatus()
 }
-interface Doctor {
-  -float score
-  -double createdAt
-  #int email
-  +String address
-  +validateAddress()
-  +sendPrice()
-  +createDuration()
-  +deletePhone()
+abstract class Doctor {
+  +double updatedAt
+  -Date email
+  +String quantity
+  -long note
+  +deleteDescription()
+  +updateName()
+  +calculateActive()
+  +findEmail()
 }
-abstract class Nurse {
-  +float level
-  +boolean code
-  #boolean status
-  +getQuantity()
-  +setStatus()
-  +cancelPhone()
+class Nurse {
+  #Date updatedAt
+  +long description
+  -long phone
+  -double address
+  #int quantity
+  +saveTotal()
 }
 class Insurance {
-  +float address
-  #float price
-  +cancelQuantity()
-  +findTotal()
+  #int address
+  #long duration
+  -float score
+  +boolean price
+  +String email
+  +setAmount()
 }
-Insurance --|> Nurse
-Billing ..|> LabTest
-Doctor --o LabTest
-Doctor ..|> Insurance
-note right of Treatment : Healthcare domain
+Doctor --> Insurance : "1..*"
+Treatment --|> Diagnosis
 @enduml

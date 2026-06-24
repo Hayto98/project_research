@@ -7,62 +7,60 @@ abstract class FuelLog {
   #long email
   #long quantity
   +Date name
-  +cancelType()
-  +setName()
-  +deleteAddress()
+  +findDescription()
+  +sendName()
+  +cancelEmail()
 }
 class Depot {
-  -Date type
-  -Date note
-  +cancelType()
+  -float address
+  -double updatedAt
+  #long name
+  +findUpdatedat()
 }
-class Customer {
-  -boolean status
-  #Date address
-  -boolean description
-  #boolean level
-  +int phone
-  +findLevel()
-  +findAddress()
+abstract class Customer {
+  #long price
+  +long status
+  +processDescription()
+  +sendActive()
+  +deleteType()
 }
 class Tracking {
-  #Date active
-  #boolean email
-  -String total
-  +calculateName()
+  #boolean createdAt
+  #long description
+  +processPrice()
+  +saveTotal()
+  +getScore()
 }
 class Route {
-  -long duration
-  -boolean code
-  +long amount
-  #boolean type
-  +String address
-  +findType()
-  +createType()
-  +saveUpdatedat()
-  +getUpdatedat()
+  #String score
+  +double note
+  #String code
+  +double name
+  -float price
+  +findScore()
+  +setTotal()
+  +sendActive()
 }
 class Shipment {
+  -Date duration
+  -long score
+  -float createdAt
+  #Date id
+  +calculateEmail()
+  +findAddress()
+}
+class Manifest {
   #float phone
   #Date quantity
   #Date address
   +float total
   +long description
-  +getAddress()
-  +validatePhone()
-  +findLevel()
-}
-class Manifest {
-  -Date level
-  +String address
-  -int id
-  +Date createdAt
+  +cancelTotal()
   +createActive()
+  +updateTotal()
 }
-Manifest --o Route
-Depot --> Shipment : "0..1"
-Depot --* Customer
-Shipment --> Manifest : "*"
-Route ..|> Manifest
-note right of FuelLog : Logistics domain
+Shipment --> Manifest : "0..1"
+Shipment --> Customer : "1..*"
+FuelLog --o Depot
+Shipment --|> Depot
 @enduml

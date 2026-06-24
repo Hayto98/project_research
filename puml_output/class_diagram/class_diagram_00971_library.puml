@@ -8,45 +8,42 @@ interface Catalog {
   +Date phone
   -boolean name
   +long code
-  +deleteDescription()
-  +processPrice()
-  +setAmount()
-  +updatePhone()
+  +deleteTotal()
+  +deleteLevel()
+  +saveQuantity()
+  +findPhone()
 }
 abstract class Shelf {
-  #long quantity
-  #Date name
-  -String code
-  +setAddress()
-  +cancelEmail()
-  +validatePhone()
-  +saveTotal()
+  #int code
+  -String amount
+  +Date updatedAt
+  -boolean phone
+  #long total
+  +calculateCode()
 }
-interface Reservation {
-  -boolean createdAt
-  +long score
-  -String address
-  -Date name
-  +saveQuantity()
+class Reservation {
+  #double duration
+  #boolean email
+  -int address
+  #boolean phone
+  +savePhone()
+  +findCode()
+  +createUpdatedat()
 }
 class Librarian {
-  -int active
-  +float status
-  +deleteStatus()
-}
-class Branch {
-  +String createdAt
-  #boolean code
-  #boolean level
-  #boolean active
-  -boolean total
-  +deleteAddress()
+  #long total
+  +String code
+  #String email
+  -int level
   +createEmail()
-  +findNote()
-  +cancelAddress()
 }
-Catalog --o Reservation
-Librarian --* Branch
-Reservation --|> Shelf
-note right of Catalog : Library domain
+interface Branch {
+  +float description
+  -int status
+  +getLevel()
+}
+Branch --|> Librarian
+Catalog --> Reservation : "*"
+Shelf --* Reservation
+Reservation --> Librarian : "1..*"
 @enduml

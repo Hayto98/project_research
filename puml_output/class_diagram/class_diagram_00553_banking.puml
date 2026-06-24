@@ -8,33 +8,32 @@ interface Statement {
   -int createdAt
   +float description
   +String email
-  +validateAmount()
+  +deleteCode()
 }
 class Beneficiary {
-  -Date level
-  -long total
-  +saveCreatedat()
+  -Date name
+  -long level
+  #float total
+  +saveLevel()
 }
-abstract class Loan {
-  +float total
-  #float active
-  -long duration
-  +saveId()
-  +calculateCreatedat()
-  +processScore()
-  +saveType()
+class Loan {
+  #float amount
+  -long total
+  -Date active
+  +double level
+  +double duration
+  +sendAddress()
+  +sendAmount()
+  +saveCreatedat()
+  +calculatePrice()
 }
 class Branch {
-  #int score
-  #double createdAt
-  #Date phone
-  -String active
-  +getAddress()
-  +saveId()
-  +saveCreatedat()
-  +saveDescription()
+  +Date active
+  #double description
+  +float price
+  -Date email
+  +validatePrice()
 }
-Statement ..> Loan : "0..1"
-Branch --* Beneficiary
-note right of Statement : Banking domain
+Beneficiary --> Statement : "1"
+Beneficiary --* Branch
 @enduml

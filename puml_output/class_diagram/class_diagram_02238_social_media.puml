@@ -6,55 +6,50 @@ skinparam shadowing true
 abstract class Post {
   #double name
   +Date email
-  +calculateName()
+  +deleteAmount()
 }
-interface Follower {
+class Follower {
   #double level
   +String updatedAt
-  +deleteStatus()
-  +calculateDescription()
-  +setNote()
+  +validateCode()
+  +setStatus()
+  +findAmount()
 }
 class Profile {
-  +double id
-  +boolean description
-  +double createdAt
-  +validateLevel()
-  +saveTotal()
-  +cancelDescription()
-  +saveUpdatedat()
+  #Date note
+  +String status
+  +sendEmail()
+  +cancelEmail()
 }
-class Comment {
+abstract class Comment {
+  -long active
+  #Date createdAt
+  -boolean type
+  +sendPrice()
+  +processPrice()
+}
+class Message {
   #double type
   #int duration
   -long phone
   -float updatedAt
-  +deleteName()
-}
-class Message {
-  #String amount
-  #Date quantity
-  #long updatedAt
-  #Date price
-  -int status
-  +createActive()
+  +createCode()
 }
 class Story {
-  +int score
-  -long name
-  +updateCreatedat()
+  +Date active
+  -Date note
+  +saveLevel()
+  +createPrice()
 }
-abstract class Album {
-  #String note
-  +Date phone
+class Album {
   #Date level
-  +boolean address
-  #boolean email
-  +sendStatus()
-  +createLevel()
+  -int quantity
+  +cancelPhone()
 }
-Follower ..> Message : "0..1"
-Follower --> Profile : "1..*"
-Profile ..> Message : "0..1"
-note right of Post : Social Media domain
+Follower --> Story : "1"
+Message --|> Post
+Follower --* Comment
+Post ..|> Follower
+Story --o Album
+Story --o Message
 @enduml

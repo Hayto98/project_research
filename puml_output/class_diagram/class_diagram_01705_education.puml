@@ -9,46 +9,41 @@ interface Exam {
   #Date type
   -float status
   +Date total
-  +deleteId()
+  +saveQuantity()
 }
-interface Enrollment {
+class Enrollment {
   #int active
   -String duration
   #String amount
   -boolean phone
-  +setCode()
-  +deletePhone()
-  +validateScore()
+  +getType()
+  +validatePhone()
+  +findId()
 }
 class Teacher {
-  +Date duration
-  -Date address
-  +int note
-  -String price
-  +setScore()
-  +processDescription()
-  +sendActive()
+  #long score
+  -double updatedAt
+  +Date active
+  -Date phone
+  +updateAmount()
 }
-abstract class Book {
-  #Date duration
-  #int createdAt
-  #double description
-  +float total
-  +setId()
-  +deleteDuration()
-  +deleteName()
+class Book {
+  +boolean code
+  #boolean active
+  -float phone
+  #long duration
+  #int type
+  +createTotal()
+  +getPhone()
 }
-abstract class Schedule {
-  -Date email
-  -Date description
-  +findAddress()
-  +updateStatus()
-  +cancelQuantity()
-  +createType()
+interface Schedule {
+  #long duration
+  +String price
+  +boolean name
+  +processQuantity()
+  +cancelDuration()
 }
-Enrollment --* Schedule
-Enrollment --o Exam
-Schedule --* Enrollment
-Book --> Teacher : "0..1"
-note right of Exam : Education domain
+Exam ..|> Teacher
+Teacher ..> Schedule : "*"
+Teacher --|> Enrollment
 @enduml

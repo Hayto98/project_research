@@ -5,43 +5,35 @@ interface Reservation {
   #int price
   #int name
   -long email
-  +cancelCode()
+  +findTotal()
 }
 interface Book {
-  #boolean total
-  #String updatedAt
-  +long phone
-  +int status
-  +deleteStatus()
-  +createDuration()
-  +updateAddress()
-  +sendAmount()
+  -int active
+  -Date email
+  +validateActive()
 }
-class Librarian {
-  #Date description
-  #Date total
-  +findQuantity()
-  +findEmail()
-  +createTotal()
-  +processStatus()
+interface Librarian {
+  +int id
+  -int quantity
+  +sendAddress()
 }
-class Publisher {
-  -long type
-  -int id
-  +getId()
+interface Publisher {
+  +String address
+  +double score
+  #Date amount
+  +cancelUpdatedat()
+  +calculatePhone()
+  +getDuration()
+  +deleteName()
 }
 class Fine {
-  #float note
-  #boolean id
-  -int address
-  #int code
-  #float phone
-  +getLevel()
-  +getTotal()
-  +setTotal()
-  +setType()
+  #Date note
+  +long status
+  -double code
+  +Date level
+  #float type
+  +savePhone()
 }
-Book --> Publisher : "*"
-Book --> Librarian : "1"
-note right of Reservation : Library domain
+Book --o Publisher
+Reservation --|> Librarian
 @enduml

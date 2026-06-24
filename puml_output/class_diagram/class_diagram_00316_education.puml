@@ -5,65 +5,53 @@ skinparam shadowing true
 class Classroom {
   #double updatedAt
   #String quantity
-  +createPhone()
-  +cancelDescription()
+  +processCreatedat()
+  +sendAddress()
 }
 class Course {
+  #long quantity
+  +String total
   +int description
-  #Date score
-  +double quantity
-  -Date createdAt
-  -String status
-  +createLevel()
-  +processStatus()
-  +getPhone()
-  +sendPhone()
+  +getId()
+  +updateTotal()
 }
-interface Exam {
+class Exam {
+  #double price
+  +String quantity
+  +createDescription()
+  +processScore()
+  +updateTotal()
+}
+interface Library {
   -boolean status
   -float type
-  +cancelLevel()
-  +getLevel()
-  +cancelName()
-}
-class Library {
-  +int name
-  #String note
-  #String price
-  #long level
-  -int duration
-  +saveStatus()
+  +setId()
+  +calculateLevel()
+  +savePrice()
 }
 class Schedule {
+  +double amount
+  -boolean type
+  +savePhone()
+  +updateName()
+  +getTotal()
+  +cancelScore()
+}
+class Department {
+  +String email
+  #String price
+  +cancelPrice()
+}
+interface Student {
   +int createdAt
   -boolean updatedAt
   #double phone
   +double price
   -long address
-  +createLevel()
+  +findTotal()
 }
-class Department {
-  #double address
-  +Date level
-  #long updatedAt
-  #long total
-  +double code
-  +findDuration()
-  +findStatus()
-  +savePrice()
-}
-class Student {
-  +double active
-  -String code
-  +long price
-  -long note
-  +cancelUpdatedat()
-  +getAddress()
-  +getAmount()
-}
-Library --> Classroom : "1..*"
-Classroom --> Course : "0..1"
 Student --* Schedule
-Student --* Classroom
-note right of Classroom : Education domain
+Schedule --* Library
+Schedule --o Course
+Classroom --o Schedule
 @enduml

@@ -6,45 +6,38 @@ abstract class Billing {
   +int address
   +String active
   +float price
-  +createName()
-  +cancelQuantity()
+  +cancelAddress()
+  +saveUpdatedat()
 }
 class MedicalRecord {
+  #int phone
+  #double type
   -boolean amount
   +boolean price
-  #String description
-  #String active
-  +double total
-  +findPrice()
-  +findQuantity()
-  +validateAmount()
-  +calculateCode()
+  +createLevel()
 }
-interface Patient {
-  +long note
-  +long name
-  +processType()
-  +createPhone()
+class Patient {
+  #long type
+  -int duration
+  -String price
+  +calculateAmount()
 }
 class Hospital {
-  #double phone
-  +double score
-  +sendPhone()
-  +calculateDescription()
-  +setNote()
-  +findLevel()
+  -int quantity
+  -double createdAt
+  +calculateStatus()
+  +sendDescription()
+  +saveType()
 }
-abstract class LabTest {
-  +Date duration
-  #String createdAt
-  -String description
-  +sendActive()
-  +setNote()
-  +saveName()
+class LabTest {
+  +double active
+  #double status
+  #long phone
+  -float note
+  +createAddress()
+  +updateCreatedat()
 }
-MedicalRecord --* Patient
-Billing --> LabTest : "1..*"
-Patient --* MedicalRecord
-Patient ..> Hospital : "0..1"
-note right of Billing : Healthcare domain
+LabTest ..|> Hospital
+LabTest ..|> MedicalRecord
+Billing --o LabTest
 @enduml

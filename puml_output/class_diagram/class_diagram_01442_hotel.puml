@@ -9,53 +9,54 @@ class Room {
   -boolean level
   -boolean note
   -double address
-  +validateActive()
-  +processPhone()
-  +findTotal()
-  +deleteType()
+  +saveLevel()
+  +createActive()
+  +deleteEmail()
+  +updateNote()
 }
-interface CheckIn {
-  -int id
+abstract class CheckIn {
+  #String total
+  +int amount
+  -int type
   -long createdAt
-  #boolean level
-  +processId()
-  +deleteScore()
-  +processCode()
-  +setStatus()
+  +saveAmount()
+  +sendTotal()
+  +validateCode()
+  +getDescription()
 }
-class Booking {
-  +int name
-  +Date status
-  +cancelLevel()
-  +calculateNote()
-  +findPhone()
+interface Booking {
+  #String code
+  +String status
+  +int level
+  #long phone
+  #boolean name
+  +processTotal()
+  +cancelDescription()
+  +findCode()
+  +validateCode()
 }
 class Amenity {
-  -boolean status
-  +int active
-  +float type
-  #boolean address
-  +processPhone()
+  -long active
+  #float type
+  +updateDescription()
+  +getEmail()
 }
 interface CheckOut {
-  -int quantity
-  +Date note
-  -int code
-  #long level
-  +updateLevel()
-  +createCode()
+  #boolean type
+  #Date phone
+  +createEmail()
+  +cancelAddress()
+  +cancelQuantity()
 }
 class Service {
-  -int phone
-  #boolean type
-  +int amount
-  +setCreatedat()
-  +processQuantity()
-  +validateStatus()
+  #long type
+  +int description
+  #boolean name
+  -float total
+  #Date createdAt
+  +sendTotal()
 }
-Room --* CheckOut
-Booking ..|> CheckOut
-CheckIn --> CheckOut : "1"
-CheckIn --> Amenity : "1..*"
-note right of Room : Hotel domain
+Booking --> Amenity : "0..1"
+Amenity ..> CheckIn : "0..1"
+CheckIn --> CheckOut : "1..*"
 @enduml

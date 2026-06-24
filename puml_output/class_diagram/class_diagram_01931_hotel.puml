@@ -4,61 +4,61 @@ skinparam roundCorner 15
 interface Restaurant {
   +int email
   #int phone
-  +setType()
-  +validateAddress()
-  +sendAmount()
+  +validatePhone()
+  +deleteActive()
+  +calculateName()
 }
-interface Housekeeping {
-  +Date score
-  #String id
-  +processDuration()
-  +processName()
-  +calculateAmount()
+class Housekeeping {
+  +float score
+  +Date name
+  #String duration
+  +sendCode()
+  +findDescription()
   +findLevel()
+  +updateQuantity()
 }
-class Reservation {
-  #long duration
-  -double name
-  +findName()
+abstract class Reservation {
+  #boolean total
+  +String amount
   +calculateDuration()
-  +saveAmount()
-  +processPrice()
 }
-abstract class CheckOut {
-  -Date score
-  +float name
-  +calculateAmount()
+class CheckOut {
+  #boolean type
+  #int price
+  -double name
+  #Date total
+  +createEmail()
+  +processName()
+  +createStatus()
+  +processPhone()
 }
 class Staff {
-  +long createdAt
-  -int quantity
-  -double code
-  #float price
-  -long level
-  +sendCreatedat()
-  +setStatus()
-  +cancelEmail()
-  +createCode()
-}
-abstract class Payment {
-  -double code
-  #double email
-  +int phone
   -int id
-  +setName()
-  +deleteType()
+  #Date status
+  -String total
+  -long amount
+  +long phone
+  +createCode()
+  +createActive()
+  +deletePrice()
+  +deleteDescription()
+}
+class Payment {
+  +boolean note
+  -long active
+  +float createdAt
+  #double status
+  +getType()
+  +sendStatus()
+  +sendDuration()
 }
 class CheckIn {
-  -boolean description
-  +String score
-  +Date price
+  +int id
   -int note
-  +cancelAddress()
+  #boolean total
+  #int type
+  +calculateLevel()
 }
-Restaurant ..|> CheckOut
-Payment --* Restaurant
-CheckIn --o Restaurant
-Payment --* Staff
-Housekeeping --* CheckIn
-note right of Restaurant : Hotel domain
+Housekeeping --|> CheckOut
+Reservation --> Housekeeping : "*"
 @enduml

@@ -8,61 +8,62 @@ abstract class Billing {
   -double address
   -double createdAt
   +int duration
-  +validateName()
-  +processScore()
-  +updateQuantity()
+  +calculateTotal()
+  +sendPhone()
+  +getDescription()
 }
-abstract class Prescription {
-  #int name
-  +Date email
-  +float phone
-  +createQuantity()
-  +processDuration()
-  +createAmount()
-  +createScore()
+class Prescription {
+  #String score
+  -long createdAt
+  #int quantity
+  +Date type
+  +float updatedAt
+  +cancelAddress()
+  +updateLevel()
+  +deletePrice()
+  +findDescription()
 }
 class Doctor {
-  -int id
-  -String active
-  +getNote()
-  +deleteCode()
+  +String quantity
+  #long score
+  +long updatedAt
+  +updateCode()
 }
 interface LabTest {
-  +String total
-  +boolean duration
-  #float email
-  -String amount
-  +calculateCode()
-  +calculateAddress()
-  +saveLevel()
-  +createName()
+  +boolean name
+  -Date note
+  #double amount
+  +saveTotal()
+  +deleteCreatedat()
+  +findId()
+  +deleteAddress()
 }
 class Patient {
-  #long amount
-  #double description
+  +double duration
+  -String level
+  -long phone
+  +processQuantity()
   +validateCreatedat()
+  +getType()
 }
 class Appointment {
-  #int type
-  #Date id
-  +String status
-  +deleteActive()
-  +calculateType()
-  +getAddress()
-  +saveName()
+  +float email
+  -int active
+  +int total
+  +cancelTotal()
+  +deleteQuantity()
+  +getCode()
+  +processPrice()
 }
-class Insurance {
-  #long type
-  #String phone
-  #float email
-  #double note
-  #double createdAt
-  +processCreatedat()
-  +sendType()
+interface Insurance {
+  #double name
+  -String type
+  -Date amount
+  +saveCreatedat()
 }
-Insurance --* Patient
-Billing --> Insurance : "1..*"
-Appointment --> LabTest : "1..*"
-Doctor --> LabTest : "1"
-note right of Billing : Healthcare domain
+LabTest --* Appointment
+Doctor ..|> LabTest
+Patient ..> Doctor : "1"
+Patient --o Insurance
+Patient ..|> LabTest
 @enduml

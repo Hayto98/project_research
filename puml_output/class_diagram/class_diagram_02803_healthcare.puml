@@ -6,33 +6,35 @@ abstract class Diagnosis {
   +long code
   #double duration
   -boolean price
-  +cancelDuration()
-  +deleteType()
-  +createDuration()
+  +findUpdatedat()
+  +setPhone()
+  +deleteId()
 }
-interface Treatment {
-  -int type
-  -String description
-  #Date name
-  #double updatedAt
-  -boolean createdAt
-  +getScore()
-  +updateScore()
-  +findPrice()
+class Treatment {
+  +boolean email
+  +int level
+  -int price
+  -String type
+  #Date description
+  +calculateName()
+  +getCreatedat()
+  +saveScore()
+  +updateActive()
 }
-class Billing {
-  -float note
-  -int name
-  +createAmount()
-  +processPrice()
+interface Billing {
+  +double score
+  #float price
+  #float address
+  +setTotal()
 }
-class Nurse {
-  #Date email
-  #int note
-  #double price
-  +createName()
+abstract class Nurse {
+  -float amount
+  -String quantity
+  #Date duration
+  +calculateScore()
+  +sendCode()
 }
-Billing ..|> Nurse
-Treatment --* Diagnosis
-note right of Diagnosis : Healthcare domain
+Treatment --o Billing
+Diagnosis --|> Treatment
+Treatment --> Nurse : "0..1"
 @enduml

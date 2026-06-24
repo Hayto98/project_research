@@ -3,41 +3,36 @@ skinparam shadowing true
 class Member {
   -boolean status
   +float type
-  +saveEmail()
+  +calculateUpdatedat()
 }
 class Publisher {
-  #String email
-  #float note
-  +processPrice()
-  +processCode()
-  +cancelCode()
+  +boolean id
+  #long email
+  -double note
+  -String active
+  +validateQuantity()
 }
 class Renewal {
-  +Date amount
-  #Date price
-  #boolean code
-  +float quantity
-  +setScore()
+  +Date price
+  #Date code
+  #boolean quantity
+  +setAmount()
 }
 class Reservation {
-  -boolean score
-  -double name
-  -Date active
-  #double type
-  +cancelActive()
-  +calculateCreatedat()
-  +sendDescription()
-  +validatePrice()
+  -Date score
+  #boolean name
+  +deleteType()
 }
 interface Book {
-  #long id
-  #long price
-  +boolean createdAt
-  -float address
-  +getActive()
-  +createActive()
+  #float type
+  #double score
+  -boolean note
+  #double total
+  +boolean price
+  +processStatus()
+  +cancelLevel()
 }
-Reservation --> Renewal : "0..1"
-Renewal ..> Book : "1..*"
-note right of Member : Library domain
+Book --|> Renewal
+Reservation --* Publisher
+Renewal --|> Book
 @enduml

@@ -6,39 +6,46 @@ skinparam defaultFontSize 11
 abstract class Route {
   +float phone
   #float createdAt
-  +cancelNote()
-  +cancelLevel()
+  +processEmail()
+  +sendCode()
 }
-class Inventory {
-  -boolean active
-  +Date quantity
-  +double total
-  #double amount
-  +findDescription()
+interface Inventory {
+  -double address
+  #int active
+  +processEmail()
+  +validatePhone()
+  +sendDuration()
 }
-abstract class Manifest {
-  -Date code
-  +float duration
-  +createActive()
-  +cancelAmount()
-  +validateLevel()
+class Manifest {
+  #Date total
+  +String level
+  +double name
+  #float description
+  +float type
+  +calculateTotal()
+  +deleteCreatedat()
+  +saveUpdatedat()
 }
-class Package {
-  +long name
-  #long amount
-  +updateId()
-  +createLevel()
-  +processUpdatedat()
+interface Package {
+  +String phone
+  +int level
+  -float name
+  +processAddress()
+  +getCode()
+  +cancelDescription()
 }
-class FuelLog {
-  -Date address
-  -int amount
-  +cancelNote()
-  +deleteType()
-  +updateTotal()
+interface FuelLog {
+  +float createdAt
+  +Date id
+  +long quantity
+  +double type
+  +saveTotal()
+  +findPhone()
+  +updateCreatedat()
+  +saveScore()
 }
+Package --o Inventory
+Inventory --* Package
 Manifest --|> Route
 Route --o Package
-Package --* Manifest
-note right of Route : Logistics domain
 @enduml

@@ -6,45 +6,46 @@ skinparam shadowing true
 class Prescription {
   #float amount
   -String updatedAt
-  +createName()
+  +setTotal()
 }
 class Patient {
-  #float score
-  -long level
-  +boolean phone
-  #long updatedAt
-  +setName()
-  +calculateId()
+  +boolean level
+  -long quantity
+  +boolean score
+  #long phone
+  +deleteQuantity()
+  +findStatus()
 }
 class Nurse {
-  +Date name
-  +Date email
-  +long total
-  -Date type
-  +long level
-  +deleteAmount()
-  +deleteNote()
-  +getActive()
-  +sendStatus()
+  -Date id
+  -double address
+  -int active
+  #int total
+  #String name
+  +sendCode()
+  +validateTotal()
+  +setUpdatedat()
 }
 class Appointment {
-  -double phone
-  +boolean createdAt
-  -String updatedAt
-  +updateId()
-  +setEmail()
+  #boolean amount
+  +int duration
+  #float level
+  +long note
+  +int id
+  +processLevel()
+  +calculateAddress()
+  +getCode()
 }
-interface Treatment {
-  -long address
-  +String score
-  -double status
-  #boolean price
-  +long description
-  +findAmount()
+abstract class Treatment {
+  +float createdAt
+  +long updatedAt
+  +updateScore()
+  +calculateCreatedat()
+  +createStatus()
+  +calculateUpdatedat()
 }
-Appointment --o Prescription
-Prescription ..> Nurse : "1"
-Patient --> Prescription : "1"
-Treatment ..> Nurse : "*"
-note right of Prescription : Healthcare domain
+Prescription ..|> Appointment
+Appointment ..|> Nurse
+Prescription --o Nurse
+Treatment --* Prescription
 @enduml

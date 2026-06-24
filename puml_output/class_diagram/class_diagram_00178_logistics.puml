@@ -6,59 +6,55 @@ skinparam defaultFontSize 13
 class Package {
   -long price
   #boolean email
-  +findTotal()
-  +updatePrice()
+  +sendUpdatedat()
+  +processLevel()
 }
-abstract class Customer {
+class Customer {
+  +double price
   #double note
-  #boolean status
-  -long price
-  +boolean createdAt
-  -float total
-  +sendType()
-  +deleteName()
+  #boolean level
+  -long status
+  +boolean duration
+  +calculateLevel()
+  +saveAddress()
+  +setQuantity()
+  +calculateType()
 }
-class Inventory {
-  +String amount
-  #float note
-  #float total
-  -int active
-  +long score
-  +getLevel()
-  +cancelEmail()
-  +deleteActive()
-}
-abstract class Warehouse {
-  #String createdAt
-  #String description
-  -int score
-  #Date address
-  +updateAddress()
+interface Inventory {
+  -double description
+  #float name
+  -float updatedAt
+  +String total
+  #float amount
   +createCreatedat()
-  +updateQuantity()
-  +sendCode()
+  +setName()
+  +saveScore()
+  +getNote()
 }
-abstract class FuelLog {
-  #boolean code
-  -double address
-  #float description
-  -String type
-  +cancelAddress()
-  +processPhone()
-  +cancelDescription()
+class Warehouse {
+  +int amount
+  #float active
+  #float type
+  -Date address
+  +setDuration()
 }
-abstract class Shipment {
-  +long email
-  #long level
-  +processPhone()
-  +setActive()
-  +updateCode()
-  +processName()
+interface FuelLog {
+  #Date quantity
+  -float updatedAt
+  +validateScore()
+  +processDescription()
 }
-Inventory --o Customer
-Inventory --> Warehouse : "0..1"
-Inventory --o Package
-Package --|> Inventory
-Warehouse ..|> FuelLog
-note right of Package : Logistics domain
+class Shipment {
+  -long quantity
+  +long active
+  +Date code
+  +getScore()
+  +processEmail()
+  +saveAmount()
+  +validateName()
+}
+Package --> Inventory : "1..*"
+Warehouse --> Inventory : "0..1"
+Warehouse --* Package
+FuelLog ..|> Shipment
 @enduml

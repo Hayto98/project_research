@@ -8,60 +8,64 @@ interface Service {
   +float address
   #double level
   #int status
-  +sendName()
-  +deleteNote()
-  +calculateDuration()
-  +findActive()
+  +findTotal()
+  +deletePhone()
+  +setAddress()
+  +processQuantity()
 }
 class Staff {
-  -Date createdAt
-  -String level
-  -long amount
-  +validateName()
+  #float total
+  +double active
+  #long updatedAt
+  +double description
+  -String createdAt
+  +saveId()
+  +createAmount()
+  +getCode()
 }
-class Reservation {
+interface Reservation {
   +long type
   #boolean amount
   +boolean id
   #long phone
-  +setScore()
-  +getType()
-  +updateDescription()
+  +validatePhone()
+  +setAddress()
+  +processQuantity()
 }
-class Restaurant {
-  -String status
-  -boolean total
-  -double email
-  +processDuration()
-  +calculateScore()
-  +sendLevel()
-}
-class Housekeeping {
-  #String type
-  #String description
-  -Date address
-  +createActive()
-  +cancelActive()
-}
-abstract class Invoice {
-  +int createdAt
-  #long address
-  -long level
-  +boolean active
-  #int amount
-  +processUpdatedat()
-}
-interface Guest {
-  +Date total
+abstract class Restaurant {
+  #float description
+  #Date quantity
   #String createdAt
-  +double type
-  +updateNote()
-  +setScore()
+  +sendAddress()
+  +validateDescription()
+  +updateEmail()
+  +updatePrice()
 }
-Restaurant --|> Service
-Invoice ..|> Service
-Staff ..> Guest : "1..*"
-Guest --o Reservation
-Housekeeping ..|> Restaurant
-note right of Service : Hotel domain
+abstract class Housekeeping {
+  +double price
+  +long quantity
+  #String note
+  #String duration
+  -Date name
+  +sendAddress()
+  +createDescription()
+}
+interface Invoice {
+  #boolean level
+  +int total
+  +Date createdAt
+  -double address
+  -float active
+  +setId()
+}
+class Guest {
+  #float note
+  +double updatedAt
+  +sendActive()
+  +findLevel()
+}
+Guest ..> Staff : "1"
+Restaurant ..|> Staff
+Restaurant --> Service : "*"
+Service ..> Guest : "1"
 @enduml

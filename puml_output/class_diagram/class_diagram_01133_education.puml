@@ -6,47 +6,41 @@ skinparam defaultFontSize 11
 class Grade {
   +boolean note
   +int active
-  +saveActive()
-  +createType()
-  +deleteUpdatedat()
+  +calculateUpdatedat()
+  +validateDescription()
+  +deletePhone()
 }
-class Library {
-  +double name
-  +int amount
-  +int address
-  -String code
-  -int level
-  +updateTotal()
-  +setUpdatedat()
-  +processScore()
+interface Library {
+  -String type
+  +long amount
+  #float updatedAt
+  #String address
   +sendId()
+  +deleteActive()
 }
 class Student {
+  +double id
   +double description
-  +double address
-  -float type
-  +createCreatedat()
-  +processStatus()
-  +cancelScore()
+  +double type
+  +updateStatus()
 }
-class Exam {
-  #float amount
-  -boolean address
-  +boolean total
-  -int quantity
-  +double createdAt
-  +updateDuration()
-  +findType()
-  +deleteLevel()
+abstract class Exam {
+  +long status
+  #double description
+  +setNote()
+  +deleteScore()
 }
 abstract class Assignment {
-  +double note
-  -float updatedAt
-  -int id
-  #long amount
-  +findPhone()
+  #boolean phone
+  +double quantity
+  +long createdAt
+  -long note
+  +boolean status
+  +getCreatedat()
+  +getPrice()
+  +deleteScore()
 }
-Assignment ..> Student : "0..1"
-Exam ..> Grade : "*"
-note right of Grade : Education domain
+Exam --|> Library
+Exam ..|> Student
+Assignment ..|> Exam
 @enduml

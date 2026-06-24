@@ -6,42 +6,40 @@ interface Ward {
   -long score
   #int phone
   -double amount
-  +deleteScore()
-  +findLevel()
-  +sendNote()
+  +validateQuantity()
+  +cancelAmount()
+  +validateType()
 }
-class Diagnosis {
-  -boolean address
-  -long description
-  -long price
-  +createCode()
-}
-interface MedicalRecord {
+interface Diagnosis {
   -boolean id
-  -int address
-  +Date total
-  #int note
-  -float code
-  +getTotal()
-  +saveQuantity()
-  +createLevel()
+  -long createdAt
+  -long address
+  +long description
+  +boolean price
+  +sendTotal()
+  +saveCreatedat()
+  +getPrice()
+  +findAmount()
+}
+abstract class MedicalRecord {
+  -int quantity
+  +Date active
+  +sendPhone()
+  +saveStatus()
 }
 class Prescription {
-  +boolean status
-  +boolean amount
-  +updateNote()
-  +processTotal()
-  +cancelStatus()
-  +createLevel()
+  -float total
+  #String quantity
+  +sendDuration()
 }
-abstract class Billing {
-  -boolean level
-  -double code
-  +processId()
+class Billing {
+  #double createdAt
+  +double active
+  -double status
+  +validateAddress()
 }
-Prescription --o Diagnosis
-Diagnosis ..|> Billing
-Billing ..|> MedicalRecord
-Diagnosis ..> Prescription : "0..1"
-note right of Ward : Healthcare domain
+Billing ..> Prescription : "1"
+Billing --* Ward
+Billing --o MedicalRecord
+Ward --|> Prescription
 @enduml

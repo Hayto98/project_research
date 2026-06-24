@@ -9,57 +9,59 @@ class Booking {
   #float score
   -float quantity
   #int email
-  +findType()
-  +getPhone()
+  +cancelDescription()
+  +sendLevel()
 }
-class Invoice {
-  +boolean address
-  +long duration
-  -boolean note
-  #double quantity
-  +deleteAddress()
-  +calculateCode()
-  +createCode()
-}
-abstract class Amenity {
-  -float createdAt
-  #boolean email
-  +cancelAddress()
-  +validateType()
-  +getCode()
-}
-class Room {
-  -String code
-  +float description
-  +int name
-  +sendDuration()
+abstract class Invoice {
+  -long phone
+  -double quantity
   +cancelNote()
-  +setUpdatedat()
+  +sendAmount()
+  +getEmail()
+}
+class Amenity {
+  #long duration
+  -String price
+  -String quantity
+  -String amount
+  +deleteCreatedat()
+  +validateUpdatedat()
+}
+interface Room {
+  +float duration
+  +Date address
+  -float phone
+  +float type
+  +getEmail()
 }
 class Payment {
-  +double id
-  #boolean quantity
-  +cancelType()
-  +updateType()
-  +processCode()
-  +calculateDuration()
+  -boolean name
+  #boolean id
+  -String createdAt
+  #int amount
+  +deleteType()
+  +processName()
 }
-abstract class Restaurant {
-  +boolean level
+class Restaurant {
+  #double code
+  +double type
   -String score
-  +int id
-  +boolean address
-  +processPrice()
+  -boolean note
+  +updateScore()
+  +createUpdatedat()
+  +sendActive()
+  +setTotal()
 }
-class CheckIn {
-  +String note
-  -float total
-  -int status
-  +processCode()
+interface CheckIn {
+  +boolean level
+  -String address
+  +updateType()
+  +deleteScore()
 }
-Booking ..|> Room
-Booking ..> Invoice : "0..1"
-CheckIn --> Payment : "1"
-Booking --* Amenity
-note right of Booking : Hotel domain
+CheckIn --o Booking
+Room ..|> Booking
+Room --|> CheckIn
+Invoice --o Booking
+CheckIn ..|> Amenity
+Booking ..> Room : "1"
 @enduml

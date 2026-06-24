@@ -8,34 +8,32 @@ class Invoice {
   +String description
   #long amount
   -double total
-  +updateDuration()
-  +saveAddress()
-  +validateStatus()
+  +calculateNote()
+  +calculateType()
+  +validateActive()
 }
 class Reservation {
-  #int active
-  -String total
-  #Date updatedAt
-  +boolean amount
-  +processNote()
-  +calculateEmail()
-  +sendPhone()
-  +sendLevel()
+  -int status
+  +Date code
+  +double quantity
+  +Date active
+  +createUpdatedat()
 }
-class CheckIn {
-  #String duration
-  +long type
-  +findDuration()
-  +setDescription()
+interface CheckIn {
+  #boolean type
+  -String note
+  #boolean price
+  -boolean email
+  +int phone
+  +setPhone()
+  +processDuration()
+  +calculateDescription()
 }
-abstract class Housekeeping {
-  #String id
-  #long total
-  +findActive()
-  +cancelTotal()
+interface Housekeeping {
+  +float description
+  #Date type
+  +calculateQuantity()
 }
-Invoice --o CheckIn
-CheckIn --> Invoice : "1..*"
-Invoice --> Housekeeping : "1"
-note right of Invoice : Hotel domain
+CheckIn ..> Housekeeping : "0..1"
+Housekeeping ..> CheckIn : "*"
 @enduml

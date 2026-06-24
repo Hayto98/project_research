@@ -6,31 +6,32 @@ abstract class Hashtag {
   -float email
   #int updatedAt
   +int active
-  +deleteAddress()
-  +processLevel()
-  +getEmail()
+  +saveAddress()
+  +deleteStatus()
+  +saveCreatedat()
 }
-interface Story {
-  -float quantity
-  #boolean type
-  +boolean description
-  +cancelTotal()
+abstract class Story {
+  +long email
+  -int active
+  +calculateType()
+  +createTotal()
+  +cancelActive()
 }
 class Profile {
-  +Date duration
-  +double note
-  +getPhone()
+  +float level
+  +boolean total
+  +updateName()
+  +updateId()
+  +getDuration()
+  +setType()
 }
-interface Like {
-  -boolean quantity
-  #int note
-  -String createdAt
-  +saveLevel()
-  +setId()
-  +sendDescription()
+abstract class Like {
+  #Date name
+  #int phone
+  +deleteDuration()
+  +saveNote()
+  +processLevel()
 }
-Hashtag --|> Story
-Like ..> Profile : "1..*"
-Profile ..|> Story
-note right of Hashtag : Social Media domain
+Like --* Hashtag
+Hashtag --> Like : "0..1"
 @enduml

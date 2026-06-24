@@ -7,30 +7,36 @@ abstract class Teller {
   -float duration
   +double level
   #long amount
-  +setType()
-  +cancelDuration()
+  +cancelStatus()
+  +validateName()
 }
-class Customer {
-  +int price
-  +long score
-  +sendStatus()
-  +validatePhone()
-  +sendDuration()
+interface Customer {
+  #float duration
+  +int code
+  +long price
+  +validateLevel()
+  +sendAmount()
+  +updateUpdatedat()
 }
 class Statement {
-  -String level
-  #long active
-  +double id
-  +validateDuration()
+  +double active
+  +float updatedAt
+  #long createdAt
+  +double duration
+  +saveCreatedat()
 }
-abstract class Interest {
-  +long total
-  -long name
-  +updateType()
-  +validateActive()
+interface Interest {
+  -long id
+  +int total
+  -float name
+  -boolean createdAt
+  #double address
+  +calculateTotal()
+  +sendPhone()
+  +findUpdatedat()
+  +updateCreatedat()
 }
-Interest --> Customer : "*"
 Statement ..> Customer : "1..*"
 Teller --|> Statement
-note right of Teller : Banking domain
+Statement --> Interest : "1"
 @enduml

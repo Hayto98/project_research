@@ -4,60 +4,61 @@ skinparam roundCorner 15
 interface Payment {
   -int score
   +Date updatedAt
-  +processType()
-  +getLevel()
-  +saveCode()
-  +deleteTotal()
-}
-interface Invoice {
-  -boolean name
-  #String type
-  +float description
-  -boolean amount
-  +processAddress()
-  +processEmail()
-  +processEmail()
-}
-abstract class Wishlist {
-  #double amount
-  -int note
-  #double name
-  +deleteTotal()
-}
-abstract class Return {
-  #double createdAt
-  #String active
-  -int price
-  +processUpdatedat()
-  +processAmount()
+  +sendCreatedat()
+  +deleteActive()
+  +saveEmail()
   +savePrice()
 }
-class Coupon {
-  -int level
-  -boolean note
-  +calculateEmail()
+class Invoice {
+  +double total
+  +boolean level
+  +long email
+  +setUpdatedat()
 }
-class Shipment {
-  +Date createdAt
-  +int code
-  -boolean name
-  -Date id
-  -String active
-  +cancelUpdatedat()
+abstract class Wishlist {
+  -long note
+  -int address
+  +double duration
+  +Date email
+  +validateUpdatedat()
+  +calculateAddress()
+  +getName()
+  +findName()
+}
+abstract class Return {
+  -int description
+  +boolean total
+  +sendAmount()
+  +findActive()
+  +sendDuration()
+  +cancelLevel()
+}
+class Coupon {
+  -int updatedAt
+  #Date phone
+  -String note
+  +Date duration
+  +findScore()
+  +processActive()
+  +validateName()
+  +findName()
+}
+interface Shipment {
+  +Date price
+  -int email
+  +processNote()
 }
 class Cart {
-  -double score
-  -double updatedAt
-  +double duration
-  +deleteCode()
-  +createName()
-  +findDescription()
+  #String id
+  +double description
+  +saveDescription()
+  +createActive()
+  +savePhone()
+  +deleteNote()
 }
-Shipment ..|> Return
-Cart ..> Coupon : "*"
-Wishlist --o Return
-Payment --|> Cart
-Coupon ..> Invoice : "0..1"
-Wishlist --|> Invoice
-note right of Payment : Ecommerce domain
+Cart ..> Invoice : "0..1"
+Invoice ..> Coupon : "0..1"
+Cart --> Coupon : "1..*"
+Return --o Cart
+Return ..|> Wishlist
 @enduml

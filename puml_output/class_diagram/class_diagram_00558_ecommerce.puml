@@ -7,39 +7,45 @@ abstract class Product {
   +String total
   +float active
   -String amount
-  +calculateStatus()
-  +getScore()
-  +getDescription()
+  +processLevel()
+  +setStatus()
+  +updateDuration()
 }
-abstract class Return {
-  #boolean active
-  #long score
-  -Date total
-  +int description
-  +deletePrice()
-  +saveNote()
+interface Return {
+  #long description
+  #Date note
+  +validateLevel()
+  +calculateType()
+  +validateCreatedat()
+  +findPrice()
 }
-abstract class Order {
-  #long duration
-  -float name
-  +calculateLevel()
-  +deleteNote()
-  +saveNote()
+interface Order {
+  +double type
+  #double status
+  -String description
+  #String updatedAt
+  +updateEmail()
+  +saveLevel()
+  +updateQuantity()
 }
 class Category {
-  -long status
-  +boolean price
-  +deleteEmail()
+  +String level
+  #double description
+  -long note
+  +boolean score
+  #float email
+  +setLevel()
 }
 class Payment {
-  +boolean note
-  +float id
-  -boolean status
-  +findAddress()
-  +deleteUpdatedat()
-  +deletePrice()
+  #String level
+  +String amount
+  #String note
+  +findDuration()
+  +sendDescription()
+  +setEmail()
+  +createLevel()
 }
-Return --> Payment : "1..*"
-Category ..> Product : "0..1"
-note right of Product : Ecommerce domain
+Return ..|> Payment
+Category ..|> Return
+Return --o Order
 @enduml

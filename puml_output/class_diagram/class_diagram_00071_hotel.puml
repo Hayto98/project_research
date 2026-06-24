@@ -3,53 +3,48 @@ skinparam defaultFontSize 11
 class Staff {
   +Date address
   #Date price
-  +cancelNote()
-  +createStatus()
+  +deleteDescription()
+  +calculateAmount()
 }
-interface Reservation {
-  -boolean amount
-  #boolean type
-  #long level
-  +processTotal()
-  +saveAmount()
+class Reservation {
+  +Date active
+  -double description
+  +calculateDuration()
+  +getCode()
+  +sendQuantity()
 }
 interface Invoice {
-  #int quantity
-  +float status
-  +double duration
-  +calculatePhone()
-  +setAddress()
+  #Date score
+  +boolean description
+  +long note
+  #float total
+  +sendType()
 }
-abstract class Room {
-  -boolean address
-  -float level
+class Room {
+  +double status
+  -float id
+  +long total
+  +validateLevel()
+  +sendCreatedat()
+  +validateScore()
+  +updateScore()
+}
+interface CheckOut {
   #boolean email
-  #float score
-  #double quantity
-  +setStatus()
-  +validateActive()
-  +findDuration()
+  #float quantity
+  #double note
+  -String score
+  +findQuantity()
 }
-class CheckOut {
-  #String active
-  -Date score
-  #boolean phone
-  #boolean status
-  -int amount
-  +findStatus()
-  +setId()
+interface Housekeeping {
+  #long level
+  +boolean note
+  +float active
+  +calculateCode()
 }
-class Housekeeping {
-  +int active
-  -long address
-  +int score
-  +cancelId()
-  +createAmount()
-}
-CheckOut ..|> Staff
-Staff ..> CheckOut : "1..*"
-CheckOut ..|> Invoice
-Housekeeping --o CheckOut
-Housekeeping ..> Room : "1"
-note right of Staff : Hotel domain
+Reservation ..|> CheckOut
+Housekeeping --|> Staff
+Staff ..> Housekeeping : "0..1"
+CheckOut --> Invoice : "0..1"
+Reservation --* Room
 @enduml

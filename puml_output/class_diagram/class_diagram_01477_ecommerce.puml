@@ -8,53 +8,52 @@ class Coupon {
   +Date active
   #float updatedAt
   +long code
-  +deleteScore()
+  +updateCreatedat()
 }
 class Order {
-  +Date id
-  #int updatedAt
-  #double amount
-  +int createdAt
-  -boolean score
-  +updateDescription()
-  +validateQuantity()
-  +createType()
-  +getLevel()
+  +int note
+  +int id
+  #boolean updatedAt
+  +savePrice()
+  +sendCode()
 }
 class Supplier {
-  -Date code
-  -int total
-  #long email
-  +getPhone()
+  +float phone
+  +float score
+  -long note
+  +calculateStatus()
+  +createId()
+  +cancelCode()
 }
 class Payment {
-  -boolean active
-  #int price
-  -double amount
-  +updateCode()
-  +cancelType()
+  +Date active
+  #double score
+  -double updatedAt
+  +setLevel()
+  +validateType()
+  +updateNote()
+  +saveCreatedat()
 }
-class Return {
-  #float total
-  +double code
-  +String phone
-  +double email
-  +float type
-  +findActive()
-  +findActive()
-  +setName()
+interface Return {
+  #Date name
+  +float phone
+  +validatePrice()
+  +getStatus()
 }
-abstract class Shipment {
-  +double updatedAt
-  +String phone
-  #double address
-  +float status
-  +calculateType()
+interface Shipment {
+  -int amount
+  +float quantity
+  +boolean active
+  -Date description
+  +double address
+  +processAmount()
+  +cancelId()
+  +calculateScore()
+  +getScore()
 }
-Order --* Shipment
-Return --* Payment
-Order --* Payment
-Coupon ..> Supplier : "*"
-Shipment --|> Order
-note right of Coupon : Ecommerce domain
+Shipment --o Coupon
+Order --|> Coupon
+Payment --* Order
+Shipment ..> Return : "1"
+Coupon --* Payment
 @enduml

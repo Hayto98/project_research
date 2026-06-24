@@ -6,40 +6,45 @@ skinparam defaultFontSize 13
 class Appointment {
   +long status
   -int duration
-  +calculateNote()
-  +savePhone()
-  +setCreatedat()
+  +saveCode()
+  +updateCode()
+  +sendCode()
 }
 class LabTest {
-  #double createdAt
-  #long name
-  +sendScore()
-  +updateScore()
-  +updatePrice()
-}
-class Treatment {
-  +boolean name
   +float createdAt
-  +calculatePrice()
-  +findCreatedat()
+  +String amount
+  +setCreatedat()
+  +saveTotal()
+  +findQuantity()
+  +calculateName()
+}
+interface Treatment {
+  +String score
+  +int updatedAt
+  +boolean price
+  +cancelType()
 }
 class Diagnosis {
-  #Date level
-  +Date phone
-  #String name
-  +saveQuantity()
-  +updateQuantity()
+  #String price
+  #Date createdAt
+  +Date code
+  #String description
+  +float phone
+  +findAddress()
+  +processDescription()
+  +calculateAddress()
 }
 class Prescription {
-  #double level
-  #Date updatedAt
-  #double code
-  +setTotal()
-  +cancelCode()
-  +findTotal()
+  #long code
+  +double price
+  #String level
+  +sendScore()
+  +sendType()
+  +findScore()
+  +validatePhone()
 }
 Treatment ..> Appointment : "1..*"
-Appointment --o Treatment
-Diagnosis ..|> LabTest
-note right of Appointment : Healthcare domain
+Diagnosis --> Prescription : "0..1"
+LabTest ..> Diagnosis : "1..*"
+Diagnosis --* LabTest
 @enduml

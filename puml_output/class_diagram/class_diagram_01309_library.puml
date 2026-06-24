@@ -3,63 +3,64 @@
 class Renewal {
   -long duration
   -Date description
-  +cancelEmail()
-  +getAmount()
-}
-interface Loan {
-  #int status
-  #float score
-  -float active
-  -double phone
-  +deleteScore()
-  +deleteUpdatedat()
-  +createPrice()
-  +validateActive()
-}
-class Librarian {
-  #String status
-  #Date name
-  +float duration
-  #boolean price
-  +double code
-  +cancelEmail()
-  +savePhone()
-}
-interface Shelf {
-  +float note
-  #float amount
-  -float duration
-  +updateUpdatedat()
-  +calculateActive()
-  +createNote()
-}
-class Member {
-  -double score
-  -String amount
-  +int type
-  -String total
-  +sendAddress()
   +getCode()
+  +deleteCreatedat()
+}
+class Loan {
+  #boolean level
+  #boolean phone
+  -Date status
+  +validatePrice()
+  +validateStatus()
+}
+abstract class Librarian {
+  #float total
+  +long price
+  -long description
+  #long amount
+  +calculateUpdatedat()
+  +updateUpdatedat()
+  +findLevel()
+  +saveId()
+}
+class Shelf {
+  -float code
+  #int name
+  #long active
+  #long id
+  #int createdAt
+  +findId()
+  +deleteDuration()
+  +validateDescription()
+  +createAddress()
+}
+abstract class Member {
+  -double updatedAt
+  #Date duration
+  +Date total
+  -boolean active
+  +findTotal()
+  +getId()
 }
 abstract class Author {
-  +boolean updatedAt
-  +double quantity
-  -Date active
-  -long id
-  +processActive()
-  +findAmount()
-  +validateDuration()
-  +findId()
+  +long price
+  +Date address
+  +boolean status
+  -String name
+  +processTotal()
 }
-interface Book {
-  #float price
-  #float description
-  -long id
-  -int createdAt
-  +createPrice()
-  +getType()
+class Book {
+  #float duration
+  +String quantity
+  #int active
+  +getDuration()
+  +deleteCreatedat()
+  +cancelName()
+  +findScore()
 }
-Shelf ..|> Loan
-Author --o Shelf
-note right of Renewal : Library domain
+Shelf ..> Member : "0..1"
+Librarian ..> Member : "1"
+Member --* Author
+Author ..|> Shelf
+Renewal --> Loan : "1..*"
 @enduml

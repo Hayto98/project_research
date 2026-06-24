@@ -9,49 +9,42 @@ class Insurance {
   +float note
   #String duration
   -boolean type
+  +cancelPrice()
+  +sendAddress()
+  +getEmail()
+}
+interface LabTest {
+  -Date status
+  -double amount
+  +createDuration()
+}
+interface Billing {
+  #float total
+  #Date updatedAt
+  +int amount
+  -double note
+  +float score
+  +deletePrice()
+  +setDuration()
   +saveEmail()
-  +deleteActive()
-  +findId()
 }
-class LabTest {
+class Patient {
+  +double price
   +double quantity
-  #double price
-  #float type
-  +updateAmount()
-  +processAmount()
-  +cancelLevel()
-  +saveAmount()
+  #boolean address
+  -Date active
+  +validateLevel()
 }
-class Billing {
-  -float note
-  -float amount
-  -long quantity
-  -Date duration
-  #String name
-  +updateType()
-  +findLevel()
-  +createStatus()
-  +sendEmail()
+interface Appointment {
+  #int price
+  -boolean phone
+  +int updatedAt
+  #double name
+  +deleteDescription()
+  +saveStatus()
+  +validatePrice()
 }
-abstract class Patient {
-  #int updatedAt
-  +Date name
-  -long amount
-  #float type
-  +updateType()
-  +getAddress()
-  +calculateTotal()
-}
-abstract class Appointment {
-  +Date updatedAt
-  #String code
-  +cancelDuration()
-  +findQuantity()
-  +findName()
-}
-Insurance --|> LabTest
-Appointment ..> Patient : "1"
-LabTest --> Insurance : "1"
-Billing --* Insurance
-note right of Insurance : Healthcare domain
+LabTest --|> Patient
+Billing ..> Patient : "*"
+Patient ..|> Insurance
 @enduml

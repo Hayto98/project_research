@@ -8,42 +8,41 @@ class Supplier {
   #boolean address
   -Date quantity
   +double description
-  +validateUpdatedat()
+  +calculateCreatedat()
 }
 class Shipment {
-  +String total
-  #long quantity
-  +calculatePrice()
+  -String code
+  +boolean total
+  +getType()
+  +deleteLevel()
+  +saveName()
 }
-class Category {
-  +String note
-  #int total
-  -Date type
-  #double code
-  #float amount
-  +deleteStatus()
-  +createPrice()
-}
-abstract class Coupon {
-  -String duration
+abstract class Category {
   -boolean type
-  #String score
-  +float updatedAt
-  +deleteTotal()
-  +sendUpdatedat()
-  +createStatus()
+  +boolean note
+  #Date total
+  +findPhone()
+  +setName()
 }
-class Return {
-  -int active
-  +long score
-  #boolean code
-  -double type
-  #Date note
-  +processActive()
-  +setType()
-  +validateCode()
+interface Coupon {
+  +String total
+  -double note
+  #Date createdAt
+  +calculatePhone()
+  +findTotal()
+  +validateActive()
+  +getId()
 }
-Shipment ..> Supplier : "0..1"
-Category --> Return : "1..*"
-note right of Supplier : Ecommerce domain
+interface Return {
+  #Date type
+  +float code
+  +float email
+  +getEmail()
+  +setQuantity()
+  +processLevel()
+}
+Shipment ..> Category : "1"
+Category --> Coupon : "1"
+Coupon --* Return
+Shipment --* Return
 @enduml

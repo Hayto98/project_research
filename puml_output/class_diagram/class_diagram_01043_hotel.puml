@@ -4,50 +4,49 @@ skinparam backgroundColor #F5F5F5
 class Service {
   +int price
   -double level
-  +createEmail()
-  +getTotal()
-  +setEmail()
-  +getAddress()
+  +calculateScore()
+  +calculateId()
+  +findAmount()
+  +updateName()
 }
-abstract class Restaurant {
-  #long level
-  -int createdAt
-  +String description
-  -int duration
-  +calculateName()
-  +createDuration()
+class Restaurant {
+  -float address
+  #float note
+  +sendActive()
+  +processScore()
 }
-interface Staff {
+class Staff {
+  +String address
+  -int note
+  +double updatedAt
+  +setQuantity()
+}
+class Guest {
   +float price
   -int active
   -String note
   +Date description
   #boolean phone
-  +calculateActive()
-}
-class Guest {
-  -double duration
-  -boolean updatedAt
-  -float total
-  +deleteTotal()
-  +findScore()
-  +sendTotal()
+  +findAmount()
 }
 interface Amenity {
+  -long amount
+  #float updatedAt
+  -float total
+  -int quantity
+  +calculateStatus()
+  +findTotal()
+  +saveActive()
+  +sendQuantity()
+}
+abstract class CheckIn {
   -Date address
   #int id
   +double description
-  +processEmail()
+  +validateUpdatedat()
 }
-class CheckIn {
-  #Date duration
-  -double status
-  +int name
-  +processDescription()
-  +processAddress()
-}
-CheckIn --o Restaurant
-Staff ..|> Restaurant
-Staff --o Guest
-note right of Service : Hotel domain
+Restaurant --> CheckIn : "1"
+Service ..> Amenity : "1..*"
+Guest ..|> Restaurant
+Amenity ..|> CheckIn
 @enduml

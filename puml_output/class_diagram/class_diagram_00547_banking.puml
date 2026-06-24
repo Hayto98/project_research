@@ -3,48 +3,45 @@ skinparam defaultFontSize 11
 abstract class Transfer {
   -boolean code
   -int updatedAt
-  +createDescription()
-  +sendName()
-  +cancelPhone()
-  +deleteCode()
+  +validateAmount()
+  +validateCreatedat()
+  +setActive()
+  +findPrice()
 }
 class Beneficiary {
-  #Date total
-  +Date status
-  +String email
-  -boolean score
-  +createNote()
-  +createLevel()
-  +findAddress()
-  +validateDuration()
+  #Date description
+  -String code
+  -Date level
+  -boolean email
+  +sendUpdatedat()
 }
-abstract class Loan {
-  #float active
-  #float score
-  -float address
-  +getCreatedat()
-  +saveCreatedat()
-  +getNote()
+class Loan {
+  -long quantity
+  -float active
+  +savePrice()
+  +validateTotal()
+  +calculateName()
 }
-interface Statement {
-  -double active
-  #double address
-  +double name
-  +float email
-  +sendAmount()
-  +findId()
-  +findId()
-  +sendStatus()
+class Statement {
+  -float description
+  +int active
+  #int score
+  +double address
+  #long type
+  +setDuration()
+  +deleteId()
+  +processQuantity()
 }
 class Teller {
-  -String note
-  -long total
-  +boolean active
-  +updatePhone()
-  +processCreatedat()
+  #double total
+  #int type
+  #Date createdAt
+  +float note
+  #String score
+  +deleteQuantity()
 }
-Teller ..> Statement : "0..1"
-Beneficiary --o Transfer
-Loan ..> Statement : "1..*"
-note right of Transfer : Banking domain
+Beneficiary ..> Statement : "*"
+Teller --|> Statement
+Loan ..|> Teller
+Teller ..|> Beneficiary
 @enduml

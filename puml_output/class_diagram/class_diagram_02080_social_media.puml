@@ -9,40 +9,40 @@ interface Message {
   -long description
   #double price
   +long amount
-  +updateStatus()
+  +findTotal()
 }
-interface Hashtag {
-  -Date id
-  +boolean status
-  +long score
-  #boolean duration
-  -String updatedAt
-  +cancelPrice()
+class Hashtag {
+  +Date duration
+  +boolean type
+  +getAmount()
 }
 class User {
-  #Date name
-  -Date quantity
-  #int id
-  #Date price
-  +findLevel()
-  +saveCreatedat()
-  +cancelUpdatedat()
-  +saveScore()
+  #long code
+  +String updatedAt
+  #double phone
+  +boolean active
+  +setUpdatedat()
+  +calculatePhone()
+  +sendTotal()
 }
-class Like {
-  -boolean id
-  +Date quantity
-  +createScore()
-  +processName()
+abstract class Like {
+  +float createdAt
+  +long note
+  -boolean duration
+  +Date updatedAt
+  +long active
+  +setUpdatedat()
+  +updateDuration()
+  +saveScore()
+  +saveActive()
 }
 class Notification {
-  #long score
-  #long description
-  -float createdAt
-  -float note
-  +createQuantity()
+  #long note
+  -float active
+  -float address
+  +cancelAddress()
 }
-Notification --|> Hashtag
-Notification ..|> Message
-note right of Message : Social Media domain
+User --> Hashtag : "0..1"
+Message ..|> Notification
+Message --> Hashtag : "*"
 @enduml

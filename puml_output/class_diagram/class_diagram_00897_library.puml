@@ -9,37 +9,31 @@ class Loan {
   -String id
   +long status
   -double score
-  +calculateCreatedat()
-  +sendStatus()
-  +deleteLevel()
-  +deleteEmail()
+  +cancelCreatedat()
+  +deleteId()
+  +updateDescription()
+  +calculateDuration()
 }
-abstract class Fine {
-  #double score
+class Fine {
+  #Date level
+  -long amount
+  #double email
+  +setPrice()
+}
+interface Reservation {
+  +String duration
+  -int type
   -float total
-  +String status
-  -int updatedAt
-  +cancelStatus()
-  +processTotal()
-  +sendScore()
-}
-class Reservation {
-  +float email
-  #long status
-  +int type
-  -double createdAt
-  +findLevel()
+  +deletePrice()
 }
 abstract class Book {
+  #double score
+  #int quantity
   +float email
-  #double status
-  #long code
-  #float description
-  -long active
-  +updateAmount()
-  +createId()
+  #long status
+  +sendEmail()
 }
-Book --> Fine : "1..*"
-Fine ..|> Loan
-note right of Loan : Library domain
+Book --|> Reservation
+Book --* Fine
+Loan ..> Book : "0..1"
 @enduml

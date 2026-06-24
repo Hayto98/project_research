@@ -6,64 +6,63 @@ class Tracking {
   -double address
   #long score
   -double duration
-  +getPrice()
+  +processCode()
 }
-interface Vehicle {
+abstract class Vehicle {
   +float updatedAt
   #double active
   +double amount
   -long type
-  +createPhone()
-  +validateDuration()
+  +calculateScore()
+  +findCode()
 }
 class Inventory {
-  -boolean active
-  #long note
-  +Date phone
-  +createStatus()
-  +cancelUpdatedat()
-  +deleteAddress()
+  -double createdAt
+  #Date active
+  -int note
+  +deleteId()
+  +deleteName()
+  +updateUpdatedat()
 }
-class Warehouse {
-  #float email
-  #double description
-  +long createdAt
-  -String type
-  -double amount
-  +deletePrice()
-  +cancelPrice()
-  +createPrice()
-  +findScore()
+interface Warehouse {
+  #Date amount
+  -Date address
+  -float phone
+  +getCode()
+  +validateDescription()
 }
-abstract class FuelLog {
-  +String createdAt
-  -boolean type
-  -Date total
-  +getEmail()
+class FuelLog {
+  +long amount
+  -float note
+  -int status
+  -boolean address
+  -long total
+  +cancelName()
+  +saveActive()
+  +setNote()
+  +updateType()
 }
-interface DeliveryNote {
-  -float address
-  +String createdAt
-  #boolean type
-  #String duration
-  #String note
-  +updateEmail()
-  +setStatus()
-}
-abstract class Manifest {
-  #long description
+class DeliveryNote {
+  #String total
+  +long code
+  #double status
   -int quantity
-  #long updatedAt
-  +findLevel()
-  +calculateDescription()
-  +validateLevel()
-  +sendQuantity()
+  -long type
+  +validateScore()
+  +setAmount()
+  +getEmail()
+  +calculateEmail()
 }
-FuelLog --* Vehicle
-DeliveryNote ..> Warehouse : "*"
-Manifest --> DeliveryNote : "1"
-DeliveryNote ..|> Vehicle
-DeliveryNote --o Tracking
-Tracking --* DeliveryNote
-note right of Tracking : Logistics domain
+interface Manifest {
+  #Date level
+  +int id
+  +setDescription()
+  +validateStatus()
+  +updateName()
+}
+Vehicle ..> Manifest : "1..*"
+Vehicle --* DeliveryNote
+Warehouse ..> Vehicle : "1..*"
+Warehouse ..> DeliveryNote : "*"
+Vehicle ..> Inventory : "1..*"
 @enduml

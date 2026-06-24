@@ -6,58 +6,65 @@ interface Transaction {
   #float price
   +long active
   #double status
-  +getQuantity()
+  +saveId()
 }
-abstract class Branch {
-  -String total
-  -Date address
-  +findAmount()
+class Branch {
+  +double score
+  #boolean name
+  +float total
+  #int address
+  +double active
+  +validateDescription()
+  +validateQuantity()
 }
-class Interest {
-  #String duration
-  -Date description
-  +int amount
-  -boolean active
-  -double code
-  +saveStatus()
+interface Interest {
+  -Date duration
+  +int code
+  +processEmail()
+  +deleteAmount()
+  +getId()
+  +updateAmount()
 }
 interface Deposit {
-  +Date quantity
-  #String note
-  -Date active
-  +boolean price
-  +boolean code
-  +updateType()
-  +deleteCode()
-  +createQuantity()
+  -long status
+  #double level
+  +createAddress()
+  +createEmail()
+  +validateEmail()
+  +createLevel()
 }
 class Customer {
-  #int code
-  #String note
-  #int status
-  #boolean type
-  #double total
-  +calculateUpdatedat()
+  +double amount
+  +String level
+  -long createdAt
+  +boolean email
+  +createAddress()
+  +saveAmount()
+  +cancelUpdatedat()
+  +calculateType()
 }
 class Teller {
-  #Date createdAt
-  +boolean name
-  -long duration
-  -String type
-  +saveLevel()
-  +calculateStatus()
-  +cancelAmount()
+  #boolean active
+  #double total
+  +float createdAt
+  -int name
+  +float amount
+  +saveNote()
+  +processQuantity()
+  +processActive()
 }
-class Account {
-  -boolean duration
-  +boolean quantity
-  #Date score
-  #float active
-  -double code
-  +deleteActive()
-  +getQuantity()
+abstract class Account {
+  -double active
+  +long email
+  +cancelEmail()
+  +setPhone()
+  +findId()
+  +validateEmail()
 }
-Account --* Transaction
-Teller --* Customer
-note right of Transaction : Banking domain
+Teller ..> Deposit : "1..*"
+Customer --|> Account
+Account --> Deposit : "1"
+Customer ..> Teller : "1..*"
+Deposit ..|> Branch
+Customer ..> Transaction : "1..*"
 @enduml

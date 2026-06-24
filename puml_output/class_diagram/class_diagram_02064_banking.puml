@@ -9,14 +9,16 @@ abstract class Statement {
   -String note
   +float updatedAt
   -float phone
-  +setId()
+  +validateEmail()
 }
 class Card {
-  +String amount
-  -long description
-  +setType()
-  +updatePrice()
-  +getQuantity()
+  +String code
+  -long amount
+  -String description
+  +sendEmail()
+  +createPrice()
+  +saveId()
+  +cancelAddress()
 }
 interface Transaction {
   +String amount
@@ -24,23 +26,24 @@ interface Transaction {
   -int description
   #boolean email
   #int updatedAt
-  +setDescription()
+  +processAmount()
 }
 class Teller {
-  #String address
+  -Date amount
+  +float address
   #long description
-  -int email
-  +deleteType()
-  +deleteTotal()
-  +validateLevel()
+  +saveNote()
+  +saveScore()
+  +deleteEmail()
+  +findId()
 }
-class Account {
-  +String price
-  -Date createdAt
-  +sendDescription()
-  +processPrice()
+abstract class Account {
+  #Date total
+  +double phone
+  +int createdAt
+  +deletePhone()
 }
-Account ..|> Statement
-Statement ..> Teller : "1..*"
-note right of Statement : Banking domain
+Card --o Account
+Teller --> Statement : "1"
+Card --> Statement : "*"
 @enduml

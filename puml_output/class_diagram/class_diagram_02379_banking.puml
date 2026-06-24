@@ -8,14 +8,16 @@ interface Account {
   #long name
   #boolean phone
   -boolean status
-  +cancelAmount()
+  +getQuantity()
 }
-abstract class Deposit {
-  #boolean status
-  #float address
-  -boolean email
-  #int quantity
-  +deleteName()
+class Deposit {
+  #boolean phone
+  #float status
+  -boolean address
+  #int email
+  #String quantity
+  +saveEmail()
+  +cancelLevel()
 }
 interface Branch {
   +long amount
@@ -23,43 +25,43 @@ interface Branch {
   -Date phone
   -boolean createdAt
   #long code
-  +cancelActive()
+  +processId()
 }
-class Beneficiary {
+interface Beneficiary {
+  #long name
   +double level
-  #float phone
-  +getScore()
+  +saveId()
 }
-class Withdrawal {
+interface Withdrawal {
+  +long quantity
   #double description
   #Date active
-  +long id
-  #double email
-  +deleteStatus()
-  +findStatus()
+  +deleteCode()
+  +cancelPrice()
 }
-class Statement {
-  -int level
-  #float quantity
-  +long type
-  -double updatedAt
-  #boolean name
-  +findName()
-  +processCode()
+abstract class Statement {
+  -float amount
+  -float status
+  #long level
+  +sendNote()
+  +deleteNote()
+  +deleteName()
+  +sendId()
 }
-interface Card {
-  +long phone
-  #boolean updatedAt
-  #boolean price
-  +int address
-  +processPhone()
-  +updatePrice()
-  +processStatus()
-  +findActive()
+class Card {
+  -Date email
+  +boolean price
+  #long createdAt
+  -int name
+  +getPrice()
+  +validateDuration()
+  +processDuration()
+  +validateAddress()
 }
+Withdrawal --> Card : "1"
+Deposit --o Statement
+Beneficiary --* Statement
+Deposit --o Beneficiary
+Account --> Statement : "1..*"
 Card --> Account : "1"
-Deposit --o Card
-Withdrawal ..|> Card
-Withdrawal ..|> Branch
-note right of Account : Banking domain
 @enduml

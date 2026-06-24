@@ -1,9 +1,9 @@
 @startuml
 skinparam ArrowColor #555555
 left to right direction
-actor "Fleet Manager" as FleetManager
-actor "Dispatcher" as Dispatcher
-actor "Customer" as Customer
+actor "Fleet Manager" as FM
+actor "Dispatcher" as D
+actor "Customer" as C
 rectangle "Logistics System" {
   usecase "Fuel Vehicle" as UC_FuelVehicle
   usecase "Report Issue" as UC_ReportIssue
@@ -13,12 +13,12 @@ rectangle "Logistics System" {
   usecase "Load Package" as UC_LoadPackage
   usecase "Update Inventory" as UC_UpdateInventory
 }
-FleetManager --> UC_TrackShipment
-Dispatcher --> UC_TrackShipment
-Dispatcher --> UC_UpdateInventory
-Dispatcher --> UC_SchedulePickup
-Customer --> UC_SchedulePickup
-Customer --> UC_UpdateInventory
-Customer --> UC_ReportIssue
+FM --> UC_TrackShipment
+D --> UC_TrackShipment
+D --> UC_UpdateInventory
+D --> UC_SchedulePickup
+C --> UC_SchedulePickup
+C --> UC_UpdateInventory
+C --> UC_ReportIssue
 UC_UpdateInventory ..> UC_TrackShipment : <<extend>>
 @enduml

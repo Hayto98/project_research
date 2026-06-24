@@ -6,61 +6,62 @@ skinparam shadowing true
 class CheckOut {
   -long id
   #double total
-  +setNote()
+  +findNote()
 }
 abstract class Housekeeping {
-  +boolean price
-  -int updatedAt
-  #int id
-  #long score
-  +saveDuration()
-  +setTotal()
+  +boolean phone
+  -int price
+  #int updatedAt
+  #long id
+  +Date active
+  +findAmount()
 }
 interface Payment {
   +Date level
   -float type
   +Date address
   #Date note
-  +updatePhone()
-  +saveEmail()
-  +sendAddress()
-  +cancelDuration()
+  +validateLevel()
+  +updateStatus()
+  +saveScore()
+  +findStatus()
 }
-abstract class Staff {
-  -Date quantity
-  +int price
-  +validateUpdatedat()
-  +getAddress()
-  +sendPrice()
+class Staff {
+  -double duration
+  #int total
+  +boolean code
+  #float quantity
+  +sendStatus()
+  +calculateName()
+  +createScore()
 }
 class Service {
-  #long active
-  #Date name
-  #int email
-  #float total
-  -float type
-  +findUpdatedat()
-}
-abstract class Room {
-  +String active
-  +long amount
-  -double address
+  #String score
+  -boolean price
+  #float quantity
+  #double note
+  +validateStatus()
+  +createUpdatedat()
   +cancelId()
-  +cancelQuantity()
-  +setScore()
-  +validateCreatedat()
+  +cancelAmount()
+}
+class Room {
+  -int id
+  +float updatedAt
+  +long type
+  -double amount
+  -boolean active
+  +cancelActive()
 }
 class Amenity {
-  +boolean amount
-  +Date createdAt
-  -long score
-  #Date type
-  +findAmount()
-  +processScore()
-  +deleteCreatedat()
-  +createName()
+  +String score
+  #long address
+  +processActive()
+  +createStatus()
 }
-Staff --* CheckOut
-CheckOut ..> Staff : "0..1"
-note right of CheckOut : Hotel domain
+CheckOut --|> Service
+Room --* Staff
+Service --o Room
+Room --o Housekeeping
+Service ..|> Housekeeping
 @enduml

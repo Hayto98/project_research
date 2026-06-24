@@ -5,53 +5,51 @@ skinparam classBorderColor #6A1B9A
 abstract class Category {
   -int updatedAt
   +Date quantity
-  +deleteNote()
-  +savePrice()
+  +cancelType()
+  +saveAddress()
 }
-interface Coupon {
-  #float phone
-  #int description
-  #boolean quantity
-  #boolean createdAt
-  +createLevel()
-  +setDuration()
-  +getScore()
+abstract class Coupon {
+  +Date level
+  #int phone
+  #boolean duration
+  #boolean description
+  -long quantity
+  +deleteDescription()
 }
-interface Shipment {
+class Shipment {
   +boolean createdAt
   +float type
   +double code
+  +processQuantity()
+  +cancelUpdatedat()
+}
+interface Wishlist {
+  -boolean address
+  #Date email
+  -float status
+  +createType()
   +getLevel()
-  +cancelAmount()
+  +cancelUpdatedat()
+  +updateEmail()
 }
-class Wishlist {
-  -Date status
-  +Date email
-  -boolean score
-  #long level
-  +findQuantity()
-  +findScore()
-  +calculateType()
-}
-class Payment {
-  #int price
-  #long id
-  -int description
-  +Date type
-  -float active
-  +setId()
-  +cancelEmail()
-  +deleteCode()
-  +findAmount()
+interface Payment {
+  -Date duration
+  -Date quantity
+  -double level
+  +int total
+  +validateUpdatedat()
+  +calculateUpdatedat()
+  +calculateNote()
+  +findDescription()
 }
 class Return {
-  +int code
-  +long active
-  -boolean duration
-  +deleteName()
+  +String updatedAt
+  #long name
+  +String price
+  #int type
+  +findStatus()
+  +validateCode()
 }
-Payment --* Shipment
-Shipment --* Return
-Shipment --> Payment : "0..1"
-note right of Category : Ecommerce domain
+Payment --|> Category
+Coupon --* Return
 @enduml

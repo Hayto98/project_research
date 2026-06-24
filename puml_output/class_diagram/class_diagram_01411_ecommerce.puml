@@ -8,45 +8,46 @@ class Product {
   +Date total
   #float status
   #Date address
-  +findType()
-  +sendCode()
-  +validateType()
-  +setCode()
+  +getActive()
+  +getId()
+  +setDuration()
+  +sendAmount()
 }
 class Customer {
-  -Date type
-  +boolean name
-  -String active
-  -String id
-  +getUpdatedat()
+  -float type
+  -String status
+  #boolean code
+  +long createdAt
+  +sendAmount()
+  +createQuantity()
 }
-abstract class Shipment {
-  +double level
+class Shipment {
+  +boolean code
+  +String status
+  -float id
   -double updatedAt
-  +deleteDuration()
-  +deleteQuantity()
-  +sendTotal()
-  +deleteAddress()
+  -int note
+  +createQuantity()
+  +sendQuantity()
 }
-class Category {
-  -float score
-  #boolean price
-  #String status
-  #long level
-  #Date total
-  +deletePhone()
-  +deleteUpdatedat()
+abstract class Category {
+  #double address
+  +double email
+  -double type
+  +cancelLevel()
 }
-class Order {
-  -double createdAt
-  -float status
-  -Date email
-  +findDuration()
-  +processPhone()
-  +getCode()
-  +findUpdatedat()
+interface Order {
+  +int level
+  +int updatedAt
+  +String amount
+  -double phone
+  +sendName()
+  +setAmount()
+  +setQuantity()
+  +findActive()
 }
-Customer ..> Order : "1..*"
-Category --* Shipment
-note right of Product : Ecommerce domain
+Category --* Order
+Product ..> Order : "0..1"
+Customer ..|> Order
+Order --o Shipment
 @enduml

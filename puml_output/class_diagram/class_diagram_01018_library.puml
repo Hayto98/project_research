@@ -9,37 +9,35 @@ abstract class Renewal {
   #Date description
   #double note
   #float updatedAt
-  +processDescription()
+  +sendName()
 }
-abstract class Member {
-  #double updatedAt
+class Member {
+  -Date note
+  -float updatedAt
   #String quantity
   #long price
-  -boolean score
-  -long note
-  +sendAddress()
-  +deletePhone()
+  -boolean active
+  +deleteName()
   +updateNote()
-  +findQuantity()
+  +cancelQuantity()
+  +cancelAmount()
 }
 class Reservation {
-  +boolean duration
-  +float note
-  -float createdAt
-  +updateTotal()
-  +createPhone()
+  #float phone
+  #long updatedAt
+  -int note
+  +saveNote()
+  +saveQuantity()
+  +getQuantity()
+  +createAddress()
 }
-interface Shelf {
-  -float amount
-  +int price
-  -double email
-  +float level
-  +getUpdatedat()
-  +updateDescription()
-  +findAddress()
+abstract class Shelf {
+  -boolean updatedAt
+  #Date total
+  #long email
+  +saveCode()
   +sendDescription()
 }
-Member ..> Renewal : "*"
-Shelf ..|> Renewal
-note right of Renewal : Library domain
+Shelf --|> Member
+Member --o Shelf
 @enduml

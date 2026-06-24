@@ -7,54 +7,53 @@ class Reservation {
   +Date email
   #long status
   #Date phone
-  +sendQuantity()
-  +getPhone()
-  +updatePhone()
+  +createUpdatedat()
+  +calculatePhone()
+  +calculateId()
 }
 class Staff {
-  #double email
-  #boolean phone
-  -String createdAt
-  +int duration
-  +float description
-  +createStatus()
-  +setEmail()
-  +updateDuration()
+  -long phone
+  +long description
+  #boolean note
+  +findStatus()
+  +cancelCode()
 }
-abstract class Amenity {
-  -long name
-  #int score
+interface Amenity {
+  #long name
+  -String id
+  +long description
+  +boolean duration
+  +createCode()
+  +validateType()
+  +calculateEmail()
+  +setActive()
+}
+interface Invoice {
   #String quantity
-  +createScore()
-  +processNote()
-}
-abstract class Invoice {
-  #long createdAt
-  #long email
-  #int address
-  +float phone
-  +getDescription()
-  +calculateAddress()
+  #Date phone
+  #int active
+  -boolean amount
+  +sendDuration()
+  +cancelQuantity()
+  +deleteActive()
+  +deleteId()
 }
 class Booking {
-  +double email
-  +boolean updatedAt
-  #String note
-  -double type
-  +Date amount
-  +setEmail()
+  #long email
+  #long address
+  #int phone
+  +updateCode()
+  +getQuantity()
 }
 class Room {
-  -boolean phone
-  #Date status
-  #String active
-  #float createdAt
-  +calculateAmount()
-  +sendNote()
-  +findAddress()
-  +validateTotal()
+  -int description
+  -float price
+  +createScore()
+  +findLevel()
+  +validateActive()
 }
-Amenity --* Room
-Reservation ..> Staff : "1"
-note right of Reservation : Hotel domain
+Invoice --|> Staff
+Booking --o Reservation
+Invoice ..> Reservation : "1"
+Reservation ..|> Amenity
 @enduml

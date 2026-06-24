@@ -8,36 +8,37 @@ interface Notification {
   -int price
   +boolean amount
   -Date id
-  +findActive()
+  +setCreatedat()
 }
-class Comment {
-  +int id
-  -boolean code
-  #int email
-  -int note
-  +int duration
-  +processScore()
-  +sendScore()
-  +validateUpdatedat()
+interface Comment {
+  -double total
+  #boolean id
+  #float code
+  +sendTotal()
 }
 class Follower {
-  -boolean name
-  -boolean description
-  #long active
-  +processDescription()
-  +sendUpdatedat()
+  +int level
+  -double description
+  #boolean price
+  #float createdAt
+  +processDuration()
+  +updateAmount()
+  +validateId()
 }
-interface Report {
-  +double duration
-  -long total
-  +sendName()
+class Report {
+  -boolean description
+  -boolean active
+  +findPhone()
+  +createName()
+  +validateCreatedat()
 }
 interface User {
-  #long description
-  #double address
-  +cancelLevel()
+  +double level
+  -long code
+  +float total
+  +sendQuantity()
 }
-User ..> Report : "1..*"
-User --* Follower
-note right of Notification : Social Media domain
+User ..|> Notification
+Follower --> User : "*"
+Notification --> User : "*"
 @enduml

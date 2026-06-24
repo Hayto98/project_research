@@ -9,49 +9,59 @@ interface Coupon {
   +double id
   #float name
   #boolean description
-  +updateNote()
-  +updateActive()
+  +saveType()
+  +cancelType()
 }
-abstract class Payment {
-  #boolean amount
-  #int createdAt
-  +String price
-  +processCode()
+class Payment {
+  #int updatedAt
+  -boolean active
+  #boolean type
+  +int duration
+  +String amount
+  +processAmount()
+  +calculateDescription()
+  +saveDuration()
+  +setAddress()
 }
-interface Invoice {
-  -float total
-  #int code
-  +float email
-  +long updatedAt
-  +deleteEmail()
+class Invoice {
+  +float code
+  +long email
+  +float updatedAt
+  +long type
+  +int score
+  +getAddress()
+  +updateDuration()
+  +updateDescription()
 }
 class Order {
-  +Date phone
-  #String total
-  #float id
-  +calculatePhone()
-  +deleteCode()
-  +setEmail()
-  +cancelActive()
+  -boolean total
+  #boolean phone
+  -double amount
+  -String code
+  #boolean status
+  +getStatus()
+  +saveName()
+  +saveTotal()
 }
 interface Return {
-  -Date note
-  #double quantity
-  -long status
-  +float address
-  +updateType()
-  +getEmail()
+  -float price
+  +long quantity
+  +long createdAt
+  +int score
+  #double active
+  +calculateUpdatedat()
+  +validateDuration()
+  +calculateStatus()
+  +calculateCode()
 }
 class Wishlist {
-  #long name
-  #double createdAt
-  +int total
-  +String score
-  +calculateCode()
-  +setPhone()
-  +saveCode()
+  -String amount
+  +Date code
+  #Date quantity
+  +cancelDuration()
+  +validatePhone()
+  +processNote()
 }
 Invoice ..> Coupon : "1"
 Payment --> Order : "0..1"
-note right of Coupon : Ecommerce domain
 @enduml

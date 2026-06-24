@@ -5,40 +5,45 @@ skinparam ArrowColor #555555
 interface Guest {
   -float amount
   #long phone
-  +validateCode()
-  +createAddress()
-  +sendTotal()
+  +setEmail()
+  +setDescription()
+  +findScore()
 }
-abstract class CheckOut {
-  +Date quantity
-  -float phone
-  +calculateAmount()
+class CheckOut {
+  #double total
+  -double code
+  +String quantity
+  +long phone
+  -Date id
+  +findNote()
+  +updateNote()
   +setUpdatedat()
-  +validatePhone()
-  +findPhone()
 }
-class Amenity {
-  -Date duration
-  #int updatedAt
-  +updateDescription()
+interface Amenity {
+  #Date total
+  +int level
+  +float createdAt
+  +updateId()
+  +validateScore()
 }
 class Room {
-  -String code
-  #double phone
-  +long active
-  #String description
-  +calculatePhone()
+  #double active
+  +long description
+  #String address
+  +float code
+  +setAmount()
+  +deleteCode()
+  +calculateQuantity()
+  +findAddress()
 }
-abstract class Reservation {
-  #long createdAt
-  +Date status
-  #boolean id
-  +validateUpdatedat()
-  +createUpdatedat()
-  +cancelTotal()
-  +sendPrice()
+class Reservation {
+  +Date id
+  #boolean address
+  +setEmail()
+  +setCode()
+  +processPrice()
+  +findCreatedat()
 }
-Guest --o Reservation
-Amenity --> Room : "1..*"
-note right of Guest : Hotel domain
+Reservation --> Room : "*"
+Guest ..> Reservation : "1"
 @enduml

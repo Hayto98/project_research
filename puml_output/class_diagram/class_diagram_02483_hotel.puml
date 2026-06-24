@@ -6,40 +6,38 @@ class CheckOut {
   -long name
   -Date total
   #long code
-  +createActive()
+  +cancelPhone()
 }
-abstract class Booking {
-  #int level
-  -String score
-  +sendDuration()
-  +processDescription()
-  +getPhone()
-  +validateNote()
+interface Booking {
+  +double id
+  #float level
+  #boolean score
+  -Date amount
+  +String price
+  +createAmount()
+  +calculateAmount()
+  +createQuantity()
 }
-class Guest {
+interface Guest {
   +Date updatedAt
   #long price
   +float note
-  +sendCode()
-  +sendActive()
+  +cancelAmount()
+  +validateLevel()
 }
 class Service {
-  -boolean duration
+  -boolean status
   #boolean address
-  +findPhone()
+  +updateQuantity()
 }
 class Amenity {
-  -boolean quantity
-  -double updatedAt
-  #long createdAt
-  +String score
-  +deletePhone()
-  +createDescription()
-  +deleteLevel()
+  +Date quantity
+  #int duration
+  -boolean updatedAt
+  +updateEmail()
+  +getScore()
+  +validateScore()
+  +getType()
 }
-Guest ..> Service : "1..*"
-CheckOut --|> Booking
-Guest --o CheckOut
-Service ..|> Booking
-note right of CheckOut : Hotel domain
+Guest --* Booking
 @enduml

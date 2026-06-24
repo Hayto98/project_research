@@ -7,44 +7,39 @@ interface Withdrawal {
   #String status
   #double email
   +float id
-  +calculateQuantity()
-  +saveDuration()
-  +processCode()
+  +findAmount()
+  +cancelAddress()
+  +getUpdatedat()
 }
-abstract class Teller {
-  -Date note
-  #long name
-  +boolean quantity
-  +saveScore()
-  +saveStatus()
+interface Teller {
+  -double code
+  #boolean type
+  -String createdAt
+  #boolean note
+  +Date name
+  +updateEmail()
 }
-abstract class Loan {
-  #boolean level
+class Loan {
+  #boolean active
   -boolean id
-  #Date active
-  +double duration
-  +processAmount()
-  +calculateAmount()
-  +findCode()
+  +validateName()
 }
 class Customer {
-  #String email
-  +int code
-  +int score
-  +boolean name
-  +validatePrice()
+  #boolean amount
+  -Date price
+  #float duration
+  -String code
+  #String updatedAt
+  +saveQuantity()
 }
 class Account {
-  -long id
-  +Date score
-  +long amount
-  -double quantity
-  +sendDescription()
-  +getStatus()
-  +saveScore()
-  +saveActive()
+  +long updatedAt
+  -String status
+  -String score
+  +findScore()
+  +calculateName()
 }
-Customer --o Loan
-Teller --|> Withdrawal
-note right of Withdrawal : Banking domain
+Teller --* Account
+Loan --o Customer
+Account --|> Teller
 @enduml

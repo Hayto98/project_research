@@ -9,52 +9,54 @@ class Warehouse {
   -double score
   -String createdAt
   +boolean status
-  +deleteId()
-  +cancelPhone()
-  +getStatus()
+  +validateQuantity()
+  +getDescription()
+  +processCode()
 }
 interface Review {
-  #boolean note
-  +int code
-  #String active
-  +int level
-  -int duration
-  +processEmail()
-  +setLevel()
+  -String id
+  #boolean status
+  +float score
+  -float total
+  +calculateNote()
 }
-class Cart {
-  +String phone
-  -boolean status
-  -double active
-  #boolean price
-  +calculateUpdatedat()
+interface Cart {
+  -int id
+  #Date updatedAt
+  +saveAmount()
+  +sendDuration()
 }
 class Coupon {
+  -long level
+  +boolean email
+  +processActive()
+  +setDescription()
+  +validateAmount()
+  +sendActive()
+}
+abstract class Shipment {
+  #float level
+  #String code
+  +double price
   +long updatedAt
-  #float note
-  +processCreatedat()
+  #float quantity
+  +processAddress()
+  +processTotal()
+  +createTotal()
+  +getTotal()
+}
+class Return {
+  -double createdAt
+  +int id
+  -boolean total
+  +int level
+  #float price
   +findAddress()
-  +processCreatedat()
-  +saveId()
+  +sendCreatedat()
+  +calculateActive()
 }
-interface Shipment {
-  +double id
-  #int price
-  +boolean type
-  -int score
-  -boolean name
-  +createType()
-  +createUpdatedat()
-  +findLevel()
-}
-interface Return {
-  #int phone
-  -Date note
-  +getName()
-  +validateAddress()
-}
-Coupon --> Warehouse : "1"
-Coupon --* Review
-Warehouse --* Cart
-note right of Warehouse : Ecommerce domain
+Cart --* Coupon
+Review ..> Shipment : "1"
+Cart --o Shipment
+Return --* Review
 @enduml

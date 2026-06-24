@@ -7,43 +7,32 @@ class Grade {
   #float quantity
   #double phone
   +double price
-  +processLevel()
-  +processName()
-  +saveCreatedat()
-  +setQuantity()
+  +createName()
+  +processScore()
+  +cancelLevel()
+  +getPrice()
 }
-abstract class Department {
-  +long code
-  #String amount
-  +float email
-  +boolean id
-  -boolean status
-  +cancelScore()
-  +setUpdatedat()
-  +validateAmount()
-}
-abstract class Enrollment {
-  +boolean code
-  #long quantity
-  -String email
-  -String active
-  -float total
-  +calculateType()
-  +deleteId()
-  +processType()
-  +saveAddress()
-}
-abstract class Library {
+interface Department {
+  #boolean name
   -String createdAt
-  #Date updatedAt
-  -Date total
-  +deleteQuantity()
-  +calculateName()
-  +validateActive()
-  +calculateDescription()
+  +float code
+  -Date quantity
+  +String price
+  +processDescription()
 }
-Grade --> Enrollment : "1..*"
-Enrollment --> Grade : "1"
-Department --|> Grade
-note right of Grade : Education domain
+interface Enrollment {
+  #double updatedAt
+  #long createdAt
+  +validatePrice()
+}
+class Library {
+  -Date amount
+  #long type
+  #boolean level
+  #double code
+  +findDuration()
+}
+Enrollment --o Grade
+Grade ..> Department : "*"
+Library ..|> Department
 @enduml

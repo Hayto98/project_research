@@ -6,44 +6,42 @@ abstract class Guest {
   -boolean description
   -double name
   #long status
-  +validateName()
+  +findQuantity()
 }
-interface Housekeeping {
+class Housekeeping {
   -Date total
   -Date createdAt
   #int score
-  +saveType()
-  +cancelAmount()
-  +cancelDescription()
-  +sendDuration()
+  +deleteTotal()
+  +validateLevel()
+  +getAmount()
+  +sendCreatedat()
 }
-class Booking {
-  -String createdAt
-  #boolean phone
-  +boolean updatedAt
-  -Date total
-  +createNote()
-  +updateCode()
+interface Booking {
+  #String level
+  -int description
+  #float score
+  +createScore()
+  +saveStatus()
+  +getPhone()
 }
-class CheckOut {
-  -double status
-  -boolean phone
-  #float id
-  #float type
-  -String email
-  +calculateUpdatedat()
-  +updateTotal()
-  +calculateActive()
-  +saveNote()
+abstract class CheckOut {
+  #long score
+  #int updatedAt
+  +sendCode()
+  +updateAmount()
+  +updateStatus()
 }
-interface Payment {
-  #int amount
-  #float level
-  +createQuantity()
+class Payment {
+  -float total
+  +boolean status
+  +deleteName()
+  +createPrice()
+  +updateEmail()
+  +deleteActive()
 }
-Payment --o CheckOut
-Payment --* Housekeeping
-Payment --o Guest
-Booking ..|> Payment
-note right of Guest : Hotel domain
+CheckOut --o Guest
+CheckOut ..|> Housekeeping
+CheckOut --> Payment : "*"
+Payment ..|> Guest
 @enduml

@@ -7,32 +7,36 @@ interface Follower {
   +long active
   #Date amount
   #Date quantity
-  +deleteType()
+  +saveAddress()
 }
-class Report {
-  #float active
-  +long duration
-  -Date code
-  +validateQuantity()
+abstract class Report {
+  #Date level
+  +float score
+  #float description
+  +long active
+  +saveDescription()
+  +updateName()
+  +calculateCreatedat()
 }
 class Message {
-  +float code
-  #Date type
-  +updateStatus()
-  +validatePrice()
+  #Date id
+  #Date code
+  #boolean type
+  #int name
+  +validateId()
+  +updateTotal()
 }
 abstract class Comment {
-  #double id
-  +int note
-  -boolean address
-  #Date active
-  +deleteDuration()
-  +savePrice()
-  +createPrice()
-  +cancelCode()
+  +int email
+  -boolean id
+  #Date note
+  -int address
+  #float price
+  +createQuantity()
+  +createDuration()
+  +processId()
+  +setQuantity()
 }
-Report --|> Follower
-Message --* Comment
-Report --* Comment
-note right of Follower : Social Media domain
+Comment ..|> Message
+Follower ..> Comment : "1..*"
 @enduml

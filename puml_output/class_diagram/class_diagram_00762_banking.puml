@@ -8,38 +8,32 @@ class Interest {
   -Date note
   #float name
   -int type
-  +updateQuantity()
-  +setNote()
-  +updateName()
+  +saveNote()
+  +cancelAddress()
+  +setStatus()
 }
-interface Beneficiary {
-  +boolean createdAt
-  -Date code
-  #int amount
-  +String status
-  +cancelActive()
-  +validateNote()
-  +validatePrice()
-  +deleteNote()
+abstract class Beneficiary {
+  #Date name
+  -int level
+  +int score
+  +processAmount()
 }
-class Account {
-  -long createdAt
-  #Date description
-  #String level
-  #int code
-  +String active
-  +cancelName()
-  +cancelDuration()
-  +setQuantity()
+interface Account {
+  -long amount
+  #double duration
+  +double status
+  +Date total
+  -int phone
+  +findUpdatedat()
+  +setLevel()
 }
-interface Transfer {
-  +int updatedAt
-  +int level
-  +deleteLevel()
-  +getNote()
-  +processAddress()
+class Transfer {
+  #Date total
+  #String address
+  +validateQuantity()
+  +setName()
 }
-Transfer ..> Beneficiary : "1"
-Transfer --> Interest : "1"
-note right of Interest : Banking domain
+Interest --> Account : "1"
+Account --|> Transfer
+Beneficiary --|> Account
 @enduml

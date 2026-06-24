@@ -6,51 +6,65 @@ skinparam ArrowColor #555555
 class Member {
   +boolean price
   -boolean total
-  +findId()
-  +calculateNote()
+  +saveDescription()
+  +sendType()
+  +updatePrice()
+}
+abstract class Loan {
+  +Date address
+  -Date description
+  +String score
+  +boolean updatedAt
+  -float amount
+  +createTotal()
+}
+interface Branch {
+  -double active
+  -long updatedAt
+  -Date status
+  +String id
+  +sendNote()
+  +cancelAmount()
   +validateDescription()
+  +calculateAmount()
 }
-interface Loan {
-  #String amount
-  +int id
-  #float address
-  +sendId()
-  +findActive()
-  +createActive()
-}
-class Branch {
-  -long id
-  -double phone
-  +setScore()
-}
-abstract class Fine {
-  +float score
-  -float note
-  #int updatedAt
-  +updateName()
+class Fine {
+  +int type
+  +int level
+  -boolean updatedAt
+  +validateDuration()
+  +findCode()
+  +sendScore()
+  +cancelActive()
 }
 class Shelf {
-  -double active
-  #String level
-  -Date total
-  +String address
-  +processUpdatedat()
+  -float description
+  -int code
+  +float createdAt
+  +Date note
+  #double updatedAt
   +createPhone()
+  +saveScore()
+  +getCode()
+  +calculateEmail()
 }
 class Catalog {
-  -double updatedAt
-  +long level
-  +updateUpdatedat()
+  +long code
+  #int email
+  #double description
+  +updateActive()
+  +calculateNote()
+  +processPrice()
 }
 class Renewal {
-  #double description
-  -String createdAt
-  +int quantity
-  +Date amount
-  +createAmount()
-  +updateNote()
+  -String email
+  +long amount
+  #float updatedAt
+  +createStatus()
+  +processPhone()
 }
-Member --> Branch : "0..1"
-Shelf --> Branch : "0..1"
-note right of Member : Library domain
+Shelf --o Loan
+Member --o Branch
+Shelf --|> Renewal
+Catalog ..> Shelf : "*"
 @enduml

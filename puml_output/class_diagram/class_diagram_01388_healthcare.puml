@@ -7,46 +7,44 @@ class Appointment {
   +String note
   -String description
   #double total
-  +cancelTotal()
-  +setDuration()
+  +getCode()
+  +deleteLevel()
 }
-interface Patient {
-  -boolean phone
-  #double description
-  +double address
+abstract class Patient {
   -long duration
-  +setUpdatedat()
-  +cancelCode()
-  +processCode()
-  +processEmail()
-}
-class Insurance {
-  +boolean status
-  #double name
-  +boolean score
-  -int phone
-  +updatePhone()
-  +calculateLevel()
-  +calculateNote()
-  +validateType()
-}
-interface Diagnosis {
-  -int name
-  +double code
-  +Date status
-  -long id
+  +long level
+  +validateAmount()
   +getScore()
-  +getDuration()
-  +updatePhone()
-  +updateAddress()
+  +saveType()
+}
+abstract class Insurance {
+  -boolean total
+  #Date address
+  +findNote()
+  +findLevel()
+  +deleteAddress()
+  +findDescription()
+}
+class Diagnosis {
+  +String code
+  #float type
+  -String email
+  #Date name
+  -int phone
+  +validateCreatedat()
+  +processLevel()
+  +validateNote()
 }
 class Prescription {
-  #float email
-  -int description
-  +processUpdatedat()
+  #long level
+  +String price
+  +String note
+  -int phone
+  +double type
+  +deletePhone()
 }
-Appointment --|> Patient
-Prescription --* Appointment
-Patient --|> Insurance
-note right of Appointment : Healthcare domain
+Diagnosis --> Insurance : "*"
+Appointment --> Prescription : "0..1"
+Insurance --* Patient
+Patient ..> Appointment : "1..*"
 @enduml

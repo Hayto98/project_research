@@ -7,53 +7,49 @@ abstract class Insurance {
   +boolean note
   +boolean score
   -float level
-  +updateNote()
-  +processPhone()
-  +setStatus()
-  +cancelScore()
+  +validateStatus()
+  +updateStatus()
+  +saveAmount()
+  +validateUpdatedat()
 }
-interface MedicalRecord {
-  -String active
-  #float createdAt
-  +sendEmail()
-  +createEmail()
-  +createQuantity()
+class MedicalRecord {
+  #boolean status
+  +float level
+  +saveName()
   +getType()
 }
-interface Hospital {
-  +String duration
-  -String quantity
-  +float name
-  #long active
-  +calculateAddress()
+abstract class Hospital {
+  +double email
+  #long duration
+  #long quantity
+  +boolean score
+  +updateName()
+  +calculateName()
 }
 class Treatment {
-  #Date createdAt
-  #long amount
-  -long code
-  +setActive()
-  +processActive()
-  +cancelUpdatedat()
-  +validateId()
+  -long address
+  -float name
+  +cancelNote()
+  +validateQuantity()
 }
-abstract class Billing {
-  #double type
-  #float amount
+class Billing {
+  #double email
+  #boolean duration
+  +long type
   +double code
-  -long updatedAt
-  +createPrice()
-  +setUpdatedat()
-  +calculateActive()
-  +updateStatus()
+  +validateUpdatedat()
+  +sendUpdatedat()
+  +createEmail()
 }
-interface LabTest {
-  #boolean address
-  +Date id
-  +updatePrice()
+class LabTest {
+  -boolean updatedAt
+  +double active
+  +setTotal()
+  +updateEmail()
+  +getNote()
 }
-Billing ..|> Insurance
-Billing --o Treatment
-Insurance --> LabTest : "*"
-Insurance ..> Hospital : "1..*"
-note right of Insurance : Healthcare domain
+Insurance --o MedicalRecord
+Billing ..> MedicalRecord : "1"
+Billing --* Insurance
+LabTest ..> Insurance : "1"
 @enduml

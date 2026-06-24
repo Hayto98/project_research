@@ -6,42 +6,38 @@ class Branch {
   -float total
   -String description
   +long code
-  +validateActive()
-  +sendName()
+  +findQuantity()
+  +createDescription()
 }
-class Renewal {
-  #int updatedAt
-  -String code
-  +boolean id
-  -float score
-  -int email
-  +processPhone()
-  +validatePrice()
+interface Renewal {
+  -Date amount
+  +String active
+  +findEmail()
 }
-interface Reservation {
+class Reservation {
+  #long updatedAt
+  -int address
+  #int id
+  -long score
+  +saveCode()
+  +updateScore()
+  +getCode()
+}
+interface Shelf {
   +Date active
   #int name
   #float quantity
   #boolean phone
-  +saveLevel()
+  +sendDuration()
 }
-class Shelf {
-  #long email
-  #double quantity
-  -double status
-  +cancelType()
+interface Loan {
+  -Date updatedAt
+  +Date email
+  +sendLevel()
+  +cancelUpdatedat()
+  +getPhone()
 }
-class Loan {
-  +boolean id
-  -boolean email
-  +boolean level
-  -String updatedAt
-  #float type
-  +updatePhone()
-  +setDescription()
-}
-Renewal --> Loan : "1"
-Shelf --> Branch : "1"
-Branch --> Renewal : "*"
-note right of Branch : Library domain
+Shelf --> Branch : "*"
+Branch --|> Shelf
+Reservation ..|> Loan
 @enduml

@@ -7,53 +7,57 @@ abstract class FuelLog {
   #double note
   #long email
   #boolean total
-  +createPhone()
-  +sendEmail()
-  +saveName()
+  +sendAddress()
+  +findType()
+  +getAmount()
 }
 class Route {
-  +int price
-  -boolean email
-  -long level
-  -long total
-  +setCode()
+  #float name
+  -long description
+  -int address
+  +long price
+  +validateAmount()
+  +processType()
+  +cancelPhone()
 }
 class Customer {
-  #double duration
-  +Date address
-  -Date active
-  +findAddress()
-  +findDescription()
-  +sendDescription()
-  +processId()
+  +Date code
+  #long name
+  +getEmail()
+  +saveDescription()
+  +updateLevel()
+  +getActive()
 }
-class Vehicle {
-  #String id
-  -boolean duration
-  -String amount
-  -boolean address
-  #String phone
-  +deleteAddress()
+abstract class Vehicle {
+  #String description
+  +double score
+  +String duration
+  #int note
+  +processStatus()
+  +setAddress()
+  +updatePrice()
 }
-class DeliveryNote {
-  -long address
-  #long id
-  #boolean updatedAt
-  -Date quantity
-  +setDuration()
-  +calculateId()
-  +deleteName()
+abstract class DeliveryNote {
+  +int id
+  #long email
+  -long score
+  -String active
+  #int code
+  +deletePhone()
+  +sendPhone()
+  +updateTotal()
 }
-abstract class Depot {
-  -long status
-  -int active
-  +calculateType()
-  +setType()
-  +saveCode()
+class Depot {
+  +float email
+  #String code
+  -String total
+  +boolean id
+  +getNote()
+  +processType()
+  +updateDescription()
 }
+Vehicle --|> Depot
+Vehicle --* FuelLog
 Route --* Depot
 Vehicle --o DeliveryNote
-FuelLog --> Customer : "*"
-DeliveryNote --* Route
-note right of FuelLog : Logistics domain
 @enduml

@@ -7,54 +7,39 @@ class Branch {
   -Date level
   +String duration
   +Date active
-  +findScore()
-  +validateDescription()
-  +cancelCode()
+  +validateTotal()
+  +sendAmount()
+  +calculateName()
 }
-abstract class Loan {
-  -boolean phone
-  +boolean quantity
-  -long level
-  +long amount
-  #Date note
-  +setDuration()
-  +setId()
+class Loan {
+  -Date price
+  -long note
+  +calculateAmount()
+  +calculateCode()
 }
-abstract class Transfer {
-  #double level
-  +int id
-  -String total
-  #int type
-  +processStatus()
-  +calculateTotal()
-  +deleteTotal()
-  +validateDescription()
+interface Transfer {
+  -String score
+  -float total
+  +setDescription()
+  +validateActive()
 }
 class Teller {
-  #long email
-  #float type
-  #int level
-  #int code
-  +int total
-  +updateEmail()
-  +saveDescription()
-  +processNote()
-  +getPrice()
+  #long price
+  #boolean level
+  +calculateStatus()
 }
 abstract class Interest {
-  #long level
-  +Date phone
-  #int createdAt
-  -Date status
-  -String description
-  +processDescription()
-  +createCode()
-  +processDuration()
-  +processAmount()
+  +boolean score
+  +float type
+  #double amount
+  -Date duration
+  +float level
+  +updateEmail()
+  +findId()
+  +updateCreatedat()
+  +getAddress()
 }
-Loan ..> Branch : "1"
-Transfer --o Loan
-Branch ..|> Loan
-Transfer --|> Interest
-note right of Branch : Banking domain
+Loan ..> Transfer : "*"
+Transfer --o Teller
+Branch --> Teller : "1..*"
 @enduml

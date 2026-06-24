@@ -8,56 +8,59 @@ abstract class Grade {
   #int level
   -float duration
   #int total
-  +sendId()
-  +deleteLevel()
-  +sendId()
+  +saveActive()
+  +getPrice()
+  +updateDuration()
 }
 class Teacher {
-  #double status
-  +String code
-  +sendPrice()
-  +calculateStatus()
+  +String phone
+  #double code
+  +calculateId()
 }
 class Course {
-  +long status
-  #boolean level
-  -long address
-  #boolean note
-  #double description
-  +cancelUpdatedat()
+  #boolean price
+  -float status
+  -boolean name
+  +String total
+  -float level
+  +deleteCode()
+  +getUpdatedat()
+  +updateCode()
+  +updateAddress()
 }
 interface Assignment {
-  -float description
-  #double level
-  #String email
-  +getScore()
-  +processAddress()
-  +findTotal()
+  #boolean id
+  #long level
+  -float updatedAt
+  #double amount
+  #String description
+  +deleteTotal()
+  +calculateEmail()
+  +calculatePrice()
 }
 abstract class Student {
-  +boolean score
-  +int phone
-  +int note
-  -long address
-  +double quantity
-  +validateType()
-  +updatePrice()
+  #float total
+  -long duration
+  #Date price
+  #long phone
+  +processId()
 }
-abstract class Library {
+class Library {
+  -int id
+  -int updatedAt
+  -double total
+  +setCreatedat()
+  +sendScore()
+}
+abstract class Attendance {
   -float email
   -Date status
-  +processPhone()
-  +updateEmail()
-  +processType()
+  +saveAmount()
+  +createAmount()
+  +deleteAddress()
 }
-class Attendance {
-  +long description
-  -boolean createdAt
-  +calculateUpdatedat()
-  +calculateName()
-}
-Student --* Attendance
-Teacher --|> Assignment
-Library ..|> Student
-note right of Grade : Education domain
+Attendance --o Assignment
+Library --|> Grade
+Teacher ..|> Attendance
+Course --> Attendance : "0..1"
 @enduml

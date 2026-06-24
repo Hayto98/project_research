@@ -6,54 +6,58 @@ skinparam defaultFontSize 13
 abstract class Invoice {
   +double amount
   -boolean level
-  +getDescription()
-  +getDescription()
-  +createDuration()
-  +getDuration()
+  +processQuantity()
+  +setType()
+  +saveEmail()
+  +validateCode()
 }
-interface Reservation {
-  #long quantity
-  #Date code
-  -float price
-  +sendLevel()
-  +calculateNote()
-  +deleteUpdatedat()
-}
-class Service {
-  -boolean address
-  -Date status
-  +saveNote()
-}
-class Restaurant {
-  #float code
-  +boolean createdAt
+class Reservation {
+  +long duration
+  +double score
+  +sendQuantity()
+  +setCreatedat()
   +calculateName()
 }
-class CheckIn {
-  -long amount
-  -String level
-  +cancelLevel()
-  +sendLevel()
+class Service {
+  -String note
+  -boolean amount
+  -Date updatedAt
+  #float email
+  #String code
+  +setType()
+  +validateActive()
+  +updateActive()
+  +validatePhone()
+}
+class Restaurant {
+  +String score
+  +int id
+  #double price
+  +updateTotal()
+  +cancelTotal()
+  +processUpdatedat()
+}
+interface CheckIn {
+  #long type
+  -Date total
+  +String email
+  -Date duration
+  +cancelDuration()
+  +createAmount()
+  +updateDescription()
+  +createStatus()
 }
 class Room {
-  #int total
-  +float email
-  -Date type
-  -Date level
-  -int address
-  +getAddress()
+  #boolean address
+  +String name
+  +calculateAddress()
+  +processScore()
 }
 class Housekeeping {
-  +float id
-  -String level
-  -boolean amount
-  +validateId()
-  +processName()
-  +getDescription()
+  #boolean email
+  -long level
+  +createName()
 }
-Service ..|> Housekeeping
-CheckIn ..|> Reservation
-Invoice --* Reservation
-Service --* Room
-note right of Invoice : Hotel domain
+Invoice ..> Room : "0..1"
+Service --* Housekeeping
 @enduml

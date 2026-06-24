@@ -7,61 +7,61 @@ class Warehouse {
   #boolean score
   -String email
   -float address
-  +validateLevel()
-  +getLevel()
-  +processDescription()
-  +saveDescription()
+  +updateTotal()
+  +saveDuration()
+  +sendDescription()
+  +saveId()
 }
 interface Shipment {
-  +double id
-  -float price
-  #int email
-  #double updatedAt
-  +validateQuantity()
-  +validateStatus()
+  -int description
+  +double duration
+  -float phone
+  #int id
+  #double price
+  +validateScore()
+  +processDescription()
 }
-interface Invoice {
-  #String createdAt
-  #float amount
-  -Date id
-  +setQuantity()
+class Invoice {
+  +int score
+  +float amount
+  +calculateDuration()
 }
-interface Supplier {
-  #float createdAt
-  -double address
-  -float name
-  +double id
-  +getAmount()
-  +findEmail()
-  +processActive()
+abstract class Supplier {
+  #long code
+  +long quantity
+  +createTotal()
 }
-interface Customer {
-  #float total
-  #float description
-  +long phone
-  -float type
-  +findPrice()
-  +cancelTotal()
+class Customer {
+  -String total
+  +Date address
+  -double name
+  #boolean note
+  +processLevel()
+  +processScore()
+  +createCreatedat()
 }
 class Category {
-  -int price
-  -String createdAt
-  +deleteUpdatedat()
+  #double duration
+  #double updatedAt
+  +float address
+  +float phone
+  -int level
+  +setPrice()
+  +cancelNote()
+  +validateAmount()
+  +updateUpdatedat()
+}
+class Coupon {
+  +int updatedAt
+  -String id
+  +float email
   +getEmail()
-  +deleteDescription()
+  +cancelPhone()
+  +saveEmail()
+  +calculateUpdatedat()
 }
-abstract class Coupon {
-  +long name
-  +Date total
-  +getDescription()
-  +saveAmount()
-  +saveAmount()
-}
-Category ..|> Invoice
-Category --|> Coupon
+Warehouse ..> Shipment : "0..1"
+Category --> Shipment : "1..*"
+Shipment ..> Category : "1"
 Shipment ..> Customer : "0..1"
-Customer --> Warehouse : "*"
-Warehouse ..> Coupon : "*"
-Supplier ..|> Warehouse
-note right of Warehouse : Ecommerce domain
 @enduml

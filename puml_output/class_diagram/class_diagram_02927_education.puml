@@ -5,66 +5,67 @@ skinparam shadowing true
 class Attendance {
   -Date phone
   +double code
-  +calculateUpdatedat()
-  +setAmount()
-  +sendDuration()
-  +sendQuantity()
+  +calculateQuantity()
+  +getDuration()
+  +deletePhone()
+  +updateStatus()
 }
 class Department {
-  +boolean quantity
-  #Date total
-  +setAddress()
+  +float active
+  #float duration
+  #Date quantity
+  +calculatePhone()
 }
-class Course {
-  #String total
-  -String note
-  -Date description
+abstract class Course {
+  +float duration
+  -long active
+  +double status
+  +createCreatedat()
+  +cancelDuration()
+  +setName()
   +createPrice()
-  +findNote()
-  +findLevel()
-  +validateQuantity()
 }
-abstract class Exam {
-  #String active
-  +float id
-  +float code
-  #long duration
-  #float total
-  +saveType()
-  +validateActive()
-  +updateDescription()
-  +cancelLevel()
+class Exam {
+  #boolean duration
+  -long total
+  -float quantity
+  -boolean price
+  +String note
+  +deleteEmail()
+  +findStatus()
+  +createPhone()
+  +updateUpdatedat()
 }
 class Grade {
-  -String duration
-  #float price
-  -float type
-  #String quantity
+  +int type
+  #boolean duration
+  +Date phone
+  #float active
+  +deleteDescription()
+  +saveCode()
+  +cancelCode()
+  +saveDuration()
+}
+class Teacher {
   -long address
-  +saveType()
-  +processNote()
+  +Date name
+  -double quantity
+  -Date level
+  +validateScore()
+  +createDuration()
+  +sendNote()
 }
-interface Teacher {
-  #boolean address
-  #float price
-  +Date updatedAt
-  #int code
-  +processStatus()
-  +processCode()
-}
-interface Enrollment {
-  +boolean amount
-  -int updatedAt
-  #float address
-  #double id
+class Enrollment {
+  +double createdAt
+  +Date description
+  #long type
+  +sendNote()
   +findDescription()
-  +setDuration()
-  +getAmount()
 }
-Enrollment ..> Grade : "0..1"
-Grade ..> Attendance : "1..*"
-Exam ..> Department : "0..1"
-Department --> Enrollment : "0..1"
-Teacher --o Course
-note right of Attendance : Education domain
+Course ..|> Attendance
+Grade ..|> Course
+Teacher --o Grade
+Course ..|> Teacher
+Attendance --|> Grade
+Enrollment --o Department
 @enduml

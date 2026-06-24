@@ -6,56 +6,49 @@ interface Member {
   #long total
   +float phone
   +double id
-  +updateActive()
+  +updateDescription()
 }
-class Fine {
+interface Fine {
+  #int createdAt
   -boolean active
-  -boolean duration
-  -float amount
-  +saveName()
-  +validateDuration()
-  +findActive()
-  +updatePrice()
+  +updateNote()
+  +calculatePhone()
+  +getPrice()
+  +savePrice()
 }
-class Librarian {
-  #boolean duration
-  -float code
-  #double updatedAt
-  +deleteDescription()
-  +validateCreatedat()
-  +calculateLevel()
-  +deleteNote()
+abstract class Librarian {
+  +double phone
+  -Date active
+  +sendDescription()
+  +cancelPrice()
 }
-abstract class Renewal {
-  -Date duration
-  #long code
-  +updateActive()
-  +sendScore()
-  +cancelQuantity()
-  +findName()
+interface Renewal {
+  #long updatedAt
+  #double active
+  +setLevel()
+  +getDuration()
+  +getUpdatedat()
+  +processAddress()
 }
-interface Book {
-  +long code
-  #float createdAt
-  -double active
-  -String quantity
-  +setScore()
+class Book {
+  -String createdAt
+  #boolean price
+  +long amount
+  #boolean note
+  +getPrice()
+  +validateName()
+  +sendId()
 }
 interface Loan {
-  +boolean total
-  +float score
-  -String email
-  #int price
-  #long duration
-  +findNote()
-  +calculateDescription()
-  +validateCreatedat()
-  +cancelPhone()
+  #boolean name
+  -String address
+  -Date code
+  -double createdAt
+  +processName()
+  +getLevel()
+  +setDescription()
 }
-Book --> Librarian : "1"
-Librarian ..|> Member
-Fine --|> Book
-Loan ..> Renewal : "*"
-Renewal --o Book
-note right of Member : Library domain
+Renewal ..> Book : "1..*"
+Renewal --> Member : "0..1"
+Book --> Fine : "1..*"
 @enduml

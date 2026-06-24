@@ -9,50 +9,54 @@ abstract class Return {
   -boolean amount
   #double score
   +float price
-  +cancelDescription()
-  +findTotal()
+  +saveTotal()
+  +findUpdatedat()
 }
-interface Customer {
-  -Date active
-  +String level
-  +Date type
-  #Date total
-  +cancelPrice()
+class Customer {
+  -Date score
+  +String address
+  +Date active
+  #Date type
+  #String total
+  +saveQuantity()
+  +getCode()
+  +calculateDescription()
+  +cancelName()
 }
-class Invoice {
+interface Invoice {
   +String name
   +String duration
   -Date phone
   -String updatedAt
   +int createdAt
-  +deleteNote()
+  +saveTotal()
 }
 class Order {
-  -int type
-  -float active
-  -String name
-  -long description
-  +findNote()
-  +findPrice()
-  +calculateUpdatedat()
+  +long id
+  +double level
+  -String quantity
+  -long type
+  -Date name
+  +saveTotal()
+  +deleteType()
+  +processType()
+  +updateCode()
 }
-interface Payment {
-  -double address
-  -String price
-  +createDescription()
-  +saveLevel()
+abstract class Payment {
+  -double active
+  -double status
+  +boolean address
+  +getNote()
+  +deleteType()
 }
-interface Supplier {
+class Supplier {
   -String name
   -double id
-  +createTotal()
-  +setType()
-  +updateDuration()
-  +findDescription()
+  +updateLevel()
+  +saveUpdatedat()
+  +calculateLevel()
+  +setNote()
 }
-Payment --> Supplier : "1..*"
-Order ..|> Payment
-Payment --o Return
-Payment ..|> Order
-note right of Return : Ecommerce domain
+Order --> Customer : "0..1"
+Invoice --> Payment : "1..*"
 @enduml

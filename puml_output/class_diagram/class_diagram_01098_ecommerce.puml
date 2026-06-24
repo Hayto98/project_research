@@ -7,62 +7,57 @@ abstract class Return {
   -boolean quantity
   +double updatedAt
   -double id
-  +getName()
+  +setName()
 }
-interface Payment {
+class Payment {
   +double quantity
   +Date status
   -boolean updatedAt
   -Date total
-  +sendAddress()
-  +saveActive()
-  +validateId()
+  +calculateDuration()
+  +validateDuration()
+  +cancelScore()
 }
-class Review {
-  +int updatedAt
-  +float amount
-  +float quantity
+interface Review {
+  +float id
+  -int duration
+  +int email
+  +float updatedAt
+  +processScore()
+  +saveScore()
+}
+class Coupon {
+  -long updatedAt
   -int description
-  +updateDescription()
-  +cancelQuantity()
+  -String quantity
+  +saveType()
+  +saveCode()
+  +calculateCode()
 }
-abstract class Coupon {
-  -float email
-  -double updatedAt
-  -float address
-  +long status
-  +sendScore()
-}
-class Order {
-  #int updatedAt
-  +String phone
-  -double level
-  +getPrice()
-  +getId()
-  +createCreatedat()
-  +createTotal()
+abstract class Order {
+  #Date email
+  +float status
+  #int score
+  +createAmount()
+  +sendStatus()
 }
 class Invoice {
-  -float type
-  #Date duration
-  -long createdAt
-  +String address
-  +createStatus()
-  +saveUpdatedat()
-  +sendDuration()
+  -boolean id
+  -String duration
+  -String note
+  +deleteName()
 }
-interface Shipment {
-  -String status
-  #boolean quantity
-  -double note
-  +saveCreatedat()
-  +sendAmount()
-  +getCreatedat()
+class Shipment {
+  -int total
+  #Date quantity
+  -double phone
+  #Date type
+  +findCreatedat()
+  +updatePrice()
+  +processName()
+  +setActive()
 }
-Review ..|> Order
-Shipment --o Order
-Shipment --o Coupon
-Return --|> Review
-Coupon --o Review
-note right of Return : Ecommerce domain
+Review ..> Return : "0..1"
+Order --> Invoice : "0..1"
+Return --o Review
 @enduml

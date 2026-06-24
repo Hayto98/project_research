@@ -8,40 +8,38 @@ interface Guest {
   #Date createdAt
   #int amount
   -Date note
-  +setCreatedat()
+  +getType()
 }
 class Payment {
-  +Date duration
-  #float type
-  #boolean email
-  -Date quantity
-  +float score
-  +deleteAddress()
-  +saveStatus()
-}
-class Housekeeping {
-  +Date note
-  +String updatedAt
-  #String duration
-  +boolean active
-  +calculateType()
-  +validateAddress()
-  +findStatus()
-}
-abstract class CheckIn {
-  -float duration
-  +long description
-  +setId()
-}
-interface Restaurant {
-  #float note
-  +String score
-  +updateCode()
-  +createPhone()
-  +updateStatus()
+  -long duration
+  -int type
+  #boolean level
+  +cancelDescription()
+  +validateCode()
+  +getName()
   +saveNote()
 }
-CheckIn --> Restaurant : "0..1"
-Payment --> CheckIn : "*"
-note right of Guest : Hotel domain
+class Housekeeping {
+  +double status
+  #int name
+  #String address
+  +boolean note
+  +saveType()
+}
+class CheckIn {
+  #String price
+  -boolean type
+  +boolean address
+  +double score
+  +deleteCreatedat()
+  +updatePrice()
+}
+class Restaurant {
+  -boolean duration
+  #float status
+  +saveId()
+}
+Payment --* Guest
+Housekeeping --|> Payment
+CheckIn --o Restaurant
 @enduml

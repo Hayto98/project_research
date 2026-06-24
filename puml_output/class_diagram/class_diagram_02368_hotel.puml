@@ -9,69 +9,62 @@ class Booking {
   +Date updatedAt
   +int phone
   +int email
-  +calculateTotal()
-  +getCode()
-  +sendEmail()
-  +createScore()
+  +saveCode()
+  +setCreatedat()
+  +setPrice()
+  +findEmail()
 }
-class Invoice {
-  -boolean phone
-  +long email
-  +int description
-  +String note
-  -double address
-  +getPrice()
-  +processLevel()
+abstract class Invoice {
+  -long code
+  #float score
+  +setNote()
+  +createAmount()
 }
 class Housekeeping {
-  #double amount
-  #boolean address
-  #long score
-  #String price
-  #long level
-  +findId()
-  +validateDescription()
-  +updateId()
-  +sendQuantity()
-}
-class CheckIn {
-  #int createdAt
-  #boolean phone
-  -boolean updatedAt
-  #boolean quantity
-  #String name
-  +saveCode()
-  +calculateCreatedat()
-  +findScore()
-  +saveName()
-}
-abstract class Reservation {
-  +Date description
-  #Date code
-  #Date address
-  +String total
-  #long updatedAt
-  +sendId()
-}
-abstract class CheckOut {
   -boolean note
-  +boolean description
-  -float name
-  +float code
-  +findCreatedat()
-  +findPrice()
-  +saveNote()
-  +setAmount()
+  +long level
+  +int address
+  +updateActive()
 }
-interface Payment {
-  -String quantity
-  #double note
-  +sendScore()
-  +cancelUpdatedat()
+abstract class CheckIn {
+  -int createdAt
+  -boolean id
+  #double price
+  #long type
+  #double updatedAt
+  +createStatus()
+  +getType()
+  +processNote()
 }
-CheckOut --* Invoice
-CheckIn ..|> Invoice
-Booking --|> CheckOut
-CheckIn --> Booking : "0..1"
-note right of Booking : Hotel domain
+class Reservation {
+  #long id
+  -boolean address
+  #double description
+  +Date updatedAt
+  #long duration
+  +setTotal()
+  +saveEmail()
+}
+class CheckOut {
+  -int active
+  #float level
+  #Date code
+  +double total
+  #boolean score
+  +setCreatedat()
+  +setQuantity()
+  +setType()
+  +setCode()
+}
+class Payment {
+  #float total
+  +String updatedAt
+  #long name
+  +boolean active
+  +validateName()
+}
+CheckIn --|> Invoice
+Booking --> Housekeeping : "1"
+Reservation ..|> CheckIn
+Payment --o CheckOut
 @enduml

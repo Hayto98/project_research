@@ -5,31 +5,30 @@ skinparam defaultFontSize 13
 abstract class Hospital {
   -float total
   -double id
-  +saveId()
+  +calculateUpdatedat()
 }
 class Appointment {
-  -Date quantity
-  -boolean code
-  -float id
+  +double level
+  +long type
+  #double quantity
+  #long code
+  +sendId()
+}
+class Treatment {
+  #boolean score
+  -long email
+  -Date description
+  +createScore()
+}
+class Patient {
+  +double createdAt
+  #String active
+  #double email
+  -int code
   #float total
-  +int level
-  +findUpdatedat()
+  +getPrice()
 }
-interface Treatment {
-  -double description
-  #Date score
-  +int active
-  +double address
-  +saveActive()
-  +createCode()
-}
-abstract class Patient {
-  +boolean type
-  -double level
-  +findStatus()
-  +validateDuration()
-}
-Patient ..> Treatment : "0..1"
-Appointment --o Hospital
-note right of Hospital : Healthcare domain
+Hospital --o Treatment
+Appointment --|> Hospital
+Patient --|> Hospital
 @enduml

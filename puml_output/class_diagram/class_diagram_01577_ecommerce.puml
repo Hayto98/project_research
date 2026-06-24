@@ -6,69 +6,63 @@ interface Payment {
   #Date price
   -int description
   -long email
-  +cancelPhone()
-  +getUpdatedat()
-  +calculateTotal()
-  +createStatus()
+  +saveDuration()
+  +processStatus()
+  +cancelTotal()
+  +validateNote()
 }
-class Wishlist {
-  -long name
-  #double active
-  #boolean total
-  +saveQuantity()
-  +calculateActive()
+abstract class Wishlist {
+  #double quantity
+  -long status
+  #double level
+  #boolean description
+  +Date name
+  +calculateQuantity()
+  +cancelType()
+  +cancelUpdatedat()
 }
-class Customer {
-  +boolean updatedAt
-  #double price
-  +setStatus()
-  +createEmail()
-  +createAmount()
-  +updateDescription()
+interface Customer {
+  -String status
+  #boolean updatedAt
+  +validateUpdatedat()
+  +setDescription()
+  +cancelEmail()
+  +findEmail()
 }
 class Category {
-  +double quantity
-  #Date amount
-  +double description
-  +long note
-  -Date active
-  +createActive()
-  +deleteNote()
-  +createTotal()
-  +getLevel()
+  #float quantity
+  +double amount
+  -boolean updatedAt
+  +float description
+  +validateType()
+  +saveAmount()
 }
-class Return {
-  #int updatedAt
-  #Date amount
-  #boolean email
-  +float address
-  -boolean phone
-  +processNote()
-  +getCode()
-  +cancelDescription()
-  +createCode()
+abstract class Return {
+  -int price
+  -long active
+  #float code
+  +cancelAddress()
+  +sendQuantity()
+  +calculateAddress()
+  +cancelQuantity()
 }
 class Review {
-  #Date address
-  #int amount
-  -float id
-  +boolean code
-  +updateTotal()
-  +updateCode()
-}
-interface Shipment {
-  #int level
-  #int code
-  #boolean description
+  #int name
+  #long level
   #long address
-  -boolean createdAt
-  +processCreatedat()
-  +updatePhone()
-  +getScore()
-  +updateDuration()
+  -Date note
+  +boolean updatedAt
+  +saveLevel()
 }
-Category ..> Wishlist : "0..1"
-Category --|> Shipment
-Wishlist --* Payment
-note right of Payment : Ecommerce domain
+class Shipment {
+  -Date note
+  +int duration
+  #long name
+  -int code
+  +String description
+  +cancelQuantity()
+  +setPrice()
+}
+Return ..|> Wishlist
+Category --|> Wishlist
 @enduml

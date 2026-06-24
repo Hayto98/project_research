@@ -5,51 +5,58 @@ skinparam classBorderColor #33691E
 interface LabTest {
   +String note
   -Date name
-  +findTotal()
-  +cancelPrice()
+  +getActive()
+  +findAmount()
 }
 interface Ward {
-  #float updatedAt
-  +Date active
-  #long score
-  +boolean note
-  +float duration
-  +sendDescription()
+  #int duration
+  #float note
+  +Date updatedAt
+  #long active
+  +boolean level
+  +getPrice()
 }
 class MedicalRecord {
-  +int quantity
-  +float updatedAt
-  #double email
-  +calculateName()
+  +long name
+  +int updatedAt
+  +float quantity
+  +validateEmail()
+  +createPrice()
+  +setUpdatedat()
+  +updateDuration()
 }
-class Diagnosis {
-  -float score
-  -long note
-  -float active
+abstract class Diagnosis {
+  -long active
   +int code
   -boolean updatedAt
-  +processCreatedat()
-  +getNote()
+  +double phone
+  +String total
+  +validateCode()
+  +createDescription()
+  +sendQuantity()
+  +processQuantity()
 }
 class Billing {
-  #long description
-  -String price
-  +updateActive()
-  +findId()
-  +updateNote()
+  +boolean level
+  #float phone
+  +int email
+  -Date status
+  +String duration
+  +calculateEmail()
+  +updateDescription()
 }
-class Doctor {
-  +String active
-  +float level
-  +createCode()
-  +saveDuration()
-  +processNote()
-  +updateAmount()
+interface Doctor {
+  +double quantity
+  -long code
+  -float note
+  -long score
+  +int updatedAt
+  +deleteDescription()
+  +getType()
+  +cancelScore()
+  +processPrice()
 }
-MedicalRecord --o Doctor
-Diagnosis --|> MedicalRecord
-Ward --> Diagnosis : "1"
-Doctor ..|> Ward
 Ward --> LabTest : "1..*"
-note right of LabTest : Healthcare domain
+Diagnosis --o Ward
+Diagnosis ..> Doctor : "1"
 @enduml

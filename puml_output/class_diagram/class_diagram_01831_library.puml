@@ -7,44 +7,44 @@ abstract class Member {
   +double description
   -float amount
   +boolean level
-  +processId()
-  +createPrice()
-  +processStatus()
-  +saveNote()
+  +saveAmount()
+  +updateQuantity()
+  +cancelPrice()
+  +findStatus()
 }
-interface Publisher {
-  -boolean email
-  #double type
-  #long address
-  +long active
-  +setType()
-  +deleteAddress()
-  +findScore()
-  +calculateTotal()
+class Publisher {
+  #long price
+  -double type
+  -float status
+  #boolean note
+  +setPhone()
+  +calculateDescription()
+  +deleteActive()
+  +deleteTotal()
 }
-interface Author {
-  -double status
-  -int price
-  +saveCreatedat()
+class Author {
+  -int quantity
+  -float type
+  #float code
+  +findAmount()
+  +cancelDescription()
+  +findUpdatedat()
+  +deleteTotal()
 }
 class Fine {
-  +long description
-  +Date duration
-  +calculateCode()
-  +validateDuration()
-  +updateTotal()
-  +validateNote()
+  -double price
+  +String note
+  +validateScore()
+  +saveActive()
 }
-interface Shelf {
-  +long code
-  #boolean name
-  -double active
-  #int createdAt
-  +updateDuration()
-  +sendName()
+class Shelf {
+  +Date description
+  #double createdAt
+  -float quantity
+  +calculateName()
 }
-Publisher ..> Author : "0..1"
-Member ..|> Author
-Member --|> Fine
-note right of Member : Library domain
+Publisher --* Fine
+Fine --|> Author
+Member --|> Publisher
+Author --o Shelf
 @enduml

@@ -8,57 +8,68 @@ class Department {
   #long note
   #int level
   #int description
-  +calculateUpdatedat()
-  +calculateTotal()
-  +calculateStatus()
+  +createPrice()
+  +getDuration()
+  +createScore()
 }
-class Schedule {
-  #int duration
-  +boolean email
-  +double score
-  +saveDescription()
-  +processCode()
+abstract class Schedule {
+  #Date total
+  +int status
+  #int description
+  -float score
+  #int email
+  +deleteLevel()
+  +sendCode()
 }
-abstract class Classroom {
+class Classroom {
+  +double total
   -double createdAt
-  -int updatedAt
+  +float updatedAt
   +float code
-  #Date duration
-  -float active
-  +sendLevel()
+  #Date level
+  +sendStatus()
+  +setUpdatedat()
+  +sendAmount()
+  +savePrice()
 }
 class Teacher {
   -Date createdAt
   +String email
-  +validateUpdatedat()
-  +createNote()
+  +setEmail()
+  +processPrice()
 }
 class Exam {
-  #Date createdAt
-  -double amount
-  -long phone
-  +createLevel()
-  +cancelType()
+  -boolean phone
+  #long level
+  -double createdAt
+  -boolean score
+  +long amount
+  +sendActive()
+  +processAddress()
+  +sendTotal()
+  +saveName()
 }
-interface Grade {
-  -float price
-  -float name
-  +setTotal()
-  +setQuantity()
-  +getQuantity()
+class Grade {
+  -String quantity
+  -String phone
+  -Date status
+  -float total
+  +String code
+  +updateCreatedat()
 }
-class Attendance {
-  +Date type
-  +long createdAt
-  #boolean status
-  -float code
-  -String price
-  +validateAddress()
+interface Attendance {
+  +String code
+  -long status
+  -boolean address
+  -boolean total
+  +long phone
+  +setPrice()
+  +deleteAddress()
+  +cancelId()
 }
-Exam --> Classroom : "0..1"
-Classroom ..|> Attendance
-Classroom --|> Teacher
-Department ..> Attendance : "1..*"
-Teacher --> Exam : "0..1"
-note right of Department : Education domain
+Department --|> Attendance
+Grade --o Classroom
+Attendance --> Exam : "0..1"
+Classroom --> Attendance : "0..1"
+Grade ..> Department : "1..*"
 @enduml

@@ -6,59 +6,58 @@ skinparam shadowing true
 abstract class Follower {
   +long status
   -String phone
-  +calculateStatus()
+  +processLevel()
 }
-abstract class Hashtag {
+class Hashtag {
+  +double createdAt
   #int description
-  +double id
-  #int duration
-  +setLevel()
-  +cancelStatus()
-  +getName()
+  #Date id
+  -String level
+  #boolean updatedAt
+  +updateActive()
 }
 class Post {
-  +String email
-  +Date updatedAt
-  +String createdAt
-  -double phone
-  +findPhone()
-}
-interface Album {
-  -float active
-  +String phone
-  +long address
+  +float address
+  +Date email
+  +processCode()
   +deleteQuantity()
-  +setType()
-  +createPrice()
-  +updateScore()
+  +sendId()
 }
-abstract class Message {
+class Album {
+  +Date price
+  #float total
+  +cancelAmount()
+  +cancelScore()
+  +createDescription()
+}
+class Message {
+  +long address
+  #double duration
+  +long description
+  +double id
+  +calculateCode()
+  +sendId()
+  +calculatePrice()
+}
+abstract class Profile {
   #long note
   +boolean active
   #String description
-  +setUpdatedat()
+  +updateUpdatedat()
 }
-abstract class Profile {
-  -Date updatedAt
-  +boolean total
-  #float address
-  +calculateQuantity()
-  +findPhone()
+class Like {
+  #int createdAt
+  #float updatedAt
+  #float total
+  #int address
+  -long active
+  +findUpdatedat()
+  +getUpdatedat()
+  +getDuration()
 }
-interface Like {
-  #int type
-  #long duration
-  +Date score
-  #int code
-  -Date description
-  +sendCode()
-  +getId()
-  +processAddress()
-  +calculateAmount()
-}
-Post ..|> Message
-Like ..> Post : "1..*"
-Like --> Follower : "1"
-Profile --|> Message
-note right of Follower : Social Media domain
+Like --> Album : "*"
+Message --|> Profile
+Like --> Hashtag : "0..1"
+Message ..|> Post
+Profile ..|> Message
 @enduml

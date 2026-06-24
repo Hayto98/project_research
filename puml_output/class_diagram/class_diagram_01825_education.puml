@@ -8,40 +8,37 @@ interface Attendance {
   +boolean quantity
   #String duration
   +String createdAt
-  +cancelQuantity()
-  +getCreatedat()
-  +saveTotal()
-  +getPhone()
+  +sendStatus()
+  +findDescription()
+  +processDescription()
+  +sendTotal()
 }
-interface Grade {
-  +String updatedAt
-  -long total
-  #float level
-  +float name
-  #Date email
-  +sendEmail()
-  +setDuration()
-  +setTotal()
-  +calculateType()
+class Grade {
+  -float id
+  +long phone
+  +String type
+  -long updatedAt
+  #float total
+  +deleteTotal()
+  +setId()
 }
-class Course {
-  #long description
-  +Date level
-  +validateAmount()
-  +setLevel()
-  +setTotal()
+abstract class Course {
+  -String status
+  +int duration
+  #Date total
+  -String price
+  +calculateName()
+  +deleteId()
+  +sendLevel()
 }
 class Teacher {
-  +int createdAt
-  +int total
-  -long id
-  -Date description
+  -long level
+  -int code
+  +updateDuration()
   +getEmail()
-  +setLevel()
-  +getPhone()
-  +createTotal()
+  +setType()
+  +validateNote()
 }
-Attendance ..> Teacher : "0..1"
-Attendance --|> Course
-note right of Attendance : Education domain
+Grade --* Teacher
+Course ..> Teacher : "*"
 @enduml

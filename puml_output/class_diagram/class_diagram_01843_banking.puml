@@ -6,62 +6,54 @@ skinparam shadowing true
 interface Transaction {
   #int phone
   #float status
-  +saveScore()
-  +saveTotal()
-  +validateCreatedat()
+  +updatePhone()
+  +calculatePrice()
+  +processNote()
 }
-class Transfer {
-  #long name
-  #float type
-  -Date id
-  +double price
-  +sendUpdatedat()
-  +sendName()
-  +validateDescription()
+abstract class Transfer {
+  -String createdAt
+  -Date name
+  -Date address
+  -Date level
+  +saveAmount()
 }
 class Beneficiary {
-  +Date price
-  -boolean duration
-  #double quantity
-  +updateType()
-  +saveNote()
+  +long score
+  +double name
+  -long address
+  +deleteEmail()
+  +calculateUpdatedat()
 }
 class Customer {
-  -boolean description
-  #String type
-  -Date total
-  #int updatedAt
-  +processDuration()
-  +validateTotal()
-  +findAddress()
+  #long createdAt
+  +double duration
+  #double type
+  +float note
+  -boolean level
+  +validateAmount()
 }
-abstract class Deposit {
-  #int note
-  +boolean name
-  #float price
-  #String updatedAt
-  +sendPrice()
-  +calculateNote()
-  +findActive()
+interface Deposit {
+  -Date email
+  #Date type
+  -double phone
+  +createName()
+  +saveEmail()
+  +saveCode()
 }
-interface Teller {
+class Teller {
+  #Date id
+  -boolean level
+  -double status
+  +setCode()
+  +findTotal()
+  +deletePhone()
+  +saveDescription()
+}
+interface Statement {
   #Date quantity
   +Date id
-  +setCode()
+  +updateUpdatedat()
 }
-class Statement {
-  #long id
-  +double duration
-  -boolean level
-  -float price
-  #Date note
-  +calculateScore()
-  +updateDuration()
-  +sendScore()
-}
-Transaction --o Teller
-Statement ..> Transfer : "1..*"
-Transaction --> Statement : "0..1"
-Teller --o Customer
-note right of Transaction : Banking domain
+Transaction --|> Customer
+Transaction --o Statement
 @enduml

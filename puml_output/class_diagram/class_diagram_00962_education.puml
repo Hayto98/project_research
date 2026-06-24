@@ -6,52 +6,51 @@ skinparam defaultFontSize 13
 class Enrollment {
   -Date score
   -long phone
-  +savePrice()
-  +cancelEmail()
+  +validatePrice()
+  +saveCode()
 }
-class Attendance {
-  +double updatedAt
-  +int createdAt
-  -float score
-  +float name
-  #int type
-  +getEmail()
+interface Attendance {
+  #boolean email
+  #float note
+  +boolean updatedAt
+  -String createdAt
+  +validatePhone()
+  +processActive()
+  +saveName()
+  +validateStatus()
 }
-abstract class Department {
-  -String price
-  +float status
-  #boolean amount
-  +createPhone()
-  +updateStatus()
-  +calculateType()
-  +processName()
+class Department {
+  -Date status
+  #float id
+  +double email
+  +setDuration()
 }
 interface Library {
-  +double total
-  -long address
-  #String status
-  +Date amount
-  +int id
-  +setDuration()
-  +processAddress()
-  +deleteUpdatedat()
+  #boolean address
+  -float code
+  -Date description
+  +getPrice()
+  +calculateNote()
+  +validateId()
 }
-class Book {
-  +String active
-  -boolean quantity
-  #String description
-  +boolean address
-  +setType()
+abstract class Book {
+  #String note
+  +String name
+  +double duration
+  -long total
+  #String address
+  +calculateUpdatedat()
 }
-interface Schedule {
-  #long code
-  #long status
-  +findEmail()
-  +saveAmount()
-  +cancelDuration()
-  +saveCreatedat()
+class Schedule {
+  -int quantity
+  +float code
+  -long type
+  +updateId()
+  +saveDuration()
+  +saveQuantity()
 }
-Library --* Enrollment
-Attendance --|> Enrollment
-note right of Enrollment : Education domain
+Enrollment --* Schedule
+Book --|> Schedule
+Enrollment ..> Book : "1"
+Enrollment --> Library : "1"
 @enduml

@@ -6,54 +6,53 @@ skinparam shadowing true
 interface Product {
   -boolean id
   +long type
-  +cancelType()
+  +savePrice()
 }
 abstract class Wishlist {
-  +String address
-  -double active
-  +Date name
-  -float score
-  +double status
-  +cancelDuration()
-  +deleteType()
-  +deleteQuantity()
+  +int total
+  +double address
+  -String active
+  #long name
+  +double score
+  +savePrice()
+  +getPrice()
+  +sendDuration()
 }
-abstract class Review {
-  -Date phone
-  #long duration
-  #int price
-  +calculateDescription()
-  +updatePhone()
+interface Review {
+  -int type
+  -float amount
+  -double quantity
+  +deleteStatus()
+  +sendAmount()
+  +validateScore()
+  +getCreatedat()
 }
 class Customer {
   -int price
-  #Date type
-  -long updatedAt
-  +sendScore()
-  +calculateDuration()
-  +calculateQuantity()
+  +float description
+  -double updatedAt
+  +saveName()
+  +getEmail()
 }
 class Order {
-  #long email
-  -String note
-  -int active
-  -double phone
+  #double email
+  -String active
+  -Date score
+  -double total
+  +calculateAddress()
+  +cancelAmount()
+  +deleteCode()
+}
+abstract class Payment {
+  -double email
   -double amount
-  +sendName()
-  +cancelPrice()
+  +getScore()
+  +saveTotal()
   +calculateEmail()
-  +sendId()
+  +updateAmount()
 }
-interface Payment {
-  -double amount
-  #String quantity
-  -double name
-  -double level
-  +createPhone()
-}
-Product --* Review
-Order --* Product
-Order --> Wishlist : "1..*"
-Wishlist ..|> Payment
-note right of Product : Ecommerce domain
+Customer --> Review : "1"
+Order ..|> Review
+Review --* Product
+Customer ..> Payment : "1"
 @enduml

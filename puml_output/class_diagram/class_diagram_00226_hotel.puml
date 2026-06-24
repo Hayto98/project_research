@@ -8,41 +8,38 @@ class CheckOut {
   #double duration
   #Date code
   -boolean type
-  +setLevel()
-  +validateQuantity()
-  +savePrice()
+  +cancelStatus()
+  +validateType()
+  +processId()
 }
 class Reservation {
-  -long type
-  #Date updatedAt
-  +int note
-  #boolean level
-  +setUpdatedat()
+  #boolean price
+  #Date amount
+  +double email
+  #float type
+  +processTotal()
+  +createActive()
 }
-class Amenity {
-  +long type
-  -double status
-  #String description
-  #String name
-  +Date price
-  +processCreatedat()
+interface Amenity {
+  +String description
+  +int score
+  -double active
+  +calculateDescription()
 }
 class Payment {
-  -String address
-  +int phone
-  +cancelUpdatedat()
-  +setDuration()
-  +updateDescription()
+  -long price
+  -boolean id
+  +sendAmount()
 }
-abstract class Service {
-  -float id
-  +double status
-  +long updatedAt
-  +boolean phone
-  +deleteStatus()
+class Service {
+  +String id
+  -long type
+  -String createdAt
+  +sendEmail()
+  +createAmount()
 }
-Payment --> CheckOut : "*"
-Amenity --* Reservation
-Payment --|> Amenity
-note right of CheckOut : Hotel domain
+Reservation ..> CheckOut : "0..1"
+Reservation --> Payment : "1..*"
+CheckOut ..|> Service
+Amenity ..|> Service
 @enduml

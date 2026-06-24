@@ -6,62 +6,61 @@ abstract class CheckIn {
   -int status
   #boolean amount
   #double duration
-  +validateDescription()
-  +saveQuantity()
-  +setScore()
+  +cancelId()
+  +validateCode()
+  +updatePhone()
 }
 class Restaurant {
-  #int createdAt
-  -String phone
-  +deleteCode()
-  +processStatus()
-  +processPrice()
-  +getDescription()
+  +int score
+  -Date address
+  +processTotal()
+  +validateId()
 }
-class Room {
-  #boolean email
-  -long score
-  +boolean active
-  +calculateDescription()
-  +calculateAmount()
-  +getUpdatedat()
+abstract class Room {
+  -float code
+  -String type
+  +int status
+  +sendDuration()
+  +sendAddress()
 }
-class Payment {
-  -double description
-  #int id
-  +float address
-  #boolean updatedAt
-  +calculatePrice()
-  +cancelLevel()
+interface Payment {
+  +double phone
+  #float updatedAt
+  +String email
+  +String price
+  +findPhone()
+  +sendLevel()
+  +processName()
 }
-abstract class Booking {
-  +String name
-  #double level
-  -String id
-  #double updatedAt
-  +findId()
-  +createEmail()
-  +validateQuantity()
+class Booking {
+  +String total
+  #boolean duration
+  +double active
+  +saveDuration()
+  +sendLevel()
+  +processEmail()
+  +calculateCode()
 }
-interface Guest {
-  #double note
-  -boolean address
-  -Date duration
-  +saveQuantity()
+class Guest {
+  +int level
+  +boolean id
+  +processLevel()
+  +saveId()
+  +getCreatedat()
+  +createDuration()
 }
 interface Staff {
-  -boolean quantity
-  +Date amount
-  #boolean price
-  +Date name
-  -float updatedAt
-  +calculatePhone()
+  -boolean id
+  +Date email
+  #float level
+  -float address
+  +cancelQuantity()
+  +updatePhone()
+  +updateEmail()
 }
-Guest --> Room : "1..*"
-CheckIn --* Staff
-Booking --* CheckIn
-CheckIn --|> Payment
-Booking --o Payment
-Payment ..> Room : "1..*"
-note right of CheckIn : Hotel domain
+Booking ..> Room : "1"
+Guest --> Room : "*"
+Room --o Restaurant
+CheckIn --* Restaurant
+Booking ..> CheckIn : "1"
 @enduml

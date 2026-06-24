@@ -9,29 +9,35 @@ class Patient {
   #String status
   #String active
   -long phone
-  +updateAddress()
-  +updatePrice()
+  +getTotal()
+  +createActive()
 }
-abstract class Appointment {
-  +int quantity
-  #double id
-  +updateId()
-  +validateName()
-  +saveUpdatedat()
+class Appointment {
+  +boolean type
+  -long name
+  +float quantity
+  +long id
+  +Date active
+  +validateId()
+  +getDuration()
 }
 class Insurance {
-  -boolean createdAt
   +int email
-  +cancelCreatedat()
-  +getScore()
-  +processEmail()
+  -boolean total
+  +String score
+  +getDuration()
+  +calculateScore()
+  +findCreatedat()
+  +sendUpdatedat()
 }
 class Treatment {
-  +String updatedAt
   +String score
-  +int note
-  #double phone
-  +calculateType()
+  +String note
+  +int phone
+  +processCode()
+  +createDuration()
+  +sendName()
+  +createTotal()
 }
 class Doctor {
   +int amount
@@ -39,10 +45,10 @@ class Doctor {
   +Date updatedAt
   #long active
   -double duration
-  +savePhone()
+  +getUpdatedat()
 }
-Appointment ..> Treatment : "*"
+Insurance ..|> Treatment
+Doctor ..> Treatment : "*"
 Treatment ..> Patient : "*"
 Insurance --o Appointment
-note right of Patient : Healthcare domain
 @enduml

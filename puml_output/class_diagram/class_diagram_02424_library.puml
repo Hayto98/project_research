@@ -6,45 +6,47 @@ skinparam defaultFontSize 13
 interface Author {
   +int name
   #int amount
-  +processCreatedat()
-  +calculateEmail()
-  +setId()
+  +deleteActive()
+  +validateStatus()
+  +updateDescription()
 }
-interface Loan {
-  +float active
-  -String total
-  #Date address
-  +validateUpdatedat()
-  +deleteCode()
-  +saveCode()
+abstract class Loan {
+  -Date code
+  #float id
+  -String amount
+  -String active
+  +cancelId()
+  +deleteAddress()
+  +calculateType()
 }
 class Publisher {
-  -long address
-  -boolean note
-  #boolean level
-  +boolean score
-  +processCode()
-  +cancelScore()
-  +sendId()
+  -long code
+  -double amount
+  +cancelCreatedat()
+  +setEmail()
+  +deleteName()
+  +setId()
 }
 interface Book {
-  +String description
-  -Date type
-  -int email
-  -float status
-  #String active
-  +processName()
+  +boolean level
+  #boolean email
+  #String type
+  +setType()
+  +deleteActive()
+  +findCreatedat()
+  +setStatus()
 }
 class Shelf {
-  #double code
-  -Date amount
-  +long email
-  +updateTotal()
-  +saveId()
-  +cancelName()
+  +long id
+  #String total
+  #String note
+  +setPrice()
+  +deleteEmail()
+  +calculateId()
+  +createScore()
 }
-Loan --|> Author
-Publisher --|> Loan
-Shelf --> Publisher : "1..*"
-note right of Author : Library domain
+Author --* Loan
+Book ..> Publisher : "0..1"
+Publisher ..|> Shelf
+Book --> Author : "1"
 @enduml

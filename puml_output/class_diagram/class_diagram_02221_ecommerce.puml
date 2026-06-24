@@ -5,50 +5,54 @@ skinparam defaultFontSize 13
 abstract class Order {
   +int updatedAt
   #int status
-  +updateAmount()
-  +getName()
+  +createScore()
+  +calculateAddress()
 }
-abstract class Coupon {
-  +Date type
-  #double total
-  #long description
-  +validateAddress()
-  +processLevel()
-  +updateActive()
+class Coupon {
+  +double note
+  #float level
+  +processId()
+  +saveDuration()
+  +saveLevel()
+  +validateCreatedat()
 }
 class Shipment {
-  -long active
-  #boolean status
-  -long phone
-  #double name
-  -int address
-  +calculateScore()
+  #int email
+  #Date phone
+  +boolean level
+  -float address
+  #float type
+  +sendPhone()
 }
-abstract class Wishlist {
-  -String level
-  #String phone
-  -String name
-  -boolean price
-  +validateScore()
-  +processPhone()
-  +processDescription()
+class Wishlist {
+  #double quantity
+  -int duration
+  +double total
+  #double email
+  +processId()
+  +createAmount()
+  +calculateEmail()
 }
-interface Invoice {
-  #double type
-  #Date level
-  +int description
-  +getId()
+abstract class Invoice {
+  -boolean code
+  #long level
+  -float name
+  #double total
+  -double duration
+  +getScore()
+  +processAddress()
+}
+class Category {
+  +int level
+  +String description
+  -Date total
+  +boolean active
+  +long code
+  +createDescription()
+  +findAmount()
   +processCreatedat()
+  +validateStatus()
 }
-interface Category {
-  #double address
-  +int price
-  +createLevel()
-}
-Shipment --o Wishlist
-Category --|> Shipment
-Order ..> Invoice : "1"
-Shipment --> Invoice : "*"
-Coupon --o Shipment
-note right of Order : Ecommerce domain
+Coupon --* Order
+Invoice --* Wishlist
 @enduml

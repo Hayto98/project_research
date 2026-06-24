@@ -6,46 +6,41 @@ skinparam defaultFontSize 13
 abstract class Inventory {
   -Date email
   -int address
-  +updateQuantity()
-  +updateScore()
-  +getDescription()
+  +sendNote()
+  +getNote()
+  +processDuration()
 }
-abstract class Route {
-  -String score
-  -int description
-  #boolean total
-  +saveEmail()
-  +validatePrice()
-  +cancelCode()
-  +updateAddress()
+interface Route {
+  +float description
+  #int price
+  +sendAddress()
+  +processCode()
+  +processLevel()
+  +processPrice()
 }
-abstract class Manifest {
-  +Date active
-  #Date name
-  #double code
-  #float score
-  +Date updatedAt
-  +findQuantity()
-  +findActive()
-  +setTotal()
+interface Manifest {
+  -double email
+  #double address
+  #boolean price
+  +Date code
+  +boolean updatedAt
+  +setQuantity()
 }
 class Shipment {
-  -int email
-  #int id
+  #float level
+  +Date active
+  #long price
+  +cancelDescription()
+  +findDuration()
+  +updateName()
+}
+abstract class Vehicle {
+  #long score
   +Date level
-  +validatePrice()
-  +saveQuantity()
-  +updateId()
+  +long updatedAt
+  +setScore()
+  +sendId()
 }
-class Vehicle {
-  -boolean phone
-  #int email
-  +findCreatedat()
-  +updateActive()
-}
-Route --* Vehicle
-Vehicle ..> Manifest : "0..1"
-Manifest --o Inventory
-Manifest ..|> Route
-note right of Inventory : Logistics domain
+Manifest --o Vehicle
+Manifest --|> Route
 @enduml

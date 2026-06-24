@@ -9,46 +9,43 @@ class Loan {
   -String active
   +Date status
   #int total
+  +updateName()
+}
+interface Deposit {
+  +float duration
+  +String note
+  #int address
+  +saveDescription()
+  +deleteScore()
+  +cancelScore()
+}
+class Teller {
+  -long level
+  #Date price
+  #String status
+  #double total
+  #long id
+  +saveType()
+  +createAmount()
+}
+class Branch {
+  #float level
+  #String description
+  #int email
+  -float note
+  +setType()
+  +findName()
+  +createDuration()
   +setScore()
 }
-class Deposit {
+interface Beneficiary {
+  +long createdAt
   -Date address
-  +Date description
-  +double updatedAt
-  #boolean status
-  -String level
-  +sendId()
-  +validateEmail()
-  +sendActive()
-  +setNote()
+  +saveId()
+  +sendDuration()
 }
-interface Teller {
-  #long createdAt
-  #int phone
-  -double id
-  #float active
-  +saveCreatedat()
-}
-abstract class Branch {
-  -String description
-  -double level
-  #int price
-  +Date name
-  #int createdAt
-  +updateNote()
-  +createTotal()
-}
-class Beneficiary {
-  -int code
-  -int level
-  +Date total
-  +findAmount()
-  +cancelDescription()
-  +findPrice()
-  +validatePrice()
-}
-Deposit --* Branch
-Loan --* Beneficiary
-Beneficiary ..|> Teller
-note right of Loan : Banking domain
+Deposit ..|> Beneficiary
+Branch --o Teller
+Loan --|> Deposit
+Beneficiary --o Branch
 @enduml

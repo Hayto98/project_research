@@ -4,46 +4,49 @@ class Payment {
   -String updatedAt
   #float duration
   -long level
-  +findPhone()
+  +getActive()
 }
 class Shipment {
-  +double code
-  +int description
-  #Date duration
-  #float type
-  #Date score
-  +deletePhone()
-  +sendQuantity()
-  +createName()
+  +boolean type
+  -String code
+  +double description
+  +processUpdatedat()
+  +getScore()
 }
-class Return {
-  +boolean description
-  -int address
-  +createNote()
+interface Return {
+  -String description
+  -boolean phone
+  #String active
+  +long quantity
+  +createDescription()
 }
-class Supplier {
-  -boolean email
-  -boolean id
-  +calculateQuantity()
-  +createActive()
-  +calculateEmail()
-}
-class Warehouse {
-  #float amount
-  #Date total
-  #boolean name
-  #int address
+abstract class Supplier {
+  -String id
+  -float quantity
   +float note
-  +validateUpdatedat()
-  +savePrice()
+  +getScore()
+  +deletePrice()
+  +deleteId()
+  +saveTotal()
 }
-interface Category {
-  +double price
-  +double active
-  +updateScore()
+interface Warehouse {
+  -long total
+  +double quantity
+  +double level
+  +Date active
+  +calculateTotal()
+  +sendType()
+  +sendActive()
 }
+abstract class Category {
+  +Date code
+  #double description
+  #float address
+  +processScore()
+}
+Category ..|> Warehouse
+Supplier --o Shipment
+Payment ..> Shipment : "0..1"
 Return --* Category
 Return ..|> Shipment
-Category ..|> Shipment
-note right of Payment : Ecommerce domain
 @enduml

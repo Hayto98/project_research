@@ -5,42 +5,42 @@ skinparam classBorderColor #E65100
 class Nurse {
   -long createdAt
   #float code
-  +processPrice()
+  +validateUpdatedat()
 }
-class Insurance {
-  #boolean phone
-  +double email
-  -float name
-  #Date note
-  +sendCode()
-  +sendActive()
-  +validateScore()
-  +saveCreatedat()
+abstract class Insurance {
+  -String phone
+  -boolean duration
+  +getPhone()
+  +createId()
 }
 class Doctor {
-  +double amount
-  -double updatedAt
-  +int price
-  +validateAddress()
-  +processActive()
-  +deleteUpdatedat()
+  #Date active
+  +long code
+  +int score
+  +float duration
+  -String phone
   +cancelCode()
+  +updateEmail()
+  +processQuantity()
+  +validateQuantity()
 }
-class Billing {
-  -int id
-  -double code
-  -int note
-  +processId()
+abstract class Billing {
+  #Date address
+  +float type
+  #String active
+  +int amount
+  +deleteType()
 }
-abstract class Patient {
-  #boolean name
-  +int active
-  #double status
-  +cancelDescription()
-  +getDuration()
-  +setPhone()
+class Patient {
+  +String type
+  -String amount
+  -Date price
+  +String score
+  #Date duration
+  +getScore()
 }
-Nurse --o Insurance
-Patient ..> Billing : "*"
-note right of Nurse : Healthcare domain
+Insurance ..> Patient : "*"
+Doctor --|> Insurance
+Patient --* Nurse
+Billing ..> Nurse : "0..1"
 @enduml

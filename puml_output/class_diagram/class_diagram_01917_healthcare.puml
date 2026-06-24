@@ -5,53 +5,48 @@ interface LabTest {
   #String total
   -int name
   +boolean active
-  +createDescription()
-  +updateActive()
-  +processLevel()
+  +deleteCreatedat()
+  +setActive()
+  +getActive()
 }
-interface Prescription {
-  #int status
-  #Date id
-  +deleteName()
-  +validateName()
-  +setLevel()
+class Prescription {
+  #String active
+  +String type
+  #int duration
+  +processUpdatedat()
+  +createId()
+  +savePhone()
 }
 class Patient {
-  #String id
-  #long name
-  -Date address
-  +long status
-  +deletePrice()
-  +deletePrice()
-  +processNote()
+  -float code
+  #long level
+  +findUpdatedat()
 }
-abstract class Ward {
+class Ward {
+  #int status
+  -boolean duration
+  -int address
+  -int phone
+  +saveAmount()
+  +getDescription()
+  +cancelQuantity()
+  +sendPhone()
+}
+abstract class Treatment {
   +long note
-  -String name
-  -String duration
-  #int quantity
-  +updateName()
-  +updateDuration()
-  +deleteTotal()
-}
-class Treatment {
-  #float active
-  +int status
-  -Date description
-  +createName()
-  +updateLevel()
-  +sendTotal()
+  -String quantity
+  +processQuantity()
+  +findDuration()
+  +findId()
 }
 class Appointment {
-  +long total
-  +String type
-  #float quantity
-  -int active
-  +saveDuration()
-  +createCode()
+  -Date name
+  +int createdAt
+  #String description
+  +setAmount()
+  +deleteStatus()
 }
-Ward --|> LabTest
-Patient ..> Ward : "1..*"
-LabTest ..|> Patient
-note right of LabTest : Healthcare domain
+Prescription ..> Patient : "1..*"
+Patient ..|> LabTest
+Appointment --> Treatment : "*"
 @enduml

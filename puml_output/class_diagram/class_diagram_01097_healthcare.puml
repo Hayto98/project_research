@@ -8,62 +8,62 @@ class MedicalRecord {
   #String note
   -int status
   +boolean duration
-  +setLevel()
-  +validateTotal()
-  +setDuration()
-  +findActive()
+  +saveStatus()
+  +createPhone()
+  +calculateStatus()
+  +cancelActive()
 }
 class Treatment {
-  -long id
-  #boolean score
-  #int status
-  +saveQuantity()
-  +validateQuantity()
-  +processType()
-  +calculateScore()
+  #boolean code
+  +double active
+  -boolean description
+  #Date amount
+  +double id
+  +validateDuration()
+  +updateLevel()
+  +cancelCode()
 }
-class Nurse {
-  #String id
-  +String amount
-  #int createdAt
-  -long phone
-  +sendActive()
+abstract class Nurse {
+  +long score
+  #String name
+  +String email
+  #int id
+  -long amount
+  +createId()
 }
 interface Diagnosis {
   +float amount
   #int score
   #Date price
-  +sendTotal()
-  +updateAmount()
-  +deleteEmail()
+  +getPrice()
+  +createDescription()
+  +findAmount()
 }
-interface Hospital {
-  #float amount
-  #boolean total
-  +String type
-  +updateUpdatedat()
-  +setName()
-  +validateActive()
+class Hospital {
+  +Date description
+  +double email
+  -boolean active
+  +deleteNote()
 }
-class Prescription {
-  -boolean status
-  #int type
-  #boolean total
-  +long address
-  +validatePrice()
-  +updateTotal()
+interface Prescription {
+  -boolean createdAt
+  +long updatedAt
+  +float code
+  #double name
+  +setScore()
+  +cancelName()
+  +validateDuration()
+  +deleteCode()
 }
-class LabTest {
-  #String total
-  #long updatedAt
-  -double duration
-  +sendScore()
-  +updateDuration()
-  +saveStatus()
+interface LabTest {
+  -int score
+  -double active
+  +double updatedAt
+  +saveNote()
+  +setNote()
+  +findType()
 }
-Hospital ..> LabTest : "1..*"
-MedicalRecord ..|> Treatment
-LabTest --o Diagnosis
-Diagnosis --o Treatment
-note right of MedicalRecord : Healthcare domain
+Diagnosis --|> Prescription
+Prescription --* Nurse
+Diagnosis --> Nurse : "0..1"
 @enduml

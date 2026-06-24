@@ -9,58 +9,67 @@ interface Treatment {
   -String description
   #long note
   -int type
-  +validateQuantity()
-  +calculateDuration()
-  +createCreatedat()
+  +createAmount()
+  +updateCode()
+  +getNote()
 }
-class Appointment {
-  #String price
-  #long quantity
-  #int address
-  +sendDescription()
-  +setName()
+abstract class Appointment {
+  #Date createdAt
+  -long address
+  #String duration
+  #long price
+  +cancelDuration()
+  +createType()
 }
-abstract class Insurance {
-  #int active
-  +String amount
-  +cancelPrice()
-  +cancelType()
-  +saveId()
-}
-class Nurse {
+class Insurance {
+  #String status
+  #int name
   #int type
-  +long name
-  +deleteNote()
-  +processScore()
-  +createStatus()
+  +savePhone()
+  +saveScore()
+}
+interface Nurse {
+  -String level
+  #int type
+  +long id
+  -int email
+  -double name
+  +findType()
+  +validateEmail()
+  +getUpdatedat()
 }
 class Hospital {
   #double total
   -long duration
   #double updatedAt
   #int amount
-  +saveActive()
+  +processCreatedat()
 }
-class LabTest {
-  #double email
-  +double amount
-  #long quantity
-  +sendName()
-  +processType()
-  +sendType()
-  +createScore()
+interface LabTest {
+  #double amount
+  +double email
+  #long duration
+  #float quantity
+  +validateType()
+  +findPrice()
+  +setDuration()
+  +deleteNote()
 }
-class Diagnosis {
-  #int status
-  #long phone
-  #int createdAt
-  +setTotal()
-  +cancelType()
-  +cancelScore()
-  +setId()
+abstract class Diagnosis {
+  +long score
+  +boolean type
+  +Date email
+  -Date phone
+  +Date description
+  +sendDescription()
+  +createAddress()
+  +deleteTotal()
+  +getPhone()
 }
+Nurse --> Hospital : "1"
+Treatment ..> LabTest : "0..1"
 Treatment ..|> Diagnosis
 Diagnosis --* Hospital
 Hospital --* Treatment
-note right of Treatment : Healthcare domain
+Insurance ..> Treatment : "1"
 @enduml

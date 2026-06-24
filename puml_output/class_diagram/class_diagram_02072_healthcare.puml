@@ -8,53 +8,55 @@ class Insurance {
   #float score
   #double address
   #Date note
-  +updateActive()
+  +validateNote()
 }
-abstract class MedicalRecord {
-  -long total
-  +boolean level
-  #float quantity
-  +Date id
-  +updateNote()
-  +setScore()
-  +savePhone()
+interface MedicalRecord {
+  -int quantity
+  #boolean total
+  +Date duration
+  #long id
+  +double price
+  +sendAmount()
 }
-abstract class Ward {
-  -long active
-  #Date total
-  #float updatedAt
-  #Date name
-  -long amount
-  +getPrice()
+class Ward {
+  +int level
+  -long note
+  #Date active
+  #float total
+  #Date updatedAt
+  +setPrice()
+  +deleteCode()
+  +updateUpdatedat()
+  +processScore()
 }
 class Billing {
+  -String address
   #Date score
-  #String description
-  -double name
-  #float price
-  +Date code
-  +calculateLevel()
-  +getPhone()
+  #String price
+  -double description
+  #float name
+  +calculateUpdatedat()
+  +sendId()
 }
 abstract class Hospital {
-  -int score
-  #long quantity
-  +saveEmail()
-  +findNote()
+  +boolean phone
+  -double type
+  +validateActive()
+  +createQuantity()
 }
 class Nurse {
-  -String description
-  +double quantity
-  +boolean createdAt
-  #long address
-  +setDescription()
-  +getPrice()
-  +savePrice()
-  +setTotal()
+  -float note
+  +boolean amount
+  -long quantity
+  +int description
+  +validatePhone()
+  +findDuration()
+  +saveActive()
+  +getNote()
 }
-Insurance ..> Ward : "1..*"
+Insurance --|> MedicalRecord
+Billing --|> Nurse
+Billing --|> Ward
+Nurse ..> Ward : "1..*"
 Hospital --> Billing : "*"
-Nurse --* Billing
-MedicalRecord --* Nurse
-note right of Insurance : Healthcare domain
 @enduml

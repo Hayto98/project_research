@@ -6,46 +6,45 @@ skinparam ArrowColor #555555
 abstract class Package {
   +Date code
   #long id
-  +calculateLevel()
-  +saveId()
-  +findEmail()
+  +calculateCode()
+  +getCode()
+  +findStatus()
 }
 class Manifest {
+  +boolean createdAt
+  -float price
   #long phone
   -float amount
-  #String updatedAt
-  +String active
-  -long email
-  +findCode()
+  +updatePrice()
 }
-abstract class Customer {
-  #boolean amount
-  -long type
-  #double price
-  -Date active
-  #double description
-  +createName()
-  +cancelCode()
-  +calculateCode()
+class Customer {
+  #double quantity
+  +double name
+  -boolean code
+  +boolean total
+  +deleteCreatedat()
+  +processPhone()
+  +sendDescription()
+  +calculateActive()
 }
-class DeliveryNote {
-  #long quantity
-  -int amount
-  #int id
-  +deleteAmount()
-  +updateAddress()
-  +cancelAmount()
+abstract class DeliveryNote {
+  -String price
+  -Date address
+  #int email
+  -int name
+  +float code
+  +deleteActive()
+  +processDuration()
+  +validateLevel()
 }
-class Shipment {
-  #Date updatedAt
-  -double name
-  #double phone
-  +String id
-  +saveTotal()
-  +getTotal()
-  +validateDuration()
+interface Shipment {
+  +Date phone
+  #long amount
+  #float level
+  +saveQuantity()
+  +updateCreatedat()
 }
-DeliveryNote ..|> Manifest
-DeliveryNote --* Shipment
-note right of Package : Logistics domain
+Manifest --* Package
+Package --o DeliveryNote
+DeliveryNote --|> Package
 @enduml

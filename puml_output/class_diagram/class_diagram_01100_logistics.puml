@@ -5,48 +5,46 @@ interface Route {
   #float name
   +boolean duration
   +double id
-  +findType()
   +saveDescription()
-  +getId()
-  +sendEmail()
+  +calculateUpdatedat()
+  +findActive()
+  +processNote()
 }
 class Package {
-  +boolean address
-  #float status
-  -float type
-  +int price
-  +saveAmount()
-  +findPrice()
-  +deleteId()
-  +cancelActive()
+  -String id
+  #long active
+  +createPhone()
+  +sendDuration()
+  +getId()
 }
-class Customer {
-  -double duration
-  +long note
-  -String total
-  +double code
-  #double name
-  +getActive()
-  +updateTotal()
+interface Customer {
+  #double status
+  #int level
+  #double type
+  +String description
+  #boolean updatedAt
+  +processLevel()
+  +validateActive()
 }
-class FuelLog {
-  #String note
-  #boolean email
-  #boolean createdAt
-  #long phone
-  +saveAddress()
-  +saveScore()
-  +setTotal()
+abstract class FuelLog {
+  -double code
+  +int name
+  -Date type
+  -int total
+  +boolean description
+  +processLevel()
+  +createScore()
 }
 class Vehicle {
-  #double name
   #long email
-  +sendEmail()
-  +findPrice()
-  +getDuration()
-  +createAddress()
+  #long createdAt
+  #boolean phone
+  +double code
+  +String duration
+  +saveUpdatedat()
 }
-Package ..> Route : "0..1"
-Vehicle --o Package
-note right of Route : Logistics domain
+Customer ..> FuelLog : "1..*"
+FuelLog ..> Customer : "*"
+Route --* Customer
+Route --> Package : "1"
 @enduml

@@ -6,40 +6,37 @@ skinparam ArrowColor #555555
 abstract class Staff {
   #Date active
   #String score
-  +cancelId()
-  +sendActive()
-  +deleteNote()
-  +setEmail()
+  +validateActive()
+  +processCode()
+  +cancelLevel()
+  +findDuration()
 }
-class Reservation {
-  +long code
-  #long duration
-  -int type
-  +long updatedAt
-  +cancelAmount()
-  +updateQuantity()
-  +createAddress()
+interface Reservation {
+  +long note
+  #String status
+  +double email
+  +deleteAddress()
+  +sendAddress()
 }
 interface Invoice {
-  #Date duration
-  +int code
-  +boolean id
-  #long score
-  -long updatedAt
-  +getCode()
-  +deleteScore()
-  +saveDescription()
-  +processCode()
+  -boolean type
+  +int updatedAt
+  -long id
+  -boolean address
+  +validateActive()
+  +getLevel()
+  +setAmount()
+  +updatePrice()
 }
 class Room {
-  #long status
-  +String email
-  -long createdAt
-  +processStatus()
-  +cancelQuantity()
-  +findActive()
+  #boolean updatedAt
+  -float description
+  -long amount
+  +validateStatus()
+  +updateDuration()
+  +processAmount()
+  +updateType()
 }
-Invoice --o Room
-Staff ..|> Reservation
-note right of Staff : Hotel domain
+Room ..|> Staff
+Reservation --* Staff
 @enduml

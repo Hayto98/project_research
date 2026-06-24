@@ -6,39 +6,41 @@ class Member {
   -long code
   +float address
   -long level
-  +processTotal()
+  +validateName()
 }
-interface Loan {
+abstract class Loan {
   #Date quantity
   #float duration
   #Date note
   -String phone
-  +sendActive()
-  +processAddress()
+  +sendQuantity()
+  +deleteLevel()
 }
 interface Shelf {
-  +double level
-  #float email
-  +createDuration()
-  +saveAmount()
-  +sendStatus()
-  +sendNote()
+  -boolean address
+  #double score
+  -boolean id
+  #int email
+  #String createdAt
+  +getName()
+  +validateLevel()
+  +createScore()
+  +deleteAddress()
 }
 class Branch {
-  -long id
-  #Date active
-  +long total
-  +createDescription()
-  +validateCode()
-  +updateType()
+  -int quantity
+  -float duration
+  +float amount
+  +float phone
+  -Date address
+  +processCode()
 }
-interface Renewal {
-  +long id
-  +Date code
-  +updateDescription()
-  +validateScore()
-  +setScore()
-  +updateNote()
+class Renewal {
+  +float address
+  +long code
+  #String total
+  +getActive()
+  +saveAmount()
 }
 class Author {
   -long total
@@ -46,18 +48,21 @@ class Author {
   -int updatedAt
   -int price
   #double note
-  +updateName()
-  +processUpdatedat()
-  +setStatus()
+  +sendId()
+  +deleteNote()
+  +validateUpdatedat()
 }
 class Book {
-  #double active
-  +double note
-  +int type
-  #float price
-  +validateDuration()
+  -boolean status
+  -double quantity
+  +sendDuration()
+  +deleteActive()
+  +calculateTotal()
+  +setUpdatedat()
 }
+Loan ..> Book : "1"
+Shelf --|> Renewal
 Renewal --> Member : "0..1"
 Book --o Author
-note right of Member : Library domain
+Member ..|> Author
 @enduml

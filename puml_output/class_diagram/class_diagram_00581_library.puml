@@ -6,33 +6,38 @@ skinparam defaultFontSize 13
 abstract class Loan {
   -double duration
   #String quantity
-  +saveUpdatedat()
+  +saveType()
 }
-abstract class Catalog {
-  #float active
-  #float phone
-  +calculateStatus()
-  +cancelId()
-  +validateDescription()
+class Catalog {
+  -String active
+  #Date id
+  +long duration
+  +boolean phone
+  #float score
+  +cancelCreatedat()
+  +sendScore()
+  +calculateType()
 }
-interface Shelf {
-  -boolean total
-  +int price
-  +boolean note
-  #double active
-  +getCreatedat()
-  +calculateCreatedat()
-  +calculateQuantity()
-}
-abstract class Reservation {
-  -float phone
-  +Date code
+abstract class Shelf {
+  #Date level
+  -long amount
+  +int createdAt
+  -int updatedAt
+  +setCreatedat()
+  +updateLevel()
   +processNote()
-  +sendUpdatedat()
-  +sendLevel()
-  +createUpdatedat()
+  +processTotal()
 }
-Shelf --> Catalog : "1..*"
-Shelf --* Loan
-note right of Loan : Library domain
+class Reservation {
+  -Date code
+  #double email
+  #int updatedAt
+  #boolean note
+  +processDuration()
+  +validateId()
+  +calculateName()
+}
+Shelf --|> Catalog
+Shelf ..> Reservation : "*"
+Catalog --> Reservation : "*"
 @enduml

@@ -8,39 +8,46 @@ class Ward {
   +int description
   +Date updatedAt
   -long duration
-  +cancelTotal()
-  +updateDuration()
+  +getQuantity()
+  +calculateQuantity()
 }
 class Billing {
-  +long status
-  +String createdAt
-  +createUpdatedat()
-  +validatePhone()
-}
-abstract class Doctor {
-  #double active
-  #Date level
-  #String address
+  +long id
   +String status
-  +calculatePhone()
-  +findEmail()
+  #int createdAt
+  +createScore()
+  +processStatus()
+  +validateTotal()
 }
-class MedicalRecord {
-  +int active
-  #double name
-  -Date note
-  -Date amount
-  +deleteAmount()
-  +sendCode()
-  +calculateActive()
+class Doctor {
+  #Date phone
+  #String active
+  +String address
+  +float status
+  -long total
+  +createQuantity()
+  +createActive()
+  +getPrice()
+}
+interface MedicalRecord {
+  +int note
+  #double amount
+  +deleteStatus()
+  +deleteCode()
+  +processNote()
+  +createActive()
 }
 class Insurance {
-  #double duration
-  #Date total
-  +String active
-  +createUpdatedat()
+  #long score
+  #float code
+  +boolean price
+  +sendLevel()
+  +findPrice()
+  +sendActive()
+  +sendCode()
 }
+Ward --|> Insurance
+Doctor --|> Billing
 Doctor ..> MedicalRecord : "*"
 Billing --> Insurance : "1..*"
-note right of Ward : Healthcare domain
 @enduml

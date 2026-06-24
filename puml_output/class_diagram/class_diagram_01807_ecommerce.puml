@@ -9,55 +9,47 @@ class Wishlist {
   -long quantity
   -int price
   #double description
-  +updateQuantity()
-  +updateScore()
+  +validateNote()
+  +createQuantity()
 }
 class Coupon {
-  +long description
-  +String score
-  +long duration
-  -double note
-  +sendQuantity()
-  +validateAmount()
-  +processAddress()
+  #int email
+  -String description
+  +processCode()
+  +findNote()
+  +deleteNote()
 }
 class Warehouse {
-  #String status
-  #Date id
-  +setLevel()
-  +setQuantity()
+  #int type
+  -long quantity
+  +String score
+  +String level
+  #String address
+  +setPrice()
+  +createPhone()
 }
-abstract class Return {
-  +String description
-  #float price
-  #long amount
-  #boolean createdAt
-  #long name
-  +cancelPhone()
-  +sendAmount()
+interface Return {
+  #double quantity
+  #int price
+  +validateQuantity()
+  +setId()
+  +saveTotal()
+  +validateTotal()
 }
 class Category {
-  +int email
-  -String amount
-  -long quantity
-  +saveLevel()
-  +updateEmail()
-  +updateStatus()
+  #float code
+  #long duration
+  +setId()
+  +validateNote()
+  +findDescription()
 }
 class Supplier {
-  +Date description
-  +String phone
-  +double id
-  -double total
-  #double createdAt
-  +getDescription()
-  +getStatus()
-  +validateDescription()
+  +float code
+  -String createdAt
+  +long email
+  +processTotal()
 }
-Return --* Category
-Supplier ..> Warehouse : "*"
-Category --* Coupon
-Warehouse ..|> Category
-Wishlist ..|> Supplier
-note right of Wishlist : Ecommerce domain
+Supplier ..> Warehouse : "0..1"
+Coupon ..|> Wishlist
+Return --* Coupon
 @enduml

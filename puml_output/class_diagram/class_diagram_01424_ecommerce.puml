@@ -5,37 +5,38 @@ skinparam classBorderColor #33691E
 class Wishlist {
   +boolean amount
   +double total
+  +deleteCode()
   +validatePrice()
-  +saveStatus()
-  +validateQuantity()
+  +createPrice()
 }
 class Order {
-  -float createdAt
-  -String type
-  +int amount
-  +float score
-  +updateLevel()
-  +calculateNote()
-  +calculateEmail()
-}
-abstract class Payment {
-  #double price
-  -float active
-  -double updatedAt
+  #double quantity
+  +float id
   #float address
-  +calculateLevel()
-  +validateAddress()
+  +double createdAt
+  +savePhone()
+  +processName()
+  +calculateTotal()
+  +validateCreatedat()
+}
+class Payment {
+  -long updatedAt
+  #double level
+  -Date total
+  #double note
+  +calculateCreatedat()
+  +calculateTotal()
 }
 interface Review {
-  #boolean active
-  -boolean address
-  -boolean createdAt
-  #float price
-  -String email
-  +calculateLevel()
-  +setCode()
+  -Date type
+  #long address
+  -boolean total
+  -Date active
+  #long amount
+  +setCreatedat()
+  +deleteDescription()
 }
-Review --> Order : "1..*"
-Wishlist --> Order : "*"
-note right of Wishlist : Ecommerce domain
+Payment --> Review : "*"
+Review --> Payment : "*"
+Wishlist --o Review
 @enduml

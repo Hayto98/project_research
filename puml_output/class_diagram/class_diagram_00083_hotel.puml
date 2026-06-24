@@ -7,56 +7,49 @@ abstract class Amenity {
   #double updatedAt
   -float price
   -String name
-  +calculateName()
-  +calculateNote()
+  +calculateCode()
+  +validateStatus()
 }
 class Restaurant {
-  +String phone
-  +float active
-  -double name
-  +String price
-  #int total
-  +processUpdatedat()
-  +processTotal()
-  +validateEmail()
-  +sendQuantity()
+  -double note
+  +String amount
+  +float duration
+  -double phone
+  +String name
+  +validateDescription()
+  +findAmount()
 }
-class Room {
-  -long email
-  #boolean quantity
-  +String level
-  -boolean description
-  -long code
-  +findCreatedat()
-  +cancelPrice()
-  +setStatus()
-  +getDuration()
+abstract class Room {
+  #long type
+  #long total
+  -double phone
+  +updateCode()
+  +cancelScore()
+  +createQuantity()
 }
 class Housekeeping {
-  #float score
-  -float status
-  +getNote()
+  #boolean code
+  +String price
+  -boolean email
+  +deleteName()
+  +deleteLevel()
+  +validateType()
 }
-interface Payment {
-  #long email
-  +boolean score
-  +int address
-  +boolean duration
-  +deleteCode()
-  +saveActive()
-  +sendName()
-  +setLevel()
+abstract class Payment {
+  +String duration
+  #Date price
+  +String status
+  +getActive()
 }
-abstract class Reservation {
-  #Date address
-  #int level
-  +int amount
-  -Date score
-  +boolean phone
-  +savePrice()
-  +deleteActive()
+class Reservation {
+  #Date name
+  #float note
+  +processPhone()
+  +calculateScore()
+  +setAddress()
 }
-Housekeeping ..|> Reservation
-Housekeeping --> Payment : "0..1"
-note right of Amenity : Hotel domain
+Room --|> Reservation
+Payment ..|> Amenity
+Restaurant ..> Payment : "*"
+Restaurant ..> Amenity : "1"
 @enduml

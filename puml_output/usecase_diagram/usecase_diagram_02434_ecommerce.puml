@@ -3,8 +3,8 @@ skinparam shadowing false
 skinparam backgroundColor #F5F5F5
 skinparam ArrowColor #555555
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Admin" as Admin
+actor "Payment Gateway" as PG
+actor "Admin" as A
 rectangle "Ecommerce System" {
   usecase "Track Order" as UC_TrackOrder
   usecase "Browse Products" as UC_BrowseProducts
@@ -13,11 +13,11 @@ rectangle "Ecommerce System" {
   usecase "Manage Inventory" as UC_ManageInventory
   usecase "Apply Coupon" as UC_ApplyCoupon
 }
-PaymentGateway --> UC_ManageInventory
-PaymentGateway --> UC_BrowseProducts
-PaymentGateway --> UC_TrackOrder
-Admin --> UC_Checkout
-Admin --> UC_BrowseProducts
-Admin --> UC_CancelOrder
+PG --> UC_ManageInventory
+PG --> UC_BrowseProducts
+PG --> UC_TrackOrder
+A --> UC_Checkout
+A --> UC_BrowseProducts
+A --> UC_CancelOrder
 UC_CancelOrder ..|> UC_ApplyCoupon : <<include>>
 @enduml

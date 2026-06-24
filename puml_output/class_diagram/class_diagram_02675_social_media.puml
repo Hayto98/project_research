@@ -7,24 +7,29 @@ abstract class Message {
   +float score
   #boolean type
   -boolean createdAt
-  +calculateActive()
-  +updateCode()
-  +cancelType()
-  +validateQuantity()
+  +sendScore()
+  +sendQuantity()
+  +updateStatus()
+  +getDescription()
 }
 class Like {
-  +boolean amount
-  +int active
-  +updateStatus()
+  #int address
+  #float quantity
+  +int name
+  +int status
+  +Date amount
+  +saveLevel()
+  +saveTotal()
+  +createStatus()
+  +cancelId()
 }
-abstract class Post {
-  #long active
-  #String email
+interface Post {
   +int status
   -int note
-  +setType()
-  +updateAmount()
-  +calculateNote()
+  -String address
+  -int id
+  +deleteAmount()
+  +processTotal()
 }
 class Notification {
   +int code
@@ -32,12 +37,10 @@ class Notification {
   #String createdAt
   -int updatedAt
   +float description
-  +processActive()
-  +deleteScore()
-  +processId()
+  +validateLevel()
+  +deleteEmail()
+  +calculateAmount()
 }
-Post ..> Notification : "1..*"
-Like --o Post
-Like ..|> Notification
-note right of Message : Social Media domain
+Notification --|> Post
+Post --* Notification
 @enduml

@@ -9,49 +9,46 @@ class Author {
   +long duration
   +Date score
   #Date amount
-  +cancelCode()
+  +saveLevel()
 }
-class Reservation {
-  -float email
-  +long status
-  +boolean total
-  +String updatedAt
-  +sendAmount()
-  +saveAmount()
-  +setCreatedat()
+interface Reservation {
+  -float description
+  +double phone
+  +updateCreatedat()
+  +deleteCode()
 }
-interface Branch {
-  +Date duration
-  #long total
-  #long active
-  -float email
-  +int score
-  +saveDuration()
-  +deleteActive()
+class Branch {
+  #long id
+  #int level
+  #int duration
+  +int status
+  +findDescription()
+  +processLevel()
+  +createDescription()
+  +findCreatedat()
 }
 class Shelf {
-  #float name
-  +float updatedAt
-  +saveType()
-  +updateScore()
-  +createStatus()
+  #long active
+  -float quantity
+  +createCreatedat()
+  +createScore()
 }
-class Loan {
-  +double email
-  -float status
-  #String active
-  #int type
-  +Date quantity
-  +sendCreatedat()
-  +getCode()
-  +calculateActive()
+interface Loan {
+  +float active
+  +Date description
+  +float code
+  +findEmail()
+  +getAmount()
+  +validateUpdatedat()
 }
 class Fine {
-  +int description
-  +boolean address
-  +float duration
-  +createType()
+  +boolean status
+  -long name
+  +double total
+  -float email
+  +updateId()
 }
-Shelf --o Branch
-note right of Author : Library domain
+Author --* Loan
+Loan --|> Reservation
+Author --> Shelf : "1"
 @enduml

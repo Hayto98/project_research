@@ -6,55 +6,53 @@ class Branch {
   +String type
   -long updatedAt
   +float duration
-  +sendName()
+  +setAddress()
 }
 class Fine {
-  +int description
-  #boolean active
-  -float phone
-  +setType()
-  +validateDuration()
+  #Date updatedAt
+  #long description
+  +createCode()
+  +updateId()
 }
-abstract class Shelf {
-  -float total
-  -boolean name
-  +setDescription()
+interface Shelf {
+  #float description
+  #boolean status
+  -String type
+  -Date address
+  +saveCreatedat()
 }
 abstract class Author {
-  +int active
-  #double id
-  +double createdAt
-  +validateTotal()
+  -float status
+  +boolean description
+  +validateActive()
 }
 class Librarian {
-  +double duration
-  -Date active
-  +int createdAt
-  -double id
-  +Date price
-  +validateAmount()
+  +double amount
+  +float score
+  -Date price
+  +updateLevel()
+  +getAddress()
+  +validateActive()
+  +saveType()
 }
 interface Catalog {
-  #float active
-  #boolean updatedAt
-  +long id
-  #double name
-  +createActive()
-  +updateNote()
+  -long id
+  #int price
+  +long amount
+  +validateCreatedat()
+  +updateScore()
+  +updatePhone()
+  +createTotal()
 }
-abstract class Publisher {
-  #float updatedAt
-  #long address
-  #boolean total
-  +float email
-  +processDescription()
-  +validateEmail()
+interface Publisher {
+  #long phone
+  #float amount
+  +updateActive()
+  +saveId()
 }
-Fine ..> Catalog : "1..*"
-Publisher --o Author
-Shelf --o Author
 Fine --> Shelf : "*"
-Branch --o Shelf
-Branch ..|> Author
-note right of Branch : Library domain
+Librarian --o Fine
+Author --* Catalog
+Publisher --* Fine
+Author --> Shelf : "1..*"
 @enduml

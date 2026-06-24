@@ -7,49 +7,51 @@ class Attendance {
   -long status
   +double email
   +int type
-  +updateCode()
-  +sendPhone()
+  +sendEmail()
+  +findNote()
 }
-class Course {
-  +float updatedAt
-  +long phone
-  #double total
-  +sendScore()
-  +updateDuration()
+interface Course {
+  #double address
+  +float amount
+  +long updatedAt
+  #double phone
+  +createEmail()
+  +saveActive()
 }
-class Teacher {
-  -Date email
-  -Date note
-  -int phone
-  #String duration
-  +String score
-  +getLevel()
-  +saveTotal()
+interface Teacher {
+  -long duration
+  -long amount
+  -long score
+  +calculateUpdatedat()
+  +deleteDuration()
+  +setCreatedat()
+  +sendCreatedat()
 }
 class Assignment {
-  -Date createdAt
-  -Date status
-  +validateUpdatedat()
+  +String description
+  #Date code
+  +setDuration()
+  +sendType()
+  +updateCreatedat()
+  +findAddress()
 }
-abstract class Enrollment {
-  #double code
-  -int type
-  +cancelActive()
-  +saveScore()
+class Enrollment {
+  #float status
+  +long address
+  +double phone
+  +createAddress()
 }
-class Department {
-  +int status
-  +long id
-  #double type
-  #long active
-  -int createdAt
-  +validateLevel()
-  +deleteScore()
-  +getCode()
+abstract class Department {
+  #double note
+  +String createdAt
+  -boolean updatedAt
+  #int active
+  +int phone
+  +getNote()
 }
-Course --|> Attendance
-Attendance --* Course
-Course --> Teacher : "1"
-Attendance --o Teacher
-note right of Attendance : Education domain
+Department --* Teacher
+Course --* Teacher
+Department ..|> Enrollment
+Enrollment ..> Attendance : "1"
+Teacher --|> Course
 @enduml

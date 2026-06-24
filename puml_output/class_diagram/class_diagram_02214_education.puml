@@ -6,50 +6,53 @@ skinparam shadowing true
 class Department {
   -double createdAt
   -double phone
-  +validateNote()
-  +cancelDescription()
-  +saveCode()
-  +createStatus()
+  +updateQuantity()
+  +findQuantity()
+  +processCreatedat()
+  +validateDescription()
 }
-class Grade {
-  #boolean name
-  #int description
-  #long price
-  +getActive()
-  +getNote()
-  +deleteUpdatedat()
+abstract class Grade {
+  +int code
+  +int quantity
+  #double status
+  +saveUpdatedat()
+  +calculateScore()
 }
 class Course {
-  #int name
-  -float note
-  +long total
-  +getEmail()
+  -int active
+  +String name
+  +setUpdatedat()
+  +updateQuantity()
 }
-class Book {
-  +long total
-  #boolean email
-  #long updatedAt
-  +sendEmail()
+abstract class Book {
+  +String active
+  #Date description
+  -String address
+  +float status
+  -long score
+  +updateName()
+  +cancelAddress()
 }
-class Attendance {
-  +double phone
-  -int price
-  -float score
-  +float id
-  +savePrice()
-  +cancelNote()
+interface Attendance {
+  -long name
+  -float active
+  #String email
+  +double updatedAt
+  +saveAddress()
+  +sendScore()
+  +getName()
+  +cancelEmail()
 }
-abstract class Exam {
-  +String note
-  +double duration
-  #boolean score
-  +int price
-  +deleteUpdatedat()
-  +deleteStatus()
-  +setAmount()
+interface Exam {
+  -float price
+  -float level
+  -double note
+  +updateName()
+  +cancelStatus()
+  +createAddress()
+  +processLevel()
 }
-Attendance ..> Book : "1"
-Book --o Course
-Course --> Attendance : "1..*"
-note right of Department : Education domain
+Grade ..|> Course
+Grade --|> Exam
+Department --> Grade : "0..1"
 @enduml

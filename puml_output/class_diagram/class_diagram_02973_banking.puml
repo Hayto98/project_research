@@ -7,43 +7,43 @@ interface Account {
   #String name
   #float amount
   -Date quantity
-  +processDescription()
-  +findCode()
+  +cancelQuantity()
+  +saveQuantity()
 }
-interface Beneficiary {
+class Beneficiary {
   -Date createdAt
   +long email
-  +findNote()
-  +savePrice()
-  +validateActive()
-  +deletePhone()
+  +setCode()
+  +findTotal()
+  +processTotal()
+  +cancelDuration()
 }
-interface Transfer {
-  #String createdAt
-  +float price
-  #long status
-  +float amount
-  +calculateNote()
-  +getCreatedat()
+abstract class Transfer {
+  +double active
+  +int description
+  #String phone
+  +float address
+  +processPrice()
+  +processAddress()
+  +setPrice()
 }
 class Deposit {
-  +Date active
-  +double id
-  #String description
-  +deletePrice()
-  +updateNote()
-  +getType()
+  #String note
+  +String id
+  #int createdAt
+  -float level
+  #String score
+  +deleteScore()
+  +calculateCode()
+  +processDuration()
 }
-class Customer {
-  -float score
-  +Date updatedAt
-  +calculateStatus()
-  +calculateAddress()
-  +validateCode()
+abstract class Customer {
+  +boolean type
+  +double quantity
+  +updatePhone()
 }
-Beneficiary ..|> Deposit
-Transfer --> Beneficiary : "1..*"
-Account --> Beneficiary : "*"
-Account --|> Customer
-note right of Account : Banking domain
+Customer --o Transfer
+Account --* Deposit
+Transfer ..> Account : "0..1"
+Deposit ..> Beneficiary : "1..*"
 @enduml

@@ -6,49 +6,59 @@ class Branch {
   #String duration
   +float id
   #float code
-  +validateStatus()
-  +processId()
-  +findStatus()
+  +sendPhone()
+  +deleteQuantity()
+  +findActive()
 }
 class Reservation {
-  #String level
-  -float createdAt
-  #boolean type
-  -boolean price
-  +calculateQuantity()
+  #Date id
+  +float phone
+  +processPhone()
+  +sendScore()
+  +findStatus()
+  +deleteNote()
 }
-class Book {
-  -Date note
-  -String email
-  +updateDuration()
-  +updateLevel()
-  +processAddress()
-  +createNote()
+abstract class Book {
+  -String active
+  -long id
+  -Date total
+  -String quantity
+  +saveNote()
+  +cancelLevel()
+  +validatePrice()
+  +findDescription()
 }
-interface Member {
-  -Date name
-  -String status
-  #long score
-  +calculateDescription()
+class Member {
+  +boolean address
+  -Date quantity
+  -String note
+  #long updatedAt
+  +float name
+  +getEmail()
+  +setCode()
+  +saveEmail()
+  +updateDescription()
 }
-class Publisher {
-  #double price
-  -long duration
+abstract class Publisher {
   #boolean quantity
-  +createEmail()
-  +cancelActive()
+  #int level
+  -long total
+  #boolean address
+  #boolean email
+  +sendName()
+  +updateDescription()
+  +findPhone()
 }
-interface Fine {
-  +int type
-  #boolean createdAt
-  +float description
-  +String code
-  +getName()
+class Fine {
+  +String amount
+  +String level
+  +double code
+  +calculateAddress()
+  +findCode()
 }
-Fine ..|> Reservation
-Book --* Member
-Branch ..> Member : "1"
-Publisher --|> Reservation
-Reservation --> Book : "*"
-note right of Branch : Library domain
+Book ..> Branch : "*"
+Fine --> Branch : "0..1"
+Branch --* Reservation
+Publisher --o Fine
+Branch --> Fine : "1..*"
 @enduml

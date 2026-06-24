@@ -8,45 +8,41 @@ interface Notification {
   +String phone
   -boolean level
   #double createdAt
-  +findLevel()
-  +validateLevel()
-  +setCreatedat()
-  +processLevel()
+  +processScore()
+  +setActive()
+  +updateScore()
+  +getCode()
 }
-abstract class Story {
-  #Date id
-  #long amount
-  +String active
-  -float phone
-  +long updatedAt
-  +cancelPhone()
+class Story {
+  #double createdAt
+  -String type
+  +saveUpdatedat()
+  +sendQuantity()
 }
 class Group {
-  #String updatedAt
-  +Date name
-  +double duration
-  -float description
-  +validateStatus()
-  +cancelDescription()
-  +sendTotal()
-  +sendDuration()
+  +String duration
+  -float level
+  +long address
+  +savePrice()
 }
 class Follower {
-  #float level
-  +boolean address
-  #boolean amount
-  -long quantity
-  +sendQuantity()
-  +processStatus()
-  +deleteLevel()
+  #Date address
+  +float updatedAt
+  #int name
+  +saveAddress()
 }
-interface Comment {
-  #String note
-  +double id
-  +getCreatedat()
+class Comment {
+  #double email
+  #boolean note
+  -boolean phone
+  #Date status
+  #long description
+  +findType()
+  +createCode()
+  +findScore()
 }
-Notification ..> Follower : "0..1"
-Group ..|> Story
-Comment --> Group : "0..1"
-note right of Notification : Social Media domain
+Notification --* Group
+Comment --> Group : "1..*"
+Follower ..|> Notification
+Comment ..> Notification : "*"
 @enduml

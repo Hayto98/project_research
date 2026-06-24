@@ -7,64 +7,60 @@ class Follower {
   #Date level
   #Date name
   +int id
-  +updateTotal()
-  +findAmount()
+  +processActive()
+  +processAddress()
 }
-class Hashtag {
-  -Date name
-  -String code
-  -boolean note
-  #double createdAt
-  -int status
-  +getNote()
-  +setId()
-  +validateType()
+abstract class Hashtag {
+  +double email
+  +Date type
+  +double name
+  +calculateId()
+  +deleteCreatedat()
+  +getScore()
 }
 abstract class User {
-  +float type
-  +long active
-  -int level
-  +setEmail()
-  +setUpdatedat()
+  +long createdAt
+  -double address
+  +double id
+  #boolean note
+  +float code
+  +createQuantity()
 }
-interface Comment {
-  +String total
-  -Date id
-  #long status
-  +findCreatedat()
+abstract class Comment {
+  +int description
+  #int status
+  -String email
+  +getEmail()
 }
 class Message {
-  +boolean note
-  -Date quantity
-  +String price
-  #long score
-  +setTotal()
-  +setId()
-  +sendDuration()
-  +getType()
+  #long level
+  -long quantity
+  -double name
+  +boolean createdAt
+  -Date amount
+  +deleteQuantity()
 }
-abstract class Group {
-  #String email
-  -double type
-  +double status
-  +calculateLevel()
-  +cancelActive()
-  +validateDescription()
-  +validateCode()
+class Group {
+  -double code
+  #int total
+  -double status
+  +float id
+  #String name
+  +processLevel()
+  +saveEmail()
+  +createName()
+  +sendName()
 }
-interface Notification {
-  #float quantity
-  +int level
-  #Date score
-  #double price
-  #Date code
-  +cancelNote()
-  +validateAddress()
+abstract class Notification {
+  -long description
+  #boolean phone
+  -String code
+  #float active
+  +saveAddress()
 }
-Group ..> Hashtag : "1"
-Follower --|> User
-Follower ..|> Message
-Comment --|> Hashtag
-User --> Group : "1..*"
-note right of Follower : Social Media domain
+Group --o Message
+Message ..|> Group
+Message --* Comment
+User --> Group : "0..1"
+Notification --|> Follower
 @enduml

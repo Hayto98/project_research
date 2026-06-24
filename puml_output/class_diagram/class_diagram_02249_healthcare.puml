@@ -7,63 +7,65 @@ interface Patient {
   #Date amount
   +int total
   #int name
-  +createEmail()
-  +updateAddress()
+  +calculatePhone()
+  +findCreatedat()
 }
-interface MedicalRecord {
-  -Date updatedAt
-  +float type
-  -int name
-  -boolean id
-  +cancelTotal()
-  +cancelId()
+class MedicalRecord {
+  +String duration
+  -Date quantity
+  +float updatedAt
+  -int type
+  +savePrice()
+  +processNote()
+  +deleteAddress()
 }
-class Nurse {
-  #boolean status
-  +double amount
-  +validateActive()
-  +cancelQuantity()
-  +validateDescription()
-  +processPhone()
+interface Nurse {
+  +Date duration
+  #int id
+  -boolean status
+  #double name
+  -float score
+  +sendPhone()
+  +setType()
+  +validateName()
 }
 class Diagnosis {
-  #Date phone
-  +long updatedAt
-  +float quantity
-  -long type
-  #float total
-  +calculatePrice()
+  -Date price
+  -Date phone
+  -boolean updatedAt
+  +findScore()
 }
-abstract class Doctor {
-  +Date description
-  -String duration
-  -double id
-  +findAddress()
-  +processNote()
-  +sendPrice()
-  +findEmail()
+class Doctor {
+  -int phone
+  +int active
+  +String status
+  #long total
+  +long price
+  +deleteAmount()
+  +validateTotal()
+  +saveCreatedat()
+  +sendName()
 }
-class Treatment {
-  #Date active
-  +double phone
-  #int id
-  +setScore()
-  +processNote()
+abstract class Treatment {
+  #float email
+  #float status
+  +Date updatedAt
+  #String active
+  -boolean phone
+  +setCode()
+  +processPrice()
 }
 class Appointment {
-  -long name
-  #String description
-  #long code
-  -long score
-  #int amount
-  +updateNote()
-  +createAddress()
+  #String note
+  +int id
+  -long price
+  #String name
+  #long description
+  +createActive()
+  +getCreatedat()
+  +updateStatus()
 }
-Doctor --|> Diagnosis
-MedicalRecord ..> Doctor : "*"
-Nurse ..|> Doctor
-Treatment ..> MedicalRecord : "1..*"
-Treatment --* Patient
-Appointment ..|> Patient
-note right of Patient : Healthcare domain
+Appointment --o MedicalRecord
+Nurse --> Appointment : "*"
+Patient --> MedicalRecord : "*"
 @enduml

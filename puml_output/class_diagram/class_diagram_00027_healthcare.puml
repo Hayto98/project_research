@@ -7,62 +7,58 @@ class Patient {
   #long price
   #float type
   -Date duration
-  +createPhone()
-  +updateScore()
-  +cancelTotal()
-  +deleteEmail()
+  +setPrice()
+  +validateAmount()
+  +saveTotal()
+  +cancelId()
 }
 class MedicalRecord {
-  -String total
-  +String name
-  +updateAmount()
-  +findUpdatedat()
-  +setAddress()
-  +cancelAddress()
+  +double description
+  +int email
+  +double id
+  +Date name
+  +float total
+  +getType()
+  +createActive()
 }
-class Hospital {
-  #double amount
-  #float status
-  +float email
-  #float updatedAt
-  +saveType()
-  +findPrice()
-  +deleteType()
+interface Hospital {
+  -Date description
+  +Date phone
+  -boolean amount
+  +float status
+  +validatePrice()
+  +validateUpdatedat()
+  +createTotal()
 }
-class Prescription {
-  #long price
-  -String total
-  +setEmail()
-  +updateId()
-}
-interface Billing {
-  -String level
-  +float address
+abstract class Prescription {
+  -double type
+  #long createdAt
   -String status
-  +float email
-  +setAmount()
-  +validateTotal()
+  +saveLevel()
+  +updateUpdatedat()
+}
+class Billing {
+  -boolean id
+  -String active
+  -long level
+  +setName()
 }
 class Insurance {
-  #int type
-  -String level
-  #Date status
-  -float amount
-  +getNote()
+  +int id
+  -double amount
+  +deleteCode()
+  +deleteEmail()
 }
-interface LabTest {
-  +double updatedAt
-  -double price
-  +Date email
-  +validateType()
-  +createPhone()
-  +cancelPhone()
-  +calculateQuantity()
+abstract class LabTest {
+  -String amount
+  #Date updatedAt
+  +getUpdatedat()
+  +updateDuration()
+  +updatePrice()
 }
-Prescription ..> Insurance : "1"
-Hospital ..|> Billing
-Insurance --o Hospital
-Prescription --|> MedicalRecord
-Patient --|> Insurance
-note right of Patient : Healthcare domain
+Billing ..|> MedicalRecord
+Prescription ..|> Hospital
+Prescription --o LabTest
+Patient --o Insurance
+LabTest ..> Hospital : "*"
 @enduml

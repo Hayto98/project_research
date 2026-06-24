@@ -6,41 +6,44 @@ skinparam shadowing true
 interface Category {
   #boolean amount
   -Date price
-  +processStatus()
-  +sendType()
+  +createName()
+  +validateEmail()
 }
-class Shipment {
-  +float score
-  #int id
-  #double type
-  +cancelDuration()
+interface Shipment {
+  +float quantity
+  #int amount
+  #double score
+  #String id
+  #boolean type
+  +saveAmount()
+  +sendNote()
 }
-interface Customer {
-  #long note
-  #Date updatedAt
-  +double description
-  +sendScore()
+class Customer {
+  #boolean active
+  -String code
+  +double total
+  -double id
+  +processId()
+  +saveName()
+  +calculateUpdatedat()
+  +processAmount()
 }
-abstract class Invoice {
-  -double updatedAt
-  #double type
-  +saveCode()
-  +setEmail()
-  +sendCode()
-  +validateActive()
+class Invoice {
+  -double score
+  -int code
+  #float address
+  #String active
+  +sendId()
 }
 abstract class Wishlist {
-  -Date type
-  +String createdAt
-  +String name
-  #Date score
-  +float level
-  +setTotal()
-  +findNote()
-  +processQuantity()
-  +processPhone()
+  +boolean code
+  #int name
+  +getUpdatedat()
+  +sendDescription()
+  +createPhone()
+  +cancelCreatedat()
 }
-Invoice ..> Wishlist : "0..1"
-Wishlist --|> Customer
-note right of Category : Ecommerce domain
+Invoice --* Wishlist
+Invoice ..|> Customer
+Shipment --|> Customer
 @enduml

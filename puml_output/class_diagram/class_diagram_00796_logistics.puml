@@ -5,44 +5,38 @@ class Depot {
   +String code
   #boolean createdAt
   #double updatedAt
-  +calculateNote()
-  +getCode()
-  +calculateTotal()
+  +validateType()
+  +calculateCode()
+  +createType()
 }
 abstract class Shipment {
-  -float total
-  #boolean level
-  +Date phone
-  -Date updatedAt
-  +validatePhone()
-  +updateType()
+  -double code
+  -double price
+  +cancelPrice()
+  +processDuration()
+  +validateAmount()
 }
-class Customer {
-  -String id
-  #boolean score
+interface Customer {
+  -int email
+  -Date createdAt
+  -Date address
+  +updateActive()
+  +findUpdatedat()
+}
+interface Manifest {
   -double phone
-  +saveAddress()
-  +updateCreatedat()
-  +setActive()
-  +getPhone()
+  #long status
+  +int score
+  +float address
+  +cancelId()
 }
-class Manifest {
+class Driver {
   +int active
   -float address
   +int description
   #int email
-  +getCreatedat()
+  +setName()
 }
-interface Driver {
-  #String name
-  -String type
-  +sendCreatedat()
-  +saveId()
-  +setActive()
-}
-Shipment --|> Manifest
-Driver ..|> Customer
-Depot --|> Driver
-Driver --o Manifest
-note right of Depot : Logistics domain
+Driver --|> Depot
+Manifest --o Depot
 @enduml

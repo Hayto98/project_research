@@ -5,41 +5,35 @@ class Tracking {
   #float id
   #boolean amount
   -double level
-  +saveActive()
-  +createCreatedat()
-  +sendTotal()
-  +updateAmount()
+  +saveUpdatedat()
+  +cancelName()
+  +setActive()
+  +calculateType()
 }
-class Driver {
-  +Date updatedAt
-  +String score
+interface Driver {
+  +String createdAt
+  #double score
   +boolean total
-  +int level
-  #int duration
-  +cancelStatus()
-  +getNote()
+  -boolean updatedAt
+  +saveDescription()
+  +saveDuration()
   +deleteStatus()
+  +validateNote()
 }
 class Vehicle {
-  #boolean description
-  #int type
-  +long price
-  -int phone
-  +float address
-  +setDescription()
-  +setDuration()
-  +saveDuration()
+  +int status
+  #int id
+  #long active
+  +processCode()
 }
-class Inventory {
-  +int updatedAt
-  -double status
-  +String description
-  -float total
-  #long price
-  +getTotal()
-  +deleteAddress()
+abstract class Inventory {
+  #int status
+  -Date quantity
+  -long price
+  +updateCode()
+  +findDescription()
+  +getCreatedat()
 }
-Vehicle --|> Inventory
-Driver --* Vehicle
-note right of Tracking : Logistics domain
+Driver --o Inventory
+Driver ..> Tracking : "1..*"
 @enduml

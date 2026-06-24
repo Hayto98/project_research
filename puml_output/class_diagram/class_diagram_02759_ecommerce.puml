@@ -7,47 +7,46 @@ interface Order {
   -String type
   +double phone
   -Date name
-  +setAddress()
-  +processStatus()
-  +saveId()
+  +setStatus()
+  +createEmail()
+  +createActive()
 }
-interface Wishlist {
-  -long status
-  +float type
-  #Date amount
-  -double duration
-  +cancelLevel()
+abstract class Wishlist {
+  -String id
+  -float score
+  +calculateTotal()
+  +setStatus()
 }
 class Category {
-  -String status
-  #long quantity
-  -int updatedAt
-  +calculateId()
-  +updateTotal()
-  +calculateCreatedat()
-  +processUpdatedat()
+  #boolean status
+  +Date email
+  #boolean note
+  +Date duration
+  +setTotal()
 }
 class Review {
-  +long code
-  #int id
-  +getUpdatedat()
+  #float name
+  -double phone
+  #float total
+  +int updatedAt
+  +saveName()
+  +cancelDescription()
+  +validateTotal()
+  +sendId()
 }
-class Product {
-  +Date address
-  #String description
-  +saveType()
-  +updateName()
-  +calculateCreatedat()
+abstract class Product {
+  +String status
+  -boolean name
+  +String code
+  +cancelDescription()
 }
 class Invoice {
-  #boolean quantity
-  #float type
-  +cancelLevel()
-  +calculatePrice()
-  +processUpdatedat()
+  -int active
+  +Date code
+  +setActive()
 }
-Category ..|> Order
-Product --* Category
-Invoice --|> Order
-note right of Order : Ecommerce domain
+Invoice ..|> Review
+Order ..|> Review
+Order --|> Product
+Category --> Review : "1..*"
 @enduml

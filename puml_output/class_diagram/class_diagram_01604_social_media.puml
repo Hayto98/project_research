@@ -5,53 +5,47 @@ class User {
   +String updatedAt
   +double duration
   #String email
-  +getAddress()
-  +sendAddress()
-  +createPhone()
+  +processScore()
+  +sendTotal()
+  +calculateCreatedat()
 }
-class Group {
-  #String email
-  #double quantity
-  +setAmount()
-  +processAmount()
-  +processQuantity()
+interface Group {
+  -long quantity
+  #String phone
+  #double createdAt
+  #long id
+  +calculateAddress()
 }
-class Hashtag {
-  +float note
-  -boolean total
-  -Date description
-  +deleteType()
-  +sendLevel()
-  +deleteTotal()
-  +findLevel()
-}
-class Post {
-  -double score
-  #double name
-  #float price
-  -Date active
+abstract class Hashtag {
+  +double note
+  -int quantity
+  +float createdAt
+  +findName()
   +getNote()
-  +deleteTotal()
+  +setCode()
+  +updateId()
 }
-class Comment {
-  -String description
-  -float updatedAt
-  +int id
-  #float duration
-  +sendActive()
+abstract class Post {
+  -Date type
+  #float score
+  +long amount
+  +setAmount()
+}
+abstract class Comment {
+  #float type
+  -int note
+  -int quantity
+  -int updatedAt
+  #int name
+  +saveQuantity()
 }
 class Message {
-  -long createdAt
-  -double address
-  +float active
-  +savePhone()
-  +setNote()
-  +updatePrice()
-  +saveName()
+  +boolean phone
+  +boolean code
+  +processPhone()
+  +validateQuantity()
 }
-User --> Comment : "1"
-Message --* Group
-Post --* Hashtag
-User --> Message : "1"
-note right of User : Social Media domain
+Hashtag --o Comment
+Hashtag --o Message
+User --o Comment
 @enduml

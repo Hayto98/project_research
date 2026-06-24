@@ -9,59 +9,61 @@ interface Withdrawal {
   +float email
   #float description
   #String duration
-  +getAddress()
-  +validatePhone()
-  +saveDuration()
+  +processCode()
+  +setEmail()
+  +createActive()
 }
 class Transfer {
-  +int duration
-  -long name
-  +String phone
-  +deleteActive()
-  +sendNote()
-  +cancelActive()
+  +double updatedAt
+  -int name
+  +Date phone
+  #float id
+  +saveAddress()
+  +saveLevel()
+  +findPrice()
 }
 interface Deposit {
-  +long duration
-  +float type
+  -String level
+  -int active
+  +double duration
+  #Date createdAt
+  #int type
+  +createPrice()
+  +getActive()
+}
+interface Branch {
+  #String updatedAt
   +double total
-  +sendUpdatedat()
-  +calculateScore()
+  -float name
+  -String price
+  +setEmail()
 }
-class Branch {
-  #String total
-  +double name
-  -float price
-  +getCode()
-  +validateType()
-  +validatePhone()
-}
-class Teller {
-  -boolean code
-  +Date price
-  #Date note
-  -Date email
-  +createType()
-  +validateAmount()
+abstract class Teller {
+  -double phone
+  -long status
+  #String quantity
+  #Date code
+  +createTotal()
+  +getAmount()
+  +sendNote()
 }
 class Card {
-  -float name
-  -boolean duration
-  +int total
-  -String amount
-  #int price
-  +getAddress()
-  +calculateActive()
+  +double phone
+  +double amount
+  -float createdAt
+  -boolean note
+  +int name
+  +deleteNote()
+  +getCode()
+  +deleteAddress()
+  +saveStatus()
 }
 class Customer {
-  #float id
-  -boolean amount
-  +validatePrice()
-  +calculateCode()
-  +getLevel()
+  #long address
+  +Date price
+  +saveTotal()
 }
-Teller ..|> Withdrawal
-Customer ..|> Transfer
-Customer --|> Branch
-note right of Withdrawal : Banking domain
+Card --> Deposit : "1..*"
+Deposit --o Branch
+Withdrawal --> Customer : "0..1"
 @enduml

@@ -7,60 +7,55 @@ interface Housekeeping {
   +int total
   #double active
   -double note
-  +calculateDescription()
+  +createEmail()
 }
-class Guest {
+abstract class Guest {
+  -int createdAt
+  +double type
   -boolean phone
-  #Date duration
-  +float description
-  -boolean score
-  -int type
-  +validateLevel()
-  +deleteAmount()
-  +validateScore()
-  +setDescription()
+  +getDescription()
+  +setActive()
 }
-class Booking {
-  +double description
-  +String address
-  +cancelPhone()
-  +deleteDescription()
-  +createStatus()
+abstract class Booking {
+  -Date updatedAt
+  #String price
+  +int address
+  +int amount
+  -float active
+  +createDuration()
+  +sendEmail()
 }
 class Amenity {
-  -int duration
-  #Date price
-  #double total
-  +boolean code
-  +createAddress()
+  -String level
+  +long phone
+  #float amount
+  -double description
+  +setActive()
+}
+abstract class Restaurant {
+  #boolean active
+  +long type
+  #long amount
   +setStatus()
 }
-class Restaurant {
+class Invoice {
   -String phone
   #int total
   +long quantity
   -boolean level
-  +saveAmount()
-  +saveCode()
-  +getAddress()
-}
-interface Invoice {
-  +float name
-  -float description
-  #String type
-  -Date note
-  -double code
-  +getType()
-  +calculateNote()
+  +processNote()
+  +calculateAddress()
+  +updatePhone()
 }
 class Staff {
-  +long description
   #boolean address
-  -String email
-  +sendTotal()
+  -String active
+  +saveDescription()
+  +getId()
 }
-Guest ..> Staff : "1"
-Restaurant --> Housekeeping : "1..*"
-Staff ..> Booking : "1"
-note right of Housekeeping : Hotel domain
+Housekeeping --o Guest
+Staff --|> Invoice
+Amenity --* Invoice
+Amenity --|> Guest
+Staff --o Amenity
 @enduml

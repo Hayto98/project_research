@@ -9,39 +9,33 @@ class Payment {
   +int total
   +double updatedAt
   #String description
-  +sendDuration()
+  +calculatePrice()
 }
-abstract class Return {
+interface Return {
+  #double type
   -float status
   +int createdAt
   -float name
   #float code
-  #int price
-  +processActive()
-  +sendActive()
-  +getScore()
-  +saveQuantity()
+  +deleteDuration()
+  +createName()
 }
 interface Product {
-  #float name
-  -String id
-  #long type
-  +processTotal()
-  +deleteType()
-  +processCode()
+  #int score
+  +String quantity
+  +calculateDuration()
+  +getPrice()
+  +updateLevel()
+  +sendTotal()
 }
-interface Order {
-  +long total
-  +float phone
-  -int description
-  -double email
-  +deleteType()
-  +createEmail()
-  +getDescription()
-  +findDescription()
+class Order {
+  -float type
+  +float total
+  #long amount
+  -long duration
+  +calculateScore()
+  +updatePrice()
 }
-Product --* Payment
-Return --o Payment
-Return ..|> Product
-note right of Payment : Ecommerce domain
+Return ..|> Order
+Order --o Return
 @enduml

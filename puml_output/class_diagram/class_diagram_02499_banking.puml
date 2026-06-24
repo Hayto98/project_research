@@ -6,56 +6,56 @@ skinparam defaultFontSize 13
 class Beneficiary {
   #float duration
   #int id
-  +getCreatedat()
-  +createAmount()
-  +getAmount()
-  +cancelAmount()
+  +saveType()
+  +updateActive()
+  +deleteId()
+  +processActive()
 }
 class Statement {
-  -String amount
-  +String updatedAt
-  #double status
-  #double quantity
-  +findEmail()
+  #float id
+  +long amount
+  +int level
+  +processDescription()
 }
-abstract class Transfer {
-  -double quantity
-  +int amount
+class Transfer {
+  #double updatedAt
+  #double name
+  +updateScore()
+}
+class Teller {
+  -double note
+  -int quantity
+  +boolean amount
   #float email
-  #float total
-  +long type
-  +validateNote()
-  +findAmount()
-  +calculateTotal()
-  +deleteAmount()
-}
-abstract class Teller {
-  #boolean description
-  -float quantity
-  +deleteAddress()
-  +updateDescription()
+  +long total
+  +createAmount()
+  +deletePrice()
+  +processAddress()
+  +calculateStatus()
 }
 class Withdrawal {
-  +int name
-  +double id
-  +sendQuantity()
+  +long total
+  #boolean amount
+  -float level
+  +int price
+  -int status
+  +calculateStatus()
+  +deleteName()
 }
-interface Interest {
-  -boolean active
-  -boolean address
-  +processActive()
-  +calculateDescription()
+class Interest {
+  +String id
+  -float name
+  +calculatePrice()
 }
 class Deposit {
-  #boolean createdAt
-  -double type
-  #Date description
-  +validateScore()
-  +cancelLevel()
-  +updatePhone()
+  -boolean active
+  -boolean address
+  +cancelCode()
+  +getScore()
 }
-Beneficiary ..> Statement : "0..1"
-Interest ..> Statement : "1"
-Withdrawal --> Interest : "0..1"
-note right of Beneficiary : Banking domain
+Statement ..> Transfer : "0..1"
+Interest ..> Statement : "*"
+Statement --> Interest : "*"
+Teller ..> Withdrawal : "1..*"
+Transfer --> Withdrawal : "0..1"
 @enduml

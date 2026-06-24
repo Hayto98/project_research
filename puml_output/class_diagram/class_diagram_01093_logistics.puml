@@ -8,60 +8,50 @@ class FuelLog {
   #long total
   +String createdAt
   +int address
-  +processEmail()
-  +updatePrice()
+  +findActive()
+  +validateAmount()
 }
 class Shipment {
-  #int updatedAt
-  #float price
-  +String amount
-  -String active
-  -boolean createdAt
-  +setUpdatedat()
-  +cancelCreatedat()
-  +cancelStatus()
-  +cancelTotal()
+  #int status
+  #int note
+  #float updatedAt
+  +String price
+  -String amount
+  +createStatus()
+  +processType()
+  +validatePhone()
+  +createScore()
 }
-abstract class Customer {
-  +String address
-  -Date createdAt
-  +double phone
-  -String code
-  +String description
-  +findId()
-  +saveUpdatedat()
-  +saveCreatedat()
+interface Customer {
+  -double duration
+  -int status
+  -String total
+  +getEmail()
+  +createPhone()
 }
-class Manifest {
-  -long name
-  +float type
-  #int phone
-  +boolean quantity
-  #float status
-  +getLevel()
+abstract class Manifest {
+  +int type
+  +boolean note
+  +calculateDescription()
+  +updateDuration()
+  +validateDescription()
 }
 class Route {
-  -float duration
-  -float status
-  -double address
-  -long code
-  +cancelActive()
-  +sendUpdatedat()
-  +calculateLevel()
+  -long address
+  -String note
+  -long name
+  +deleteTotal()
+  +getQuantity()
 }
 class Vehicle {
-  +boolean email
-  -double code
-  +boolean note
-  #double quantity
-  +getUpdatedat()
+  #float level
+  +long id
+  #String name
   +getType()
-  +cancelLevel()
+  +sendPhone()
+  +processPhone()
 }
-Manifest --> Vehicle : "*"
-Route --> Customer : "*"
-Route --* Shipment
-Manifest ..|> FuelLog
-Customer --|> Vehicle
-note right of FuelLog : Logistics domain
+Manifest --* Vehicle
+Customer --> Vehicle : "0..1"
+Manifest ..> Route : "1..*"
 @enduml

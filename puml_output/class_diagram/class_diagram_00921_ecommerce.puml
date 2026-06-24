@@ -6,48 +6,48 @@ skinparam ArrowColor #555555
 interface Cart {
   #boolean score
   -long createdAt
-  +calculateScore()
+  +sendScore()
 }
 interface Coupon {
   +boolean description
   -double address
   +Date duration
-  +sendCode()
+  +createStatus()
 }
 class Product {
-  +Date address
-  -boolean type
-  +Date phone
-  +sendId()
-  +processUpdatedat()
-  +validateNote()
+  #long active
+  +Date createdAt
+  -boolean address
+  +Date type
+  +sendAmount()
+  +createNote()
+  +processName()
 }
-class Invoice {
-  +String note
-  +int duration
-  #long code
-  +deleteDuration()
-  +sendStatus()
+abstract class Invoice {
+  #Date phone
+  +double note
+  -boolean createdAt
+  +deleteAddress()
 }
 class Return {
-  +float type
-  #double createdAt
-  -Date note
-  +validateName()
-  +processType()
-  +findDuration()
+  +int description
+  #boolean score
+  +int address
+  +findActive()
+  +calculateStatus()
 }
 class Customer {
-  #double duration
-  #Date active
-  #float address
-  #int type
-  -double description
-  +setActive()
-  +deleteType()
+  +double updatedAt
+  -float note
+  #boolean phone
+  +float quantity
+  -Date score
+  +deleteActive()
+  +findPhone()
+  +calculateDuration()
 }
+Return --o Coupon
+Invoice --|> Coupon
+Customer --> Invoice : "0..1"
 Invoice ..|> Cart
-Return ..|> Cart
-Invoice --* Customer
-note right of Cart : Ecommerce domain
 @enduml

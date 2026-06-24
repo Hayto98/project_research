@@ -8,41 +8,42 @@ interface LabTest {
   #String name
   #Date price
   +float type
-  +deleteNote()
+  +processScore()
 }
-interface MedicalRecord {
+class MedicalRecord {
+  #float active
+  -float phone
   +String quantity
   #long price
   +float status
-  #boolean address
-  +getType()
-  +createQuantity()
-  +updateEmail()
+  +saveId()
+  +createTotal()
+  +sendName()
 }
 class Insurance {
-  #float level
-  #Date code
-  #int score
-  +saveQuantity()
-  +getName()
+  #float updatedAt
+  +boolean email
+  #float description
+  #Date createdAt
+  +getStatus()
+  +createNote()
 }
 class Doctor {
-  -double type
-  #boolean level
-  +getPrice()
-  +saveDescription()
-  +saveType()
-  +sendType()
+  -boolean id
+  -double name
+  #boolean description
+  -float status
+  +createPrice()
 }
-abstract class Hospital {
-  +float status
-  #String amount
-  +String code
-  +long level
-  -int phone
-  +deleteEmail()
+class Hospital {
+  +String active
+  +Date type
+  -String price
+  #String score
+  +String status
+  +processStatus()
 }
-MedicalRecord --o Insurance
-Doctor --> MedicalRecord : "1"
-note right of LabTest : Healthcare domain
+MedicalRecord ..|> LabTest
+Insurance ..> MedicalRecord : "0..1"
+Insurance --o Doctor
 @enduml

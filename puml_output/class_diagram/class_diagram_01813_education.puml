@@ -7,41 +7,38 @@ class Schedule {
   #boolean total
   +boolean duration
   #int type
-  +processAmount()
-  +sendQuantity()
-  +saveId()
+  +findActive()
+  +updateType()
+  +createStatus()
 }
 class Exam {
-  +long total
-  -Date quantity
-  +Date code
-  +long note
-  #long email
-  +deleteEmail()
-  +cancelNote()
-  +createActive()
-  +setLevel()
+  #float description
+  #double level
+  +validateStatus()
+  +getNote()
+  +sendDescription()
+  +cancelStatus()
 }
-class Book {
+interface Book {
+  #String email
+  -boolean description
+  -double duration
+  +long score
+  #double updatedAt
+  +updateNote()
+  +cancelEmail()
+  +saveDuration()
+}
+class Assignment {
   -boolean description
   #boolean note
   +boolean active
   -boolean id
-  +savePhone()
-  +saveActive()
-  +deleteUpdatedat()
-  +findCode()
+  +processCreatedat()
+  +cancelDuration()
+  +sendPhone()
+  +getScore()
 }
-interface Assignment {
-  #Date duration
-  #String updatedAt
-  +Date quantity
-  #long total
-  +processType()
-  +findAmount()
-  +processDescription()
-}
-Assignment --> Exam : "0..1"
-Book ..> Exam : "1..*"
-note right of Schedule : Education domain
+Exam --|> Book
+Book ..|> Assignment
 @enduml

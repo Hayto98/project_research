@@ -6,50 +6,53 @@ skinparam ArrowColor #555555
 class Shipment {
   +float createdAt
   -double note
-  +saveLevel()
+  +calculateUpdatedat()
 }
 interface Vehicle {
   -Date description
   +float score
   #float name
-  +processAmount()
   +findActive()
-  +setId()
-  +calculateNote()
+  +cancelDuration()
+  +processScore()
+  +setAmount()
 }
 class Route {
-  +Date type
-  +Date name
-  #Date email
-  #long amount
-  +saveStatus()
-  +updateEmail()
-  +processDuration()
+  #double id
+  +long price
+  +calculateEmail()
+  +findCreatedat()
+  +findId()
+  +findEmail()
 }
 class Inventory {
-  -long level
-  +double phone
-  +sendPrice()
-  +validateType()
+  #boolean score
+  -Date quantity
+  +processPrice()
 }
-interface Customer {
-  +double total
-  +long duration
-  #long email
-  -int note
-  +sendPhone()
-  +validatePhone()
+class Customer {
+  -String duration
+  -int id
+  #double name
+  -double phone
+  #long type
+  +cancelCreatedat()
+  +calculateScore()
+  +deletePrice()
+  +sendDescription()
 }
 class DeliveryNote {
-  -String note
-  -Date price
-  -long id
-  +saveStatus()
-  +findLevel()
-  +calculateAddress()
+  +int createdAt
+  #long quantity
+  -long active
+  +boolean address
+  #float score
+  +saveLevel()
+  +deletePrice()
 }
-Inventory ..> Customer : "*"
-DeliveryNote ..|> Vehicle
-Shipment ..> Route : "*"
-note right of Shipment : Logistics domain
+Shipment --|> Inventory
+Inventory --* DeliveryNote
+Route ..> Shipment : "*"
+Route --o DeliveryNote
+Customer ..> Inventory : "0..1"
 @enduml

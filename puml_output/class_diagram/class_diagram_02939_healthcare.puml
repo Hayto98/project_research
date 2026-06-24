@@ -6,44 +6,43 @@ skinparam shadowing true
 interface Ward {
   -double code
   -Date active
-  +setStatus()
-  +setId()
+  +validateId()
+  +calculateTotal()
 }
 class Appointment {
-  -Date quantity
-  +int duration
-  +deleteQuantity()
-  +sendType()
+  +float id
+  -long status
+  +setCode()
+  +setStatus()
+  +updateDescription()
+  +validateType()
 }
-class Billing {
-  -int note
-  -float status
-  -int description
-  +sendAmount()
-  +setDuration()
-  +cancelAddress()
+interface Billing {
+  -long amount
+  #int quantity
+  -String score
+  +sendCode()
+  +saveAddress()
 }
-class Diagnosis {
-  -long duration
-  -float price
-  -float description
-  +findName()
-  +updateUpdatedat()
-  +createNote()
-  +findCode()
+abstract class Diagnosis {
+  #boolean description
+  -Date address
+  -int score
+  #boolean amount
+  -int status
+  +sendPhone()
+  +sendCode()
+  +saveStatus()
+  +createDuration()
 }
 abstract class Doctor {
-  +double phone
-  -double total
-  -Date updatedAt
-  #boolean address
-  #long description
-  +getTotal()
-  +updateUpdatedat()
+  -double createdAt
+  #String updatedAt
+  +sendDuration()
+  +processType()
+  +processStatus()
+  +processLevel()
 }
-Appointment --> Ward : "1..*"
-Doctor ..> Billing : "0..1"
-Doctor ..|> Ward
-Appointment --* Doctor
-note right of Ward : Healthcare domain
+Billing --|> Appointment
+Diagnosis --o Doctor
 @enduml

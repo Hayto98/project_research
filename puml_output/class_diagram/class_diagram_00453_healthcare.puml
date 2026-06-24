@@ -7,39 +7,42 @@ class MedicalRecord {
   #int amount
   +boolean duration
   -double price
-  +getPhone()
+  +calculateId()
 }
-interface Billing {
+class Billing {
   +float createdAt
   #double name
-  +getScore()
-  +sendLevel()
+  +calculateId()
+  +calculatePrice()
 }
-class Hospital {
-  #boolean updatedAt
-  -Date duration
-  #int amount
-  +sendLevel()
-  +deleteType()
+interface Hospital {
+  #int updatedAt
+  #boolean duration
+  -Date level
+  +processDuration()
+  +createStatus()
 }
-class Patient {
-  -float email
-  #double phone
-  +validateLevel()
+interface Patient {
+  -long type
+  -float name
+  #double code
+  +deleteCode()
 }
-class Insurance {
+interface Insurance {
+  -float code
   -String name
-  +long total
-  +validateAddress()
+  +calculateCreatedat()
+  +setName()
 }
-abstract class Prescription {
-  -boolean updatedAt
-  -Date phone
-  #Date price
-  +calculateAddress()
+class Prescription {
+  #float type
+  -double score
+  -boolean amount
+  -Date updatedAt
+  +processLevel()
 }
-MedicalRecord --> Prescription : "1..*"
+Prescription --|> Billing
+MedicalRecord --* Insurance
 Hospital --* Billing
 Hospital --* Patient
-note right of MedicalRecord : Healthcare domain
 @enduml

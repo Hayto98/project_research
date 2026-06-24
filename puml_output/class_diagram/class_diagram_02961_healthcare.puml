@@ -5,60 +5,56 @@ skinparam defaultFontSize 11
 class Prescription {
   +boolean quantity
   #int active
-  +sendNote()
+  +calculateActive()
 }
-class Diagnosis {
-  -String level
-  +float quantity
-  -String updatedAt
-  +getPhone()
-  +validateUpdatedat()
-  +getQuantity()
+abstract class Diagnosis {
+  +double score
+  +String description
+  -String quantity
+  +validateType()
+  +calculateId()
+  +processStatus()
 }
-interface LabTest {
-  #String address
-  -Date amount
-  -Date total
-  +Date status
-  +saveCreatedat()
-  +findType()
-  +getTotal()
-  +findQuantity()
+class LabTest {
+  -Date name
+  -int quantity
+  -float active
+  +createTotal()
 }
 class MedicalRecord {
-  #int createdAt
-  #long code
-  +updateUpdatedat()
+  +Date total
+  -float amount
+  #long price
+  #String createdAt
+  #Date type
+  +saveNote()
 }
 class Hospital {
-  -int address
-  -long status
-  -float price
-  +getCreatedat()
-  +getCreatedat()
-  +calculatePhone()
+  +String address
+  #float id
+  #float createdAt
+  +calculateCreatedat()
+  +deleteId()
 }
 class Doctor {
-  -boolean description
-  -boolean amount
-  -int duration
-  #Date quantity
-  +deleteEmail()
-  +deleteId()
-  +findDescription()
+  -String phone
+  +String amount
+  +double type
+  -String duration
+  #long score
+  +setDuration()
+  +validateQuantity()
 }
 class Insurance {
-  +long quantity
-  #String level
-  -float status
-  -Date phone
-  +getDuration()
+  +boolean note
+  #Date active
+  #long total
+  +float phone
+  +findPhone()
+  +updatePrice()
+  +saveDescription()
 }
-Insurance --|> Hospital
-Diagnosis --> MedicalRecord : "1..*"
-Doctor ..> Diagnosis : "0..1"
-Hospital --* Diagnosis
-Insurance ..|> Diagnosis
-MedicalRecord --|> LabTest
-note right of Prescription : Healthcare domain
+Diagnosis --* LabTest
+Hospital --> Doctor : "1"
+Doctor --|> LabTest
 @enduml

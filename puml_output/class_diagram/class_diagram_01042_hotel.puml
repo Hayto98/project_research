@@ -9,61 +9,64 @@ class Restaurant {
   +double updatedAt
   +boolean duration
   +int description
-  +validateId()
-  +saveScore()
-  +updateAddress()
-  +createAddress()
+  +deleteCode()
+  +sendTotal()
+  +cancelScore()
+  +setAddress()
 }
 class Guest {
-  #float createdAt
-  +long updatedAt
-  +Date type
-  +processDescription()
+  +Date email
+  #int address
+  -boolean duration
+  +long description
+  +createType()
+  +processQuantity()
 }
-class Booking {
-  #int note
-  #String code
+abstract class Booking {
+  +double updatedAt
+  #String note
+  +Date level
+  +deleteDescription()
+  +processName()
+}
+class Housekeeping {
+  +boolean duration
   #String price
-  #boolean name
-  -boolean level
-  +saveTotal()
-  +createName()
-  +getScore()
-  +findCode()
+  #boolean total
+  -int email
+  -long name
+  +updateNote()
 }
-interface Housekeeping {
-  #long createdAt
-  +long price
-  +int quantity
-  -double code
-  +createDescription()
+class Invoice {
+  -double email
+  #float description
+  #String updatedAt
+  +validateCode()
+  +cancelUpdatedat()
+  +sendQuantity()
 }
-interface Invoice {
+interface CheckOut {
   +int price
   #Date total
   +int updatedAt
   +String duration
   +double id
-  +createCode()
+  +deleteName()
 }
-abstract class CheckOut {
-  -long price
-  #String description
-  +float duration
-  +sendActive()
+class Amenity {
+  -long score
+  #String amount
+  +float price
+  +boolean description
+  #boolean duration
+  +setName()
+  +updateTotal()
+  +validatePhone()
+  +processDuration()
 }
-interface Amenity {
-  +String id
-  -float phone
-  -double code
-  +boolean updatedAt
-  -String price
-  +cancelPrice()
-  +saveQuantity()
-  +cancelStatus()
-  +processQuantity()
-}
-Invoice ..> Guest : "1..*"
-Guest --> Invoice : "*"
-note right of Restaurant : Hotel domain
+Restaurant --o Amenity
+Amenity --o Booking
+Amenity --> Guest : "*"
+Restaurant --o Invoice
+Invoice ..> Housekeeping : "1..*"
 @enduml

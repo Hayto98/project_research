@@ -7,55 +7,65 @@ abstract class Warehouse {
   +Date updatedAt
   +float type
   -double createdAt
-  +updateTotal()
-  +calculateStatus()
-  +findCode()
-  +deleteId()
+  +validateNote()
+  +calculateQuantity()
+  +calculateType()
+  +processType()
 }
 class Return {
-  -long name
-  +long address
-  -long note
-  #boolean updatedAt
-  +calculateDuration()
-  +updateDuration()
+  #int description
+  #long id
+  +saveTotal()
 }
 class Category {
-  #int address
+  -long updatedAt
+  #boolean price
+  +float address
+  -float id
+  #boolean email
+  +sendActive()
+  +calculatePhone()
+}
+class Payment {
   +double active
   #double id
   +long email
-  +setPhone()
-  +deleteNote()
+  +String description
+  +createCreatedat()
+  +findStatus()
+  +calculateAmount()
 }
-class Payment {
+class Supplier {
   #long code
   +Date level
   -String address
   #Date name
-  +deleteDescription()
-  +saveCode()
-  +createType()
+  +updateType()
+  +validateCreatedat()
+  +deleteTotal()
 }
-abstract class Supplier {
-  -double name
-  +String quantity
-  +Date amount
-  +double score
-  -Date id
-  +saveLevel()
+class Invoice {
+  +long type
+  +Date duration
+  +boolean score
+  +double total
+  +setStatus()
+  +getLevel()
+  +saveAddress()
+  +findStatus()
 }
-interface Invoice {
-  +int phone
-  -boolean type
-  +updatePhone()
+class Customer {
+  #double phone
+  +int level
+  -boolean name
+  +int code
+  -float duration
+  +calculateScore()
 }
-interface Customer {
-  -boolean email
-  #float status
-  +createEmail()
-}
+Supplier --o Warehouse
+Supplier ..> Invoice : "1"
+Category ..> Customer : "1"
 Return --|> Payment
 Supplier --* Category
-note right of Warehouse : Ecommerce domain
+Invoice ..|> Return
 @enduml

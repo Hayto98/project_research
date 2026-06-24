@@ -6,42 +6,39 @@ skinparam ArrowColor #555555
 class Account {
   #Date id
   -double level
-  +setPrice()
-  +processDescription()
+  +sendDescription()
+  +validateId()
 }
-class Statement {
-  #String code
+abstract class Statement {
+  #long description
+  #String createdAt
+  +long address
+  +String code
   +long status
-  +String score
-  +long quantity
-  +cancelStatus()
-  +updateCreatedat()
+  +getUpdatedat()
+  +saveDuration()
 }
-abstract class Branch {
-  -double type
-  -boolean note
-  #int score
-  +double quantity
-  +float amount
-  +deleteType()
-  +cancelName()
+class Branch {
+  -double createdAt
+  #boolean type
+  #boolean total
+  +saveAddress()
+  +findQuantity()
+  +sendName()
 }
 class Customer {
-  #double createdAt
-  -float id
-  #String level
-  #int type
-  +setLevel()
-  +saveStatus()
+  +int name
+  #double note
+  #Date amount
+  +saveQuantity()
 }
-interface Withdrawal {
-  -long id
-  -int status
-  -int code
-  -long note
-  +createNote()
+class Withdrawal {
+  #double id
+  -float duration
+  #String type
+  +getTotal()
+  +deleteLevel()
 }
-Customer --o Branch
-Account --> Customer : "1"
-note right of Account : Banking domain
+Withdrawal ..> Account : "1..*"
+Account ..> Withdrawal : "1"
 @enduml

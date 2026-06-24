@@ -7,28 +7,35 @@ class Depot {
   -long createdAt
   -float level
   +String name
-  +cancelPhone()
-  +findLevel()
-  +updateActive()
-  +getType()
+  +deleteDescription()
+  +cancelType()
+  +cancelId()
+  +getActive()
 }
 interface Inventory {
-  #Date level
-  +long address
-  +createStatus()
-  +saveCode()
+  #String active
+  #long id
+  #Date type
+  +deleteCreatedat()
+  +findPrice()
 }
-interface Customer {
-  #boolean type
-  -int active
-  +double level
-  +deleteLevel()
+class Customer {
+  #float status
+  #boolean code
+  #long amount
+  +String type
+  +validateLevel()
+  +cancelName()
+  +saveId()
+  +deleteId()
 }
 class Package {
-  #int total
-  -double email
-  +String type
-  +deleteDuration()
+  #int createdAt
+  -double total
+  +String email
+  #String type
+  +updateQuantity()
+  +validateActive()
 }
 interface Driver {
   +long name
@@ -36,14 +43,13 @@ interface Driver {
   -Date note
   -String active
   +String code
-  +saveDescription()
-  +sendCreatedat()
-  +sendCode()
   +setScore()
+  +getEmail()
+  +setAddress()
+  +cancelNote()
 }
-Customer --> Depot : "0..1"
+Depot --> Driver : "1..*"
+Driver --> Depot : "0..1"
 Package --> Inventory : "0..1"
 Inventory ..|> Driver
-Depot --> Customer : "0..1"
-note right of Depot : Logistics domain
 @enduml

@@ -8,38 +8,32 @@ abstract class Withdrawal {
   #long type
   -boolean id
   -boolean name
-  +cancelUpdatedat()
-  +sendQuantity()
+  +saveDuration()
+  +processPrice()
 }
-class Card {
+interface Card {
+  #float description
+  -long address
   #long name
   -int quantity
-  #int total
-  +int phone
-  +saveUpdatedat()
-  +getDuration()
-}
-interface Interest {
-  #double note
-  -float createdAt
-  +float id
-  -long price
   +calculateAddress()
-  +saveCreatedat()
-  +cancelStatus()
-  +deleteAmount()
+  +processPrice()
 }
-interface Beneficiary {
-  +double quantity
-  -String status
-  +boolean amount
-  +validateName()
-  +getTotal()
-  +saveNote()
-  +saveEmail()
+class Interest {
+  #long id
+  -int score
+  +float active
+  +calculateDuration()
+  +calculateAmount()
+  +sendDescription()
+  +getPrice()
 }
-Beneficiary --> Interest : "0..1"
-Withdrawal --* Beneficiary
-Interest --o Card
-note right of Withdrawal : Banking domain
+class Beneficiary {
+  -double phone
+  -Date email
+  +float score
+  +updateType()
+}
+Card ..> Beneficiary : "1"
+Card --o Withdrawal
 @enduml

@@ -5,43 +5,40 @@ class Product {
   +Date note
   #Date quantity
   #double active
-  +processLevel()
-  +calculateDuration()
-  +updateTotal()
-  +calculateEmail()
+  +findEmail()
+  +deleteActive()
+  +saveUpdatedat()
+  +findName()
 }
-class Invoice {
-  #float address
-  #float quantity
-  +String level
-  +String name
-  +setPhone()
-  +getDuration()
-  +processAmount()
+abstract class Invoice {
+  -long total
+  -float duration
+  -long email
+  +setCode()
 }
 interface Supplier {
+  #float status
+  #Date name
+  -String duration
+  +updateActive()
+  +findUpdatedat()
+  +getId()
+}
+class Shipment {
   #float active
   -String createdAt
   -String level
-  +setDuration()
-  +saveType()
-  +getUpdatedat()
+  +validateId()
+  +findUpdatedat()
+  +setScore()
 }
-class Shipment {
-  #Date price
-  #float email
-  -Date phone
-  #long code
-  +sendDescription()
-  +sendPhone()
+abstract class Category {
+  -double updatedAt
+  -long code
+  +sendUpdatedat()
 }
-class Category {
-  #String email
-  -boolean active
-  +saveQuantity()
-  +cancelPrice()
-}
-Supplier --* Category
-Invoice ..> Product : "*"
-note right of Product : Ecommerce domain
+Supplier ..|> Category
+Category --> Invoice : "1..*"
+Supplier ..> Product : "1..*"
+Category --o Product
 @enduml

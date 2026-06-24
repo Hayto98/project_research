@@ -7,62 +7,63 @@ abstract class Return {
   +int address
   -boolean price
   +double note
-  +createStatus()
-  +saveTotal()
+  +cancelPhone()
+  +calculateTotal()
 }
-abstract class Shipment {
-  #String email
-  +int quantity
-  #String id
-  +float total
-  +calculateEmail()
-  +findLevel()
-  +processCode()
-  +validateActive()
+class Shipment {
+  #double price
+  #String quantity
+  +int email
+  #String level
+  +float id
+  +saveName()
+  +cancelUpdatedat()
+  +updateAmount()
+  +findCreatedat()
 }
-abstract class Supplier {
-  +float price
-  +boolean score
-  +validateDescription()
-  +saveTotal()
-  +updateStatus()
+interface Supplier {
+  -boolean code
+  +float address
+  +boolean active
+  -long note
+  +Date duration
+  +calculateNote()
+  +sendDescription()
+  +sendUpdatedat()
+  +deleteQuantity()
 }
 class Review {
   +boolean name
   +float price
-  +setName()
-  +validateLevel()
-  +deleteDescription()
-  +processPrice()
+  +findNote()
+  +calculateEmail()
+  +sendPhone()
+  +processId()
 }
-interface Wishlist {
-  #Date level
-  #String type
-  -double updatedAt
-  +updateAddress()
-  +deleteQuantity()
-  +findDuration()
+class Wishlist {
+  +boolean type
+  -float price
+  +float active
+  +createActive()
 }
-class Coupon {
-  +String createdAt
-  #Date updatedAt
-  #double description
-  #int amount
-  #float score
-  +updateName()
+abstract class Coupon {
+  #boolean createdAt
+  +double address
+  #int description
+  +Date quantity
+  +updateAmount()
+  +saveTotal()
 }
 class Order {
-  -String amount
-  #int note
-  #int phone
-  +deleteId()
-  +getType()
-  +saveName()
+  #int status
+  #float id
+  +int price
+  +findId()
 }
-Return ..> Coupon : "0..1"
-Return --* Supplier
-Wishlist --o Coupon
-Wishlist ..|> Supplier
-Shipment --|> Coupon
-note right of Return : Ecommerce domain
+Shipment --o Order
+Coupon ..> Order : "1..*"
+Review --> Return : "0..1"
+Wishlist --* Shipment
+Order --|> Shipment
+Order ..> Return : "*"
 @enduml

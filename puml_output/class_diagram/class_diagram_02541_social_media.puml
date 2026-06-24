@@ -7,38 +7,38 @@ interface Hashtag {
   +Date address
   #long amount
   #int active
-  +getTotal()
-  +cancelLevel()
-  +validateActive()
-  +calculateAddress()
+  +saveId()
+  +findAmount()
+  +getDuration()
+  +getCode()
 }
 interface Notification {
-  -boolean description
-  -double score
-  -float name
-  +sendScore()
-  +updateDescription()
-  +saveNote()
+  +boolean active
+  +long price
+  #double address
+  -double amount
+  +getCreatedat()
+  +createType()
+  +setAddress()
 }
-abstract class Story {
-  +int price
-  +float status
-  #boolean name
-  +processEmail()
-  +updateCode()
-  +processPhone()
-  +cancelActive()
+class Story {
+  -Date note
+  +boolean type
+  +String createdAt
+  +deleteQuantity()
+  +deletePhone()
 }
-class Message {
-  +long address
-  -double total
-  -double name
-  #String phone
-  +findPhone()
-  +sendActive()
+interface Message {
+  -boolean type
+  #int email
+  -Date createdAt
+  -double code
+  +boolean note
+  +createScore()
+  +findEmail()
+  +cancelId()
 }
-Notification --> Story : "*"
-Story --o Hashtag
-Hashtag --|> Notification
-note right of Hashtag : Social Media domain
+Message --o Notification
+Hashtag ..> Message : "1..*"
+Message --> Hashtag : "*"
 @enduml

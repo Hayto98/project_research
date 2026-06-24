@@ -8,40 +8,47 @@ abstract class Patient {
   -long amount
   #int quantity
   -double description
-  +setPhone()
-  +calculateType()
-  +saveAddress()
+  +setPrice()
+  +cancelStatus()
+  +processStatus()
 }
-class Appointment {
-  +int phone
-  #String active
-  -String address
-  +long email
-  +validateName()
-  +processUpdatedat()
-  +getType()
+abstract class Appointment {
+  #long address
+  +int quantity
+  #String duration
+  -String phone
+  +long score
+  +findQuantity()
+  +deleteTotal()
+  +calculateType()
 }
 class Diagnosis {
-  -float note
-  #boolean address
-  +saveCreatedat()
-  +cancelType()
-  +getCode()
-  +setScore()
+  -long updatedAt
+  -float id
+  #boolean type
+  #double createdAt
+  #float status
+  +deleteDescription()
+  +getId()
 }
 class Billing {
-  +Date type
-  +double description
-  +int email
-  +saveDescription()
+  +float status
+  +double score
+  +deleteCreatedat()
+  +getEmail()
 }
 class Ward {
-  +float createdAt
-  +float status
-  +processLevel()
+  +int updatedAt
+  +int createdAt
+  +float name
+  +double description
+  #long status
+  +deleteName()
+  +findUpdatedat()
+  +sendStatus()
 }
-Diagnosis --> Ward : "1..*"
-Ward --o Patient
+Diagnosis --o Patient
 Billing ..> Diagnosis : "1..*"
-note right of Patient : Healthcare domain
+Billing ..> Ward : "1"
+Diagnosis --> Ward : "1..*"
 @enduml

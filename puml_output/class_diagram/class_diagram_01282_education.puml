@@ -6,39 +6,41 @@ interface Teacher {
   +float status
   #boolean level
   +long quantity
-  +sendUpdatedat()
-  +findStatus()
-  +cancelDescription()
-  +updateDuration()
+  +getScore()
+  +createScore()
+  +cancelUpdatedat()
+  +validateEmail()
 }
-abstract class Enrollment {
-  -boolean price
-  -float quantity
-  +long email
-  +processActive()
+interface Enrollment {
+  -long createdAt
+  #Date note
+  -double description
+  +validateDescription()
+  +createPhone()
+  +calculatePhone()
+  +saveId()
 }
-interface Attendance {
+abstract class Attendance {
   +long note
   +float score
   #float address
   #String name
   +boolean type
-  +saveId()
-  +findStatus()
-  +validateUpdatedat()
+  +getAmount()
+  +processName()
+  +updateScore()
 }
-interface Course {
-  -long status
-  #double total
-  +int type
-  +float price
-  +getScore()
-  +validateUpdatedat()
-  +deleteStatus()
-  +processAddress()
+class Course {
+  -float updatedAt
+  -float level
+  -long email
+  -boolean status
+  +validateQuantity()
+  +cancelNote()
+  +deleteScore()
+  +validateDescription()
 }
-Attendance ..|> Teacher
-Enrollment --* Attendance
-Attendance ..> Enrollment : "*"
-note right of Teacher : Education domain
+Teacher --* Attendance
+Enrollment --|> Teacher
+Course --o Enrollment
 @enduml

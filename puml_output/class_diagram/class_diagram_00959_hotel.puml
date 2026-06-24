@@ -7,39 +7,42 @@ class Invoice {
   #boolean status
   +String price
   #Date level
-  +validateUpdatedat()
+  +processCreatedat()
 }
-abstract class Reservation {
-  -int phone
-  -float address
-  +double score
-  -Date code
-  +getDescription()
-  +getNote()
+class Reservation {
+  -long note
+  #String level
+  -int address
+  +createEmail()
+  +getUpdatedat()
+  +sendEmail()
 }
-class Housekeeping {
-  #long price
-  +boolean description
-  +double duration
-  -float type
-  +long active
-  +setActive()
+abstract class Housekeeping {
+  -long description
+  -double id
+  +Date duration
+  -double name
+  +updateAddress()
+  +processStatus()
+  +processPrice()
+  +createStatus()
 }
-interface CheckIn {
-  -float level
-  +int description
-  -long duration
-  #double status
-  +setCode()
-  +saveCreatedat()
+class CheckIn {
+  #boolean price
+  #boolean description
+  -boolean address
+  +int code
+  +double active
+  +getTotal()
 }
-class CheckOut {
-  -int description
-  +Date name
-  +long duration
-  +deleteQuantity()
+abstract class CheckOut {
+  +Date score
+  +float total
+  -float amount
+  #float status
+  +createCreatedat()
+  +processQuantity()
 }
-CheckOut ..|> Reservation
-CheckIn --* Housekeeping
-note right of Invoice : Hotel domain
+CheckIn ..|> Reservation
+Invoice --|> Housekeeping
 @enduml

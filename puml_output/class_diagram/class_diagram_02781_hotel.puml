@@ -6,38 +6,32 @@ skinparam defaultFontSize 11
 interface Booking {
   -double price
   #int quantity
-  +cancelType()
-  +cancelUpdatedat()
+  +saveDuration()
+  +validateType()
 }
-class CheckOut {
-  #long code
-  -long note
-  +sendUpdatedat()
-  +processType()
-  +updateUpdatedat()
-  +sendId()
+abstract class CheckOut {
+  -float amount
+  #long id
+  -long code
+  +updateCreatedat()
+  +calculateDuration()
+  +deleteAddress()
+  +cancelQuantity()
 }
 abstract class Housekeeping {
-  -int score
-  #String updatedAt
-  -Date createdAt
-  +long name
-  -boolean note
-  +sendPhone()
-  +sendDescription()
-  +deleteStatus()
+  -Date updatedAt
+  #double score
+  #int id
+  +deleteEmail()
+  +findLevel()
 }
-class Amenity {
-  #float level
-  #int updatedAt
-  +int duration
-  -long quantity
-  +findAmount()
-  +findNote()
-  +findActive()
+interface Amenity {
+  +float note
+  #String phone
+  +cancelUpdatedat()
+  +processActive()
+  +validateAddress()
 }
-Housekeeping --> Amenity : "1"
-Booking --o Amenity
-Booking --|> CheckOut
-note right of Booking : Hotel domain
+Housekeeping --* Amenity
+CheckOut --|> Booking
 @enduml

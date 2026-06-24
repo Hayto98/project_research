@@ -4,10 +4,10 @@ skinparam classBackgroundColor #F1F8E9
 skinparam classBorderColor #33691E
 skinparam ArrowColor #555555
 left to right direction
-actor "Branch Manager" as BranchManager
-actor "Auditor" as Auditor
-actor "Bank Teller" as BankTeller
-actor "Account Holder" as AccountHolder
+actor "Branch Manager" as BM
+actor "Auditor" as A
+actor "Bank Teller" as BT
+actor "Account Holder" as AH
 rectangle "Banking System" {
   usecase "Deposit Money" as UC_DepositMoney
   usecase "Pay Bill" as UC_PayBill
@@ -15,14 +15,14 @@ rectangle "Banking System" {
   usecase "Withdraw Cash" as UC_WithdrawCash
   usecase "Block Card" as UC_BlockCard
 }
-BranchManager --> UC_TransferFunds
-BranchManager --> UC_WithdrawCash
-Auditor --> UC_TransferFunds
-Auditor --> UC_PayBill
-Auditor --> UC_WithdrawCash
-BankTeller --> UC_TransferFunds
-BankTeller --> UC_BlockCard
-AccountHolder --> UC_BlockCard
-AccountHolder --> UC_TransferFunds
+BM --> UC_TransferFunds
+BM --> UC_WithdrawCash
+A --> UC_TransferFunds
+A --> UC_PayBill
+A --> UC_WithdrawCash
+BT --> UC_TransferFunds
+BT --> UC_BlockCard
+AH --> UC_BlockCard
+AH --> UC_TransferFunds
 UC_PayBill ..> UC_DepositMoney : <<include>>
 @enduml

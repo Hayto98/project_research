@@ -7,42 +7,38 @@ interface Shipment {
   +boolean level
   #float code
   -double status
-  +sendActive()
+  +updateQuantity()
 }
-class Payment {
-  +int phone
-  -float score
+interface Payment {
+  +float level
+  +int address
+  -float phone
   #float quantity
-  -boolean code
-  +cancelActive()
-  +saveStatus()
-  +processType()
-  +saveDuration()
+  +calculateDuration()
+  +deleteLevel()
+  +updateQuantity()
+  +getName()
 }
-class Wishlist {
-  +float quantity
-  #String price
-  +getLevel()
-  +findDescription()
-  +createStatus()
+abstract class Wishlist {
+  #boolean note
+  #Date type
+  +findNote()
+  +getNote()
+  +setId()
 }
-class Supplier {
+abstract class Supplier {
+  #long code
+  +boolean active
+  +calculatePhone()
+  +setStatus()
+}
+class Return {
   -int price
   -boolean score
-  +calculateUpdatedat()
-  +createDuration()
+  +calculateCode()
+  +processPrice()
 }
-abstract class Return {
-  #int total
-  -int type
-  -double address
-  +String email
-  -float quantity
-  +calculateId()
-}
-Wishlist --|> Supplier
-Supplier --|> Shipment
-Payment --* Wishlist
 Return --o Supplier
-note right of Shipment : Ecommerce domain
+Supplier --* Return
+Wishlist ..> Return : "0..1"
 @enduml

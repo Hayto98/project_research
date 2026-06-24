@@ -6,40 +6,42 @@ skinparam ArrowColor #555555
 class Guest {
   +Date total
   -boolean description
-  +sendPrice()
+  +saveActive()
 }
 abstract class Reservation {
-  -int price
-  #float note
-  #int quantity
-  #float level
-  +deletePhone()
+  -int phone
+  #float price
+  #int note
+  #float quantity
+  +int score
+  +sendStatus()
+  +validateAmount()
+  +processAmount()
 }
 class Payment {
-  #int description
-  #double active
-  +createUpdatedat()
-  +sendUpdatedat()
-  +sendName()
-  +sendDuration()
+  -int level
+  #int total
+  #String note
+  +deleteCreatedat()
+  +getStatus()
+  +sendAddress()
 }
 class Housekeeping {
-  #long email
-  -long amount
-  +String description
-  #Date duration
-  +updateLevel()
+  -int email
+  +Date address
+  #float type
+  +createScore()
 }
-abstract class Restaurant {
+interface Restaurant {
+  +float note
   -Date price
   -float total
   #double name
   -long quantity
-  -String updatedAt
-  +updateId()
-  +findStatus()
+  +findNote()
+  +calculateDuration()
+  +saveType()
 }
-Guest --> Housekeeping : "1"
-Housekeeping ..|> Payment
-note right of Guest : Hotel domain
+Reservation ..> Guest : "1"
+Guest --o Restaurant
 @enduml

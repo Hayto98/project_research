@@ -6,54 +6,59 @@ skinparam defaultFontSize 13
 abstract class LabTest {
   +double email
   -float duration
-  +validateAmount()
-  +sendUpdatedat()
+  +validateScore()
+  +calculateAddress()
 }
-class Hospital {
-  +long updatedAt
-  +long total
-  +String phone
-  +updateNote()
-  +processCode()
+interface Hospital {
+  -float description
+  -int duration
+  -int updatedAt
+  +getLevel()
+  +cancelTotal()
+  +updateId()
 }
 class Prescription {
-  -float type
-  #long level
-  -String status
-  -float score
-  #Date id
-  +createDescription()
-  +sendDescription()
-  +sendScore()
-  +setUpdatedat()
+  +float note
+  -Date type
+  -boolean code
+  +updateUpdatedat()
 }
 class Billing {
-  #boolean level
-  -int description
-  +calculateDescription()
-  +createType()
+  -int address
+  #int type
+  #boolean status
+  +float quantity
+  +float level
+  +getType()
+  +savePrice()
+  +saveQuantity()
 }
-class Appointment {
-  #String id
-  -long code
-  +processLevel()
-  +setPrice()
+interface Appointment {
+  -long amount
+  +String createdAt
+  #String total
+  #String description
+  -long quantity
+  +deleteDuration()
+  +cancelActive()
 }
 class Ward {
-  -int note
-  -double quantity
-  +long address
-  +saveDuration()
+  -int status
+  -double updatedAt
+  +long note
+  +Date quantity
+  #String address
+  +updateQuantity()
 }
-class Treatment {
-  -boolean note
-  -String email
-  +processQuantity()
+abstract class Treatment {
+  +double total
+  -boolean score
+  -long note
+  #String code
+  +deleteEmail()
+  +setStatus()
+  +validateStatus()
 }
-Billing --> Prescription : "1"
+Prescription ..> Treatment : "1"
 Appointment --|> Prescription
-Treatment --* LabTest
-Prescription ..> Ward : "1"
-LabTest --* Treatment
-note right of LabTest : Healthcare domain
 @enduml

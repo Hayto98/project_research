@@ -6,35 +6,31 @@ skinparam defaultFontSize 11
 abstract class Restaurant {
   #String description
   -double address
-  +findCode()
+  +validateStatus()
 }
 class Service {
+  -String amount
   -double id
-  #boolean total
-  -String status
-  +calculateDuration()
-  +createDescription()
-  +updateUpdatedat()
+  +updatePrice()
+  +setId()
+  +validateLevel()
 }
-abstract class Payment {
-  #double amount
-  -double level
-  +calculateDuration()
+class Payment {
+  -String duration
+  +float email
+  #boolean description
+  #double updatedAt
+  -double active
+  +createPrice()
+  +setId()
   +updateAmount()
-  +saveId()
-  +processScore()
+  +getTotal()
 }
-abstract class Staff {
-  #float name
-  -long duration
-  #int total
-  +double status
-  +findUpdatedat()
-  +sendName()
-  +setEmail()
+class Staff {
+  #double type
+  #long score
+  +getName()
 }
-Staff ..> Service : "1..*"
-Staff --* Restaurant
-Restaurant --o Service
-note right of Restaurant : Hotel domain
+Staff --> Restaurant : "1..*"
+Payment ..|> Staff
 @enduml

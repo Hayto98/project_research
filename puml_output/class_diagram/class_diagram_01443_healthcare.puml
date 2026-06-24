@@ -6,54 +6,60 @@ class Hospital {
   +boolean active
   +boolean quantity
   -float code
-  +calculateQuantity()
+  +processType()
 }
 class Nurse {
-  -long duration
-  +long quantity
-  -float code
-  #long price
-  +calculateNote()
-  +cancelCode()
-  +cancelDuration()
-  +sendPrice()
+  #boolean phone
+  -long quantity
+  -String code
+  +updateLevel()
+  +validateDescription()
+  +validateTotal()
 }
 class Doctor {
-  -int phone
-  +String level
-  +long score
-  +cancelUpdatedat()
-  +processTotal()
+  +int price
+  -boolean note
+  #double code
+  +int active
+  +int duration
+  +updateDescription()
+  +findDescription()
+  +createScore()
 }
-interface LabTest {
-  #Date duration
-  +int note
-  -long active
-  +getName()
-  +saveDuration()
-  +getEmail()
+abstract class LabTest {
+  +float active
+  -long updatedAt
+  #long note
+  +String duration
+  #boolean description
+  +calculateScore()
 }
 class Appointment {
   +String name
   #Date active
   +long level
   -int code
-  +deleteNote()
+  +createCreatedat()
 }
-class Prescription {
+abstract class Prescription {
+  #float updatedAt
   -double status
   -int amount
-  -String active
-  +saveStatus()
-  +saveScore()
-  +deleteEmail()
+  +processCode()
+  +cancelId()
+  +calculateUpdatedat()
+  +updateName()
 }
-abstract class Diagnosis {
-  #long address
-  -int amount
-  +updateDuration()
+interface Diagnosis {
+  #long email
+  +Date total
+  -long name
+  +saveEmail()
+  +sendEmail()
 }
-Hospital --> Nurse : "0..1"
-Appointment --> Doctor : "1"
-note right of Hospital : Healthcare domain
+Hospital ..|> Diagnosis
+Appointment --> Nurse : "1..*"
+Appointment --o Hospital
+LabTest --|> Nurse
+Doctor --o Hospital
 @enduml

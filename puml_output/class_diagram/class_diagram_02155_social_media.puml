@@ -6,62 +6,60 @@ skinparam shadowing true
 abstract class Group {
   -Date type
   #double duration
-  +setAmount()
-  +setId()
-  +cancelActive()
+  +createAddress()
+  +createTotal()
+  +calculateAddress()
 }
 class Message {
-  +long code
-  -String quantity
-  +int active
-  #long level
-  +double description
-  +processId()
+  #Date level
+  +double active
+  +findScore()
 }
-abstract class Notification {
-  #double status
-  #long quantity
-  +float updatedAt
-  +createAddress()
-  +validateCode()
-  +cancelStatus()
-  +validateDuration()
+interface Notification {
+  +String description
+  +boolean createdAt
+  -int phone
+  -Date total
+  +processTotal()
 }
-interface Album {
+class Album {
+  #long description
+  +float status
+  -long quantity
+  -long updatedAt
+  +boolean type
+  +calculateCreatedat()
+}
+interface Post {
   +long type
   +float amount
-  +setNote()
-  +saveAddress()
-  +calculateId()
-  +cancelStatus()
-}
-class Post {
-  +Date active
-  -long address
-  +deleteAddress()
-  +deleteQuantity()
-  +saveNote()
+  +cancelLevel()
+  +getDuration()
+  +findNote()
+  +saveAmount()
 }
 class Follower {
-  #Date description
-  -double note
-  +calculateEmail()
-  +findTotal()
-  +setQuantity()
+  +Date id
+  -long status
+  #long quantity
+  +float name
+  -int address
+  +deletePhone()
+  +deleteTotal()
+  +setScore()
 }
-class Report {
-  #double status
-  -float id
-  #String score
-  -float price
-  +setPrice()
-  +sendNote()
-  +updateDescription()
-  +createLevel()
+abstract class Report {
+  #Date name
+  -double description
+  -float note
+  +deleteName()
+  +sendUpdatedat()
+  +validateStatus()
+  +processNote()
 }
-Follower --> Post : "1..*"
-Album --* Notification
-Notification --o Message
+Group ..|> Notification
+Post --> Report : "1..*"
+Group --> Report : "*"
 Follower --* Album
-note right of Group : Social Media domain
+Report --|> Post
 @enduml

@@ -5,43 +5,40 @@ skinparam classBorderColor #2C7DA0
 interface Service {
   -Date updatedAt
   -int phone
-  +processId()
-  +deleteScore()
+  +validateName()
+  +updatePrice()
 }
 class Amenity {
+  -long address
   +int type
   #String status
-  #String address
-  -int phone
-  +setNote()
-  +updateDuration()
+  +cancelPhone()
 }
 class CheckIn {
-  -String id
-  +Date email
-  +boolean duration
-  +cancelQuantity()
-  +calculateCode()
+  #Date status
+  -int note
+  +long createdAt
+  +sendCreatedat()
 }
 class Room {
-  +float status
-  -long name
-  #boolean updatedAt
-  +findLevel()
-  +calculateAddress()
-  +cancelDescription()
+  #Date id
+  #Date level
+  #Date amount
+  +cancelLevel()
+  +setDuration()
+  +getAddress()
 }
 class CheckOut {
-  #Date address
-  #double note
-  +boolean type
-  +long total
-  +findPrice()
-  +findCreatedat()
-  +validateNote()
+  +boolean score
+  +float amount
+  +float status
+  +calculatePhone()
+  +validateType()
+  +saveLevel()
+  +updateNote()
 }
-Service --> Room : "1"
-CheckOut ..> Room : "0..1"
-Amenity --* Service
-note right of Service : Hotel domain
+CheckOut ..> CheckIn : "*"
+CheckIn --* Amenity
+CheckIn --o CheckOut
+Room --> CheckOut : "*"
 @enduml

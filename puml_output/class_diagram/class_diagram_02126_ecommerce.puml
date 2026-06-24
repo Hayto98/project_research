@@ -6,60 +6,52 @@ class Invoice {
   +String id
   #double description
   -int type
-  +cancelStatus()
-  +setPhone()
-  +sendActive()
-  +saveType()
+  +processId()
+  +updateName()
+  +createAddress()
+  +sendPhone()
 }
-class Warehouse {
-  +String type
-  +Date phone
-  #float quantity
+interface Warehouse {
+  +String email
+  +Date amount
+  #float type
+  +float phone
+  -Date quantity
+  +calculateCode()
+  +deleteCode()
   +processEmail()
 }
-abstract class Review {
-  -String level
-  -String email
-  +float id
-  +boolean code
+class Review {
+  +long code
+  +float address
   +saveStatus()
-  +createActive()
+  +getTotal()
 }
-class Customer {
-  +float createdAt
-  #double phone
-  +long duration
-  #float name
-  #boolean total
-  +sendCreatedat()
-  +findName()
-  +findUpdatedat()
-  +validateType()
+interface Customer {
+  #long status
+  -int email
+  -int active
+  +updateEmail()
 }
-interface Wishlist {
-  #double score
-  -float level
-  -float updatedAt
-  #Date active
-  +saveTotal()
-  +findPhone()
-  +getCreatedat()
-  +deleteEmail()
+class Wishlist {
+  #int createdAt
+  -float phone
+  -boolean total
+  #long duration
+  #boolean name
+  +calculateActive()
+  +sendUpdatedat()
 }
-class Coupon {
-  #boolean total
-  -float name
-  #long amount
-  #double code
-  +int quantity
-  +validateEmail()
-  +processAmount()
-  +cancelEmail()
+abstract class Coupon {
+  +int note
+  +long active
+  +float duration
+  -double total
+  +int phone
+  +createEmail()
 }
-Review --|> Invoice
-Invoice ..|> Review
-Coupon --> Customer : "1"
-Customer ..|> Invoice
 Coupon --o Wishlist
-note right of Invoice : Ecommerce domain
+Coupon --> Review : "*"
+Invoice ..> Warehouse : "1..*"
+Review --o Coupon
 @enduml

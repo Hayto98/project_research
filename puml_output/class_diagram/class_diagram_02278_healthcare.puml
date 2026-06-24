@@ -8,35 +8,34 @@ class MedicalRecord {
   #String score
   #float createdAt
   -boolean status
-  +getTotal()
-  +cancelLevel()
-}
-class Prescription {
-  #Date id
-  -int address
-  +double status
-  +sendId()
-  +sendTotal()
-  +validateTotal()
-}
-class Doctor {
-  #float quantity
-  -Date description
-  #double createdAt
-  -double level
-  +long total
-  +validateQuantity()
-  +setNote()
-  +sendCode()
-}
-class Patient {
-  #Date address
-  +String type
-  #Date score
+  +calculateEmail()
   +calculateTotal()
 }
-Patient --|> MedicalRecord
-Prescription ..> Doctor : "1..*"
-Prescription --* Patient
-note right of MedicalRecord : Healthcare domain
+abstract class Prescription {
+  -String score
+  #Date updatedAt
+  -int id
+  +deleteActive()
+  +findCode()
+}
+interface Doctor {
+  -double active
+  -Date total
+  +calculatePhone()
+  +validateCreatedat()
+  +cancelUpdatedat()
+  +processActive()
+}
+class Patient {
+  -long note
+  -long price
+  +double level
+  #String total
+  +int description
+  +createLevel()
+  +validateName()
+  +deleteDescription()
+}
+MedicalRecord ..> Doctor : "1"
+Patient --o Prescription
 @enduml

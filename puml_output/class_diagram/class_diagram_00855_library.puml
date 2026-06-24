@@ -7,43 +7,49 @@ class Fine {
   +boolean createdAt
   -long duration
   #Date score
-  +setType()
-  +sendCreatedat()
-  +sendLevel()
-  +processAddress()
+  +getLevel()
+  +validateUpdatedat()
+  +getScore()
+  +calculateNote()
 }
-class Publisher {
-  #long description
-  #float phone
-  +processQuantity()
+interface Publisher {
+  #long address
+  #float description
+  #Date id
+  #String level
+  -long phone
+  +deleteDescription()
+  +createUpdatedat()
+  +setLevel()
 }
 class Book {
-  -Date address
-  -Date note
-  +long amount
-  +createScore()
-  +processDescription()
-  +createName()
-  +createQuantity()
+  -long amount
+  #double email
+  +float quantity
+  -String name
+  -long score
+  +sendEmail()
+  +updateId()
 }
-interface Renewal {
-  #float createdAt
-  -Date phone
-  #Date email
-  +validateId()
-  +createScore()
-  +getAmount()
+class Renewal {
+  +long active
+  #String quantity
+  +float phone
+  -Date address
+  +sendAmount()
+  +updatePrice()
+  +findActive()
 }
 class Branch {
-  -boolean score
-  +Date id
-  #String type
-  #float createdAt
-  +calculateAmount()
-  +cancelQuantity()
+  +double score
+  +boolean name
+  -long level
+  +String active
+  +validateId()
+  +getPrice()
 }
-Fine ..> Branch : "0..1"
-Fine --> Renewal : "*"
+Branch --> Renewal : "*"
 Branch --> Book : "1..*"
-note right of Fine : Library domain
+Renewal --|> Publisher
+Publisher --|> Branch
 @enduml

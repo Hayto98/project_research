@@ -6,53 +6,52 @@ skinparam defaultFontSize 13
 abstract class Comment {
   -double note
   #float total
-  +updateTotal()
+  +createId()
 }
-abstract class Hashtag {
-  +String address
-  +float status
-  -double price
-  +boolean id
-  +setActive()
-  +processAddress()
-  +saveActive()
-  +saveEmail()
+class Hashtag {
+  +float note
+  +String email
+  +float address
+  -double status
+  +boolean price
+  +getLevel()
+  +saveType()
+  +findDuration()
+  +saveAmount()
 }
 class Profile {
-  +float score
+  -float address
+  +float updatedAt
+  -String score
   -String total
-  -String quantity
-  +createPhone()
-  +createPrice()
-  +saveType()
+  +createQuantity()
+  +deleteCode()
+  +getNote()
 }
-class Group {
-  +String status
-  #long email
-  +deleteAddress()
-  +updatePhone()
-  +setId()
+abstract class Group {
+  +Date phone
+  -long status
+  +long level
+  +long email
+  +Date code
+  +deleteId()
 }
 interface Follower {
   -int status
   -Date updatedAt
   +int name
-  +sendQuantity()
-  +findDuration()
+  +cancelAmount()
+  +createQuantity()
 }
-class Report {
-  #float score
+interface Report {
+  -boolean total
+  #double score
   -Date email
-  -long phone
-  +int total
-  -long address
-  +updateActive()
-  +createActive()
-  +validateName()
+  +cancelUpdatedat()
+  +cancelId()
+  +processStatus()
 }
-Group --* Comment
-Profile --* Group
-Report --* Hashtag
-Hashtag ..> Profile : "*"
-note right of Comment : Social Media domain
+Hashtag --* Profile
+Profile --> Hashtag : "1..*"
+Follower --|> Profile
 @enduml

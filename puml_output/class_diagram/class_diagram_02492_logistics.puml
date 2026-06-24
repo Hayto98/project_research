@@ -5,33 +5,32 @@ skinparam shadowing true
 interface Shipment {
   #int address
   #boolean updatedAt
-  +setEmail()
+  +processAmount()
 }
-interface FuelLog {
+class FuelLog {
   #int status
   #long active
   -float name
-  +setScore()
-  +findDuration()
-  +findId()
+  +validateEmail()
+  +sendAmount()
+  +saveTotal()
 }
-class Depot {
-  -float id
-  #double score
-  -boolean note
-  +sendDescription()
+interface Depot {
+  +boolean id
+  #Date amount
+  +calculateScore()
+  +findLevel()
+  +getCode()
+  +calculateCode()
 }
-class Customer {
-  #long address
-  +long price
-  +float id
-  +deletePhone()
-  +updateEmail()
-  +updatePhone()
-  +processDuration()
+abstract class Customer {
+  -int active
+  #long description
+  +sendTotal()
+  +findDescription()
+  +cancelAddress()
+  +calculateLevel()
 }
-Depot --* Shipment
-Customer ..|> Shipment
-Depot --|> Customer
-note right of Shipment : Logistics domain
+Depot --> Shipment : "*"
+FuelLog ..|> Customer
 @enduml

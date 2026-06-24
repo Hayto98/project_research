@@ -6,59 +6,66 @@ interface Cart {
   -float updatedAt
   +double active
   #float createdAt
-  +createLevel()
+  +calculateScore()
 }
-class Supplier {
-  #String duration
-  #int code
-  +createQuantity()
-  +saveDuration()
-  +calculateUpdatedat()
-  +findActive()
+interface Supplier {
+  #String code
+  #int duration
+  +getNote()
+  +sendPrice()
+  +setTotal()
+  +cancelPrice()
 }
-class Payment {
+interface Payment {
   -double updatedAt
-  -float quantity
-  -int type
-  #boolean address
-  +validateEmail()
+  -double active
+  -double address
+  -int quantity
+  #boolean duration
+  +calculateCreatedat()
 }
-abstract class Coupon {
-  #Date type
+class Coupon {
+  -boolean total
+  #float type
   -float name
-  -long level
+  -long score
   -String createdAt
-  +int email
-  +validateActive()
-  +calculateQuantity()
-  +deleteStatus()
+  +createNote()
+  +validateCode()
 }
-abstract class Warehouse {
-  -float score
-  +int id
-  #int address
-  -String total
-  +validateName()
-  +cancelAmount()
+class Warehouse {
+  #String active
+  -long price
+  #String quantity
+  #long description
+  +processDescription()
+  +deleteTotal()
+  +updateUpdatedat()
+  +createCode()
 }
 class Review {
-  #boolean phone
-  +float type
-  #int email
-  #Date code
-  +String price
-  +processPrice()
-  +validateNote()
-  +createEmail()
+  #int code
+  -long amount
+  -Date phone
+  -String name
+  #boolean level
+  +createType()
+  +processId()
+  +updateStatus()
+  +calculateType()
 }
-class Category {
-  #long amount
-  -int email
-  +calculatePhone()
-  +findId()
-  +setName()
+interface Category {
+  #long duration
+  -double id
+  -double status
+  +deleteStatus()
+  +deleteName()
+  +createAddress()
 }
-Coupon --* Cart
-Review --* Coupon
-note right of Cart : Ecommerce domain
+Cart --* Supplier
+Category --* Review
+Category ..|> Coupon
+Payment ..> Coupon : "1..*"
+Review --|> Cart
+Cart --o Category
 @enduml

@@ -5,55 +5,53 @@ interface Enrollment {
   -String email
   +boolean duration
   +boolean updatedAt
-  +saveDuration()
-  +saveActive()
-  +calculateNote()
-  +calculateActive()
+  +validatePrice()
+  +setId()
+  +deleteStatus()
+  +updateNote()
 }
-class Book {
-  #double updatedAt
-  +boolean type
-  -double active
-  #String price
-  +calculateScore()
-  +processUpdatedat()
-  +saveAddress()
+abstract class Book {
+  +double price
+  #double active
+  #double quantity
+  +boolean level
+  -double score
+  +sendAddress()
 }
-class Assignment {
-  -boolean amount
-  #long id
-  -long name
-  +findEmail()
-  +saveEmail()
-  +calculateType()
-  +saveCreatedat()
+abstract class Assignment {
+  +String updatedAt
+  -boolean address
+  #long name
+  -long createdAt
+  #double amount
+  +sendPrice()
+  +sendAddress()
+  +saveTotal()
 }
-class Grade {
-  -Date createdAt
-  #Date id
-  -int level
-  +setCode()
+abstract class Grade {
+  +float createdAt
+  -Date code
+  #Date duration
+  -int score
+  #String id
+  +getLevel()
 }
 class Classroom {
   #long name
   #long status
-  +sendId()
-  +processId()
-  +validateDescription()
+  +createDescription()
+  +updateDuration()
+  +processTotal()
 }
-abstract class Exam {
+class Exam {
+  +float description
+  -float note
+  -int price
   -String id
-  #long status
-  #String note
-  +int address
-  +double createdAt
-  +updateId()
-  +calculateUpdatedat()
-  +getDescription()
-  +sendDuration()
+  +setCreatedat()
+  +setName()
+  +processAddress()
 }
-Classroom ..|> Book
-Grade ..|> Enrollment
-Exam --> Grade : "*"
-note right of Enrollment : Education domain
+Book --o Exam
+Grade --|> Book
 @enduml

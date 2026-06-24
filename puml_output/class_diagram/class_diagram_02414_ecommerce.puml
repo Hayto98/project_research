@@ -7,48 +7,42 @@ class Cart {
   +boolean phone
   -boolean total
   #int duration
-  +getPrice()
-  +getAddress()
-  +validateActive()
+  +calculateId()
+  +createPrice()
+  +sendTotal()
 }
-abstract class Payment {
-  #String phone
-  +double duration
-  -Date level
-  +String price
-  +deleteLevel()
-  +getStatus()
-  +deleteCode()
+class Payment {
+  -Date active
+  #Date total
+  -Date quantity
+  -boolean phone
+  +deleteNote()
 }
-class Shipment {
-  +float level
-  +Date description
-  #float total
-  +Date code
-  #long score
-  +updateLevel()
-  +calculateActive()
-  +setCode()
+abstract class Shipment {
+  +int amount
+  #String code
+  #String email
+  -boolean duration
+  +double id
+  +setNote()
 }
 class Invoice {
-  #boolean email
-  #float duration
-  #long phone
-  +findTotal()
-  +setId()
-  +deleteCreatedat()
+  -int createdAt
+  #float email
+  +getDescription()
+  +createTotal()
+  +setQuantity()
+  +getStatus()
 }
-class Return {
-  +int email
-  -long level
-  +Date updatedAt
-  +validateId()
-  +savePrice()
-  +sendAddress()
+interface Return {
+  +long code
+  -Date status
+  +createStatus()
+  +findPrice()
+  +createDescription()
 }
-Return --|> Invoice
-Cart --o Invoice
-Return --o Cart
-Cart --* Shipment
-note right of Cart : Ecommerce domain
+Shipment ..> Return : "*"
+Cart ..|> Return
+Payment ..|> Return
+Shipment ..|> Payment
 @enduml

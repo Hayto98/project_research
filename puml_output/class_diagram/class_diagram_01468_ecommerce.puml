@@ -6,43 +6,40 @@ skinparam defaultFontSize 13
 abstract class Invoice {
   #Date name
   +String id
-  +updateAmount()
+  +validateNote()
 }
 class Return {
-  -boolean score
-  #float code
-  +int type
-  +deleteQuantity()
-  +getEmail()
+  #String active
+  -long amount
+  #boolean score
+  +processActive()
+  +getPrice()
 }
-interface Warehouse {
-  -Date total
-  #String type
-  +boolean note
-  +deleteActive()
-  +setDescription()
-  +cancelEmail()
-  +validateAddress()
+class Warehouse {
+  #Date quantity
+  +Date id
+  -double email
+  +createAmount()
+  +deleteType()
+  +findDuration()
+  +cancelStatus()
 }
-interface Cart {
-  +float name
-  #String code
-  +deleteCreatedat()
-  +setCreatedat()
-  +saveDescription()
+class Cart {
+  -long description
+  #String active
+  +Date code
+  +float duration
+  +float email
+  +cancelPrice()
 }
-abstract class Supplier {
-  -float price
-  +double createdAt
-  +float address
-  +double phone
-  +findAddress()
+class Supplier {
+  #int createdAt
+  -long code
+  -int duration
   +sendPhone()
-  +processPrice()
+  +calculateAmount()
+  +validateType()
 }
-Supplier --|> Warehouse
-Cart --|> Warehouse
-Return --* Supplier
-Warehouse ..> Cart : "1"
-note right of Invoice : Ecommerce domain
+Cart ..|> Return
+Cart ..> Warehouse : "1..*"
 @enduml

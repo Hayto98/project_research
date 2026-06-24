@@ -7,47 +7,48 @@ abstract class Diagnosis {
   +long createdAt
   +double price
   +setPrice()
-  +validateQuantity()
-  +saveType()
+  +updateName()
+  +saveName()
 }
 class MedicalRecord {
-  #Date score
-  #float total
-  #double price
-  #double status
-  +calculateAddress()
-  +getId()
+  #boolean type
+  -boolean quantity
+  -Date active
+  +Date level
+  +findPrice()
+  +processType()
+  +saveNote()
+  +saveCreatedat()
 }
 class Prescription {
-  -float note
-  +float quantity
-  +String level
-  #long status
-  +getPhone()
-  +validateUpdatedat()
+  -float name
+  -long level
+  +updateName()
+  +setDuration()
+  +createPrice()
 }
 class Ward {
-  -boolean email
-  -int amount
-  +updateScore()
-  +saveId()
+  +long status
+  -Date email
+  +float createdAt
+  +calculateLevel()
+  +deleteQuantity()
+  +updateQuantity()
 }
 class Patient {
-  +long address
-  #Date level
-  +savePrice()
+  +float phone
+  +int active
+  #Date quantity
+  +setQuantity()
 }
 class Insurance {
-  +int name
-  #long active
-  #Date duration
-  #String note
-  +boolean id
-  +createScore()
+  +long address
+  #Date level
+  +findStatus()
 }
-Ward --> Diagnosis : "*"
-Ward --o MedicalRecord
-Patient --> Ward : "0..1"
-Insurance --|> MedicalRecord
-note right of Diagnosis : Healthcare domain
+MedicalRecord ..> Ward : "1"
+Patient ..> Diagnosis : "*"
+Diagnosis ..|> MedicalRecord
+Patient --> Prescription : "1"
+Diagnosis --|> Patient
 @enduml

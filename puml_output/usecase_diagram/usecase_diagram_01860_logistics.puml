@@ -1,9 +1,9 @@
 @startuml
 skinparam monochrome true
 left to right direction
-actor "Dispatcher" as Dispatcher
-actor "Driver" as Driver
-actor "Customer" as Customer
+actor "Dispatcher" as D
+actor "Driver" as D1
+actor "Customer" as C
 rectangle "Logistics System" {
   usecase "Load Package" as UC_LoadPackage
   usecase "Assign Route" as UC_AssignRoute
@@ -14,12 +14,12 @@ rectangle "Logistics System" {
   usecase "Update Inventory" as UC_UpdateInventory
   usecase "Deliver Package" as UC_DeliverPackage
 }
-Dispatcher --> UC_LoadPackage
-Dispatcher --> UC_TrackShipment
-Dispatcher --> UC_SchedulePickup
-Driver --> UC_LoadPackage
-Driver --> UC_SchedulePickup
-Customer --> UC_UpdateInventory
-Customer --> UC_DeliverPackage
+D --> UC_LoadPackage
+D --> UC_TrackShipment
+D --> UC_SchedulePickup
+D1 --> UC_LoadPackage
+D1 --> UC_SchedulePickup
+C --> UC_UpdateInventory
+C --> UC_DeliverPackage
 UC_LoadPackage ..> UC_SchedulePickup : <<include>>
 @enduml

@@ -8,52 +8,46 @@ class Loan {
   #boolean code
   -float updatedAt
   #float note
-  +calculateEmail()
-  +getAddress()
+  +saveType()
+  +findAmount()
 }
 class Transfer {
-  -Date price
-  +int description
-  #boolean address
-  +double code
-  +createQuantity()
+  -Date address
+  -int description
+  +validatePrice()
+  +processAddress()
+  +cancelUpdatedat()
 }
-class Deposit {
-  +float note
-  #int price
-  +deleteTotal()
+interface Deposit {
+  +float total
+  #boolean status
+  +validateLevel()
+  +processLevel()
 }
-interface Beneficiary {
-  -boolean description
-  -int createdAt
-  #float type
-  #float phone
-  +long address
-  +getStatus()
+class Beneficiary {
+  #double quantity
+  +float updatedAt
+  #int name
+  +int note
+  +updatePhone()
+  +sendLevel()
+  +updateNote()
+  +sendCode()
+}
+class Transaction {
+  -double duration
+  #double type
+  +Date phone
   +calculateScore()
-  +updateTotal()
 }
-abstract class Transaction {
-  +long price
-  #int active
-  +double quantity
-  +validateEmail()
-  +deleteAddress()
-  +processScore()
-  +sendType()
+class Branch {
+  #int status
+  -double total
+  +sendScore()
+  +getScore()
 }
-abstract class Branch {
-  #int amount
-  +double level
-  -float phone
-  -boolean total
-  +boolean createdAt
-  +findAddress()
-  +deleteTotal()
-  +saveCreatedat()
-  +findAddress()
-}
-Transaction ..> Branch : "1..*"
-Branch --* Transfer
-note right of Loan : Banking domain
+Transfer ..> Deposit : "0..1"
+Transfer --> Beneficiary : "*"
+Deposit ..|> Branch
+Deposit --> Beneficiary : "*"
 @enduml

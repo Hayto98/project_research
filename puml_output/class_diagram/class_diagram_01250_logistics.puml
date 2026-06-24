@@ -6,20 +6,22 @@ skinparam shadowing true
 class FuelLog {
   +double note
   +float amount
-  +deleteTotal()
-  +cancelCreatedat()
-  +deleteDescription()
+  +saveAddress()
+  +getAddress()
+  +saveDuration()
 }
 class Route {
-  +float quantity
-  +String duration
-  +createDescription()
-}
-abstract class DeliveryNote {
-  #float address
-  +boolean total
-  +sendStatus()
+  -float description
+  -float code
+  +float name
   +setDescription()
+}
+class DeliveryNote {
+  -boolean description
+  +boolean type
+  +float code
+  #String address
+  +saveQuantity()
 }
 abstract class Manifest {
   #float type
@@ -27,20 +29,18 @@ abstract class Manifest {
   +long id
   -int level
   +Date description
-  +calculateQuantity()
+  +findAmount()
 }
 class Warehouse {
+  #double phone
   -double price
   +String type
-  #float active
-  -String total
-  +calculateNote()
-  +deleteUpdatedat()
-  +findId()
-  +getLevel()
+  +processQuantity()
+  +getUpdatedat()
+  +sendCode()
+  +processType()
 }
-FuelLog --|> Manifest
-Route ..|> Warehouse
-Warehouse ..> Manifest : "1..*"
-note right of FuelLog : Logistics domain
+Route ..> Warehouse : "1"
+FuelLog --|> DeliveryNote
+Manifest ..|> FuelLog
 @enduml

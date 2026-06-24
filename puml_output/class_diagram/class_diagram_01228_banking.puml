@@ -9,57 +9,55 @@ interface Beneficiary {
   +float quantity
   +Date updatedAt
   +Date amount
-  +deleteCreatedat()
-  +deleteStatus()
-  +cancelUpdatedat()
+  +deleteScore()
+  +cancelNote()
+  +getDuration()
 }
 class Card {
-  -int note
-  -double phone
-  +int id
-  #int name
-  -int code
-  +setTotal()
+  -double level
+  #float updatedAt
+  +deleteCode()
+  +processCode()
+  +calculateId()
+  +validatePhone()
 }
-interface Transaction {
+abstract class Transaction {
+  +Date price
+  +double type
+  +String status
+  +sendType()
+}
+abstract class Deposit {
   +int type
   #double code
   #long email
   +int createdAt
-  +updateName()
-}
-class Deposit {
-  -double name
-  -boolean price
-  #double amount
-  -int description
-  +long quantity
-  +sendActive()
-  +cancelCreatedat()
-  +deleteTotal()
+  +processDuration()
 }
 class Branch {
+  #float price
+  #float name
+  +Date duration
+  -double amount
+  +cancelId()
+  +createStatus()
+  +validatePrice()
+  +deleteDuration()
+}
+abstract class Loan {
+  #Date description
+  #boolean phone
+  -float active
+  +calculateAddress()
+  +setNote()
+}
+class Transfer {
   -double level
   -double duration
   -int updatedAt
   #String email
-  +updateId()
+  +sendId()
 }
-class Loan {
-  +int id
-  #boolean total
-  -String quantity
-  -Date name
-  +calculateQuantity()
-  +cancelAmount()
-}
-class Transfer {
-  #double active
-  #int address
-  +cancelPrice()
-  +setLevel()
-}
-Transaction --o Beneficiary
-Beneficiary --o Card
-note right of Beneficiary : Banking domain
+Transaction ..> Transfer : "1"
+Deposit --|> Transaction
 @enduml

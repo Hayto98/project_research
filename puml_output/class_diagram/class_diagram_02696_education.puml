@@ -8,53 +8,60 @@ interface Library {
   -Date createdAt
   +double total
   -boolean description
-  +cancelStatus()
-  +calculateDescription()
-  +processId()
-  +sendName()
+  +sendDescription()
+  +sendActive()
+  +setStatus()
+  +deleteEmail()
 }
-class Assignment {
-  +Date description
-  +String name
-  +calculateNote()
+abstract class Assignment {
+  #String type
+  +float id
+  #String active
+  +savePhone()
+  +deleteScore()
 }
 class Enrollment {
-  #double active
-  +String total
-  +findUpdatedat()
+  -String name
+  +boolean price
+  +cancelScore()
+  +deleteAmount()
+  +sendStatus()
+  +setStatus()
 }
-abstract class Classroom {
-  #Date amount
-  -String score
-  +validateScore()
+class Classroom {
+  +int updatedAt
+  #float total
+  +cancelTotal()
+  +setUpdatedat()
+  +sendPhone()
+  +saveActive()
 }
 class Course {
   +Date price
   -float email
   +double type
   #int phone
-  +getDuration()
-  +findStatus()
-  +setStatus()
+  +setName()
+  +setPhone()
+  +calculateDescription()
 }
 class Department {
-  -float status
-  #long address
-  #double price
-  -int id
-  +boolean duration
-  +deleteLevel()
-  +validateEmail()
+  -String status
+  -double quantity
+  +deleteQuantity()
 }
-interface Book {
-  +Date code
-  +String note
-  -int price
-  -Date quantity
-  +deleteName()
-  +sendScore()
+abstract class Book {
+  +boolean score
+  +int price
+  #long type
+  -boolean updatedAt
+  +setDescription()
+  +createName()
+  +cancelPrice()
 }
-Enrollment --* Library
-Book ..> Enrollment : "1"
-note right of Library : Education domain
+Enrollment ..> Assignment : "0..1"
+Library ..|> Enrollment
+Enrollment ..|> Department
+Assignment --|> Department
+Course ..|> Book
 @enduml

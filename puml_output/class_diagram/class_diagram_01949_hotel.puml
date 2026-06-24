@@ -6,52 +6,46 @@ class Service {
   +Date address
   -String phone
   #int status
-  +validateAmount()
+  +validateDuration()
 }
 class Amenity {
-  +double id
-  -Date updatedAt
-  #float amount
-  #Date email
-  +calculateId()
-}
-class Room {
-  -long email
-  -int duration
+  +long active
+  +double address
   -Date id
-  -long quantity
-  -double description
-  +findTotal()
+  #float updatedAt
+  +getDuration()
 }
-interface Restaurant {
-  #String name
-  +long score
-  #double code
-  +float description
-  +calculateDuration()
-  +setUpdatedat()
+abstract class Room {
+  #long code
+  #long type
+  +calculatePhone()
 }
-interface Guest {
-  +Date type
-  +boolean note
-  +Date quantity
-  -Date email
-  +Date active
-  +updateQuantity()
-  +setQuantity()
-  +createUpdatedat()
-  +processUpdatedat()
+class Restaurant {
+  -double quantity
+  -Date price
+  #Date amount
+  #String address
+  #double phone
+  +saveId()
+  +saveActive()
+  +getLevel()
 }
-class Payment {
-  +int name
-  #String code
-  +sendCode()
-  +setStatus()
-  +processName()
+class Guest {
+  #double status
+  +float address
+  +calculateTotal()
+  +findLevel()
 }
-Guest ..|> Restaurant
-Room --* Service
-Room --|> Restaurant
-Restaurant --o Room
-note right of Service : Hotel domain
+abstract class Payment {
+  #Date updatedAt
+  #double active
+  +getAmount()
+  +createName()
+  +processDescription()
+  +updateCode()
+}
+Room ..> Service : "0..1"
+Guest ..> Amenity : "*"
+Payment ..> Amenity : "*"
+Amenity --|> Room
 @enduml

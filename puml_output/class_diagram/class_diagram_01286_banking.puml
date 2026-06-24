@@ -9,40 +9,36 @@ abstract class Teller {
   #long phone
   #boolean email
   #int total
-  +getStatus()
-  +calculateDuration()
-  +updateDescription()
+  +saveEmail()
+  +setStatus()
+  +saveName()
 }
-class Interest {
-  +float email
-  -String name
-  -double createdAt
-  +boolean code
-  #long quantity
-  +deleteDescription()
-  +getAddress()
+interface Interest {
+  -String description
+  +String status
+  -String total
+  +validateId()
+  +processLevel()
+  +sendName()
 }
-interface Deposit {
-  #long note
-  +boolean description
-  #double address
-  +getScore()
-  +sendAmount()
-  +processNote()
-  +saveAmount()
+class Deposit {
+  -Date updatedAt
+  #int amount
+  -int description
+  -Date id
+  +setQuantity()
+  +setStatus()
+  +getQuantity()
 }
-class Account {
-  -long level
-  -boolean duration
-  #boolean id
-  +boolean address
-  +saveCode()
-  +saveCreatedat()
-  +updateCode()
-  +validateType()
+interface Account {
+  -double note
+  #Date name
+  +float score
+  +long active
+  #boolean amount
+  +setCode()
 }
-Interest --|> Deposit
-Deposit --|> Teller
-Deposit --|> Interest
-note right of Teller : Banking domain
+Account --o Interest
+Interest --o Deposit
+Teller ..> Deposit : "0..1"
 @enduml

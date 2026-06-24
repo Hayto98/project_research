@@ -9,35 +9,35 @@ class Review {
   +double code
   +long email
   +int name
-  +cancelId()
-  +validateName()
-  +findPrice()
+  +validateActive()
+  +getPrice()
+  +sendDuration()
 }
-abstract class Order {
-  -long duration
-  -float address
-  -String email
-  +processType()
+class Order {
+  #long name
+  -double price
+  -long note
+  -String createdAt
+  +saveAmount()
 }
 abstract class Shipment {
-  #double id
-  #int active
-  -boolean quantity
-  +validateDescription()
-}
-class Coupon {
-  #double type
-  +boolean description
-  -boolean createdAt
-  -float amount
-  -double email
+  #int description
+  -boolean id
+  +long active
+  +int quantity
+  -double price
   +calculateNote()
-  +getAmount()
-  +getPrice()
-  +getAmount()
+  +saveUpdatedat()
 }
-Order --o Shipment
-Coupon ..|> Order
-Order ..> Coupon : "1"
-note right of Review : Ecommerce domain
+interface Coupon {
+  #long email
+  #double total
+  -double createdAt
+  +getAddress()
+  +calculateDescription()
+  +sendCode()
+  +calculateEmail()
+}
+Review --o Shipment
+Review ..> Coupon : "1..*"
 @enduml

@@ -7,57 +7,61 @@ class Story {
   -float createdAt
   -long score
   +String status
-  +findUpdatedat()
-  +getCreatedat()
-  +findId()
-  +getNote()
+  +deleteTotal()
+  +deleteLevel()
+  +updateCreatedat()
+  +sendUpdatedat()
 }
 class Profile {
-  -boolean email
-  #double id
-  +validateType()
-  +calculateScore()
-  +getCode()
-  +sendAddress()
+  +float createdAt
+  -String id
+  +validateAmount()
 }
 interface Comment {
+  -double email
+  -double score
+  +calculateDuration()
+  +calculateId()
+  +getType()
+  +createActive()
+}
+interface Message {
   +boolean email
   #double type
-  +getActive()
-  +deletePrice()
-  +cancelUpdatedat()
-  +getNote()
+  +updateActive()
+  +createUpdatedat()
+  +validateCode()
+  +calculateCode()
 }
-class Message {
-  +double description
-  -float amount
-  #boolean code
-  +cancelNote()
-  +sendName()
-  +processNote()
-  +createLevel()
-}
-class Like {
-  +long note
-  #double phone
-  +getTotal()
+interface Like {
+  +int name
+  +String note
+  +double status
+  +getName()
+  +createUpdatedat()
+  +cancelAmount()
 }
 abstract class Hashtag {
-  -double updatedAt
-  #float phone
-  +createAddress()
-  +validateCreatedat()
-  +validateType()
-  +sendAddress()
+  #long active
+  +double name
+  -String type
+  -Date note
+  -Date quantity
+  +updatePrice()
 }
-class User {
-  +String active
-  #double address
-  #long phone
-  #String quantity
-  +cancelQuantity()
+abstract class User {
+  #float id
+  -long updatedAt
+  -long phone
+  +float type
+  -double total
+  +setPrice()
+  +sendEmail()
+  +processDescription()
 }
-Profile --* Like
-Like --o Profile
-note right of Story : Social Media domain
+Hashtag --* Comment
+Like ..|> Comment
+Story --o Hashtag
+User --|> Like
+Story ..> Like : "1..*"
 @enduml

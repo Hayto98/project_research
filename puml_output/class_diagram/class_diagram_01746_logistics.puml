@@ -6,60 +6,59 @@ skinparam shadowing true
 abstract class Depot {
   -long type
   -long phone
-  +cancelCreatedat()
-  +calculateId()
-  +createId()
-  +validateActive()
+  +sendActive()
+  +updateDescription()
+  +findAmount()
+  +cancelTotal()
 }
 class Package {
-  -long active
-  +boolean createdAt
-  +double name
-  +double code
-  +findScore()
-  +validateLevel()
+  +long phone
+  #int active
+  +processCreatedat()
 }
-interface Inventory {
-  -float duration
-  -Date price
-  #long email
-  +calculateCreatedat()
-}
-class Warehouse {
+class Inventory {
+  -String address
   -int id
-  #int createdAt
-  #double type
-  #double status
-  +boolean total
-  +findUpdatedat()
-  +sendActive()
-  +processQuantity()
+  #boolean active
+  -boolean status
+  +setQuantity()
+  +setPhone()
 }
-class Driver {
-  -int createdAt
-  #double amount
-  -int quantity
-  -String id
-  +double active
-  +getCreatedat()
-  +processStatus()
-  +validateDescription()
+abstract class Warehouse {
+  -float address
+  +float type
+  #String duration
+  #float code
+  +setName()
+  +sendId()
+  +createEmail()
+  +saveDuration()
+}
+abstract class Driver {
+  +boolean total
+  +boolean duration
+  +calculateActive()
+  +deleteActive()
+  +findAddress()
+  +getScore()
 }
 class Customer {
-  #long code
-  #int status
-  #String createdAt
-  +createTotal()
-}
-abstract class Manifest {
-  #int total
-  +boolean type
+  -int active
+  -int duration
   +long note
-  +cancelStatus()
-  +cancelDescription()
-  +createDescription()
+  +saveStatus()
 }
-Inventory --> Driver : "1"
-Driver --|> Manifest
-note right of Depot : Logistics domain
+interface Manifest {
+  #double note
+  -int createdAt
+  +calculateEmail()
+  +createCode()
+  +saveAmount()
+}
+Inventory ..> Depot : "0..1"
+Warehouse --* Depot
+Customer --* Package
+Package --|> Customer
+Depot --> Package : "1..*"
+Driver ..> Package : "1"
 @enduml

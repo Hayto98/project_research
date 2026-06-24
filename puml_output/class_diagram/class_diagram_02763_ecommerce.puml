@@ -9,58 +9,53 @@ class Supplier {
   #Date description
   -int note
   +setStatus()
-  +processLevel()
+  +updateName()
 }
-class Order {
+abstract class Order {
+  #int description
   #long type
-  +float score
-  +float updatedAt
-  +cancelName()
-  +updateAddress()
-  +cancelPrice()
-  +validateDuration()
+  +getPrice()
 }
-abstract class Customer {
-  #Date price
-  +String active
-  +int amount
-  #long status
-  +cancelEmail()
+class Customer {
+  -float duration
+  #boolean name
+  #double createdAt
+  #float address
+  #boolean price
+  +saveName()
+  +calculateStatus()
+  +createUpdatedat()
 }
 class Payment {
-  -float code
-  -Date total
-  +float level
-  +sendPhone()
-  +setPhone()
+  +int name
+  #long duration
+  +deleteUpdatedat()
 }
 class Category {
-  -double score
-  -boolean code
-  +long email
-  +int level
-  +findLevel()
+  -double amount
+  -Date code
+  +float total
+  +createStatus()
+  +createAmount()
 }
 class Wishlist {
-  -float address
-  -double type
-  -Date active
-  -Date status
-  -Date email
-  +sendDuration()
-  +createPrice()
-  +setDescription()
+  -String email
+  -double quantity
+  -boolean score
+  +long code
+  +validateQuantity()
 }
 class Coupon {
-  -long total
-  #double phone
-  -int description
-  +calculateAmount()
+  #String total
+  -long address
+  -double type
+  +deleteType()
+  +deleteLevel()
+  +findActive()
+  +updateAddress()
 }
-Payment --* Coupon
-Customer --o Order
-Customer --|> Coupon
-Coupon --> Category : "1"
-Category --o Customer
-note right of Supplier : Ecommerce domain
+Wishlist --> Customer : "1..*"
+Coupon --|> Payment
+Order ..> Wishlist : "0..1"
+Coupon --o Order
 @enduml

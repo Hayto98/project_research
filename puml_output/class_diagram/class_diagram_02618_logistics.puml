@@ -6,64 +6,61 @@ skinparam defaultFontSize 13
 class DeliveryNote {
   #int code
   -int active
-  +calculatePrice()
+  +getAddress()
 }
-class Inventory {
-  -String id
-  -boolean level
-  +int duration
-  +int code
-  -boolean address
-  +getCreatedat()
-  +getPhone()
-  +saveStatus()
-  +processEmail()
+abstract class Inventory {
+  #float price
+  +String id
+  +findActive()
+  +processCode()
+  +cancelPhone()
 }
-class FuelLog {
-  -int price
-  +Date updatedAt
-  #double email
-  #boolean name
-  +float type
-  +findLevel()
-  +cancelDuration()
-  +sendType()
+interface FuelLog {
+  +double updatedAt
+  #float createdAt
+  +processName()
+  +sendEmail()
+  +saveId()
+  +sendPhone()
 }
-abstract class Route {
-  #String status
-  #Date phone
-  +boolean code
-  -double email
-  #int quantity
-  +deleteScore()
-  +sendPrice()
-  +validateDuration()
-  +findUpdatedat()
+class Route {
+  -String email
+  #double name
+  -int type
+  +Date price
+  #double updatedAt
+  +saveType()
 }
 class Driver {
-  +float duration
-  +Date phone
-  -long total
-  +double level
-  -double quantity
-  +createPrice()
-  +sendActive()
-}
-interface Warehouse {
-  #boolean type
-  +String description
+  -long type
+  #String total
+  #Date status
+  +boolean phone
+  -double code
+  +getName()
   +cancelCode()
 }
-class Vehicle {
-  #long status
-  +Date note
-  -Date updatedAt
-  +validateEmail()
-  +validateScore()
-  +sendPhone()
-  +saveEmail()
+class Warehouse {
+  #double address
+  #boolean updatedAt
+  -long phone
+  +float price
+  +Date score
+  +deleteCode()
+  +createPhone()
+  +setDuration()
+  +processType()
 }
-Route ..> FuelLog : "*"
-Vehicle ..> DeliveryNote : "*"
-note right of DeliveryNote : Logistics domain
+abstract class Vehicle {
+  -float updatedAt
+  +float email
+  #boolean price
+  +String active
+  +boolean status
+  +deleteTotal()
+}
+Inventory --o DeliveryNote
+Inventory --* Driver
+Vehicle ..> DeliveryNote : "1..*"
+Warehouse --o Vehicle
 @enduml

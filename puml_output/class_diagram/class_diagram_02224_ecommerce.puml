@@ -7,61 +7,66 @@ class Return {
   #String updatedAt
   #long email
   -String quantity
-  +createAddress()
-  +saveAddress()
-  +setId()
+  +findScore()
+  +saveCreatedat()
+  +processNote()
 }
 class Invoice {
-  #boolean updatedAt
-  +double phone
-  -boolean email
-  #Date duration
-  +setCreatedat()
-  +setEmail()
+  -int id
+  -long amount
+  +getAmount()
+  +calculateDuration()
 }
-abstract class Supplier {
-  +double description
-  #int name
-  #Date status
-  #Date type
-  +float active
-  +calculateUpdatedat()
-  +sendActive()
+class Supplier {
+  +float price
+  -double level
+  #float updatedAt
+  -float code
+  +String createdAt
+  +cancelAmount()
 }
-class Coupon {
-  +String id
-  #boolean address
-  +setCreatedat()
+interface Coupon {
+  +double type
+  +boolean createdAt
+  #long price
+  +String updatedAt
+  #float active
+  +sendStatus()
+  +validateStatus()
+  +processAmount()
 }
 class Shipment {
-  #double createdAt
-  +String phone
-  #Date price
-  #int name
-  +Date email
-  +updateTotal()
-  +setDescription()
-  +updateId()
+  +double code
+  +long createdAt
+  +updateQuantity()
+  +getActive()
+  +calculateId()
+  +validateType()
 }
-abstract class Wishlist {
-  +double duration
-  -long total
-  #float note
-  +sendNote()
-  +updateUpdatedat()
-  +calculateAddress()
+class Wishlist {
+  +double createdAt
+  +float status
+  +int description
+  +Date updatedAt
+  -int quantity
+  +setId()
+  +cancelQuantity()
+  +updateType()
+  +calculateQuantity()
 }
 class Payment {
-  +Date code
-  -boolean name
-  -String type
-  #float quantity
-  #Date duration
-  +calculateLevel()
+  +int duration
+  -Date address
+  -Date active
+  #String note
+  +getType()
+  +calculateId()
+  +processNote()
+  +cancelUpdatedat()
 }
-Invoice ..|> Wishlist
-Invoice --* Shipment
-Shipment --o Invoice
-Payment --> Coupon : "1..*"
-note right of Return : Ecommerce domain
+Supplier --|> Return
+Wishlist --> Coupon : "*"
+Return ..> Shipment : "1"
+Coupon ..> Shipment : "0..1"
+Wishlist ..|> Invoice
 @enduml

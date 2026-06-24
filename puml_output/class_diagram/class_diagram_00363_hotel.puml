@@ -3,41 +3,38 @@ skinparam shadowing true
 class CheckIn {
   #float duration
   #String id
-  +createAmount()
+  +calculateScore()
 }
 class Room {
-  +double id
-  #float active
-  +deleteDescription()
-  +sendAmount()
-  +createType()
-  +saveEmail()
+  +double level
+  #float code
+  -int id
+  +boolean active
+  +getNote()
+  +validateUpdatedat()
 }
-interface CheckOut {
+class CheckOut {
   -String description
   +boolean id
-  +findDuration()
-  +setType()
-  +findPhone()
-  +sendAmount()
+  +deleteType()
+  +findDescription()
+  +updateName()
+  +cancelCode()
 }
-interface Amenity {
-  #String status
-  +long type
-  #String score
-  -float createdAt
-  +getQuantity()
-  +processNote()
-  +calculateUpdatedat()
+class Amenity {
+  #String level
+  #double score
+  #int phone
+  +processQuantity()
 }
 class Housekeeping {
-  #long address
-  #boolean createdAt
-  +int duration
-  #int id
-  #boolean total
-  +cancelUpdatedat()
+  -String total
+  -double level
+  +calculateCode()
+  +deleteStatus()
+  +processPrice()
+  +processNote()
 }
-CheckIn --o Housekeeping
-note right of CheckIn : Hotel domain
+Amenity ..|> CheckOut
+CheckOut --o CheckIn
 @enduml

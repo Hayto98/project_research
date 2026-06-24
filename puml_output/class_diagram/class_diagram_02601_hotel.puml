@@ -6,57 +6,60 @@ skinparam ArrowColor #555555
 class Booking {
   +Date id
   +float total
-  +saveType()
-  +validateCreatedat()
+  +saveUpdatedat()
+  +cancelCode()
 }
-abstract class Service {
-  -long phone
-  +int total
-  +createCode()
-  +setActive()
-  +createScore()
-  +createCreatedat()
+class Service {
+  -double price
+  -int name
+  +float phone
+  +calculateScore()
+  +validatePhone()
+  +cancelEmail()
+  +updateNote()
 }
 class Housekeeping {
-  +float level
-  #Date type
-  +updatePhone()
-  +deleteAddress()
-  +updateAddress()
-  +sendCode()
+  +float createdAt
+  #Date id
+  -int code
+  #long type
+  +findType()
+  +validateScore()
 }
-interface CheckOut {
-  -long quantity
-  +float type
-  +Date name
-  +sendDescription()
+class CheckOut {
+  #Date active
+  -String code
+  -long updatedAt
+  +float quantity
+  +calculateStatus()
 }
 class CheckIn {
+  #Date name
   +String id
-  -long code
-  +sendAmount()
-  +updateAddress()
-  +saveAddress()
-  +setDuration()
+  +long level
+  +processType()
+  +processScore()
+  +createDescription()
 }
-abstract class Invoice {
-  #double code
-  +long address
-  +deleteCode()
-  +updateTotal()
-  +processDuration()
-  +createLevel()
+class Invoice {
+  #Date address
+  -String duration
+  +boolean status
+  +cancelUpdatedat()
+  +getStatus()
+  +deletePrice()
 }
 class Room {
-  -String quantity
-  #double phone
-  -Date level
-  +String amount
-  #Date updatedAt
-  +calculateCode()
+  -double note
+  #boolean amount
+  -float code
+  #boolean createdAt
+  +sendCreatedat()
+  +processDescription()
+  +sendDuration()
 }
+Housekeeping ..> Invoice : "0..1"
+Service --|> CheckOut
+CheckIn --* CheckOut
 Invoice --|> Service
-Booking ..|> CheckIn
-CheckIn --o Housekeeping
-note right of Booking : Hotel domain
 @enduml

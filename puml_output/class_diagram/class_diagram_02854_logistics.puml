@@ -8,36 +8,44 @@ class Manifest {
   +String duration
   #float name
   #String active
-  +validateType()
-  +sendUpdatedat()
-  +updateAddress()
+  +calculateName()
+  +deleteActive()
+  +getStatus()
 }
-abstract class Shipment {
-  -float score
-  #int phone
-  #Date amount
-  +setStatus()
+interface Shipment {
+  #float createdAt
+  +boolean address
+  #long type
+  +setTotal()
+  +processAddress()
 }
-interface Inventory {
-  -float description
-  +boolean level
-  +processStatus()
-  +createStatus()
+class Inventory {
+  #String status
+  +boolean duration
+  +calculateType()
+  +setName()
+  +calculateActive()
+  +validateStatus()
 }
 class Driver {
-  #boolean description
-  #int status
-  #double price
-  +calculateCreatedat()
+  +float status
+  #String quantity
+  -boolean duration
+  #float level
+  #int amount
+  +createTotal()
+  +deleteNote()
+  +createPrice()
+  +processActive()
 }
 class DeliveryNote {
   +String description
   -int status
-  +findNote()
+  +validateTotal()
   +processTotal()
-  +saveAmount()
+  +cancelCode()
 }
-Shipment --> Inventory : "0..1"
+Shipment ..|> Manifest
+DeliveryNote --> Inventory : "0..1"
 DeliveryNote ..> Shipment : "*"
-note right of Manifest : Logistics domain
 @enduml

@@ -6,58 +6,54 @@ class Room {
   #float active
   -Date description
   -float code
-  +calculateNote()
-  +calculatePrice()
+  +sendScore()
+  +deleteDuration()
 }
-class Reservation {
-  -boolean phone
-  +Date score
-  +updatePhone()
-  +createCreatedat()
-  +findLevel()
-  +cancelEmail()
-}
-class CheckIn {
-  #String type
-  #String score
-  -Date level
-  +double phone
-  -double name
-  +updateCreatedat()
-  +cancelPhone()
+abstract class Reservation {
+  #double email
+  +long name
+  -int phone
+  #Date price
+  #boolean amount
+  +processCode()
   +createName()
+  +deleteActive()
 }
-interface CheckOut {
-  -Date total
-  +Date score
+interface CheckIn {
+  #String name
+  -float id
+  -double code
+  #long quantity
+  +getTotal()
+  +deleteDescription()
+}
+class CheckOut {
+  -int name
+  -Date note
+  +Date total
   +Date updatedAt
-  +long duration
-  -boolean amount
-  +updateCode()
-  +calculateScore()
-  +calculatePrice()
-  +sendEmail()
+  +processStatus()
 }
 class Staff {
-  +boolean level
-  #boolean createdAt
+  #long updatedAt
+  -long code
+  #int price
   -int total
-  +int amount
-  +findActive()
-  +createId()
+  +boolean score
+  +deleteId()
+  +findEmail()
+  +saveAddress()
 }
-abstract class Payment {
-  -double quantity
-  #boolean address
-  +int active
-  +Date total
-  +calculateAmount()
-  +processName()
+class Payment {
+  #String updatedAt
+  -long active
+  -long email
+  +validateAmount()
+  +processCreatedat()
+  +deletePrice()
+  +findTotal()
 }
-Staff --o Payment
-Reservation --o Payment
-Room --> Staff : "1"
-CheckIn ..|> Payment
-Room ..> Payment : "1"
-note right of Room : Hotel domain
+Reservation ..> Payment : "0..1"
+CheckOut --o Reservation
+Room --> CheckOut : "*"
 @enduml

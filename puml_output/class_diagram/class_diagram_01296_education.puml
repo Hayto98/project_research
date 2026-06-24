@@ -6,69 +6,57 @@ skinparam defaultFontSize 11
 class Department {
   -long level
   +boolean id
-  +updateQuantity()
-  +findPrice()
-  +setAmount()
-  +sendPhone()
-}
-interface Course {
-  #int phone
-  #boolean email
-  +getEmail()
-  +updateActive()
-  +createStatus()
-  +createName()
-}
-class Attendance {
-  +Date description
-  +int address
-  +updateDescription()
-  +deletePhone()
-  +calculateDescription()
-  +cancelAddress()
-}
-class Book {
-  +double score
-  +Date note
-  +String total
-  +String createdAt
-  +calculateLevel()
-  +saveQuantity()
+  +cancelNote()
+  +setScore()
+  +getNote()
   +createId()
 }
+abstract class Course {
+  -boolean amount
+  #boolean active
+  +saveScore()
+}
+class Attendance {
+  +long duration
+  +Date score
+  #boolean type
+  +cancelEmail()
+  +processAddress()
+  +setTotal()
+}
+class Book {
+  -String id
+  #float description
+  +saveQuantity()
+  +deleteStatus()
+}
 abstract class Assignment {
-  -double quantity
-  +float id
-  +setCode()
-  +validateDuration()
-  +getPrice()
-  +sendDuration()
+  -int description
+  #long duration
+  +long phone
+  +findAmount()
+  +cancelNote()
+  +createCreatedat()
+  +sendCode()
 }
 class Enrollment {
-  -String name
-  -float quantity
-  #String price
-  -float phone
-  +boolean active
-  +createScore()
-  +validateStatus()
-}
-interface Library {
   +long id
-  #float active
-  -boolean score
-  +String createdAt
-  -Date price
-  +findLevel()
-  +sendQuantity()
-  +setStatus()
-  +calculateType()
+  -Date amount
+  +cancelAddress()
+  +getDuration()
+  +processName()
 }
-Course ..|> Assignment
-Library --o Course
-Library --o Enrollment
-Course --* Book
-Assignment --* Attendance
-Assignment ..> Library : "0..1"
-note right of Department : Education domain
+abstract class Library {
+  -double quantity
+  +float id
+  +getLevel()
+  +getType()
+  +deleteId()
+  +deleteCode()
+}
+Library --o Department
+Library --> Assignment : "0..1"
+Enrollment ..> Book : "1"
+Attendance --* Book
+Department ..> Attendance : "1"
 @enduml

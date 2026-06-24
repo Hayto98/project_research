@@ -8,53 +8,54 @@ interface Nurse {
   -long code
   +long quantity
   #double id
-  +sendScore()
+  +createUpdatedat()
 }
 interface Billing {
   -float address
   +String level
-  +deleteEmail()
-  +setActive()
-}
-class Appointment {
-  #long total
-  #int price
-  +long description
-  +cancelEmail()
-}
-class Patient {
-  +float score
-  +float createdAt
-  +sendNote()
-  +setAmount()
-  +setQuantity()
+  +findPhone()
   +cancelPhone()
 }
-interface Insurance {
-  +Date code
-  #boolean updatedAt
-  #double type
-  +processName()
+class Appointment {
+  #long description
+  #int total
+  +long price
+  +float duration
+  +deleteCreatedat()
+  +cancelStatus()
+  +calculatePrice()
+}
+class Patient {
+  #double updatedAt
+  +int note
+  +saveTotal()
+}
+class Insurance {
+  -int score
+  #Date amount
+  #boolean code
+  -String updatedAt
+  +processPhone()
+  +processQuantity()
+  +createEmail()
+  +deleteId()
 }
 interface Doctor {
   #boolean address
   -int id
-  +updatePrice()
-  +processName()
-  +createCreatedat()
-  +getDuration()
+  +processActive()
+  +deleteAmount()
+  +calculateType()
+  +validateDescription()
 }
-class LabTest {
-  +long amount
-  -float score
-  +findQuantity()
+abstract class LabTest {
+  +boolean email
+  +String createdAt
   +sendAmount()
-  +cancelStatus()
+  +validateNote()
 }
-Nurse ..|> Appointment
-Insurance --o Billing
-Appointment --|> Doctor
-Insurance ..|> Nurse
-Patient --|> LabTest
-note right of Nurse : Healthcare domain
+Appointment ..> Doctor : "1..*"
+LabTest --* Doctor
+Insurance --> Billing : "1"
+Patient --* Nurse
 @enduml

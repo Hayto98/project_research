@@ -5,51 +5,51 @@ class Beneficiary {
   #Date createdAt
   -long description
   #boolean amount
-  +getLevel()
+  +updateDuration()
 }
-class Customer {
-  +boolean amount
-  +boolean address
-  +getDuration()
-  +getLevel()
+interface Customer {
+  -String status
+  #int amount
+  +processCreatedat()
+  +sendTotal()
 }
 interface Branch {
-  +boolean total
-  #float price
-  #long active
+  +double level
+  #float active
+  +updateNote()
+  +validateCode()
+  +findName()
+  +setCreatedat()
+}
+interface Teller {
+  +float phone
+  -double price
+  -double quantity
+  #long note
+  +saveScore()
+  +deleteCreatedat()
+  +validateTotal()
+  +processPrice()
+}
+class Deposit {
+  #double active
+  #long name
+  #double code
+  -int id
+  +String updatedAt
+  +processAddress()
+  +updateName()
+  +processPhone()
+}
+interface Card {
+  +double amount
+  -float updatedAt
+  -long email
+  +validatePhone()
   +calculateQuantity()
-  +processCreatedat()
-  +validateNote()
+  +processStatus()
 }
-abstract class Teller {
-  #int quantity
-  +boolean level
-  -boolean type
-  +String phone
-  #String email
-  +sendType()
-  +cancelQuantity()
-}
-abstract class Deposit {
-  #Date description
-  #float createdAt
-  #int status
-  #int phone
-  +Date score
-  +deleteType()
-  +processEmail()
-  +createAddress()
-}
-class Card {
-  -float phone
-  +Date updatedAt
-  -boolean createdAt
-  -boolean price
-  +Date code
-  +sendEmail()
-}
-Card ..> Beneficiary : "1"
-Card ..|> Deposit
-Customer --> Beneficiary : "*"
-note right of Beneficiary : Banking domain
+Deposit --o Customer
+Deposit --o Beneficiary
+Beneficiary --> Branch : "1..*"
 @enduml

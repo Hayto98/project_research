@@ -6,38 +6,32 @@ skinparam defaultFontSize 13
 interface Teller {
   -String amount
   -boolean createdAt
-  +sendAddress()
+  +saveActive()
 }
 class Statement {
+  -int type
   +boolean address
   #Date note
   +int active
-  #String phone
-  -int updatedAt
-  +validateType()
-  +deleteDuration()
+  +findCode()
 }
-abstract class Transaction {
-  #Date note
-  -Date total
-  #double email
-  #long code
-  +double name
-  +findAmount()
-  +sendNote()
-  +saveAddress()
+class Transaction {
+  #double phone
+  -double type
+  -float description
+  +findNote()
+  +saveEmail()
+  +calculatePrice()
 }
-class Card {
-  +double score
-  +float address
-  -Date description
-  #Date active
-  +saveUpdatedat()
-  +cancelAddress()
-  +processAddress()
-  +getDuration()
+abstract class Card {
+  #double phone
+  #long status
+  +long note
+  #long quantity
+  +boolean amount
+  +findActive()
+  +getUpdatedat()
 }
-Transaction --o Card
-Teller --* Transaction
-note right of Teller : Banking domain
+Transaction ..> Card : "*"
+Statement ..> Transaction : "1..*"
 @enduml

@@ -6,61 +6,64 @@ skinparam defaultFontSize 11
 class Post {
   +boolean status
   -long level
-  +setType()
-  +findUpdatedat()
+  +updateName()
+  +cancelScore()
 }
-class Profile {
-  -String price
-  -String active
-  #double phone
-  +sendCreatedat()
-  +deleteEmail()
-  +validateId()
+abstract class Profile {
+  -boolean phone
+  -double active
+  +float description
+  +createAddress()
+  +validateLevel()
+  +validateActive()
+  +deletePrice()
 }
 interface Notification {
-  #long code
-  -boolean id
-  #String price
-  #double active
-  -Date duration
-  +getUpdatedat()
-  +createId()
-  +cancelId()
-  +deleteLevel()
+  -float score
+  +boolean createdAt
+  -float amount
+  +float email
+  +createDuration()
 }
-class Comment {
-  -Date createdAt
-  #float updatedAt
-  -Date active
-  -double address
-  +saveTotal()
-  +setScore()
+interface Comment {
+  #Date address
+  +float note
+  +saveScore()
+  +calculateStatus()
+  +processCreatedat()
+  +calculateAmount()
 }
 class Story {
-  -double score
-  -float id
-  +sendQuantity()
-  +updateName()
+  +Date quantity
+  #long id
+  -Date level
+  +processDuration()
+  +findPrice()
 }
 class Message {
-  +boolean price
-  -boolean level
-  +long type
-  +sendLevel()
-  +cancelLevel()
-  +saveLevel()
-  +cancelPhone()
+  #double phone
+  +boolean total
+  -Date level
+  #String active
+  #String updatedAt
+  +getAddress()
+  +sendCreatedat()
+  +getPrice()
+  +getEmail()
 }
-class Album {
-  +double amount
-  +Date total
-  +calculateActive()
-  +createId()
-  +deleteAmount()
+interface Album {
+  -boolean updatedAt
+  -int name
+  #double description
+  #int score
+  +deletePrice()
+  +getUpdatedat()
+  +findDuration()
 }
-Album --* Comment
-Profile --|> Story
-Message ..|> Notification
-Story --o Message
-note right of Post : Social Media domain
+Story ..> Album : "1..*"
+Post ..|> Album
+Comment --o Post
+Post ..> Message : "1..*"
+Comment --* Story
+Post ..|> Profile
 @enduml

@@ -1,10 +1,10 @@
 @startuml
 skinparam ArrowColor #555555
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Customer" as Customer
-actor "Admin" as Admin
-actor "Delivery Service" as DeliveryService
+actor "Payment Gateway" as PG
+actor "Customer" as C
+actor "Admin" as A
+actor "Delivery Service" as DS
 rectangle "Ecommerce System" {
   usecase "Write Review" as UC_WriteReview
   usecase "Checkout" as UC_Checkout
@@ -15,16 +15,16 @@ rectangle "Ecommerce System" {
   usecase "Make Payment" as UC_MakePayment
   usecase "Manage Inventory" as UC_ManageInventory
 }
-PaymentGateway --> UC_WriteReview
-PaymentGateway --> UC_BrowseProducts
-PaymentGateway --> UC_MakePayment
-Customer --> UC_MakePayment
-Customer --> UC_TrackOrder
-Customer --> UC_AddToCart
-Admin --> UC_MakePayment
-Admin --> UC_WriteReview
-DeliveryService --> UC_BrowseProducts
-DeliveryService --> UC_ManageInventory
-DeliveryService --> UC_ApplyCoupon
+PG --> UC_WriteReview
+PG --> UC_BrowseProducts
+PG --> UC_MakePayment
+C --> UC_MakePayment
+C --> UC_TrackOrder
+C --> UC_AddToCart
+A --> UC_MakePayment
+A --> UC_WriteReview
+DS --> UC_BrowseProducts
+DS --> UC_ManageInventory
+DS --> UC_ApplyCoupon
 UC_AddToCart ..> UC_MakePayment : <<extend>>
 @enduml

@@ -6,63 +6,60 @@ skinparam ArrowColor #555555
 class Transfer {
   -int address
   +Date level
-  +processTotal()
-  +updateActive()
-  +processStatus()
+  +processScore()
+  +createId()
+  +sendLevel()
 }
-interface Interest {
-  -String type
-  +Date phone
-  #int total
-  #double email
-  +updateTotal()
-  +cancelEmail()
-  +calculateDuration()
-  +calculateCode()
+abstract class Interest {
+  -long createdAt
+  -Date active
+  -long type
+  +int status
+  #Date email
+  +sendQuantity()
+  +sendName()
 }
-class Withdrawal {
-  +int active
-  -int updatedAt
-  +double status
-  +updateId()
-  +createName()
-  +getDuration()
-  +findTotal()
+abstract class Withdrawal {
+  -boolean total
+  -String level
+  -int email
+  +validateId()
+  +processDuration()
 }
 class Branch {
-  -long email
-  #Date updatedAt
-  +cancelNote()
-  +updateEmail()
+  +long amount
+  #float code
+  +float note
+  +boolean type
+  #double updatedAt
+  +cancelTotal()
 }
 class Customer {
-  #long updatedAt
-  -long total
-  +Date level
-  +updateAddress()
+  #double address
+  +float phone
+  -int description
+  +createTotal()
+  +cancelName()
 }
-interface Card {
-  -long level
-  -int address
-  -Date description
-  +Date phone
-  +validateId()
-  +deleteDuration()
-  +sendStatus()
+class Card {
+  +Date total
+  #float active
+  +int quantity
+  -boolean phone
+  -Date email
+  +validateCode()
+  +setDuration()
+  +cancelId()
 }
-class Transaction {
+abstract class Transaction {
+  #Date note
   #long createdAt
-  -String description
-  +getStatus()
-  +deleteScore()
-  +saveId()
-  +findQuantity()
+  -String duration
+  +boolean name
+  +updateScore()
 }
-Customer --> Card : "*"
-Transfer ..|> Customer
-Interest --|> Branch
-Withdrawal ..|> Customer
-Transfer --* Card
-Withdrawal ..|> Card
-note right of Transfer : Banking domain
+Transaction ..|> Transfer
+Interest --* Customer
+Withdrawal --> Transfer : "*"
+Transfer ..|> Transaction
 @enduml

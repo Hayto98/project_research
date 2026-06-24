@@ -7,57 +7,54 @@ class Appointment {
   #boolean type
   +long level
   -long name
-  +createName()
-  +createDescription()
-  +calculateQuantity()
-  +cancelCode()
+  +processDescription()
+  +processQuantity()
+  +updateQuantity()
+  +validateDescription()
 }
 class Treatment {
-  -String score
-  +String updatedAt
-  +float address
-  -boolean price
-  #String duration
-  +cancelUpdatedat()
+  +double price
+  #int quantity
+  -double code
+  +sendScore()
+  +processName()
+  +updateDescription()
 }
 class Doctor {
-  -String code
-  #int note
-  #int id
-  +float quantity
-  +getId()
-  +calculateCode()
+  #String phone
+  +float score
+  +sendType()
+  +processAmount()
 }
-abstract class Hospital {
-  -String duration
-  #String code
-  +saveTotal()
+class Hospital {
+  #Date note
+  -long id
+  +updateId()
 }
 class Patient {
-  #float price
-  #double score
-  +validateType()
+  +double status
+  +double amount
+  +float id
+  +cancelPhone()
 }
 class MedicalRecord {
-  +int total
-  #Date email
-  #long code
-  -double score
-  +updateTotal()
-  +deleteStatus()
-  +deleteCode()
+  -String id
+  -Date total
+  +deleteNote()
+  +findCode()
+  +processCreatedat()
+  +validateDescription()
 }
-interface Diagnosis {
-  -String note
-  -long id
-  -String code
-  -double createdAt
-  +boolean address
-  +processType()
-  +calculateActive()
-  +createDescription()
+abstract class Diagnosis {
+  -String quantity
+  +String total
+  +calculateUpdatedat()
+  +cancelUpdatedat()
 }
-MedicalRecord --o Hospital
-Appointment ..|> Hospital
-note right of Appointment : Healthcare domain
+Doctor --o Hospital
+MedicalRecord ..|> Doctor
+Hospital --|> Treatment
+Treatment ..> Appointment : "*"
+Hospital --|> Appointment
+Treatment --o Doctor
 @enduml

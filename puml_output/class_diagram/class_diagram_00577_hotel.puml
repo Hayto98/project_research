@@ -5,39 +5,34 @@ skinparam defaultFontSize 13
 abstract class Staff {
   #double level
   +String email
-  +updatePrice()
-  +deleteId()
+  +cancelNote()
+  +createPrice()
 }
-interface Amenity {
-  #String address
+class Amenity {
+  -float level
   -Date quantity
-  +float status
-  #int price
-  +processEmail()
-  +deleteDuration()
+  +calculateStatus()
 }
-class Guest {
-  -long updatedAt
-  -long total
-  +validateActive()
+abstract class Guest {
+  #int price
+  +double code
+  +createCode()
+  +saveDescription()
+  +findUpdatedat()
 }
 class Restaurant {
-  +float type
-  +int quantity
-  #int updatedAt
-  #Date phone
-  +sendActive()
-  +createQuantity()
-  +processPrice()
+  -long updatedAt
+  -long total
+  +sendPhone()
 }
-class Room {
-  -int description
-  +int active
-  -boolean code
-  +findNote()
+interface Room {
+  #int quantity
+  #long type
+  +float duration
+  +updateType()
 }
+Amenity --> Guest : "1..*"
+Guest --o Restaurant
+Amenity ..|> Room
 Room --o Staff
-Guest --> Restaurant : "0..1"
-Guest ..> Room : "1..*"
-note right of Staff : Hotel domain
 @enduml

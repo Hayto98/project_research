@@ -6,51 +6,47 @@ skinparam defaultFontSize 13
 class Beneficiary {
   -String note
   #int amount
-  +cancelId()
+  +setPhone()
 }
 class Teller {
+  -double quantity
   -Date status
   #String id
-  +String phone
-  #Date price
-  +cancelNote()
-  +getPhone()
+  +updateDuration()
+  +processPhone()
 }
 interface Account {
-  #float phone
-  -String updatedAt
-  +String quantity
-  +Date name
-  #String code
-  +getId()
-  +sendPrice()
-  +getCode()
-  +deleteName()
+  -boolean duration
+  -Date note
+  -int name
+  +saveEmail()
+  +saveActive()
+  +createAddress()
 }
-class Transaction {
-  #float address
-  #int createdAt
-  +validateCreatedat()
+abstract class Transaction {
+  +Date description
+  #String name
+  +saveEmail()
+  +cancelTotal()
+  +createEmail()
+  +getUpdatedat()
 }
-class Deposit {
-  +String description
-  -float amount
-  +updateDescription()
-  +deleteId()
-  +validateQuantity()
+interface Deposit {
+  +long name
+  #int code
+  #float amount
+  #int duration
+  +long status
+  +getNote()
+  +deleteTotal()
 }
 interface Customer {
-  +String updatedAt
-  #Date code
-  #String email
-  +float score
-  -int duration
-  +updateAddress()
+  +String description
+  -float amount
+  +updateStatus()
+  +setType()
+  +validateCreatedat()
 }
-Deposit ..> Account : "1"
-Beneficiary --* Customer
-Teller ..> Deposit : "0..1"
-Beneficiary --* Deposit
-Deposit --> Customer : "0..1"
-note right of Beneficiary : Banking domain
+Account --> Customer : "*"
+Teller ..> Beneficiary : "1..*"
 @enduml

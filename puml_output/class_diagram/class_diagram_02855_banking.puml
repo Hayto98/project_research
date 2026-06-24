@@ -7,50 +7,45 @@ class Withdrawal {
   #long status
   #double createdAt
   #boolean address
-  +sendCreatedat()
+  +calculatePrice()
 }
 class Card {
-  -int active
-  -int createdAt
-  +validateAddress()
-  +deleteName()
-  +validateScore()
+  +double id
+  +boolean active
+  #long createdAt
+  -long email
+  +saveEmail()
+  +calculateCreatedat()
 }
-class Account {
-  #float quantity
-  +int description
-  +setDuration()
-  +createType()
+interface Account {
+  +float status
+  +String quantity
+  #float description
+  -double updatedAt
+  +saveScore()
+  +findId()
 }
-class Loan {
-  -long amount
-  +Date total
-  #int name
-  -String note
-  +sendScore()
-}
-class Branch {
-  #String amount
-  +boolean address
-  -float code
-  +updateType()
-  +findActive()
-  +validateCreatedat()
-  +deleteName()
-}
-abstract class Beneficiary {
-  +double note
-  -float address
+abstract class Loan {
+  -int note
   #Date total
-  #String email
-  #float status
-  +calculateScore()
-  +findDuration()
-  +getTotal()
+  +validateDuration()
+  +createAddress()
 }
-Withdrawal --|> Loan
-Beneficiary ..> Card : "*"
-Loan ..> Branch : "1..*"
-Account --o Withdrawal
-note right of Withdrawal : Banking domain
+interface Branch {
+  +int score
+  +long duration
+  +setAddress()
+}
+class Beneficiary {
+  +double duration
+  #boolean address
+  -int type
+  +saveId()
+  +createName()
+}
+Beneficiary --* Loan
+Branch ..> Loan : "1..*"
+Branch --|> Beneficiary
+Withdrawal --o Loan
+Beneficiary --|> Branch
 @enduml

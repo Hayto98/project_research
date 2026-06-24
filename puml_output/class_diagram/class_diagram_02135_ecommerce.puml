@@ -8,33 +8,35 @@ abstract class Wishlist {
   -boolean amount
   -boolean phone
   +float score
-  +saveDescription()
-  +setQuantity()
-  +sendQuantity()
-  +saveTotal()
+  +getStatus()
+  +getAmount()
+  +getActive()
+  +validateCode()
 }
-interface Cart {
-  #int id
-  -String level
-  +processType()
-  +sendNote()
-  +saveEmail()
+class Cart {
+  +boolean score
+  #int quantity
+  -String total
+  -double id
+  +calculatePrice()
+  +processTotal()
+  +cancelDuration()
+  +cancelType()
 }
 class Category {
-  -Date updatedAt
-  +float address
-  #float type
-  +boolean email
-  +sendDescription()
+  -boolean email
+  -float updatedAt
+  -Date address
+  +deleteEmail()
 }
 class Return {
-  +boolean score
-  -String total
-  -double note
-  +Date active
-  +processActive()
+  +long active
+  #double description
+  +calculateActive()
+  +findAddress()
+  +findPrice()
+  +setTotal()
 }
-Cart --o Wishlist
-Category --|> Return
-note right of Wishlist : Ecommerce domain
+Return ..|> Cart
+Wishlist --> Cart : "1"
 @enduml

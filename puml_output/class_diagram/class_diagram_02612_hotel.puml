@@ -5,50 +5,47 @@ skinparam classBorderColor #33691E
 interface CheckIn {
   #boolean amount
   -int name
-  +saveCreatedat()
-  +createActive()
+  +setScore()
+  +getTotal()
 }
-interface Service {
+class Service {
   -long id
   -String updatedAt
   -int quantity
   #double duration
   -Date note
-  +sendDescription()
-  +calculateTotal()
-  +setStatus()
-  +setAddress()
+  +saveActive()
+  +createNote()
+  +deleteId()
+  +setCreatedat()
 }
 class Amenity {
-  +String updatedAt
-  +boolean email
-  +int quantity
-  #float id
-  #double address
-  +calculateLevel()
-  +cancelPrice()
+  #String total
+  -int status
+  #long level
+  #Date score
+  -String address
+  +sendId()
+  +setStatus()
+  +saveNote()
 }
-class Invoice {
-  #Date email
-  -Date description
-  -String amount
+interface Invoice {
+  -Date createdAt
+  #boolean total
   #double updatedAt
-  #long duration
-  +findPrice()
-  +calculateAddress()
-  +deletePhone()
-  +findDuration()
+  +createNote()
+  +deleteDuration()
 }
 class Guest {
-  +Date phone
-  -Date email
-  #double level
-  +getPhone()
-  +sendType()
-  +updateName()
-  +saveTotal()
+  #Date amount
+  -Date updatedAt
+  -String email
+  +createStatus()
+  +calculateCreatedat()
+  +saveCode()
+  +cancelName()
 }
-Invoice --> Service : "*"
-Amenity --|> CheckIn
-note right of CheckIn : Hotel domain
+Invoice ..|> Amenity
+Amenity ..> Service : "0..1"
+Amenity ..> Guest : "1..*"
 @enduml

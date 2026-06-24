@@ -6,56 +6,52 @@ class Order {
   +String quantity
   #long description
   +Date status
-  +cancelDuration()
-  +cancelType()
-  +setAddress()
-  +createAmount()
+  +setActive()
+  +processId()
+  +sendActive()
+  +calculateType()
 }
-class Product {
-  +String email
-  +long updatedAt
-  +Date price
-  +int note
-  -long description
-  +getId()
-  +updateStatus()
-  +validateEmail()
-  +validateDuration()
+interface Product {
+  -long status
+  +double address
+  -Date quantity
+  +int amount
+  +int code
+  +calculateId()
+  +cancelPrice()
+  +createId()
 }
 class Cart {
+  -String note
+  +float phone
+  +String active
+  +deleteName()
+  +calculateName()
+  +getQuantity()
+}
+class Warehouse {
   +double level
   +boolean amount
   #Date active
-  +setDescription()
-}
-interface Warehouse {
-  +Date type
-  -boolean status
-  +float amount
-  -int duration
-  +calculateId()
+  +sendLevel()
 }
 class Customer {
-  +String address
-  +Date id
-  +int price
-  -double createdAt
-  +boolean status
-  +setId()
-  +updateEmail()
-  +setUpdatedat()
+  #String level
+  +double quantity
+  +Date type
+  +getStatus()
+  +findDescription()
+  +calculateAddress()
 }
-abstract class Supplier {
-  -double total
-  #String name
-  +Date code
-  +getUpdatedat()
-  +cancelUpdatedat()
-  +sendAddress()
+class Supplier {
+  +int level
+  #double code
+  -String price
+  +processActive()
+  +updateUpdatedat()
+  +deleteScore()
+  +deleteQuantity()
 }
-Product ..> Cart : "1..*"
-Supplier ..> Product : "0..1"
-Warehouse --* Cart
-Order --* Warehouse
-note right of Order : Ecommerce domain
+Supplier ..|> Order
+Warehouse --|> Supplier
 @enduml

@@ -6,57 +6,59 @@ skinparam shadowing true
 class Restaurant {
   -float status
   -int id
-  +processDuration()
-  +setLevel()
-  +validateLevel()
-  +calculateAmount()
+  +deletePrice()
+  +setPhone()
+  +setStatus()
+  +processId()
 }
 class Housekeeping {
-  #Date name
-  -Date phone
-  #String quantity
-  +float note
-  +processAddress()
-  +calculateTotal()
-  +setPrice()
-  +updateUpdatedat()
+  #long amount
+  #boolean quantity
+  -boolean email
+  #long name
+  #boolean phone
+  +processPhone()
 }
 class Guest {
-  -float name
-  +float address
-  -double phone
-  -String updatedAt
-  +int active
-  +sendDescription()
-  +createEmail()
-  +cancelName()
-  +processEmail()
+  -int note
+  +String address
+  -String price
+  -Date total
+  #float code
+  +validateNote()
+  +setAddress()
+  +processDuration()
 }
-class Invoice {
-  #String address
-  +Date score
-  #boolean phone
-  +getStatus()
-  +validatePrice()
-  +validateAmount()
-  +createId()
+abstract class Invoice {
+  -String quantity
+  +int type
+  +cancelLevel()
+  +saveStatus()
+  +calculateDuration()
+  +validateCode()
 }
-abstract class Service {
-  -int phone
-  +boolean description
-  -int id
-  +setActive()
+class Service {
+  +int duration
+  -boolean name
+  -boolean note
+  +String email
+  +updateDuration()
+  +updateCreatedat()
+  +deleteQuantity()
+  +validateDuration()
 }
-interface CheckIn {
-  -float description
-  #double phone
-  -Date address
-  #String total
-  +String duration
-  +processType()
+abstract class CheckIn {
+  #Date amount
+  #float email
+  +long id
+  +String type
+  +findAddress()
+  +getPrice()
+  +validatePhone()
+  +calculateDuration()
 }
-Guest ..> CheckIn : "0..1"
-CheckIn ..> Guest : "*"
-Housekeeping ..> Restaurant : "1..*"
-note right of Restaurant : Hotel domain
+Housekeeping --|> Restaurant
+Service ..> CheckIn : "*"
+Housekeeping --* Guest
+Invoice --* Housekeeping
 @enduml

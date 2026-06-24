@@ -5,45 +5,42 @@ class Supplier {
   +boolean score
   +boolean phone
   -double price
-  +cancelType()
-  +calculatePhone()
+  +getStatus()
+  +setPhone()
 }
-class Category {
-  +Date active
-  +Date status
-  #String duration
-  #Date code
-  #String description
-  +processTotal()
-  +processPhone()
-  +sendCreatedat()
+abstract class Category {
+  #String phone
+  +int name
+  #String type
+  #boolean active
+  +float status
+  +validateScore()
 }
-class Customer {
-  +float address
-  +double phone
-  -Date duration
-  -long id
-  +float note
-  +saveAmount()
+abstract class Customer {
+  -long type
+  -Date phone
+  -String score
+  -int createdAt
+  +double status
+  +updatePhone()
+  +calculateQuantity()
+  +setEmail()
+  +cancelTotal()
 }
-interface Invoice {
-  #Date code
-  #String description
-  #float note
-  +int address
-  +boolean price
-  +updateAddress()
-  +cancelName()
-  +getPrice()
+class Invoice {
+  +float score
+  #double note
+  -Date code
+  +calculateActive()
+  +saveDescription()
+  +getCode()
+  +processAmount()
 }
-class Review {
-  #String note
-  +Date amount
-  +deleteNote()
-  +processStatus()
-  +findLevel()
+interface Review {
+  #long amount
+  +long status
+  +setDuration()
 }
-Customer --o Invoice
-Supplier --* Review
-note right of Supplier : Ecommerce domain
+Invoice --|> Customer
+Invoice --> Category : "1"
 @enduml

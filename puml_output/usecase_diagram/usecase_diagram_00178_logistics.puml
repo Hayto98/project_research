@@ -3,10 +3,10 @@ skinparam shadowing false
 skinparam backgroundColor #F5F5F5
 skinparam ArrowColor #555555
 left to right direction
-actor "Fleet Manager" as FleetManager
-actor "Driver" as Driver
-actor "Customer" as Customer
-actor "Dispatcher" as Dispatcher
+actor "Fleet Manager" as FM
+actor "Driver" as D
+actor "Customer" as C
+actor "Dispatcher" as D1
 rectangle "Logistics System" {
   usecase "Track Shipment" as UC_TrackShipment
   usecase "Schedule Pickup" as UC_SchedulePickup
@@ -14,14 +14,14 @@ rectangle "Logistics System" {
   usecase "Report Issue" as UC_ReportIssue
   usecase "Assign Route" as UC_AssignRoute
 }
-FleetManager --> UC_SchedulePickup
-FleetManager --> UC_UpdateInventory
-Driver --> UC_AssignRoute
-Driver --> UC_TrackShipment
-Customer --> UC_TrackShipment
-Customer --> UC_UpdateInventory
-Customer --> UC_ReportIssue
-Dispatcher --> UC_ReportIssue
-Dispatcher --> UC_AssignRoute
+FM --> UC_SchedulePickup
+FM --> UC_UpdateInventory
+D --> UC_AssignRoute
+D --> UC_TrackShipment
+C --> UC_TrackShipment
+C --> UC_UpdateInventory
+C --> UC_ReportIssue
+D1 --> UC_ReportIssue
+D1 --> UC_AssignRoute
 UC_UpdateInventory ..|> UC_AssignRoute : <<extend>>
 @enduml

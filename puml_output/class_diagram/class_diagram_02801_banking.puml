@@ -7,35 +7,33 @@ class Deposit {
   +boolean score
   #String level
   #String id
-  +cancelType()
-  +cancelId()
+  +sendActive()
+  +sendCreatedat()
 }
-class Customer {
-  -long description
-  -float phone
-  +boolean createdAt
-  #boolean type
+interface Customer {
+  +float status
+  -boolean note
+  +sendName()
+  +cancelNote()
+}
+abstract class Statement {
+  +long note
+  +boolean status
+  -String code
   +float score
-  +deleteAddress()
+  +createUpdatedat()
+  +validateEmail()
+  +saveId()
+  +processCode()
 }
-class Statement {
-  +String status
-  +Date description
-  #float total
-  +long active
-  -Date duration
-  +findScore()
-  +findPrice()
-  +findAmount()
-}
-abstract class Beneficiary {
-  -double total
-  -int updatedAt
-  -double createdAt
-  #boolean code
-  +cancelName()
+class Beneficiary {
+  -float phone
+  #boolean email
+  #double active
+  +findEmail()
+  +createDuration()
 }
 Beneficiary ..|> Statement
-Customer --* Deposit
-note right of Deposit : Banking domain
+Customer --|> Statement
+Beneficiary --o Customer
 @enduml

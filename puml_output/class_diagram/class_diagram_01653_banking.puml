@@ -7,53 +7,47 @@ interface Card {
   -boolean type
   -float description
   -int total
-  +updatePrice()
-  +cancelEmail()
-  +calculateCode()
-  +createPrice()
-}
-interface Statement {
-  -double amount
-  #int description
-  -double id
+  +cancelNote()
+  +setCreatedat()
   +sendScore()
-  +processCreatedat()
+  +deleteDescription()
 }
-class Interest {
+class Statement {
+  +String code
+  -double email
+  #int price
+  -double description
+  #boolean amount
+  +getCreatedat()
+  +cancelAmount()
+}
+abstract class Interest {
+  +double amount
+  +double price
   +long description
-  +boolean status
-  +double type
-  +int duration
-  -float price
-  +createUpdatedat()
-  +processDescription()
+  +cancelAmount()
+  +sendId()
 }
-interface Teller {
-  +Date address
-  -String quantity
-  #Date description
-  +double createdAt
-  +calculateTotal()
-  +sendPrice()
+abstract class Teller {
+  +long updatedAt
+  +double note
+  +calculateActive()
+  +saveType()
 }
 class Transfer {
-  -float createdAt
-  #float price
-  +calculateAmount()
+  #double quantity
+  +float description
+  #Date createdAt
+  +double updatedAt
+  +findAmount()
+  +setAddress()
 }
-interface Withdrawal {
-  -String price
-  #int note
-  +String type
-  #float description
-  +boolean phone
-  +updateId()
-  +calculateEmail()
-  +validateStatus()
-  +calculateEmail()
+abstract class Withdrawal {
+  +double score
+  -float status
+  +getPhone()
 }
-Transfer ..|> Teller
-Card --o Teller
-Card --o Statement
-note right of Card : Banking domain
+Transfer --o Teller
+Withdrawal --o Teller
+Statement --* Transfer
 @enduml

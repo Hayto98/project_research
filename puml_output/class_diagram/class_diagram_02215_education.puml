@@ -6,52 +6,56 @@ skinparam defaultFontSize 13
 interface Student {
   +String id
   -long price
-  +deleteId()
-  +saveStatus()
-  +createPhone()
+  +cancelType()
+  +setType()
+  +updateAddress()
+  +updateActive()
+}
+class Enrollment {
+  -int phone
+  #Date name
+  +boolean description
+  #long total
+  +findScore()
+  +validateLevel()
+  +saveCreatedat()
+  +getPhone()
+}
+class Teacher {
+  -boolean description
+  #long total
+  #Date duration
+  +validateDuration()
+  +setDuration()
+  +createEmail()
+  +sendCreatedat()
+}
+class Book {
+  +float duration
+  +int amount
+  #String level
+  #boolean id
+  +deleteEmail()
+  +cancelCode()
+  +setDuration()
+}
+abstract class Library {
+  -Date duration
+  #boolean quantity
+  +int type
   +getDescription()
 }
-abstract class Enrollment {
-  #double description
-  -long amount
-  -Date score
-  #int phone
-  +deleteTotal()
-  +deleteType()
-}
-interface Teacher {
-  #long duration
-  -boolean note
-  +int address
-  +String type
-  +updateDuration()
-  +getActive()
-}
-interface Book {
-  -long type
-  #boolean price
-  #int amount
-  +String quantity
-  +deleteCreatedat()
-}
-class Library {
-  -double code
-  -Date type
-  -float name
-  +sendUpdatedat()
-  +createScore()
-  +processScore()
-  +createId()
-}
 interface Classroom {
-  +String id
-  #boolean status
-  +createCode()
-  +calculateEmail()
+  -boolean description
+  +String createdAt
+  +cancelName()
+  +savePhone()
+  +updateQuantity()
+  +validateName()
 }
-Enrollment ..|> Teacher
-Student --|> Enrollment
-Book --> Enrollment : "1..*"
-Teacher ..|> Enrollment
-note right of Student : Education domain
+Teacher --> Classroom : "*"
+Library --* Enrollment
+Library ..> Book : "1..*"
+Student ..> Library : "1"
+Student --|> Classroom
 @enduml

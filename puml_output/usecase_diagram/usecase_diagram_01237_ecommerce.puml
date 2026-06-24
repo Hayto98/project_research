@@ -4,10 +4,10 @@ skinparam classBackgroundColor #FFF9C4
 skinparam classBorderColor #F57F17
 skinparam ArrowColor #555555
 left to right direction
-actor "Delivery Service" as DeliveryService
-actor "Admin" as Admin
-actor "Payment Gateway" as PaymentGateway
-actor "Customer" as Customer
+actor "Delivery Service" as DS
+actor "Admin" as A
+actor "Payment Gateway" as PG
+actor "Customer" as C
 rectangle "Ecommerce System" {
   usecase "Browse Products" as UC_BrowseProducts
   usecase "Track Order" as UC_TrackOrder
@@ -18,13 +18,13 @@ rectangle "Ecommerce System" {
   usecase "Add To Cart" as UC_AddToCart
   usecase "Write Review" as UC_WriteReview
 }
-DeliveryService --> UC_MakePayment
-Admin --> UC_AddToCart
-PaymentGateway --> UC_AddToCart
-PaymentGateway --> UC_MakePayment
-PaymentGateway --> UC_CancelOrder
-Customer --> UC_CancelOrder
-Customer --> UC_ManageInventory
-Customer --> UC_BrowseProducts
+DS --> UC_MakePayment
+A --> UC_AddToCart
+PG --> UC_AddToCart
+PG --> UC_MakePayment
+PG --> UC_CancelOrder
+C --> UC_CancelOrder
+C --> UC_ManageInventory
+C --> UC_BrowseProducts
 UC_AddToCart ..|> UC_Checkout : <<extend>>
 @enduml

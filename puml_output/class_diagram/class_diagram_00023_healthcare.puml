@@ -5,50 +5,53 @@ skinparam classBorderColor #F57F17
 interface Treatment {
   #String code
   +double description
-  +cancelStatus()
-  +cancelNote()
+  +saveDuration()
+  +updateName()
 }
-class Appointment {
-  -String note
-  +Date address
-  -long name
-  #int amount
-  +deleteName()
-}
-interface Prescription {
-  +long active
+interface Appointment {
+  +double address
   +int email
-  #boolean total
-  -String phone
-  #boolean status
-  +processAddress()
-  +findActive()
-  +validateActive()
+  #long note
+  -boolean duration
+  +String name
+  +processQuantity()
+  +sendQuantity()
 }
-abstract class LabTest {
-  #Date active
-  #int level
-  +findTotal()
+abstract class Prescription {
+  -String total
+  +boolean phone
+  #long status
+  +Date createdAt
+  +saveAmount()
+  +createActive()
+  +updateId()
 }
-class MedicalRecord {
-  -Date price
-  +Date address
-  #float note
-  +setCreatedat()
-  +createAmount()
-  +getName()
-  +saveCode()
+interface LabTest {
+  #boolean active
+  #boolean type
+  +Date status
+  +Date duration
+  +setDuration()
+  +updateDescription()
+  +findAddress()
+  +saveTotal()
 }
-interface Patient {
-  -long active
-  -double score
-  +sendDuration()
-  +validateAmount()
-  +setAddress()
-  +sendPhone()
+abstract class MedicalRecord {
+  #boolean level
+  -String note
+  +long price
+  +float description
+  +deleteType()
 }
+class Patient {
+  +boolean level
+  #double score
+  +processDescription()
+  +saveAmount()
+  +validateName()
+}
+Appointment ..> Treatment : "1..*"
+MedicalRecord ..|> Prescription
 Prescription ..|> Treatment
 Patient --> MedicalRecord : "*"
-MedicalRecord ..|> Patient
-note right of Treatment : Healthcare domain
 @enduml

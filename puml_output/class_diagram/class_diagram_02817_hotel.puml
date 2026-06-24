@@ -7,46 +7,49 @@ abstract class Reservation {
   +boolean score
   #float price
   -double quantity
-  +cancelPrice()
+  +saveDuration()
 }
-interface Room {
+abstract class Room {
   +float updatedAt
   #int active
-  +findUpdatedat()
-  +sendLevel()
+  +saveDescription()
+  +validatePrice()
 }
 class CheckOut {
-  #long price
-  -String updatedAt
-  #String type
-  -float active
-  #String status
-  +findNote()
-  +getEmail()
-  +sendDescription()
-  +setDescription()
+  -boolean level
+  +boolean type
+  -double price
+  +Date updatedAt
+  +findCreatedat()
 }
 class Payment {
-  +boolean phone
-  #int status
-  +calculateUpdatedat()
+  +String note
+  +long name
+  #String email
+  +boolean description
+  #int code
+  +getDuration()
 }
 abstract class Service {
-  +long createdAt
-  -String active
-  -String price
-  +saveTotal()
-  +saveNote()
+  #double price
+  +long updatedAt
+  -String createdAt
+  +cancelStatus()
+  +sendNote()
+  +cancelPrice()
 }
-class Restaurant {
-  -Date duration
-  #double createdAt
-  +getPhone()
+abstract class Restaurant {
+  -String email
+  #long code
+  -double createdAt
+  +float note
+  -int type
+  +getQuantity()
+  +processNote()
   +validateTotal()
-  +setType()
+  +getAddress()
 }
-Restaurant --o Service
-Service ..|> Payment
 Service --> CheckOut : "0..1"
-note right of Reservation : Hotel domain
+Room --> Restaurant : "1..*"
+Payment --> Room : "0..1"
 @enduml

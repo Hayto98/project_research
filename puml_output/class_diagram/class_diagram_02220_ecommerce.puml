@@ -8,52 +8,50 @@ class Supplier {
   -String updatedAt
   -Date level
   #boolean name
-  +deleteTotal()
-  +getDuration()
-  +deleteLevel()
+  +deleteScore()
+  +setNote()
+  +calculateId()
 }
-abstract class Customer {
-  +long type
-  #boolean id
-  -float duration
-  +updateType()
+interface Customer {
+  -String level
+  -String price
+  -Date description
+  +saveStatus()
+  +processAddress()
+  +setStatus()
+  +getTotal()
 }
 abstract class Return {
-  +String level
-  #double code
-  -float updatedAt
-  +cancelId()
+  +boolean updatedAt
+  -float level
+  -float code
+  #String duration
+  #String active
+  +calculateLevel()
+  +cancelAmount()
+  +calculateNote()
 }
 class Payment {
-  #boolean address
-  -boolean id
-  +String status
-  +findDescription()
-  +deleteQuantity()
+  -boolean status
+  +String active
+  +calculateDescription()
+  +findPhone()
 }
-interface Order {
-  -boolean level
-  #long name
-  +long address
-  +Date quantity
-  +double status
-  +getAddress()
-  +findUpdatedat()
-  +updateCreatedat()
-  +getLevel()
+class Order {
+  -Date level
+  +float type
+  -boolean name
+  #long address
+  +createActive()
+  +cancelLevel()
 }
 class Wishlist {
-  #boolean amount
-  +float duration
+  -Date total
   #int note
-  #float status
-  #double updatedAt
-  +sendLevel()
+  +int id
+  +calculateStatus()
 }
-Payment --o Wishlist
-Order --|> Return
-Order --> Payment : "1..*"
-Wishlist --|> Supplier
-Supplier --> Wishlist : "1"
-note right of Supplier : Ecommerce domain
+Payment ..|> Customer
+Payment ..|> Supplier
+Wishlist --|> Order
 @enduml

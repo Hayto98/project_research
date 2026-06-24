@@ -6,35 +6,37 @@ class Insurance {
   +float phone
   -String updatedAt
   #Date createdAt
-  +getActive()
-  +getDuration()
-  +validateLevel()
-  +cancelAddress()
+  +updateDuration()
+  +findStatus()
+  +sendLevel()
+  +findDuration()
 }
-abstract class Ward {
+class Ward {
+  #double level
+  #int address
   +int total
-  +Date level
-  +updateScore()
+  #String id
+  +deletePhone()
+  +updateAmount()
 }
-class Prescription {
-  +String code
-  #double email
-  -float total
-  #String address
-  +createPrice()
-  +findPrice()
+interface Prescription {
+  -double quantity
+  #float code
+  +processUpdatedat()
+  +setName()
+  +createId()
 }
-interface Patient {
-  #long id
-  -Date status
+abstract class Patient {
+  #double name
+  +Date amount
   +long email
-  +float active
-  -long type
-  +createPhone()
+  #float price
+  #boolean active
   +getStatus()
+  +updateId()
+  +calculateScore()
+  +saveScore()
 }
-Prescription --* Ward
-Ward ..> Prescription : "1"
-Patient --o Insurance
-note right of Insurance : Healthcare domain
+Prescription --o Insurance
+Prescription --> Patient : "0..1"
 @enduml

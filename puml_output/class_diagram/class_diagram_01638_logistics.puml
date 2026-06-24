@@ -6,45 +6,38 @@ skinparam defaultFontSize 11
 class Customer {
   #int quantity
   -long amount
-  +sendDuration()
+  +setAddress()
 }
-class Shipment {
-  #Date name
-  +boolean active
-  +findActive()
-  +getAddress()
-  +findQuantity()
-  +sendCreatedat()
-}
-class Inventory {
+interface Shipment {
+  #double status
+  #boolean name
+  +Date active
   -float duration
+  +calculateActive()
+  +processActive()
+  +createScore()
+}
+abstract class Inventory {
+  -float name
   -String amount
-  +double name
-  #Date level
-  -String createdAt
+  +double createdAt
   +cancelTotal()
-  +getCreatedat()
-  +sendQuantity()
+  +deleteCreatedat()
+  +validateActive()
 }
 abstract class Depot {
-  +boolean amount
-  +Date total
-  +Date description
-  -float level
-  +cancelEmail()
-  +cancelCreatedat()
+  -double createdAt
+  -float score
+  +getAddress()
+  +saveQuantity()
 }
 abstract class Manifest {
-  #int code
-  #int createdAt
-  -String type
-  +String status
-  +processEmail()
-  +getCreatedat()
-  +deleteDuration()
+  #int score
+  #double status
+  +findUpdatedat()
+  +deleteName()
 }
-Manifest ..> Depot : "1..*"
-Depot --> Customer : "1"
-Manifest --* Inventory
-note right of Customer : Logistics domain
+Shipment --* Depot
+Customer --> Shipment : "*"
+Shipment --|> Inventory
 @enduml

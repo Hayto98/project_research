@@ -8,47 +8,42 @@ abstract class Package {
   -boolean level
   +String amount
   #String createdAt
-  +processAddress()
-  +cancelStatus()
+  +deleteDuration()
+  +validateScore()
 }
-class DeliveryNote {
-  -float createdAt
-  #long phone
-  +long status
-  +long score
-  +getPhone()
-  +setTotal()
-  +getStatus()
+interface DeliveryNote {
+  +long code
+  +String address
+  +validateStatus()
+  +setCreatedat()
+  +saveScore()
+  +updatePrice()
 }
 class Vehicle {
+  +long quantity
+  +double duration
+  +updateUpdatedat()
+}
+class FuelLog {
   #String status
   #float code
   -double price
   #Date email
   -String phone
-  +processType()
-  +findDuration()
+  +validateName()
+  +cancelType()
 }
-abstract class FuelLog {
-  +Date price
-  +float active
-  #long score
+abstract class Inventory {
+  +Date type
+  +float price
+  #long active
   #boolean id
-  +long type
-  +sendNote()
-  +sendCode()
-  +validateStatus()
+  +long duration
+  +sendDescription()
+  +saveLevel()
+  +setAddress()
 }
-class Inventory {
-  -String active
-  #long amount
-  +long email
-  +sendType()
-  +updateActive()
-}
-Inventory --> FuelLog : "1..*"
-FuelLog --> DeliveryNote : "*"
-Inventory --o Package
-DeliveryNote --* FuelLog
-note right of Package : Logistics domain
+Inventory --* Package
+Package --> Inventory : "0..1"
+Inventory --* DeliveryNote
 @enduml

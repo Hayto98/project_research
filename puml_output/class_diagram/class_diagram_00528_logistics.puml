@@ -6,58 +6,61 @@ class Shipment {
   -Date createdAt
   #Date price
   +String active
-  +findEmail()
-  +deleteTotal()
-  +updateActive()
+  +calculateStatus()
+  +processCreatedat()
+  +findCreatedat()
 }
-abstract class Customer {
+class Customer {
+  #Date createdAt
+  #double active
+  +long price
   +Date quantity
-  #Date total
-  -boolean code
-  -long duration
-  +getUpdatedat()
-  +getNote()
+  #Date level
+  +deleteUpdatedat()
+  +deleteEmail()
+  +findCode()
+  +findEmail()
 }
 class Tracking {
-  #boolean type
-  #long name
-  -Date id
-  +updateLevel()
+  -long name
+  #Date updatedAt
+  +double duration
+  +validateStatus()
 }
-interface FuelLog {
-  +double score
+class FuelLog {
+  #boolean note
+  #String status
+  +double createdAt
   +String id
-  +processId()
-  +findPrice()
+  +processTotal()
+  +processName()
 }
-class Manifest {
+abstract class Manifest {
+  #double updatedAt
   #double name
   -String phone
-  +int total
-  +processDescription()
-  +findScore()
-  +findStatus()
-  +cancelScore()
+  +processPrice()
+  +getPhone()
 }
-class Warehouse {
-  -float status
-  #boolean code
-  +setLevel()
-  +sendTotal()
-  +sendCreatedat()
-  +findLevel()
+abstract class Warehouse {
+  +float score
+  +String status
+  +float duration
+  +deletePhone()
+  +deleteTotal()
+  +deleteEmail()
 }
-class Route {
-  +String duration
-  #float status
-  -double active
-  +float note
-  #Date email
-  +updateScore()
-  +getDescription()
+interface Route {
+  #boolean status
+  -double level
+  #Date active
+  #String total
+  #boolean createdAt
+  +deleteDescription()
+  +createId()
+  +validateAddress()
+  +deleteScore()
 }
-Manifest --o Tracking
-FuelLog ..|> Shipment
-Shipment --> Customer : "0..1"
-note right of Shipment : Logistics domain
+Warehouse --o FuelLog
+Customer ..> Warehouse : "0..1"
 @enduml

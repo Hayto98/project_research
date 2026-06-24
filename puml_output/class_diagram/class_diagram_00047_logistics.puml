@@ -3,54 +3,53 @@ skinparam defaultFontSize 11
 interface Depot {
   #boolean createdAt
   #int duration
-  +processCode()
-  +calculateScore()
+  +validateUpdatedat()
+  +getLevel()
 }
-class Route {
-  #int code
-  +int updatedAt
-  #String note
-  -long level
-  +boolean email
-  +updateAddress()
-  +getScore()
+abstract class Route {
+  -boolean price
+  +long code
+  #int updatedAt
+  +validateNote()
+  +saveDescription()
 }
-abstract class Customer {
-  #int price
-  #float id
-  #boolean createdAt
-  #double description
-  +updateNote()
-  +processPrice()
+class Customer {
+  +Date quantity
+  #long updatedAt
+  +boolean score
+  -Date amount
+  +setPrice()
+  +findTotal()
+  +processType()
 }
 class Driver {
-  +String address
-  -String total
-  +boolean score
-  +double price
-  +Date id
-  +saveEmail()
-  +updatePhone()
-  +validateTotal()
+  -int description
+  +float amount
+  -double active
+  +saveId()
+  +calculateCode()
+  +findLevel()
+  +setEmail()
 }
-class FuelLog {
-  -float phone
-  +int price
-  -boolean createdAt
-  -int type
-  +getDuration()
-  +createCode()
+abstract class FuelLog {
+  +boolean id
+  +double name
+  +Date code
+  -Date quantity
+  -float duration
+  +cancelId()
+  +setDuration()
 }
 class Vehicle {
-  +float active
-  #long price
-  +updateEmail()
-  +setPhone()
-  +processCreatedat()
+  -long phone
+  +int duration
+  -boolean level
+  -int price
+  #int createdAt
+  +findUpdatedat()
 }
-Vehicle --|> Route
-Vehicle --* Depot
-Vehicle --|> FuelLog
-Route ..|> Driver
-note right of Depot : Logistics domain
+Depot --> Route : "1"
+Vehicle --o FuelLog
+Route --* FuelLog
+Customer --* Route
 @enduml

@@ -7,49 +7,48 @@ class Prescription {
   -Date updatedAt
   #long active
   -long type
-  +savePrice()
+  +deleteStatus()
 }
-class Billing {
-  -int active
-  +float phone
-  #long note
-  -long address
-  +long id
-  +deleteType()
-  +deleteUpdatedat()
-  +getScore()
+abstract class Billing {
+  -boolean type
+  #long active
+  +long phone
+  +findId()
+  +getPrice()
 }
 class Diagnosis {
-  +int code
-  +int duration
-  +savePrice()
-  +calculateNote()
-  +updateCreatedat()
+  +float phone
+  -int amount
+  +String email
+  #boolean duration
+  +getActive()
+  +findNote()
 }
 class Patient {
-  +long active
-  #Date id
-  #double level
-  +deleteNote()
-  +getAddress()
-  +setNote()
+  +int name
+  -Date amount
+  +saveLevel()
+  +saveName()
+  +processTotal()
+  +createScore()
 }
 class MedicalRecord {
-  #float active
-  -int updatedAt
-  -double note
-  -String phone
-  +cancelLevel()
+  +int updatedAt
+  -Date active
+  #boolean id
+  +cancelActive()
+  +createQuantity()
+  +saveAddress()
+  +getActive()
 }
-class Treatment {
-  #double name
-  +double email
-  #String updatedAt
-  +createActive()
-  +findCode()
-  +processName()
+abstract class Treatment {
+  -String address
+  -boolean code
+  +processTotal()
+  +deleteStatus()
 }
-Diagnosis ..|> Treatment
-MedicalRecord --* Prescription
-note right of Prescription : Healthcare domain
+Treatment ..|> Patient
+Diagnosis --o Patient
+Prescription --> Treatment : "0..1"
+MedicalRecord --|> Billing
 @enduml

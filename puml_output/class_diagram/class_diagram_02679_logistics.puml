@@ -6,48 +6,44 @@ skinparam shadowing true
 class Driver {
   #double phone
   -long id
-  +createType()
+  +updateLevel()
+  +sendCreatedat()
+  +getAmount()
+}
+interface Depot {
+  -float email
+  -double code
+  -boolean total
   +saveActive()
-  +updateEmail()
+  +setAmount()
 }
-class Depot {
-  #float price
-  +double total
-  -Date duration
-  +long note
-  #double updatedAt
-  +processDescription()
-  +processType()
-}
-abstract class Inventory {
-  +Date description
+class Inventory {
+  -int total
+  -double code
   -boolean quantity
-  #long price
-  -boolean phone
-  +calculateTotal()
-  +validateLevel()
-  +processPhone()
-  +sendName()
+  -int price
+  #long amount
+  +deleteCode()
+  +getLevel()
+  +calculateStatus()
+  +updateTotal()
 }
 interface Manifest {
-  #boolean email
-  #int id
-  +double address
-  +createName()
-  +cancelDescription()
+  #double quantity
+  -boolean score
+  -long total
+  #String level
+  +deletePhone()
+  +saveLevel()
 }
-abstract class Route {
-  #int note
-  -String quantity
-  -String address
-  +float createdAt
-  +findPrice()
-  +createAmount()
-  +findId()
+class Route {
+  #int address
+  +double active
+  +cancelPhone()
+  +savePhone()
 }
-Manifest ..|> Driver
-Depot --|> Inventory
-Depot ..> Driver : "1"
-Route --> Inventory : "0..1"
-note right of Driver : Logistics domain
+Depot --> Manifest : "1..*"
+Manifest ..> Inventory : "1..*"
+Depot --o Route
+Driver --|> Manifest
 @enduml

@@ -5,47 +5,47 @@ skinparam classBorderColor #F57F17
 abstract class Shipment {
   +float description
   #double phone
-  +deletePhone()
+  +getStatus()
 }
-interface Depot {
+class Depot {
+  -boolean level
+  -int status
   -boolean quantity
-  -int code
-  +sendPrice()
-  +updateTotal()
-  +sendDuration()
+  -float code
+  +cancelCreatedat()
+  +processPhone()
 }
 interface Customer {
   +float duration
   +long updatedAt
-  +updateAddress()
+  +updateDescription()
 }
 class Warehouse {
-  +double total
-  -double updatedAt
-  +processPhone()
-  +cancelName()
-  +createCode()
+  +String status
+  -long total
+  +getScore()
+  +deleteLevel()
+  +processDescription()
+  +calculateAmount()
 }
-interface FuelLog {
-  -long phone
-  #long active
-  #float price
-  +double quantity
-  #float status
-  +saveCode()
-  +findPhone()
-  +cancelQuantity()
-  +updatePrice()
+class FuelLog {
+  #double quantity
+  -Date code
+  +findScore()
+  +saveActive()
+  +cancelEmail()
+  +sendScore()
 }
 class Tracking {
-  -int id
-  #long note
-  #float score
-  +int status
-  +sendCode()
+  #String active
+  #Date status
+  -boolean note
+  #long score
+  +deleteAmount()
+  +createAmount()
 }
-FuelLog --> Warehouse : "1"
-Customer --o FuelLog
-Customer --> Depot : "1..*"
-note right of Shipment : Logistics domain
+Shipment --> Warehouse : "1"
+Warehouse --> Depot : "1..*"
+FuelLog ..|> Shipment
+Shipment --|> FuelLog
 @enduml

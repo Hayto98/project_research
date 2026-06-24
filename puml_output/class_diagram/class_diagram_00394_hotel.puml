@@ -7,62 +7,57 @@ class Service {
   -String level
   #Date type
   -String phone
-  +sendPhone()
+  +sendQuantity()
 }
-interface Booking {
+class Booking {
   +int duration
   +float quantity
   #float id
-  +deleteCreatedat()
+  +findPhone()
 }
 class Invoice {
-  -Date id
-  #String total
-  +saveLevel()
-  +deleteDescription()
-  +processDuration()
-  +calculateScore()
+  -long code
+  #Date id
+  +getAddress()
 }
-abstract class Guest {
-  +long status
-  #String address
-  +boolean quantity
-  +double description
-  +findPhone()
-  +setEmail()
-  +createAddress()
-  +getStatus()
+interface Guest {
+  #double description
+  #boolean note
+  -String price
+  +deleteLevel()
+  +updateCode()
+  +processDescription()
 }
-interface Amenity {
-  #String note
-  -long status
-  #String updatedAt
-  +updateDuration()
-  +setAddress()
-  +sendType()
-  +createStatus()
+class Amenity {
+  #int address
+  -boolean status
+  #boolean updatedAt
+  +updateScore()
+  +saveScore()
+  +findNote()
+  +validateAmount()
 }
 class Restaurant {
-  +boolean duration
-  #long amount
-  #boolean total
-  +createAmount()
-  +updateCode()
+  -Date name
+  #String status
+  #int score
+  #String description
+  +calculateName()
+  +setCreatedat()
+  +updateUpdatedat()
+  +saveDescription()
+}
+abstract class Staff {
+  #double duration
+  -String code
+  -int address
+  +getAddress()
   +setName()
 }
-class Staff {
-  -float duration
-  #float price
-  #int updatedAt
-  +String type
-  +boolean address
-  +updateType()
-  +sendId()
-}
-Service --|> Booking
-Restaurant --> Service : "0..1"
-Restaurant --o Guest
-Invoice --> Service : "1..*"
-Guest ..|> Staff
-note right of Service : Hotel domain
+Staff --* Restaurant
+Staff --> Amenity : "1..*"
+Invoice ..|> Booking
+Service --|> Staff
+Booking ..> Guest : "*"
+Booking ..> Restaurant : "*"
 @enduml

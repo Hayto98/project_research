@@ -7,59 +7,59 @@ abstract class Customer {
   -Date code
   +int address
   #int duration
-  +validateEmail()
-  +calculateTotal()
-  +findPhone()
+  +updateTotal()
+  +calculateScore()
+  +setNote()
 }
-interface Return {
-  -float total
-  #boolean status
-  #int name
-  +cancelPrice()
+abstract class Return {
+  +float score
+  -float description
+  #boolean total
+  #int status
+  +getCode()
 }
 abstract class Product {
-  #int quantity
-  -double level
-  +float note
-  -double id
-  +cancelDuration()
-  +setActive()
-  +updateNote()
+  -double phone
+  +float quantity
+  -double note
+  -boolean id
+  #float amount
+  +sendQuantity()
 }
 class Review {
+  #String code
+  +String duration
+  #boolean total
+  #float amount
+  -double email
+  +sendStatus()
+  +validateQuantity()
+  +saveDescription()
+}
+class Wishlist {
+  #int createdAt
+  +String level
   +Date duration
-  #long total
-  +setId()
+  +validateEmail()
 }
-interface Wishlist {
-  +Date type
-  #int address
-  #int amount
-  +String score
-  +Date createdAt
-  +setStatus()
-}
-interface Category {
+class Category {
   +long address
   #String name
   +Date phone
-  +getCode()
-  +cancelPrice()
+  +saveId()
+  +getLevel()
 }
-class Payment {
+interface Payment {
+  #String code
+  -String type
   +String total
-  +long price
+  -Date price
   #Date quantity
-  #boolean code
-  -float phone
-  +findCode()
   +calculateType()
-  +cancelCreatedat()
+  +findPrice()
+  +validateAddress()
+  +updateScore()
 }
-Wishlist ..|> Product
-Category --* Customer
-Payment ..|> Customer
-Category --o Review
-Product ..> Customer : "1..*"
-note right of Customer : Ecommerce domain
+Review --> Payment : "0..1"
+Review --* Wishlist
 @enduml

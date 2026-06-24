@@ -8,38 +8,37 @@ class Inventory {
   +String updatedAt
   +Date phone
   -boolean email
-  +findQuantity()
-  +setAmount()
+  +getActive()
+  +getNote()
 }
 class Tracking {
+  +double quantity
+  -int total
   -float score
-  #Date name
-  -Date type
-  +long note
-  #float updatedAt
-  +setAddress()
+  +updateScore()
+  +calculateNote()
+  +findCode()
 }
 interface Customer {
-  -long code
-  -double createdAt
-  -Date note
-  #float address
-  +calculateType()
+  #long code
+  #Date address
+  +cancelNote()
 }
 abstract class DeliveryNote {
-  +String createdAt
-  #int name
-  -int active
-  +validatePrice()
-  +sendTotal()
+  -Date total
+  #float email
+  #Date price
+  #boolean type
+  +sendScore()
 }
-class Depot {
-  +double price
-  +long name
-  #double active
+abstract class Depot {
+  +Date amount
+  +long createdAt
+  +int name
+  -double active
+  #double level
   +cancelType()
 }
-Depot --> DeliveryNote : "*"
-Customer --* DeliveryNote
-note right of Inventory : Logistics domain
+DeliveryNote --> Inventory : "0..1"
+DeliveryNote --* Tracking
 @enduml

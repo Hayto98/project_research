@@ -5,53 +5,53 @@ skinparam classBorderColor #6A1B9A
 class Appointment {
   -String status
   +String type
-  +calculateName()
+  +findAmount()
 }
-abstract class Doctor {
-  +String score
+class Doctor {
+  -String note
+  +float score
   -boolean active
   -float id
   +boolean code
-  #float price
-  +processTotal()
-  +processQuantity()
-  +processLevel()
-}
-class Nurse {
-  #double level
-  #double price
-  +Date phone
-  -double note
+  +cancelLevel()
+  +deleteActive()
   +sendUpdatedat()
-  +updateQuantity()
-  +validateCreatedat()
-  +calculatePrice()
 }
-class Hospital {
-  +double email
-  +float code
-  +int name
-  +int score
+abstract class Nurse {
+  -float quantity
+  -float type
+  #double updatedAt
+  #double phone
+  +Date price
+  +createName()
+  +getName()
   +validatePrice()
-  +setAddress()
-  +saveDuration()
-  +cancelEmail()
 }
-interface Treatment {
-  +String address
-  -boolean id
-  +calculateCreatedat()
+abstract class Hospital {
+  +float updatedAt
+  -Date quantity
+  -int address
+  +cancelScore()
+  +deleteName()
+  +setCode()
+}
+class Treatment {
+  -String name
+  +int amount
+  +cancelLevel()
 }
 class Patient {
-  -double createdAt
-  -long quantity
-  #String active
-  +findCreatedat()
-  +calculateLevel()
+  #String phone
+  -String price
+  +String code
+  -boolean address
+  #String email
+  +sendEmail()
+  +saveDescription()
+  +getActive()
+  +calculateUpdatedat()
 }
-Hospital ..> Doctor : "1"
-Hospital --> Nurse : "1"
-Hospital ..|> Treatment
-Patient --* Nurse
-note right of Appointment : Healthcare domain
+Doctor --* Patient
+Treatment --o Nurse
+Nurse ..> Patient : "1"
 @enduml

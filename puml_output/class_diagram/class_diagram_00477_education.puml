@@ -9,53 +9,49 @@ interface Schedule {
   +String updatedAt
   +Date status
   #int email
-  +findCode()
-  +validateActive()
-  +cancelCode()
-  +createActive()
+  +validateDescription()
+  +updateId()
+  +processAmount()
+  +saveCreatedat()
 }
-abstract class Library {
-  #String quantity
-  #Date code
-  -Date price
-  +boolean email
-  +setStatus()
-  +deleteEmail()
+interface Library {
+  -long quantity
+  -float active
+  +calculateUpdatedat()
+}
+interface Book {
+  #double email
+  +String active
+  +long id
+  #String address
+  -boolean name
+  +getTotal()
   +saveCode()
-  +calculateScore()
+  +validatePhone()
 }
-class Book {
-  +boolean price
-  -float code
-  #String note
-  +calculateQuantity()
-  +createDescription()
+abstract class Enrollment {
+  #String level
+  #Date total
+  +createEmail()
+  +createPrice()
 }
-class Enrollment {
+class Student {
+  #String description
+  #boolean createdAt
+  +long address
   #boolean updatedAt
-  -int code
-  #boolean name
-  #boolean email
-  +setType()
+  +saveNote()
+  +sendType()
+  +setId()
 }
-interface Student {
-  +Date active
-  +float name
-  #String note
-  #Date address
-  #int code
-  +sendDuration()
-  +updateActive()
+interface Course {
+  #double code
+  #String type
+  +deleteId()
+  +validateScore()
+  +findEmail()
+  +deleteUpdatedat()
 }
-class Course {
-  #String note
-  -double level
-  #int code
-  +cancelDescription()
-}
-Schedule ..|> Course
-Book ..|> Course
-Course --* Library
-Student ..> Schedule : "1..*"
-note right of Schedule : Education domain
+Schedule ..> Library : "1"
+Student ..|> Course
 @enduml

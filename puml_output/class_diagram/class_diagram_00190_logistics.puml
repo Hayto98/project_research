@@ -6,60 +6,60 @@ skinparam shadowing true
 class Route {
   -long updatedAt
   -long duration
-  +findTotal()
-  +createName()
-  +cancelUpdatedat()
+  +validateType()
+  +validateStatus()
+  +cancelDescription()
 }
-class Tracking {
-  -int phone
-  +boolean createdAt
-  #Date name
-  +String email
-  +double type
-  +getLevel()
-  +calculatePrice()
-  +saveQuantity()
-  +cancelAmount()
+abstract class Tracking {
+  -Date name
+  +String updatedAt
+  -Date description
+  -long type
+  +saveTotal()
+  +processName()
 }
 interface Customer {
-  #int active
-  -int email
-  +long address
-  +processLevel()
-  +deleteEmail()
-  +cancelScore()
-  +processAddress()
-}
-abstract class Package {
-  -long price
-  +float code
-  +Date score
-  +saveActive()
-  +cancelScore()
-  +cancelId()
-}
-class DeliveryNote {
+  #double name
   +boolean updatedAt
-  +double score
-  +String name
-  +getName()
+  -Date note
+  +cancelPrice()
+  +updateId()
+  +setDuration()
+  +updateLevel()
+}
+interface Package {
+  -long duration
+  #int amount
+  -int active
+  +validateAddress()
+  +sendScore()
+}
+abstract class DeliveryNote {
+  -double email
+  +Date score
+  -String note
+  +cancelAddress()
+  +saveTotal()
+  +createScore()
 }
 class FuelLog {
-  -long address
-  -long code
-  -long total
-  +String active
-  #double price
-  +calculateEmail()
-  +setStatus()
-  +savePrice()
+  +Date active
+  +int level
+  #String score
+  +boolean id
+  +saveName()
 }
 class Driver {
-  -boolean code
-  #float phone
-  +saveLevel()
+  +float status
+  #long id
+  +setEmail()
+  +cancelType()
+  +getLevel()
+  +validateDescription()
 }
-FuelLog --o Tracking
-Route --|> Tracking
-note right of Route : Logistics domain
+DeliveryNote --* Package
+Customer --* Package
+Customer ..|> Driver
+Route --o FuelLog
+DeliveryNote --o Customer
 @enduml

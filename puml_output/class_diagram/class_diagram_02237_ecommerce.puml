@@ -7,59 +7,60 @@ class Cart {
   +float amount
   +float quantity
   +Date price
-  +findCreatedat()
-  +validateDuration()
-  +calculateEmail()
-  +calculateLevel()
+  +createLevel()
+  +getTotal()
+  +saveCreatedat()
+  +getPrice()
 }
-abstract class Return {
-  +Date address
-  +float type
-  +float createdAt
-  +double active
-  -double status
-  +calculateName()
+interface Return {
+  -int email
+  #Date total
+  +String price
+  #String type
+  +float address
+  +getAddress()
 }
-class Category {
-  -double code
-  -double phone
-  -float amount
-  +getStatus()
-  +findScore()
+abstract class Category {
+  +String level
+  -float status
+  +long price
+  -double name
+  -double updatedAt
+  +updateActive()
+  +updateName()
 }
-abstract class Review {
-  +long updatedAt
-  -long duration
-  +int name
-  -long score
-  +processCreatedat()
-  +deleteEmail()
+interface Review {
+  +long address
+  -long updatedAt
+  +int level
+  -long name
+  #int active
+  +sendLevel()
+  +saveNote()
+  +validateQuantity()
+  +deleteName()
 }
 abstract class Warehouse {
   +double updatedAt
   #Date status
   -int score
-  +calculateUpdatedat()
-  +sendLevel()
-  +updateId()
+  +getPhone()
+  +sendNote()
+  +calculateActive()
 }
-class Wishlist {
-  #Date quantity
-  +String active
-  -String type
-  +saveTotal()
-  +calculateName()
-  +deleteQuantity()
+interface Wishlist {
+  -float id
+  #double email
+  #Date description
+  +getLevel()
 }
-abstract class Supplier {
-  #String active
-  +float price
-  -boolean note
-  +deleteQuantity()
+class Supplier {
+  #double active
+  -String address
+  +calculatePhone()
+  +cancelCode()
 }
-Return --* Cart
-Warehouse --* Return
-Wishlist --o Category
-Category ..|> Warehouse
-note right of Cart : Ecommerce domain
+Warehouse --o Wishlist
+Wishlist ..> Review : "1"
+Supplier --* Cart
 @enduml

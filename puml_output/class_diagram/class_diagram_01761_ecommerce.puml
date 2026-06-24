@@ -9,54 +9,52 @@ class Payment {
   #float level
   +long quantity
   -double id
-  +sendDuration()
-  +createStatus()
+  +findPrice()
+  +deleteDescription()
 }
 class Order {
-  +String updatedAt
-  -Date score
-  #String duration
-  +double amount
-  +createQuantity()
-  +processDuration()
-  +deleteEmail()
+  +boolean name
+  #int phone
+  +validateNote()
+  +validateId()
 }
-abstract class Supplier {
-  -int status
-  #long description
-  -Date updatedAt
-  #String phone
-  +validateType()
-  +sendDuration()
-  +validateLevel()
-  +setAmount()
+class Supplier {
+  -long status
+  -double note
+  +validateTotal()
+  +getAmount()
 }
 class Invoice {
-  +boolean status
-  #Date updatedAt
-  +processActive()
-  +createTotal()
-  +getEmail()
+  -int email
+  #long status
+  -Date description
+  #String updatedAt
+  -long phone
+  +findDuration()
+  +setId()
+  +validateDuration()
+  +savePrice()
 }
 class Coupon {
-  +long quantity
-  +int name
-  +sendType()
-  +updateDuration()
-  +processAmount()
-  +getStatus()
+  #Date description
+  #int id
+  +boolean status
+  +saveAmount()
+  +deleteType()
+  +createUpdatedat()
 }
 class Category {
-  +boolean createdAt
-  -double description
-  -boolean active
-  +validateAmount()
-  +setCreatedat()
-  +sendCreatedat()
+  +String id
+  -float email
+  +int description
+  -boolean status
+  -float quantity
+  +deleteDescription()
+  +findEmail()
 }
-Category ..> Coupon : "1..*"
-Order ..|> Supplier
-Payment --> Coupon : "1"
-Coupon --> Payment : "0..1"
-note right of Payment : Ecommerce domain
+Order --|> Payment
+Payment ..> Order : "0..1"
+Category ..> Order : "0..1"
+Coupon --o Invoice
+Invoice ..> Coupon : "1..*"
 @enduml

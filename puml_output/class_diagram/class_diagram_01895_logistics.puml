@@ -9,34 +9,29 @@ abstract class FuelLog {
   -double phone
   -Date active
   #Date createdAt
-  +cancelAmount()
+  +getQuantity()
 }
 class Route {
-  -Date type
-  +Date updatedAt
-  #Date quantity
-  #float id
-  #String email
-  +getLevel()
-  +createDescription()
-  +calculateAddress()
-  +processId()
+  +long level
+  #float total
+  #float type
+  +validateAmount()
 }
 abstract class Warehouse {
-  +long type
-  +float createdAt
-  -double price
-  +int score
-  +sendScore()
+  -String duration
+  #long name
+  +createPrice()
+  +createActive()
 }
-class Tracking {
-  #double type
-  +int id
-  +createAddress()
-  +getPrice()
-  +processType()
+abstract class Tracking {
+  -int type
+  -float quantity
+  +createCode()
+  +findScore()
+  +setName()
+  +saveLevel()
 }
-FuelLog ..|> Route
-Route ..> Tracking : "0..1"
-note right of FuelLog : Logistics domain
+Tracking ..|> FuelLog
+FuelLog --> Warehouse : "0..1"
+FuelLog --|> Route
 @enduml

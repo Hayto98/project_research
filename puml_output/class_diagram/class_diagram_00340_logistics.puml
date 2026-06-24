@@ -7,28 +7,35 @@ interface Manifest {
   -float updatedAt
   #int description
   +String amount
-  +findNote()
+  +setCode()
 }
-class Warehouse {
-  +Date active
-  +String amount
-  +processTotal()
+abstract class Warehouse {
+  #float duration
+  #Date status
+  +String active
+  +deleteNote()
 }
-abstract class Route {
-  #long phone
-  +boolean duration
-  +int quantity
-  +cancelPrice()
+class Route {
+  -Date total
+  -float duration
+  +boolean description
+  +int phone
+  +boolean active
+  +getActive()
+  +deleteType()
+  +validateNote()
+  +findQuantity()
 }
-class Customer {
-  #String price
-  -String type
+abstract class Customer {
   -boolean description
   -String quantity
-  +sendEmail()
+  +boolean id
+  -Date phone
+  #double name
+  +updateScore()
+  +setActive()
+  +saveScore()
 }
-Route --* Customer
-Warehouse ..|> Customer
-Manifest ..|> Customer
-note right of Manifest : Logistics domain
+Route --|> Manifest
+Warehouse --|> Manifest
 @enduml

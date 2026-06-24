@@ -7,55 +7,61 @@ class Interest {
   +int description
   +int type
   #long score
-  +validateDescription()
-  +cancelNote()
-  +sendDuration()
+  +calculateName()
+  +findPhone()
+  +processScore()
 }
-class Transaction {
-  #boolean id
-  #boolean description
-  +setUpdatedat()
-  +setAmount()
-  +calculateQuantity()
-  +getActive()
+interface Transaction {
+  #boolean active
+  #boolean updatedAt
+  -String code
+  +String id
+  +float description
+  +calculatePhone()
+  +cancelTotal()
+  +updateNote()
+  +getTotal()
 }
 class Withdrawal {
-  +int name
-  -Date quantity
-  +validateLevel()
-  +cancelUpdatedat()
-  +createTotal()
-  +getEmail()
+  +double quantity
+  #boolean updatedAt
+  +findQuantity()
+  +updateAmount()
+  +cancelName()
+  +cancelActive()
 }
-class Statement {
-  -boolean score
-  -String level
-  +findDuration()
-  +findId()
+interface Statement {
+  -float email
+  +float total
+  +float name
+  +findDescription()
+  +deleteTotal()
+  +validateAddress()
 }
-interface Beneficiary {
-  +int total
-  +long quantity
-  -long note
-  +String price
-  +int duration
-  +calculateId()
+class Beneficiary {
+  -Date duration
+  #Date id
+  -Date active
+  +updateQuantity()
+  +calculateAmount()
+  +sendScore()
 }
-class Account {
-  +float id
-  +Date address
-  +getDescription()
-  +validateCreatedat()
+abstract class Account {
+  -long amount
+  +String createdAt
+  +int address
   +processType()
 }
-interface Deposit {
-  -int phone
+class Deposit {
   #long duration
-  -int note
-  +float name
-  +getAddress()
+  +float status
+  +Date id
+  +setName()
+  +saveUpdatedat()
+  +validateCreatedat()
 }
-Deposit --o Withdrawal
-Account --|> Deposit
-note right of Interest : Banking domain
+Transaction --o Statement
+Account --> Beneficiary : "1..*"
+Withdrawal --* Beneficiary
+Statement --* Interest
 @enduml

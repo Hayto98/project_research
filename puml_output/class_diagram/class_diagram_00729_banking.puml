@@ -7,42 +7,42 @@ class Transfer {
   -int phone
   -String code
   #float email
-  +setDescription()
+  +findNote()
 }
-interface Deposit {
+class Deposit {
   +String amount
   +boolean name
   +long email
-  +sendAmount()
-  +sendNote()
-  +createPhone()
+  +cancelAmount()
+  +createCode()
+  +deleteLevel()
 }
-class Branch {
-  +Date note
-  +Date level
-  #boolean description
-  #double price
-  +getName()
-  +setActive()
-  +getLevel()
-  +sendCreatedat()
+interface Branch {
+  #Date email
+  #int phone
+  -String description
+  #String duration
+  #Date note
+  +cancelType()
+  +deleteActive()
+  +processName()
+  +deleteTotal()
 }
-interface Beneficiary {
-  +boolean updatedAt
-  #Date amount
-  #long email
-  +processDuration()
-  +updateQuantity()
+class Beneficiary {
+  #boolean active
+  +boolean id
+  +findAddress()
+  +findId()
 }
 interface Account {
-  +Date amount
-  #double description
-  +createTotal()
-  +getUpdatedat()
-  +findType()
-  +updateNote()
+  -boolean code
+  +long level
+  #String phone
+  +int amount
+  +sendPrice()
 }
-Transfer ..|> Beneficiary
-Deposit --> Beneficiary : "0..1"
-note right of Transfer : Banking domain
+Beneficiary --* Account
+Beneficiary ..|> Transfer
+Beneficiary ..> Deposit : "*"
+Deposit --> Transfer : "*"
 @enduml

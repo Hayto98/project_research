@@ -7,38 +7,40 @@ interface Renewal {
   #float code
   #int total
   -Date duration
-  +deleteName()
-  +deleteDescription()
+  +deleteScore()
+  +deleteNote()
 }
 class Reservation {
+  +double description
+  +float address
   -int email
-  #int name
-  -int note
-  -boolean createdAt
-  +saveScore()
+  +createQuantity()
+  +calculateAddress()
 }
-abstract class Member {
-  +long email
-  -double type
-  +Date name
-  +cancelUpdatedat()
-  +cancelTotal()
+class Member {
+  +long score
+  -String total
+  +sendPhone()
 }
-interface Publisher {
-  -long level
-  #boolean phone
-  +long status
-  +createAddress()
-  +sendAmount()
+class Publisher {
+  #long name
+  +long createdAt
+  -boolean updatedAt
+  #String total
+  -Date amount
+  +deleteCreatedat()
+  +saveCreatedat()
 }
-class Catalog {
-  -int note
-  #String code
-  #Date email
-  #double score
-  +saveActive()
+interface Catalog {
+  #String email
+  #long duration
+  #boolean note
+  +processScore()
+  +processLevel()
+  +validateNote()
 }
-Reservation --|> Member
-Catalog --o Publisher
-note right of Renewal : Library domain
+Renewal --> Publisher : "1"
+Catalog ..> Reservation : "0..1"
+Member --> Renewal : "*"
+Publisher ..> Member : "1..*"
 @enduml

@@ -6,45 +6,44 @@ skinparam defaultFontSize 13
 abstract class Package {
   +int email
   +Date total
-  +createActive()
-  +calculateId()
+  +getUpdatedat()
+  +calculateScore()
 }
-abstract class Customer {
-  -double id
+interface Customer {
+  #boolean id
+  +Date total
+  #String note
+  -double duration
   -double address
-  +float name
-  +int active
-  -double score
-  +sendStatus()
-  +setStatus()
-  +getId()
+  +updateCreatedat()
+  +processPrice()
 }
-interface Vehicle {
-  -int phone
-  -int total
-  #int quantity
-  -String level
-  +boolean description
-  +createUpdatedat()
-}
-class Warehouse {
+class Vehicle {
   +Date note
-  +String score
-  #boolean code
-  +calculateCreatedat()
-  +processPhone()
-  +cancelQuantity()
+  +String email
+  +Date active
+  #float status
+  +sendPhone()
+  +sendUpdatedat()
+  +processNote()
+  +validateDescription()
+}
+abstract class Warehouse {
+  +double total
+  +Date active
+  +double description
+  +String phone
+  +deleteName()
 }
 class Depot {
-  +long phone
-  -String duration
-  -float code
-  +processPrice()
-  +findDuration()
-  +calculateId()
+  +String amount
+  #String note
+  +Date score
+  +getDescription()
+  +updateEmail()
+  +calculateNote()
 }
-Warehouse --|> Package
-Customer ..|> Warehouse
-Depot --* Customer
-note right of Package : Logistics domain
+Vehicle ..|> Depot
+Customer ..> Vehicle : "1..*"
+Package --* Customer
 @enduml

@@ -5,62 +5,59 @@ skinparam classBorderColor #2C7DA0
 interface Branch {
   +boolean price
   #String note
-  +getCode()
-  +calculateType()
-  +cancelType()
+  +deleteNote()
+  +validatePhone()
+  +deleteAmount()
 }
-class Account {
-  #String amount
+abstract class Account {
   +long phone
-  +saveAddress()
-  +savePhone()
-  +saveDescription()
-  +validateType()
+  -Date name
+  -Date amount
+  -Date duration
+  +long status
+  +processCode()
+  +createAmount()
+  +saveAmount()
+  +validateCode()
 }
 class Deposit {
-  -float note
-  -boolean description
-  #float createdAt
-  -boolean name
-  +deleteCode()
-  +findQuantity()
-  +sendEmail()
+  #boolean type
+  -boolean note
+  +getStatus()
+  +validateQuantity()
+  +processAmount()
 }
-abstract class Teller {
+class Teller {
+  +int price
+  -long note
   -long description
-  -float type
-  +boolean name
-  +String createdAt
-  #boolean email
-  +setTotal()
+  +boolean type
+  +validatePhone()
+  +validateTotal()
 }
-class Customer {
-  #long active
-  #double address
-  +setPhone()
-  +updateAddress()
-  +createEmail()
-  +sendAddress()
+interface Customer {
+  #long code
+  +float total
+  +cancelName()
+  +findCode()
+  +saveTotal()
 }
-class Transfer {
-  +int name
-  #boolean score
-  #long duration
-  +processNote()
-  +createAmount()
+abstract class Transfer {
+  #float status
+  -boolean phone
+  -long updatedAt
+  +String address
+  #Date quantity
+  +saveId()
 }
 class Statement {
-  #String total
-  +int id
-  #Date score
-  +deleteDuration()
-  +updateActive()
-  +sendPhone()
-  +cancelAddress()
+  +long description
+  +double note
+  +Date level
+  #Date email
+  +findPhone()
 }
-Deposit ..> Statement : "1"
-Teller --|> Account
-Transfer ..> Teller : "1..*"
-Branch --o Account
-note right of Branch : Banking domain
+Transfer --o Statement
+Account ..|> Customer
+Statement --> Customer : "1..*"
 @enduml

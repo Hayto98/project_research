@@ -6,61 +6,69 @@ class Payment {
   -double quantity
   -int description
   +boolean type
-  +processId()
-  +updateType()
+  +deleteActive()
+  +sendTotal()
+  +deleteAddress()
   +validateUpdatedat()
-  +calculateQuantity()
 }
-interface Cart {
-  #boolean address
-  #double type
-  -double id
-  +validateCode()
-  +findPrice()
+class Cart {
+  -double price
+  +boolean quantity
+  #Date updatedAt
+  +deleteCreatedat()
+  +findAmount()
+  +findPhone()
+  +saveScore()
 }
-interface Invoice {
-  -int score
-  -int name
-  +int phone
-  +saveQuantity()
-  +createEmail()
-  +sendAddress()
-  +deleteAmount()
+class Invoice {
+  -int level
+  -int createdAt
+  +int score
+  -Date name
+  -long phone
+  +sendAmount()
+  +findQuantity()
+  +createCode()
 }
-interface Shipment {
+class Shipment {
   +double price
   -int updatedAt
   #String code
   #String total
-  +createActive()
-  +updatePrice()
-  +createDescription()
-  +processActive()
+  +getDescription()
+  +calculateScore()
+  +findPrice()
+  +cancelNote()
 }
-class Customer {
-  +int phone
-  +long duration
-  -Date address
-  +cancelStatus()
-  +cancelScore()
+abstract class Customer {
+  +float description
+  -long type
+  -String active
+  +int email
+  +deleteCode()
+  +calculateStatus()
+  +processUpdatedat()
 }
 interface Wishlist {
-  -int total
-  #boolean phone
-  +createCreatedat()
-  +deletePrice()
+  #String duration
+  -long score
+  +saveAddress()
+  +validateTotal()
+  +getQuantity()
 }
-abstract class Warehouse {
-  +boolean description
-  #double email
-  +deleteDuration()
-  +updateType()
-  +sendId()
-  +validateCode()
+class Warehouse {
+  +int createdAt
+  #long description
+  +boolean price
+  #double total
+  +createCode()
+  +findDescription()
+  +setAmount()
+  +saveNote()
 }
+Customer --* Payment
+Warehouse ..> Payment : "1..*"
 Invoice --* Cart
 Cart --o Payment
 Shipment ..|> Wishlist
-Invoice ..> Wishlist : "0..1"
-note right of Payment : Ecommerce domain
 @enduml

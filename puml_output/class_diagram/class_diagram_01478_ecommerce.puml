@@ -6,54 +6,59 @@ interface Shipment {
   #String note
   #Date name
   -float description
-  +saveId()
-  +processAmount()
+  +sendPrice()
+  +updateScore()
 }
 class Return {
+  +long amount
+  -double phone
+  +boolean createdAt
   -float address
-  -double updatedAt
-  +boolean id
-  +deleteUpdatedat()
-  +updateEmail()
-  +savePhone()
+  +int updatedAt
+  +sendAddress()
+  +getAmount()
 }
 class Customer {
-  -boolean status
-  +float id
-  +setActive()
-  +getNote()
+  +long status
+  #int duration
+  +validatePhone()
+  +getName()
 }
-abstract class Coupon {
-  -Date score
-  #long address
-  #int id
-  +String quantity
-  +deleteCreatedat()
+interface Coupon {
+  -float note
+  #long duration
+  +calculateDescription()
 }
 class Review {
-  #boolean status
-  -long level
-  +processActive()
-  +updateId()
-  +createTotal()
-  +calculateDuration()
+  +String active
+  +int email
+  +long duration
+  +String description
+  +getNote()
+  +validateUpdatedat()
+  +getId()
 }
-class Cart {
-  +Date note
+interface Cart {
+  -boolean id
+  -Date quantity
   #double total
-  +String createdAt
-  -Date description
-  +float address
-  +processType()
-  +updateActive()
+  +deleteLevel()
+  +getAddress()
+  +cancelNote()
+  +validateCode()
 }
-abstract class Category {
-  #boolean type
-  -float updatedAt
-  +updateDescription()
-  +processAmount()
+interface Category {
+  +long description
+  #int active
+  +double note
+  -int status
+  +getAmount()
+  +getScore()
+  +validateEmail()
+  +findEmail()
 }
-Coupon --> Cart : "1..*"
-Shipment --* Cart
-note right of Shipment : Ecommerce domain
+Return --> Cart : "1..*"
+Category ..|> Cart
+Category ..> Return : "0..1"
+Coupon ..|> Cart
 @enduml

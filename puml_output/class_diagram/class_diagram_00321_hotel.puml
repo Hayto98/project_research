@@ -7,45 +7,35 @@ class Invoice {
   -String code
   +long id
   +double amount
-  +deleteStatus()
+  +validateCode()
 }
 class Housekeeping {
+  +double createdAt
   -int email
-  #long updatedAt
-  +String total
-  +cancelActive()
-  +setStatus()
-  +validateActive()
-  +findDescription()
+  +createScore()
+  +saveEmail()
+  +processPhone()
 }
-class Booking {
-  -boolean level
-  #int score
-  -double updatedAt
-  -int active
-  #float status
-  +setUpdatedat()
-  +deleteAddress()
-  +saveScore()
+abstract class Booking {
+  #Date status
+  +float phone
+  +calculatePrice()
+  +cancelCreatedat()
 }
-class Restaurant {
-  +Date status
-  -double active
-  -int updatedAt
-  +long email
-  -int phone
-  +deleteStatus()
-  +findQuantity()
-  +getId()
-  +deleteTotal()
+interface Restaurant {
+  #boolean active
+  +long status
+  -double address
+  +updateQuantity()
+  +processId()
 }
 class Room {
-  -long amount
-  -float name
-  +Date duration
-  +calculatePhone()
+  #Date updatedAt
+  -Date amount
+  +getAmount()
+  +sendQuantity()
 }
-Restaurant ..> Housekeeping : "0..1"
-Invoice ..> Restaurant : "1..*"
-note right of Invoice : Hotel domain
+Invoice --* Housekeeping
+Booking ..> Housekeeping : "*"
+Restaurant ..|> Booking
 @enduml

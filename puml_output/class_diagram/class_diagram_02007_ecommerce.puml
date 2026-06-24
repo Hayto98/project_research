@@ -4,61 +4,57 @@ class Coupon {
   -boolean quantity
   #Date score
   #float price
-  +sendDescription()
-  +setTotal()
+  +calculateDuration()
+  +getPrice()
 }
-interface Category {
-  #boolean status
-  -double total
-  -int quantity
-  +Date address
-  +cancelUpdatedat()
-  +processDescription()
-  +deleteDuration()
-  +cancelQuantity()
+class Category {
+  #Date total
+  -Date level
+  +getQuantity()
 }
-interface Product {
-  #float address
-  -double description
-  #Date score
-  +findAddress()
+abstract class Product {
+  +float address
+  +Date total
+  -boolean level
+  #int type
+  +validateCreatedat()
+  +saveQuantity()
+  +getAmount()
+  +getQuantity()
 }
 interface Customer {
+  #float active
+  #boolean createdAt
+  -double address
+  #Date description
+  +calculateStatus()
+}
+class Review {
   -double score
   -long address
   -long updatedAt
   #double createdAt
   +float level
-  +findScore()
+  +cancelName()
 }
-class Review {
+interface Supplier {
+  +String address
   +long type
   +double phone
-  -double name
-  +double status
-  +sendDescription()
-  +updateEmail()
-  +setAmount()
-  +updateActive()
+  +sendName()
+  +validateCreatedat()
+  +sendCreatedat()
+  +findAmount()
 }
-class Supplier {
-  +double createdAt
-  +double updatedAt
-  +createUpdatedat()
-}
-class Warehouse {
-  #int phone
-  #String level
-  -double status
-  -double amount
-  +sendAddress()
-  +findDescription()
+interface Warehouse {
+  +int updatedAt
+  #boolean email
+  #Date status
   +createPhone()
-  +setAmount()
+  +deleteId()
+  +calculateNote()
 }
-Coupon --> Review : "1"
-Product ..> Supplier : "1"
-Coupon --* Supplier
-Warehouse --> Coupon : "1..*"
-note right of Coupon : Ecommerce domain
+Category --|> Customer
+Customer --* Coupon
+Category --* Coupon
 @enduml

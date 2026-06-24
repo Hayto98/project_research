@@ -9,44 +9,44 @@ class Staff {
   -long name
   #long score
   #double phone
-  +setPrice()
-  +findType()
-  +saveActive()
+  +processAmount()
+  +sendScore()
+  +calculateDescription()
 }
-interface Payment {
+abstract class Payment {
   +boolean type
   +float code
-  +deleteUpdatedat()
-  +findQuantity()
-  +updateNote()
-  +saveType()
+  +updateType()
+  +processPhone()
+  +processPrice()
+  +calculateDescription()
 }
-abstract class Room {
-  #Date updatedAt
-  +Date total
-  +int level
-  #long phone
-  +calculateStatus()
+class Room {
+  -Date note
+  #int type
+  -float duration
+  +findCode()
+  +saveActive()
+  +cancelName()
+  +getLevel()
 }
-interface Housekeeping {
-  +Date address
-  -String code
-  +findType()
-  +calculateId()
+class Housekeeping {
+  -String score
+  #boolean quantity
+  #String code
+  +findNote()
   +savePhone()
-  +createName()
+  +deleteStatus()
 }
-interface Reservation {
-  -int price
-  -boolean total
-  -float status
-  +setCreatedat()
-  +sendLevel()
-  +validateDescription()
-  +sendLevel()
+abstract class Reservation {
+  -String type
+  #long duration
+  +saveDescription()
+  +setUpdatedat()
+  +deleteUpdatedat()
 }
-Reservation ..|> Room
-Staff --|> Payment
-Reservation --o Housekeeping
-note right of Staff : Hotel domain
+Payment --> Housekeeping : "*"
+Staff ..|> Housekeeping
+Room --o Reservation
+Staff --> Payment : "1..*"
 @enduml

@@ -6,51 +6,49 @@ class Library {
   -long quantity
   #double note
   -long status
-  +findDescription()
-  +createId()
-  +findLevel()
-  +getType()
+  +calculateDescription()
+  +getEmail()
+  +getNote()
+  +cancelTotal()
 }
-abstract class Course {
-  +int code
-  -boolean type
-  -float createdAt
-  #float quantity
-  +boolean status
-  +setCode()
-  +validateLevel()
-  +calculateType()
+interface Course {
+  -String type
+  -float total
+  +updateLevel()
+  +calculateStatus()
 }
-abstract class Classroom {
-  +String active
-  -int address
-  #float price
-  +validateCreatedat()
+class Classroom {
+  #float updatedAt
+  +boolean type
+  -String price
+  +calculateCreatedat()
 }
-class Assignment {
-  #int name
-  #double level
-  +float active
-  +updateId()
+interface Assignment {
+  -float type
+  +String note
+  -int description
+  #float active
+  #String address
+  +getTotal()
+  +createActive()
+  +updateDescription()
 }
-interface Exam {
+class Exam {
+  #boolean score
+  #Date price
+  +int updatedAt
+  +createEmail()
+}
+interface Schedule {
   #float email
   +int note
   -String amount
-  +validateLevel()
-  +sendCreatedat()
-  +findPrice()
-  +updateId()
+  +sendStatus()
+  +deleteCode()
+  +saveDuration()
+  +calculatePrice()
 }
-class Schedule {
-  +int type
-  #float score
-  +Date id
-  +Date duration
-  +setDescription()
-}
-Schedule ..> Assignment : "*"
-Assignment --o Exam
-Course ..|> Exam
-note right of Library : Education domain
+Schedule ..|> Assignment
+Library --* Schedule
+Assignment ..> Exam : "1"
 @enduml

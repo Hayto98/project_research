@@ -6,40 +6,45 @@ skinparam shadowing true
 abstract class Shipment {
   #String status
   +String score
-  +findActive()
+  +cancelName()
 }
 interface Customer {
   +long total
   -String description
   +long code
   #boolean quantity
-  +cancelPrice()
-  +cancelNote()
+  +validateActive()
+  +saveName()
 }
 interface Manifest {
-  -boolean email
-  #float code
-  +String level
-  +cancelPrice()
-  +getDuration()
+  -boolean duration
+  #float createdAt
+  +String email
+  +boolean code
+  -String active
+  +calculateScore()
+  +createEmail()
+  +saveCode()
 }
-interface Warehouse {
-  #int email
-  #boolean price
-  +long total
-  #Date phone
-  +sendLevel()
+abstract class Warehouse {
+  -boolean score
+  #float updatedAt
+  +boolean duration
+  #boolean description
+  +getName()
+  +deleteNote()
+  +setUpdatedat()
 }
-interface Route {
-  #boolean name
+abstract class Route {
+  +long score
   #Date duration
-  #float price
-  #String phone
-  +getPhone()
+  -int id
+  +String status
+  +validateName()
+  +processPrice()
+  +setId()
 }
-Manifest ..|> Customer
-Shipment --o Manifest
-Customer ..> Manifest : "0..1"
-Warehouse --> Shipment : "*"
-note right of Shipment : Logistics domain
+Customer --|> Warehouse
+Route --* Warehouse
+Manifest --|> Customer
 @enduml

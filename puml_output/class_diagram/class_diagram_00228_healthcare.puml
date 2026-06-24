@@ -7,60 +7,53 @@ class Nurse {
   +Date quantity
   #int description
   -Date duration
-  +validateDescription()
+  +deleteCode()
 }
 class Insurance {
+  #double updatedAt
   +boolean level
-  #float score
-  #int note
-  +validateName()
-  +sendAmount()
-  +createActive()
+  +validateScore()
+  +calculateCreatedat()
 }
 class Billing {
-  -String active
-  +String amount
-  +float price
-  -long updatedAt
-  +int status
-  +findTotal()
-  +saveLevel()
-  +validateNote()
-  +processCreatedat()
+  #double quantity
+  #Date active
+  #int amount
+  +createScore()
+  +sendType()
+  +updateName()
+  +getId()
 }
 class Prescription {
-  +long status
-  +int duration
-  +sendEmail()
-  +getActive()
-  +createPrice()
+  -long id
+  +int name
+  +createTotal()
+  +getAddress()
+  +cancelDuration()
+  +processEmail()
 }
-interface Appointment {
+class Appointment {
+  +int type
+  -String createdAt
+  +boolean name
+  -boolean code
+  -String status
+  +validateStatus()
+  +setDuration()
+  +saveName()
+}
+interface Diagnosis {
   #float description
   #boolean quantity
   #Date active
-  +processEmail()
+  +validateName()
 }
-class Diagnosis {
-  #int code
-  -String price
-  #int type
-  +validateDuration()
-  +createUpdatedat()
+class Treatment {
+  +double level
+  -Date updatedAt
+  +deleteId()
+  +saveCode()
 }
-interface Treatment {
-  +boolean level
-  #boolean duration
-  +setDuration()
-  +validateLevel()
-  +cancelDuration()
-  +setPhone()
-}
-Insurance --o Prescription
-Diagnosis --> Billing : "1"
-Treatment --> Diagnosis : "1"
-Nurse --o Insurance
-Nurse --* Billing
-Diagnosis --> Nurse : "*"
-note right of Nurse : Healthcare domain
+Appointment ..|> Insurance
+Billing --* Appointment
 @enduml

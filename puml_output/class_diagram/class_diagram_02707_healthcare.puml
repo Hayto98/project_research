@@ -3,57 +3,59 @@ skinparam monochrome true
 abstract class Billing {
   +long total
   #int quantity
-  +sendUpdatedat()
-  +saveDuration()
-  +createPhone()
-  +sendStatus()
+  +calculatePrice()
+  +processDuration()
+  +findStatus()
+  +sendActive()
 }
-abstract class Prescription {
-  +int duration
-  +double address
-  #double status
-  -long price
-  +updateName()
-  +cancelPhone()
-  +deletePrice()
+class Prescription {
+  #Date active
+  #long status
+  +double total
+  +int quantity
+  +createName()
+  +calculateDescription()
 }
-interface MedicalRecord {
-  #double total
-  +double note
-  +String email
-  #boolean id
-  +Date status
-  +saveDuration()
+abstract class MedicalRecord {
+  +double phone
+  #boolean address
+  -double updatedAt
+  -long name
+  #String duration
+  +createStatus()
 }
-class Diagnosis {
-  -Date updatedAt
+abstract class Diagnosis {
+  #boolean total
   +Date id
-  -boolean amount
-  +setId()
-  +getActive()
+  #String status
+  +calculateNote()
+  +deleteAddress()
 }
 class LabTest {
-  +int total
-  +boolean note
-  +saveName()
+  #int phone
+  +String code
+  +Date type
+  +setScore()
+  +getCode()
+  +getType()
 }
-class Appointment {
-  #String createdAt
-  #double email
-  +int amount
-  #boolean active
-  +cancelScore()
-  +calculateId()
+abstract class Appointment {
+  -long description
+  +long duration
+  +boolean status
+  #String id
+  #double name
+  +getEmail()
+  +sendType()
 }
 interface Hospital {
-  +double status
-  -long level
-  +createAmount()
-  +validateStatus()
-  +sendQuantity()
+  #float duration
+  +boolean score
+  +String price
+  +processLevel()
 }
-LabTest ..> Diagnosis : "*"
-LabTest --* MedicalRecord
-MedicalRecord --|> Appointment
-note right of Billing : Healthcare domain
+MedicalRecord --* Hospital
+Hospital --* Prescription
+Billing --* LabTest
+Prescription --o LabTest
 @enduml

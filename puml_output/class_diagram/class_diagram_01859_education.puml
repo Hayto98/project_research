@@ -5,61 +5,64 @@ skinparam classBorderColor #6A1B9A
 class Classroom {
   +Date phone
   +double amount
-  +calculateActive()
+  +cancelCreatedat()
 }
-abstract class Department {
+interface Department {
+  #String total
   -float name
   -float code
   -int createdAt
   #int phone
-  #boolean id
-  +saveEmail()
-  +cancelActive()
+  +cancelScore()
+  +processAddress()
 }
 class Schedule {
+  -boolean active
+  -boolean address
   #boolean createdAt
-  #boolean type
-  -String total
-  -int active
-  +updateAmount()
-  +calculateLevel()
+  +createNote()
+  +getLevel()
+  +sendScore()
 }
 class Attendance {
-  -long level
-  -int type
-  #String quantity
-  -double status
-  -double name
-  +getDuration()
-  +deleteCreatedat()
+  #boolean updatedAt
+  -Date amount
+  -boolean price
+  +createQuantity()
+  +updateName()
   +calculateId()
-  +getUpdatedat()
+  +processDescription()
 }
 class Student {
+  -double updatedAt
+  -String status
+  #float total
+  +int note
+  +cancelTotal()
+  +processCode()
+  +validateNote()
+  +sendDescription()
+}
+class Course {
   #float total
   #Date updatedAt
   +Date code
-  +cancelEmail()
-  +setUpdatedat()
+  +setPhone()
+  +deleteName()
 }
-abstract class Course {
-  -Date address
-  +double total
-  +validateId()
-  +sendName()
-  +sendPhone()
-  +setId()
+class Assignment {
+  -double type
+  #int status
+  -float address
+  +setActive()
+  +setEmail()
+  +getDuration()
+  +sendTotal()
 }
-interface Assignment {
-  -long note
-  -float total
-  -long amount
-  +double active
-  +updateActive()
-}
-Attendance ..> Department : "0..1"
-Attendance --> Assignment : "1..*"
-Course --o Department
-Attendance --* Classroom
-note right of Classroom : Education domain
+Classroom --* Student
+Classroom --> Assignment : "1..*"
+Assignment --o Attendance
+Department --* Student
+Schedule --o Assignment
+Schedule --o Department
 @enduml

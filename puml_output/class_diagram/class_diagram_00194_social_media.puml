@@ -5,51 +5,55 @@ interface Post {
   -int duration
   -int score
   +long type
-  +deletePhone()
-  +createNote()
-  +setCreatedat()
+  +findId()
+  +updateAmount()
+  +processStatus()
 }
-abstract class Report {
-  #double name
-  -float note
-  +long id
-  +cancelActive()
+class Report {
+  #double status
+  +float createdAt
+  #double note
+  -float level
+  +long name
+  +sendActive()
 }
-class Group {
-  #double address
-  #String type
-  +long score
-  #Date active
-  +float email
+interface Group {
+  #boolean total
+  #Date address
+  -boolean type
+  +getCreatedat()
   +createPhone()
-  +processNote()
-  +sendEmail()
+  +createCode()
+  +deleteCode()
 }
 class Comment {
-  +float code
-  -String status
-  #String note
-  +String price
-  +processAmount()
-  +findName()
-  +sendName()
-}
-abstract class Message {
-  +int email
-  +boolean code
-  #String type
-  #double name
-  +getScore()
-  +createId()
+  #long email
+  -boolean phone
+  -String type
+  +double note
   +sendTotal()
-  +processNote()
+  +getName()
+  +findLevel()
+  +sendScore()
 }
-abstract class Notification {
-  -Date quantity
-  #Date amount
-  +updateActive()
+class Message {
+  -double updatedAt
+  +Date id
+  +getScore()
 }
+class Notification {
+  +int address
+  +boolean email
+  #String code
+  #double type
+  -String name
+  +updatePrice()
+  +validateStatus()
+  +processPhone()
+}
+Comment --o Notification
+Notification --* Post
+Report ..> Comment : "1"
+Report --> Message : "1"
 Report ..|> Post
-Message --> Post : "0..1"
-note right of Post : Social Media domain
 @enduml

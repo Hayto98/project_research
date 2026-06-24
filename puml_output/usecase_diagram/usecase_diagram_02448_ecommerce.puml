@@ -1,10 +1,10 @@
 @startuml
 skinparam shadowing true
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Delivery Service" as DeliveryService
-actor "Seller" as Seller
-actor "Admin" as Admin
+actor "Payment Gateway" as PG
+actor "Delivery Service" as DS
+actor "Seller" as S
+actor "Admin" as A
 rectangle "Ecommerce System" {
   usecase "Make Payment" as UC_MakePayment
   usecase "Manage Inventory" as UC_ManageInventory
@@ -14,12 +14,12 @@ rectangle "Ecommerce System" {
   usecase "Add To Cart" as UC_AddToCart
   usecase "Checkout" as UC_Checkout
 }
-PaymentGateway --> UC_Checkout
-PaymentGateway --> UC_ManageInventory
-DeliveryService --> UC_TrackOrder
-DeliveryService --> UC_ApplyCoupon
-Seller --> UC_BrowseProducts
-Admin --> UC_BrowseProducts
-Admin --> UC_TrackOrder
+PG --> UC_Checkout
+PG --> UC_ManageInventory
+DS --> UC_TrackOrder
+DS --> UC_ApplyCoupon
+S --> UC_BrowseProducts
+A --> UC_BrowseProducts
+A --> UC_TrackOrder
 UC_ApplyCoupon ..> UC_TrackOrder : <<extend>>
 @enduml

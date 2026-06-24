@@ -5,51 +5,47 @@ skinparam classBorderColor #6A1B9A
 interface Guest {
   -String type
   +double address
-  +validateName()
-}
-class Restaurant {
-  +Date type
-  #float level
-  +deleteDuration()
-  +getStatus()
-}
-abstract class CheckOut {
-  #double description
-  -Date score
-  +createAmount()
-  +validateCreatedat()
-}
-class Reservation {
-  #boolean phone
-  +long level
-  -long quantity
-  -Date type
-  +findScore()
-  +getScore()
   +deleteTotal()
 }
-class Invoice {
-  +double amount
-  -boolean active
-  #long score
-  #boolean updatedAt
-  +updateScore()
-  +getQuantity()
+class Restaurant {
+  #float status
+  +double score
+  +setPrice()
+}
+interface CheckOut {
+  -String amount
+  +Date name
+  #boolean status
+  +updateEmail()
+  +updatePhone()
+  +updateAmount()
+  +findPhone()
+}
+class Reservation {
+  #long phone
+  -Date createdAt
+  #long amount
+  +calculateStatus()
+  +sendActive()
+  +processAmount()
+  +createActive()
+}
+abstract class Invoice {
+  #int note
+  -float address
+  #String score
+  -float name
+  +createDescription()
+  +cancelAmount()
 }
 class Housekeeping {
-  -double price
-  +double active
-  #long updatedAt
-  -int createdAt
-  #int status
-  +validateTotal()
-  +setStatus()
-  +calculateType()
-  +processEmail()
+  #boolean type
+  #int quantity
+  +Date address
+  +createTotal()
 }
-Guest --> Reservation : "1"
-Reservation --> CheckOut : "1"
-CheckOut --* Housekeeping
-Housekeeping --> Reservation : "1..*"
-note right of Guest : Hotel domain
+Guest --o Invoice
+Reservation ..|> Invoice
+Restaurant --* Guest
+Reservation --o Guest
 @enduml

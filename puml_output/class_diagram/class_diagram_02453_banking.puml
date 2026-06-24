@@ -9,34 +9,46 @@ abstract class Deposit {
   -boolean price
   +double description
   #Date duration
-  +validatePrice()
-  +updateNote()
+  +deleteCode()
+  +deleteAmount()
 }
 class Card {
-  #long price
-  #double address
-  +updateQuantity()
-  +sendPrice()
+  #double quantity
+  +int name
+  -boolean price
+  -Date address
+  -Date active
+  +createAmount()
 }
-abstract class Transfer {
-  +boolean phone
-  +int level
-  +createNote()
-  +createDescription()
+interface Transfer {
+  #int duration
+  -double createdAt
+  -int updatedAt
+  +savePrice()
+  +processAddress()
 }
 class Statement {
-  -boolean price
-  #Date updatedAt
-  -Date code
-  -float address
-  +sendCreatedat()
+  #long updatedAt
+  +boolean code
+  #int address
+  #boolean total
+  +double score
+  +deleteId()
+  +cancelName()
+  +getPhone()
 }
-interface Branch {
-  #double price
-  -long email
-  +validateLevel()
+class Branch {
+  +double name
+  #String phone
+  #Date status
+  -boolean code
+  +updateQuantity()
+  +validateQuantity()
+  +createCreatedat()
+  +saveActive()
 }
-Deposit --o Branch
-Deposit --> Transfer : "*"
-note right of Deposit : Banking domain
+Transfer --|> Branch
+Branch ..> Card : "1..*"
+Branch ..> Deposit : "1..*"
+Statement --* Branch
 @enduml

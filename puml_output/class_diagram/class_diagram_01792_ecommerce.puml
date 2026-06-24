@@ -7,31 +7,31 @@ class Supplier {
   +int amount
   #float active
   -long total
-  +processId()
+  +createEmail()
 }
-class Order {
-  +int total
-  -boolean quantity
-  #String description
-  +processId()
-  +updateStatus()
-  +calculateNote()
+abstract class Order {
+  +double status
+  -float level
+  +saveId()
+  +saveAddress()
 }
 class Product {
-  -float name
-  #int id
-  +double status
-  +int active
-  +createType()
-  +setLevel()
-  +deleteActive()
-  +validateDuration()
+  +int quantity
+  +double type
+  +validateNote()
+  +processStatus()
+  +processQuantity()
+  +sendTotal()
 }
 class Warehouse {
-  -String price
-  #Date id
-  +processActive()
+  +int active
+  -long createdAt
+  #double id
+  +boolean type
+  +sendQuantity()
+  +setQuantity()
 }
-Product --> Order : "0..1"
-note right of Supplier : Ecommerce domain
+Order ..> Product : "1"
+Warehouse --* Supplier
+Supplier ..> Product : "1"
 @enduml

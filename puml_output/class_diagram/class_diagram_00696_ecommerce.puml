@@ -7,67 +7,63 @@ class Supplier {
   -float updatedAt
   +long quantity
   +Date code
-  +setName()
+  +validateType()
 }
 class Shipment {
-  -boolean status
-  +boolean level
-  +long quantity
-  +int score
-  +createDuration()
-  +validateUpdatedat()
-  +getName()
-  +setEmail()
+  +Date phone
+  #float duration
+  +findTotal()
+  +createQuantity()
+  +validateType()
 }
-class Category {
+abstract class Category {
+  -int score
   +double status
-  +float duration
-  #long description
-  +setAmount()
-  +updateStatus()
-  +validateTotal()
-  +updatePrice()
+  +findStatus()
+  +cancelPrice()
+  +setPhone()
 }
 class Payment {
-  #int updatedAt
-  #Date phone
-  #boolean note
-  #double amount
-  #String id
-  +findCreatedat()
-  +saveStatus()
-  +cancelTotal()
+  -int id
+  #boolean name
+  +String status
+  +validateCode()
 }
-interface Order {
-  +Date level
-  #String phone
-  #int type
-  -String quantity
-  #long name
-  +processCode()
-  +calculateDuration()
-  +setActive()
-  +findAmount()
+class Order {
+  +Date id
+  +long quantity
+  -int note
+  -long code
+  -Date amount
+  +validateLevel()
+  +getAmount()
 }
 class Customer {
-  +String name
-  -long note
-  #Date price
-  +double createdAt
-  #float level
-  +validateCreatedat()
+  -Date amount
+  +Date id
+  +boolean updatedAt
+  -Date price
+  #boolean code
+  +cancelDuration()
+  +saveDuration()
+  +sendPhone()
+  +getUpdatedat()
 }
-class Product {
-  +String active
-  -Date total
-  #String name
-  +findTotal()
-  +createPhone()
+interface Product {
+  #int score
+  -String quantity
+  #long name
+  -double updatedAt
+  +float code
+  +setPhone()
+  +deleteEmail()
+  +saveType()
+  +updateUpdatedat()
 }
-Product --o Customer
-Customer --* Category
-Order --* Product
-Payment --* Category
-Category ..> Supplier : "1"
-note right of Supplier : Ecommerce domain
+Customer --|> Shipment
+Product --o Order
+Supplier ..> Customer : "*"
+Payment ..|> Order
+Customer --o Product
+Supplier --o Product
 @enduml

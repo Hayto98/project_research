@@ -5,52 +5,55 @@ skinparam defaultFontSize 13
 interface Depot {
   -int id
   #Date description
-  +setCode()
-  +processPrice()
-  +validateStatus()
+  +validatePhone()
+  +getType()
+  +cancelQuantity()
 }
-interface DeliveryNote {
-  +double address
-  #float level
-  #long id
-  #Date price
-  +getScore()
+abstract class DeliveryNote {
+  #String status
+  -float active
+  +double phone
+  #float address
+  +updateId()
+  +cancelPrice()
+  +findNote()
 }
-interface Warehouse {
+class Warehouse {
   +int amount
   -long status
-  +setType()
-  +sendNote()
+  +updateUpdatedat()
+  +cancelScore()
 }
-class Customer {
-  -Date quantity
-  -long updatedAt
-  -boolean id
-  -String total
-  +getType()
-  +validateEmail()
-  +findPhone()
+abstract class Customer {
+  -long createdAt
+  #long phone
+  -double quantity
+  #double updatedAt
+  +Date id
+  +savePhone()
+  +cancelDuration()
+  +getId()
 }
-abstract class FuelLog {
-  #boolean type
-  +Date active
-  #String score
-  +setPhone()
-  +saveAmount()
-  +deletePrice()
+class FuelLog {
+  #boolean phone
+  #boolean total
+  #String createdAt
+  #Date type
+  +setTotal()
 }
 class Route {
-  -long level
-  -String address
-  +cancelActive()
-  +sendDescription()
-  +updateStatus()
-  +updateLevel()
+  #Date amount
+  +boolean duration
+  -long price
+  -float quantity
+  +updateName()
+  +createTotal()
+  +createNote()
+  +findEmail()
 }
-Depot --o DeliveryNote
-Customer --* Depot
-Depot --> FuelLog : "1"
-FuelLog --> Depot : "0..1"
-Customer --* Warehouse
-note right of Depot : Logistics domain
+FuelLog --> Route : "0..1"
+DeliveryNote ..|> Depot
+FuelLog --|> Customer
+DeliveryNote --o Customer
+Depot --|> Warehouse
 @enduml

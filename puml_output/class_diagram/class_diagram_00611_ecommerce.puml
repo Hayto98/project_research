@@ -6,55 +6,50 @@ skinparam shadowing true
 class Invoice {
   #String score
   #String level
-  +getUpdatedat()
+  +updatePrice()
 }
 class Coupon {
-  #Date name
-  -double level
-  +Date code
-  -long active
-  +calculateStatus()
+  +Date score
+  #String active
+  #float quantity
+  +saveName()
+  +saveEmail()
+  +processNote()
+  +saveCode()
 }
 class Supplier {
-  +double level
-  -Date updatedAt
-  -float price
-  #long code
-  +calculateId()
+  -long price
+  #int status
+  +createId()
+  +setAmount()
+  +getType()
+  +setUpdatedat()
 }
-class Wishlist {
-  -double level
-  -float code
-  -long description
-  +getCode()
+abstract class Wishlist {
+  -String type
+  +int address
+  #String active
+  +long status
   +createPrice()
-  +validateUpdatedat()
-  +createStatus()
+  +saveLevel()
+  +getDuration()
+  +setEmail()
 }
 class Order {
-  +boolean code
-  #String email
-  +float status
-  -long note
-  #boolean createdAt
-  +updateId()
-  +getCode()
-  +setAddress()
+  +long id
+  +String code
+  -float quantity
+  +long price
+  +double address
+  +createCode()
+  +findName()
 }
-class Payment {
-  -float code
-  #boolean score
-  #int id
-  #float quantity
-  +getPrice()
-  +deleteType()
-  +getQuantity()
-  +updateId()
+interface Payment {
+  -Date description
+  #long type
+  +cancelDuration()
+  +processName()
 }
-Payment ..|> Wishlist
-Invoice --* Order
-Invoice --o Supplier
-Supplier --|> Wishlist
-Invoice --|> Coupon
-note right of Invoice : Ecommerce domain
+Invoice --* Payment
+Invoice --> Order : "1..*"
 @enduml

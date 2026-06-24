@@ -8,48 +8,37 @@ abstract class Inventory {
   #String quantity
   +boolean description
   +float updatedAt
-  +calculateLevel()
-  +validateEmail()
-  +setAddress()
+  +processLevel()
+  +cancelActive()
+  +validateDuration()
 }
 class Customer {
-  #boolean description
-  #float code
-  +float active
-  -int duration
-  -int address
-  +processLevel()
+  #double address
+  +boolean description
+  +getScore()
 }
-class Package {
-  +float createdAt
-  -String address
-  -long status
-  +float amount
-  +updateType()
-  +sendAddress()
-}
-abstract class Route {
-  -boolean quantity
+interface Package {
+  #boolean active
   #float score
-  #float price
-  #Date total
-  +validateCreatedat()
-  +createUpdatedat()
-  +findDuration()
-  +calculateActive()
+  +float address
+  +getTotal()
+  +findLevel()
+  +sendCreatedat()
+}
+class Route {
+  -boolean note
+  -int level
+  +updateUpdatedat()
+  +findId()
+  +processActive()
 }
 class DeliveryNote {
-  -double score
-  #long description
-  +float phone
-  +double address
-  #float email
-  +sendAmount()
-  +processTotal()
-  +createStatus()
+  +float type
+  #int phone
+  +calculateUpdatedat()
+  +findActive()
 }
-Customer ..|> DeliveryNote
-DeliveryNote --* Route
-Inventory --o Route
-note right of Inventory : Logistics domain
+Package --* Route
+Route --> Package : "*"
+Package --* Customer
 @enduml

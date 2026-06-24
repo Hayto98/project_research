@@ -7,61 +7,57 @@ class CheckOut {
   -long name
   +float quantity
   -boolean description
-  +setPhone()
-  +findScore()
+  +validateEmail()
+  +findTotal()
 }
-abstract class Room {
+class Room {
+  -boolean total
   -boolean active
   -boolean type
-  -boolean score
   +String id
-  +String level
-  +cancelPrice()
-  +saveDescription()
-  +validateActive()
-  +updatePhone()
+  +String score
+  +cancelLevel()
+  +processId()
+  +processType()
+  +validatePrice()
 }
-interface Booking {
-  #float address
-  -long type
-  +int total
-  -long quantity
-  +updateQuantity()
-  +calculateNote()
-  +cancelNote()
-  +createType()
+class Booking {
+  -double active
+  -float createdAt
+  -boolean phone
+  -long address
+  +processDuration()
+  +getNote()
 }
-interface Invoice {
-  -String email
-  -int duration
-  -int name
-  -double total
-  -int phone
-  +saveCreatedat()
-  +validateDescription()
-  +findQuantity()
+class Invoice {
+  -double createdAt
+  #double quantity
+  -long total
+  +double note
+  -double active
+  +createQuantity()
 }
-interface Reservation {
+class Reservation {
+  #boolean createdAt
+  -Date quantity
+  #int note
+  -Date level
+  #Date description
+  +calculateDescription()
+  +findScore()
+}
+interface Payment {
   +String status
   -Date price
   -boolean score
   +long quantity
-  +validateType()
-  +processAddress()
-  +setStatus()
+  +createAmount()
+  +validateStatus()
+  +sendName()
 }
-abstract class Payment {
-  -long phone
-  +Date amount
-  +long active
-  #Date name
-  +setDescription()
-  +deleteType()
-}
+Payment --|> Booking
+CheckOut ..> Invoice : "1..*"
 Booking --> Room : "1"
-CheckOut --|> Payment
-Payment ..> CheckOut : "1..*"
-Payment --* Booking
-Reservation --> Booking : "*"
-note right of CheckOut : Hotel domain
+Invoice ..|> Booking
+Payment --* CheckOut
 @enduml

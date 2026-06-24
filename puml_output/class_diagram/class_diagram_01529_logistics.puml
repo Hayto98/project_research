@@ -7,44 +7,41 @@ interface Warehouse {
   #long email
   #long status
   -float phone
-  +processTotal()
+  +deletePrice()
 }
-interface Package {
+abstract class Package {
   #double quantity
   #Date address
-  +processAddress()
-  +saveNote()
-  +processId()
+  +deleteActive()
+  +createTotal()
+  +saveDescription()
 }
-abstract class Vehicle {
-  +String address
-  #long quantity
-  +float phone
-  +getName()
-  +sendLevel()
-  +deleteAddress()
-}
-abstract class Shipment {
-  -long amount
+class Vehicle {
+  -long type
+  +String id
   #long price
-  -int phone
-  +float updatedAt
-  #float type
-  +cancelAddress()
-  +processScore()
-  +validatePrice()
-  +processAmount()
+  +float amount
+  #long address
+  +deleteNote()
+}
+interface Shipment {
+  +float address
+  -Date type
+  -Date note
+  +deleteActive()
+  +deleteEmail()
 }
 class Manifest {
-  -String price
-  -double total
-  -long active
-  -int updatedAt
-  +createNote()
-  +saveUpdatedat()
-  +saveAddress()
+  +float duration
+  #float phone
+  #boolean address
+  -boolean amount
+  +saveAmount()
+  +calculateDuration()
+  +sendPhone()
 }
-Shipment --|> Manifest
-Manifest --|> Package
-note right of Warehouse : Logistics domain
+Shipment ..> Manifest : "0..1"
+Vehicle --o Manifest
+Shipment --o Package
+Warehouse --o Shipment
 @enduml

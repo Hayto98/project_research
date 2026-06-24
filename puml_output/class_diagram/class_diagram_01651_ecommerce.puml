@@ -6,40 +6,44 @@ skinparam ArrowColor #555555
 interface Wishlist {
   +boolean description
   #String quantity
-  +saveType()
-  +sendStatus()
-  +setId()
-  +updateEmail()
+  +processNote()
+  +setActive()
+  +sendName()
+  +findPrice()
 }
 class Category {
-  #boolean name
-  #int phone
-  #float price
-  -Date code
-  +saveTotal()
+  -long id
+  -String updatedAt
+  +calculateCode()
+  +findNote()
+  +updateScore()
 }
-class Shipment {
-  -int description
-  +double level
-  +String duration
-  +deleteEmail()
-  +processPhone()
+interface Shipment {
+  #double score
+  +int phone
+  +boolean name
+  +sendDescription()
+  +deleteDuration()
 }
 class Order {
-  #boolean price
-  +int id
-  #float duration
-  +updatePhone()
-  +deleteUpdatedat()
-  +createPrice()
+  +int total
+  -double id
+  -float level
+  +validateCreatedat()
+  +deleteAmount()
+  +setCreatedat()
 }
-abstract class Payment {
-  +float createdAt
-  #double note
-  +saveTotal()
-  +setEmail()
+class Payment {
+  +long active
+  +int duration
+  -double amount
+  -float createdAt
+  +float quantity
+  +sendCode()
+  +saveNote()
 }
+Order ..> Category : "*"
+Wishlist --|> Shipment
 Payment --> Shipment : "0..1"
 Wishlist ..> Order : "1..*"
-note right of Wishlist : Ecommerce domain
 @enduml

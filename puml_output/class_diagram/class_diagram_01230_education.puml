@@ -6,64 +6,62 @@ class Assignment {
   -String name
   #boolean active
   -int duration
-  +cancelActive()
-  +setQuantity()
-  +createAmount()
+  +sendDescription()
+  +saveDuration()
   +updateNote()
+  +setDescription()
 }
 class Grade {
-  +long type
-  -long level
-  -int status
-  -boolean email
-  #Date amount
-  +deleteCode()
-  +createAddress()
+  -Date amount
+  #Date updatedAt
+  -boolean note
+  +Date description
+  +createCode()
+  +saveAddress()
+  +createNote()
 }
-abstract class Exam {
+class Exam {
+  #Date quantity
+  #float duration
+  +int description
+  #String email
+  +updateAmount()
+  +setScore()
+  +findQuantity()
+}
+abstract class Attendance {
   +String id
   -float createdAt
   +Date note
-  +getStatus()
-  +cancelEmail()
+  +updatePrice()
+  +validateId()
 }
-class Attendance {
-  +Date description
-  +long email
-  -double status
-  -String total
-  #int createdAt
-  +validateUpdatedat()
-  +sendQuantity()
-}
-class Schedule {
-  -boolean score
-  -double total
-  -Date code
-  +long email
-  +setActive()
-  +saveName()
+interface Schedule {
+  +double phone
+  #Date type
+  +int description
+  #String email
+  +cancelType()
+  +cancelPhone()
+  +createDuration()
 }
 abstract class Student {
-  +int quantity
-  +long active
-  +Date code
-  -float note
-  -float id
-  +updateEmail()
-  +findEmail()
-  +updatePrice()
-  +findTotal()
+  -int amount
+  #long updatedAt
+  +validateAmount()
+  +validatePrice()
 }
 interface Course {
-  #float status
-  +double score
-  +deleteUpdatedat()
-  +deleteDescription()
+  -float code
+  -Date email
+  +long price
+  +String active
+  #Date level
+  +updateEmail()
 }
-Schedule --* Student
-Schedule --|> Attendance
-Course --|> Exam
-Assignment --o Course
-note right of Assignment : Education domain
+Exam --> Schedule : "1"
+Attendance --> Schedule : "1"
+Assignment --|> Grade
+Exam ..> Assignment : "*"
+Course --o Exam
 @enduml

@@ -8,33 +8,35 @@ interface Diagnosis {
   #double description
   -long phone
   +String active
-  +cancelEmail()
+  +validateActive()
 }
 class Prescription {
-  -Date updatedAt
-  #long duration
-  +saveType()
-  +getDescription()
-  +deleteAddress()
+  #boolean id
+  -float updatedAt
+  -Date level
+  -String quantity
+  +findId()
+  +calculateName()
 }
 class Insurance {
   +boolean quantity
   #String active
   -float total
-  +saveAmount()
+  +getAmount()
+  +calculateLevel()
+  +createTotal()
+  +calculateAddress()
+}
+interface Doctor {
+  -boolean name
+  #boolean total
+  #double score
+  +double note
+  -long description
+  +getPrice()
   +cancelPrice()
-  +getTotal()
-  +sendNote()
 }
-class Doctor {
-  -long score
-  +float level
-  #Date price
-  -Date name
-  -boolean note
-  +deleteCode()
-}
+Insurance --|> Doctor
+Prescription --|> Diagnosis
 Insurance ..> Prescription : "*"
-Prescription ..|> Insurance
-note right of Diagnosis : Healthcare domain
 @enduml

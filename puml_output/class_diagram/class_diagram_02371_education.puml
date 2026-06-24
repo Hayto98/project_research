@@ -8,56 +8,46 @@ class Attendance {
   #long amount
   -int active
   +long level
-  +getDuration()
-  +validateActive()
-  +createName()
+  +setUpdatedat()
+  +findUpdatedat()
+  +validateScore()
 }
-abstract class Department {
-  +boolean amount
-  +Date address
-  +boolean type
-  #boolean name
-  +deleteType()
-  +setActive()
+interface Department {
+  -double name
+  #String price
+  +boolean quantity
+  +Date amount
+  +findPrice()
 }
-class Exam {
-  +Date updatedAt
-  #String createdAt
-  +findQuantity()
+interface Exam {
+  #String description
+  +Date type
+  +int code
+  +calculateStatus()
+  +processId()
 }
 class Classroom {
-  +Date level
-  +Date createdAt
-  #long code
-  +long score
-  +float note
-  +getNote()
-  +sendDuration()
-  +createDescription()
-  +validateCreatedat()
+  #boolean quantity
+  -Date email
+  +findNote()
+  +cancelStatus()
 }
-class Book {
+interface Book {
+  +float amount
+  -String description
+  -boolean phone
+  #long name
+  +long email
+  +findAddress()
+  +cancelAmount()
+}
+interface Schedule {
   #boolean createdAt
   +long total
   -int address
   #double updatedAt
-  +sendCode()
+  +sendAmount()
 }
-abstract class Schedule {
-  +long quantity
-  #double level
-  +double active
-  #long address
-  +float phone
-  +validateActive()
-  +sendStatus()
-  +processActive()
-  +updateCreatedat()
-}
-Classroom --> Department : "0..1"
-Exam --|> Attendance
-Schedule --o Exam
-Department ..> Classroom : "0..1"
-Department --o Book
-note right of Attendance : Education domain
+Classroom --* Schedule
+Schedule --> Book : "1..*"
 @enduml

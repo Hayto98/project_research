@@ -6,40 +6,43 @@ skinparam ArrowColor #555555
 interface Order {
   -Date code
   #long type
-  +cancelTotal()
+  +getDuration()
 }
-abstract class Customer {
-  -float amount
-  #String type
-  -String phone
-  -long quantity
-  +findCreatedat()
-  +sendCreatedat()
-  +sendUpdatedat()
-  +deleteName()
+interface Customer {
+  -float price
+  -float address
+  #String amount
+  -String type
+  -long phone
+  +deleteType()
+  +createTotal()
+  +cancelType()
+  +findType()
 }
 class Payment {
-  +String name
+  +String score
+  -String updatedAt
   +Date description
-  -boolean active
-  +double address
-  +float price
-  +getPhone()
+  +createUpdatedat()
+  +createPrice()
+  +validateCreatedat()
 }
-abstract class Cart {
-  +boolean address
-  +String updatedAt
-  -String id
-  #int description
-  +calculateNote()
+class Cart {
+  -String total
+  #float level
+  +String code
+  +findStatus()
+  +getAddress()
+  +createActive()
 }
 class Invoice {
-  #int name
-  #long phone
-  +createCreatedat()
-  +createLevel()
+  #String id
+  +long description
+  +Date updatedAt
+  +findLevel()
+  +cancelStatus()
 }
-Order --> Payment : "1"
-Cart --|> Order
-note right of Order : Ecommerce domain
+Cart ..> Payment : "1"
+Order --> Payment : "0..1"
+Invoice --> Payment : "0..1"
 @enduml

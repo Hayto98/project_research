@@ -8,37 +8,44 @@ class Payment {
   -Date status
   #double level
   +Date note
-  +getStatus()
-  +getName()
+  +processQuantity()
+  +validateEmail()
 }
-interface Shipment {
-  #Date active
-  #int updatedAt
-  +calculateLevel()
-  +findAmount()
+class Shipment {
+  #int level
+  #Date status
+  +processScore()
+  +validateCode()
 }
-class Category {
-  #boolean type
-  -boolean total
-  +String email
-  +double code
-  -float amount
+abstract class Category {
+  #float id
+  #double score
+  -Date active
+  +findCreatedat()
   +validateTotal()
+  +getLevel()
+  +calculateAddress()
 }
-abstract class Customer {
-  -int level
-  -Date total
-  +int amount
-  +boolean quantity
-  +cancelName()
+interface Customer {
+  -float duration
+  +long id
+  -double status
+  -boolean createdAt
+  #boolean type
+  +deleteScore()
+  +updateLevel()
+  +calculateCreatedat()
+  +updateType()
 }
-class Product {
-  +boolean email
-  -double address
-  +Date score
-  +getStatus()
+abstract class Product {
+  +boolean createdAt
+  +int description
+  +long score
+  +cancelAmount()
+  +getEmail()
+  +findDuration()
 }
+Customer ..> Payment : "1"
+Payment --|> Product
 Shipment --|> Customer
-Product --|> Customer
-note right of Payment : Ecommerce domain
 @enduml

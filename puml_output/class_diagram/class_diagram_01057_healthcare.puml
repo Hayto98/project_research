@@ -4,57 +4,61 @@ skinparam defaultFontSize 11
 class Billing {
   +Date active
   #long code
-  +deleteNote()
-  +calculateQuantity()
-  +processId()
-  +sendCreatedat()
+  +updateType()
+  +validateTotal()
+  +deleteDuration()
+  +createPrice()
 }
 class LabTest {
-  -float quantity
-  +int description
-  -float code
-  +getDescription()
-  +getAddress()
-  +processTotal()
+  -boolean id
+  #int active
+  #String createdAt
+  -float updatedAt
+  +int amount
+  +sendDescription()
+  +deleteDescription()
+  +getNote()
+  +calculateEmail()
 }
-abstract class Prescription {
-  -boolean updatedAt
-  #boolean price
-  +cancelDuration()
+class Prescription {
+  -double address
+  +int note
+  +deleteCode()
+  +findPrice()
+  +setScore()
+  +updateAmount()
 }
-class MedicalRecord {
-  +double type
-  #double createdAt
-  +processEmail()
-  +cancelPrice()
-  +deleteTotal()
+interface MedicalRecord {
+  +double duration
+  #int code
+  +getPhone()
+  +calculateType()
 }
-class Nurse {
-  +double name
+interface Nurse {
+  -int quantity
+  #String type
+  +float email
+  #String price
+  -int description
+  +createStatus()
+  +sendEmail()
+}
+class Treatment {
+  -String code
+  +String createdAt
+  -boolean note
+  #Date price
+  +int address
+  +updateAmount()
+  +calculateDuration()
+}
+abstract class Appointment {
+  +Date code
+  +String updatedAt
   +int active
-  +getType()
-  +setCreatedat()
+  +saveEmail()
 }
-abstract class Treatment {
-  -boolean address
-  #Date phone
-  +int status
-  #int score
-  #double active
-  +setUpdatedat()
-  +sendStatus()
-}
-class Appointment {
-  +String description
-  +long amount
-  +processNote()
-  +findAddress()
-}
-MedicalRecord --> Nurse : "0..1"
-Billing --o MedicalRecord
-Treatment --* Nurse
-Appointment ..> Treatment : "0..1"
-Appointment --* Nurse
-Billing --o Prescription
-note right of Billing : Healthcare domain
+Prescription ..|> Nurse
+MedicalRecord ..> Treatment : "*"
+Treatment --> Prescription : "*"
 @enduml

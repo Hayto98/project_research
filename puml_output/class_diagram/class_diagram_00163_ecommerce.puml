@@ -5,44 +5,54 @@ skinparam classBorderColor #E65100
 class Coupon {
   -String name
   #String createdAt
-  +processLevel()
-  +setTotal()
+  +calculateAmount()
+  +processEmail()
 }
-abstract class Invoice {
-  +boolean status
-  +Date level
+class Invoice {
+  #String type
+  #long amount
+  +float status
   -String createdAt
-  +setAmount()
-  +cancelNote()
-  +deleteAddress()
-  +cancelPhone()
+  +boolean name
+  +validateCode()
+  +saveCreatedat()
+  +deleteTotal()
+  +deleteEmail()
 }
-abstract class Supplier {
-  +String total
-  +Date duration
-  +String id
-  -long name
-  +processTotal()
+interface Supplier {
+  +float type
+  +int phone
+  +int total
+  #int score
+  +saveStatus()
 }
-class Order {
-  #Date duration
-  -float quantity
-  +float code
-  +createType()
-  +findDescription()
+abstract class Order {
+  #int code
+  #long type
+  +Date total
+  #double description
+  +deletePhone()
 }
 class Cart {
-  +Date address
-  -boolean score
-  +sendPrice()
+  -boolean type
+  +Date description
+  -boolean email
+  +boolean code
+  +getDescription()
+  +calculateUpdatedat()
+  +setEmail()
+  +calculateEmail()
 }
 class Customer {
-  -int code
-  +float type
-  +saveLevel()
-  +cancelLevel()
+  -String email
+  #Date description
+  -boolean code
+  +Date createdAt
+  +long status
+  +updateId()
 }
-Supplier ..> Coupon : "1..*"
-Cart ..> Coupon : "0..1"
-note right of Coupon : Ecommerce domain
+Supplier --o Order
+Coupon ..|> Invoice
+Invoice ..> Cart : "*"
+Order --* Supplier
 @enduml

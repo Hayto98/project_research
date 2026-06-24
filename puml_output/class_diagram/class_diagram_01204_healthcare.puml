@@ -8,35 +8,37 @@ interface Nurse {
   -long id
   +int note
   #double price
-  +validateUpdatedat()
-  +validateDuration()
+  +sendPhone()
+  +processDuration()
 }
 class Insurance {
-  -String type
   -String updatedAt
-  -String amount
-  +updateAmount()
-  +saveCode()
+  -String type
+  -String duration
+  +int amount
+  +deleteStatus()
+  +createTotal()
 }
-interface Prescription {
+class Prescription {
   -long updatedAt
   -boolean price
   -int duration
-  +cancelId()
-  +validateId()
-  +findType()
-  +processCode()
+  +getQuantity()
+  +getStatus()
+  +updatePrice()
+  +findCode()
 }
 class Hospital {
-  #long code
-  +double note
-  #Date score
-  -long email
-  +updateLevel()
-  +cancelEmail()
+  -boolean type
+  -boolean code
+  -String id
+  -boolean phone
+  #long level
+  +findPrice()
+  +sendId()
+  +cancelNote()
 }
-Hospital --o Prescription
+Prescription --> Insurance : "*"
 Insurance --> Hospital : "0..1"
 Insurance --o Prescription
-note right of Nurse : Healthcare domain
 @enduml

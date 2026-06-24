@@ -6,64 +6,58 @@ class Statement {
   #boolean id
   -double total
   #Date level
-  +createCode()
-  +cancelStatus()
-  +calculateScore()
+  +findCreatedat()
+  +validateStatus()
+  +createAddress()
 }
 interface Transfer {
-  +Date updatedAt
-  -float id
-  +long score
-  -long level
-  +processDescription()
-  +processTotal()
-  +getEmail()
-  +processPrice()
+  #boolean total
+  -int score
+  +sendAmount()
 }
 class Teller {
-  +String duration
+  -long address
+  -double amount
+  +double duration
+  +getUpdatedat()
+  +sendTotal()
+  +deleteName()
+  +cancelCode()
+}
+abstract class Account {
+  +String createdAt
   -float address
   -int active
-  +validateQuantity()
-}
-class Account {
-  +String createdAt
-  #float score
-  +boolean active
-  #long code
-  #int note
-  +saveType()
+  +createActive()
 }
 class Customer {
-  -boolean score
-  -long active
-  -double total
-  -boolean status
-  -long note
-  +saveCreatedat()
+  #boolean total
+  #String createdAt
+  +getTotal()
+  +processAmount()
+  +cancelAmount()
+  +sendStatus()
 }
 class Branch {
-  -boolean code
-  +String level
-  #float price
-  -long email
-  +findQuantity()
+  +double score
+  #float description
+  #double name
+  +double type
+  +deleteDescription()
+  +cancelCreatedat()
+  +getStatus()
+}
+class Loan {
+  +Date total
+  +long address
+  #boolean active
+  -String duration
+  #double quantity
   +sendDescription()
-  +updateUpdatedat()
-  +validateDuration()
+  +deleteAmount()
+  +findDuration()
 }
-interface Loan {
-  +long createdAt
-  -float note
-  +createLevel()
-  +setUpdatedat()
-  +validateScore()
-  +processCode()
-}
-Transfer --o Statement
-Account ..> Branch : "0..1"
-Branch ..> Transfer : "0..1"
-Customer --> Branch : "0..1"
-Branch --> Loan : "*"
-note right of Statement : Banking domain
+Statement --* Branch
+Teller --> Customer : "*"
+Branch --> Teller : "0..1"
 @enduml

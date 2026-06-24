@@ -8,52 +8,54 @@ class Reservation {
   -long status
   +int description
   -long type
-  +findPhone()
-  +cancelType()
+  +cancelUpdatedat()
+  +updateTotal()
 }
 interface Staff {
-  #long address
-  #boolean price
-  #float code
-  -long note
-  +findType()
-  +deleteCode()
-  +updateId()
-  +sendAmount()
+  -boolean active
+  -boolean email
+  #boolean address
+  -long price
+  -float code
+  +processCreatedat()
+  +validateCode()
+  +updatePhone()
+  +setDescription()
 }
-abstract class Restaurant {
-  -Date code
-  -float active
-  +float createdAt
-  +Date address
+class Restaurant {
+  -double score
+  +boolean amount
+  +calculateName()
+  +findName()
+}
+class CheckIn {
+  -long price
+  -float name
+  -float amount
+  +int address
+  -boolean code
+  +setEmail()
+}
+abstract class Room {
+  +String price
+  #String updatedAt
+  +Date type
+  -String status
   -String level
-  +validatePrice()
-  +calculateCode()
-  +deleteNote()
+  +createPhone()
+  +setEmail()
 }
-interface CheckIn {
-  #double address
-  -float price
-  +processStatus()
-  +updateStatus()
+interface CheckOut {
+  +boolean address
+  #int amount
+  +float name
+  #long email
+  +getName()
+  +cancelNote()
+  +cancelType()
+  +findScore()
 }
-class Room {
-  +long updatedAt
-  +boolean email
-  +setAddress()
-  +sendPhone()
-}
-class CheckOut {
-  #float name
-  #int email
-  +float duration
-  +calculateCreatedat()
-  +createScore()
-  +cancelCreatedat()
-}
-Reservation --|> CheckOut
-Staff --* CheckOut
-Restaurant --> CheckIn : "1..*"
-CheckOut --> Staff : "*"
-note right of Reservation : Hotel domain
+CheckOut --|> Restaurant
+Reservation ..|> CheckOut
+Staff --* Restaurant
 @enduml

@@ -5,58 +5,45 @@ class Room {
   -long score
   +long code
   +boolean duration
-  +deleteActive()
+  +findId()
 }
-class Amenity {
+interface Amenity {
+  -String note
   +int total
-  #boolean id
-  +Date quantity
-  -long name
-  +int status
-  +createNote()
-  +saveEmail()
-  +validateActive()
-  +cancelType()
+  +float id
+  +setCreatedat()
 }
-class Service {
-  +boolean status
-  -double updatedAt
-  +int active
-  +getCode()
-  +findStatus()
+abstract class Service {
+  #double status
+  #long createdAt
+  -boolean type
+  #double email
+  +cancelAmount()
+  +createScore()
 }
 class CheckIn {
-  #Date duration
-  +double type
-  -long address
-  #float createdAt
-  #float quantity
-  +getQuantity()
-  +deleteCreatedat()
-  +cancelName()
-  +findType()
+  -double active
+  +int name
+  +String duration
+  +createNote()
 }
 class Restaurant {
-  -String duration
-  +float active
-  -int name
-  #String status
-  +createType()
-  +findId()
-  +deleteUpdatedat()
-  +createType()
+  -int price
+  -boolean type
+  +calculateQuantity()
+  +findQuantity()
 }
 class Staff {
-  #boolean id
-  #long updatedAt
-  #Date note
-  -int phone
-  +setUpdatedat()
-  +validateStatus()
-  +deleteAmount()
-  +saveDescription()
+  #double name
+  +long quantity
+  #boolean description
+  #String createdAt
+  #Date duration
+  +processScore()
 }
-Staff ..|> Amenity
-Restaurant --|> Service
-note right of Room : Hotel domain
+Room --o Amenity
+Amenity --|> Restaurant
+CheckIn --o Service
+Staff ..|> Room
+Staff --* Amenity
 @enduml

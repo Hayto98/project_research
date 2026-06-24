@@ -4,38 +4,33 @@ interface Hospital {
   #String updatedAt
   #long note
   #Date name
-  +calculateUpdatedat()
+  +getAddress()
 }
 class Diagnosis {
+  #String email
   +double quantity
   -float note
   #int total
-  #int id
-  +setUpdatedat()
-  +updateName()
-  +getUpdatedat()
-  +calculateDuration()
+  +calculateStatus()
+  +getStatus()
 }
-abstract class Patient {
-  -long phone
-  -boolean createdAt
-  #String name
-  -float price
-  -boolean code
-  +sendAddress()
-  +processDuration()
-  +saveNote()
-  +createAmount()
+interface Patient {
+  +double status
+  #double updatedAt
+  -long createdAt
+  +String name
+  -float id
+  +cancelId()
 }
-abstract class MedicalRecord {
-  +long score
-  +int description
-  +findAmount()
-  +validateStatus()
-  +sendCreatedat()
-  +sendUpdatedat()
+class MedicalRecord {
+  #long duration
+  -boolean id
+  #double note
+  -int total
+  -String score
+  +saveQuantity()
+  +deleteCreatedat()
 }
-Patient --* Diagnosis
-Patient --|> MedicalRecord
-note right of Hospital : Healthcare domain
+Diagnosis --o Patient
+Diagnosis ..> MedicalRecord : "1"
 @enduml

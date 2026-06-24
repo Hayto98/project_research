@@ -8,66 +8,62 @@ class FuelLog {
   #long status
   +double score
   +boolean address
-  +updateQuantity()
-  +saveScore()
-  +setTotal()
+  +processActive()
+  +updateCreatedat()
+  +processScore()
 }
 class Depot {
-  #Date duration
-  +int note
-  #long quantity
-  -float description
-  +createActive()
-  +cancelQuantity()
-  +updateActive()
+  -boolean total
+  -long quantity
+  +createDescription()
+  +validateTotal()
 }
-interface Driver {
+class Driver {
+  -long level
+  #boolean phone
+  #float total
+  +cancelNote()
+  +findPrice()
+  +createDescription()
+}
+interface Package {
   -long active
   #boolean description
   #int note
   +Date type
-  +findActive()
-  +validateUpdatedat()
-  +updatePhone()
-  +calculateId()
+  +createId()
+  +sendUpdatedat()
+  +calculateActive()
+  +createNote()
 }
-class Package {
-  #long address
-  +boolean phone
-  #long createdAt
-  #Date email
-  +sendNote()
-  +processId()
-  +validateActive()
+class Vehicle {
+  +long updatedAt
+  #Date phone
+  #long price
+  +findCode()
+  +getCode()
+  +getTotal()
 }
-abstract class Vehicle {
-  -float id
-  -float score
-  #boolean phone
-  +boolean active
-  +float amount
-  +calculateAmount()
-  +calculateAddress()
-  +saveScore()
-}
-abstract class DeliveryNote {
-  #int duration
-  #long quantity
-  +calculateId()
-  +sendScore()
+class DeliveryNote {
+  #float description
+  -float active
+  #double quantity
+  -float level
+  +deleteCode()
 }
 interface Inventory {
-  +Date price
-  #boolean email
-  -Date code
-  +float level
-  +sendQuantity()
-  +createQuantity()
+  -float duration
+  -float type
+  #boolean id
+  +boolean phone
+  +float amount
+  +saveLevel()
+  +calculateCode()
+  +deleteScore()
 }
-Depot --* Driver
-Vehicle ..> DeliveryNote : "*"
-Driver --o Depot
-Depot ..> Inventory : "1..*"
-FuelLog --* Vehicle
-note right of FuelLog : Logistics domain
+Driver ..> DeliveryNote : "*"
+Inventory --|> DeliveryNote
+DeliveryNote --* Vehicle
+Vehicle ..> Depot : "1..*"
+Depot --|> Package
 @enduml

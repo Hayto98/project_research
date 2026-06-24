@@ -6,50 +6,52 @@ skinparam ArrowColor #555555
 class Appointment {
   +float id
   #String updatedAt
-  +deleteQuantity()
+  +validateQuantity()
 }
 class MedicalRecord {
+  +long amount
   +long code
-  #double name
-  +double quantity
-  +getActive()
+  +saveId()
+  +getPhone()
+  +updateName()
+  +setUpdatedat()
 }
-class Insurance {
+interface Insurance {
+  -long type
   +long code
   +float score
   -Date note
-  -double price
-  #float quantity
-  +savePhone()
-  +processAddress()
-  +validateNote()
-  +deleteTotal()
+  +processLevel()
+  +calculateDescription()
+  +updateCode()
+  +getAddress()
 }
 class Prescription {
-  +float note
-  #Date createdAt
-  #long id
-  +sendDescription()
-  +setLevel()
-  +sendQuantity()
-  +updateCode()
+  +int address
+  -int phone
+  #String note
+  +float description
+  #Date total
+  +cancelActive()
+  +createNote()
+  +getDescription()
 }
-class Doctor {
-  #String total
-  +float quantity
-  +deleteTotal()
-  +deleteId()
+abstract class Doctor {
+  -int status
+  +Date level
+  +boolean score
+  +getAddress()
 }
-abstract class LabTest {
-  #float email
-  #int duration
-  -boolean status
-  +int name
-  +float price
-  +validateName()
+class LabTest {
+  +double updatedAt
+  +String description
+  +deleteEmail()
+  +cancelType()
+  +sendName()
+  +validateAmount()
 }
-MedicalRecord ..|> Doctor
-Appointment --|> Prescription
-Doctor ..> MedicalRecord : "1"
-note right of Appointment : Healthcare domain
+Appointment --o LabTest
+LabTest --* MedicalRecord
+Doctor ..|> MedicalRecord
+MedicalRecord --* Appointment
 @enduml

@@ -7,56 +7,49 @@ abstract class Payment {
   #float type
   #String note
   #float quantity
-  +deleteAmount()
+  +calculateAddress()
 }
 class Return {
-  +double price
-  +int phone
-  +float quantity
-  -String active
-  #boolean type
-  +setUpdatedat()
-  +getScore()
-  +calculateTotal()
-  +validateName()
+  -boolean price
+  -String duration
+  -float phone
+  +findId()
+  +saveLevel()
 }
-class Invoice {
-  +boolean score
+abstract class Invoice {
+  #Date level
+  -String score
+  +updatePrice()
+  +setActive()
+}
+interface Cart {
+  #long total
+  -Date address
+  #String name
+  +boolean code
   -boolean email
-  -double type
-  -long code
-  +cancelDuration()
-  +sendScore()
-  +findActive()
-  +findActive()
+  +cancelQuantity()
+  +processDescription()
+  +updateTotal()
 }
-class Cart {
-  +int duration
+abstract class Warehouse {
+  +int phone
   #double address
   #double level
   -float email
-  +deleteLevel()
-  +findCode()
+  +validateCreatedat()
+  +savePrice()
 }
-class Warehouse {
-  #long type
-  +boolean score
-  #long address
-  +sendDescription()
-  +findActive()
-  +createTotal()
+class Product {
+  -Date amount
+  -int type
+  #Date score
+  +validateAmount()
+  +createStatus()
+  +saveQuantity()
 }
-abstract class Product {
-  -boolean score
-  #int id
-  +createCreatedat()
-  +updateId()
-  +validatePrice()
-  +updateQuantity()
-}
-Warehouse ..|> Return
-Invoice ..> Product : "1..*"
-Cart --o Warehouse
-Warehouse ..> Cart : "0..1"
-note right of Payment : Ecommerce domain
+Cart --|> Product
+Warehouse --* Payment
+Warehouse ..|> Product
+Cart ..|> Invoice
 @enduml

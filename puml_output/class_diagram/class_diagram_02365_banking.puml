@@ -5,54 +5,53 @@ skinparam classBorderColor #33691E
 abstract class Account {
   #Date price
   +double phone
-  +processScore()
+  +validateStatus()
+  +saveTotal()
   +sendCreatedat()
-  +saveType()
-  +createStatus()
+  +calculateDuration()
 }
 interface Withdrawal {
-  #long price
-  #Date code
-  -boolean note
-  +int quantity
-  #Date level
-  +getUpdatedat()
-  +validateId()
-  +sendStatus()
+  #boolean type
+  #float email
+  #double status
+  +getActive()
+  +getQuantity()
+  +validateActive()
+  +createAddress()
 }
-interface Transfer {
-  #double note
-  #String code
-  #String type
-  #int price
-  +deleteScore()
-  +findPrice()
-  +cancelQuantity()
+abstract class Transfer {
+  #float active
+  +int code
+  #Date address
+  #long note
+  +cancelScore()
 }
 class Transaction {
-  +Date updatedAt
-  #boolean createdAt
-  -int email
-  +calculateLevel()
+  -String id
+  -double score
+  #double status
+  #String quantity
+  +validateTotal()
 }
-interface Interest {
+class Interest {
+  +int amount
+  +boolean score
+  +long price
+  +Date quantity
+  +deleteScore()
+  +validateId()
+  +getPrice()
+  +calculateQuantity()
+}
+interface Statement {
   +double name
   +Date code
   -int active
-  +validateTotal()
-  +sendName()
-  +createAmount()
-  +createDescription()
+  +validateScore()
+  +getStatus()
+  +processLevel()
+  +updateNote()
 }
-interface Statement {
-  #boolean email
-  +int score
-  +boolean level
-  +findStatus()
-  +processEmail()
-}
-Interest ..|> Withdrawal
-Withdrawal --* Transaction
-Statement --* Account
-note right of Account : Banking domain
+Transfer --* Withdrawal
+Withdrawal --> Interest : "0..1"
 @enduml

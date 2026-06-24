@@ -5,71 +5,67 @@ skinparam defaultFontSize 13
 class Service {
   -double code
   #Date updatedAt
-  +sendDescription()
-  +cancelUpdatedat()
-  +deleteName()
-  +cancelScore()
+  +getStatus()
+  +findDuration()
+  +setCreatedat()
+  +validateDescription()
 }
 class CheckOut {
-  +Date code
-  -int total
-  -long createdAt
-  #int duration
-  +int email
-  +updateNote()
-  +findType()
-  +validateLevel()
-  +getCreatedat()
+  #Date description
+  +Date name
+  -String score
+  +processAddress()
+  +getTotal()
+  +cancelPrice()
+  +findNote()
 }
 class Booking {
-  #double code
-  +double address
-  #Date status
-  +float name
-  +deleteDuration()
-  +setQuantity()
+  -Date address
+  +String amount
+  +Date total
+  +saveStatus()
+  +deleteAddress()
+  +deletePrice()
+  +findEmail()
 }
-class Reservation {
-  +boolean amount
-  -float price
-  #double createdAt
-  #long total
-  +String email
-  +deleteScore()
-  +processCode()
-  +updateId()
-  +sendStatus()
+abstract class Reservation {
+  -Date level
+  +float name
+  -String createdAt
+  #String description
+  +getLevel()
+  +setNote()
+  +sendType()
+  +createType()
 }
 class Housekeeping {
+  +double amount
+  +double code
+  +double quantity
+  +cancelNote()
+  +setId()
+  +deleteCode()
+}
+interface Room {
+  +Date duration
+  #double address
+  #String status
+  +Date code
+  +float note
+  +findTotal()
+}
+class CheckIn {
   #float status
   -int note
   -float price
   +String total
-  +getAmount()
-  +processName()
-  +validateCode()
+  +setName()
+  +updateId()
+  +processUpdatedat()
 }
-class Room {
-  -boolean status
-  +long createdAt
-  +double email
-  #Date total
-  +long level
-  +processType()
-  +cancelAmount()
-  +cancelNote()
-  +createId()
-}
-class CheckIn {
-  +float duration
-  #Date id
-  #boolean name
-  #boolean quantity
-  +saveScore()
-}
-CheckOut --> Reservation : "*"
-Housekeeping --o CheckOut
-Room ..|> Housekeeping
-Reservation ..> Room : "*"
-note right of Service : Hotel domain
+Service ..> Booking : "1"
+CheckIn --o CheckOut
+Service --* CheckOut
+Reservation --* CheckOut
+Housekeeping --* CheckOut
 @enduml

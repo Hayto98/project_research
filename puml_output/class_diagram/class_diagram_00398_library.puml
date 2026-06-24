@@ -7,59 +7,58 @@ interface Renewal {
   -boolean active
   #double name
   -int note
-  +findCode()
+  +calculateDescription()
 }
 class Librarian {
-  -float address
-  +int status
-  -Date createdAt
-  +validateTotal()
-  +sendAmount()
-  +findNote()
+  -float description
+  +int address
+  -Date status
+  -long createdAt
+  +setAddress()
+  +findId()
+  +setCreatedat()
+  +deleteDuration()
 }
 abstract class Branch {
   -Date score
   -float name
-  +processEmail()
-  +validateCode()
-  +validateName()
+  +sendCode()
+  +validateAddress()
+  +calculateCreatedat()
 }
-interface Loan {
-  #String id
-  -Date score
-  +createQuantity()
-  +sendCreatedat()
-  +validatePrice()
-  +processPhone()
+class Loan {
+  #boolean name
+  +double level
+  #double duration
+  -long id
+  +validateScore()
+  +updateScore()
 }
-class Member {
-  #long type
-  #double address
-  -double duration
-  -boolean total
-  +updatePrice()
+abstract class Member {
+  -double phone
+  #long address
+  #double quantity
+  -double type
+  -boolean level
+  +updateDescription()
 }
-class Publisher {
-  #float createdAt
+abstract class Publisher {
+  #float code
+  -String createdAt
   -String amount
-  +getNote()
-  +getCreatedat()
-  +createName()
+  +calculateId()
+  +cancelDescription()
+  +cancelNote()
+  +setTotal()
 }
 class Catalog {
-  -int address
+  #double quantity
+  +long address
   +int score
-  +Date price
-  +boolean description
-  +findActive()
-  +saveDuration()
-  +deleteActive()
-  +updateType()
+  +updateCode()
+  +validateDescription()
 }
-Member --> Publisher : "1"
-Loan --o Branch
-Renewal --|> Member
-Publisher --|> Branch
-Renewal --* Librarian
-note right of Renewal : Library domain
+Publisher --> Renewal : "*"
+Publisher ..> Member : "0..1"
+Member --o Librarian
 @enduml

@@ -8,47 +8,40 @@ class Doctor {
   +double quantity
   #double id
   +boolean active
-  +validateTotal()
-  +findPhone()
-  +deleteName()
+  +createAmount()
+  +setQuantity()
+  +getAddress()
 }
 class Insurance {
-  #String status
-  +double active
-  -String code
-  +String score
-  -float total
-  +validatePhone()
+  +boolean name
+  +String phone
+  #double total
+  +saveAddress()
 }
-class Treatment {
-  #double email
-  +String status
-  #Date amount
-  -float note
+abstract class Treatment {
   +long id
+  -Date duration
+  -float level
+  -long address
   +createCode()
-  +calculateType()
-  +saveAmount()
-  +findEmail()
 }
 abstract class Appointment {
-  #long code
-  #long duration
-  -int description
-  -int level
-  #boolean address
-  +sendAddress()
-  +createPrice()
-  +createStatus()
+  +float total
+  #Date code
+  +setActive()
+  +updateDuration()
+  +saveScore()
 }
-class LabTest {
-  +Date level
-  #String id
-  +createCode()
+interface LabTest {
+  #long quantity
+  -float code
+  -Date total
+  +boolean type
+  +int amount
+  +setEmail()
 }
-Appointment --> Treatment : "1"
-Appointment --* Doctor
-Doctor ..|> Treatment
-Insurance --o Treatment
-note right of Doctor : Healthcare domain
+Treatment --o LabTest
+Insurance ..|> Appointment
+LabTest --> Treatment : "1..*"
+Treatment --* Appointment
 @enduml

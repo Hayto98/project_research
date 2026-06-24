@@ -8,69 +8,54 @@ interface Shelf {
   #boolean updatedAt
   -boolean duration
   #boolean total
-  +findPrice()
-  +processActive()
+  +updateCreatedat()
+  +cancelName()
 }
-interface Branch {
-  #long duration
+abstract class Branch {
+  #long active
+  #long note
   -int createdAt
   -long email
   -Date amount
-  +double score
-  +cancelNote()
-  +deleteCreatedat()
-  +validatePrice()
+  +validateName()
 }
-interface Reservation {
-  +String active
-  #boolean id
-  -double name
-  +Date price
-  +getPhone()
-  +deleteDuration()
+class Reservation {
+  #Date description
+  #String createdAt
+  +Date phone
+  -float price
+  +String email
+  +calculateCode()
+  +calculateNote()
+  +calculateStatus()
 }
-abstract class Librarian {
-  -long total
-  +int level
-  -Date name
-  -Date code
-  #int description
-  +getPrice()
+class Librarian {
+  #double phone
+  -double amount
+  +calculateDuration()
 }
-interface Book {
-  +String phone
-  #String duration
-  +long address
-  +String name
-  +double code
-  +deletePhone()
-  +cancelPhone()
+class Book {
+  +double email
+  #double address
+  #boolean updatedAt
+  +calculatePrice()
+  +sendDuration()
 }
 class Author {
-  -String type
-  -int duration
-  -long active
-  #long note
-  -String address
-  +findLevel()
-  +validateUpdatedat()
-  +saveName()
-  +deleteCreatedat()
+  -long price
+  -String note
+  +processAddress()
 }
-interface Publisher {
-  +Date address
-  -long duration
-  +double level
-  #int note
-  #Date total
-  +calculateNote()
-  +setCreatedat()
-  +createEmail()
+class Publisher {
+  -String name
+  +int description
+  +getActive()
+  +deleteScore()
+  +validateCode()
+  +saveDescription()
 }
-Author --|> Shelf
-Reservation --o Branch
-Librarian --* Shelf
-Shelf ..|> Reservation
-Branch --* Book
-note right of Shelf : Library domain
+Book --* Author
+Author --o Shelf
+Librarian ..> Publisher : "*"
+Publisher --* Reservation
 @enduml

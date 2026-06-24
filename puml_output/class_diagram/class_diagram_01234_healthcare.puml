@@ -6,60 +6,67 @@ skinparam shadowing true
 class Billing {
   #Date status
   #int amount
-  +updateTotal()
-}
-interface Nurse {
-  -int address
-  #Date updatedAt
-  +Date level
   +getDescription()
-  +calculateName()
-  +cancelEmail()
 }
-interface Hospital {
+class Nurse {
+  -int level
+  #Date updatedAt
+  +Date address
+  -float duration
+  +int active
+  +cancelUpdatedat()
+  +saveEmail()
+  +findTotal()
+  +validateActive()
+}
+class Hospital {
   +String name
   +long note
   +boolean type
-  +validateName()
-  +saveAddress()
+  +saveScore()
+  +cancelDuration()
 }
 class Insurance {
-  +long phone
-  +Date score
+  #long id
+  +long quantity
+  +Date phone
   #long updatedAt
-  #double duration
-  +deleteLevel()
-  +cancelCreatedat()
-  +processUpdatedat()
-}
-class Patient {
-  #boolean quantity
-  #double type
-  +boolean address
-  +deleteDuration()
+  +deleteCode()
   +saveAddress()
-  +getAddress()
-  +deleteId()
+  +cancelDescription()
+  +createLevel()
+}
+interface Patient {
+  +long type
+  -long updatedAt
+  #boolean name
+  +findAddress()
+  +sendType()
+  +getQuantity()
+  +sendScore()
 }
 class Treatment {
-  +boolean level
-  #String createdAt
-  -boolean amount
-  -String quantity
-  +createAmount()
+  +boolean id
+  -boolean address
+  +float description
+  +Date duration
+  +updateDescription()
+  +calculateDuration()
+  +createStatus()
 }
-abstract class Doctor {
-  -long total
-  #double id
-  -boolean name
-  -int status
-  +float phone
-  +setAddress()
-  +processTotal()
-  +cancelCode()
-  +cancelName()
+class Doctor {
+  +double level
+  -Date type
+  -Date status
+  +String code
+  +Date email
+  +sendCode()
+  +validateScore()
+  +createType()
 }
-Hospital --* Nurse
-Billing --|> Insurance
-note right of Billing : Healthcare domain
+Hospital --* Patient
+Nurse --o Doctor
+Billing --o Hospital
+Insurance --|> Patient
+Patient --|> Billing
 @enduml

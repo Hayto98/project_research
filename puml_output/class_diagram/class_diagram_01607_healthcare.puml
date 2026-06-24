@@ -5,42 +5,41 @@ skinparam shadowing true
 class MedicalRecord {
   +boolean amount
   #Date phone
-  +setStatus()
-  +createActive()
+  +getLevel()
+  +cancelEmail()
 }
 class Hospital {
-  -String active
-  #boolean updatedAt
-  +deleteStatus()
+  -String id
+  #boolean active
+  +int updatedAt
+  +createId()
 }
 abstract class Insurance {
   +Date level
   #Date email
   -boolean type
-  +calculateNote()
+  +updateQuantity()
 }
 abstract class Nurse {
-  +int address
-  +long score
-  -boolean phone
-  +deleteAddress()
-  +processUpdatedat()
-  +processScore()
-  +sendActive()
+  +float note
+  +long amount
+  -boolean address
+  -float phone
+  +Date status
+  +validateName()
+  +updateStatus()
+  +setDuration()
 }
-class Treatment {
-  +int quantity
-  -Date amount
-  +Date level
-  +boolean id
-  -String status
-  +saveStatus()
-  +cancelPhone()
-  +calculateScore()
-  +saveScore()
+abstract class Treatment {
+  +boolean type
+  +String quantity
+  +int amount
+  +setCode()
+  +getName()
+  +updateDescription()
 }
-MedicalRecord --|> Treatment
-Nurse --> Insurance : "*"
-Treatment ..> Hospital : "1"
-note right of MedicalRecord : Healthcare domain
+MedicalRecord --|> Insurance
+Nurse --> MedicalRecord : "1..*"
+Nurse --|> Treatment
+MedicalRecord --o Treatment
 @enduml

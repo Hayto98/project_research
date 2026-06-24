@@ -7,40 +7,36 @@ abstract class Transaction {
   #Date level
   #String phone
   #String amount
-  +getAmount()
-  +processAddress()
-  +findQuantity()
+  +cancelLevel()
+  +updateDuration()
+  +calculateAddress()
 }
-class Statement {
-  #float amount
-  -boolean createdAt
-  +int duration
-  +double updatedAt
-  -boolean name
-  +sendPrice()
-  +calculateDuration()
-  +validateCreatedat()
-  +sendDescription()
+abstract class Statement {
+  #int quantity
+  +Date address
+  #int type
+  +Date amount
+  +sendQuantity()
+  +updateActive()
+  +saveNote()
+  +calculateCode()
 }
-class Loan {
-  #float amount
-  #boolean total
-  +Date createdAt
-  +deleteNote()
-  +cancelScore()
-  +processStatus()
+abstract class Loan {
+  #int active
+  -int price
+  +double total
+  +Date phone
+  #boolean createdAt
+  +createLevel()
 }
-abstract class Beneficiary {
-  +String amount
-  +float phone
-  #boolean type
-  #Date description
-  +getScore()
-  +updateCreatedat()
-  +calculatePrice()
-  +findCreatedat()
+interface Beneficiary {
+  +double description
+  -int note
+  -double score
+  #float level
+  +findPhone()
+  +updateDuration()
 }
-Loan ..> Transaction : "0..1"
-Statement --* Transaction
-note right of Transaction : Banking domain
+Beneficiary --> Transaction : "0..1"
+Statement --o Beneficiary
 @enduml

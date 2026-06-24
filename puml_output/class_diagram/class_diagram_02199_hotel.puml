@@ -5,62 +5,54 @@ skinparam shadowing true
 class Service {
   +Date active
   -String amount
-  +calculateDescription()
+  +deleteAmount()
 }
-interface Staff {
+class Staff {
   +long address
   +double score
   +String phone
-  +saveLevel()
-  +updateStatus()
+  +cancelScore()
+  +findName()
 }
-interface Amenity {
-  #double active
-  +boolean price
-  +saveType()
-  +findDuration()
-  +processName()
-  +findScore()
+class Amenity {
+  #double score
+  #double status
+  +sendActive()
+  +calculateAmount()
 }
-class Payment {
-  -double code
-  +double updatedAt
-  +String name
-  -double note
-  #Date description
-  +saveDescription()
-  +findPhone()
-  +createUpdatedat()
-  +updateCreatedat()
+abstract class Payment {
+  +float name
+  +double score
+  +long description
+  -String total
+  -String code
+  +sendPhone()
 }
 abstract class Guest {
-  -Date amount
-  +float id
-  -Date code
-  #float level
-  +boolean updatedAt
-  +validateStatus()
-  +saveDescription()
+  #Date description
+  +Date phone
+  -double quantity
+  +float updatedAt
+  +String active
+  +processDuration()
 }
-interface Booking {
-  #String quantity
-  +double code
-  #int address
-  +cancelStatus()
-  +updateCode()
-}
-class Reservation {
-  +float email
-  #long duration
-  +long quantity
-  +Date amount
+abstract class Booking {
+  -String note
+  #int createdAt
+  #int updatedAt
+  +validatePhone()
+  +setEmail()
   +createTotal()
 }
-Guest --|> Amenity
-Payment --> Guest : "0..1"
-Staff ..|> Amenity
-Amenity --|> Guest
-Payment ..|> Reservation
-Service ..> Reservation : "1"
-note right of Service : Hotel domain
+class Reservation {
+  #String note
+  +String description
+  +boolean level
+  +deleteName()
+  +deleteCreatedat()
+  +calculatePhone()
+}
+Reservation --> Service : "1..*"
+Service ..|> Amenity
+Booking --* Service
 @enduml

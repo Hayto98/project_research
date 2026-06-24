@@ -9,58 +9,53 @@ interface Hospital {
   #double duration
   +boolean id
   +float status
-  +findLevel()
-  +calculateType()
-  +sendPrice()
+  +cancelName()
+  +saveDuration()
+  +createPrice()
 }
-class Ward {
-  #long score
-  +long level
-  #Date createdAt
-  #double address
-  +sendEmail()
+abstract class Ward {
+  #long createdAt
+  +long phone
+  #Date score
+  #double duration
+  #Date address
+  +createDescription()
 }
 class Billing {
-  -boolean address
-  +double duration
-  +float createdAt
-  +String phone
-  #long score
-  +calculateAddress()
-  +findStatus()
-  +createId()
-  +validateActive()
+  +float price
+  #long address
+  +double level
+  +findEmail()
+  +createPrice()
 }
-interface LabTest {
-  #double duration
-  +Date name
-  -boolean createdAt
+class LabTest {
+  -float id
+  -Date score
   -Date quantity
-  +findId()
-  +validateTotal()
-  +sendEmail()
+  +createQuantity()
 }
 class Appointment {
-  +String active
-  #long createdAt
-  -boolean address
-  -int total
-  #int type
-  +validateStatus()
-  +findDescription()
-  +cancelCode()
-  +saveQuantity()
+  +long active
+  #double duration
+  +Date email
+  -boolean name
+  +updateScore()
+  +deleteName()
+  +deleteType()
+  +processName()
 }
 class Diagnosis {
-  #int createdAt
-  -double active
-  #int code
-  #Date updatedAt
-  #Date id
-  +saveLevel()
+  #Date active
+  +long email
+  -double description
+  +String duration
+  #long note
+  +processId()
+  +sendPhone()
+  +deleteScore()
+  +getQuantity()
 }
-LabTest ..|> Appointment
-Hospital --|> Billing
-Appointment ..> Diagnosis : "1..*"
-note right of Hospital : Healthcare domain
+LabTest ..> Billing : "1"
+Diagnosis --> Ward : "1"
+Diagnosis ..> Billing : "1"
 @enduml

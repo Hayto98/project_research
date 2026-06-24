@@ -6,63 +6,63 @@ class Category {
   #float active
   +float email
   +long description
-  +createPrice()
+  +updateQuantity()
 }
 class Coupon {
-  #long status
-  +String updatedAt
-  +deleteStatus()
+  +String amount
+  #String status
+  +String level
+  -boolean updatedAt
+  -String email
+  +findTotal()
+  +findDescription()
+  +validateType()
+  +validateDuration()
 }
 abstract class Return {
-  -double status
-  -boolean type
-  -long address
-  #boolean total
-  +cancelUpdatedat()
-  +getId()
+  -boolean note
+  #float quantity
+  +boolean score
+  +String address
+  +cancelType()
 }
 class Wishlist {
   -float address
   +Date phone
   -String duration
   #String total
-  +findNote()
-  +findDuration()
-  +validateAmount()
-  +createAddress()
+  +getDuration()
+  +cancelName()
+  +cancelQuantity()
+  +updateScore()
 }
-class Supplier {
-  +long note
-  +float email
-  +boolean description
-  +long status
-  -double quantity
-  +getStatus()
-  +createNote()
-  +updateId()
+interface Supplier {
+  #double amount
+  -float email
+  -Date address
+  +boolean phone
+  +setTotal()
 }
-interface Cart {
-  +String email
-  -boolean phone
-  +long status
-  +double description
-  +boolean updatedAt
-  +setDescription()
-  +validateQuantity()
-  +processScore()
+class Cart {
+  -double code
+  -Date duration
+  -String active
+  +long name
+  +processPrice()
+  +processCode()
+  +sendQuantity()
+  +processType()
 }
 class Shipment {
-  +Date level
-  +boolean status
-  +float duration
-  +findNote()
-  +findTotal()
-  +createScore()
+  +String status
+  -boolean description
+  +long active
+  +double updatedAt
+  +createStatus()
 }
-Return ..|> Shipment
-Shipment --o Cart
-Return ..> Cart : "1"
-Wishlist --|> Cart
-Wishlist ..> Return : "1..*"
-note right of Category : Ecommerce domain
+Shipment ..> Cart : "1..*"
+Category --* Coupon
+Shipment --o Return
+Supplier ..|> Category
+Category ..> Shipment : "0..1"
 @enduml

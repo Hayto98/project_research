@@ -7,42 +7,42 @@ interface Notification {
   #int updatedAt
   #Date createdAt
   #String duration
-  +sendAmount()
-  +processCreatedat()
+  +createUpdatedat()
+  +createCode()
 }
-class Report {
+abstract class Report {
+  -long phone
   #float amount
-  #long quantity
-  #double address
-  +deleteType()
-  +createDuration()
-  +cancelQuantity()
-  +sendStatus()
+  #long level
+  +findDescription()
+  +calculateDescription()
+  +validateUpdatedat()
+  +validateCode()
 }
-interface Story {
-  +Date address
-  +Date active
-  +float note
-  +createPrice()
-  +processDuration()
-  +getStatus()
+abstract class Story {
+  +boolean duration
+  +float level
+  -boolean quantity
+  #double active
+  +cancelPrice()
+  +cancelNote()
 }
 class Like {
-  +String id
-  +float updatedAt
-  #boolean score
-  -float address
-  +createQuantity()
+  +String quantity
+  -String price
+  #float type
+  #Date id
+  +updateQuantity()
+  +sendLevel()
 }
-class Post {
-  -String note
-  +int type
-  +validateDuration()
-  +sendType()
-  +updateStatus()
+interface Post {
+  #String id
+  -long duration
+  #String updatedAt
+  #boolean price
+  +calculateAmount()
 }
-Report --|> Post
-Like ..|> Story
-Like --> Report : "*"
-note right of Notification : Social Media domain
+Like --|> Notification
+Report --* Story
+Post ..|> Like
 @enduml

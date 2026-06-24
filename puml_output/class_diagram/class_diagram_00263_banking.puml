@@ -4,42 +4,45 @@ skinparam shadowing true
 class Withdrawal {
   #float quantity
   #long note
-  +saveQuantity()
+  +createId()
 }
 class Customer {
-  -int updatedAt
-  -float address
-  +double score
-  -float phone
-  -boolean email
-  +createEmail()
-  +processEmail()
-  +setCreatedat()
-  +saveDuration()
+  #long note
+  #Date updatedAt
+  #long address
+  +setType()
+  +findCreatedat()
+  +createId()
 }
-interface Transaction {
-  #int total
-  #float description
-  -float duration
-  +double updatedAt
-  +float id
-  +createEmail()
+class Transaction {
+  -float phone
+  -long quantity
+  +int active
+  #boolean note
+  #boolean email
+  +getPhone()
+  +updateQuantity()
+  +findUpdatedat()
+  +getEmail()
 }
 abstract class Statement {
-  +String description
-  #int address
-  #boolean name
-  -double total
-  +saveName()
+  #float id
+  -float level
+  +double createdAt
+  +cancelType()
+  +cancelEmail()
 }
 class Branch {
-  -long createdAt
-  +Date id
-  +validateTotal()
-  +validateDescription()
+  #boolean note
+  +double address
+  +String description
+  #int level
+  +updateAmount()
+  +deleteAmount()
+  +cancelStatus()
 }
-Branch --> Customer : "*"
-Withdrawal --|> Statement
-Branch --> Transaction : "1"
-note right of Withdrawal : Banking domain
+Withdrawal ..> Customer : "1"
+Customer --* Withdrawal
+Transaction ..> Withdrawal : "0..1"
+Transaction --* Statement
 @enduml

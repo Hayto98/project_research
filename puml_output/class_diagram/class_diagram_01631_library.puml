@@ -8,60 +8,59 @@ abstract class Renewal {
   +Date name
   -float address
   #int type
-  +cancelNote()
-  +validateCreatedat()
+  +savePrice()
+  +deleteDuration()
 }
 class Catalog {
-  #float id
-  +String address
-  +long total
-  +cancelUpdatedat()
-  +processName()
-  +deleteScore()
-  +cancelActive()
+  -double code
+  #float createdAt
+  +String id
+  +createQuantity()
 }
 abstract class Author {
-  +double score
-  +double price
-  #long quantity
-  -float level
-  +createCode()
-  +setActive()
-  +cancelNote()
+  #boolean note
+  #float name
+  #double description
+  +sendAmount()
+  +calculateCode()
+  +getNote()
 }
-class Librarian {
-  +Date level
-  #boolean active
-  +String duration
-  +validateStatus()
+abstract class Librarian {
+  #long total
+  -float amount
+  #long note
+  +getLevel()
+  +deleteQuantity()
+  +findPrice()
 }
-abstract class Shelf {
-  +boolean total
-  #boolean level
-  -long quantity
-  -long type
-  -boolean note
-  +validateDescription()
-  +setAmount()
-}
-class Member {
-  +String id
+interface Shelf {
+  #boolean name
+  #int updatedAt
+  +String active
   -float score
-  +createPrice()
+  +double code
+  +findAmount()
+  +cancelActive()
+  +updateLevel()
+  +sendName()
+}
+abstract class Member {
+  -long level
+  -long active
+  +findDuration()
+  +findStatus()
+  +processPrice()
 }
 class Book {
-  +double id
-  +int createdAt
-  -float code
-  +double score
-  +float phone
-  +setType()
-  +validatePhone()
-  +getAmount()
+  #Date code
+  +String amount
+  #String level
+  +saveAmount()
 }
-Shelf ..|> Member
-Catalog ..> Member : "1..*"
-Member --> Renewal : "1..*"
-Member --> Catalog : "0..1"
-note right of Renewal : Library domain
+Renewal --o Author
+Renewal --|> Librarian
+Book --|> Catalog
+Renewal --* Member
+Catalog --|> Librarian
+Catalog ..|> Author
 @enduml

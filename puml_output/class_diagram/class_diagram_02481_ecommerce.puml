@@ -6,36 +6,40 @@ skinparam defaultFontSize 13
 abstract class Coupon {
   +float amount
   #double price
-  +saveCreatedat()
-  +sendNote()
-  +sendCreatedat()
-  +calculatePhone()
+  +updatePhone()
+  +sendId()
+  +findDuration()
+  +saveAmount()
 }
-class Category {
-  -String status
-  +long amount
-  #long score
-  #int type
-  +processId()
-  +sendAddress()
+interface Category {
+  -String total
+  +Date phone
+  #boolean amount
+  +processAddress()
+  +calculateQuantity()
+  +setPrice()
+  +processName()
 }
 class Order {
-  #int address
   -float level
-  +String type
-  +String status
-  +updateLevel()
+  +boolean address
+  -int amount
+  -long score
+  +saveDescription()
+  +sendLevel()
+  +cancelEmail()
+  +findTotal()
 }
 class Return {
-  -String note
-  -float phone
-  +int createdAt
-  #Date active
-  #int code
-  +findLevel()
+  +Date name
+  #Date duration
+  #long updatedAt
+  -float id
+  -Date active
+  +sendId()
+  +createUpdatedat()
+  +deleteEmail()
 }
-Category ..|> Order
-Return --> Category : "0..1"
-Coupon --|> Order
-note right of Coupon : Ecommerce domain
+Order --* Coupon
+Coupon --> Return : "0..1"
 @enduml

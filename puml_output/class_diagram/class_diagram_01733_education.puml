@@ -8,61 +8,60 @@ class Attendance {
   -double amount
   +float note
   #String name
-  +deleteCreatedat()
+  +processUpdatedat()
 }
-abstract class Student {
-  -float code
-  #long id
-  +deleteQuantity()
-  +saveId()
-  +deleteAmount()
-  +createPrice()
+class Student {
+  -int status
+  -Date code
+  +int id
+  +float email
+  -double address
+  +processNote()
 }
 class Exam {
-  #float price
-  +long phone
-  +processDuration()
-  +processCreatedat()
+  -boolean phone
+  -int status
+  -Date duration
+  -String active
+  -Date createdAt
+  +sendScore()
+  +findActive()
+  +validateCode()
+  +sendAmount()
 }
 class Enrollment {
-  -int name
-  #int phone
-  +long price
-  #float score
-  +deleteCreatedat()
-  +updateCode()
-  +calculateQuantity()
-  +setUpdatedat()
+  -int phone
+  +float score
+  +getLevel()
+  +sendScore()
 }
-interface Grade {
-  +long description
-  -String amount
-  -long quantity
-  +updateStatus()
-  +processDescription()
+class Grade {
+  +int updatedAt
+  -String createdAt
+  +validateType()
+  +saveName()
+  +saveId()
 }
 class Classroom {
-  -double email
-  -long note
-  +deleteUpdatedat()
-  +validateName()
-  +validateType()
-  +sendCreatedat()
+  -int level
+  #int amount
+  +long createdAt
+  -double status
+  +validateUpdatedat()
+  +validateScore()
+  +setActive()
+  +processId()
 }
-class Schedule {
-  -double total
-  +String price
-  #double address
-  -double active
-  #float createdAt
-  +validateDuration()
-  +updateUpdatedat()
-  +processCreatedat()
+abstract class Schedule {
+  -float updatedAt
+  #float address
+  -boolean name
+  +findNote()
+  +saveAmount()
 }
+Enrollment --* Classroom
+Grade ..|> Schedule
+Enrollment --|> Schedule
 Attendance --o Grade
-Schedule ..|> Grade
-Exam --* Attendance
-Schedule --> Attendance : "1..*"
-Grade --o Student
-note right of Attendance : Education domain
+Exam ..> Enrollment : "1..*"
 @enduml

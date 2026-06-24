@@ -8,31 +8,37 @@ class Product {
   #float level
   +float type
   #float active
-  +validateAddress()
-  +validateNote()
+  +setDuration()
+  +updateCreatedat()
 }
 class Payment {
-  -Date createdAt
-  -long address
-  +updateCreatedat()
+  +long phone
+  -Date note
+  -long code
+  #int score
+  +validatePrice()
+  +saveNote()
+}
+class Wishlist {
+  #Date code
+  #float address
+  -float active
+  #int description
+  -float id
+  +cancelAmount()
+  +createTotal()
+  +createName()
+}
+abstract class Customer {
+  #double score
+  -double status
+  #long email
+  +setName()
+  +updateName()
+  +createName()
   +findDescription()
 }
-abstract class Wishlist {
-  #int address
-  #String level
-  +cancelAmount()
-  +processAddress()
-  +sendNote()
-  +processDescription()
-}
-interface Customer {
-  #double duration
-  -double email
-  +calculateId()
-  +setNote()
-  +cancelPrice()
-}
-Product ..> Customer : "0..1"
-Customer --* Wishlist
-note right of Product : Ecommerce domain
+Wishlist ..|> Product
+Payment --o Wishlist
+Wishlist --o Customer
 @enduml

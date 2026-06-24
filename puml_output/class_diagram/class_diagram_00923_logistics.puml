@@ -5,65 +5,64 @@ skinparam classBorderColor #2C7DA0
 interface DeliveryNote {
   -String amount
   +int level
-  +sendName()
+  +getCreatedat()
 }
 class Shipment {
-  #float score
-  +Date level
+  +boolean note
+  +Date score
   -float quantity
   +Date name
-  #float amount
-  +createDuration()
-  +processQuantity()
-  +sendQuantity()
-  +getTotal()
+  +calculateScore()
+  +setPhone()
+  +createNote()
+  +deleteDuration()
 }
 class Manifest {
+  #String id
+  #double total
   -long status
-  -String active
-  -boolean note
-  +processLevel()
-  +cancelAddress()
+  -String updatedAt
+  +sendQuantity()
+  +validateStatus()
+  +processCreatedat()
+  +saveNote()
 }
 abstract class Driver {
-  -long note
+  +String note
+  -long duration
+  -float level
   +float name
-  +float createdAt
-  +double id
-  -Date type
-  +calculateDuration()
-  +cancelPrice()
+  +processScore()
 }
-abstract class Tracking {
-  -Date description
-  #String note
-  +deleteCreatedat()
-  +deleteNote()
-  +getId()
+class Tracking {
+  +int address
+  -double createdAt
+  #float price
+  #String score
+  #boolean type
+  +saveAddress()
+  +setQuantity()
+  +getActive()
 }
 class Warehouse {
-  -float description
-  #int address
-  +int total
-  -long note
-  -float phone
-  +createEmail()
+  +double note
+  +float id
+  -double level
+  +getScore()
+  +setAddress()
+  +sendPhone()
+  +validateDuration()
 }
 class Vehicle {
-  -int phone
-  +float description
-  #long score
-  -long duration
-  +validateNote()
-  +sendName()
-  +deleteAmount()
-  +deleteAddress()
+  -float amount
+  #boolean total
+  +long quantity
+  +sendPhone()
+  +updateLevel()
+  +findStatus()
 }
-DeliveryNote --> Manifest : "1"
-Warehouse --|> DeliveryNote
-Vehicle ..|> Tracking
-Warehouse --|> Shipment
-Manifest --> Warehouse : "*"
-Shipment --|> Vehicle
-note right of DeliveryNote : Logistics domain
+Shipment --* Tracking
+Vehicle ..|> Manifest
+Shipment --* Warehouse
+Manifest --o Vehicle
 @enduml

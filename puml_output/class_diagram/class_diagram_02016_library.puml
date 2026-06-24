@@ -8,53 +8,51 @@ class Catalog {
   +double id
   +float code
   #int note
-  +createActive()
+  +calculatePhone()
 }
-abstract class Branch {
+interface Branch {
+  +boolean address
   +boolean status
-  +boolean createdAt
-  #double email
-  +float name
-  +calculateAmount()
-  +processQuantity()
-  +calculateLevel()
-  +sendEmail()
+  #double createdAt
+  +float email
+  -double name
+  +sendCode()
+  +getNote()
 }
 abstract class Loan {
-  #float duration
-  #float level
-  -int id
-  +calculateNote()
-  +calculateStatus()
-  +setType()
-}
-interface Shelf {
-  +Date phone
-  -double createdAt
-  -double level
-  #Date status
-  +int address
-  +processEmail()
-  +findTotal()
+  +long price
+  -double description
+  -Date id
+  +String address
+  +updateId()
   +processCreatedat()
-  +saveId()
+  +validateActive()
+  +processType()
 }
-interface Member {
-  #long duration
-  +String createdAt
-  #float score
-  +setNote()
+class Shelf {
+  +Date createdAt
+  -double status
+  -double address
+  +findId()
+  +processTotal()
 }
-interface Author {
-  #double level
-  +int price
-  #String note
-  -int email
-  #float duration
-  +deletePrice()
-  +getPhone()
+abstract class Member {
+  #int total
+  #int note
+  #float createdAt
+  #long id
+  +processName()
 }
+class Author {
+  -boolean note
+  -double level
+  +cancelName()
+  +calculateCode()
+  +calculatePrice()
+}
+Catalog --> Branch : "1"
+Shelf --> Branch : "0..1"
+Branch --|> Shelf
+Loan --|> Member
 Shelf --|> Author
-Loan --|> Branch
-note right of Catalog : Library domain
 @enduml

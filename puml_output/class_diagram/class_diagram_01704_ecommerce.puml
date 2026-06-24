@@ -3,59 +3,52 @@ skinparam ArrowColor #555555
 class Supplier {
   +long total
   -float id
-  +saveNote()
-  +sendEmail()
-  +validateQuantity()
-  +updateId()
+  +createId()
+  +saveUpdatedat()
+  +deletePrice()
+  +createNote()
 }
-abstract class Payment {
-  +float level
-  #Date active
-  #int price
-  -Date type
-  +int code
-  +deleteScore()
-  +sendScore()
-  +savePrice()
+interface Payment {
+  -boolean address
+  -boolean quantity
+  #double updatedAt
+  -boolean id
+  +processActive()
 }
 interface Coupon {
-  +boolean createdAt
-  #boolean price
-  +Date updatedAt
-  +calculateDescription()
-  +saveName()
-  +findAmount()
-  +deleteCode()
+  -int total
+  #boolean createdAt
+  #boolean updatedAt
+  +getQuantity()
+  +processActive()
+  +findEmail()
+  +calculateNote()
 }
 abstract class Order {
-  +double name
-  +long active
-  +float amount
-  #double type
-  +setAmount()
-  +validateQuantity()
-  +updateQuantity()
-  +setEmail()
+  #Date id
+  -double active
+  +Date createdAt
+  +updateScore()
 }
-interface Warehouse {
-  -int address
-  +float status
-  +boolean price
-  #int quantity
-  +createPhone()
+class Warehouse {
+  +boolean code
+  +double price
+  +double email
+  +deleteName()
 }
-abstract class Customer {
-  #float name
-  -String level
-  #boolean type
-  +cancelStatus()
-  +validateAmount()
-  +validateDescription()
-  +saveAmount()
+class Customer {
+  +long total
+  +float code
+  #long amount
+  #long address
+  -String quantity
+  +deleteDescription()
+  +sendAmount()
+  +updateLevel()
+  +calculateTotal()
 }
-Coupon --> Supplier : "1..*"
-Supplier ..|> Payment
-Supplier --* Warehouse
-Supplier --|> Customer
-note right of Supplier : Ecommerce domain
+Payment --|> Customer
+Warehouse ..|> Customer
+Warehouse --* Supplier
+Coupon ..|> Order
 @enduml

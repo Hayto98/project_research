@@ -9,54 +9,54 @@ abstract class Prescription {
   -boolean amount
   -Date address
   +updateStatus()
-  +sendType()
-  +deleteScore()
+  +validateEmail()
+  +cancelType()
 }
-class Appointment {
-  -float description
-  -String duration
-  #boolean name
-  +createId()
-  +createLevel()
-  +createStatus()
-  +findCode()
+interface Appointment {
+  +boolean amount
+  +float score
+  -float quantity
+  -String description
+  #boolean active
+  +deleteName()
+  +sendTotal()
+  +updateLevel()
+  +setScore()
 }
-class Billing {
-  -String quantity
-  +float active
-  +double score
-  #long note
-  +float createdAt
-  +saveCode()
+interface Billing {
+  -boolean status
+  #Date code
+  -int phone
+  -String note
+  +updateCode()
 }
-interface Insurance {
-  -boolean total
+class Insurance {
+  -boolean phone
+  #Date updatedAt
+  #String status
+  -boolean code
+  +Date duration
+  +findTotal()
+  +findPhone()
+  +findDescription()
+  +saveStatus()
+}
+abstract class Patient {
+  +long createdAt
+  #boolean id
   +Date level
-  -float active
-  +boolean status
-  +deleteCreatedat()
-  +getId()
-  +setQuantity()
-  +sendDuration()
-}
-class Patient {
-  +double phone
-  -boolean score
-  #String updatedAt
-  #int duration
-  +sendEmail()
-  +validateCode()
-  +validateId()
+  +processStatus()
+  +cancelAmount()
+  +createScore()
 }
 interface Nurse {
-  #float status
-  #String email
-  +boolean code
-  +createScore()
-  +updateName()
+  #int description
+  -boolean note
+  -long phone
+  +long status
+  +cancelActive()
 }
-Insurance --* Nurse
-Patient --|> Appointment
-Prescription --> Insurance : "1..*"
-note right of Prescription : Healthcare domain
+Prescription --|> Billing
+Nurse --|> Patient
+Prescription ..|> Patient
 @enduml

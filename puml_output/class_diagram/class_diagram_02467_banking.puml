@@ -6,39 +6,35 @@ skinparam defaultFontSize 11
 interface Branch {
   +float address
   #double name
-  +sendNote()
-  +setScore()
-  +validateUpdatedat()
-  +processPhone()
+  +saveActive()
+  +sendCode()
+  +cancelEmail()
+  +saveScore()
 }
-interface Transfer {
-  +Date score
+class Transfer {
+  #int phone
+  +Date total
+  #Date score
   #Date active
-  #Date level
   -int id
-  #int createdAt
-  +getEmail()
-  +setId()
-  +deleteEmail()
-  +createType()
+  +updateEmail()
+  +savePhone()
 }
 class Statement {
-  +float type
-  -long description
-  +createName()
-  +sendQuantity()
-  +cancelPrice()
-  +sendAmount()
+  -long id
+  -String amount
+  +sendCreatedat()
 }
 class Customer {
-  -float price
-  -long note
-  +long active
-  +boolean quantity
-  #float amount
-  +findAmount()
+  -String total
+  #long quantity
+  #Date note
+  +createDescription()
+  +updateType()
+  +getType()
+  +saveName()
 }
-Transfer ..|> Statement
-Customer --> Branch : "*"
-note right of Branch : Banking domain
+Customer --> Statement : "1..*"
+Transfer --o Customer
+Statement --* Branch
 @enduml

@@ -8,40 +8,39 @@ class Housekeeping {
   #Date price
   #float note
   #int duration
-  +sendCode()
+  +calculateDuration()
 }
-abstract class Room {
-  #double quantity
-  #int status
-  +updateName()
-  +sendAddress()
+class Room {
+  #boolean code
+  +int quantity
+  +boolean status
+  #long price
+  #Date createdAt
+  +setTotal()
+  +validateId()
 }
 interface Guest {
-  #long quantity
-  +float status
-  #float level
-  +calculateStatus()
-  +createAddress()
-  +deleteActive()
-  +sendCreatedat()
+  #float quantity
+  -double id
+  +setDuration()
 }
 class Payment {
-  #float price
-  -long phone
-  #float updatedAt
-  +Date status
-  +setStatus()
+  #String amount
+  #long active
+  -long score
+  +Date createdAt
+  +findTotal()
 }
-class Booking {
-  -String type
-  +float duration
-  -float code
-  +saveCreatedat()
-  +deleteDuration()
-  +calculateQuantity()
-  +createPhone()
+interface Booking {
+  +String phone
+  +boolean active
+  +double name
+  -String code
+  +setUpdatedat()
+  +validateQuantity()
+  +processScore()
 }
-Payment ..|> Housekeeping
-Housekeeping ..|> Guest
-note right of Housekeeping : Hotel domain
+Payment ..|> Room
+Booking --* Payment
+Guest --|> Booking
 @enduml

@@ -9,24 +9,28 @@ class CheckOut {
   +String email
   +boolean active
   +float price
-  +setType()
-  +getPrice()
-  +cancelTotal()
-  +findPhone()
+  +deleteQuantity()
+  +updateAmount()
+  +deleteActive()
+  +updatePrice()
 }
-class Room {
-  +Date type
-  +boolean duration
-  +findNote()
-  +processAddress()
+abstract class Room {
+  +Date phone
+  +boolean email
+  +Date status
+  -double type
+  -double active
+  +createId()
 }
-abstract class Booking {
-  -String updatedAt
-  -double email
-  +updateScore()
-  +sendStatus()
+class Booking {
+  -int note
+  #boolean status
+  #String phone
+  +String duration
+  +saveAddress()
+  +validateLevel()
+  +updateNote()
   +setId()
-  +processAmount()
 }
 interface CheckIn {
   #double status
@@ -34,28 +38,27 @@ interface CheckIn {
   +boolean total
   #double duration
   #long price
-  +getDuration()
+  +cancelTotal()
 }
-abstract class Amenity {
-  -int updatedAt
-  #float phone
-  #long note
-  -int address
-  +setAddress()
-  +createActive()
-  +deletePrice()
-  +calculatePhone()
+interface Amenity {
+  -int email
+  #float updatedAt
+  #long phone
+  -int note
+  #double address
+  +validateScore()
 }
-abstract class Reservation {
-  #Date code
-  -float createdAt
-  +int type
-  -Date id
-  +processPhone()
+class Reservation {
+  -long price
+  +int duration
+  -String phone
+  +saveType()
+  +createAddress()
+  +calculateNote()
+  +saveLevel()
 }
-Booking --o CheckOut
-Reservation --|> CheckIn
-Amenity --> Room : "0..1"
-Booking --|> Reservation
-note right of CheckOut : Hotel domain
+Reservation --o CheckOut
+Booking --* Reservation
+CheckOut ..> CheckIn : "*"
+CheckOut ..|> Amenity
 @enduml

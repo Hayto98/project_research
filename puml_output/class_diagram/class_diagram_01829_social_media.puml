@@ -8,41 +8,40 @@ interface Notification {
   #int code
   +float type
   #int active
-  +saveScore()
+  +processNote()
 }
-class Comment {
+interface Comment {
+  +double address
   #Date note
   #double id
-  -long code
-  #float type
-  +sendUpdatedat()
+  +validateAmount()
+  +findUpdatedat()
+  +validateStatus()
+  +setName()
 }
 interface Post {
-  -float updatedAt
-  -float price
-  -boolean amount
-  -Date name
-  +validateNote()
+  #double score
+  +Date address
+  #float updatedAt
+  +processCreatedat()
 }
-class Hashtag {
-  -String description
-  -double code
-  -double status
-  +saveAmount()
-  +findDescription()
-  +validateDuration()
-  +getStatus()
+abstract class Hashtag {
+  #double phone
+  +int type
+  +String name
+  +double duration
+  +findTotal()
 }
-class Group {
-  -float active
-  +boolean updatedAt
-  +float total
-  +long amount
-  #Date address
-  +createId()
+abstract class Group {
+  -float email
+  #float price
+  +Date level
+  +Date amount
+  -double description
+  +calculateQuantity()
+  +deleteScore()
 }
-Hashtag --> Group : "0..1"
-Post ..> Notification : "*"
-Post --o Comment
-note right of Notification : Social Media domain
+Hashtag --> Notification : "1"
+Notification ..> Post : "1"
+Post --* Notification
 @enduml

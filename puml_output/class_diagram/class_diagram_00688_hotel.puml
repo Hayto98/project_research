@@ -8,48 +8,53 @@ class Invoice {
   -boolean price
   +double total
   -long duration
-  +saveType()
-  +processAmount()
-  +calculateDescription()
+  +validatePrice()
+  +cancelCode()
   +deletePrice()
+  +findType()
 }
 class CheckOut {
-  +long updatedAt
-  -int type
-  +long address
-  #int total
-  +findAmount()
+  #float description
+  +double duration
+  -double price
+  +long status
+  -int email
+  +setEmail()
+  +createType()
 }
 class Payment {
-  #Date description
-  #float phone
-  #double email
-  +createTotal()
+  +int amount
+  #long status
+  +updateAddress()
+  +processNote()
+  +processPhone()
+}
+abstract class Housekeeping {
+  -long quantity
+  +long total
+  -int type
+  +createDescription()
+  +processDuration()
   +processPrice()
 }
-class Housekeeping {
-  +boolean email
-  -boolean address
-  +updateName()
-  +processActive()
-}
 class Guest {
+  #long active
+  #int status
+  +Date createdAt
   -boolean amount
-  +String email
-  #double score
-  +validateStatus()
-  +deleteId()
-  +deleteNote()
+  -long email
+  +createCreatedat()
 }
 class Booking {
+  +float note
   +Date id
-  +long amount
-  +long note
-  +cancelDescription()
-  +updateQuantity()
+  #float description
+  +createAddress()
+  +setCode()
+  +calculateId()
+  +sendPhone()
 }
+Payment --> CheckOut : "0..1"
+CheckOut ..|> Payment
 Housekeeping ..> Guest : "0..1"
-Invoice ..> Booking : "0..1"
-Payment --* CheckOut
-note right of Invoice : Hotel domain
 @enduml

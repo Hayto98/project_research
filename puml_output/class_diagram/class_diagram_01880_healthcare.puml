@@ -5,47 +5,41 @@ class Diagnosis {
   +double createdAt
   +double type
   #Date duration
-  +validateAmount()
-  +saveTotal()
-  +sendAmount()
-  +sendEmail()
+  +findQuantity()
+  +updateType()
+  +setDuration()
+  +updateAddress()
 }
-class Treatment {
-  -int phone
-  +String note
-  -boolean address
-  +getQuantity()
-  +processType()
-  +getScore()
+abstract class Treatment {
+  #int active
+  -double email
+  -long createdAt
+  +updateStatus()
+  +cancelTotal()
 }
 class Ward {
-  #Date status
-  -int updatedAt
-  +double description
-  +int active
-  -boolean createdAt
-  +getUpdatedat()
-  +createAmount()
+  +boolean name
+  #int quantity
+  -float note
+  +int type
+  +createDescription()
+  +updateQuantity()
 }
-interface MedicalRecord {
-  -float createdAt
+class MedicalRecord {
+  +long createdAt
+  #boolean updatedAt
+  +String note
+  +long level
+  +findName()
+  +updateQuantity()
+}
+class Hospital {
   #long type
   #long note
-  +getCode()
-  +saveNote()
+  +String quantity
+  +getName()
 }
-abstract class Hospital {
-  #int updatedAt
-  -long amount
-  +String code
-  #int total
-  -boolean active
-  +cancelQuantity()
-  +updatePrice()
-  +sendEmail()
-  +calculateStatus()
-}
-Hospital ..|> Diagnosis
-Hospital --> MedicalRecord : "1..*"
-note right of Diagnosis : Healthcare domain
+MedicalRecord --> Hospital : "*"
+Treatment ..> Hospital : "1"
+Treatment --* Ward
 @enduml

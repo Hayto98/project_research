@@ -4,60 +4,57 @@ skinparam ArrowColor #555555
 class Grade {
   -double total
   #int amount
-  +calculateScore()
-  +updateCreatedat()
+  +findAmount()
+  +setCreatedat()
 }
 interface Classroom {
-  #long address
-  +Date id
-  #Date duration
-  -long price
-  +calculateType()
-  +cancelActive()
-  +processPrice()
-}
-interface Course {
-  -boolean email
-  #boolean id
-  -long total
-  -Date code
-  +String score
-  +deleteDescription()
-}
-interface Exam {
-  #float address
   +float createdAt
-  #float score
-  +sendCode()
-  +getDuration()
-  +cancelLevel()
+  -double phone
+  #long address
+  +findStatus()
+  +sendQuantity()
+}
+class Course {
+  -double quantity
+  #double price
+  -Date type
+  #String active
+  +saveDescription()
+  +updateAmount()
+  +processEmail()
+  +findNote()
+}
+abstract class Exam {
+  #String duration
+  +String level
+  +int phone
+  #int email
+  -int note
+  +validateType()
+  +updatePhone()
 }
 class Assignment {
-  +double createdAt
-  #double email
-  +long level
-  +createAmount()
-  +updatePrice()
+  +int id
+  #float level
+  +setPhone()
+  +deleteName()
 }
 class Student {
-  #long name
-  #String email
-  +sendCode()
-  +updateCreatedat()
+  -int note
+  -int type
+  +double updatedAt
+  +getLevel()
+  +savePhone()
+  +calculateScore()
 }
-class Attendance {
-  +float price
-  -String phone
-  #String name
-  +saveNote()
-  +findDescription()
-  +setDescription()
+interface Attendance {
+  +int level
+  #String id
+  +double amount
+  -Date code
+  +cancelEmail()
 }
-Course --> Exam : "0..1"
-Course ..> Student : "1"
-Classroom --* Attendance
-Course ..> Grade : "*"
 Grade --|> Assignment
-Classroom --o Exam
-note right of Grade : Education domain
+Attendance ..> Course : "*"
+Student --|> Classroom
 @enduml

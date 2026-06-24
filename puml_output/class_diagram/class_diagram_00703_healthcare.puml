@@ -5,61 +5,64 @@ skinparam classBorderColor #F57F17
 class Hospital {
   +int code
   +boolean phone
-  +validatePrice()
-  +processActive()
-  +processNote()
+  +setEmail()
+  +saveCode()
+  +cancelQuantity()
 }
-class Diagnosis {
-  -int status
+interface Diagnosis {
+  +double note
+  +long quantity
   -float level
-  -float type
-  -double duration
-  +sendAddress()
-  +updateCreatedat()
+  -double status
+  +boolean type
+  +updateDescription()
+  +calculateNote()
+  +cancelActive()
 }
-interface Billing {
-  -double active
-  -Date quantity
-  -String id
-  -Date status
-  +createCode()
-  +getTotal()
-  +getType()
+class Billing {
+  -Date id
+  -String status
+  -Date address
+  -long total
+  +deleteNote()
 }
-class Prescription {
-  +long level
-  +boolean phone
-  #long email
-  +String code
-  #Date quantity
-  +cancelCode()
+abstract class Prescription {
+  -boolean type
+  -float code
+  +cancelAmount()
+  +createAddress()
+  +findScore()
 }
 class Patient {
-  -double updatedAt
-  #int phone
-  -Date status
-  +cancelCreatedat()
-  +processPrice()
-  +validateCreatedat()
+  +boolean name
+  #boolean score
+  +boolean phone
+  +float code
+  +cancelNote()
+  +updateStatus()
+  +saveStatus()
 }
 class Ward {
-  #String code
-  #float score
-  +setAddress()
-  +setCode()
-  +cancelId()
+  #int email
+  -Date type
+  +processEmail()
+  +updateDescription()
+  +createId()
 }
 abstract class Appointment {
-  +float level
-  +int note
-  #boolean createdAt
-  #boolean code
-  #double amount
-  +createDuration()
-  +updateId()
-  +deleteDescription()
+  #boolean phone
+  #String createdAt
+  #float id
+  -String status
+  #Date code
+  +validatePhone()
+  +createId()
+  +findNote()
 }
-Ward --> Hospital : "1..*"
-Hospital --|> Diagnosis
-note right of Hospital : Healthcare domain
+Appointment ..> Hospital : "*"
+Appointment --> Prescription : "*"
+Diagnosis ..> Patient : "1"
+Ward --|> Diagnosis
+Appointment ..|> Diagnosis
+Patient --> Appointment : "*"
 @enduml

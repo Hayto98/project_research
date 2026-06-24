@@ -6,52 +6,51 @@ skinparam ArrowColor #555555
 abstract class Customer {
   +float id
   -int description
-  +cancelPrice()
-  +cancelUpdatedat()
+  +findDescription()
+  +sendScore()
 }
 interface Return {
-  +boolean active
-  +long total
-  #int price
-  +String score
-  +cancelStatus()
-  +processId()
-  +updateType()
-  +deleteNote()
+  #float level
+  -double active
+  #Date email
+  +updateStatus()
+  +setPhone()
+  +processAddress()
+  +saveQuantity()
 }
 class Product {
-  #long quantity
-  #boolean id
-  +Date active
-  -String duration
-  +String note
-  +updatePrice()
-  +getCode()
-  +setName()
-  +saveType()
+  #String description
+  -String status
+  +double type
+  +cancelQuantity()
+  +sendId()
 }
 abstract class Coupon {
-  #long score
-  -String address
-  -double phone
-  +processScore()
-  +createCreatedat()
+  -float duration
+  #long id
+  #boolean active
+  +Date quantity
+  +saveId()
+  +processUpdatedat()
+  +updateUpdatedat()
 }
-class Shipment {
-  -float createdAt
-  #long status
-  -float price
-  +deleteScore()
+abstract class Shipment {
+  +String price
+  #double id
+  #double code
+  +cancelAmount()
+  +saveCreatedat()
 }
 class Warehouse {
-  +long email
-  -String updatedAt
-  +double phone
-  #boolean quantity
-  +Date createdAt
-  +cancelScore()
+  +double address
+  #long code
+  +int phone
+  #int price
+  +validateId()
+  +createDuration()
 }
-Customer ..> Shipment : "*"
-Return --> Coupon : "*"
-note right of Customer : Ecommerce domain
+Warehouse --o Product
+Customer --> Return : "0..1"
+Coupon ..|> Product
+Product --* Shipment
 @enduml

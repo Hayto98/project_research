@@ -6,45 +6,37 @@ class Transaction {
   -boolean status
   #long type
   +String amount
-  +processUpdatedat()
+  +setActive()
 }
-class Beneficiary {
-  +double active
-  #int createdAt
-  -String note
-  #String description
-  +updateId()
-  +createDescription()
-  +processActive()
-  +cancelDuration()
-}
-class Account {
-  #long amount
-  +int updatedAt
-  +sendNote()
-}
-class Withdrawal {
+abstract class Beneficiary {
+  +float code
   -int quantity
-  -boolean amount
-  #double email
-  #Date phone
-  -long id
-  +cancelType()
-  +getUpdatedat()
-  +cancelDuration()
-  +getScore()
+  +double active
+  +saveAmount()
+  +saveId()
+}
+interface Account {
+  +String active
+  -Date price
+  +sendDescription()
+  +setQuantity()
+}
+abstract class Withdrawal {
+  +boolean id
+  -float amount
+  +updateType()
 }
 class Card {
-  -String status
-  +String score
-  +createName()
-  +createName()
-  +createNote()
-  +createName()
+  -String createdAt
+  -int type
+  -boolean quantity
+  #double amount
+  #Date email
+  +findScore()
+  +saveCode()
+  +savePrice()
+  +getId()
 }
-Transaction ..|> Card
-Transaction ..> Beneficiary : "1..*"
-Card ..|> Withdrawal
-Beneficiary ..> Account : "1"
-note right of Transaction : Banking domain
+Beneficiary ..> Transaction : "0..1"
+Transaction --> Card : "1..*"
 @enduml

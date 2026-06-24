@@ -9,41 +9,35 @@ interface Member {
   +Date score
   -long level
   -long phone
-  +findDuration()
-  +processScore()
-  +processActive()
-  +createUpdatedat()
+  +cancelDescription()
+  +cancelLevel()
+  +deleteDescription()
+  +createId()
 }
-class Catalog {
-  -float score
-  -double createdAt
-  #float phone
-  #long type
+abstract class Catalog {
+  #float active
   #int quantity
-  +sendId()
-  +findPhone()
-  +processScore()
-  +setPrice()
-}
-class Loan {
-  +Date id
-  +float status
-  #double active
-  -int code
-  +validateStatus()
-  +findQuantity()
-}
-class Librarian {
-  -float code
+  -double updatedAt
+  -double level
   -double total
-  +int createdAt
-  +float description
-  +validateTotal()
-  +saveDescription()
-  +getScore()
+  +findDuration()
+  +createScore()
+  +getAddress()
 }
-Librarian ..|> Member
-Loan ..|> Catalog
-Catalog ..|> Librarian
-note right of Member : Library domain
+interface Loan {
+  #String phone
+  -long note
+  +processName()
+  +deleteId()
+  +updateName()
+}
+interface Librarian {
+  #double code
+  -int status
+  +processStatus()
+  +setStatus()
+}
+Loan ..> Librarian : "1..*"
+Member ..> Loan : "*"
+Catalog ..|> Loan
 @enduml

@@ -8,58 +8,50 @@ class Package {
   -long code
   +float address
   +int amount
-  +processQuantity()
-  +sendId()
-  +createCode()
-  +calculateTotal()
+  +processTotal()
+  +processDescription()
+  +findPrice()
+  +sendTotal()
 }
 class DeliveryNote {
-  +boolean duration
+  +long price
+  #boolean total
+  +findAmount()
+}
+interface FuelLog {
+  -String description
+  -double active
+  +saveId()
+}
+class Vehicle {
+  -long name
   -String id
-  -double total
-  #Date name
-  +getEmail()
-}
-class FuelLog {
-  +long id
-  -long total
-  +findDescription()
-}
-abstract class Vehicle {
-  +boolean note
-  -Date type
-  +double quantity
-  -int updatedAt
-  +float id
-  +calculateScore()
-  +createPrice()
-  +sendAmount()
+  #int total
+  -float createdAt
+  +sendCode()
+  +deleteActive()
+  +findScore()
+  +deleteAddress()
 }
 class Route {
+  -double active
+  +int quantity
+  -double updatedAt
+  +calculateCode()
+  +calculatePrice()
+  +calculateAddress()
+}
+class Manifest {
   #long address
   +long phone
   -double id
   +double score
   +String quantity
-  +saveId()
-  +findCode()
-  +getCode()
-  +validatePhone()
+  +deleteStatus()
+  +sendTotal()
+  +validateTotal()
+  +cancelStatus()
 }
-class Manifest {
-  -String name
-  +String phone
-  +String email
-  -float updatedAt
-  #double total
-  +saveId()
-  +deleteNote()
-  +cancelType()
-}
-Manifest --|> Vehicle
-DeliveryNote --|> Package
-FuelLog --o Manifest
-Vehicle --o DeliveryNote
-Manifest --|> Route
-note right of Package : Logistics domain
+Package --* FuelLog
+FuelLog --|> Vehicle
 @enduml

@@ -6,42 +6,44 @@ interface Inventory {
   -float quantity
   +int createdAt
   #long score
-  +findType()
-  +findAddress()
-  +findLevel()
-  +deleteCode()
+  +getActive()
+  +processPhone()
+  +calculateStatus()
+  +sendName()
 }
-interface Warehouse {
-  #int description
-  -long code
-  +deleteType()
-  +getAddress()
-  +deleteCode()
+class Warehouse {
+  +String code
+  #int active
+  -long duration
+  +setActive()
+  +deleteScore()
+  +validateLevel()
 }
-class Vehicle {
-  -Date price
-  -long score
-  +validatePrice()
-  +findPhone()
-  +processNote()
-  +createStatus()
+abstract class Vehicle {
+  +int address
+  #String description
+  +saveActive()
+  +updateEmail()
+  +processCreatedat()
+  +createLevel()
 }
-abstract class Tracking {
-  +float description
-  -String createdAt
-  +processEmail()
-  +processName()
-  +calculateName()
+class Tracking {
+  -Date active
+  -double score
+  -long note
+  +double address
+  +getName()
 }
 class Route {
-  +double note
-  #long score
-  -float email
-  +cancelEmail()
+  -double updatedAt
+  -float type
+  -String code
+  +processQuantity()
+  +processDuration()
+  +saveNote()
+  +cancelQuantity()
 }
-Vehicle --> Inventory : "*"
-Inventory --> Warehouse : "0..1"
-Tracking ..|> Route
-Route --* Warehouse
-note right of Inventory : Logistics domain
+Vehicle --o Inventory
+Route --* Vehicle
+Route --> Inventory : "1..*"
 @enduml

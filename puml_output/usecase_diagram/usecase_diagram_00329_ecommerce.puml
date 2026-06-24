@@ -2,10 +2,10 @@
 skinparam backgroundColor #FFFFFF
 skinparam roundCorner 15
 left to right direction
-actor "Payment Gateway" as PaymentGateway
-actor "Seller" as Seller
-actor "Customer" as Customer
-actor "Delivery Service" as DeliveryService
+actor "Payment Gateway" as PG
+actor "Seller" as S
+actor "Customer" as C
+actor "Delivery Service" as DS
 rectangle "Ecommerce System" {
   usecase "Add To Cart" as UC_AddToCart
   usecase "Make Payment" as UC_MakePayment
@@ -14,14 +14,14 @@ rectangle "Ecommerce System" {
   usecase "Cancel Order" as UC_CancelOrder
   usecase "Apply Coupon" as UC_ApplyCoupon
 }
-PaymentGateway --> UC_BrowseProducts
-PaymentGateway --> UC_ApplyCoupon
-Seller --> UC_CancelOrder
-Seller --> UC_AddToCart
-Customer --> UC_MakePayment
-Customer --> UC_AddToCart
-Customer --> UC_BrowseProducts
-DeliveryService --> UC_BrowseProducts
-DeliveryService --> UC_ApplyCoupon
+PG --> UC_BrowseProducts
+PG --> UC_ApplyCoupon
+S --> UC_CancelOrder
+S --> UC_AddToCart
+C --> UC_MakePayment
+C --> UC_AddToCart
+C --> UC_BrowseProducts
+DS --> UC_BrowseProducts
+DS --> UC_ApplyCoupon
 UC_CancelOrder ..> UC_MakePayment : <<extend>>
 @enduml

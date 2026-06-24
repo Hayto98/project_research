@@ -4,67 +4,59 @@ skinparam ArrowColor #555555
 interface FuelLog {
   #String code
   +Date createdAt
-  +createId()
-  +setCode()
-  +getDescription()
-  +validatePrice()
+  +validateAmount()
+  +cancelTotal()
+  +saveType()
+  +getType()
 }
 class Shipment {
-  +float level
-  -long type
-  +Date code
-  -String name
-  +saveQuantity()
+  -long description
+  -float address
+  +findNote()
+  +cancelName()
+  +calculateTotal()
+  +processQuantity()
 }
 class Package {
-  +long price
-  +int note
-  #double description
-  +createPhone()
-  +cancelDescription()
-  +updateScore()
-  +updateEmail()
+  #float phone
+  +float amount
+  #Date price
+  -String code
+  +saveCode()
+  +deleteDuration()
 }
 class Tracking {
-  #float email
-  #long active
-  -long createdAt
-  +updateLevel()
-  +processTotal()
+  #double phone
+  #double updatedAt
+  -long level
+  +sendDescription()
+  +cancelNote()
 }
 interface Route {
-  -int updatedAt
-  #String duration
-  #Date quantity
-  +float level
-  +calculateEmail()
-  +setUpdatedat()
-  +validateEmail()
+  -float email
+  #int duration
+  #float description
+  +validateName()
+  +calculateScore()
+  +getEmail()
 }
-abstract class Depot {
-  #String price
-  +Date email
-  -Date updatedAt
-  +double id
-  +int total
-  +getActive()
+class Depot {
+  -Date total
+  #int active
+  -int email
+  #String updatedAt
+  #Date level
+  +deleteTotal()
+  +calculatePhone()
 }
-class Customer {
-  +long score
-  +Date type
-  -double phone
-  #int address
-  +String total
-  +saveName()
-  +getDescription()
-  +updateQuantity()
-  +deleteDescription()
+abstract class Customer {
+  #double code
+  #Date updatedAt
+  -double address
+  #long email
+  +updatePrice()
+  +updateEmail()
 }
-Package ..> Tracking : "0..1"
-Customer --o Route
-FuelLog --> Route : "0..1"
-FuelLog --o Depot
-Tracking ..> FuelLog : "0..1"
-Tracking --o Depot
-note right of FuelLog : Logistics domain
+Shipment --* Depot
+Depot --o FuelLog
 @enduml

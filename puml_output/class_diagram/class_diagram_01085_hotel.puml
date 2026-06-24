@@ -9,59 +9,60 @@ abstract class Room {
   -double level
   #String type
   +boolean updatedAt
-  +setEmail()
-  +sendTotal()
-  +cancelActive()
+  +validateLevel()
+  +setStatus()
+  +sendAddress()
 }
 interface Invoice {
-  +long description
-  -Date email
-  +int status
-  +sendName()
-  +cancelEmail()
-  +sendLevel()
+  -boolean duration
+  +float active
+  +long level
+  -Date updatedAt
+  +int description
+  +calculateActive()
+  +getPrice()
+  +calculateId()
 }
 interface Payment {
-  -Date duration
-  +Date active
-  #float name
-  +deleteNote()
-  +sendTotal()
-  +deleteAddress()
-  +calculatePhone()
+  +double score
+  #int level
+  #float createdAt
+  #float active
+  +validateType()
+  +validateCreatedat()
+  +sendCode()
+  +sendAmount()
 }
-class Guest {
-  -Date score
-  -double createdAt
-  -double quantity
-  +processAddress()
-  +updateStatus()
+abstract class Guest {
+  -int address
+  #int price
+  -long phone
+  +createDuration()
+  +calculateQuantity()
+  +deleteActive()
 }
 class Housekeeping {
-  #String name
-  -String type
-  +String score
-  #int active
-  +processActive()
-  +findId()
+  +double address
+  #boolean updatedAt
+  #String status
+  -String email
+  +String active
+  +findAddress()
+  +sendName()
 }
 interface Service {
-  -double email
-  +boolean id
-  +sendPhone()
-  +findLevel()
+  -String score
+  -double name
+  +findDuration()
+  +calculateActive()
 }
-abstract class Reservation {
-  #double amount
-  -Date updatedAt
-  -boolean level
-  +processName()
+class Reservation {
+  +Date level
+  +Date price
+  -long amount
+  #long score
+  +sendCode()
 }
-Service --* Reservation
+Housekeeping ..> Service : "1..*"
 Invoice ..|> Service
-Reservation --o Housekeeping
-Reservation --o Invoice
-Invoice ..|> Room
-Payment --o Reservation
-note right of Room : Hotel domain
 @enduml

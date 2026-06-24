@@ -9,52 +9,56 @@ interface Nurse {
   -int phone
   #float address
   -float score
+  +sendAddress()
   +createQuantity()
-  +findName()
-  +processPhone()
+  +deleteEmail()
 }
-abstract class Patient {
-  -Date price
-  -Date active
-  -double address
-  +boolean email
-  +processLevel()
-  +sendType()
-  +validateId()
+class Patient {
+  -long phone
+  #double total
+  #double duration
+  -int price
+  #long address
+  +validateDescription()
+  +cancelActive()
+  +calculatePrice()
+  +cancelCode()
 }
-abstract class MedicalRecord {
-  -double id
-  -float phone
-  +float address
-  +String email
-  +sendPrice()
-  +setQuantity()
+class MedicalRecord {
+  +long total
+  -Date address
+  +findAmount()
+  +cancelCode()
+  +processTotal()
 }
 class Doctor {
-  -Date level
-  #String score
-  +updateAddress()
-  +getScore()
-  +sendStatus()
-  +getName()
+  #double id
+  +long updatedAt
+  +updateActive()
+  +deleteUpdatedat()
 }
-class Diagnosis {
-  -int active
-  -float phone
-  +int quantity
-  #Date createdAt
-  +createAmount()
+interface Diagnosis {
+  #boolean code
+  +String note
+  +String createdAt
+  -float address
+  #boolean name
+  +calculatePhone()
+  +updateDescription()
+  +saveScore()
 }
 class Billing {
-  -float amount
-  #int note
-  #int createdAt
-  +savePhone()
+  #float amount
+  +String duration
+  +int score
+  -Date code
+  +double quantity
+  +createDescription()
   +saveQuantity()
-  +setPhone()
-  +saveActive()
 }
+Billing ..> MedicalRecord : "1..*"
+Nurse ..> MedicalRecord : "1"
 Doctor ..> Diagnosis : "*"
 MedicalRecord ..|> Nurse
-note right of Nurse : Healthcare domain
+Diagnosis ..|> Billing
 @enduml

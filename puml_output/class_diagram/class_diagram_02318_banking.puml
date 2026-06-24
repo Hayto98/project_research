@@ -7,48 +7,49 @@ class Deposit {
   -int updatedAt
   +long address
   +String quantity
-  +findId()
-  +setLevel()
-  +processActive()
-  +processNote()
+  +calculateStatus()
+  +setAmount()
+  +updateDuration()
+  +cancelEmail()
 }
-abstract class Account {
-  #Date amount
-  +float updatedAt
-  +double email
-  +validateDuration()
-  +calculateAmount()
-  +calculateEmail()
+interface Account {
+  +int active
+  -Date type
+  #String note
+  +double score
+  -long createdAt
+  +processUpdatedat()
+  +findAmount()
+  +validateAddress()
+  +createQuantity()
 }
-class Statement {
+interface Statement {
   +double status
   +float createdAt
   -double updatedAt
-  +calculateLevel()
-  +processDuration()
-  +setEmail()
+  +calculateCode()
+  +cancelActive()
+  +createName()
 }
 interface Teller {
-  #float updatedAt
-  -long note
-  +boolean total
-  #String email
-  +saveStatus()
-  +setName()
-  +sendAddress()
+  #long email
+  +Date score
+  +getPrice()
+  +cancelCreatedat()
+  +getStatus()
+  +validatePrice()
 }
 class Card {
-  #int description
-  -boolean level
-  -float amount
-  -float createdAt
-  +float total
-  +cancelNote()
-  +getNote()
-  +createQuantity()
-  +cancelDescription()
+  +float quantity
+  +boolean description
+  #long id
+  +double email
+  +boolean status
+  +getTotal()
+  +getAddress()
 }
-Deposit --* Account
-Account --* Deposit
-note right of Deposit : Banking domain
+Account --> Teller : "*"
+Statement --o Deposit
+Card --|> Teller
+Teller --* Statement
 @enduml

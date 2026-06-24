@@ -9,66 +9,62 @@ class Ward {
   -long score
   +String type
   +Date status
-  +deleteQuantity()
-  +setId()
+  +validateQuantity()
+  +processDescription()
 }
 class Treatment {
-  -boolean status
-  +int id
-  #boolean price
-  +findName()
+  #boolean status
+  +Date level
+  +updateDuration()
 }
-interface Doctor {
-  #boolean score
-  +long address
-  +getNote()
-  +findAmount()
-  +updateTotal()
+abstract class Doctor {
+  #float active
+  +boolean amount
+  +boolean createdAt
+  #long duration
+  #boolean name
+  +calculateScore()
+  +setTotal()
 }
-abstract class Insurance {
-  #String id
-  -int type
-  #long quantity
-  #int description
-  +String name
-  +updatePhone()
-  +updateDescription()
-  +validateScore()
-  +findPhone()
+class Insurance {
+  +double amount
+  -float createdAt
+  +String total
+  #String note
+  -int active
+  +updateScore()
+  +cancelNote()
+  +setName()
 }
 class Patient {
-  +double email
-  -String active
-  +Date level
-  -String phone
-  -double description
-  +processCode()
-  +createPrice()
-  +processId()
-  +findId()
+  #Date updatedAt
+  -int phone
+  -long createdAt
+  #Date description
+  #float address
+  +validateCode()
+  +updateActive()
+  +saveAmount()
 }
-class Prescription {
-  #int description
-  -int email
-  -float type
+abstract class Prescription {
+  +long createdAt
   -Date address
-  +sendId()
-  +validateAddress()
-  +getStatus()
-  +findAmount()
+  +deletePrice()
+  +setDescription()
+  +updateLevel()
+  +setCreatedat()
 }
-class Billing {
-  -boolean level
-  #double createdAt
-  +Date total
-  -boolean code
-  #String price
-  +validateAmount()
-  +getNote()
+abstract class Billing {
+  -double id
+  #long duration
+  #int level
+  -int address
+  -float description
+  +saveDescription()
+  +processAddress()
+  +sendCreatedat()
+  +calculateDuration()
 }
-Treatment --> Insurance : "1..*"
-Treatment --|> Prescription
-Insurance --> Billing : "1..*"
-Patient ..|> Insurance
-note right of Ward : Healthcare domain
+Doctor --|> Billing
+Ward ..|> Prescription
 @enduml

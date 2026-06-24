@@ -6,56 +6,53 @@ abstract class Service {
   -Date phone
   +boolean id
   -long score
-  +deletePhone()
-  +getLevel()
+  +deleteEmail()
+  +findId()
 }
 class Housekeeping {
-  +float status
-  -float code
-  +Date id
-  +cancelTotal()
+  +String level
+  +String id
+  +getPrice()
 }
-interface Payment {
-  +String type
-  -float phone
-  +int score
-  +setType()
-  +validateAmount()
-  +setAddress()
-}
-class CheckOut {
-  -int total
-  -boolean phone
-  -float duration
-  +Date type
-  +updatePhone()
-  +getPhone()
-  +processScore()
-}
-abstract class Invoice {
+abstract class Payment {
   #double status
-  -int active
-  +Date amount
-  -Date phone
-  +deleteEmail()
-  +processPhone()
+  #float level
+  +validateUpdatedat()
+  +saveScore()
+}
+interface CheckOut {
+  +int status
+  #long total
+  +findActive()
+}
+class Invoice {
+  #float code
+  -double address
+  #float status
+  +setNote()
+  +getId()
+  +sendType()
 }
 class Booking {
-  -boolean quantity
-  -long phone
-  -boolean note
-  #String status
-  +validateAmount()
-  +processPhone()
+  +Date address
+  #float active
+  -int price
+  +updatePrice()
+  +findCode()
+  +sendCode()
 }
-class CheckIn {
-  #float level
-  -double code
-  +sendPhone()
+interface CheckIn {
+  #double email
+  -int status
+  +Date active
+  -Date amount
+  +int phone
+  +processTotal()
+  +updateTotal()
+  +setStatus()
 }
-Payment ..|> Housekeeping
-Housekeeping --* Invoice
-Housekeeping ..|> CheckOut
-Housekeeping --* Booking
-note right of Service : Hotel domain
+CheckIn --* Payment
+CheckOut --* Service
+Invoice --* CheckOut
+Payment ..> Invoice : "1"
 @enduml

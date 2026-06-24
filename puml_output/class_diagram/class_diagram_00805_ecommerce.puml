@@ -7,39 +7,39 @@ class Cart {
   #String id
   #float name
   -long code
-  +calculateTotal()
-  +createQuantity()
-  +getUpdatedat()
-  +validateStatus()
-}
-abstract class Coupon {
-  #String address
-  -boolean price
-  #float phone
+  +processCreatedat()
+  +getAddress()
+  +calculateQuantity()
   +sendDescription()
-  +savePrice()
-  +calculateDuration()
-  +getCode()
+}
+class Coupon {
+  -int id
+  -float updatedAt
+  -Date address
+  -Date status
+  +findLevel()
 }
 class Invoice {
-  -double type
-  #Date total
-  -float note
-  +long updatedAt
-  +String email
-  +saveLevel()
-  +setId()
-  +cancelDescription()
+  #String active
+  +double description
+  -double price
+  -int score
+  -long id
+  +deleteType()
+  +updateId()
+  +deleteName()
+  +findLevel()
 }
 class Return {
-  +double updatedAt
-  #double phone
-  +validatePrice()
-  +validateTotal()
-  +cancelPhone()
-  +validateName()
+  +boolean id
+  #int name
+  +String quantity
+  +Date status
+  +setActive()
+  +findPhone()
+  +processTotal()
 }
-Cart ..> Return : "1"
+Return ..> Coupon : "*"
+Invoice --> Coupon : "1..*"
 Invoice --|> Return
-note right of Cart : Ecommerce domain
 @enduml

@@ -8,56 +8,48 @@ class Loan {
   +Date active
   #boolean createdAt
   -double amount
-  +getScore()
-  +updatePrice()
+  +processCode()
+  +saveStatus()
 }
-abstract class Author {
-  -Date quantity
-  #int duration
-  #boolean total
+interface Author {
+  -float price
   -double note
-  +cancelActive()
-  +deleteName()
-  +processPhone()
-  +updateAddress()
+  #double quantity
+  +validateTotal()
+  +sendUpdatedat()
+  +processDuration()
 }
-class Reservation {
-  +float duration
-  -double price
-  #String createdAt
-  -String address
-  +saveName()
-  +savePrice()
-  +sendCreatedat()
-  +updateId()
+interface Reservation {
+  +double note
+  -int score
+  -String type
+  -boolean active
+  -float description
+  +setAmount()
+  +validateScore()
 }
-interface Librarian {
-  +Date name
-  #int address
-  +createQuantity()
+class Librarian {
+  #String type
+  #float id
+  #double duration
+  #int level
+  +String price
+  +setUpdatedat()
 }
 class Branch {
-  +float status
-  -boolean description
-  -float code
-  +updateDescription()
+  #String duration
+  -long description
   +sendLevel()
-  +saveNote()
-  +setPrice()
+  +createId()
 }
-abstract class Fine {
-  +boolean amount
+class Fine {
   +float description
-  #long price
-  +double id
-  +setDuration()
-  +createCode()
-  +setEmail()
+  -boolean code
+  +getDescription()
+  +calculateQuantity()
+  +createScore()
 }
-Author ..> Reservation : "1..*"
-Loan --* Reservation
-Author --o Loan
-Librarian ..|> Loan
-Librarian --|> Fine
-note right of Loan : Library domain
+Branch ..> Fine : "*"
+Loan ..> Librarian : "*"
+Reservation ..|> Author
 @enduml

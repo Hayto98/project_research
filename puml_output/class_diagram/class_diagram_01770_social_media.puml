@@ -6,65 +6,60 @@ class Hashtag {
   #float address
   -int total
   -double price
-  +calculateNote()
-  +setActive()
+  +calculateQuantity()
+  +getPrice()
 }
 abstract class Notification {
-  +String id
-  +long status
-  +updatePhone()
-  +setQuantity()
-  +getDuration()
-  +processAddress()
+  #boolean active
+  #float total
+  +sendTotal()
 }
 class Post {
-  #float code
-  #String email
-  +calculateActive()
-  +processPhone()
+  -int name
+  -String code
+  -String email
+  +validateLevel()
+  +cancelType()
+  +findQuantity()
+  +setQuantity()
 }
 class Report {
-  #float createdAt
-  #float price
-  #int id
+  #float code
   #String email
-  +setActive()
-  +processCode()
-  +validateDuration()
-  +cancelPhone()
+  +updateEmail()
+  +updateCreatedat()
 }
-class Story {
-  -long id
-  +int code
-  +updatePhone()
-  +savePhone()
+interface Story {
+  #Date phone
+  +long createdAt
+  #float duration
+  #float level
+  #int price
+  +setNote()
 }
 class Comment {
-  -boolean note
-  +int active
-  #double score
-  #String createdAt
-  #int name
-  +calculateUpdatedat()
-  +createAddress()
-  +cancelNote()
-  +saveUpdatedat()
+  +String code
+  -long phone
+  +int level
+  #Date updatedAt
+  +int name
+  +getAmount()
+  +saveScore()
+  +updateDescription()
 }
-class Message {
-  +int phone
-  #String total
-  #boolean price
-  -long id
-  +processScore()
-  +updateAmount()
-  +createName()
-  +setLevel()
+abstract class Message {
+  #String active
+  +Date score
+  -boolean createdAt
+  +Date name
+  +Date email
+  +calculateLevel()
+  +getPhone()
+  +findAddress()
+  +getStatus()
 }
-Post --|> Notification
-Notification ..> Hashtag : "0..1"
-Story ..|> Post
-Notification --* Comment
-Post --o Comment
-Comment --|> Hashtag
-note right of Hashtag : Social Media domain
+Comment --> Post : "*"
+Comment ..|> Notification
+Post --o Message
+Message ..> Story : "*"
 @enduml

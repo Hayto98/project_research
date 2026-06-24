@@ -8,50 +8,44 @@ class Restaurant {
   +boolean level
   #boolean createdAt
   #long address
-  +deleteDescription()
+  +findId()
 }
 class Staff {
+  #String address
   #float createdAt
   #boolean quantity
   +float amount
-  +String id
-  +saveScore()
-  +validateStatus()
-  +findName()
-  +calculatePrice()
+  +updateDuration()
 }
-abstract class CheckIn {
-  -Date updatedAt
-  #String level
-  +Date name
-  +updatePrice()
-  +getDuration()
-  +validateDuration()
-  +createTotal()
+interface CheckIn {
+  -double score
+  +int address
+  #Date status
+  +float name
+  -Date total
+  +setUpdatedat()
 }
-class Payment {
-  #String name
-  #String address
-  +validateLevel()
-  +saveAddress()
-  +deleteTotal()
+abstract class Payment {
+  #boolean price
+  -double id
+  #Date phone
+  +cancelPrice()
+  +updateQuantity()
+  +createType()
 }
-interface CheckOut {
-  +Date score
-  +Date name
-  +saveEmail()
+class CheckOut {
+  +boolean address
+  +long active
+  +findEmail()
+  +getCode()
+  +calculateTotal()
 }
 class Room {
-  #boolean description
-  #float duration
-  #String level
-  #double active
-  -Date id
-  +validateNote()
-  +findActive()
+  #Date total
+  +int active
+  #float code
+  +cancelUpdatedat()
 }
-CheckIn --|> CheckOut
-Room --o Staff
-Restaurant --o Payment
-note right of Restaurant : Hotel domain
+Room --* CheckIn
+Payment ..> Staff : "0..1"
 @enduml

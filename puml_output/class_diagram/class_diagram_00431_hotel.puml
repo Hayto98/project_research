@@ -6,32 +6,34 @@ abstract class CheckOut {
   +String quantity
   +boolean id
   +double updatedAt
-  +deleteName()
-  +sendCode()
+  +saveAddress()
+  +saveId()
 }
 interface Amenity {
-  +boolean total
-  #Date phone
-  #float createdAt
-  +float score
-  +setScore()
-  +setNote()
-  +deleteAddress()
+  -long active
+  +int phone
+  +createUpdatedat()
+  +sendPrice()
 }
-interface Reservation {
-  #double quantity
-  #int duration
-  +sendUpdatedat()
-  +processDescription()
+class Reservation {
+  +long code
+  #float score
+  #String status
+  -long note
+  +setDuration()
+  +findStatus()
+  +sendEmail()
+  +findPrice()
 }
-abstract class Room {
-  #boolean email
-  -boolean phone
-  -long address
-  +getPhone()
-  +createTotal()
+class Room {
+  #int note
+  #long description
+  -long total
+  +findUpdatedat()
+  +setActive()
+  +sendCreatedat()
 }
+Amenity ..> CheckOut : "1..*"
+Reservation --|> Amenity
 CheckOut --* Amenity
-Room ..|> Reservation
-note right of CheckOut : Hotel domain
 @enduml

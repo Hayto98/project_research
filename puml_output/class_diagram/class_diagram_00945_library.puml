@@ -9,63 +9,58 @@ interface Librarian {
   +float active
   #boolean address
   #int description
-  +calculatePhone()
-  +processEmail()
-  +deleteQuantity()
+  +deleteAmount()
+  +getPrice()
+  +updateTotal()
 }
-class Loan {
-  -Date id
-  -float total
-  +double level
-  -Date amount
-  +int note
-  +sendNote()
-  +setCode()
-  +setEmail()
+abstract class Loan {
+  +float amount
+  #double quantity
+  -int name
+  -long total
+  +findLevel()
+  +cancelType()
+  +cancelNote()
+  +deleteAmount()
 }
-class Branch {
-  +String duration
-  -long quantity
-  -boolean type
-  -Date address
-  +saveScore()
+abstract class Branch {
+  -String createdAt
+  +String quantity
+  -int score
+  +deleteDescription()
+  +createQuantity()
+  +getId()
 }
 class Book {
-  #String active
   -double status
-  -String duration
-  -float price
-  +String phone
-  +updateAmount()
-  +createStatus()
+  #long phone
+  +calculateUpdatedat()
 }
 interface Reservation {
-  +int createdAt
-  #double email
-  +deleteName()
-  +calculateScore()
-  +createQuantity()
+  -long type
+  #String active
+  -double status
+  -String level
+  +getPrice()
+  +validateNote()
+  +createPhone()
 }
-interface Publisher {
-  +Date createdAt
-  #int email
-  +setType()
-  +calculateScore()
-  +findDuration()
+class Publisher {
+  #float amount
+  +int quantity
+  -int status
+  +cancelDuration()
+  +findActive()
 }
-class Shelf {
-  -int quantity
-  -String updatedAt
-  #float createdAt
-  #int type
-  #float description
-  +setUpdatedat()
+interface Shelf {
+  #Date description
+  -Date name
+  #boolean price
+  #float quantity
+  +updateDescription()
 }
-Reservation --* Publisher
-Librarian --> Publisher : "*"
-Librarian --o Book
-Branch ..|> Shelf
-Loan ..> Reservation : "1"
-Librarian --> Branch : "1..*"
-note right of Librarian : Library domain
+Loan --> Publisher : "0..1"
+Branch --o Librarian
+Shelf --> Book : "1"
+Publisher --o Shelf
 @enduml

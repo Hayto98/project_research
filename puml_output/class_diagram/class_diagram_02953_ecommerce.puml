@@ -8,51 +8,52 @@ class Coupon {
   -Date duration
   +Date description
   -boolean createdAt
-  +validateName()
+  +sendLevel()
 }
 class Order {
-  +long duration
-  -double amount
-  #boolean note
-  #int level
-  +setScore()
+  #int quantity
+  -int email
+  +deleteName()
+  +saveType()
 }
-abstract class Shipment {
-  -int amount
-  -long status
-  #double level
-  #double type
-  +boolean updatedAt
-  +getNote()
-  +createActive()
+class Shipment {
+  #double score
+  #Date active
+  #boolean createdAt
+  -int code
+  +String level
+  +processDuration()
+  +deleteDuration()
+  +updateDescription()
+  +updateAmount()
 }
-class Payment {
-  +String price
-  +long total
-  -int quantity
-  #String email
-  #Date updatedAt
-  +processPrice()
-  +calculateScore()
+abstract class Payment {
+  +double price
+  -boolean note
+  #int status
+  #Date amount
+  +createDuration()
+  +getAddress()
+  +cancelAddress()
+  +getName()
 }
-abstract class Customer {
-  +boolean code
-  #boolean note
-  +findLevel()
-  +deleteScore()
-  +saveUpdatedat()
-  +createQuantity()
+class Customer {
+  -long id
+  +boolean name
+  +Date duration
+  +calculateAmount()
+  +setQuantity()
 }
-class Review {
-  #Date status
-  +double address
-  -long active
-  +int level
-  #String amount
-  +createLevel()
-  +sendUpdatedat()
+abstract class Review {
+  +boolean score
+  #boolean type
+  -Date status
+  #int code
+  #Date note
+  +sendAddress()
+  +processDescription()
 }
-Payment --> Order : "1"
-Customer --* Shipment
-note right of Coupon : Ecommerce domain
+Payment --* Coupon
+Customer ..|> Shipment
+Customer --o Coupon
 @enduml

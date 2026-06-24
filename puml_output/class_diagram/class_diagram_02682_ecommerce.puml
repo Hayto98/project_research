@@ -9,48 +9,45 @@ class Product {
   -Date email
   #Date score
   +String amount
-  +saveCreatedat()
+  +sendPrice()
 }
 class Coupon {
-  -Date email
-  -Date quantity
-  -boolean total
-  +long level
-  +long score
-  +createType()
-  +getTotal()
-  +validateQuantity()
+  -long level
+  -long total
+  +validateAddress()
+  +cancelDescription()
+  +deleteCreatedat()
+  +sendDuration()
 }
-interface Review {
-  +int note
-  #float phone
-  +long name
-  +float email
-  +deleteNote()
-  +setPhone()
+abstract class Review {
+  -long email
+  -double id
+  +getPhone()
 }
 class Wishlist {
-  +String quantity
-  #float email
-  #int duration
-  +validateAmount()
-  +setPrice()
+  +Date active
+  -float phone
+  +int note
+  #float level
+  +validateDuration()
+  +calculateEmail()
 }
-abstract class Supplier {
-  #double amount
-  #boolean description
-  +validatePrice()
+class Supplier {
+  +int note
+  -long status
+  -int phone
+  +calculateDuration()
 }
-abstract class Return {
-  #long duration
-  -float active
-  #String price
-  +String email
-  +long createdAt
-  +deleteId()
-  +processDuration()
+class Return {
+  #double phone
+  -String amount
+  +int code
+  +findDescription()
+  +calculateTotal()
+  +deleteUpdatedat()
+  +updatePrice()
 }
-Product ..|> Coupon
-Wishlist --|> Supplier
-note right of Product : Ecommerce domain
+Wishlist --o Return
+Supplier --o Return
+Return --> Review : "0..1"
 @enduml

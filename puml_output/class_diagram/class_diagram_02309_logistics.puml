@@ -7,58 +7,60 @@ class Warehouse {
   #Date updatedAt
   #float quantity
   #float address
-  +sendDescription()
-  +createStatus()
+  +sendAmount()
+  +validateCreatedat()
 }
 class Route {
-  #Date updatedAt
-  -double amount
-  -Date quantity
-  -String active
-  +updateAmount()
-  +calculateName()
+  +int code
+  -boolean phone
+  +calculateQuantity()
+  +sendStatus()
+  +findCreatedat()
+  +setScore()
 }
-abstract class Tracking {
-  -float id
-  +float active
-  #long code
-  #Date total
-  +sendType()
-  +saveId()
-  +calculateCreatedat()
-  +getLevel()
+class Tracking {
+  +float createdAt
+  -String duration
+  +saveScore()
+  +cancelTotal()
+  +validateStatus()
+  +findDuration()
 }
 class Customer {
-  +long id
-  -Date email
-  +sendNote()
+  #float address
+  +double code
+  +String email
+  #int type
+  +String active
+  +deleteEmail()
+  +createCode()
+  +validateDuration()
 }
-abstract class Shipment {
-  #int createdAt
-  -double active
-  #double type
-  +validateAmount()
-  +validateScore()
+class Shipment {
+  -boolean score
+  #Date note
+  +sendEmail()
+  +createUpdatedat()
 }
-class Depot {
-  -float total
-  +long price
-  #Date description
-  +processId()
-  +deleteUpdatedat()
-  +sendQuantity()
+abstract class Depot {
+  #int total
+  -Date price
+  +long note
+  +findAddress()
+  +findAmount()
+  +deleteAmount()
 }
 class FuelLog {
-  #Date name
-  #long phone
-  -int active
-  +int address
-  +double level
-  +setDescription()
-  +calculateTotal()
+  -String id
+  +Date quantity
+  #int active
+  #long email
+  +createDuration()
+  +getDescription()
+  +calculateId()
 }
-FuelLog --> Tracking : "1"
-Warehouse --o Depot
-Warehouse --|> FuelLog
-note right of Warehouse : Logistics domain
+Shipment --* Tracking
+Depot ..> FuelLog : "1..*"
+FuelLog ..|> Customer
+Warehouse ..|> Route
 @enduml

@@ -7,29 +7,34 @@ class Shipment {
   +double duration
   #long phone
   #double email
-  +calculateActive()
+  +createDuration()
 }
-class Driver {
-  +Date level
-  +boolean createdAt
+interface Driver {
+  +Date updatedAt
+  +boolean level
+  -String createdAt
   -String name
-  +setEmail()
-  +createAmount()
-  +validateNote()
+  +setQuantity()
+  +cancelPhone()
+  +calculateAddress()
 }
-abstract class DeliveryNote {
-  #double type
-  +long amount
-  +long description
-  +createCreatedat()
+class DeliveryNote {
+  #double total
+  +long updatedAt
+  +long type
+  #String amount
+  -int description
+  +validateStatus()
+  +processCreatedat()
+  +createStatus()
+  +updateUpdatedat()
 }
-abstract class Package {
-  -long duration
-  #double amount
-  +createName()
-  +updateName()
+interface Package {
+  #int quantity
+  -float phone
+  +int total
+  +updateStatus()
 }
-DeliveryNote ..> Driver : "*"
-Package --> DeliveryNote : "1..*"
-note right of Shipment : Logistics domain
+Package --> DeliveryNote : "*"
+DeliveryNote --|> Package
 @enduml

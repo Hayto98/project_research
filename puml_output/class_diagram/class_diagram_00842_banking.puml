@@ -7,17 +7,20 @@ class Teller {
   #double status
   #long phone
   #double active
-  +getDuration()
-  +validateActive()
-  +processLevel()
+  +calculateId()
+  +setId()
+  +validateDuration()
 }
-class Beneficiary {
-  +float active
-  -long level
-  +double createdAt
-  +String score
-  +processType()
-  +cancelUpdatedat()
+interface Beneficiary {
+  +int level
+  -long phone
+  +double email
+  +String active
+  #int createdAt
+  +findActive()
+  +processEmail()
+  +saveUpdatedat()
+  +deleteAddress()
 }
 abstract class Loan {
   #float type
@@ -25,44 +28,48 @@ abstract class Loan {
   -boolean score
   -double active
   +double code
-  +calculateId()
-  +cancelId()
-  +findLevel()
+  +createDuration()
+  +setName()
+  +getQuantity()
 }
 class Customer {
-  +long active
-  -double updatedAt
-  #double status
-  -double name
-  +findTotal()
-  +setQuantity()
+  +Date phone
+  #String active
+  +long updatedAt
+  +sendCreatedat()
+  +calculateStatus()
+  +saveCode()
+  +calculateCode()
 }
-interface Card {
-  #long email
-  -long address
-  +setPrice()
-  +findTotal()
-  +deleteDescription()
-  +findActive()
+abstract class Card {
+  #float total
+  +long status
+  -Date quantity
+  +saveName()
+  +deleteCode()
+  +updateUpdatedat()
 }
-class Interest {
-  -long amount
-  -double status
-  +cancelPrice()
-  +sendEmail()
+abstract class Interest {
+  +String amount
+  -long description
+  -double active
+  +boolean phone
+  -boolean id
+  +sendName()
+  +getAddress()
+  +updateTotal()
 }
 abstract class Statement {
-  -String phone
-  +double note
-  -Date name
-  #double status
-  #long address
-  +findActive()
-  +saveCreatedat()
-  +getScore()
-  +updateName()
+  -String status
+  +double address
+  +cancelDuration()
+  +createLevel()
+  +findAmount()
 }
-Statement ..> Loan : "*"
-Interest --* Beneficiary
-note right of Teller : Banking domain
+Loan ..> Customer : "0..1"
+Statement --> Teller : "0..1"
+Teller --* Statement
+Interest ..> Customer : "0..1"
+Loan --o Card
+Beneficiary ..|> Teller
 @enduml

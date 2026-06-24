@@ -8,64 +8,59 @@ abstract class Restaurant {
   -boolean code
   #Date id
   #double note
-  +getLevel()
-  +saveLevel()
-  +processActive()
-  +validatePrice()
+  +getStatus()
+  +sendTotal()
+  +findName()
+  +sendDuration()
 }
-class CheckOut {
+interface CheckOut {
+  -Date active
+  +int address
   +boolean price
-  #float createdAt
+  #float name
   #float description
-  +calculateCode()
-  +saveTotal()
-  +calculateStatus()
+  +processType()
+  +cancelStatus()
+  +updateAddress()
 }
-class Staff {
-  #double name
+abstract class Staff {
+  +int status
+  #int amount
   #double note
-  -float amount
-  +boolean score
-  +long updatedAt
-  +getAmount()
-  +validateDuration()
-  +sendNote()
+  #double name
+  -float score
+  +deleteDescription()
+  +saveTotal()
 }
 class Housekeeping {
-  #int note
-  #String phone
-  -double createdAt
-  #long quantity
-  +createTotal()
-  +createDescription()
-  +cancelDescription()
-  +updatePhone()
+  -boolean level
+  #double email
+  -long name
+  #float amount
+  +updateAmount()
+  +cancelDuration()
+  +saveTotal()
+  +sendPrice()
 }
-interface Reservation {
-  +Date updatedAt
-  #int code
-  #float quantity
-  #float score
-  +String price
-  +saveLevel()
-  +sendCreatedat()
-  +cancelNote()
-  +deleteScore()
+class Reservation {
+  -double quantity
+  #long createdAt
+  -float code
+  +setNote()
+  +setAmount()
+  +deleteCreatedat()
 }
-interface CheckIn {
-  +boolean name
-  -long active
-  +String total
-  +Date level
-  -String duration
-  +calculateLevel()
-  +sendTotal()
-  +calculateQuantity()
+class CheckIn {
+  +String createdAt
+  #Date phone
+  -float note
+  +createUpdatedat()
+  +calculateDuration()
+  +setCode()
 }
-Staff ..> CheckOut : "1..*"
-Restaurant ..> CheckIn : "1"
-Housekeeping ..|> CheckOut
-Housekeeping --> Restaurant : "0..1"
-Housekeeping --|> Reservation
-note right of Restaurant : Hotel domain
+Restaurant ..|> Reservation
+CheckIn ..|> Reservation
+Restaurant ..> Housekeeping : "0..1"
+Reservation ..|> Housekeeping
+Reservation --o CheckIn
 @enduml

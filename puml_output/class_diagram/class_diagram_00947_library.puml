@@ -8,40 +8,43 @@ interface Author {
   #float amount
   #Date price
   +float quantity
-  +setDuration()
+  +sendDescription()
 }
-abstract class Member {
-  +long email
-  +float amount
-  #int quantity
-  +long status
-  +findStatus()
-  +findNote()
-  +calculateNote()
-  +processEmail()
+class Member {
+  +long quantity
+  +float email
+  #int amount
+  +long duration
+  #Date status
+  +validateTotal()
+  +cancelEmail()
+  +createTotal()
+  +calculateStatus()
 }
-class Publisher {
-  +long description
-  +double updatedAt
-  +setName()
-  +createDescription()
+abstract class Publisher {
+  +float note
+  +String type
+  -String email
+  -float quantity
+  +String id
+  +createNote()
 }
-interface Book {
+class Book {
+  #float active
+  +double score
   -double id
-  -long type
-  +deleteTotal()
+  +createQuantity()
+  +validateDescription()
+  +cancelUpdatedat()
 }
 class Reservation {
-  +int status
-  #int price
-  -int amount
-  #Date email
-  +validateTotal()
-  +setDuration()
+  +double total
+  #int amount
+  -int address
+  +processEmail()
+  +getEmail()
 }
-Reservation --|> Publisher
-Reservation --|> Author
-Reservation --* Book
-Book ..|> Publisher
-note right of Author : Library domain
+Member --* Reservation
+Book --> Author : "1..*"
+Author --|> Reservation
 @enduml

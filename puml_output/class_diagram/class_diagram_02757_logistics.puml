@@ -4,58 +4,61 @@ skinparam ArrowColor #555555
 interface DeliveryNote {
   +Date type
   +long quantity
-  +createCode()
-  +createAddress()
-  +validateType()
+  +setTotal()
+  +processAmount()
   +cancelAddress()
+  +calculateStatus()
 }
-interface Depot {
-  #String level
-  #Date id
-  -Date price
-  +createDuration()
-  +cancelCreatedat()
-  +processAddress()
-  +processPhone()
+class Depot {
+  #String type
+  #double address
+  #String score
+  #Date updatedAt
+  +deleteId()
+  +validateTotal()
+  +getStatus()
+  +sendCreatedat()
 }
 class Warehouse {
-  -long description
-  +double note
-  +getName()
+  -float type
+  +Date address
+  #boolean duration
+  +findStatus()
 }
 class Manifest {
-  #double quantity
-  -boolean duration
-  #int status
-  #double active
-  #Date amount
-  +calculateQuantity()
-  +deleteDescription()
-  +processUpdatedat()
+  +float type
+  +String address
+  -long description
+  -float total
+  #String id
+  +setCreatedat()
+  +calculateCode()
 }
 class Tracking {
-  +Date duration
-  #long id
-  +validateCode()
-  +sendScore()
-  +cancelScore()
+  -float total
+  -int score
+  +float address
+  +processDuration()
+  +getLevel()
+  +cancelEmail()
+  +sendActive()
 }
-abstract class Inventory {
-  -Date address
-  #Date id
-  +boolean status
-  +long total
-  +getCode()
+class Inventory {
+  #Date active
+  #Date phone
+  +processCreatedat()
+  +validateDuration()
+  +setCode()
 }
 class Package {
-  +float level
-  -Date name
-  +double phone
-  +validateAddress()
+  -Date quantity
+  #Date address
+  +boolean id
+  +long status
+  +String total
+  +findStatus()
 }
-Package --o Inventory
-Inventory ..|> DeliveryNote
-DeliveryNote --> Tracking : "1"
-DeliveryNote --> Manifest : "1"
-note right of DeliveryNote : Logistics domain
+Depot --|> Tracking
+Tracking ..|> Warehouse
+Package ..> Warehouse : "1"
 @enduml

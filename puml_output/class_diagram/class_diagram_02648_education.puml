@@ -8,55 +8,65 @@ abstract class Library {
   -float code
   +float createdAt
   #boolean name
-  +deleteScore()
-  +setQuantity()
+  +sendLevel()
+  +saveAddress()
 }
-class Assignment {
-  -double address
-  -Date name
-  +calculateQuantity()
+interface Assignment {
+  +long quantity
+  +long amount
+  +findType()
+  +processStatus()
+  +setCreatedat()
+  +saveType()
 }
 class Student {
-  -double score
-  #double level
-  #float quantity
-  +updateScore()
+  -boolean quantity
+  -Date email
+  +int updatedAt
+  #boolean duration
+  #boolean price
+  +setLevel()
+  +setAmount()
+  +updateAddress()
+  +deleteStatus()
 }
-interface Teacher {
-  #String description
-  -float phone
-  +String active
-  #boolean updatedAt
-  #Date score
-  +saveDescription()
-  +validateNote()
-  +validateActive()
-  +calculateLevel()
+class Teacher {
+  -float duration
+  +String updatedAt
+  #boolean status
+  +processNote()
+  +validateCode()
+  +saveScore()
+  +cancelQuantity()
 }
 class Enrollment {
-  -String price
-  -long quantity
-  #double phone
-  +updateQuantity()
-  +updateUpdatedat()
-  +sendAmount()
+  -long level
+  +long updatedAt
+  -Date duration
+  -Date price
+  #Date quantity
+  +saveNote()
+  +deleteTotal()
+  +updateLevel()
 }
 class Department {
-  #long name
-  -int code
-  +saveScore()
+  +String active
+  +Date amount
+  -double quantity
+  +validatePrice()
+  +findNote()
 }
 interface Attendance {
   #Date note
   +Date phone
   -Date code
-  +saveQuantity()
-  +cancelQuantity()
-  +updateUpdatedat()
-  +sendPhone()
+  +findStatus()
+  +createType()
+  +calculatePhone()
+  +getQuantity()
 }
-Teacher ..|> Enrollment
-Department --o Teacher
-Department --|> Assignment
-note right of Library : Education domain
+Assignment --> Attendance : "1..*"
+Attendance --o Assignment
+Enrollment ..> Assignment : "*"
+Teacher ..|> Department
 @enduml

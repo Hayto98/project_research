@@ -6,54 +6,52 @@ class Branch {
   +boolean quantity
   #float type
   #double updatedAt
-  +findUpdatedat()
-  +createNote()
-  +validateDescription()
+  +setCreatedat()
+  +createScore()
+  +findCreatedat()
 }
-interface Publisher {
-  +long status
-  #Date description
-  +cancelDescription()
-  +calculateLevel()
-  +validateEmail()
-  +createId()
-}
-class Loan {
-  +long phone
-  #Date email
-  -double duration
-  +Date score
-  -double price
-  +saveNote()
-  +sendAddress()
+abstract class Publisher {
+  +String description
+  -boolean score
+  #float name
+  -boolean status
+  +cancelCreatedat()
   +processEmail()
 }
-abstract class Catalog {
+class Loan {
+  #Date email
+  #Date id
+  -long code
+  -long active
+  +sendType()
+  +saveStatus()
+  +saveName()
+}
+class Catalog {
+  #double score
+  -Date price
+  -Date total
+  -boolean status
+  +saveAmount()
+  +cancelDescription()
+  +validateAddress()
+}
+abstract class Librarian {
   -float note
   #float phone
   -Date email
-  +deleteLevel()
-  +validatePrice()
-}
-class Librarian {
-  +float createdAt
-  +int type
-  #float email
-  #long total
-  +processStatus()
-  +findCreatedat()
-  +updateAddress()
   +saveQuantity()
+  +savePrice()
 }
 class Renewal {
-  +boolean note
-  +double quantity
-  +getUpdatedat()
+  -String quantity
+  +int email
+  #float createdAt
+  #long type
+  -double level
+  +deleteType()
 }
-Renewal ..|> Catalog
-Renewal ..|> Branch
-Branch --o Librarian
-Loan --|> Branch
-Librarian ..> Renewal : "1..*"
-note right of Branch : Library domain
+Publisher ..> Loan : "1..*"
+Publisher --o Branch
+Loan --> Publisher : "0..1"
 @enduml

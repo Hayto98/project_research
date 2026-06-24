@@ -8,53 +8,52 @@ class Reservation {
   +Date score
   #float level
   +String name
-  +processPrice()
-  +deleteLevel()
+  +calculateAmount()
+  +calculateCode()
 }
-abstract class Room {
-  #Date address
-  +double name
-  #double level
-  -float score
-  +processCreatedat()
+class Room {
+  +String level
+  #Date active
+  +double phone
+  #double address
+  -float name
+  +validateName()
 }
 class Service {
-  +long active
+  -double type
+  -String active
   -long amount
-  +float email
-  -float price
-  +Date score
-  +deleteNote()
-  +sendTotal()
-  +validateEmail()
+  +processAmount()
+  +getName()
+  +deleteEmail()
 }
-class CheckOut {
+abstract class CheckOut {
+  -boolean phone
+  #double amount
+  +sendAddress()
+  +findEmail()
+  +getAmount()
+}
+class Guest {
   -float code
   +double createdAt
   +double active
   #double description
-  +updateDuration()
-  +findAddress()
+  +getTotal()
+  +findUpdatedat()
 }
-interface Guest {
+class Amenity {
   #Date updatedAt
   +float email
   +double code
   #boolean level
   -double type
-  +getEmail()
-  +findPrice()
-  +deleteStatus()
-  +processQuantity()
+  +setUpdatedat()
+  +findCreatedat()
+  +calculateDescription()
+  +sendScore()
 }
-class Amenity {
-  #long email
-  -String type
-  +findQuantity()
-  +saveEmail()
-}
-Guest --* Amenity
-Amenity ..> Guest : "0..1"
-Amenity --> Reservation : "1..*"
-note right of Reservation : Hotel domain
+Reservation --* CheckOut
+Service ..> Reservation : "1..*"
+CheckOut --* Service
 @enduml

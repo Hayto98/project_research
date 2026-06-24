@@ -9,45 +9,47 @@ abstract class Room {
   #int createdAt
   -String description
   #long quantity
-  +savePhone()
-  +calculatePrice()
-  +sendAddress()
+  +validateStatus()
+  +findStatus()
+  +updateTotal()
 }
-class Payment {
+abstract class Payment {
   +float score
   +Date address
-  +cancelCreatedat()
-  +deleteCode()
-  +deleteUpdatedat()
-  +setScore()
+  #float level
+  -boolean code
+  #float duration
+  +saveQuantity()
+  +getType()
 }
 class CheckIn {
-  +float duration
-  +Date phone
-  +sendPrice()
-  +setId()
-  +setId()
-  +setLevel()
+  +Date code
+  #long score
+  +float id
+  +cancelPrice()
 }
-class Invoice {
-  -double email
+interface Invoice {
+  +String active
   #String price
-  -int active
-  +createId()
+  #int code
+  -Date id
+  #Date status
+  +findDuration()
+  +sendName()
+  +calculateAmount()
+  +validateActive()
 }
 class Booking {
-  -long code
-  #Date createdAt
-  +Date id
-  +boolean total
-  #long price
-  +updateCode()
-  +createDuration()
-  +cancelCreatedat()
-  +setName()
+  #double description
+  +int status
+  +double email
+  -float id
+  -long phone
+  +cancelUpdatedat()
+  +updateUpdatedat()
 }
+CheckIn ..|> Invoice
+Room --> CheckIn : "0..1"
+Room --o Booking
 Booking --> CheckIn : "1..*"
-Room --> CheckIn : "1..*"
-Payment ..|> Booking
-note right of Room : Hotel domain
 @enduml

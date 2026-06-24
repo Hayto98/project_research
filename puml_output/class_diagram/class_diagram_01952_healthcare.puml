@@ -7,66 +7,63 @@ class Treatment {
   +float total
   #Date score
   +String createdAt
-  +deleteDuration()
-  +sendTotal()
-  +sendAddress()
-}
-class MedicalRecord {
-  #long updatedAt
-  -float phone
-  -Date active
-  +Date description
-  +findEmail()
-  +createUpdatedat()
-  +cancelCode()
-  +sendActive()
-}
-class Patient {
-  +boolean updatedAt
-  -int level
-  +cancelType()
-  +saveId()
-  +setId()
-  +sendAddress()
-}
-class Appointment {
-  -float level
-  #int updatedAt
-  -String amount
-  +cancelEmail()
-}
-class Insurance {
-  -long name
-  #float status
-  -double level
-  -boolean score
-  -Date type
-  +deleteId()
-  +findLevel()
-  +findPrice()
   +validateCode()
+  +setId()
+  +setActive()
+}
+interface MedicalRecord {
+  #Date active
+  #long address
+  #float status
+  +boolean phone
+  -long updatedAt
+  +updateAddress()
+  +cancelNote()
+  +deleteType()
+  +processEmail()
+}
+abstract class Patient {
+  +float quantity
+  +int updatedAt
+  #String code
+  #double active
+  +processLevel()
+  +getCode()
+}
+abstract class Appointment {
+  #long code
+  #long id
+  +setScore()
+  +setCreatedat()
+}
+interface Insurance {
+  -String amount
+  #String total
+  #long description
+  +cancelQuantity()
 }
 class LabTest {
-  -int code
-  +Date address
-  -float active
-  #float quantity
-  #int id
-  +sendDescription()
-  +getName()
+  +float duration
+  -double status
+  +cancelUpdatedat()
+  +cancelLevel()
+  +deleteTotal()
 }
-abstract class Prescription {
-  #Date total
-  -double note
-  #double description
-  +float createdAt
-  +deleteLevel()
-  +deleteAddress()
+class Prescription {
+  +Date type
+  #boolean email
+  #double score
+  -String price
+  +float amount
+  +validatePhone()
+  +setEmail()
+  +processPhone()
+  +createUpdatedat()
 }
-Prescription ..|> Patient
-Appointment --o Treatment
-Insurance --* Patient
-Insurance --> LabTest : "1..*"
-LabTest --o Appointment
-note right of Treatment : Healthcare domain
+Patient --> LabTest : "1"
+Appointment --|> MedicalRecord
+LabTest ..> Appointment : "0..1"
+MedicalRecord ..|> Insurance
+Treatment --o Prescription
+Patient --o Appointment
 @enduml

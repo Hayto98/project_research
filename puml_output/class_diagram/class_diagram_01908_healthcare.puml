@@ -9,59 +9,57 @@ interface Billing {
   #boolean level
   +float type
   -int active
-  +updateAddress()
-  +updateTotal()
-  +setCreatedat()
+  +getTotal()
+  +calculateCreatedat()
+  +processActive()
 }
 abstract class Hospital {
-  +String duration
-  -float active
-  +int price
-  +sendLevel()
+  +boolean createdAt
+  #Date type
+  +createCode()
+  +calculateId()
+  +getPhone()
+  +setPrice()
 }
 class Treatment {
-  +String createdAt
-  #boolean id
-  #float score
-  +saveAmount()
-  +processUpdatedat()
+  #boolean duration
+  #long id
+  +int active
+  +cancelLevel()
 }
-class Patient {
-  +long address
-  #Date id
-  +String active
-  #double status
-  +setQuantity()
-  +createActive()
-  +getId()
+interface Patient {
+  #float id
+  +double score
+  +long createdAt
+  +validateScore()
+  +processName()
+  +createUpdatedat()
 }
-class Prescription {
-  #boolean quantity
-  -float phone
-  +int total
-  -int address
-  -String name
-  +getActive()
-  +findLevel()
+interface Prescription {
+  #Date code
+  +String phone
+  +setTotal()
+  +validateId()
+  +processDescription()
+  +deleteCreatedat()
 }
-class Nurse {
-  #float amount
-  -boolean price
-  +float type
-  +createQuantity()
+interface Nurse {
+  -long id
+  -double duration
+  +saveId()
+  +calculateStatus()
+  +findName()
 }
 class Diagnosis {
-  #long type
-  -Date email
-  #long level
-  +updateCode()
-  +saveQuantity()
-  +findScore()
-  +validateQuantity()
+  +long updatedAt
+  +float note
+  +calculateId()
+  +findDuration()
 }
-Patient ..> Hospital : "0..1"
-Diagnosis --o Treatment
-Billing ..> Treatment : "1..*"
-Prescription ..|> Nurse
-note right of Billing : Healthcare domain
+Treatment ..|> Hospital
+Patient ..> Diagnosis : "*"
+Prescription ..> Hospital : "1"
+Treatment --* Nurse
+Billing ..|> Nurse
+Nurse --> Patient : "1..*"
 @enduml

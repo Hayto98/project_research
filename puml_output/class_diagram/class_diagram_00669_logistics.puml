@@ -5,43 +5,45 @@ skinparam ArrowColor #555555
 class Warehouse {
   #boolean id
   +long total
-  +validateNote()
-  +setPhone()
+  +sendPhone()
+  +createLevel()
 }
-class Manifest {
-  -String score
-  #int active
-  +processPhone()
-  +setPhone()
+abstract class Manifest {
+  +boolean phone
+  #boolean amount
+  +processCode()
   +validateDescription()
+  +saveUpdatedat()
 }
 class Inventory {
-  +double amount
-  #double quantity
-  -long score
-  +processPrice()
-  +cancelAddress()
-  +setNote()
-  +processDuration()
+  -int note
+  +int phone
+  +long status
+  #int level
+  +createStatus()
+  +createPrice()
+  +getPhone()
+  +validateAmount()
 }
 interface DeliveryNote {
-  #float note
-  -int type
-  +float description
-  #String status
-  #String quantity
-  +findPhone()
+  -boolean note
+  #double price
+  -double address
+  +boolean status
+  #Date duration
+  +sendQuantity()
 }
 class Vehicle {
-  -Date note
-  +long price
-  +boolean amount
-  -boolean createdAt
-  #Date address
-  +calculateActive()
+  #float updatedAt
+  +Date name
+  -long id
+  -float code
+  +processType()
+  +findTotal()
+  +calculateUpdatedat()
+  +deleteScore()
 }
-DeliveryNote --> Warehouse : "1"
-Manifest --o DeliveryNote
-Inventory --|> Warehouse
-note right of Warehouse : Logistics domain
+Manifest --o Inventory
+Warehouse --> Inventory : "1"
+DeliveryNote --o Inventory
 @enduml

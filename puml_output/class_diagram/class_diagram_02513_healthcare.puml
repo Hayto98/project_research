@@ -7,51 +7,53 @@ abstract class Billing {
   #float total
   +Date duration
   +float score
-  +updateNote()
-  +sendStatus()
-  +findPrice()
-  +calculateAmount()
+  +updateStatus()
+  +saveStatus()
+  +saveAmount()
+  +createDescription()
 }
-interface MedicalRecord {
+class MedicalRecord {
+  -Date total
+  +int amount
+  +String score
+  +boolean level
   +String updatedAt
-  +String quantity
-  #int amount
-  +deleteEmail()
+  +sendAddress()
+  +processUpdatedat()
 }
 class Insurance {
-  #double score
-  #Date amount
-  +updateId()
-  +getDuration()
-  +getTotal()
+  +Date active
+  #float total
+  +String address
+  +setCreatedat()
 }
-class Diagnosis {
-  -long code
-  +boolean status
-  +deleteCode()
-  +sendCreatedat()
+abstract class Diagnosis {
+  +double name
+  -String code
+  +processScore()
   +setAmount()
+  +validateCreatedat()
 }
-abstract class Hospital {
-  #boolean name
-  -float updatedAt
-  +String status
-  -float phone
-  +double price
-  +sendLevel()
-  +cancelId()
-  +validateQuantity()
+class Hospital {
+  #double code
+  +int amount
+  +Date total
+  +cancelScore()
+  +getDescription()
+  +validateLevel()
 }
-interface Prescription {
-  +long note
-  +float total
-  +Date level
-  +sendId()
+abstract class Prescription {
+  -float id
+  #float duration
+  #boolean phone
+  +long amount
+  -Date type
+  +calculateTotal()
+  +cancelType()
 }
-Diagnosis --o MedicalRecord
-Hospital --* MedicalRecord
-MedicalRecord ..> Billing : "0..1"
-Insurance --|> Diagnosis
-Prescription --> Billing : "*"
-note right of Billing : Healthcare domain
+Diagnosis ..|> Prescription
+Insurance --|> MedicalRecord
+Prescription --> Billing : "1"
+Prescription --o Diagnosis
+Prescription --o MedicalRecord
 @enduml

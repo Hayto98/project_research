@@ -9,51 +9,52 @@ interface Renewal {
   +double description
   +float updatedAt
   +Date score
-  +getPhone()
-  +createDescription()
+  +deleteNote()
+  +cancelId()
 }
 class Reservation {
-  +Date level
-  -String updatedAt
-  +Date email
-  -boolean phone
-  +cancelPrice()
-  +calculateStatus()
+  #long email
+  -String quantity
+  #float updatedAt
+  +processName()
+  +processCreatedat()
+  +processPhone()
+  +setStatus()
 }
-class Book {
-  #double level
-  +Date code
-  +float address
-  +cancelDuration()
-  +saveEmail()
-  +calculateId()
+abstract class Book {
+  +Date duration
+  -Date price
+  +boolean level
+  +getCode()
 }
-abstract class Fine {
-  +float amount
-  -boolean type
-  +deleteType()
-  +deleteStatus()
-  +validateDuration()
-  +deleteDescription()
+class Fine {
+  +float id
+  -String name
+  +double address
+  +float email
+  -boolean price
+  +deletePhone()
+  +validateQuantity()
+  +createNote()
+  +findActive()
 }
-interface Loan {
-  -float status
-  #float createdAt
-  +findTotal()
-  +saveQuantity()
-}
-class Branch {
-  #float name
-  -Date status
-  -double phone
-  +setDescription()
-  +deleteAddress()
+class Loan {
+  +boolean phone
+  +String description
+  +calculateQuantity()
   +getPrice()
-  +findCode()
 }
-Branch --* Fine
+interface Branch {
+  +Date total
+  #String quantity
+  #String description
+  +findUpdatedat()
+  +updateQuantity()
+  +saveName()
+}
+Fine --|> Branch
+Reservation --* Branch
+Renewal ..> Fine : "1"
+Book --* Fine
 Book ..|> Loan
-Renewal ..|> Reservation
-Loan --o Branch
-note right of Renewal : Library domain
 @enduml

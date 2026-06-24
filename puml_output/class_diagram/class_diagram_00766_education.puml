@@ -6,54 +6,49 @@ abstract class Attendance {
   #float description
   #long quantity
   +boolean amount
-  +getStatus()
-  +sendUpdatedat()
-  +createScore()
-  +cancelUpdatedat()
+  +saveEmail()
+  +deleteQuantity()
+  +sendAmount()
+  +sendNote()
 }
-interface Student {
-  #Date quantity
-  #long active
-  #int price
-  #int id
-  #String email
-  +setId()
+class Student {
+  #Date duration
+  -String note
+  #long quantity
+  +createTotal()
+  +updateType()
+  +setAddress()
 }
 class Grade {
-  +String level
-  #int amount
-  -boolean price
-  +processActive()
-  +sendTotal()
+  +int status
+  +float duration
+  +saveName()
+  +getLevel()
 }
 class Library {
-  -int quantity
-  +boolean duration
-  +sendAmount()
-  +getEmail()
-  +sendScore()
+  -float total
+  #boolean level
+  -long description
+  +calculatePhone()
 }
-abstract class Schedule {
+class Schedule {
+  -float amount
+  #int duration
+  +long score
+  #boolean active
+  +setActive()
+  +deleteType()
+  +validateTotal()
+  +setCreatedat()
+}
+interface Course {
   -long createdAt
   -String active
   -boolean updatedAt
   #double status
-  +createType()
-  +getQuantity()
+  +calculateScore()
+  +validateName()
 }
-class Course {
-  #int phone
-  +float quantity
-  -float duration
-  #Date price
-  +findCode()
-  +processTotal()
-  +getScore()
-}
-Library --* Grade
-Grade --o Attendance
-Course ..|> Library
-Attendance --> Schedule : "1..*"
-Library --* Student
-note right of Attendance : Education domain
+Course --|> Grade
+Schedule ..> Grade : "1..*"
 @enduml

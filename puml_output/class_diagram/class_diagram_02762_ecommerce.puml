@@ -8,55 +8,56 @@ class Supplier {
   +boolean active
   -boolean description
   +boolean quantity
-  +findPhone()
-  +sendName()
-  +createNote()
-  +setQuantity()
+  +getActive()
+  +cancelId()
+  +sendAmount()
+  +setUpdatedat()
 }
-interface Review {
-  -boolean note
+class Review {
+  -boolean status
   +String quantity
-  +getCode()
+  #float id
+  +String note
+  +long level
+  +cancelCreatedat()
+  +findScore()
 }
-class Cart {
-  -double total
-  #boolean quantity
-  +String active
-  +findAddress()
-  +sendQuantity()
+interface Cart {
+  #long price
+  #long score
+  +Date id
+  -int level
+  +long createdAt
+  +processUpdatedat()
+  +findDescription()
 }
-class Return {
-  #double createdAt
-  #float updatedAt
-  -String email
-  +boolean amount
+abstract class Return {
+  -long name
+  #String id
   #float active
-  +validateActive()
-  +setDuration()
-  +setAddress()
-  +setPhone()
+  +long score
+  +cancelId()
 }
 interface Shipment {
   -long level
   -int type
   -float phone
   +float total
-  +findUpdatedat()
-  +sendActive()
-  +calculateAmount()
+  +deleteType()
+  +validateNote()
+  +findEmail()
 }
-class Payment {
-  +double score
-  #int updatedAt
-  -float createdAt
-  +findName()
-  +getType()
-  +createQuantity()
-  +updateEmail()
+interface Payment {
+  +int amount
+  -Date updatedAt
+  +long score
+  #double duration
+  #float level
+  +deleteNote()
 }
-Supplier --> Return : "1..*"
+Cart ..|> Payment
+Cart --|> Return
+Payment --> Return : "1..*"
 Return --o Supplier
-Shipment --* Cart
-Supplier --> Payment : "*"
-note right of Supplier : Ecommerce domain
+Supplier --> Return : "1..*"
 @enduml

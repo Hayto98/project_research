@@ -5,56 +5,63 @@ abstract class Member {
   -float duration
   #int description
   -long active
-  +deleteLevel()
+  +getEmail()
 }
-abstract class Reservation {
-  +long status
-  +Date quantity
-  +setType()
-  +sendId()
+interface Reservation {
+  +Date code
+  #int status
+  +double quantity
+  #String updatedAt
+  +int score
+  +setQuantity()
+  +deleteStatus()
+  +getPhone()
+  +calculateAddress()
 }
-class Catalog {
-  #float price
-  #boolean total
-  -float amount
-  +calculateTotal()
-}
-interface Librarian {
-  +Date duration
+interface Catalog {
+  #double id
   +Date price
-  +validateQuantity()
+  +Date total
+  #String active
+  -Date duration
+  +saveActive()
+  +processStatus()
+  +setEmail()
 }
-interface Book {
-  -double address
-  #float note
-  -String amount
-  +long price
-  +updateName()
-  +deleteCreatedat()
-  +getId()
-  +calculateTotal()
+abstract class Librarian {
+  #float price
+  -String duration
+  +long total
+  +updateDescription()
+  +saveEmail()
+  +validateCode()
+  +processActive()
+}
+class Book {
+  #long price
+  +int total
+  +getPrice()
+  +validateCode()
+  +updateQuantity()
 }
 interface Loan {
-  #Date createdAt
-  #float updatedAt
-  +long email
-  #long description
-  +calculateQuantity()
-  +calculateEmail()
-  +createCode()
-  +findUpdatedat()
+  -long phone
+  -long duration
+  -String total
+  +getType()
+  +findQuantity()
 }
 class Author {
-  +float email
-  #long price
-  +int quantity
-  #float id
-  +cancelName()
-  +sendTotal()
-  +cancelPhone()
+  +boolean quantity
+  #long id
+  #String createdAt
+  #double email
+  #long amount
+  +calculateLevel()
+  +createCode()
 }
-Author --* Reservation
 Loan --o Reservation
 Reservation --o Librarian
-note right of Member : Library domain
+Author --> Catalog : "0..1"
+Member ..> Book : "1"
 @enduml

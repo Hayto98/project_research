@@ -6,44 +6,44 @@ skinparam defaultFontSize 13
 class Warehouse {
   +boolean active
   #String name
-  +validateTotal()
-  +updateCode()
+  +createActive()
+  +saveTotal()
 }
-class Shipment {
-  +long level
-  -float quantity
-  +int address
-  #int updatedAt
-  +double id
-  +createPhone()
-  +sendName()
-  +setName()
-  +sendStatus()
+abstract class Shipment {
+  #Date code
+  -float name
+  -int total
+  +updateDuration()
 }
-interface Cart {
+class Cart {
+  -long updatedAt
+  -boolean createdAt
+  +String amount
+  #String description
+  #Date type
+  +calculateTotal()
+}
+interface Category {
   +Date quantity
   #long note
   +boolean price
   -float status
-  +deleteDuration()
-  +cancelTotal()
+  +calculateAddress()
+  +saveTotal()
 }
-class Category {
-  +Date updatedAt
-  #double status
-  -double name
-  #double address
+interface Return {
+  -String email
+  #Date quantity
+  -double updatedAt
+  -boolean status
+  -long name
   +calculateActive()
-  +deleteStatus()
-  +createDuration()
+  +validateCode()
+  +validateEmail()
+  +deleteName()
 }
-class Return {
-  +long duration
-  -Date active
-  +double level
-  +cancelUpdatedat()
-}
-Return --|> Warehouse
-Shipment --|> Cart
-note right of Warehouse : Ecommerce domain
+Shipment --> Return : "0..1"
+Cart ..> Return : "0..1"
+Category --> Warehouse : "0..1"
+Shipment --|> Warehouse
 @enduml

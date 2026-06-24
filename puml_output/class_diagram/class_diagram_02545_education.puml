@@ -9,18 +9,19 @@ abstract class Schedule {
   -Date status
   -boolean code
   -String note
-  +saveNote()
+  +updateAddress()
 }
-interface Teacher {
+abstract class Teacher {
   #int createdAt
   #Date email
-  +setName()
+  +getType()
 }
 class Grade {
-  #boolean note
-  #float duration
-  #long quantity
-  +createScore()
+  -boolean createdAt
+  -Date note
+  +savePhone()
+  +deleteCreatedat()
+  +sendAmount()
 }
 class Course {
   -boolean total
@@ -28,35 +29,40 @@ class Course {
   #int price
   -double level
   -long code
-  +updateId()
-  +createTotal()
-  +processScore()
+  +cancelNote()
+  +sendDuration()
+  +updateDuration()
 }
 class Attendance {
-  -long id
-  #int total
-  +findName()
-  +updatePrice()
-  +findPrice()
-}
-class Enrollment {
-  +long updatedAt
-  -long name
-  -String phone
-  #Date id
-  -float note
-  +sendEmail()
-  +sendType()
+  -double type
+  -Date score
+  +float createdAt
+  -Date id
+  #String active
+  +deleteAmount()
   +cancelUpdatedat()
-  +cancelId()
 }
-abstract class Assignment {
-  -double description
-  -Date name
-  +createEmail()
-  +findDescription()
+abstract class Enrollment {
+  +String duration
+  #long level
+  +double active
+  +long total
+  +findCreatedat()
+  +deleteCreatedat()
+  +saveEmail()
 }
-Schedule --* Attendance
-Attendance --|> Course
-note right of Schedule : Education domain
+class Assignment {
+  #float active
+  #String email
+  -boolean score
+  #String type
+  #Date updatedAt
+  +saveId()
+  +getUpdatedat()
+}
+Course ..> Assignment : "0..1"
+Grade ..> Assignment : "0..1"
+Enrollment --|> Schedule
+Attendance --> Grade : "*"
+Schedule --> Teacher : "1..*"
 @enduml

@@ -8,16 +8,16 @@ abstract class Diagnosis {
   +int updatedAt
   +long address
   +boolean note
-  +getEmail()
-  +updateLevel()
+  +deleteNote()
+  +deleteName()
 }
-abstract class Billing {
-  +double price
-  -double type
-  -double score
-  +deleteLevel()
-  +findId()
-  +findStatus()
+class Billing {
+  -double amount
+  -double price
+  -int type
+  #Date createdAt
+  +float level
+  +cancelDuration()
 }
 interface Ward {
   +boolean createdAt
@@ -25,17 +25,18 @@ interface Ward {
   #double amount
   #float status
   -Date quantity
-  +processLevel()
+  +deletePrice()
 }
-class Insurance {
+interface Insurance {
+  +String type
   +int quantity
-  -int type
+  -int duration
   -boolean phone
-  -int name
-  +long status
-  +sendPrice()
+  +findAddress()
+  +createAddress()
+  +setEmail()
+  +getQuantity()
 }
-Ward --> Billing : "0..1"
-Insurance --o Ward
-note right of Diagnosis : Healthcare domain
+Insurance --* Billing
+Insurance ..|> Ward
 @enduml

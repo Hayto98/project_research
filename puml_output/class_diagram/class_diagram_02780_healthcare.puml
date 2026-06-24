@@ -6,35 +6,31 @@ skinparam defaultFontSize 11
 interface Patient {
   +String updatedAt
   +long amount
-  +sendQuantity()
-  +calculateQuantity()
-  +getEmail()
+  +sendStatus()
+  +getScore()
+  +cancelAddress()
 }
 abstract class Insurance {
-  +long price
-  -long createdAt
-  +cancelDescription()
-  +updateName()
+  -int name
+  +long email
+  -long price
+  +float id
+  +validateNote()
+  +saveEmail()
 }
 class Prescription {
   -double address
   -boolean type
-  +updateScore()
-  +setCode()
-  +findName()
+  +processPrice()
+  +setAddress()
+  +cancelEmail()
 }
-interface Doctor {
-  #Date price
-  #Date createdAt
-  #Date duration
-  +Date amount
-  +setName()
-  +setDuration()
-  +getCreatedat()
-  +cancelCode()
+class Doctor {
+  -int score
+  -float quantity
+  +createNote()
+  +getActive()
 }
-Prescription ..> Doctor : "0..1"
-Insurance ..|> Prescription
-Doctor ..|> Patient
-note right of Patient : Healthcare domain
+Doctor --|> Patient
+Patient --|> Prescription
 @enduml

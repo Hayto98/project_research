@@ -8,45 +8,43 @@ abstract class Shipment {
   +boolean type
   #double address
   #double phone
-  +setDuration()
+  +setDescription()
 }
 interface Manifest {
   +float createdAt
   +boolean quantity
   +double duration
   #boolean total
-  +deleteName()
-  +sendDescription()
-  +processActive()
-  +updateId()
+  +calculateAddress()
+  +savePhone()
+  +updateNote()
+  +sendType()
 }
-interface Package {
-  #String code
-  #Date createdAt
-  -String phone
-  +double active
-  +createEmail()
-  +processType()
-  +updateType()
-  +deleteLevel()
+class Package {
+  +long active
+  #boolean updatedAt
+  +float id
+  #Date phone
+  -String code
+  +calculateQuantity()
 }
-class Customer {
-  +float active
-  #long duration
-  +deleteDescription()
-  +getStatus()
-  +processStatus()
-  +createScore()
+abstract class Customer {
+  -int email
+  #int note
+  +boolean type
+  #String updatedAt
+  +calculateQuantity()
+  +createNote()
+  +setActive()
 }
 class FuelLog {
-  #double code
-  -int score
-  #String duration
-  +float name
-  +cancelStatus()
-  +findScore()
+  +long id
+  #long status
+  #long note
+  +cancelUpdatedat()
 }
-Customer --> FuelLog : "1"
-Customer --o Package
-note right of Shipment : Logistics domain
+Shipment --> FuelLog : "*"
+Customer ..> Manifest : "1"
+Manifest --> FuelLog : "1"
+FuelLog --o Shipment
 @enduml

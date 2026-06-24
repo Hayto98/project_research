@@ -7,45 +7,43 @@ abstract class Invoice {
   #float address
   #double price
   #float email
-  +validatePrice()
-  +setNote()
-  +processActive()
+  +calculateCreatedat()
+  +deleteAmount()
+  +setQuantity()
 }
-abstract class Amenity {
-  #float createdAt
-  +String total
-  +findAmount()
-  +updateEmail()
-  +updatePrice()
-  +findNote()
+class Amenity {
+  -Date type
+  +String active
+  -Date price
+  +int code
+  -int createdAt
+  +calculateStatus()
+  +calculateAmount()
+  +validateTotal()
+  +getScore()
 }
-interface Reservation {
-  -long amount
-  #String name
-  +double type
-  #float note
-  -int status
-  +cancelId()
-  +updateDescription()
-  +getAddress()
+abstract class Reservation {
+  +long name
+  -boolean type
+  +String note
+  +findPrice()
+  +sendStatus()
+  +calculateQuantity()
+  +getEmail()
 }
 class Payment {
-  #int type
-  +double score
-  +createActive()
-  +processTotal()
-  +setScore()
-  +saveLevel()
+  +long createdAt
+  #String description
+  +getAmount()
 }
-class Service {
-  +boolean id
-  +Date createdAt
-  #int quantity
-  +int phone
-  +int score
-  +deleteEmail()
-  +getCode()
+abstract class Service {
+  -boolean name
+  -double price
+  +boolean type
+  +sendCreatedat()
+  +getStatus()
+  +cancelType()
 }
-Invoice --o Payment
-note right of Invoice : Hotel domain
+Amenity --* Reservation
+Reservation --> Invoice : "0..1"
 @enduml

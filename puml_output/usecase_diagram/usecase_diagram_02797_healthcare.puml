@@ -3,9 +3,9 @@ skinparam shadowing false
 skinparam backgroundColor #F5F5F5
 skinparam shadowing true
 left to right direction
-actor "Nurse" as Nurse
-actor "Receptionist" as Receptionist
-actor "Lab Technician" as LabTechnician
+actor "Nurse" as N
+actor "Receptionist" as R
+actor "Lab Technician" as LT
 rectangle "Healthcare System" {
   usecase "Run Lab Test" as UC_RunLabTest
   usecase "Issue Prescription" as UC_IssuePrescription
@@ -13,12 +13,12 @@ rectangle "Healthcare System" {
   usecase "Update Medical Record" as UC_UpdateMedicalRecord
   usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
 }
-Nurse --> UC_RunLabTest
-Nurse --> UC_ExaminePatient
-Nurse --> UC_IssuePrescription
-Receptionist --> UC_ProcessInsuranceClaim
-Receptionist --> UC_ExaminePatient
-LabTechnician --> UC_UpdateMedicalRecord
-LabTechnician --> UC_RunLabTest
+N --> UC_RunLabTest
+N --> UC_ExaminePatient
+N --> UC_IssuePrescription
+R --> UC_ProcessInsuranceClaim
+R --> UC_ExaminePatient
+LT --> UC_UpdateMedicalRecord
+LT --> UC_RunLabTest
 UC_UpdateMedicalRecord ..|> UC_IssuePrescription : <<extend>>
 @enduml

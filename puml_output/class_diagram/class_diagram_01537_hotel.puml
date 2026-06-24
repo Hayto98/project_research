@@ -6,50 +6,47 @@ class Room {
   #int level
   #int note
   +long active
-  +cancelName()
-  +calculateCode()
-  +cancelEmail()
-  +findQuantity()
+  +sendActive()
+  +deleteNote()
+  +createDuration()
+  +findNote()
 }
 interface Payment {
-  -long email
-  #int note
-  #double price
-  #int updatedAt
-  +deleteAddress()
-  +deleteActive()
-  +getType()
-  +processCode()
-}
-interface Booking {
-  -double status
-  -Date amount
-  #long quantity
-  +int phone
-  +savePhone()
+  -float quantity
+  #double level
+  +long email
+  -boolean score
+  +deleteLevel()
   +createLevel()
-  +saveActive()
 }
-abstract class Invoice {
-  -double duration
-  -double level
-  +setEmail()
-  +validateStatus()
-  +calculatePhone()
-  +saveEmail()
+abstract class Booking {
+  +boolean price
+  +double amount
+  -String address
+  +cancelEmail()
+  +cancelDuration()
+  +saveDescription()
+}
+class Invoice {
+  #boolean phone
+  -int duration
+  +long total
+  #long type
+  +saveDuration()
+  +setActive()
+  +updatePhone()
 }
 interface Restaurant {
-  -int type
-  +float createdAt
-  -Date duration
-  +boolean code
-  +createStatus()
-  +getDescription()
-  +cancelNote()
+  -double active
+  +long id
+  -String type
+  -long total
+  #long note
+  +processNote()
+  +getId()
+  +sendId()
 }
-Payment --* Invoice
-Booking ..|> Room
-Room --* Invoice
-Invoice ..|> Payment
-note right of Room : Hotel domain
+Room ..|> Booking
+Payment ..> Booking : "1"
+Restaurant --* Booking
 @enduml

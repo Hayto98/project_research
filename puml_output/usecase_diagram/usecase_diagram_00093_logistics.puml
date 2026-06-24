@@ -4,10 +4,10 @@ skinparam classBackgroundColor #FFFFFF
 skinparam classBorderColor #455A64
 skinparam defaultFontSize 13
 left to right direction
-actor "Fleet Manager" as FleetManager
-actor "Dispatcher" as Dispatcher
-actor "Driver" as Driver
-actor "Customer" as Customer
+actor "Fleet Manager" as FM
+actor "Dispatcher" as D
+actor "Driver" as D1
+actor "Customer" as C
 rectangle "Logistics System" {
   usecase "Update Inventory" as UC_UpdateInventory
   usecase "Schedule Pickup" as UC_SchedulePickup
@@ -18,11 +18,11 @@ rectangle "Logistics System" {
   usecase "Load Package" as UC_LoadPackage
   usecase "Track Shipment" as UC_TrackShipment
 }
-FleetManager --> UC_LoadPackage
-Dispatcher --> UC_LoadPackage
-Driver --> UC_SchedulePickup
-Driver --> UC_TrackShipment
-Customer --> UC_DeliverPackage
-Customer --> UC_AssignRoute
+FM --> UC_LoadPackage
+D --> UC_LoadPackage
+D1 --> UC_SchedulePickup
+D1 --> UC_TrackShipment
+C --> UC_DeliverPackage
+C --> UC_AssignRoute
 UC_AssignRoute ..|> UC_UpdateInventory : <<include>>
 @enduml

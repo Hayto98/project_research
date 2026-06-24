@@ -4,33 +4,31 @@ skinparam backgroundColor #F5F5F5
 interface Branch {
   -float price
   #Date total
-  +sendUpdatedat()
-  +sendStatus()
+  +saveLevel()
+  +sendAmount()
 }
 class Account {
-  -String email
-  +String description
-  +double duration
-  #int type
-  +createId()
+  -Date status
+  +boolean phone
+  +validateTotal()
+  +validateName()
+  +validateScore()
 }
-abstract class Teller {
-  -Date phone
-  -boolean code
-  +saveCode()
-  +updateScore()
-  +getQuantity()
+class Teller {
+  #int name
+  +long duration
+  #Date type
+  +deleteActive()
 }
 class Interest {
-  #boolean phone
-  -float email
-  #int name
-  +validateDuration()
-  +savePrice()
-  +getPhone()
+  #String code
+  +boolean price
+  +long quantity
+  +boolean email
+  +cancelLevel()
+  +processStatus()
 }
-Interest --|> Account
-Account ..> Interest : "0..1"
-Teller --* Branch
-note right of Branch : Banking domain
+Branch --> Teller : "*"
+Account --* Teller
+Teller ..> Interest : "*"
 @enduml

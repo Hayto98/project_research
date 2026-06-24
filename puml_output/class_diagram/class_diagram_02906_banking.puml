@@ -6,49 +6,48 @@ skinparam shadowing true
 class Beneficiary {
   +Date email
   +double code
-  +setDuration()
-  +sendAmount()
-  +deleteType()
-  +findNote()
+  +createPhone()
+  +sendActive()
+  +getCreatedat()
+  +createType()
 }
 class Loan {
-  -boolean description
-  #float score
-  +calculateType()
-  +validateDuration()
+  +int type
+  #double note
+  #boolean amount
+  +processLevel()
+  +findActive()
 }
-interface Teller {
+class Teller {
   -double name
   +String price
-  +cancelAddress()
-  +getQuantity()
+  +saveDuration()
+  +findStatus()
 }
 class Transfer {
-  +float name
-  -Date address
-  -long note
-  +getType()
+  +String quantity
+  #Date name
+  +saveAmount()
+  +calculateEmail()
+  +findTotal()
 }
-interface Deposit {
-  #float total
-  -double note
-  -Date phone
+abstract class Deposit {
+  -double phone
+  -boolean id
+  +Date level
+  -double type
   -Date active
-  #boolean code
-  +updatePrice()
-  +deleteDescription()
-  +sendType()
-  +saveNote()
+  +validatePrice()
+  +getActive()
+  +calculateDuration()
 }
-interface Interest {
-  +float note
-  #long createdAt
-  +calculateTotal()
+abstract class Interest {
+  #double price
+  #float amount
+  -boolean description
+  +saveAmount()
 }
-Loan --> Interest : "1..*"
-Teller --|> Beneficiary
-Beneficiary --> Loan : "0..1"
-Teller --* Interest
-Teller ..|> Deposit
-note right of Beneficiary : Banking domain
+Beneficiary --* Deposit
+Interest --o Beneficiary
+Transfer ..|> Interest
 @enduml

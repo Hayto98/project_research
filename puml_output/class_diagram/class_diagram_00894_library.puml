@@ -7,64 +7,57 @@ abstract class Book {
   -String email
   +boolean amount
   #boolean phone
-  +findDuration()
-  +findTotal()
-  +cancelUpdatedat()
+  +sendUpdatedat()
+  +findUpdatedat()
+  +getActive()
 }
-interface Renewal {
-  #double note
-  #long amount
-  +Date createdAt
-  #String code
-  +validateCreatedat()
+abstract class Renewal {
+  +int duration
+  +boolean address
+  -boolean note
+  +sendNote()
+  +calculateStatus()
+  +setQuantity()
 }
-abstract class Catalog {
-  #long createdAt
-  #Date updatedAt
-  -double quantity
-  +int id
-  -Date phone
-  +calculatePhone()
-  +findPrice()
-  +saveTotal()
-  +calculateQuantity()
+interface Catalog {
+  +double id
+  -float phone
+  +processDuration()
+  +updateLevel()
 }
 class Publisher {
-  +long quantity
-  -boolean updatedAt
-  +Date phone
-  +updateQuantity()
-  +sendEmail()
+  +long phone
+  #double quantity
+  -Date type
+  -Date id
+  +updateAddress()
+  +processLevel()
+  +sendScore()
+  +deleteEmail()
 }
 class Loan {
-  +double email
-  -Date address
-  -String note
-  +double name
-  -double createdAt
-  +cancelScore()
-  +findAddress()
-  +deleteStatus()
-  +setUpdatedat()
+  -int score
+  -float description
+  -boolean quantity
+  +Date updatedAt
+  +deleteAddress()
+  +processDescription()
 }
-abstract class Shelf {
-  #String total
-  +String status
-  #int phone
-  +findPrice()
-  +getCode()
+interface Shelf {
+  -String status
+  +int total
+  -long email
+  #long address
+  +validateId()
 }
-interface Member {
-  #double status
-  #double duration
-  -String price
-  #Date name
+abstract class Member {
+  #String note
+  +int duration
+  -Date score
+  +double address
+  +long description
   +getUpdatedat()
-  +processEmail()
-  +deleteStatus()
 }
-Member ..> Loan : "1..*"
-Book --|> Member
-Loan ..> Shelf : "1..*"
-note right of Book : Library domain
+Book ..|> Loan
+Member ..> Renewal : "*"
 @enduml

@@ -6,36 +6,32 @@ skinparam defaultFontSize 11
 interface Supplier {
   -boolean description
   #double status
-  +getTotal()
-  +createQuantity()
+  +updatePrice()
+  +getPhone()
 }
 class Wishlist {
-  #String name
-  #long status
-  -long score
-  #long total
-  +calculateCreatedat()
+  #float quantity
+  #boolean email
+  #double name
+  #String status
+  +cancelCreatedat()
+  +setEmail()
+  +setPhone()
 }
 class Warehouse {
-  +long active
-  -Date amount
-  #String quantity
-  -int total
-  #long description
-  +findDescription()
-  +findType()
-  +createStatus()
-  +deleteType()
+  #long price
+  -boolean createdAt
+  +processDescription()
+  +updateEmail()
 }
-class Invoice {
-  +String phone
-  #String address
-  #int total
-  #boolean id
-  +setNote()
+interface Invoice {
+  #boolean createdAt
+  +double email
+  +Date phone
+  +getAddress()
+  +updateAmount()
+  +processAddress()
 }
-Wishlist --* Warehouse
-Invoice --> Warehouse : "1"
-Warehouse ..> Wishlist : "1"
-note right of Supplier : Ecommerce domain
+Invoice --|> Wishlist
+Wishlist ..|> Invoice
 @enduml

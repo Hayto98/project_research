@@ -6,50 +6,55 @@ skinparam defaultFontSize 13
 class Category {
   -boolean address
   +double phone
-  +sendType()
+  +processAddress()
 }
-class Product {
+interface Product {
   #double name
-  -int quantity
+  -int amount
+  -double duration
+  -long quantity
   -double phone
-  +validateAddress()
-  +calculateAmount()
-  +saveNote()
+  +createId()
+  +deleteStatus()
 }
-class Cart {
-  #float duration
-  #double amount
-  -int phone
-  +processTotal()
-  +sendQuantity()
-  +calculateAmount()
+abstract class Cart {
+  #float active
+  #double description
+  -int amount
+  -double phone
+  +cancelType()
+  +createUpdatedat()
+  +processDescription()
+  +processLevel()
 }
-abstract class Return {
-  +Date amount
-  -String createdAt
-  +String level
-  +cancelEmail()
-  +saveCode()
-  +getName()
+class Return {
+  #long description
+  +String amount
+  +long createdAt
+  #long score
+  #String name
+  +calculateEmail()
 }
 interface Invoice {
   +boolean updatedAt
   -String amount
   -int note
-  +updateEmail()
-  +createUpdatedat()
-  +validateLevel()
-  +deleteId()
+  +createScore()
+  +createLevel()
+  +validateAmount()
+  +calculateScore()
 }
-interface Order {
-  -int address
-  #boolean active
-  #long price
-  +deletePrice()
+class Order {
+  -float level
+  #Date amount
+  -float id
+  -int description
+  +updateActive()
+  +setLevel()
+  +sendScore()
 }
 Order --|> Category
 Return ..> Category : "1"
 Order --|> Cart
 Return --o Cart
-note right of Category : Ecommerce domain
 @enduml

@@ -4,34 +4,37 @@ skinparam backgroundColor #F5F5F5
 class Booking {
   #boolean id
   #long duration
-  +updateType()
-  +cancelQuantity()
+  +sendId()
+  +sendName()
 }
-class Room {
-  +double type
-  +double address
-  #long duration
-  +double updatedAt
-  -boolean id
-  +processType()
-  +sendDescription()
-  +updateType()
-  +calculateQuantity()
+interface Room {
+  #Date code
+  -int note
+  #boolean type
+  #String address
+  +findActive()
+  +cancelStatus()
 }
 abstract class Amenity {
-  #long total
-  +long code
-  +cancelType()
-  +createName()
+  -double status
+  #int price
+  +double phone
+  -long level
+  +calculateUpdatedat()
+  +createAddress()
+  +calculateQuantity()
+  +updateAmount()
 }
 class Reservation {
-  #long id
-  +long phone
-  #long address
-  +cancelDescription()
+  -Date updatedAt
+  #String quantity
+  +int duration
+  +long type
+  +deleteType()
+  +createQuantity()
+  +createScore()
 }
-Booking ..> Room : "1..*"
+Amenity --> Booking : "0..1"
 Reservation --|> Amenity
-Room --|> Reservation
-note right of Booking : Hotel domain
+Amenity --* Reservation
 @enduml

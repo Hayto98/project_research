@@ -6,68 +6,63 @@ class Interest {
   #double status
   #Date level
   #float duration
-  +sendId()
-  +getTotal()
-  +processCreatedat()
-  +calculateName()
+  +setActive()
+  +cancelAmount()
+  +cancelTotal()
+  +deleteNote()
 }
-class Transaction {
-  #boolean type
-  #float active
-  #long address
-  +String price
-  +setStatus()
-  +getDuration()
-  +deleteLevel()
-  +calculateCode()
+abstract class Transaction {
+  -boolean createdAt
+  -double total
+  #boolean name
+  #float updatedAt
+  #long email
+  +cancelStatus()
 }
-interface Beneficiary {
-  -Date id
-  +boolean price
-  +long code
-  #double active
-  +Date amount
-  +validateName()
-  +sendType()
+abstract class Beneficiary {
+  #boolean status
+  +float id
+  +setDescription()
+  +findDuration()
+  +createName()
+  +cancelTotal()
 }
-class Card {
-  -boolean phone
-  -int createdAt
-  #Date total
-  -int duration
-  +boolean amount
-  +setPhone()
-  +processTotal()
+abstract class Card {
+  #int active
+  -Date duration
+  +cancelActive()
 }
-abstract class Statement {
-  #long note
-  +long name
-  +Date duration
-  #boolean type
-  -double code
-  +saveCreatedat()
-  +cancelPhone()
+class Statement {
+  -String duration
+  #double type
+  +double name
+  -int description
+  +setQuantity()
+  +createAmount()
+  +validateLevel()
+  +updateCreatedat()
 }
 class Withdrawal {
-  +long updatedAt
-  -int total
-  -int level
-  #float phone
-  +calculateCreatedat()
-  +calculateName()
+  +int level
+  #Date email
+  +String updatedAt
+  #long phone
+  +validatePrice()
+  +updateScore()
+  +processLevel()
+  +deleteDuration()
 }
-class Transfer {
-  +Date createdAt
-  #String active
-  -String description
-  +deleteType()
-  +deleteStatus()
-  +processName()
-  +findQuantity()
+abstract class Transfer {
+  +long name
+  +Date note
+  #boolean type
+  -double code
+  #int email
+  +findDescription()
+  +setCode()
 }
-Withdrawal --o Statement
-Beneficiary --|> Interest
-Card --o Statement
-Transfer --* Transaction
-note right of Interest : Banking domain
+Withdrawal --* Transfer
+Statement ..|> Beneficiary
+Card --* Transfer
+Interest --o Beneficiary
 @enduml

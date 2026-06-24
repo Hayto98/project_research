@@ -5,58 +5,57 @@ skinparam shadowing true
 class Invoice {
   +Date description
   +boolean active
-  +processEmail()
-  +processActive()
-  +validateId()
+  +cancelQuantity()
+  +deleteCreatedat()
+  +setQuantity()
 }
-class Cart {
-  +String total
-  #int active
-  +calculateTotal()
-  +deleteType()
+abstract class Cart {
+  -boolean id
+  +String status
+  #int score
+  +double code
+  +processUpdatedat()
+  +validateUpdatedat()
+  +deleteAmount()
+  +validateStatus()
 }
-abstract class Review {
-  +long status
-  -double address
-  #double score
-  -long phone
-  +createQuantity()
-  +createCreatedat()
-  +createScore()
+class Review {
+  -int address
+  -float score
+  +deleteActive()
+  +getScore()
+  +calculateAmount()
+  +createPrice()
 }
 class Order {
-  +Date active
-  #float score
-  #String type
-  +validateCreatedat()
+  -boolean email
+  #int quantity
+  +boolean duration
+  #double createdAt
+  +createType()
 }
-class Coupon {
-  +float amount
-  -long note
-  +getTotal()
+interface Coupon {
+  -int active
+  +float name
+  +findId()
 }
-class Product {
-  +String phone
-  +boolean address
-  +boolean name
-  -float duration
-  +getNote()
-  +updateDescription()
-  +getLevel()
-  +getTotal()
+abstract class Product {
+  +double type
+  #Date quantity
+  +long code
+  +findQuantity()
+  +calculateId()
+  +getCode()
 }
 class Supplier {
-  #double type
-  #Date duration
-  #Date note
-  #int quantity
-  +cancelAddress()
-  +getDescription()
-  +cancelAmount()
-  +getUpdatedat()
+  #int status
+  #double description
+  +updateActive()
+  +sendCode()
+  +updateAmount()
+  +calculateNote()
 }
-Order --o Coupon
-Cart --|> Order
-Supplier --> Review : "1"
-note right of Invoice : Ecommerce domain
+Supplier ..> Invoice : "1"
+Order --* Review
+Order --o Supplier
 @enduml

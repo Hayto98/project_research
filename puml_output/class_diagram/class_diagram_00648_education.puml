@@ -7,67 +7,64 @@ class Schedule {
   -float address
   +String amount
   -int total
-  +saveUpdatedat()
-  +validateQuantity()
+  +processNote()
+  +calculateLevel()
 }
-interface Attendance {
-  +long total
-  -String score
-  +Date amount
-  #Date price
-  +sendCreatedat()
-  +updateLevel()
+class Attendance {
+  #float quantity
+  #int active
+  -String phone
+  -double total
+  +deleteAddress()
 }
 class Classroom {
-  -boolean level
-  -String quantity
+  -boolean updatedAt
+  -long level
+  #double createdAt
+  +sendQuantity()
+  +validateLevel()
+  +calculateType()
+}
+abstract class Grade {
+  #long note
+  +int type
+  +getScore()
+  +getPhone()
+  +findId()
+  +createCreatedat()
+}
+class Assignment {
+  -boolean updatedAt
+  #boolean active
   -double address
-  #long price
-  +deleteNote()
+  +int phone
+  +boolean id
+  +getStatus()
+  +updateId()
 }
-interface Grade {
-  #long amount
-  -float description
-  +long email
-  #boolean price
-  #float updatedAt
-  +calculateUpdatedat()
-  +updateCode()
+interface Book {
+  -long type
+  -Date active
+  +String phone
+  -float email
+  -boolean note
   +sendCreatedat()
-  +findDuration()
+  +updatePhone()
+  +validateDescription()
+  +deletePhone()
 }
-abstract class Assignment {
-  -double active
-  #float phone
-  +String email
-  -float note
-  -boolean level
-  +processNote()
-  +saveNote()
-  +sendDescription()
-  +calculateId()
-}
-class Book {
-  -long quantity
+abstract class Teacher {
+  -long score
+  #String description
+  +int total
+  -long id
   -boolean name
-  -Date amount
-  #int updatedAt
-  +deleteDescription()
-  +cancelTotal()
-  +processType()
+  +cancelName()
+  +sendQuantity()
+  +deleteAddress()
+  +validateScore()
 }
-interface Teacher {
-  #int quantity
-  #double status
-  -double note
-  #boolean phone
-  +createId()
-}
-Assignment --|> Book
-Assignment --|> Attendance
-Assignment --o Schedule
-Classroom --|> Assignment
-Assignment --> Teacher : "*"
-Grade ..> Teacher : "*"
-note right of Schedule : Education domain
+Attendance --o Assignment
+Grade --> Teacher : "1..*"
+Teacher --|> Classroom
 @enduml

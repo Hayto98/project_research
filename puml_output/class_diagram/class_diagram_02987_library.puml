@@ -6,63 +6,63 @@ interface Renewal {
   +int email
   -long phone
   +int name
-  +updateAmount()
-  +setAddress()
-  +processCode()
-  +createAmount()
+  +cancelNote()
+  +saveType()
+  +cancelType()
+  +findEmail()
 }
-interface Member {
-  #float note
-  #double duration
-  +createActive()
+class Member {
+  +long address
+  +boolean type
+  +saveAmount()
 }
-interface Fine {
-  #boolean status
-  #double createdAt
-  +int id
-  #boolean quantity
-  +calculateDescription()
-  +validateStatus()
-  +validateName()
+abstract class Fine {
+  +int name
+  +boolean quantity
+  -Date active
+  #Date score
+  -int address
+  +updatePhone()
+  +cancelActive()
 }
-interface Publisher {
-  +double duration
-  -double address
-  +double createdAt
-  +updateScore()
-  +setAddress()
+class Publisher {
+  #boolean description
+  +float phone
+  #long status
+  +float level
+  +double name
+  +validateUpdatedat()
+  +setLevel()
+  +calculateNote()
+  +calculatePrice()
 }
-abstract class Librarian {
-  +double total
-  +float quantity
-  -String score
-  #long note
-  +sendEmail()
-  +getDuration()
-  +sendScore()
-  +validateScore()
+class Librarian {
+  #double price
+  +double quantity
+  +float total
+  -String level
+  +updateEmail()
+  +getScore()
+  +updateQuantity()
 }
 class Reservation {
-  #int name
-  #double note
-  +calculatePhone()
-  +createName()
-  +processCreatedat()
+  #long duration
+  #int active
+  +processAddress()
 }
-interface Loan {
-  +Date score
-  #Date phone
-  +String createdAt
-  -double description
-  -float id
-  +createCreatedat()
-  +deleteType()
-  +calculateActive()
-  +sendPrice()
+class Loan {
+  -long amount
+  +double level
+  +boolean note
+  -boolean address
+  -int price
+  +validateTotal()
+  +createNote()
 }
-Member --* Librarian
-Fine ..> Member : "1"
-Fine --* Renewal
+Renewal ..> Member : "0..1"
 Renewal --o Fine
-note right of Renewal : Library domain
+Fine --* Publisher
+Member --o Loan
+Publisher --> Librarian : "*"
+Fine --> Member : "1..*"
 @enduml

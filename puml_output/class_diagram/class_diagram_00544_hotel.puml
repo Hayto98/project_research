@@ -7,50 +7,46 @@ interface Restaurant {
   +double address
   -long score
   +int price
-  +cancelEmail()
-  +saveCode()
+  +savePrice()
+  +findLevel()
 }
 class CheckIn {
-  +boolean phone
-  +String status
-  +boolean note
-  +updateDuration()
-  +calculateCode()
-  +cancelPhone()
+  -String createdAt
+  -String updatedAt
+  +processName()
 }
-abstract class CheckOut {
-  +double address
-  -boolean phone
-  #boolean score
-  +setNote()
+class CheckOut {
+  -boolean createdAt
+  #Date price
+  +long code
+  #long phone
+  +validateName()
 }
-class Amenity {
-  #boolean level
-  #double price
-  -String amount
-  #boolean updatedAt
-  +updateType()
+abstract class Amenity {
+  -long status
+  #boolean note
+  +validateLevel()
+  +calculateAddress()
+  +processEmail()
+  +createScore()
 }
-abstract class Guest {
-  +String type
-  -boolean score
-  #int description
-  #int note
-  +int total
-  +validateScore()
-  +validateTotal()
+interface Guest {
+  -double total
+  -float status
+  -boolean active
+  +double name
+  -int updatedAt
+  +getPrice()
 }
-class Payment {
-  +long description
-  -double id
-  +float score
-  +findAmount()
-  +deletePrice()
-  +processAmount()
-  +getId()
+abstract class Payment {
+  +long amount
+  #boolean name
+  -double updatedAt
+  +setLevel()
+  +calculateDescription()
+  +getPrice()
 }
-Amenity --> Guest : "1..*"
+Restaurant ..|> Guest
 CheckOut --o Amenity
-CheckIn ..|> Payment
-note right of Restaurant : Hotel domain
+CheckIn ..> Amenity : "0..1"
 @enduml

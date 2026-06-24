@@ -7,67 +7,67 @@ class Cart {
   #float duration
   +long name
   #int phone
-  +deletePhone()
-  +findStatus()
-  +setDescription()
-  +createName()
+  +validateQuantity()
+  +saveScore()
+  +cancelName()
+  +cancelEmail()
 }
 class Invoice {
-  +long score
-  +float price
-  #long active
-  +validateScore()
-  +savePrice()
-  +findActive()
-  +cancelName()
+  +boolean quantity
+  -boolean name
+  +long amount
+  +updateQuantity()
+  +findDescription()
 }
 class Order {
-  +float score
-  -long phone
-  +float level
-  +sendDuration()
+  #long phone
+  #int score
+  #float price
+  #long active
+  -int name
+  +deleteCreatedat()
   +processAmount()
-  +calculateLevel()
+  +deleteLevel()
 }
-abstract class Return {
+class Return {
+  +double amount
+  #long total
   -float price
-  -String status
-  +Date type
-  -Date phone
-  +cancelPrice()
-  +cancelPhone()
-  +deleteDescription()
-  +calculateAddress()
+  -String email
+  +Date score
+  +calculateTotal()
+  +saveUpdatedat()
+  +setDuration()
+  +sendDescription()
 }
 abstract class Supplier {
-  -boolean createdAt
-  #Date status
-  -double note
-  +long duration
-  -double amount
-  +findLevel()
-  +createScore()
-  +sendEmail()
-  +saveDescription()
+  -float level
+  -double phone
+  +String amount
+  -int description
+  #int total
+  +findUpdatedat()
+  +processEmail()
+  +cancelDuration()
 }
-interface Warehouse {
-  #long active
-  -boolean email
-  -int duration
-  +long amount
-  #float status
-  +updateAmount()
+class Warehouse {
+  #boolean amount
+  -boolean quantity
+  #Date note
+  -Date price
+  +boolean score
+  +createDescription()
+  +setAmount()
+  +saveTotal()
+  +validateAddress()
 }
-class Shipment {
-  -float note
-  -String quantity
-  +deleteActive()
-  +setNote()
-  +deleteEmail()
+interface Shipment {
+  -boolean level
+  -int status
+  +long phone
+  +updateStatus()
 }
-Supplier --o Return
-Supplier --o Order
-Order --o Warehouse
-Order --> Return : "0..1"
-note right of Cart : Ecommerce domain
+Shipment --|> Cart
+Return --o Order
+Shipment --|> Return
 @enduml

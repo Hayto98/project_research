@@ -6,35 +6,34 @@ abstract class Shelf {
   #boolean type
   +long level
   -String duration
-  +updatePrice()
-  +setNote()
-  +findId()
-}
-interface Branch {
-  #long price
-  #Date updatedAt
-  #int amount
-  +findDuration()
-  +sendQuantity()
-}
-interface Librarian {
-  -double name
-  +int note
-  +String type
-  +updateTotal()
-  +cancelName()
-  +sendEmail()
-}
-abstract class Reservation {
-  -Date quantity
-  #Date amount
-  #long createdAt
+  +sendStatus()
   +sendId()
-  +createPrice()
-  +setAmount()
+  +deleteType()
 }
-Librarian --o Reservation
-Branch --o Shelf
-Reservation ..|> Shelf
-note right of Shelf : Library domain
+abstract class Branch {
+  #Date note
+  #int id
+  +deleteAddress()
+  +calculateAddress()
+  +validateStatus()
+  +cancelDuration()
+}
+class Librarian {
+  #int createdAt
+  +double score
+  -double quantity
+  +processAmount()
+  +sendId()
+  +getDescription()
+  +cancelType()
+}
+class Reservation {
+  -boolean phone
+  +float updatedAt
+  +sendCode()
+  +createCode()
+  +processDescription()
+}
+Branch ..> Reservation : "1..*"
+Librarian --|> Reservation
 @enduml

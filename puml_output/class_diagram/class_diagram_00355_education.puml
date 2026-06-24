@@ -8,52 +8,47 @@ class Enrollment {
   #boolean level
   #String total
   +Date quantity
-  +findActive()
+  +cancelUpdatedat()
 }
-class Teacher {
+interface Teacher {
+  +double description
   +Date address
-  +double updatedAt
-  #float total
-  +calculateTotal()
+  +saveName()
+  +processAddress()
 }
 class Assignment {
-  #double type
+  #float total
+  +boolean name
+  -boolean address
+  -float type
   +Date email
-  -boolean id
-  +Date level
-  +deleteStatus()
+  +findPrice()
+  +createId()
+  +updateStatus()
 }
-abstract class Book {
-  #boolean type
-  #float price
-  #Date quantity
-  -long note
-  -boolean active
-  +updateAddress()
-  +deleteName()
+class Book {
+  -boolean status
+  -Date type
+  -double total
+  +updateCreatedat()
+  +sendDuration()
+  +saveTotal()
+  +updateNote()
 }
-class Course {
-  #boolean level
-  +double duration
-  #String name
-  -Date phone
-  +getCode()
-  +validateAddress()
-  +saveQuantity()
-  +processPrice()
+interface Course {
+  -int phone
+  #String total
+  +long updatedAt
+  #boolean createdAt
+  +createAmount()
 }
-class Schedule {
-  +Date email
-  -String description
-  -float score
-  +double duration
-  +saveName()
-  +getStatus()
-  +updatePrice()
+interface Schedule {
+  +long note
+  #double active
+  +getType()
 }
-Assignment --> Course : "1..*"
-Course --* Schedule
-Teacher --> Enrollment : "*"
-Book --> Course : "1..*"
-note right of Enrollment : Education domain
+Assignment --o Schedule
+Book --* Teacher
+Assignment --> Teacher : "1..*"
+Enrollment --|> Assignment
 @enduml

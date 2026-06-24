@@ -9,23 +9,24 @@ class Branch {
   +double score
   +Date phone
   +float note
-  +processPrice()
+  +sendCreatedat()
 }
 abstract class Customer {
-  #int type
-  +int quantity
-  -boolean level
-  #boolean status
-  +getLevel()
-  +getAddress()
+  #int address
+  +int type
+  -boolean quantity
+  #boolean score
+  +String status
+  +updateQuantity()
 }
-abstract class Interest {
-  -long id
-  -Date name
-  -long type
-  +processAmount()
-  +calculateDuration()
-  +deleteLevel()
+class Interest {
+  -double createdAt
+  #long id
+  -long name
+  -int type
+  -boolean total
+  +findName()
+  +deleteId()
 }
 class Card {
   +int email
@@ -33,33 +34,39 @@ class Card {
   +Date address
   #double score
   #double code
-  +sendType()
+  +processScore()
 }
-class Transfer {
-  #int amount
-  -float phone
-  #double quantity
-  +findTotal()
+interface Transfer {
+  #int description
+  -float createdAt
+  #double amount
+  +Date phone
+  -int quantity
+  +sendPhone()
+  +cancelAmount()
 }
-class Teller {
-  +long phone
-  -long score
-  +double price
-  +updateScore()
-  +validateDescription()
+abstract class Teller {
+  +double address
+  #boolean type
+  +int duration
+  +getEmail()
+  +getScore()
+  +deleteAmount()
 }
-interface Statement {
-  #Date updatedAt
-  #int note
-  -int email
+class Statement {
+  +float email
   -Date address
   #double id
-  +cancelTotal()
+  +float updatedAt
+  #double price
+  +sendId()
+  +calculateStatus()
+  +sendPhone()
+  +deleteScore()
 }
-Teller ..> Transfer : "*"
-Customer --* Teller
-Card --|> Transfer
+Statement --|> Transfer
 Teller --|> Branch
 Customer ..|> Interest
-note right of Branch : Banking domain
+Customer --o Branch
+Card --* Statement
 @enduml

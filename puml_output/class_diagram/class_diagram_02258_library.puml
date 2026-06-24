@@ -6,67 +6,62 @@ skinparam shadowing true
 class Fine {
   +boolean amount
   #float email
-  +setNote()
-  +createCreatedat()
-  +findStatus()
-  +findCreatedat()
+  +updateName()
+  +processTotal()
+  +sendAddress()
+  +processActive()
 }
 class Catalog {
+  +int code
+  +long total
   -long status
-  #Date description
-  +String level
-  -String id
-  -String quantity
-  +calculateTotal()
-}
-class Renewal {
-  -String type
-  #int phone
-  #Date createdAt
-  #Date updatedAt
-  #boolean name
-  +validateAddress()
-  +updateQuantity()
-  +getId()
-}
-class Publisher {
-  -Date code
-  +String active
-  #long price
-  +String phone
-  +long quantity
   +processAmount()
 }
+abstract class Renewal {
+  +double price
+  -long status
+  +getId()
+  +saveScore()
+  +cancelNote()
+  +savePrice()
+}
+class Publisher {
+  #int phone
+  #Date status
+  +calculateName()
+  +findLevel()
+  +validateDuration()
+}
 class Branch {
-  #float type
-  #int level
-  -Date address
-  #float active
-  +setAddress()
-  +calculateActive()
+  +boolean id
+  -long duration
+  #float createdAt
+  #float total
+  +calculateScore()
+  +updateId()
+  +sendEmail()
 }
 class Shelf {
-  -boolean address
-  #float id
-  #long amount
-  +Date createdAt
-  #int active
-  +processActive()
-  +processNote()
-  +calculateDescription()
-  +setActive()
+  #String id
+  -int code
+  +boolean name
+  -double email
+  +findPrice()
+  +setId()
+  +sendStatus()
 }
-class Author {
-  -String quantity
-  +String updatedAt
-  #double code
-  +boolean duration
-  +findType()
+interface Author {
+  +Date quantity
+  -double active
+  #String createdAt
+  +saveCreatedat()
+  +calculateTotal()
+  +updatePhone()
+  +setName()
 }
-Author ..> Publisher : "*"
-Publisher --o Renewal
-Branch ..|> Renewal
-Renewal --|> Branch
-Catalog ..> Publisher : "1..*"
-note right of Fine : Library domain
+Author ..> Catalog : "0..1"
+Catalog --> Renewal : "1..*"
+Catalog --> Shelf : "0..1"
+Branch --o Publisher
+Shelf --o Publisher
 @enduml

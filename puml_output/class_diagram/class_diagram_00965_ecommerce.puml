@@ -5,56 +5,57 @@ skinparam defaultFontSize 13
 interface Order {
   #float price
   -boolean id
-  +saveType()
-  +setDescription()
-  +updateDescription()
-  +calculateLevel()
+  +cancelDuration()
+  +deleteActive()
+  +validateId()
+  +updateAddress()
 }
 class Product {
-  +String updatedAt
-  +int total
-  -double status
-  +saveCreatedat()
+  +Date description
+  #int total
+  -Date duration
+  +cancelTotal()
 }
-interface Shipment {
-  -long type
-  -long code
-  +long active
-  +processStatus()
-  +saveLevel()
-  +validateCode()
+class Shipment {
+  +Date amount
+  +boolean total
+  +Date level
+  +findNote()
+  +createUpdatedat()
+  +saveName()
+  +calculateScore()
 }
-class Warehouse {
-  -boolean score
-  +String status
-  +saveQuantity()
-  +createId()
-  +findPrice()
-  +validateTotal()
+abstract class Warehouse {
+  +Date updatedAt
+  #long quantity
+  +long email
+  +boolean note
+  +calculateCreatedat()
 }
-class Cart {
-  +long status
-  -int code
-  +createDescription()
+interface Cart {
+  #long id
+  -float type
+  +cancelUpdatedat()
 }
-class Invoice {
+abstract class Invoice {
+  +String total
+  +long id
+  -int score
+  +float level
+  +cancelDuration()
+  +getEmail()
+  +getPrice()
+}
+class Return {
   +float name
   -String type
   +int description
-  +sendScore()
-  +createCreatedat()
-  +getTotal()
+  +getScore()
+  +createStatus()
+  +validateType()
 }
-class Return {
-  +String quantity
-  -int email
-  +calculateId()
-}
-Order --|> Warehouse
-Product ..|> Invoice
-Return ..|> Cart
-Warehouse --> Invoice : "1"
-Order --* Invoice
-Warehouse --o Shipment
-note right of Order : Ecommerce domain
+Product --o Order
+Order --* Return
+Shipment --|> Order
+Return ..|> Shipment
 @enduml

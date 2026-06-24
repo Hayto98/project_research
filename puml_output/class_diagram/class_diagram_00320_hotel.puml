@@ -8,37 +8,37 @@ class Staff {
   +double phone
   #boolean amount
   -double duration
-  +setAmount()
-  +cancelDescription()
-  +createPhone()
-  +calculateLevel()
-}
-interface CheckOut {
-  +int total
-  -float type
-  -String description
-  #long active
-  #float updatedAt
+  +processAmount()
+  +saveAddress()
   +processEmail()
-  +setPhone()
-  +sendPhone()
-  +findCode()
+  +saveQuantity()
 }
-class Restaurant {
-  +double email
-  #Date active
-  +int note
-  +getLevel()
-  +validateType()
+class CheckOut {
+  -int total
+  #boolean level
+  #float duration
+  #float score
+  +processActive()
+  +sendNote()
+}
+abstract class Restaurant {
+  -Date code
+  -String score
+  -boolean address
+  #long note
+  +updateStatus()
 }
 class Guest {
-  -int level
-  +double duration
-  #Date email
-  +validateCode()
+  #Date active
+  +int note
+  +String status
+  #long level
+  +getTotal()
+  +saveAddress()
+  +saveUpdatedat()
+  +saveDuration()
 }
-Staff ..|> Restaurant
-CheckOut ..> Restaurant : "0..1"
-CheckOut ..|> Staff
-note right of Staff : Hotel domain
+Guest --|> Staff
+Guest ..> Restaurant : "1"
+Restaurant --o Staff
 @enduml

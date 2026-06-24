@@ -6,64 +6,52 @@ interface Route {
   -float price
   -int level
   +processTotal()
-  +createCreatedat()
-  +processDescription()
+  +calculateTotal()
+  +saveType()
 }
-class Warehouse {
-  -String type
-  -double note
-  #long createdAt
-  +long phone
-  +calculateAmount()
-  +saveCreatedat()
-  +saveStatus()
-  +cancelName()
-}
-abstract class DeliveryNote {
-  +int quantity
-  -String address
-  +float email
+abstract class Warehouse {
+  -float createdAt
+  -float note
+  -int description
   #long id
-  +float type
-  +processDescription()
-  +validateEmail()
+  +cancelStatus()
+  +deleteAmount()
+  +deleteDuration()
 }
-class Depot {
-  +boolean price
-  +String score
-  -double phone
-  -long updatedAt
-  +getCode()
+class DeliveryNote {
+  -int email
+  #int total
+  +saveType()
+}
+interface Depot {
+  -long price
+  #long duration
+  +cancelCode()
 }
 class Manifest {
-  +double description
-  #boolean code
-  +cancelDescription()
-  +updateUpdatedat()
-  +cancelScore()
+  #long address
+  +float status
+  +double createdAt
+  +processScore()
+  +cancelId()
 }
 class Shipment {
-  #String active
-  -String level
-  +float code
-  +int duration
+  -int quantity
+  +boolean price
+  +String score
   +cancelQuantity()
-  +getAmount()
+  +cancelCreatedat()
+  +saveScore()
 }
-abstract class Inventory {
-  -int score
-  +double total
-  -float id
-  -boolean phone
-  +int amount
-  +getAddress()
-  +findCreatedat()
-  +findTotal()
+class Inventory {
+  #String code
+  #Date updatedAt
+  +cancelStatus()
+  +setStatus()
 }
-Depot --|> Shipment
-Warehouse --> Depot : "*"
-Shipment ..|> Warehouse
-Shipment --|> Inventory
-Manifest ..|> DeliveryNote
-note right of Route : Logistics domain
+Shipment --> Manifest : "1..*"
+Manifest ..|> Warehouse
+Warehouse ..> Manifest : "1..*"
+DeliveryNote ..> Manifest : "1"
+Inventory ..> Manifest : "1"
 @enduml

@@ -7,61 +7,62 @@ class Booking {
   +long status
   +boolean name
   #long score
-  +validateAmount()
-  +findDescription()
-  +validateId()
-  +createEmail()
+  +updateTotal()
+  +updateType()
+  +getActive()
+  +sendDuration()
 }
 class Guest {
-  #boolean address
-  -long total
-  -float active
-  +updateScore()
-  +deletePrice()
-  +processActive()
+  +long id
+  -boolean email
+  #boolean level
+  -long updatedAt
+  +processPhone()
+  +deleteTotal()
+  +deleteCode()
 }
-interface Invoice {
-  -long level
-  -Date amount
-  -String total
-  -String createdAt
-  #float id
-  +validateQuantity()
-  +sendScore()
+class Invoice {
+  #double price
+  #int type
+  -int active
+  +findCode()
 }
 class Room {
-  -boolean code
-  +boolean duration
-  #long address
-  +processNote()
-  +updateQuantity()
-  +deleteLevel()
+  -long note
+  #Date code
+  #Date phone
+  +boolean status
+  +String updatedAt
+  +findName()
 }
 class CheckIn {
-  +double name
-  +boolean updatedAt
-  +double note
-  #Date score
-  #Date price
-  +deleteStatus()
+  -float level
+  +long name
+  +boolean phone
+  -double email
+  +int note
+  +getName()
+  +calculateAmount()
+  +sendScore()
+  +processName()
 }
-interface Reservation {
+abstract class Reservation {
+  #Date level
+  #Date amount
+  #String price
+  +cancelEmail()
+  +deleteId()
+}
+interface Amenity {
   +boolean id
   +int updatedAt
   +Date description
   #String note
-  +findType()
+  +deleteType()
 }
-class Amenity {
-  +double level
-  #long total
-  +calculateAddress()
-}
-Invoice --o Amenity
-Guest --> Invoice : "1"
-Invoice --o Guest
-Room --o Reservation
-Amenity ..|> Guest
-Booking ..|> Reservation
-note right of Booking : Hotel domain
+Amenity --> Invoice : "1"
+CheckIn --|> Room
+Room --* Reservation
+Amenity --o Booking
+Invoice --* CheckIn
 @enduml

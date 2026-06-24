@@ -5,52 +5,51 @@ class Coupon {
   #Date level
   +String amount
   #float quantity
-  +findNote()
+  +sendUpdatedat()
 }
-class Customer {
-  #long id
-  +double code
-  +long createdAt
-  +double level
-  +validateLevel()
-  +updateDuration()
-  +saveActive()
+abstract class Customer {
+  +float phone
+  +String id
+  +validateCreatedat()
+  +createName()
+  +saveAddress()
 }
-abstract class Supplier {
-  +String address
-  -String updatedAt
-  #long status
-  #float active
-  -Date price
-  +sendName()
+class Supplier {
+  #int total
+  #Date address
+  #boolean phone
+  +calculateLevel()
+  +getPhone()
+  +findQuantity()
+  +updateStatus()
 }
 class Warehouse {
-  #long duration
-  -int type
-  +validateId()
-  +getType()
+  #float code
+  -Date status
+  #String note
+  #float level
+  +Date address
+  +setDescription()
+  +deleteDescription()
+  +updateCreatedat()
 }
-class Product {
-  -String description
-  +Date id
-  -float createdAt
-  -long status
+abstract class Product {
+  +String type
+  -float amount
+  +Date level
+  #double phone
+  +setName()
+  +saveNote()
+}
+class Return {
+  #double email
+  -long code
   -Date updatedAt
-  +cancelAmount()
-  +validateNote()
+  +setId()
+  +calculateAddress()
 }
-interface Return {
-  #long address
-  #String type
-  #int email
-  +long createdAt
-  +findAmount()
-  +getType()
-}
-Product --|> Supplier
-Supplier ..> Product : "1"
-Customer ..> Return : "1..*"
-Supplier --* Coupon
-Customer --> Supplier : "1"
-note right of Coupon : Ecommerce domain
+Warehouse --> Product : "1..*"
+Supplier --o Product
+Supplier ..> Customer : "1..*"
+Product --> Coupon : "0..1"
 @enduml

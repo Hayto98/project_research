@@ -9,31 +9,32 @@ abstract class Branch {
   #double id
   +long phone
   +String note
-  +cancelCode()
-  +deleteAmount()
+  +deleteUpdatedat()
+  +calculateUpdatedat()
 }
-abstract class Fine {
-  #float level
-  -float name
-  -double note
-  +Date total
-  +saveDescription()
+class Fine {
+  #Date amount
+  +double total
+  #double quantity
+  +getDescription()
+  +findAmount()
+  +sendScore()
+  +updateDescription()
 }
-interface Reservation {
-  -String total
-  #int amount
-  +processDuration()
-  +saveType()
+class Reservation {
+  -int score
+  -String level
+  #int name
+  +sendCode()
+  +deleteDescription()
 }
-class Shelf {
-  #float createdAt
-  -float address
+abstract class Shelf {
+  #float updatedAt
+  -float createdAt
+  -Date address
   -Date id
-  +findCode()
-  +validateTotal()
-  +processQuantity()
+  +cancelId()
 }
-Shelf ..> Fine : "0..1"
-Fine ..|> Reservation
-note right of Branch : Library domain
+Shelf --|> Fine
+Fine ..> Branch : "0..1"
 @enduml

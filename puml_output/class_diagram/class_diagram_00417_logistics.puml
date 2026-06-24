@@ -4,62 +4,62 @@ abstract class DeliveryNote {
   -double level
   #long amount
   -float name
-  +createDescription()
-  +updateId()
-  +calculatePrice()
+  +deleteCreatedat()
+  +saveQuantity()
+  +saveTotal()
 }
-interface Shipment {
-  #String duration
-  +double address
-  +boolean type
-  +processName()
-  +createTotal()
-  +getName()
+class Shipment {
+  #float total
+  +boolean price
+  +validateName()
+  +getActive()
+  +createPhone()
 }
-interface Inventory {
-  -int code
-  #float price
-  +long createdAt
-  #long score
-  +cancelQuantity()
-  +cancelEmail()
+class Inventory {
+  +long id
+  -String score
+  +boolean active
+  -String quantity
+  -Date note
+  +getStatus()
+  +saveNote()
 }
 abstract class Vehicle {
-  +int amount
-  -boolean duration
-  +double name
-  +cancelPhone()
-  +createScore()
-  +setEmail()
-  +deleteDescription()
+  #long level
+  #boolean updatedAt
+  #boolean address
+  +findName()
+  +setTotal()
 }
-class Warehouse {
-  +String code
-  +long duration
-  -float name
-  +Date active
-  -float address
-  +processPhone()
-  +setAmount()
+interface Warehouse {
+  #Date total
+  +String score
+  +int updatedAt
+  -boolean amount
+  +findAmount()
 }
 abstract class Customer {
-  #String phone
-  +String active
-  -Date duration
-  -long id
-  -double level
-  +updateCreatedat()
-  +findPhone()
-  +saveEmail()
-  +validateAmount()
+  +float email
+  +int score
+  -String status
+  +String duration
+  +deleteQuantity()
+  +getLevel()
+  +processActive()
 }
 class Tracking {
-  #Date id
-  +double description
-  #int name
-  +getAddress()
+  -String description
+  +double address
+  #boolean createdAt
+  -long note
+  +cancelDuration()
+  +cancelTotal()
+  +updatePrice()
 }
-Vehicle ..> Shipment : "0..1"
-Warehouse ..> Shipment : "1"
-note right of DeliveryNote : Logistics domain
+DeliveryNote --|> Shipment
+Inventory --o Customer
+Inventory --o Tracking
+Vehicle ..|> Shipment
+Customer --* Tracking
+Customer --* Inventory
 @enduml

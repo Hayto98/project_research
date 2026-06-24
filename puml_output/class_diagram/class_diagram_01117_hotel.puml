@@ -7,37 +7,35 @@ class Staff {
   -long quantity
   -long level
   +double note
-  +getTotal()
-  +processAmount()
-  +getCode()
+  +processQuantity()
+  +calculateQuantity()
+  +deletePrice()
 }
-abstract class CheckIn {
-  +long type
-  +float status
-  -float score
-  +int email
-  #double updatedAt
-  +getLevel()
-  +deleteTotal()
+class CheckIn {
+  -double code
+  +boolean price
+  +createTotal()
+  +processCreatedat()
+  +validateActive()
 }
-abstract class Restaurant {
-  #Date address
-  +boolean email
-  -double phone
-  +updateAddress()
-  +findDuration()
-  +setDuration()
+class Restaurant {
+  +int phone
+  #double code
+  +String quantity
+  +cancelName()
+  +deleteEmail()
 }
-class Amenity {
-  -Date duration
-  #float level
-  -int quantity
-  +saveScore()
-  +updateStatus()
-  +processActive()
+abstract class Amenity {
+  #long createdAt
+  -long address
+  +long email
+  #boolean phone
+  +boolean duration
+  +saveNote()
+  +setPhone()
+  +saveDuration()
 }
-Restaurant --o CheckIn
-Staff ..|> Restaurant
-Staff --|> Amenity
-note right of Staff : Hotel domain
+Amenity ..> Restaurant : "1..*"
+CheckIn --> Restaurant : "1..*"
+CheckIn --o Staff
 @enduml

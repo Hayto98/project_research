@@ -6,37 +6,41 @@ skinparam shadowing true
 interface Inventory {
   +String quantity
   -String status
-  +getCreatedat()
-  +updateDescription()
-  +createNote()
-  +saveId()
+  +calculateId()
+  +processActive()
+  +createId()
+  +sendNote()
 }
-interface Vehicle {
-  -long duration
-  -long price
-  -double address
-  +findStatus()
-  +cancelQuantity()
-  +cancelEmail()
+class Vehicle {
+  #Date note
+  -long id
+  -long score
+  -long updatedAt
+  +saveName()
+  +saveScore()
+  +findLevel()
+  +validateTotal()
 }
-interface Manifest {
-  -boolean price
-  #String quantity
-  +long address
-  -boolean total
-  -boolean level
-  +validateQuantity()
-  +saveCode()
+class Manifest {
+  -Date duration
+  #Date email
+  -double total
+  #long price
+  +getQuantity()
+  +setPhone()
+  +setDescription()
+  +findAddress()
 }
 class Shipment {
-  #long address
-  +boolean email
-  +Date status
-  +sendAddress()
-  +deletePrice()
-  +setTotal()
+  -Date level
+  +Date address
+  +int active
+  -float description
+  -String phone
+  +processScore()
+  +sendId()
+  +updateNote()
 }
-Vehicle ..> Inventory : "1"
-Inventory --* Manifest
-note right of Inventory : Logistics domain
+Manifest --* Shipment
+Vehicle --|> Shipment
 @enduml

@@ -1,9 +1,9 @@
 @startuml
 skinparam monochrome true
 left to right direction
-actor "Fleet Manager" as FleetManager
-actor "Warehouse Staff" as WarehouseStaff
-actor "Customer" as Customer
+actor "Fleet Manager" as FM
+actor "Warehouse Staff" as WS
+actor "Customer" as C
 rectangle "Logistics System" {
   usecase "Deliver Package" as UC_DeliverPackage
   usecase "Update Inventory" as UC_UpdateInventory
@@ -14,12 +14,12 @@ rectangle "Logistics System" {
   usecase "Assign Route" as UC_AssignRoute
   usecase "Report Issue" as UC_ReportIssue
 }
-FleetManager --> UC_SchedulePickup
-FleetManager --> UC_LoadPackage
-FleetManager --> UC_ReportIssue
-WarehouseStaff --> UC_FuelVehicle
-Customer --> UC_FuelVehicle
-Customer --> UC_LoadPackage
-Customer --> UC_TrackShipment
+FM --> UC_SchedulePickup
+FM --> UC_LoadPackage
+FM --> UC_ReportIssue
+WS --> UC_FuelVehicle
+C --> UC_FuelVehicle
+C --> UC_LoadPackage
+C --> UC_TrackShipment
 UC_UpdateInventory ..> UC_TrackShipment : <<extend>>
 @enduml

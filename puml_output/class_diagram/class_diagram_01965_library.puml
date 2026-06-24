@@ -9,63 +9,61 @@ class Shelf {
   #boolean id
   #float email
   +boolean level
-  +getEmail()
-  +updateId()
-  +validateType()
-  +cancelName()
+  +findLevel()
+  +processName()
+  +validateAmount()
+  +createScore()
 }
-abstract class Reservation {
-  -int code
-  -String type
-  -int active
-  +validateScore()
-  +setScore()
-  +validateAddress()
+class Reservation {
+  #float type
+  #int level
+  +double name
+  #boolean price
+  +validateCreatedat()
+  +saveName()
+  +updateName()
+  +updateAmount()
 }
 class Book {
-  +double description
-  #int score
-  +validateUpdatedat()
+  +boolean email
+  -long phone
+  +String score
+  +calculatePrice()
+  +updateDescription()
 }
 abstract class Branch {
-  -double total
-  #int status
-  +boolean code
-  +deleteAmount()
-  +processCode()
-  +deleteQuantity()
+  -float active
+  +double duration
+  +double code
+  +saveLevel()
 }
 class Author {
+  -int total
+  +double description
+  +int status
+  -Date active
+  +sendStatus()
+}
+interface Loan {
   #double type
   -int code
   +float price
   #float active
   -long amount
-  +sendPhone()
-  +setTotal()
-  +createName()
-  +cancelStatus()
+  +setAddress()
+  +saveScore()
+  +updateQuantity()
+  +updateName()
 }
-interface Loan {
-  #String quantity
-  #Date id
-  +updateDescription()
-  +updateCreatedat()
+abstract class Fine {
+  #String name
+  #String status
+  #Date duration
+  +int quantity
+  +validateNote()
+  +processPhone()
 }
-interface Fine {
-  -Date note
-  -int updatedAt
-  #int name
-  #String amount
-  +saveType()
-  +createAmount()
-  +validateId()
-}
-Branch ..> Reservation : "0..1"
-Fine ..> Book : "1"
-Branch ..> Author : "1..*"
-Shelf --* Branch
-Shelf --o Reservation
-Fine ..|> Branch
-note right of Shelf : Library domain
+Author --o Book
+Reservation ..|> Shelf
+Book --* Loan
 @enduml

@@ -7,42 +7,38 @@ class Account {
   #boolean type
   +String description
   #float score
-  +deleteAddress()
+  +saveAddress()
 }
-interface Teller {
+class Teller {
   +long address
   -boolean email
   #long code
   -double note
-  +setDescription()
-  +validateId()
+  +setDuration()
+  +deletePhone()
 }
-interface Statement {
-  #int email
-  -boolean amount
-  -long total
-  +createNote()
-  +getAddress()
+class Statement {
+  -int phone
+  -boolean id
+  +long amount
+  +calculateScore()
+  +calculateAddress()
+  +createQuantity()
 }
 abstract class Withdrawal {
-  #long updatedAt
-  -Date type
-  #String name
-  #float amount
-  -int level
-  +processId()
-  +findPhone()
+  -int address
+  -float total
+  +updateType()
 }
-class Deposit {
-  -int active
-  +double amount
-  +float note
-  +Date quantity
-  +saveDuration()
+abstract class Deposit {
+  #int type
+  -String name
+  #long price
+  +long description
+  +validatePrice()
+  +sendLevel()
 }
-Account --|> Statement
-Deposit --o Statement
-Account --* Teller
-Account --|> Withdrawal
-note right of Account : Banking domain
+Statement ..|> Withdrawal
+Teller --|> Withdrawal
+Teller ..> Account : "1"
 @enduml

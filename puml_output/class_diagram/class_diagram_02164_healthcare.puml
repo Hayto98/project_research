@@ -3,58 +3,60 @@ skinparam defaultFontSize 13
 class Nurse {
   #boolean type
   #long score
-  +cancelEmail()
+  +getQuantity()
 }
 class Ward {
-  #boolean level
-  -Date quantity
-  -Date type
-  #String active
-  #float description
-  +setDescription()
+  -double type
+  #Date level
+  +createType()
+  +setPhone()
 }
 class Prescription {
-  -long duration
-  +boolean name
-  -int id
-  +createDescription()
-  +cancelPhone()
-  +setQuantity()
+  +int status
+  #String name
+  +long code
+  -int description
+  +validateCode()
+  +cancelId()
+  +deleteName()
+  +getEmail()
 }
-class Doctor {
-  #String updatedAt
-  #Date createdAt
-  -double status
-  -int code
-  +Date name
-  +setCode()
+interface Doctor {
+  #int code
+  +float quantity
+  +String updatedAt
+  +boolean type
+  +createLevel()
 }
 class LabTest {
-  #double address
-  -String level
-  #boolean duration
-  +findId()
-  +findPrice()
-  +updateQuantity()
+  +Date note
+  +Date createdAt
+  +long updatedAt
+  #long code
+  #double active
+  +cancelStatus()
+  +processScore()
+  +findUpdatedat()
+}
+interface Treatment {
+  -String id
+  #Date price
+  +boolean updatedAt
+  -long quantity
+  +String score
   +updatePrice()
 }
-class Treatment {
-  +String active
-  +String quantity
-  +Date level
-  +updateTotal()
-  +validateAmount()
-  +cancelDuration()
-  +deleteTotal()
-}
 class Insurance {
-  #String note
-  #boolean updatedAt
-  +String total
-  +double address
-  +processEmail()
+  -String updatedAt
+  #long total
+  -int address
+  -float amount
+  -boolean description
+  +getAmount()
 }
-Insurance --o LabTest
+Ward ..|> Nurse
+Doctor --o Nurse
+Prescription --> Nurse : "*"
 LabTest --|> Prescription
-note right of Nurse : Healthcare domain
+Treatment --* Ward
 @enduml

@@ -7,31 +7,34 @@ interface Payment {
   -int description
   +String email
   +double active
-  +cancelPrice()
-  +cancelAmount()
-  +getNote()
+  +validateType()
+  +getQuantity()
+  +createPrice()
 }
-class CheckOut {
-  #long status
-  #int type
-  +createStatus()
-  +deleteTotal()
+interface CheckOut {
+  #String name
+  +double note
+  #long quantity
+  +validateCreatedat()
+  +calculatePhone()
 }
 class CheckIn {
-  +int status
-  #boolean description
-  #long address
-  -boolean active
+  -Date total
+  +Date amount
+  #int active
+  +validateActive()
+  +createDescription()
+  +cancelTotal()
+}
+class Staff {
+  -double quantity
+  -double score
+  #double name
+  +double address
+  +createName()
   +validateAddress()
+  +createQuantity()
 }
-abstract class Staff {
-  -Date price
-  -double active
-  -long total
-  #int code
-  +sendPrice()
-}
-Payment --> CheckIn : "1"
-Staff ..> Payment : "1..*"
-note right of Payment : Hotel domain
+Payment --o CheckIn
+CheckIn ..> Payment : "1"
 @enduml

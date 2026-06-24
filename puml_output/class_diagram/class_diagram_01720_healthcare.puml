@@ -7,32 +7,31 @@ interface Doctor {
   #long duration
   +boolean phone
   +String id
-  +validateId()
-  +setCode()
-  +validateActive()
+  +cancelId()
+  +processName()
+  +createPhone()
 }
 class Appointment {
-  +Date createdAt
-  +Date level
-  +createQuantity()
+  #String active
+  #int email
+  #String name
+  -long createdAt
+  +cancelActive()
 }
-class LabTest {
+interface LabTest {
   +double email
   -int description
-  +setType()
+  +deleteQuantity()
 }
-interface Billing {
+abstract class Billing {
   -long description
   +float address
   -String email
   -double id
-  +updateId()
-  +updateScore()
-  +deleteAddress()
-  +findUpdatedat()
+  +processPrice()
+  +updateDuration()
+  +sendId()
+  +sendAmount()
 }
-Billing ..> LabTest : "1"
-Doctor --o Appointment
-LabTest --* Doctor
-note right of Doctor : Healthcare domain
+LabTest ..|> Billing
 @enduml

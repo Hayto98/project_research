@@ -7,43 +7,39 @@ interface Amenity {
   +Date address
   -double type
   -long duration
-  +setScore()
+  +cancelStatus()
 }
 interface CheckIn {
   +double email
   #long updatedAt
   #int createdAt
   #int amount
-  +getQuantity()
-  +getDuration()
+  +deleteNote()
+  +setDuration()
 }
 class Invoice {
-  +int email
-  +double address
-  -float code
-  +processQuantity()
+  +long duration
+  -String code
+  +setLevel()
+  +findNote()
 }
-class Reservation {
-  #long quantity
-  #long amount
-  #boolean id
-  +long address
-  +double duration
-  +deleteCode()
-  +setPhone()
-  +sendQuantity()
+abstract class Reservation {
+  +double level
+  -int code
+  +long type
+  #Date quantity
+  +cancelType()
+  +updateScore()
+  +sendPhone()
 }
-class Guest {
-  -Date name
-  +float active
-  #float note
-  -boolean duration
-  +deleteType()
-  +updateDuration()
-  +deleteQuantity()
+interface Guest {
+  +double score
+  #boolean duration
+  #boolean code
+  -int quantity
+  +validateEmail()
 }
-CheckIn --> Amenity : "*"
-CheckIn --> Invoice : "0..1"
-Amenity ..|> Reservation
-note right of Amenity : Hotel domain
+Guest ..> Invoice : "1"
+Invoice --> Amenity : "*"
+Amenity ..> Invoice : "0..1"
 @enduml

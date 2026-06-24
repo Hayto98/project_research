@@ -5,36 +5,38 @@ skinparam shadowing true
 interface Tracking {
   #int total
   #boolean updatedAt
-  +validateCreatedat()
+  +findCode()
 }
-interface Package {
+class Package {
   -double description
   +String code
   -float price
   #boolean quantity
-  +calculateAmount()
+  +getAddress()
 }
-abstract class Depot {
-  -Date description
+class Depot {
   #int name
-  +validateDescription()
-  +updateLevel()
+  -int description
+  +boolean duration
+  -long phone
+  +boolean amount
+  +calculateLevel()
+  +updateNote()
 }
-abstract class Warehouse {
-  #int amount
-  +boolean level
-  #boolean createdAt
-  -String active
-  +calculateAddress()
-  +sendDescription()
+interface Warehouse {
+  #long name
+  +int active
+  -long score
+  +saveScore()
+  +validateActive()
 }
 class Inventory {
-  +String description
-  +double id
-  #boolean active
-  +calculatePhone()
-  +validateUpdatedat()
+  +String id
+  -boolean active
+  #Date status
+  +calculateQuantity()
+  +sendDescription()
 }
+Depot --o Package
 Package ..|> Tracking
-note right of Tracking : Logistics domain
 @enduml

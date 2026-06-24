@@ -6,36 +6,40 @@ skinparam defaultFontSize 11
 interface Insurance {
   +long total
   +float active
-  +cancelDuration()
+  +processEmail()
 }
-abstract class Prescription {
-  +String name
-  +int type
-  -double total
-  +getName()
-  +deleteLevel()
+interface Prescription {
+  +String level
+  +int description
+  -double name
+  +String type
+  +float total
+  +saveDuration()
+  +updateCreatedat()
 }
 abstract class Nurse {
   #double email
   #int amount
   -int price
-  +createQuantity()
-  +saveActive()
+  +deleteName()
+  +processDescription()
 }
-class Hospital {
-  -float duration
-  +double score
-  -Date total
-  +calculateDuration()
-  +setDescription()
+interface Hospital {
+  #boolean level
+  #Date description
+  +validateScore()
+  +getPrice()
+  +cancelEmail()
+  +cancelCode()
 }
-class Doctor {
-  #int quantity
-  +long address
-  -String id
-  +saveUpdatedat()
+abstract class Doctor {
+  #int price
+  #int status
+  #float description
+  +sendDuration()
+  +validateDuration()
+  +cancelType()
 }
-Prescription --|> Hospital
-Insurance ..> Doctor : "*"
-note right of Insurance : Healthcare domain
+Prescription --* Doctor
+Nurse --|> Insurance
 @enduml

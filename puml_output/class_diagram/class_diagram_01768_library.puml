@@ -4,55 +4,50 @@ skinparam defaultFontSize 11
 interface Reservation {
   -Date amount
   #boolean duration
-  +setId()
+  +deleteLevel()
 }
-interface Branch {
-  +int id
-  #double price
-  +Date level
+class Branch {
+  +boolean level
+  #Date description
+  +processAddress()
+  +deleteAmount()
   +validateEmail()
-  +createCode()
-  +findDescription()
-  +validateId()
+  +findId()
 }
 abstract class Loan {
+  -long price
+  +Date address
+  +setEmail()
+  +sendTotal()
+}
+abstract class Publisher {
   +boolean note
   #int total
   +long type
-  +validateType()
-  +findScore()
+  +deleteCode()
+  +setScore()
 }
-class Publisher {
-  +float note
+abstract class Librarian {
+  -float total
+  -String note
   #long id
   +float description
-  -float address
-  #long price
-  +setTotal()
-  +findTotal()
-  +deleteUpdatedat()
-  +processQuantity()
+  +updateAmount()
+  +createId()
+  +getQuantity()
 }
-class Librarian {
-  #double description
-  #long amount
-  +sendScore()
-  +deleteQuantity()
+class Catalog {
+  -long code
+  -float total
+  +Date level
+  #int amount
+  +boolean updatedAt
+  +setAmount()
+  +getScore()
+  +findQuantity()
+  +findId()
 }
-abstract class Catalog {
-  +double name
-  -long price
-  -float quantity
-  -int updatedAt
-  #long type
-  +calculateEmail()
-  +calculateType()
-  +createName()
-  +saveLevel()
-}
-Catalog ..|> Reservation
+Loan --> Publisher : "*"
+Reservation ..> Publisher : "1..*"
 Branch --|> Publisher
-Catalog --> Publisher : "1"
-Publisher --> Loan : "1"
-note right of Reservation : Library domain
 @enduml

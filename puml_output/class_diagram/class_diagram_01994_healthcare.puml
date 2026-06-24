@@ -5,62 +5,63 @@ class Appointment {
   -long amount
   +boolean note
   #String total
-  +processAddress()
-  +calculatePhone()
+  +getPrice()
+  +cancelCode()
 }
 class Treatment {
-  -float type
-  +double amount
-  #float quantity
-  +long total
-  +createType()
-  +saveEmail()
-  +createStatus()
-  +processStatus()
+  +long phone
+  #double description
+  -float score
+  +double address
+  #float type
+  +cancelPhone()
 }
-class Nurse {
-  +boolean address
-  -long total
-  +cancelLevel()
-  +processStatus()
-  +createName()
+abstract class Nurse {
+  -String type
+  +boolean email
+  #Date level
+  +Date status
+  +findAmount()
+  +setStatus()
+  +findDuration()
 }
 class Insurance {
-  +double price
-  -float createdAt
-  -float name
-  #String total
-  #boolean phone
-  +validateDuration()
-  +setName()
-  +savePhone()
-  +updateEmail()
+  -String phone
+  +Date level
+  -double type
+  +String status
+  +calculatePrice()
+  +processStatus()
+  +createScore()
+  +sendScore()
 }
-interface Diagnosis {
-  #double createdAt
-  +Date phone
-  +boolean score
-  #boolean address
-  +getPhone()
-  +setLevel()
-  +processType()
+abstract class Diagnosis {
+  #String id
+  +Date score
+  -int price
+  -boolean phone
+  +setPrice()
+  +processActive()
+  +updateTotal()
 }
-class Ward {
-  #float code
-  -long total
-  -int description
-  -long amount
-  +validateScore()
-  +setName()
+interface Ward {
+  #boolean duration
+  #long total
+  +long amount
+  +Date code
+  +getId()
+  +setType()
+  +cancelId()
+  +getType()
 }
-class Doctor {
-  +float createdAt
-  -Date quantity
-  +boolean type
-  -double phone
-  +createCode()
+abstract class Doctor {
+  -double amount
+  +double level
+  -int type
+  +setActive()
+  +getCreatedat()
+  +validateLevel()
 }
-Doctor --* Ward
-Doctor ..> Appointment : "1"
-note right of Appointment : Healthcare domain
+Appointment ..> Nurse : "1..*"
+Ward --* Treatment
 @enduml

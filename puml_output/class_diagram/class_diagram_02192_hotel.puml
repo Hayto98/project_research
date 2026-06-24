@@ -8,54 +8,50 @@ abstract class Guest {
   -float active
   #boolean level
   #int updatedAt
-  +processEmail()
-  +deleteQuantity()
-  +updateName()
-  +updateScore()
+  +deletePrice()
+  +processPhone()
+  +processNote()
+  +deleteCreatedat()
 }
-interface Reservation {
-  -Date price
-  +float score
-  -float status
-  #long quantity
-  #float note
-  +saveId()
-  +getLevel()
-  +updateCode()
+class Reservation {
+  #Date createdAt
+  -Date name
+  -boolean duration
+  #String active
+  +sendCode()
+  +calculateTotal()
+  +cancelCode()
 }
 class Room {
-  -float amount
-  -String address
-  +String email
-  #int total
-  +getCreatedat()
-  +validateQuantity()
-  +setName()
-}
-interface Restaurant {
-  #float code
-  +int email
-  -float address
-  #double level
-  +int active
-  +deleteQuantity()
-  +setLevel()
-}
-abstract class Housekeeping {
-  +boolean status
-  +int description
-  +calculateCode()
-  +setQuantity()
-  +calculateDuration()
-}
-abstract class Service {
-  #float status
-  -Date amount
-  #long email
+  #float score
+  #int quantity
+  +int address
+  -Date id
+  +long name
+  +cancelCreatedat()
+  +updateEmail()
   +processPhone()
 }
-Housekeeping --* Reservation
-Service ..> Housekeeping : "1..*"
-Housekeeping --|> Restaurant
-note right of Guest : Hotel domain
+class Restaurant {
+  #int updatedAt
+  -float status
+  +sendId()
+}
+class Housekeeping {
+  -long code
+  #long name
+  -Date total
+  +int duration
+  +calculateType()
+  +findDescription()
+  +findAmount()
+}
+class Service {
+  +boolean description
+  -String amount
+  +int quantity
+  +deleteUpdatedat()
+}
+Reservation --o Room
+Guest ..> Service : "1..*"
 @enduml

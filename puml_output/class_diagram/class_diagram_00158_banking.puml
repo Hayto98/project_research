@@ -8,49 +8,46 @@ abstract class Account {
   -float amount
   #double note
   +boolean quantity
-  +setAmount()
+  +validateId()
 }
 class Customer {
-  +int amount
-  -int phone
-  +calculateLevel()
-  +updateQuantity()
-  +updateQuantity()
+  +int id
+  -int amount
+  -double phone
+  +findScore()
+  +saveNote()
 }
-abstract class Statement {
-  #boolean type
-  +int amount
-  -float quantity
-  +getScore()
+class Statement {
+  +double updatedAt
+  +String type
+  #boolean amount
+  -long quantity
+  -long description
+  +sendCode()
+  +deleteAddress()
+  +validateAmount()
+  +saveUpdatedat()
 }
-abstract class Deposit {
-  +long address
-  #int phone
-  +boolean type
-  +float note
-  +validateQuantity()
-  +processAmount()
+class Deposit {
+  #int duration
+  -long description
+  +calculateTotal()
+  +processUpdatedat()
+  +processPrice()
+  +validateDuration()
 }
 class Card {
-  +Date updatedAt
-  #boolean score
-  #int name
-  +Date type
-  +getAmount()
-  +setEmail()
-  +createDescription()
-  +getStatus()
+  #Date type
+  #Date code
+  +sendEmail()
+  +cancelName()
 }
-interface Transaction {
-  #double phone
-  +double description
-  #String duration
-  +processAddress()
-  +updateActive()
-  +deleteActive()
+abstract class Transaction {
+  -long amount
+  +String code
+  +getPrice()
 }
-Transaction --|> Account
-Deposit --* Card
-Customer ..|> Account
-note right of Account : Banking domain
+Statement --* Customer
+Transaction ..|> Deposit
+Deposit --> Account : "1..*"
 @enduml

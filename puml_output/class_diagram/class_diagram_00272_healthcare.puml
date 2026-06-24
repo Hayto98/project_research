@@ -7,31 +7,33 @@ class Doctor {
   +boolean duration
   -Date code
   #int id
-  +createActive()
-  +cancelDuration()
-  +sendEmail()
+  +findScore()
+  +findPrice()
+  +findName()
 }
-class Diagnosis {
+interface Diagnosis {
+  #float updatedAt
+  -float price
   +boolean active
-  -Date level
-  +Date code
-  +double duration
-  +float note
-  +setDuration()
+  -Date code
+  +saveDescription()
+  +deleteScore()
 }
-class Appointment {
-  #boolean address
-  -double status
-  +cancelCode()
-  +sendStatus()
-  +getUpdatedat()
+abstract class Appointment {
+  #String status
+  #String code
+  +createPhone()
+  +findEmail()
+  +calculateStatus()
 }
-class Insurance {
-  -Date createdAt
-  +Date id
-  +calculateLevel()
+interface Insurance {
+  +int type
+  -Date email
+  +int code
+  #Date active
+  +long status
+  +validatePrice()
 }
+Insurance --|> Appointment
 Appointment --> Doctor : "*"
-Insurance --* Appointment
-note right of Doctor : Healthcare domain
 @enduml

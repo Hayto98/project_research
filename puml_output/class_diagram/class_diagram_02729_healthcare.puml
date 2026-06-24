@@ -5,59 +5,58 @@ skinparam classBorderColor #2C7DA0
 abstract class Treatment {
   +float address
   #boolean score
-  +getLevel()
+  +getName()
 }
-abstract class Patient {
-  +float active
-  #boolean score
-  +Date quantity
-  -float email
-  +validateCreatedat()
-  +processPhone()
-  +calculateType()
+class Patient {
+  +float quantity
+  #boolean active
+  +Date score
+  -float duration
+  #long email
+  +processActive()
+  +sendName()
+  +sendPhone()
 }
-interface Hospital {
-  -double code
-  -long createdAt
-  -int address
+abstract class Hospital {
+  -double level
+  -long updatedAt
+  -int code
+  -Date createdAt
+  #long address
+  +sendTotal()
   +findPhone()
-  +sendCreatedat()
-  +getDescription()
-  +deleteAmount()
 }
 class Diagnosis {
-  +int type
-  +long createdAt
-  +deleteActive()
+  +int name
+  +String id
+  -Date type
+  +validateCreatedat()
 }
 interface Insurance {
   -double code
   -int description
-  +findCode()
+  +deleteType()
 }
 class Appointment {
-  +long active
-  -int id
-  -String total
-  +setType()
-  +deleteTotal()
-  +calculateAmount()
+  +float description
+  -String active
+  +updateTotal()
+  +createScore()
+  +getNote()
 }
 class Nurse {
-  -int createdAt
-  #String total
-  -Date quantity
-  #Date email
-  +setPrice()
-  +getPhone()
-  +createTotal()
-  +setLevel()
+  -int code
+  +float type
+  -int description
+  -long total
+  +deleteTotal()
+  +deleteActive()
+  +createScore()
 }
-Hospital --o Patient
-Diagnosis --> Insurance : "0..1"
-Patient --* Diagnosis
-Treatment --* Diagnosis
-Diagnosis --o Treatment
-Treatment --|> Patient
-note right of Treatment : Healthcare domain
+Treatment ..> Hospital : "*"
+Treatment --|> Diagnosis
+Hospital --o Nurse
+Treatment ..> Insurance : "1..*"
+Patient --o Diagnosis
+Insurance --> Nurse : "0..1"
 @enduml

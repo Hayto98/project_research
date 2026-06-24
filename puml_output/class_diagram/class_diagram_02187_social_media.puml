@@ -7,47 +7,42 @@ interface User {
   +boolean total
   -long status
   +int createdAt
-  +updateNote()
-  +sendAmount()
+  +deleteEmail()
+  +sendId()
 }
-class Post {
-  +long status
-  #long name
-  -int phone
-  +processEmail()
+abstract class Post {
+  +long amount
+  +long duration
+  #long status
+  +validateCode()
+  +processCreatedat()
+  +validateType()
+}
+class Profile {
+  #int email
+  -double phone
+  -float active
+  +String total
+  #double note
+  +sendDescription()
   +savePhone()
 }
-interface Profile {
-  -float note
-  +String level
-  #double description
-  #int type
-  +boolean active
-  +sendId()
-  +cancelQuantity()
-  +cancelNote()
+interface Like {
+  +long active
+  #long id
+  +String quantity
+  +boolean note
+  +setAmount()
 }
-class Like {
-  #String email
-  #String name
-  -long level
-  -float code
-  +sendAddress()
-  +sendUpdatedat()
+class Follower {
+  -boolean phone
+  +double duration
+  -int updatedAt
+  -Date active
+  +createCreatedat()
 }
-abstract class Follower {
-  +String amount
-  #int type
-  #double name
-  +float description
-  +Date phone
-  +findLevel()
-  +saveName()
-  +saveEmail()
-  +setCode()
-}
-User --> Post : "1"
-Like ..|> Profile
-User --|> Profile
-note right of User : Social Media domain
+Follower --|> Profile
+User ..> Post : "*"
+Post ..> User : "*"
+Follower ..> User : "1..*"
 @enduml

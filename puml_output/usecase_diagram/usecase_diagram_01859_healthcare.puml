@@ -3,10 +3,10 @@ skinparam backgroundColor #FFFDE7
 skinparam classBackgroundColor #FFF9C4
 skinparam classBorderColor #F57F17
 left to right direction
-actor "Nurse" as Nurse
-actor "Receptionist" as Receptionist
-actor "Doctor" as Doctor
-actor "Lab Technician" as LabTechnician
+actor "Nurse" as N
+actor "Receptionist" as R
+actor "Doctor" as D
+actor "Lab Technician" as LT
 rectangle "Healthcare System" {
   usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
   usecase "Run Lab Test" as UC_RunLabTest
@@ -14,13 +14,13 @@ rectangle "Healthcare System" {
   usecase "Discharge Patient" as UC_DischargePatient
   usecase "Examine Patient" as UC_ExaminePatient
 }
-Nurse --> UC_RunLabTest
-Nurse --> UC_DischargePatient
-Receptionist --> UC_BookAppointment
-Receptionist --> UC_ProcessInsuranceClaim
-Receptionist --> UC_DischargePatient
-Doctor --> UC_ProcessInsuranceClaim
-Doctor --> UC_DischargePatient
-LabTechnician --> UC_ExaminePatient
+N --> UC_RunLabTest
+N --> UC_DischargePatient
+R --> UC_BookAppointment
+R --> UC_ProcessInsuranceClaim
+R --> UC_DischargePatient
+D --> UC_ProcessInsuranceClaim
+D --> UC_DischargePatient
+LT --> UC_ExaminePatient
 UC_RunLabTest ..|> UC_ExaminePatient : <<include>>
 @enduml

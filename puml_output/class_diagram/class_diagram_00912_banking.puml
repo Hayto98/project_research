@@ -6,39 +6,44 @@ interface Interest {
   -double amount
   -String createdAt
   +int email
-  +deleteStatus()
-  +getStatus()
-  +findDuration()
+  +createCreatedat()
+  +setStatus()
+  +updatePrice()
 }
-abstract class Branch {
-  +String active
+class Branch {
+  +String phone
+  -Date active
   -Date id
-  -Date note
-  #long score
+  #long note
+  #float level
+  +saveQuantity()
   +deletePhone()
-  +cancelActive()
-  +calculateId()
-  +deleteName()
+  +cancelId()
+  +findName()
 }
-abstract class Statement {
-  #Date score
-  -boolean quantity
-  #String code
-  +validateLevel()
+interface Statement {
+  #long id
+  +boolean amount
+  #long name
+  #Date type
+  +String description
+  +findName()
+  +setType()
+  +calculateId()
 }
 class Withdrawal {
-  +boolean id
-  -float code
-  +getCode()
+  +String status
+  +int address
+  +saveStatus()
 }
 class Account {
-  -double name
-  #String level
-  +processStatus()
-  +validateTotal()
+  -double price
+  -long code
+  +double updatedAt
+  +long type
+  +Date status
+  +calculateTotal()
 }
-Statement --o Branch
-Interest ..|> Statement
-Interest --* Branch
-note right of Interest : Banking domain
+Statement --|> Account
+Branch --> Statement : "1..*"
 @enduml

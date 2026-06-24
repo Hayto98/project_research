@@ -6,37 +6,34 @@ skinparam defaultFontSize 13
 interface Branch {
   +float createdAt
   #int updatedAt
-  +cancelTotal()
-  +validateCreatedat()
-  +updateQuantity()
+  +findDescription()
+  +findAmount()
+  +setQuantity()
 }
 class Reservation {
-  +long total
-  +float price
-  -boolean level
-  -float id
-  +float score
-  +deleteQuantity()
+  -double updatedAt
+  -float quantity
+  #Date description
+  +cancelTotal()
+  +deleteAmount()
+  +calculateNote()
+  +cancelId()
 }
-interface Loan {
-  +long type
+class Loan {
+  +long level
+  #boolean price
   +double status
-  #String duration
-  +deleteQuantity()
-  +validateScore()
+  +double code
+  +deleteCreatedat()
+  +processActive()
 }
-class Member {
-  -String description
-  +long address
-  #float total
-  #String duration
-  -int phone
-  +deleteType()
-  +updatePrice()
-  +updateAddress()
+abstract class Member {
+  -long amount
+  #Date description
+  +calculateDuration()
+  +findType()
 }
-Branch ..|> Reservation
-Member ..|> Reservation
-Loan --o Branch
-note right of Branch : Library domain
+Reservation --o Member
+Reservation --* Loan
+Loan ..|> Branch
 @enduml

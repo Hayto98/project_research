@@ -8,53 +8,42 @@ class Cart {
   #boolean note
   #boolean quantity
   #boolean createdAt
-  +createDuration()
-  +deleteQuantity()
+  +validateDescription()
+  +sendAddress()
 }
-class Product {
-  -boolean note
-  -boolean total
-  +findAmount()
-  +updateDuration()
-  +getStatus()
+interface Product {
+  -double quantity
+  -boolean id
+  -boolean code
+  +saveDescription()
+  +validateType()
+  +validateQuantity()
 }
-interface Payment {
-  #Date level
-  +float id
-  #String note
-  +String code
-  +deleteScore()
-  +processPhone()
+class Payment {
+  -boolean status
+  +double score
+  +findName()
 }
-interface Invoice {
-  +float code
-  -int status
-  -String address
-  #Date type
-  +saveName()
-  +processTotal()
+class Invoice {
+  +int createdAt
+  #double code
+  +validateDescription()
+  +getQuantity()
+  +findCode()
 }
 class Customer {
-  -Date active
-  #float code
-  +float price
-  #double name
-  +calculateScore()
+  +float address
+  -int type
+  +processQuantity()
+  +calculatePrice()
+  +sendUpdatedat()
+  +deleteTotal()
 }
 class Category {
-  #long email
-  -int total
-  #int status
-  #double createdAt
-  -String type
-  +getEmail()
+  +float type
+  #long total
   +saveName()
-  +deleteStatus()
-  +updateTotal()
 }
-Invoice --|> Cart
-Category ..> Cart : "*"
-Payment --> Customer : "1..*"
-Product --o Category
-note right of Cart : Ecommerce domain
+Payment ..> Product : "*"
+Customer --o Cart
 @enduml

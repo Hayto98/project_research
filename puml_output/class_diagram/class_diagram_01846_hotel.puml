@@ -6,37 +6,33 @@ skinparam ArrowColor #555555
 interface Housekeeping {
   +long level
   #double total
-  +updateScore()
-  +processAddress()
+  +processDuration()
+  +saveTotal()
 }
-abstract class Booking {
-  +boolean updatedAt
-  +Date phone
-  -boolean name
-  #Date score
-  +Date code
-  +setUpdatedat()
-  +setCreatedat()
-  +cancelScore()
-  +getAmount()
+interface Booking {
+  #Date address
+  #String type
+  +boolean total
+  #Date updatedAt
+  #String phone
+  +updateNote()
 }
 class Invoice {
-  #long code
-  -boolean description
-  #double address
-  -long amount
-  +deleteDescription()
-  +validateCode()
+  +int active
+  +int score
+  #boolean code
+  +float total
+  +findNote()
+  +processEmail()
 }
-interface Room {
-  +Date code
-  +String updatedAt
-  -int duration
-  #Date id
-  +validateEmail()
+class Room {
+  +Date description
+  -double address
+  +createDuration()
+  +validateAmount()
+  +findName()
+  +updateAmount()
 }
-Booking --o Housekeeping
-Housekeeping --> Room : "1..*"
-Housekeeping ..> Invoice : "*"
-note right of Housekeeping : Hotel domain
+Booking --* Housekeeping
+Housekeeping --* Invoice
 @enduml

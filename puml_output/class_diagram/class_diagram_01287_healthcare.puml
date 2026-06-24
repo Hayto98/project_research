@@ -5,61 +5,65 @@ abstract class Doctor {
   #double name
   +String level
   #String duration
-  +setEmail()
-  +cancelNote()
+  +createAddress()
+  +validateAddress()
 }
-class Appointment {
-  -int createdAt
-  -double duration
-  +calculateUpdatedat()
+interface Appointment {
+  #boolean address
+  #float active
+  +long level
+  +long id
+  -String createdAt
+  +processPrice()
+  +deleteAmount()
+  +updateEmail()
+  +validatePrice()
 }
 abstract class LabTest {
-  -float type
-  -float email
-  #int updatedAt
-  -float total
-  +int note
-  +validateStatus()
-  +getAmount()
-  +findPhone()
-  +createDescription()
+  -float updatedAt
+  -float score
+  #int total
+  -float note
+  +createCreatedat()
+  +sendCode()
 }
-interface Billing {
+class Billing {
+  #long id
+  -Date amount
+  +cancelPrice()
+  +validateStatus()
+}
+interface Ward {
   #float createdAt
   +long active
   +double note
   #int updatedAt
   -String level
-  +sendStatus()
+  +calculateActive()
 }
-abstract class Ward {
+class Patient {
+  -float price
   #int id
   -float status
   #double address
   #Date description
-  #float email
-  +saveDescription()
-  +deleteUpdatedat()
   +updatePhone()
-  +saveStatus()
-}
-interface Patient {
-  +float total
-  #String description
-  +processNote()
+  +setLevel()
+  +validateCreatedat()
+  +updateStatus()
 }
 class Prescription {
-  -float type
-  #Date active
-  -String total
-  #Date level
-  +sendUpdatedat()
-  +cancelType()
+  +float status
+  +float level
+  #String code
+  #String total
+  +createName()
+  +setScore()
   +deleteScore()
+  +cancelActive()
 }
-Billing --o Ward
-Doctor ..|> Ward
-Patient ..|> LabTest
-Prescription --o Patient
-note right of Doctor : Healthcare domain
+Billing ..> Ward : "*"
+Ward ..> Billing : "*"
+Doctor ..> Ward : "1..*"
+Ward --> Appointment : "*"
 @enduml

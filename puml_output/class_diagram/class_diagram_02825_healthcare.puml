@@ -7,58 +7,56 @@ class Billing {
   #float address
   -boolean total
   #long type
-  +updateLevel()
-  +calculateDuration()
-  +getQuantity()
-  +cancelName()
+  +createScore()
+  +calculateTotal()
+  +processEmail()
+  +processLevel()
 }
-class Ward {
-  +double quantity
-  #Date amount
-  -String id
-  +setEmail()
-  +updateName()
+interface Ward {
+  -boolean quantity
+  #int name
+  +saveDescription()
+  +calculateAddress()
+  +updateDuration()
 }
 class Treatment {
-  #long id
-  #float quantity
-  +float active
-  -boolean phone
-  +calculateEmail()
+  -int active
+  #Date total
+  +long code
+  -String updatedAt
+  -boolean score
+  +saveUpdatedat()
+  +sendAddress()
+  +setAmount()
 }
-class Diagnosis {
-  #double status
-  -int score
-  -String id
-  +long quantity
-  +updateType()
+interface Diagnosis {
+  #String price
+  -long score
+  +findCode()
+}
+class Doctor {
+  -float quantity
+  -int active
+  +validateId()
+  +deletePhone()
+  +validateEmail()
+  +findCode()
+}
+class Patient {
+  #int type
+  #long updatedAt
+  -float createdAt
+  +setDuration()
+  +processPhone()
+  +processNote()
   +updateCreatedat()
-  +sendAmount()
-}
-interface Doctor {
-  -boolean note
-  +String duration
-  -int type
-  -double updatedAt
-  +sendCode()
-}
-interface Patient {
-  -double total
-  +boolean amount
-  +validatePhone()
-  +sendStatus()
-  +createPrice()
-  +cancelScore()
 }
 abstract class MedicalRecord {
-  #String amount
-  -long price
-  +validateQuantity()
-  +updateAddress()
-  +getAddress()
-  +cancelActive()
+  +long price
+  +float level
+  -double amount
+  +sendAmount()
 }
-Patient --* MedicalRecord
-Diagnosis --> MedicalRecord : "*"
-note right of Billing : Healthcare domain
+Doctor --o Billing
+Doctor --o Ward
 @enduml

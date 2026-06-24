@@ -8,60 +8,52 @@ interface LabTest {
   +long active
   #int address
   #double level
-  +updateEmail()
+  +saveNote()
 }
 class Billing {
-  +int note
-  #float status
-  -String id
-  #float active
-  -String level
-  +findStatus()
+  #double active
+  +String note
+  +sendStatus()
 }
 class Treatment {
-  -double createdAt
-  +float note
-  -float total
-  +double duration
-  -float price
-  +getDuration()
-  +calculateName()
-  +sendCreatedat()
+  -String email
+  #String code
+  #String score
+  +processScore()
+  +calculateQuantity()
+  +saveNote()
 }
-class Prescription {
-  -long active
-  #float description
+abstract class Prescription {
+  -float createdAt
+  +double price
   -float note
-  +updateAmount()
+  -String level
+  #double description
+  +createUpdatedat()
 }
 class Insurance {
-  -long address
-  #long name
-  +getStatus()
-  +cancelAmount()
-  +sendQuantity()
+  +double description
+  -long active
+  +findLevel()
+  +updatePrice()
+  +processDuration()
+  +getUpdatedat()
 }
 class MedicalRecord {
-  -Date duration
-  -int price
-  -long quantity
-  +Date note
-  #long name
-  +saveDuration()
-  +getQuantity()
+  -long code
+  #long address
+  -float name
+  +setStatus()
 }
-abstract class Hospital {
-  -float price
-  +String active
-  +sendCode()
-  +findLevel()
-  +setId()
+interface Hospital {
+  -float active
+  #double quantity
+  -double level
+  +deleteAmount()
 }
-LabTest --* Insurance
-Billing ..> Prescription : "0..1"
-MedicalRecord --|> Hospital
-Insurance --o LabTest
-Billing --o Insurance
-Prescription --* Treatment
-note right of LabTest : Healthcare domain
+Billing --* Prescription
+Billing ..> MedicalRecord : "1..*"
+Insurance ..|> Hospital
+MedicalRecord --|> Insurance
+Hospital ..> Treatment : "*"
 @enduml

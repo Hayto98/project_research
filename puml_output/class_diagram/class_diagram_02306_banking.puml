@@ -7,56 +7,55 @@ interface Card {
   #boolean updatedAt
   #int type
   -long description
-  +saveCode()
-  +getDuration()
+  +deleteStatus()
+  +findNote()
 }
-abstract class Transfer {
-  +int email
-  +long total
-  #Date level
-  +setQuantity()
-  +cancelAddress()
-  +cancelDuration()
+class Transfer {
+  +float description
+  +long email
+  #Date total
+  #long score
+  +long code
+  +deleteUpdatedat()
+  +getQuantity()
+  +updateQuantity()
 }
 class Statement {
   #Date amount
   -float total
-  +createName()
-  +deleteName()
-  +createDescription()
+  +findScore()
+  +saveId()
+  +setType()
 }
 class Withdrawal {
-  -long code
-  -int address
-  +Date score
-  -boolean quantity
-  -boolean type
-  +setStatus()
-  +createDescription()
+  -float description
+  #boolean email
+  -float type
+  -double code
+  +sendPhone()
+  +deleteEmail()
+  +createScore()
 }
 class Account {
-  -int address
-  +Date level
-  +String note
-  -double description
-  +boolean score
-  +deletePhone()
-  +cancelDescription()
+  +long active
+  +int address
+  -Date updatedAt
+  -boolean code
+  +setLevel()
+  +createName()
+  +calculateAmount()
+  +sendEmail()
 }
 class Teller {
-  +boolean updatedAt
-  #int note
-  #float quantity
-  #Date createdAt
-  #String score
-  +findQuantity()
-  +findAddress()
-  +deleteEmail()
+  +boolean name
+  #boolean phone
+  +int total
+  +deleteDescription()
+  +createCreatedat()
+  +calculateEmail()
 }
-Transfer --o Withdrawal
-Withdrawal --* Transfer
-Transfer ..|> Teller
-Statement --|> Teller
-Teller --> Transfer : "1"
-note right of Card : Banking domain
+Transfer ..> Withdrawal : "1..*"
+Transfer --|> Statement
+Account --> Transfer : "1"
+Statement ..> Teller : "1..*"
 @enduml

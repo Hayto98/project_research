@@ -7,60 +7,56 @@ abstract class Amenity {
   -int type
   +Date duration
   -boolean description
-  +calculateNote()
+  +deleteId()
 }
-class CheckOut {
-  -boolean code
-  +String address
-  +deleteTotal()
-  +processStatus()
-  +validateType()
+abstract class CheckOut {
+  #String name
+  +long code
+  +double level
+  -String address
+  -double type
+  +saveType()
+  +getAddress()
 }
 class Restaurant {
-  #int name
-  +long status
-  +boolean note
-  #Date type
-  +String phone
-  +calculateActive()
-  +createUpdatedat()
+  #long note
+  #int type
+  +validateScore()
 }
 class Reservation {
-  #double note
-  -boolean quantity
-  +int code
-  +double level
-  +createType()
-  +createScore()
-  +findStatus()
-  +createAddress()
+  #long name
+  #int updatedAt
+  +float total
+  +createName()
+  +createQuantity()
+  +findNote()
 }
-interface Booking {
-  -Date duration
-  +double amount
-  +boolean level
-  +setCode()
+class Booking {
+  -double email
+  -double score
+  -boolean updatedAt
+  #float level
+  +long status
+  +createLevel()
+  +calculateDuration()
+  +saveQuantity()
 }
-class Housekeeping {
-  +String status
-  #Date phone
-  +float quantity
-  +calculateDescription()
+interface Housekeeping {
+  -String amount
+  #String total
+  +String id
+  +validateQuantity()
+}
+class Payment {
+  #int quantity
+  -int name
+  +float id
+  #double updatedAt
   +deleteScore()
+  +sendCode()
 }
-abstract class Payment {
-  #long amount
-  -Date note
-  +String quantity
-  +deleteStatus()
-  +sendId()
-  +getAddress()
-  +calculateDescription()
-}
-Amenity --o Reservation
-Payment ..> Reservation : "1"
-Amenity ..> Booking : "1..*"
-Restaurant --* Housekeeping
-Booking --> Amenity : "*"
-note right of Amenity : Hotel domain
+Housekeeping --* Restaurant
+Housekeeping --|> CheckOut
+Payment ..> Booking : "*"
+CheckOut --> Amenity : "1"
 @enduml

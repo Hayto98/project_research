@@ -7,55 +7,53 @@ interface DeliveryNote {
   +double score
   +int createdAt
   -float name
-  +sendName()
-  +updateAddress()
-  +processActive()
+  +cancelType()
+  +calculatePrice()
+  +saveEmail()
 }
-interface Inventory {
-  #Date updatedAt
-  +double status
-  -boolean createdAt
-  -int id
-  -int quantity
-  +deleteTotal()
-  +findId()
+class Inventory {
+  +boolean note
+  +int active
+  +long level
+  #Date type
+  +sendCreatedat()
 }
-interface Package {
-  #int active
-  #double id
-  -int status
-  -String description
-  +getNote()
-  +setDuration()
+class Package {
+  +double amount
+  #String phone
+  #long createdAt
+  #String score
+  +updatePhone()
 }
-interface Shipment {
+class Shipment {
+  +long score
+  +float note
+  +String type
+  +findNote()
+  +validateDescription()
+  +findUpdatedat()
+  +getCode()
+}
+interface Manifest {
   #float description
   +Date createdAt
   +String amount
-  +setTotal()
-  +deleteDuration()
-}
-abstract class Manifest {
-  -Date email
-  -int address
-  -long description
-  #boolean level
-  +findNote()
-  +sendScore()
-  +getAmount()
+  +createAddress()
+  +updateEmail()
 }
 class FuelLog {
-  +boolean type
-  +int code
-  #String description
-  +updateQuantity()
-  +sendQuantity()
-  +cancelQuantity()
-  +deleteDuration()
+  +long score
+  -Date active
+  -int quantity
+  -long email
+  #boolean address
+  +createTotal()
+  +createType()
+  +deleteLevel()
 }
-Manifest --* DeliveryNote
-Inventory --* DeliveryNote
-Shipment --o Manifest
-Inventory --* Shipment
-note right of DeliveryNote : Logistics domain
+Manifest --|> FuelLog
+FuelLog ..|> Inventory
+Inventory --|> Shipment
+Inventory --> DeliveryNote : "0..1"
+Inventory --|> Manifest
 @enduml

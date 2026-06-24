@@ -6,46 +6,43 @@ skinparam defaultFontSize 11
 class Author {
   +int type
   -boolean createdAt
-  +updateNote()
+  +deleteAddress()
 }
-class Librarian {
-  #int level
-  #double email
-  +getPrice()
-  +validateDuration()
+abstract class Librarian {
+  #double status
+  +String level
+  -long email
+  #int description
+  +sendEmail()
+  +processActive()
+  +saveScore()
 }
 class Fine {
-  +int createdAt
-  -float duration
-  -long phone
-  +double updatedAt
-  +sendId()
-  +deleteAmount()
-  +findUpdatedat()
+  -long updatedAt
+  +double quantity
+  +calculateDuration()
+  +getDescription()
+  +sendTotal()
 }
 class Catalog {
-  +boolean score
-  -double createdAt
-  #Date level
-  +boolean duration
-  +String updatedAt
-  +deleteUpdatedat()
-  +sendQuantity()
-}
-abstract class Shelf {
-  -Date description
-  #long amount
-  #Date level
-  #boolean price
-  +boolean type
-  +validateCode()
-  +setEmail()
+  #boolean updatedAt
+  +int email
+  #int type
+  +calculateId()
   +getCode()
+}
+class Shelf {
+  +int updatedAt
+  #long score
+  -double description
+  +int code
+  #int amount
+  +calculateType()
+  +cancelCode()
+  +updateTotal()
   +findStatus()
 }
-Catalog ..|> Fine
-Librarian ..|> Catalog
-Author --> Shelf : "0..1"
-Fine ..> Shelf : "1..*"
-note right of Author : Library domain
+Fine --> Librarian : "*"
+Fine --|> Author
+Author ..> Shelf : "*"
 @enduml

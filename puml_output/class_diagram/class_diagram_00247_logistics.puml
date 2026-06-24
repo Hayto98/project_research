@@ -4,47 +4,43 @@ skinparam backgroundColor #F5F5F5
 interface Package {
   -double code
   +String score
-  +updateStatus()
-  +processPrice()
+  +createScore()
+  +updateName()
 }
-interface Vehicle {
-  +int description
+abstract class Vehicle {
+  +int score
+  #long name
+  +long description
+  #float note
+  -long id
+  +createType()
+  +saveScore()
+}
+interface Manifest {
   +Date note
-  +setPhone()
-  +cancelPrice()
-  +validateLevel()
-}
-class Manifest {
-  +int active
-  #int updatedAt
-  -long note
-  +boolean type
-  +findTotal()
-  +processAmount()
-}
-class Shipment {
-  #double type
-  +Date code
-  -float phone
-  -int status
-  #double createdAt
+  +long type
+  -int name
   +updateId()
-  +updateUpdatedat()
-  +processDescription()
-  +processUpdatedat()
+  +processCreatedat()
+}
+abstract class Shipment {
+  #boolean amount
+  -String createdAt
+  +boolean price
+  -String type
+  #float code
+  +getStatus()
+  +setAmount()
+  +sendCreatedat()
 }
 class Tracking {
-  #String note
-  +String name
-  #String createdAt
-  #long id
-  +int email
-  +getAmount()
-  +findQuantity()
-  +cancelName()
+  -Date total
+  +double createdAt
+  +String id
+  -double updatedAt
+  #float active
+  +sendActive()
 }
-Shipment ..> Manifest : "1"
-Shipment ..|> Tracking
-Package --> Tracking : "*"
-note right of Package : Logistics domain
+Package --> Manifest : "1"
+Vehicle --> Package : "1"
 @enduml

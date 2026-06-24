@@ -6,58 +6,49 @@ abstract class Withdrawal {
   -String price
   +String total
   #boolean updatedAt
-  +saveLevel()
-  +processAmount()
-  +setName()
+  +processNote()
+  +cancelActive()
+  +deleteDuration()
 }
-interface Deposit {
-  +String score
-  -int createdAt
-  #int total
-  -long level
-  +deleteName()
-  +deletePrice()
-  +processPrice()
+class Deposit {
+  -boolean name
+  +double level
+  +cancelEmail()
+  +validateEmail()
 }
-class Teller {
-  +Date total
-  #long createdAt
-  #int address
+abstract class Teller {
+  -long score
+  +String amount
+  +double note
+  +calculateUpdatedat()
+  +saveCode()
+  +createQuantity()
+  +validateType()
+}
+class Loan {
+  #Date createdAt
+  -boolean level
+  +long address
   -long amount
-  +cancelType()
+  #double id
+  +findDuration()
+  +cancelQuantity()
+  +setDescription()
   +calculateActive()
-  +processCode()
-}
-interface Loan {
-  -long code
-  -long status
-  -boolean total
-  +float id
-  +getType()
 }
 class Card {
-  #float updatedAt
-  +long id
-  +int price
-  #float amount
-  +calculateActive()
-  +updateDuration()
-  +validateName()
+  -String duration
+  -long status
+  +validateScore()
+  +sendCode()
+  +findUpdatedat()
 }
 class Customer {
-  +long duration
-  #int code
-  #float id
-  +int description
-  +long name
-  +processDuration()
-  +deleteCreatedat()
-  +processTotal()
-  +createEmail()
+  -long id
+  #int type
+  +calculateCode()
 }
-Customer --> Teller : "*"
-Withdrawal --|> Deposit
-Loan --* Card
-Card ..> Deposit : "1"
-note right of Withdrawal : Banking domain
+Customer --* Deposit
+Deposit --> Customer : "1..*"
+Loan ..|> Card
 @enduml

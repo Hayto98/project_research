@@ -8,42 +8,37 @@ abstract class Hospital {
   -float updatedAt
   #float quantity
   +double description
-  +updateAmount()
-  +deleteName()
-  +deleteType()
-  +saveId()
+  +deleteLevel()
+  +calculateType()
+  +sendDescription()
+  +processActive()
 }
 class MedicalRecord {
-  +float price
-  -long id
-  +updateType()
-  +cancelQuantity()
+  #float name
+  +Date description
+  +boolean type
+  +createDuration()
 }
 class Doctor {
-  #int type
-  -int note
-  +float code
-  +updatePrice()
-  +createName()
-  +calculateType()
+  #Date note
+  #int email
+  +sendCreatedat()
+  +findName()
 }
-interface LabTest {
-  -boolean level
-  -int duration
+class LabTest {
   +Date createdAt
-  +Date code
-  +updateCreatedat()
+  +long type
+  +float note
+  +cancelType()
 }
 class Diagnosis {
-  -long price
-  +long quantity
-  -long status
-  +saveCode()
-  +cancelPrice()
+  -double price
+  #Date email
+  -boolean name
+  +setDescription()
+  +calculateLevel()
 }
-Doctor --* MedicalRecord
-LabTest --> Hospital : "1"
-LabTest --|> MedicalRecord
-MedicalRecord ..> Hospital : "0..1"
-note right of Hospital : Healthcare domain
+Diagnosis ..|> LabTest
+Hospital ..> Diagnosis : "1"
+MedicalRecord ..|> Diagnosis
 @enduml

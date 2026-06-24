@@ -3,10 +3,10 @@ skinparam backgroundColor #FFFFFF
 skinparam roundCorner 15
 skinparam defaultFontSize 13
 left to right direction
-actor "Driver" as Driver
-actor "Dispatcher" as Dispatcher
-actor "Customer" as Customer
-actor "Warehouse Staff" as WarehouseStaff
+actor "Driver" as D
+actor "Dispatcher" as D1
+actor "Customer" as C
+actor "Warehouse Staff" as WS
 rectangle "Logistics System" {
   usecase "Load Package" as UC_LoadPackage
   usecase "Update Inventory" as UC_UpdateInventory
@@ -15,15 +15,15 @@ rectangle "Logistics System" {
   usecase "Schedule Pickup" as UC_SchedulePickup
   usecase "Assign Route" as UC_AssignRoute
 }
-Driver --> UC_LoadPackage
-Driver --> UC_AssignRoute
-Driver --> UC_UpdateInventory
-Dispatcher --> UC_LoadPackage
-Dispatcher --> UC_SchedulePickup
-Customer --> UC_FuelVehicle
-Customer --> UC_UpdateInventory
-Customer --> UC_AssignRoute
-WarehouseStaff --> UC_SchedulePickup
-WarehouseStaff --> UC_LoadPackage
+D --> UC_LoadPackage
+D --> UC_AssignRoute
+D --> UC_UpdateInventory
+D1 --> UC_LoadPackage
+D1 --> UC_SchedulePickup
+C --> UC_FuelVehicle
+C --> UC_UpdateInventory
+C --> UC_AssignRoute
+WS --> UC_SchedulePickup
+WS --> UC_LoadPackage
 UC_SchedulePickup ..> UC_AssignRoute : <<extend>>
 @enduml

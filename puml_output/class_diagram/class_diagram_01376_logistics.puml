@@ -5,38 +5,37 @@ interface Driver {
   +Date active
   #int address
   -String level
-  +validatePhone()
+  +saveCreatedat()
 }
 class FuelLog {
+  +String amount
   -float address
-  +int status
-  +Date level
-  +calculateTotal()
+  +cancelNote()
 }
 class Shipment {
-  +double id
-  -boolean email
-  +findQuantity()
-  +updateLevel()
-  +calculateDescription()
-  +calculatePhone()
+  +String price
+  +long total
+  +calculateQuantity()
+  +sendCode()
 }
-class Manifest {
-  #double description
-  #float price
-  #long type
-  #String id
-  +calculateId()
-  +calculatePhone()
+interface Manifest {
+  -float quantity
+  #String createdAt
+  -int price
+  -boolean description
+  -String total
+  +setScore()
+  +createEmail()
+  +validateActive()
+  +calculateTotal()
 }
 class Tracking {
-  -double quantity
-  -boolean description
-  #int phone
-  -String price
+  +double description
+  -float total
+  +setPhone()
   +findCreatedat()
 }
-Manifest --|> Tracking
-FuelLog --|> Driver
-note right of Driver : Logistics domain
+FuelLog --o Shipment
+Shipment --* Manifest
+Tracking --* FuelLog
 @enduml

@@ -7,58 +7,52 @@ interface Return {
   +float duration
   -int price
   -boolean code
-  +calculateQuantity()
-  +cancelType()
-  +calculateUpdatedat()
+  +saveCode()
+  +processScore()
+  +updateCreatedat()
 }
 class Product {
-  +boolean status
   -double total
-  +double note
-  +float phone
-  #float email
-  +getId()
-  +deleteId()
-  +createCreatedat()
-  +processQuantity()
+  -long updatedAt
+  +boolean quantity
+  -double note
+  +double status
+  +createId()
+  +saveActive()
 }
 abstract class Category {
-  #int price
-  -int duration
+  +float id
+  -int description
+  +cancelAddress()
+  +validateName()
+  +calculateType()
+  +processDescription()
+}
+abstract class Order {
   -double active
   -float status
-  +updateCreatedat()
-  +getDuration()
+  +int updatedAt
+  +String phone
+  #long amount
+  +saveAmount()
+  +setDescription()
+  +updateScore()
 }
-class Order {
-  #float note
-  -float code
-  #Date createdAt
-  -boolean amount
-  +processDescription()
-  +createAddress()
-  +saveType()
+class Payment {
+  #long quantity
+  -int active
+  -long email
+  +createStatus()
+  +setEmail()
+  +deleteLevel()
+  +deleteCreatedat()
 }
-interface Payment {
-  #Date email
-  +double status
-  +boolean code
-  #String createdAt
-  +createActive()
-  +setId()
-  +updateDuration()
+interface Shipment {
+  #Date code
+  +double createdAt
+  +findName()
+  +setAmount()
 }
-class Shipment {
-  -String quantity
-  +Date active
-  +getTotal()
-  +setCode()
-  +calculateScore()
-  +findCode()
-}
-Order ..> Payment : "0..1"
-Shipment ..|> Category
-Shipment --* Return
-Product ..> Return : "1..*"
-note right of Return : Ecommerce domain
+Payment --* Shipment
+Category --|> Payment
 @enduml

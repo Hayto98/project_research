@@ -6,54 +6,52 @@ skinparam ArrowColor #555555
 interface Doctor {
   #long createdAt
   -int type
-  +saveNote()
+  +getAmount()
 }
-class Billing {
-  +long amount
-  +float score
-  +findType()
-  +calculateStatus()
+abstract class Billing {
+  +long code
+  +float amount
+  +Date score
+  +deleteAmount()
+  +findEmail()
+  +cancelEmail()
+  +validateScore()
 }
-class Hospital {
+interface Hospital {
   -double duration
   +double amount
   +float active
-  +findLevel()
+  +createLevel()
 }
-class Appointment {
-  +boolean score
-  +double description
-  +findTotal()
-  +createNote()
-  +cancelScore()
+interface Appointment {
+  +boolean code
+  +double score
+  #long description
+  +setTotal()
+  +saveAmount()
+  +saveType()
+  +saveDuration()
 }
-abstract class Patient {
-  -boolean duration
-  #String price
-  #String amount
-  #double active
-  +getDescription()
+interface Patient {
+  #long active
+  #boolean level
+  +Date email
+  +Date price
+  -Date amount
+  +deleteNote()
 }
 class MedicalRecord {
-  -int code
-  +long amount
-  +setCreatedat()
-  +validateAddress()
-  +validateName()
+  +int level
+  -int status
+  +updateLevel()
 }
-interface Diagnosis {
-  #Date total
-  +long updatedAt
-  #long address
-  +cancelEmail()
-  +cancelNote()
-  +processCreatedat()
-  +validateCode()
+class Diagnosis {
+  -long createdAt
+  +boolean phone
+  +setNote()
+  +deleteAddress()
 }
-Doctor ..|> Patient
-Billing ..|> Diagnosis
-Billing --> Doctor : "0..1"
-Patient ..|> Appointment
-Appointment ..> Billing : "1..*"
-note right of Doctor : Healthcare domain
+MedicalRecord --|> Diagnosis
+Hospital --* Patient
+Patient --> Appointment : "1..*"
 @enduml

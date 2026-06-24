@@ -5,63 +5,64 @@ class Invoice {
   #double note
   -float address
   -boolean duration
-  +findDuration()
-  +validateActive()
-  +updateLevel()
+  +updateScore()
+  +getDuration()
+  +deletePhone()
 }
-class Cart {
-  #int quantity
-  +double phone
-  #Date amount
-  #double duration
-  #double status
-  +validateType()
-  +cancelPrice()
-  +getScore()
-  +updatePhone()
+interface Cart {
+  -long active
+  -int createdAt
+  -String email
+  #int duration
+  +deleteAmount()
 }
-interface Order {
-  #boolean note
-  -Date level
-  -long code
-  +double address
-  +double active
-  +cancelCode()
-  +sendTotal()
+abstract class Order {
+  #int price
+  -Date address
+  #Date type
+  #Date duration
+  #double id
   +createLevel()
+  +deleteUpdatedat()
+  +updateCode()
+  +findNote()
 }
-abstract class Payment {
-  +double code
-  #int description
-  #int active
-  +long name
-  +cancelPrice()
+class Payment {
+  +double score
+  +double phone
+  #Date note
+  -boolean quantity
+  +deletePhone()
 }
-class Review {
-  #float description
-  +boolean price
-  +getName()
-  +createName()
-  +updateDuration()
+interface Review {
+  +boolean email
+  +int level
+  -Date type
+  +Date duration
+  +int code
+  +updateName()
+  +deleteUpdatedat()
+  +updateCreatedat()
 }
 abstract class Warehouse {
-  -boolean address
-  -double code
-  #double description
-  +processCode()
-  +setEmail()
-  +getId()
-  +saveId()
+  #float status
+  +boolean description
+  -String price
+  +findScore()
 }
 class Customer {
-  +Date level
-  +float address
-  +double duration
-  +Date createdAt
-  +deleteEmail()
-  +setCreatedat()
+  -float duration
+  +int total
+  -boolean description
+  +saveCode()
+  +cancelAmount()
+  +deleteDuration()
+  +createTotal()
 }
-Cart ..|> Review
-Customer --|> Payment
-note right of Invoice : Ecommerce domain
+Payment --|> Customer
+Customer --* Invoice
+Invoice ..> Customer : "1"
+Cart --> Order : "1..*"
+Order ..|> Cart
+Warehouse ..|> Invoice
 @enduml

@@ -4,63 +4,62 @@ skinparam roundCorner 15
 abstract class Guest {
   #int active
   +double address
-  +sendUpdatedat()
+  +createStatus()
 }
-abstract class Booking {
+class Booking {
+  +double description
   #String amount
-  +double total
-  #String status
-  +processPhone()
-  +calculateUpdatedat()
-  +cancelDescription()
+  #long total
+  -long status
+  -int name
+  +calculateAddress()
+  +sendCreatedat()
 }
 class Reservation {
-  +String id
-  +double level
-  #String description
-  +Date note
-  -int quantity
-  +getCreatedat()
-  +setTotal()
+  +String duration
+  +double note
+  #String quantity
+  +setScore()
+  +processStatus()
 }
 class Invoice {
-  -boolean name
-  #String price
-  -float total
-  #double id
-  +calculateCode()
-  +sendLevel()
-  +setDescription()
-  +setDescription()
-}
-abstract class Amenity {
-  #int email
-  -Date description
-  +cancelStatus()
-  +sendQuantity()
-  +processCreatedat()
-}
-interface CheckOut {
-  #boolean note
+  -Date name
   #String createdAt
-  #String level
-  -double name
-  +sendScore()
-  +calculateCode()
-  +deleteNote()
-  +saveCode()
+  -String status
+  +processLevel()
+  +processName()
+  +sendCreatedat()
+  +saveDuration()
 }
-interface Payment {
-  #Date type
-  +int name
-  +String active
-  +Date status
-  -boolean address
-  +getScore()
+class Amenity {
+  +boolean active
+  #boolean type
+  +int level
+  +int total
+  +setActive()
+  +calculatePrice()
+  +cancelStatus()
+  +cancelPhone()
 }
-Payment --* Guest
-CheckOut ..> Payment : "1..*"
-Reservation --o Invoice
-Invoice ..> Reservation : "1..*"
-note right of Guest : Hotel domain
+class CheckOut {
+  #long total
+  -Date email
+  #int status
+  +saveAmount()
+  +sendEmail()
+  +updateDescription()
+}
+class Payment {
+  -double id
+  #boolean quantity
+  +updatePhone()
+  +cancelStatus()
+  +deleteScore()
+  +createTotal()
+}
+CheckOut ..> Guest : "*"
+Invoice --> Guest : "1"
+Reservation ..> Amenity : "1"
+Booking --|> Payment
+Guest --o CheckOut
 @enduml

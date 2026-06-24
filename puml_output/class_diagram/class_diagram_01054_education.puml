@@ -6,41 +6,50 @@ skinparam defaultFontSize 13
 class Enrollment {
   -long price
   #long note
-  +sendAmount()
+  +calculateDuration()
 }
 class Book {
-  +int description
-  +Date id
-  -boolean name
-  +processCode()
-  +updateUpdatedat()
-  +findType()
-  +validatePhone()
+  +int createdAt
+  +String description
+  #double id
+  +saveAmount()
+  +findNote()
+  +calculateTotal()
+  +findAddress()
 }
 class Course {
-  +int quantity
-  +Date total
-  +cancelQuantity()
+  -String address
+  +int phone
+  #Date id
+  +boolean status
+  -long quantity
+  +processCreatedat()
 }
 class Department {
-  #Date amount
-  #double note
-  +getUpdatedat()
+  -float level
+  #Date type
+  +String code
+  -long name
+  +double updatedAt
+  +validateUpdatedat()
 }
-class Teacher {
-  +double code
-  +double price
-  #String email
-  +findCreatedat()
+interface Teacher {
+  #int active
+  -Date code
+  +cancelLevel()
 }
-abstract class Attendance {
-  -Date updatedAt
-  +int email
-  +calculatePhone()
-  +sendTotal()
-  +createAmount()
+class Attendance {
+  -long email
+  #double amount
+  -int description
+  #String address
+  +cancelScore()
+  +createStatus()
+  +sendCode()
 }
-Course --o Teacher
-Department --o Attendance
-note right of Enrollment : Education domain
+Department --> Attendance : "1"
+Attendance ..> Department : "*"
+Course ..> Attendance : "0..1"
+Book --* Enrollment
+Enrollment --|> Book
 @enduml

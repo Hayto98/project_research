@@ -5,55 +5,48 @@ skinparam defaultFontSize 13
 interface Comment {
   #int updatedAt
   #boolean price
-  +validateLevel()
-  +calculateDuration()
+  +calculateCreatedat()
+  +saveLevel()
 }
-class Notification {
-  #double price
-  #int duration
-  +double id
-  #String level
-  #float code
-  +updateActive()
-  +calculateActive()
-  +createTotal()
+interface Notification {
+  -float duration
+  +double createdAt
+  #String score
+  #double type
+  #int price
+  +cancelCode()
+  +setQuantity()
 }
-class Profile {
+interface Profile {
+  +boolean score
+  -boolean address
+  +saveType()
+  +setNote()
+  +createActive()
+}
+interface Post {
   +boolean status
   +long code
   +String createdAt
-  +findId()
-  +sendScore()
-  +cancelDuration()
+  +setCode()
+  +cancelDescription()
+  +processPhone()
 }
-interface Post {
+class User {
   -int note
   +boolean total
   +Date updatedAt
   #String price
-  +deleteTotal()
-  +saveLevel()
+  +setLevel()
+  +findAmount()
 }
-class User {
-  -double duration
-  +Date code
-  +int name
-  +deleteStatus()
-  +getLevel()
-  +setScore()
+interface Group {
+  -int updatedAt
+  #int code
+  +long name
+  +String phone
+  +sendStatus()
 }
-class Group {
-  +String duration
-  +double score
-  +boolean description
-  -long phone
-  #int level
-  +validatePrice()
-  +cancelName()
-  +validateAddress()
-  +validateQuantity()
-}
-Post --* Notification
-Comment --> Profile : "*"
-note right of Comment : Social Media domain
+User --o Comment
+User ..|> Group
 @enduml

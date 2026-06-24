@@ -5,49 +5,46 @@ skinparam defaultFontSize 11
 interface Shelf {
   #boolean name
   +Date status
-  +sendAddress()
-  +findDuration()
-  +updatePhone()
+  +saveActive()
+  +deleteEmail()
+  +cancelDuration()
 }
-abstract class Catalog {
-  +int quantity
-  -float createdAt
-  +int code
-  #long level
-  #boolean address
-  +findEmail()
+class Catalog {
+  -Date phone
+  -float note
+  +Date score
+  +updateAmount()
 }
 interface Librarian {
+  -float address
+  +int status
+  #long updatedAt
+  +createLevel()
+}
+class Book {
   -Date description
   +double code
-  +setType()
-  +setQuantity()
-  +createQuantity()
+  +findNote()
+  +createTotal()
+  +getId()
 }
-interface Book {
+class Loan {
+  #float email
+  #int quantity
   -Date score
-  #String createdAt
-  +getDuration()
+  #String id
+  +validateStatus()
 }
-interface Loan {
+class Renewal {
   -Date duration
   #int code
   #float updatedAt
   #double email
-  +setQuantity()
-  +savePhone()
-  +findCreatedat()
+  +createAddress()
+  +getNote()
+  +processNote()
 }
-class Renewal {
-  #float status
-  #int email
-  +long total
-  -long code
-  +String score
-  +sendEmail()
-  +validatePrice()
-}
-Shelf ..|> Book
-Catalog --> Shelf : "*"
-note right of Shelf : Library domain
+Renewal --* Catalog
+Book --* Shelf
+Book ..> Loan : "0..1"
 @enduml

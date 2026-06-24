@@ -6,60 +6,53 @@ class Shipment {
   #double total
   #float email
   -String status
-  +getActive()
+  +setName()
 }
-abstract class Cart {
-  +String type
-  #long duration
-  +Date amount
-  -boolean note
-  +getNote()
+interface Cart {
+  +String address
+  #long type
+  +Date level
+  -boolean amount
+  #boolean note
+  +savePhone()
 }
-class Warehouse {
-  +Date createdAt
-  #int active
-  #String level
-  +boolean price
-  +deleteDescription()
-  +validateNote()
+abstract class Warehouse {
+  #float phone
+  -String createdAt
+  #boolean active
+  +Date score
+  +validateLevel()
 }
 class Return {
-  -String phone
-  +float code
-  +findDescription()
-  +updateType()
-  +findDescription()
+  -float description
+  +boolean duration
+  +long phone
+  +findType()
 }
-interface Payment {
-  -String id
-  #Date name
-  -int description
-  +Date total
-  +int type
-  +calculateStatus()
+abstract class Payment {
+  -Date amount
+  +int active
+  +cancelName()
+  +getEmail()
+  +deleteUpdatedat()
+  +sendCreatedat()
 }
 class Wishlist {
-  #int status
-  +String createdAt
-  +Date phone
-  +findActive()
-  +getType()
-  +sendScore()
-  +saveLevel()
+  -double description
+  -String score
+  +validateNote()
+  +cancelEmail()
+  +setCode()
+  +processCode()
 }
 class Coupon {
-  -double active
-  +long name
-  #long createdAt
-  +float duration
-  -boolean code
-  +calculateScore()
-  +createEmail()
-  +setId()
+  #float total
+  #String status
+  +cancelEmail()
+  +updateDescription()
 }
-Cart ..|> Warehouse
-Shipment ..|> Cart
-Return --o Payment
-Coupon --* Warehouse
-note right of Shipment : Ecommerce domain
+Payment ..|> Cart
+Shipment ..> Cart : "*"
+Wishlist --|> Payment
+Return --> Payment : "0..1"
 @enduml

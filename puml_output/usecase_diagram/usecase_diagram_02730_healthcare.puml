@@ -4,10 +4,10 @@ skinparam classBackgroundColor #FFF9C4
 skinparam classBorderColor #F57F17
 skinparam defaultFontSize 13
 left to right direction
-actor "Doctor" as Doctor
-actor "Insurance Provider" as InsuranceProvider
-actor "Patient" as Patient
-actor "Lab Technician" as LabTechnician
+actor "Doctor" as D
+actor "Insurance Provider" as IP
+actor "Patient" as P
+actor "Lab Technician" as LT
 rectangle "Healthcare System" {
   usecase "Book Appointment" as UC_BookAppointment
   usecase "Discharge Patient" as UC_DischargePatient
@@ -15,13 +15,13 @@ rectangle "Healthcare System" {
   usecase "Issue Prescription" as UC_IssuePrescription
   usecase "Process Insurance Claim" as UC_ProcessInsuranceClaim
 }
-Doctor --> UC_BookAppointment
-Doctor --> UC_IssuePrescription
-InsuranceProvider --> UC_IssuePrescription
-InsuranceProvider --> UC_ProcessInsuranceClaim
-Patient --> UC_ProcessInsuranceClaim
-Patient --> UC_BookAppointment
-LabTechnician --> UC_DischargePatient
-LabTechnician --> UC_UpdateMedicalRecord
+D --> UC_BookAppointment
+D --> UC_IssuePrescription
+IP --> UC_IssuePrescription
+IP --> UC_ProcessInsuranceClaim
+P --> UC_ProcessInsuranceClaim
+P --> UC_BookAppointment
+LT --> UC_DischargePatient
+LT --> UC_UpdateMedicalRecord
 UC_UpdateMedicalRecord ..> UC_BookAppointment : <<include>>
 @enduml

@@ -6,51 +6,50 @@ class Category {
   +String amount
   -String active
   #long name
-  +updateCreatedat()
-  +calculateAmount()
+  +sendNote()
+  +sendEmail()
 }
-class Wishlist {
-  +float code
-  +int note
-  #long createdAt
-  +cancelDuration()
+abstract class Wishlist {
+  +Date code
+  -int level
+  +float createdAt
+  +cancelLevel()
 }
 class Supplier {
-  #float active
+  #float name
+  +boolean level
+  #boolean createdAt
   #float description
-  -boolean duration
-  +validatePrice()
-  +deleteCreatedat()
-  +findAddress()
-  +sendNote()
+  +setId()
+  +getPhone()
+  +processPhone()
 }
 class Review {
-  #int price
-  -float code
-  #int address
-  +setPrice()
-  +cancelName()
-  +calculateCreatedat()
+  +int description
+  -float createdAt
+  +long address
+  #int active
+  -float note
+  +validateAmount()
+  +getType()
 }
-class Shipment {
-  -int id
-  +String status
-  +boolean total
-  +long phone
-  +cancelPrice()
-}
-abstract class Customer {
-  #int email
-  -Date id
-  +Date address
-  +cancelCode()
-  +createCreatedat()
+abstract class Shipment {
+  +long price
+  +String createdAt
+  +findCode()
+  +createName()
   +setType()
+  +findNote()
 }
-Supplier ..> Shipment : "*"
-Review --> Wishlist : "1..*"
-Wishlist ..|> Supplier
-Customer ..> Supplier : "*"
-Shipment --> Supplier : "1..*"
-note right of Category : Ecommerce domain
+class Customer {
+  #String active
+  #double id
+  #double quantity
+  +validateAddress()
+  +processCode()
+}
+Shipment --* Wishlist
+Customer ..> Category : "1..*"
+Shipment --* Category
+Customer --|> Wishlist
 @enduml

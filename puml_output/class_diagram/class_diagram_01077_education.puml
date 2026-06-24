@@ -7,51 +7,54 @@ interface Book {
   +String type
   #boolean code
   #float email
-  +sendId()
-  +createCreatedat()
-  +cancelNote()
+  +createUpdatedat()
+  +updateActive()
+  +validateAmount()
 }
 class Enrollment {
-  +Date id
-  -double score
-  #Date price
-  #String email
-  +deleteStatus()
+  +Date updatedAt
+  -double address
+  #Date id
+  #String price
+  #Date email
+  +getEmail()
 }
-interface Teacher {
+class Teacher {
   +String price
   -Date note
   -boolean updatedAt
   +float email
-  +getCode()
-  +cancelCreatedat()
+  +processCode()
+  +processScore()
 }
 class Department {
+  +boolean description
+  #double quantity
   +Date total
-  #double id
-  -int score
-  +long note
-  +cancelCreatedat()
+  +updateLevel()
+  +getEmail()
+  +deleteNote()
+  +setEmail()
 }
-abstract class Attendance {
-  #long active
-  -int type
-  #long id
-  +deleteDescription()
-  +validateActive()
-  +cancelCode()
-  +setType()
+class Attendance {
+  -String note
+  #long createdAt
+  -int active
+  +findDescription()
+  +calculateType()
+  +sendName()
 }
 class Course {
-  #Date note
-  #double quantity
-  #double price
-  +createDuration()
-  +cancelType()
-  +sendStatus()
+  +double address
+  -boolean active
+  +double code
+  +saveType()
+  +sendScore()
+  +calculateDuration()
 }
+Attendance --* Department
+Teacher --> Attendance : "*"
+Attendance --> Book : "1..*"
 Book ..> Department : "1"
 Enrollment --o Book
-Teacher ..|> Department
-note right of Book : Education domain
 @enduml

@@ -3,35 +3,32 @@ skinparam defaultFontSize 13
 abstract class Nurse {
   #boolean phone
   #Date quantity
-  +setActive()
+  +updateUpdatedat()
 }
-abstract class Billing {
+interface Billing {
+  +float total
   +Date type
   #int email
   -double id
-  #float level
-  +Date description
-  +validateDuration()
-  +updateQuantity()
-  +saveName()
+  #float score
+  +updateId()
 }
-interface Appointment {
-  #Date level
-  +String type
-  #int address
-  #boolean id
-  -Date email
-  +sendType()
-  +deleteNote()
+class Appointment {
+  #float duration
+  -boolean createdAt
+  #double quantity
+  -String name
+  +createType()
+  +setCreatedat()
+  +cancelTotal()
 }
-abstract class Prescription {
-  #Date price
-  #float status
-  #long amount
-  +getDescription()
+class Prescription {
+  #Date duration
+  -int address
+  -double amount
+  +deleteAmount()
+  +updateName()
 }
-Prescription ..> Billing : "1..*"
-Billing --|> Nurse
-Nurse ..> Appointment : "*"
-note right of Nurse : Healthcare domain
+Appointment --|> Nurse
+Billing --o Appointment
 @enduml

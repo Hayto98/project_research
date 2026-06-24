@@ -6,36 +6,41 @@ class FuelLog {
   +String status
   #float createdAt
   +boolean quantity
-  +updateStatus()
-  +calculateQuantity()
-  +savePrice()
-  +setPhone()
-}
-interface Vehicle {
-  +boolean name
-  #int amount
-  +cancelScore()
   +getStatus()
+  +processPrice()
+  +validateId()
+  +calculateCode()
 }
-class Warehouse {
-  +int name
-  +long active
-  #int note
-  +long email
-  #String score
-  +processEmail()
-  +processNote()
-  +cancelDescription()
+class Vehicle {
+  +boolean status
+  #int phone
+  +float code
+  #boolean name
+  +String amount
+  +setQuantity()
+  +findActive()
+  +calculateEmail()
 }
-interface Depot {
-  +long score
-  -double updatedAt
-  +int total
-  +float phone
-  +setId()
-  +setDescription()
+interface Warehouse {
+  -boolean email
+  +String note
+  -Date updatedAt
+  +Date description
+  #long createdAt
+  +findTotal()
+  +deleteTotal()
+  +calculateScore()
+  +sendCreatedat()
 }
-Warehouse --* Depot
-Vehicle --> Warehouse : "1"
-note right of FuelLog : Logistics domain
+abstract class Depot {
+  +double active
+  -int email
+  -long score
+  +setLevel()
+  +saveAddress()
+  +getLevel()
+  +saveLevel()
+}
+FuelLog --|> Depot
+Vehicle --> Warehouse : "0..1"
 @enduml

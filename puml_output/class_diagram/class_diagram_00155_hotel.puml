@@ -6,68 +6,54 @@ skinparam defaultFontSize 13
 class Service {
   +int description
   #long createdAt
-  +saveType()
-  +cancelEmail()
-  +findQuantity()
+  +cancelPrice()
+  +updateAddress()
+  +deleteActive()
 }
-class CheckIn {
-  +int active
-  #int price
-  #Date status
-  #Date createdAt
-  +double email
-  +findAmount()
-  +processScore()
-  +createName()
+interface CheckIn {
+  -String quantity
+  #int name
+  -int note
+  +Date active
+  +getScore()
+  +calculateStatus()
 }
-class CheckOut {
+interface CheckOut {
+  #int note
+  -boolean phone
+  +setAmount()
+  +deleteType()
+  +createEmail()
+}
+class Invoice {
+  -int type
   -boolean active
-  -int quantity
-  +int description
-  -float total
-  #double score
-  +processStatus()
-  +updateDuration()
-  +calculateAddress()
-  +cancelActive()
+  +deleteName()
+  +saveActive()
 }
-interface Invoice {
-  #boolean type
-  +Date name
-  +processDescription()
-  +updateLevel()
-  +sendCode()
-  +getCode()
-}
-class Housekeeping {
-  +String quantity
-  +int code
-  +updatePrice()
+abstract class Housekeeping {
+  #double description
+  #double duration
+  -String email
+  +findUpdatedat()
+  +createPrice()
 }
 class Restaurant {
-  #double price
-  #int type
-  #Date updatedAt
-  +float total
-  +calculateNote()
-  +deleteId()
-  +setDuration()
-  +updatePhone()
+  #boolean type
+  +Date name
+  +processScore()
+  +saveAmount()
+  +deletePhone()
+  +sendStatus()
 }
 class Guest {
-  #int updatedAt
-  +int createdAt
-  #Date quantity
-  +Date status
+  +float level
+  +int active
+  +float code
+  +deleteEmail()
+  +cancelStatus()
   +setActive()
-  +processScore()
-  +deletePrice()
-  +createStatus()
 }
-Guest --|> CheckOut
-Invoice --* CheckIn
-Housekeeping --* CheckIn
-Guest --o Service
-Restaurant ..> CheckIn : "*"
-note right of Service : Hotel domain
+Service ..|> CheckIn
+Housekeeping ..|> Service
 @enduml

@@ -4,58 +4,44 @@ skinparam ArrowColor #555555
 class Teller {
   -String address
   #double status
-  +createActive()
-  +processStatus()
-  +deleteActive()
+  +deleteId()
+  +deleteName()
+  +createDescription()
 }
-class Deposit {
-  +Date active
-  #float total
-  -long quantity
-  -int name
-  #long level
-  +validateCode()
-  +validateDescription()
-  +cancelCreatedat()
-  +createScore()
+abstract class Deposit {
+  +double amount
+  #boolean active
+  +processDescription()
+  +calculateEmail()
+  +calculatePrice()
+  +getAddress()
 }
 class Account {
-  #String email
-  -long note
-  +setType()
-  +createEmail()
+  #double email
+  -String quantity
+  -int updatedAt
+  #Date phone
+  +setTotal()
+  +sendStatus()
 }
-class Withdrawal {
-  +boolean phone
-  +double level
-  +long status
-  +processDescription()
-  +processLevel()
-  +saveCode()
-  +calculateCreatedat()
+interface Withdrawal {
+  -float status
+  #String email
+  +findCreatedat()
+  +cancelPrice()
+  +setAmount()
 }
 class Interest {
-  #String address
-  -long duration
-  #float id
-  -String code
-  +boolean type
-  +updateDuration()
-  +saveDuration()
-  +deleteTotal()
-  +calculateAmount()
+  -long type
+  +long email
+  +deleteNote()
 }
-abstract class Transaction {
-  +long price
-  +boolean note
-  -float type
-  #String total
-  +deleteUpdatedat()
-  +createActive()
+interface Transaction {
+  -boolean note
+  -double name
+  +cancelQuantity()
+  +cancelActive()
 }
-Account --|> Deposit
-Deposit --* Transaction
-Account --* Interest
-Interest ..|> Withdrawal
-note right of Teller : Banking domain
+Withdrawal --|> Deposit
+Transaction --* Withdrawal
 @enduml

@@ -7,50 +7,54 @@ abstract class Customer {
   -long type
   -double name
   #String total
-  +processPhone()
-  +cancelStatus()
-  +setScore()
+  +validateName()
+  +updateTotal()
+  +findUpdatedat()
 }
 class Shipment {
-  #double description
-  -int code
-  +String price
-  +deleteTotal()
-  +deleteId()
+  +int score
+  +double amount
+  +cancelAddress()
+  +cancelNote()
+  +getEmail()
+  +processQuantity()
 }
-interface Driver {
-  +float price
-  -Date description
-  +String duration
-  +int status
+class Driver {
+  #double total
+  -float description
   +Date id
-  +processUpdatedat()
+  +deleteQuantity()
+  +processName()
+  +updateAmount()
+  +cancelStatus()
 }
-interface Manifest {
-  #long createdAt
-  +boolean active
-  -double amount
-  +getNote()
-  +createTotal()
-  +calculateTotal()
+abstract class Manifest {
+  +Date code
+  +double createdAt
+  +boolean updatedAt
+  +sendEmail()
+  +calculateActive()
 }
 class DeliveryNote {
-  #Date score
-  #boolean note
-  #long active
-  +sendUpdatedat()
+  -String code
+  -long active
+  -double total
+  -Date price
+  +setAmount()
+  +calculateNote()
 }
-class FuelLog {
-  #boolean updatedAt
-  -double score
-  #String duration
-  -long id
-  +cancelId()
-  +processLevel()
-  +calculateType()
+interface FuelLog {
+  -Date active
+  #float level
+  #Date quantity
+  -int id
+  #Date updatedAt
+  +validateActive()
+  +processCode()
 }
-DeliveryNote ..|> FuelLog
+Manifest --* Customer
+Driver --> FuelLog : "1"
+Manifest --o DeliveryNote
+Manifest --> Driver : "0..1"
 Shipment ..> Customer : "0..1"
-Shipment --> DeliveryNote : "1..*"
-note right of Customer : Logistics domain
 @enduml

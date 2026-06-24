@@ -9,53 +9,49 @@ class Return {
   #String note
   -float quantity
   +float active
-  +validateActive()
-  +getCode()
+  +cancelId()
+  +deleteId()
 }
-class Supplier {
-  -boolean active
-  -String level
-  +boolean note
-  -float duration
-  +deleteAddress()
-  +setDuration()
-  +saveCreatedat()
-  +findId()
+interface Supplier {
+  -boolean code
+  #boolean amount
+  +processScore()
+  +findPrice()
+  +updateLevel()
+  +getCreatedat()
 }
-abstract class Shipment {
-  +double active
-  #String amount
+class Shipment {
+  #double code
+  +float address
+  +getLevel()
+  +setPhone()
   +updatePhone()
-  +getDescription()
-  +processTotal()
 }
-abstract class Coupon {
-  -int score
-  #long amount
-  #boolean total
-  +processLevel()
+class Coupon {
+  #Date total
+  +int id
+  +setCode()
+  +updateDuration()
+  +createStatus()
+  +validateDuration()
 }
 class Warehouse {
-  -String phone
-  #double code
-  -int email
-  +findDescription()
-  +saveDuration()
-  +validateStatus()
+  #double name
+  #boolean description
+  +boolean type
+  +double total
+  +calculateAddress()
+  +sendDescription()
+  +updateNote()
+  +cancelId()
 }
-class Order {
-  -double total
-  -Date level
-  +long description
-  #float name
-  -String price
-  +deleteAmount()
-  +calculateStatus()
-  +validateDescription()
+interface Order {
+  +boolean type
+  +long level
+  +calculateScore()
 }
-Coupon --|> Shipment
-Order ..|> Supplier
-Return ..> Coupon : "0..1"
-Shipment ..|> Supplier
-note right of Return : Ecommerce domain
+Return --o Coupon
+Supplier ..> Warehouse : "1..*"
+Order ..> Supplier : "1..*"
+Return --o Order
 @enduml

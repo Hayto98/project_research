@@ -5,44 +5,49 @@ skinparam defaultFontSize 11
 class Reservation {
   +String updatedAt
   +int duration
-  +updateQuantity()
+  +updateStatus()
 }
-interface Booking {
+class Booking {
   +String amount
   -String name
-  +cancelLevel()
-}
-class CheckIn {
-  +double note
-  +String address
-  #String email
-  +updateId()
-}
-class Guest {
-  +double amount
-  -boolean address
-  -int score
-  +int description
   +sendType()
 }
-interface Payment {
-  #Date active
-  #float note
-  +createStatus()
-  +deleteType()
-  +sendNote()
-  +deleteQuantity()
+interface CheckIn {
+  -long score
+  -String amount
+  +processActive()
+  +calculateEmail()
+  +updateScore()
+  +cancelTotal()
 }
-class Amenity {
-  +long price
-  #int note
-  #double id
-  -Date updatedAt
-  #long address
-  +processScore()
+class Guest {
+  #Date id
+  +long address
+  #int quantity
+  +getId()
 }
+class Payment {
+  #boolean createdAt
+  #boolean updatedAt
+  +boolean amount
+  #double status
+  #Date type
+  +validateAmount()
+  +updateUpdatedat()
+  +createCreatedat()
+  +findActive()
+}
+interface Amenity {
+  -Date amount
+  +int quantity
+  #boolean phone
+  -int price
+  -Date active
+  +createUpdatedat()
+  +processTotal()
+}
+Amenity --* Payment
+Reservation --> Guest : "0..1"
 Booking --|> Amenity
 CheckIn --o Payment
-Guest --|> Booking
-note right of Reservation : Hotel domain
 @enduml

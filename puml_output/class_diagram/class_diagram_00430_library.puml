@@ -5,49 +5,49 @@ skinparam classBorderColor #33691E
 class Renewal {
   #boolean duration
   #long email
-  +saveId()
+  +findStatus()
 }
 class Publisher {
-  #long price
-  #Date quantity
-  +findPhone()
-  +deletePrice()
-  +deleteAddress()
-  +createPrice()
+  -Date level
+  -Date name
+  +saveType()
+  +createId()
+  +saveTotal()
 }
-class Reservation {
-  -int active
-  +float id
-  -double code
-  +sendTotal()
-  +savePrice()
+abstract class Reservation {
+  -double amount
+  #int price
+  +float description
+  #String address
+  +deleteCode()
 }
 class Fine {
-  -boolean id
-  -double updatedAt
-  #float phone
-  +calculateType()
-  +cancelDescription()
-  +validateEmail()
+  +boolean note
+  -Date duration
+  +deleteQuantity()
+  +processPrice()
+  +updateScore()
+  +setName()
 }
-interface Branch {
-  #String score
-  #float quantity
-  +double note
-  +long description
-  #long code
-  +calculateStatus()
+class Branch {
+  -float address
+  -double note
+  #int price
+  -float active
+  +getStatus()
+  +saveActive()
+  +deleteId()
 }
-class Librarian {
-  -long address
-  #int status
-  +String description
-  -int name
-  #String price
-  +setDuration()
+abstract class Librarian {
+  #String note
+  #float description
+  +double active
+  +long code
+  +getType()
+  +sendScore()
+  +createPhone()
 }
-Fine ..|> Renewal
-Renewal ..|> Publisher
-Publisher ..> Fine : "1..*"
-note right of Renewal : Library domain
+Fine --|> Reservation
+Librarian --|> Publisher
+Branch --o Fine
 @enduml

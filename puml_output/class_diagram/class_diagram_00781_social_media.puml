@@ -9,59 +9,56 @@ abstract class Hashtag {
   #boolean note
   #float name
   +int createdAt
-  +sendTotal()
-  +validateName()
-  +processPhone()
+  +sendAmount()
+  +setNote()
+  +deleteId()
 }
 class Report {
-  -Date updatedAt
-  -float active
-  #float duration
-  +savePhone()
-  +processAmount()
+  +float type
+  +float phone
+  +createDescription()
+  +findType()
 }
 class Follower {
+  +long quantity
+  -int createdAt
   +boolean phone
-  +boolean amount
-  +String status
-  +long updatedAt
+  +String note
+  #int amount
+  +deleteNote()
+}
+class Profile {
+  #float address
+  +int code
+  #boolean score
+  #double quantity
   +setScore()
-  +createAmount()
-  +updateActive()
+  +getAddress()
+  +setDuration()
 }
-interface Profile {
-  -boolean email
-  #boolean total
-  +float duration
-  +boolean updatedAt
-  +float type
-  +deleteAddress()
+class Like {
+  #boolean type
+  +float price
+  +boolean active
+  +setAmount()
 }
-interface Like {
-  -boolean code
-  -String createdAt
-  +long note
-  +sendDuration()
-  +createLevel()
-  +processPrice()
-}
-abstract class User {
-  #double updatedAt
-  -Date total
-  #double description
-  +getLevel()
-  +sendLevel()
-  +saveAmount()
-  +calculateTotal()
+interface User {
+  #boolean description
+  #int address
+  +createTotal()
 }
 class Notification {
-  -long amount
-  #boolean quantity
-  #Date total
-  +cancelId()
+  -long note
+  #boolean active
+  -float duration
+  #double code
+  -double amount
+  +deleteAddress()
+  +cancelPrice()
 }
-Like --> Profile : "1..*"
-User ..> Like : "0..1"
-Like ..> Hashtag : "*"
-note right of Hashtag : Social Media domain
+Notification ..> Report : "*"
+Notification ..> Follower : "*"
+Profile --> Hashtag : "0..1"
+Profile --|> Notification
+Report --* Notification
 @enduml

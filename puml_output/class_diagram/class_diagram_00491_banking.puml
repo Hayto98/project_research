@@ -3,65 +3,59 @@ skinparam defaultFontSize 11
 class Withdrawal {
   -double email
   -long duration
-  +sendDuration()
-  +sendScore()
-  +saveStatus()
+  +updateNote()
+  +sendActive()
+  +setAddress()
 }
-class Statement {
-  +double id
-  +double description
-  #boolean phone
-  -boolean note
-  +createLevel()
-  +sendType()
-  +savePhone()
-  +saveName()
-}
-interface Transaction {
-  +int note
-  +boolean level
-  +String type
-  #boolean amount
-  #boolean code
+interface Statement {
+  +int createdAt
+  -double phone
   +processTotal()
-  +createPhone()
-  +updatePrice()
+  +setName()
 }
-class Teller {
-  #float score
-  -String active
-  +findScore()
-  +processPhone()
+abstract class Transaction {
+  -Date score
+  -Date note
+  +boolean quantity
+  -double active
+  +cancelActive()
+  +deleteScore()
+  +saveDuration()
+  +setId()
+}
+interface Teller {
+  +boolean amount
+  +String createdAt
+  +getId()
+  +findStatus()
+  +processCreatedat()
 }
 abstract class Transfer {
-  +String score
-  #boolean quantity
-  #int type
-  +int active
-  +int description
-  +cancelStatus()
-}
-class Account {
-  -double price
-  +long createdAt
-  -String description
-  -boolean amount
+  #boolean phone
+  #String updatedAt
+  #boolean price
+  #float amount
+  +getType()
+  +findStatus()
   +updateStatus()
-  +saveId()
-  +savePhone()
-  +saveAddress()
+  +saveDescription()
+}
+interface Account {
+  -boolean phone
+  +int total
+  +Date active
+  #Date type
+  +String quantity
+  +saveQuantity()
+  +processPrice()
 }
 class Customer {
-  -int description
-  -double duration
-  +setTotal()
-  +sendActive()
-  +updateTotal()
+  -double quantity
+  +int active
+  +processLevel()
+  +calculateQuantity()
 }
-Customer ..|> Teller
-Transfer --> Teller : "0..1"
-Statement --* Account
-Statement --> Customer : "1"
-Transaction --* Statement
-note right of Withdrawal : Banking domain
+Transaction --|> Customer
+Transaction --o Transfer
+Statement ..> Withdrawal : "1"
 @enduml

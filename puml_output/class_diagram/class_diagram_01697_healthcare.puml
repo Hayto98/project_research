@@ -9,60 +9,54 @@ class Doctor {
   -long score
   -long id
   +double level
-  +createQuantity()
-  +createScore()
+  +deleteCreatedat()
+  +calculatePhone()
 }
-interface Appointment {
+class Appointment {
   +long type
   +double duration
   -String email
   -long level
-  +updateLevel()
+  +updateStatus()
 }
-class Insurance {
-  #double description
-  #long amount
-  -String address
-  +validateNote()
-  +calculatePhone()
-  +getStatus()
+interface Insurance {
+  +float level
+  #int duration
+  +saveCreatedat()
+  +getDescription()
 }
-class Ward {
-  #long name
-  #Date email
-  #boolean active
-  -int status
-  +updateNote()
-}
-class Diagnosis {
-  -float level
-  +double updatedAt
-  #long quantity
-  -boolean description
-  #boolean score
-  +sendType()
-  +setDuration()
-  +createId()
-}
-class Patient {
-  +int score
-  #double status
-  -double total
-  #boolean code
-  +Date createdAt
-  +getEmail()
-  +cancelCreatedat()
-}
-class Prescription {
+interface Ward {
+  -double address
+  -String duration
+  +long name
   -float email
-  +float id
-  -Date total
-  +float type
-  +calculateActive()
-  +updateId()
-  +processUpdatedat()
+  +boolean phone
+  +updatePhone()
+  +findDescription()
+  +cancelActive()
 }
-Insurance --o Ward
-Patient --o Ward
-note right of Doctor : Healthcare domain
+interface Diagnosis {
+  -int phone
+  #float active
+  +processDuration()
+}
+abstract class Patient {
+  #float note
+  #float level
+  +processDescription()
+  +validateDescription()
+}
+interface Prescription {
+  +double duration
+  #long quantity
+  -boolean note
+  +cancelAmount()
+  +sendCreatedat()
+  +setDescription()
+}
+Prescription --|> Insurance
+Doctor --> Ward : "1"
+Diagnosis --|> Ward
+Prescription --|> Appointment
+Appointment --o Diagnosis
 @enduml

@@ -1,10 +1,10 @@
 @startuml
 skinparam monochrome true
 left to right direction
-actor "ATM" as ATM
-actor "Account Holder" as AccountHolder
-actor "Branch Manager" as BranchManager
-actor "Auditor" as Auditor
+actor "ATM" as A
+actor "Account Holder" as AH
+actor "Branch Manager" as BM
+actor "Auditor" as A1
 rectangle "Banking System" {
   usecase "Transfer Funds" as UC_TransferFunds
   usecase "View Statement" as UC_ViewStatement
@@ -13,12 +13,12 @@ rectangle "Banking System" {
   usecase "Apply For Loan" as UC_ApplyForLoan
   usecase "Pay Bill" as UC_PayBill
 }
-ATM --> UC_PayBill
-ATM --> UC_ApplyForLoan
-AccountHolder --> UC_ApplyForLoan
-AccountHolder --> UC_PayBill
-BranchManager --> UC_DepositMoney
-Auditor --> UC_WithdrawCash
-Auditor --> UC_TransferFunds
+A --> UC_PayBill
+A --> UC_ApplyForLoan
+AH --> UC_ApplyForLoan
+AH --> UC_PayBill
+BM --> UC_DepositMoney
+A1 --> UC_WithdrawCash
+A1 --> UC_TransferFunds
 UC_DepositMoney ..> UC_WithdrawCash : <<extend>>
 @enduml

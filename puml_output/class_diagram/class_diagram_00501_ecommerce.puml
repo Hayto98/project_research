@@ -9,59 +9,58 @@ class Category {
   +boolean quantity
   -long total
   #String level
-  +findTotal()
-  +processDescription()
+  +saveType()
+  +createTotal()
 }
-class Coupon {
+abstract class Coupon {
   -double description
-  +Date price
-  +calculateCreatedat()
-  +getActive()
+  +Date quantity
+  +double status
+  +String duration
+  #boolean price
+  +getDuration()
 }
-interface Invoice {
-  +int type
-  -float duration
-  +getPrice()
-  +createUpdatedat()
-  +cancelQuantity()
+abstract class Invoice {
+  -float description
+  -Date updatedAt
+  #Date total
+  +float phone
+  #Date id
+  +cancelEmail()
+  +calculateStatus()
+  +saveType()
 }
 class Order {
-  +String quantity
   +int description
   -long score
-  +setId()
-  +processLevel()
-  +saveId()
-  +deleteType()
+  -String code
+  #String status
+  +createLevel()
+  +processId()
+  +saveLevel()
+  +cancelScore()
 }
-interface Return {
-  +double score
-  #Date active
-  #String phone
-  -String status
-  +cancelUpdatedat()
-  +createStatus()
-  +setId()
+class Return {
+  #Date type
+  #float active
+  -boolean phone
+  +cancelStatus()
 }
 abstract class Review {
-  +double duration
-  +String email
-  -int status
-  #float level
-  +float phone
-  +processQuantity()
-  +setTotal()
-  +findType()
+  -boolean price
+  +long id
+  +getType()
 }
-interface Product {
-  +String phone
-  -int level
-  -double name
-  -double score
-  +sendActive()
+class Product {
+  -long active
+  +double score
+  +String total
+  -int email
+  #float status
+  +sendStatus()
 }
-Coupon --* Invoice
-Return --> Invoice : "1"
-Coupon --|> Product
-note right of Category : Ecommerce domain
+Order --|> Invoice
+Order --o Review
+Product --* Return
+Invoice ..> Return : "1"
 @enduml

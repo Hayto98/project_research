@@ -5,47 +5,39 @@ skinparam classBorderColor #6A1B9A
 class CheckIn {
   -int price
   #Date updatedAt
-  +saveId()
-  +findScore()
-  +deleteScore()
+  +calculateUpdatedat()
+  +cancelName()
+  +cancelTotal()
+  +deleteLevel()
+}
+interface Room {
+  -double score
+  +String email
+  +boolean name
+  +updateNote()
+}
+abstract class Housekeeping {
+  +float score
+  #int id
+  +int phone
+  #String amount
+  +getActive()
+  +calculateScore()
+}
+abstract class Guest {
+  -int phone
+  +String price
+  #int level
+  +int id
+  +long type
+  +cancelType()
   +createName()
 }
-abstract class Room {
-  #Date id
-  -long duration
-  #String code
-  -float active
-  +String score
-  +setAmount()
-  +saveCode()
+class Invoice {
+  +String amount
+  #boolean updatedAt
+  +cancelPrice()
 }
-class Housekeeping {
-  -String note
-  #double price
-  -int phone
-  +String level
-  +deleteAmount()
-  +setQuantity()
-}
-class Guest {
-  +Date phone
-  #float id
-  +Date amount
-  +boolean updatedAt
-  +double score
-  +setDescription()
-  +createScore()
-}
-abstract class Invoice {
-  #boolean duration
-  #boolean price
-  +Date type
-  +saveAmount()
-  +validatePhone()
-  +findPhone()
-  +cancelAddress()
-}
-Guest --* CheckIn
-Housekeeping ..|> Guest
-note right of CheckIn : Hotel domain
+Invoice --o Room
+Room ..> CheckIn : "0..1"
 @enduml

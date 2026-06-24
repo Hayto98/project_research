@@ -7,50 +7,54 @@ class Reservation {
   +boolean createdAt
   #String duration
   #float quantity
-  +findUpdatedat()
+  +updateScore()
 }
-interface Restaurant {
+class Restaurant {
   -long quantity
   #long address
-  +updateQuantity()
-  +validateAmount()
+  +sendNote()
+  +processDescription()
 }
 class Guest {
-  #boolean active
-  +boolean id
-  +Date updatedAt
-  +String createdAt
-  +cancelEmail()
+  +Date createdAt
+  +boolean phone
+  #int active
+  +findName()
+  +updatePrice()
 }
-abstract class Room {
-  +int email
-  -Date amount
-  +createName()
+class Room {
+  -String name
+  -Date email
+  +findTotal()
+  +validateEmail()
 }
 class Booking {
-  -boolean name
-  +boolean amount
-  +updateLevel()
-  +validateAmount()
-  +findAddress()
-  +updateStatus()
+  +int code
+  -boolean quantity
+  +boolean name
+  -int status
+  #long active
+  +findLevel()
+  +updateScore()
 }
-abstract class Invoice {
-  -int name
-  +float updatedAt
-  +calculateUpdatedat()
+class Invoice {
+  +Date status
+  +double type
+  +int name
+  +findAmount()
 }
 class Amenity {
-  +float address
-  -float amount
-  #int score
-  #String email
-  +updateUpdatedat()
-  +updateDuration()
-  +processTotal()
-  +createDuration()
+  +float email
+  -float address
+  #int amount
+  #String duration
+  +updateDescription()
+  +processPrice()
+  +getTotal()
+  +findDescription()
 }
-Amenity --|> Room
-Reservation --> Room : "*"
-note right of Reservation : Hotel domain
+Amenity --* Room
+Amenity ..|> Booking
+Reservation --o Amenity
+Booking --o Invoice
 @enduml

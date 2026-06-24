@@ -6,58 +6,56 @@ abstract class Payment {
   +Date description
   -float active
   +int total
-  +calculateDescription()
+  +setDuration()
 }
-interface CheckOut {
+abstract class CheckOut {
+  -boolean score
+  #long amount
   -boolean updatedAt
-  +float address
-  +long email
-  +findDuration()
-  +cancelId()
-  +processDescription()
-  +getAmount()
+  +sendType()
 }
 class Reservation {
-  +long amount
-  -Date note
-  -int quantity
-  +sendPrice()
-  +setCode()
-  +processId()
-  +updateCode()
-}
-interface Room {
-  -float status
-  #boolean amount
-  +sendEmail()
+  +String note
+  +float level
+  +int id
+  +double duration
+  +deleteQuantity()
   +getNote()
-  +saveAmount()
+  +processDescription()
+}
+class Room {
+  +String note
+  -String score
+  +String price
+  +setStatus()
 }
 class Invoice {
-  -String quantity
-  +float email
-  +getAddress()
-  +processDescription()
-  +processAmount()
-  +deleteTotal()
+  +Date level
+  #double email
+  #int active
+  +boolean duration
+  +calculateUpdatedat()
 }
 class Amenity {
-  #long code
-  +int phone
-  +int amount
-  +sendEmail()
-  +setType()
+  +long email
+  -int status
+  -int id
+  +Date price
+  +sendDescription()
+  +saveId()
+  +createCode()
+  +updateId()
 }
 class Booking {
-  #float price
-  -String quantity
-  -double email
-  -int description
-  +processStatus()
+  +int amount
+  +boolean quantity
+  -String description
+  -int updatedAt
+  +createDuration()
+  +findScore()
+  +validateAmount()
 }
-Booking --* Reservation
-Reservation --> CheckOut : "0..1"
-Amenity --o Payment
-Invoice ..|> CheckOut
-note right of Payment : Hotel domain
+Invoice --|> Reservation
+Reservation --* Room
+CheckOut ..> Amenity : "1"
 @enduml

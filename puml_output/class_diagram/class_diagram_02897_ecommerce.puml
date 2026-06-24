@@ -6,63 +6,59 @@ skinparam shadowing true
 abstract class Review {
   +double phone
   -double description
-  +setType()
-  +sendId()
-  +updateId()
+  +findNote()
+  +getStatus()
+  +setDuration()
 }
-class Category {
-  +double type
-  +boolean active
-  +double updatedAt
-  +validatePrice()
-  +cancelStatus()
+abstract class Category {
+  +int createdAt
+  -Date id
+  +validateId()
+  +createPrice()
 }
 class Coupon {
-  +int level
-  +float email
-  +processAmount()
-  +sendTotal()
-  +processDuration()
-  +createPhone()
+  -double total
+  #String updatedAt
+  +findUpdatedat()
+  +cancelTotal()
+  +cancelDuration()
 }
-class Shipment {
-  -float updatedAt
-  +boolean level
-  +long active
-  #int note
-  +findTotal()
-  +validateAmount()
-  +processPhone()
+interface Shipment {
+  -int id
+  #double amount
+  -boolean updatedAt
+  -long total
+  +createType()
+  +cancelAddress()
 }
-interface Supplier {
-  #double description
-  -double quantity
-  -int active
-  +findQuantity()
-  +setQuantity()
+class Supplier {
+  -Date address
+  -long createdAt
+  +double id
+  #long email
+  #int updatedAt
+  +findEmail()
+  +findScore()
 }
-class Warehouse {
-  +int score
-  -String type
-  +double email
-  +int active
-  +sendQuantity()
-  +createLevel()
-  +deleteCode()
-  +saveActive()
+interface Warehouse {
+  #long quantity
+  +long price
+  -long phone
+  #boolean amount
+  -long updatedAt
+  +saveNote()
+  +createName()
 }
-abstract class Product {
-  +double active
-  -double price
-  +saveCreatedat()
-  +setName()
-  +setQuantity()
-  +updateEmail()
+class Product {
+  -boolean type
+  -long status
+  #int description
+  +setScore()
 }
-Category --* Review
-Review --o Category
-Review ..|> Supplier
-Supplier ..> Category : "1"
-Category --* Coupon
-note right of Review : Ecommerce domain
+Shipment --> Review : "*"
+Category --* Shipment
+Shipment ..> Product : "0..1"
+Review --|> Warehouse
+Review ..|> Coupon
+Coupon ..|> Supplier
 @enduml

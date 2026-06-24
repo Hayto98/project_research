@@ -7,31 +7,34 @@ interface Shipment {
   +Date address
   +double status
   #long phone
-  +processLevel()
-  +processAddress()
+  +saveStatus()
+  +deleteActive()
 }
-class Payment {
-  +int score
-  -String createdAt
-  +long level
-  +calculateLevel()
-  +createAddress()
-  +setUpdatedat()
-  +deletePhone()
+interface Payment {
+  +int address
+  -String amount
+  +long description
+  #double createdAt
+  -boolean active
+  +validateScore()
+  +updateUpdatedat()
+  +validateStatus()
 }
 class Customer {
-  #Date code
-  #int name
-  #boolean duration
-  +savePhone()
+  +String phone
+  #String amount
+  #Date createdAt
+  +createNote()
+  +deleteUpdatedat()
 }
-class Invoice {
-  #boolean active
-  -boolean note
+interface Invoice {
+  +boolean phone
+  #double updatedAt
+  +processEmail()
   +processUpdatedat()
-  +cancelDescription()
+  +deleteActive()
+  +sendNote()
 }
-Payment ..> Shipment : "1"
-Shipment --> Payment : "1..*"
-note right of Shipment : Ecommerce domain
+Payment --|> Shipment
+Shipment --* Invoice
 @enduml

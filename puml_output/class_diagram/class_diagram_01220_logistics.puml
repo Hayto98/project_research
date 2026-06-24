@@ -4,48 +4,52 @@ class DeliveryNote {
   #int amount
   #boolean total
   +float address
-  +setDescription()
+  +createPhone()
 }
-interface Inventory {
+class Inventory {
   -String status
   #int quantity
-  +cancelDescription()
-  +setName()
-  +createCode()
+  +sendActive()
+  +validateCreatedat()
+  +validateId()
 }
-interface Driver {
-  -float active
-  -boolean phone
-  +sendQuantity()
-  +saveType()
-  +calculateDuration()
-}
-interface Vehicle {
-  #float phone
-  +long name
-  #float level
+class Driver {
   #float code
-  +float type
-  +setScore()
-  +calculateAmount()
-  +calculateLevel()
+  -double active
+  -boolean id
+  #float level
+  +calculateDuration()
+  +calculatePhone()
+  +saveUpdatedat()
 }
-abstract class Tracking {
-  -Date total
-  +boolean duration
-  +deleteQuantity()
-  +setTotal()
+abstract class Vehicle {
+  +String duration
+  #float score
+  -boolean price
+  +long phone
+  #float name
+  +updateCreatedat()
 }
-interface Customer {
-  -boolean phone
-  #long quantity
-  +updateTotal()
-  +findScore()
-  +calculateScore()
+class Tracking {
+  #Date score
+  #int total
+  +createEmail()
+  +processEmail()
+  +saveName()
+  +updateId()
 }
+class Customer {
+  +long total
+  +float phone
+  -boolean amount
+  +long active
+  #Date updatedAt
+  +calculateCode()
+  +createStatus()
+  +findTotal()
+}
+Driver --o Inventory
+Customer --o Tracking
+Tracking ..> Customer : "*"
 Vehicle --* Inventory
-Customer --> DeliveryNote : "0..1"
-Vehicle --|> DeliveryNote
-Vehicle ..|> Driver
-note right of DeliveryNote : Logistics domain
 @enduml

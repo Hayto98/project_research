@@ -9,48 +9,45 @@ abstract class Beneficiary {
   +boolean note
   +long active
   +float createdAt
-  +setCreatedat()
-  +cancelCode()
+  +cancelStatus()
+  +sendEmail()
 }
-class Branch {
-  -String note
-  +boolean createdAt
-  -String total
-  #Date active
-  #double level
-  +findDuration()
-  +setLevel()
-  +findAddress()
+interface Branch {
+  -int id
+  -boolean total
+  +cancelCode()
+  +calculateEmail()
 }
 class Interest {
-  -long address
-  #boolean total
-  +long createdAt
-  -String score
-  +double description
-  +calculateAmount()
-  +processType()
-  +saveEmail()
-  +getAmount()
-}
-interface Card {
-  #double status
-  #double createdAt
+  #boolean code
+  +boolean score
   #long total
-  #float type
-  +sendCode()
-  +findNote()
+  #long quantity
+  +validateDuration()
+  +updateEmail()
+  +sendEmail()
+  +setAmount()
 }
-class Transfer {
-  #boolean quantity
-  -float phone
-  -int email
-  +long id
-  -int description
-  +cancelLevel()
-  +deletePrice()
+class Card {
+  +long note
+  -String email
+  +double score
+  +saveStatus()
+  +createId()
+  +calculateCode()
+  +validateQuantity()
 }
-Transfer --o Branch
-Branch --* Card
-note right of Beneficiary : Banking domain
+abstract class Transfer {
+  +double email
+  -Date id
+  -Date amount
+  -Date quantity
+  -boolean status
+  +calculateDuration()
+  +validatePhone()
+}
+Card --o Interest
+Interest --* Transfer
+Beneficiary --> Branch : "1..*"
+Interest ..|> Branch
 @enduml

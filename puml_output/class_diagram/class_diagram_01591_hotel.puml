@@ -8,67 +8,55 @@ abstract class Staff {
   #int price
   +Date note
   -double createdAt
-  +cancelActive()
-  +getName()
-  +getDescription()
+  +validateActive()
+  +updateNote()
+  +sendTotal()
 }
 class Service {
-  -float updatedAt
-  +String description
-  #float id
-  -long amount
-  #double type
-  +setEmail()
-  +deletePhone()
-  +saveQuantity()
-  +sendEmail()
+  #double description
+  +int status
+  +deleteScore()
 }
 interface Housekeeping {
-  -int total
-  #boolean description
-  +setNote()
-  +getDescription()
+  #double price
+  -String name
+  -int status
+  -Date note
+  #float phone
+  +createDescription()
+  +updateScore()
+  +calculateScore()
 }
 interface Room {
-  -int duration
-  #Date price
-  -double id
-  +findPrice()
+  -int total
+  #boolean description
+  +createAddress()
+  +updateCode()
 }
-class Restaurant {
-  -Date phone
-  #double score
-  +Date duration
-  #Date address
-  +deleteCode()
-  +updateAmount()
+abstract class Restaurant {
+  +boolean description
+  -String active
+  +findAddress()
+  +deleteUpdatedat()
+  +cancelScore()
+  +sendCode()
 }
-class Invoice {
-  +Date createdAt
-  +int address
-  #String level
-  +Date phone
-  +findPrice()
-  +getType()
-  +deleteTotal()
-  +getPrice()
+abstract class Invoice {
+  -long price
+  #long id
+  +sendCode()
+  +saveUpdatedat()
+  +deleteType()
 }
-class Payment {
-  +boolean updatedAt
-  -int address
-  #float score
-  #float active
-  +int quantity
-  +sendEmail()
-  +validatePhone()
-  +findUpdatedat()
-  +saveAddress()
+abstract class Payment {
+  +int description
+  +int amount
+  +sendId()
+  +calculateStatus()
+  +calculateName()
 }
-Restaurant ..> Service : "1"
-Staff --o Service
-Invoice --> Service : "*"
-Service --|> Restaurant
-Room --o Restaurant
-Staff --> Housekeeping : "1..*"
-note right of Staff : Hotel domain
+Invoice --|> Housekeeping
+Invoice ..|> Staff
+Restaurant --|> Staff
+Invoice ..> Room : "*"
 @enduml

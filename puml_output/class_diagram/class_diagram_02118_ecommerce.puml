@@ -6,55 +6,55 @@ skinparam defaultFontSize 13
 abstract class Customer {
   +double phone
   #long name
-  +sendStatus()
-  +updateAddress()
-  +processCreatedat()
-  +processDescription()
+  +findPrice()
+  +updateName()
+  +calculateNote()
+  +createActive()
 }
-class Invoice {
-  #Date address
-  #double score
-  +String quantity
-  +validateLevel()
-  +createName()
+abstract class Invoice {
+  #int type
+  -boolean description
+  -boolean amount
+  +processDuration()
+  +getStatus()
+  +cancelStatus()
+  +validatePrice()
 }
-interface Supplier {
-  +int score
-  -String amount
-  #boolean quantity
-  #long name
-  #int id
-  +cancelActive()
-  +cancelAddress()
-  +setActive()
+class Supplier {
+  #float level
+  +long email
+  +boolean name
+  +String note
+  +getPhone()
+  +createAddress()
 }
-class Coupon {
-  -float total
-  #int status
-  #Date description
-  +saveUpdatedat()
-  +findEmail()
-  +processLevel()
-  +createTotal()
+interface Coupon {
+  #float level
+  #long updatedAt
+  +float phone
+  #int active
+  +cancelCreatedat()
+  +updateUpdatedat()
 }
-abstract class Shipment {
-  +int duration
-  #double total
-  -double score
-  -double phone
+class Shipment {
+  #Date active
   -double updatedAt
-  +findAmount()
-  +cancelDuration()
+  #long score
+  -float note
+  -double level
+  +saveActive()
+  +findLevel()
+  +findCode()
+  +getAmount()
 }
-class Cart {
-  #long note
-  #long duration
-  #float type
-  +findUpdatedat()
+interface Cart {
+  -double id
+  -double description
+  -double note
+  +cancelDescription()
+  +calculateLevel()
 }
-Shipment --> Invoice : "1"
-Cart ..|> Coupon
-Cart --o Supplier
-Supplier --> Customer : "1..*"
-note right of Customer : Ecommerce domain
+Shipment ..> Cart : "1"
+Cart --o Invoice
+Coupon --> Cart : "1..*"
 @enduml

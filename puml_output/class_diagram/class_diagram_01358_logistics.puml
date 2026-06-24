@@ -9,57 +9,58 @@ interface Driver {
   +String email
   #int active
   +double total
-  +calculateTotal()
-  +calculateTotal()
-  +createEmail()
-  +validateName()
+  +saveCode()
+  +validateDescription()
+  +findStatus()
+  +deleteEmail()
 }
 abstract class Package {
-  #boolean createdAt
-  -double total
-  +int code
-  -boolean level
-  -String updatedAt
-  +processStatus()
-  +sendNote()
-  +updateEmail()
+  -boolean total
+  -Date email
+  +Date level
+  #float address
+  -String name
+  +setId()
+  +createNote()
+  +getDescription()
+  +processPrice()
 }
-class DeliveryNote {
-  -long level
-  #Date active
-  #String createdAt
+interface DeliveryNote {
+  +long total
+  -String name
+  #double createdAt
+  +float phone
+  -float note
+  +deleteCode()
+  +calculateTotal()
+}
+interface Manifest {
   #Date id
-  +findName()
-  +findDuration()
-  +updateScore()
-  +sendActive()
-}
-class Manifest {
-  +String total
-  -float active
-  -long amount
-  -String price
-  -int note
-  +validateAddress()
-  +sendDescription()
-}
-abstract class FuelLog {
-  +boolean duration
-  -double price
-  #boolean email
-  +getQuantity()
-  +setActive()
-}
-class Depot {
-  -int description
-  #double price
-  #int amount
-  +processName()
-  +updateDuration()
+  #String phone
+  #Date address
+  +findLevel()
+  +createTotal()
+  +updateCreatedat()
   +saveEmail()
 }
-Manifest --> Package : "1..*"
-Depot --* DeliveryNote
-FuelLog --|> Depot
-note right of Driver : Logistics domain
+interface FuelLog {
+  -double score
+  -boolean active
+  +boolean level
+  +findName()
+  +saveAmount()
+  +saveQuantity()
+  +updateAmount()
+}
+class Depot {
+  -int price
+  +long phone
+  -boolean type
+  #Date name
+  +getAddress()
+  +sendPrice()
+}
+FuelLog --* Manifest
+Package --* FuelLog
+Manifest --> FuelLog : "0..1"
 @enduml

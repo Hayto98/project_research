@@ -7,42 +7,37 @@ interface Customer {
   -long duration
   -float id
   +boolean amount
-  +processStatus()
+  +validateUpdatedat()
 }
 class Wishlist {
-  +Date score
-  #int code
-  -long level
-  -int total
-  +cancelAddress()
+  #String active
+  +double address
+  +updatePhone()
 }
 class Cart {
-  +double status
-  -Date phone
-  +deleteDescription()
-  +findStatus()
-  +getActive()
-  +findScore()
+  #long email
+  +String quantity
+  #String updatedAt
+  -String active
+  -float id
+  +setCode()
+  +saveDuration()
+  +sendName()
+  +createCode()
 }
 class Order {
-  +String id
-  #double duration
+  #boolean id
+  -long active
+  +setPrice()
+}
+interface Warehouse {
   +String amount
-  -Date type
-  +deleteTotal()
-  +cancelUpdatedat()
-  +calculateCode()
+  #double type
+  +cancelEmail()
+  +deleteName()
 }
-abstract class Warehouse {
-  #long type
-  #long amount
-  -String id
-  #Date code
-  +double address
-  +saveUpdatedat()
-  +setAmount()
-}
-Customer ..> Warehouse : "*"
-Warehouse ..|> Cart
-note right of Customer : Ecommerce domain
+Cart ..> Wishlist : "*"
+Warehouse --o Wishlist
+Customer --o Order
+Order --|> Wishlist
 @enduml

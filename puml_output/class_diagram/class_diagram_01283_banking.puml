@@ -4,63 +4,57 @@ skinparam defaultFontSize 11
 abstract class Interest {
   +double description
   #String name
-  +sendDescription()
+  +getCreatedat()
 }
-abstract class Branch {
-  +long name
-  #float createdAt
-  +float quantity
-  #float phone
-  +validateAddress()
-  +setNote()
-  +validateCreatedat()
+class Branch {
+  +long phone
+  #float name
+  +float createdAt
+  #float quantity
+  -float duration
+  +setDuration()
+  +calculateName()
+  +setDescription()
 }
 abstract class Transaction {
-  #String phone
-  +boolean name
-  #boolean description
-  +processTotal()
-  +setCode()
-  +sendPrice()
-  +saveDescription()
+  +Date createdAt
+  +float price
+  #String duration
+  +boolean phone
+  +cancelCode()
+  +findAmount()
+  +createAddress()
+  +cancelStatus()
 }
-class Statement {
-  #int id
+interface Statement {
+  -Date description
+  #double updatedAt
+  -Date total
+  +float id
   #int status
-  +long address
-  #String type
-  +int email
-  +updateScore()
-  +cancelQuantity()
-  +cancelTotal()
-  +deleteAddress()
+  +sendAddress()
+  +createUpdatedat()
 }
-abstract class Customer {
-  -float amount
-  -Date quantity
-  -long email
-  +calculatePhone()
+class Customer {
+  #double createdAt
+  +boolean level
+  +saveDuration()
+  +getPhone()
+  +sendStatus()
 }
 class Withdrawal {
-  -boolean updatedAt
-  +int total
-  +int score
-  +double quantity
-  +setEmail()
+  -float price
+  -float amount
+  -Date level
+  -long quantity
+  +updateEmail()
 }
 class Deposit {
-  -long email
-  +double id
-  #Date score
-  +Date updatedAt
-  +sendType()
-  +findAddress()
-  +deleteTotal()
+  -boolean active
+  #long quantity
+  -boolean updatedAt
+  +createScore()
 }
-Interest --o Transaction
-Transaction --o Statement
-Customer ..|> Withdrawal
-Interest --|> Withdrawal
-Interest --* Deposit
-note right of Interest : Banking domain
+Branch --o Interest
+Interest ..> Deposit : "1..*"
 @enduml

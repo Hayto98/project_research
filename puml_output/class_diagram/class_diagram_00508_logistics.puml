@@ -4,39 +4,43 @@ interface DeliveryNote {
   -String price
   -Date total
   +Date status
-  +validateLevel()
-  +findName()
-  +calculateType()
+  +validateDuration()
+  +processCreatedat()
+  +getCode()
 }
 class Package {
-  #float quantity
-  #boolean email
-  -double updatedAt
-  +calculatePrice()
-  +processPrice()
-  +processId()
+  +Date type
+  #boolean name
+  -double createdAt
+  #long quantity
+  -double email
+  +saveLevel()
+  +calculateCode()
+  +validateName()
+  +processName()
 }
 interface Manifest {
   #String quantity
   -boolean phone
   +float total
-  +findType()
+  +cancelDescription()
 }
-interface Vehicle {
+abstract class Vehicle {
   -double address
   #boolean duration
   -int amount
   #int createdAt
-  +validatePrice()
+  +deleteEmail()
 }
-interface Driver {
-  +double level
-  +double note
-  +sendType()
-  +calculateName()
+class Driver {
+  +double active
+  +boolean status
+  -double note
+  +long code
+  -String total
+  +findPrice()
+  +updateAddress()
+  +getStatus()
 }
-Manifest --* DeliveryNote
-Driver ..|> Package
-DeliveryNote ..> Driver : "0..1"
-note right of DeliveryNote : Logistics domain
+Package --|> DeliveryNote
 @enduml

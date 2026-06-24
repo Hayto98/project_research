@@ -5,47 +5,52 @@ skinparam classBorderColor #6A1B9A
 interface Staff {
   -long amount
   +int id
-  +deleteUpdatedat()
-  +updateUpdatedat()
+  +setLevel()
+  +createScore()
 }
 class Payment {
-  #boolean note
-  +int total
-  +saveDuration()
+  #Date phone
+  -boolean code
+  #int note
+  +deleteNote()
+  +sendPrice()
 }
-class CheckOut {
-  #boolean email
-  -int name
-  -int description
-  +findDuration()
+interface CheckOut {
+  +Date updatedAt
+  +Date email
+  +createScore()
+  +findActive()
+  +calculateNote()
+  +calculateEmail()
 }
-abstract class Reservation {
-  -long level
-  #String price
-  +Date score
-  +savePrice()
-  +validateAmount()
+interface Reservation {
+  #String active
+  +Date description
+  +Date price
+  -long score
+  #float email
+  +sendEmail()
+  +setPrice()
 }
-class Amenity {
-  #Date id
-  #boolean email
-  -float createdAt
-  +String type
-  #Date total
-  +processPrice()
-  +deleteActive()
+abstract class Amenity {
+  #double email
+  #Date createdAt
+  +setAmount()
+  +calculateTotal()
+  +getStatus()
+  +setId()
 }
-abstract class CheckIn {
-  #float total
-  -String email
-  #float duration
-  +updateCode()
+interface CheckIn {
+  -int status
+  #double code
+  +double updatedAt
+  -double type
+  +processQuantity()
+  +processNote()
   +getDuration()
-  +sendTotal()
+  +cancelPhone()
 }
-Staff --|> Payment
-Reservation --o CheckIn
-Amenity ..|> CheckIn
-Payment ..|> CheckOut
-note right of Staff : Hotel domain
+Staff ..> CheckIn : "*"
+Amenity --|> CheckOut
+Payment --o Staff
 @enduml

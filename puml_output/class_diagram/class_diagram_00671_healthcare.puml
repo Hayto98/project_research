@@ -7,49 +7,47 @@ class Billing {
   #int status
   #long total
   +Date duration
-  +updateScore()
-  +deleteEmail()
   +sendNote()
-  +createAmount()
+  +calculatePrice()
+  +createCreatedat()
+  +cancelPhone()
 }
-class Treatment {
-  #String code
-  -String status
-  -long name
-  +float email
-  +createPrice()
-  +savePrice()
-  +updateLevel()
-  +cancelTotal()
+interface Treatment {
+  +Date email
+  +float amount
+  -float name
+  #String phone
+  -String code
+  +calculateScore()
+  +processActive()
+  +getDuration()
+  +sendScore()
 }
-interface Patient {
-  #double updatedAt
-  -int score
-  #String id
-  #int note
-  +int duration
-  +deleteScore()
+class Patient {
+  #String price
+  -boolean createdAt
+  #int total
+  #double note
+  -int updatedAt
+  +updatePhone()
 }
 class Hospital {
-  -long price
-  #float total
-  +String name
-  -boolean address
-  -long type
-  +validateDescription()
-  +setEmail()
-  +deleteTotal()
+  +boolean description
+  +double active
+  -double name
+  +updateAmount()
 }
-interface Prescription {
+class Prescription {
+  -boolean type
+  -long email
+  #long active
+  -int updatedAt
   +long status
-  #int price
-  +double id
-  #Date note
-  -long total
-  +validatePrice()
+  +setNote()
+  +deleteDescription()
 }
-Billing --* Prescription
-Hospital --|> Treatment
-Patient --> Treatment : "1..*"
-note right of Billing : Healthcare domain
+Hospital --o Billing
+Prescription --o Billing
+Hospital --* Treatment
+Prescription ..|> Treatment
 @enduml

@@ -5,32 +5,32 @@ interface Customer {
   #String active
   -float amount
   +long duration
-  +getDescription()
-  +createScore()
+  +saveEmail()
+  +setDuration()
 }
-abstract class Branch {
-  -boolean code
-  #long email
-  +calculateQuantity()
-  +processQuantity()
+class Branch {
+  +long score
+  -boolean type
+  #long active
+  +double status
+  +saveTotal()
+  +validateName()
+  +cancelAddress()
 }
 abstract class Teller {
   +int note
   -boolean quantity
   -String score
-  +getDuration()
-  +findEmail()
+  +calculateType()
+  +calculateId()
 }
-abstract class Statement {
-  +String type
-  #String address
-  -Date score
-  -String updatedAt
-  +long code
-  +setScore()
+interface Statement {
+  #int note
+  #float type
+  +int level
+  +Date address
+  +processLevel()
 }
-Statement --> Customer : "0..1"
-Teller --|> Statement
-Branch --* Teller
-note right of Customer : Banking domain
+Customer --* Statement
+Statement --|> Branch
 @enduml

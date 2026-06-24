@@ -8,62 +8,50 @@ interface Warehouse {
   -Date status
   -float quantity
   -double id
-  +findLevel()
+  +updateScore()
 }
-class Wishlist {
-  +boolean address
-  -double code
-  +String createdAt
-  -int note
-  #boolean duration
-  +createType()
+interface Wishlist {
+  -float duration
+  +boolean type
+  +createTotal()
+  +calculateAmount()
 }
-class Invoice {
-  #long updatedAt
-  +String description
-  +String note
-  +deleteActive()
-  +createDescription()
-  +validateId()
-  +deleteStatus()
+interface Invoice {
+  +String updatedAt
+  -int active
+  #boolean price
+  #boolean type
+  +setTotal()
 }
-class Cart {
-  #float id
-  -boolean score
-  -double phone
-  +String quantity
-  -int createdAt
-  +sendStatus()
-  +sendQuantity()
-  +saveLevel()
-  +cancelName()
+abstract class Cart {
+  #int amount
+  -boolean updatedAt
+  +deleteQuantity()
+  +updateUpdatedat()
+  +deleteLevel()
 }
-abstract class Order {
-  -int name
-  #boolean phone
-  +long email
-  +double amount
-  +createStatus()
+class Order {
+  #long price
+  +long description
+  +processUpdatedat()
 }
 class Payment {
-  #double duration
-  -Date email
-  #float phone
-  -Date updatedAt
-  -long note
-  +sendStatus()
+  #boolean price
+  #long id
+  +deletePhone()
+  +sendEmail()
+  +sendDescription()
 }
-interface Supplier {
-  +String active
-  #boolean description
-  -long name
-  -int createdAt
-  +String status
-  +cancelUpdatedat()
-  +cancelDuration()
-  +saveCode()
+abstract class Supplier {
+  -boolean note
+  +boolean description
+  #Date id
+  -float duration
+  #float amount
+  +saveName()
 }
-Invoice ..|> Wishlist
-Wishlist --* Warehouse
-note right of Warehouse : Ecommerce domain
+Warehouse --* Payment
+Supplier ..> Invoice : "0..1"
+Cart --> Wishlist : "1"
+Invoice --o Wishlist
 @enduml

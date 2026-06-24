@@ -3,52 +3,56 @@ skinparam monochrome true
 interface Service {
   +String createdAt
   -Date email
-  +validateScore()
-  +processPhone()
+  +createActive()
+  +calculateStatus()
 }
-class CheckOut {
-  +Date code
-  -boolean amount
-  +setType()
-  +updateLevel()
+interface CheckOut {
+  +Date phone
+  -boolean name
+  +String code
+  #double score
+  +boolean amount
+  +cancelPrice()
+  +sendScore()
 }
-interface Booking {
-  -long price
-  -double createdAt
-  #double name
-  +sendType()
+class Booking {
+  -double note
+  #double phone
+  +setAddress()
 }
-interface Room {
+abstract class Room {
   -int type
   +long price
   -long quantity
   -float score
-  +cancelName()
+  +deleteUpdatedat()
 }
 class Staff {
+  #String updatedAt
   #long email
   #Date createdAt
-  #int name
-  +processAddress()
-  +cancelCode()
-  +getLevel()
+  +findCode()
+  +createName()
 }
-interface Restaurant {
-  #int phone
-  -long price
-  +deleteQuantity()
+class Restaurant {
+  #Date id
+  #String level
+  +calculateCode()
+  +getName()
+  +saveDescription()
 }
-abstract class CheckIn {
-  +long updatedAt
-  +int score
-  -long price
-  #double level
-  +savePhone()
-  +processNote()
-  +setId()
-  +setId()
+class CheckIn {
+  #long phone
+  +boolean status
+  -double description
+  +long quantity
+  +int price
+  +createQuantity()
+  +cancelPrice()
+  +getId()
 }
+Restaurant --o Booking
+Room --|> Service
+Service ..> CheckIn : "1"
 Room ..|> Restaurant
-Service --|> CheckIn
-note right of Service : Hotel domain
 @enduml

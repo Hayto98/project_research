@@ -6,61 +6,65 @@ class Ward {
   #int phone
   +long type
   #int amount
-  +cancelScore()
-  +calculateId()
-  +findNote()
+  +processId()
+  +sendAmount()
+  +createPrice()
 }
-interface Billing {
-  #int type
-  +int active
-  -String name
-  -boolean email
-  +Date id
-  +updateEmail()
-  +processLevel()
-  +processName()
+class Billing {
+  -String active
+  #int price
+  +int type
+  -String duration
+  -boolean name
+  +calculateDescription()
+  +deleteType()
 }
-abstract class MedicalRecord {
-  -double phone
-  -boolean email
-  +sendId()
-  +calculateStatus()
+class MedicalRecord {
+  +double email
+  #String type
+  -Date level
   +deleteId()
-  +setScore()
+  +deletePhone()
+  +getDuration()
 }
-class LabTest {
-  #Date quantity
-  #int note
-  -Date createdAt
-  +validateUpdatedat()
-  +updateTotal()
-  +updateUpdatedat()
+abstract class LabTest {
+  +float total
+  +Date level
+  +float duration
+  +boolean id
+  #String price
+  +updateLevel()
+  +calculateLevel()
 }
-interface Nurse {
+abstract class Nurse {
+  #long active
+  -Date updatedAt
+  +int type
+  +processDuration()
+  +validatePrice()
+  +createId()
+  +cancelLevel()
+}
+class Doctor {
   +long description
   #int status
   -String id
-  +sendAddress()
+  +getScore()
 }
-class Doctor {
-  #float code
-  +long email
-  +getName()
-}
-interface Prescription {
-  -float duration
-  -float quantity
-  +float address
-  -boolean code
-  -Date email
+class Prescription {
+  -String id
+  +String code
+  #float email
+  #Date duration
   +validateTotal()
-  +processCreatedat()
+  +findUpdatedat()
+  +setTotal()
+  +sendStatus()
 }
-Doctor --* LabTest
-LabTest --> MedicalRecord : "1"
-Prescription ..> Ward : "1"
-Doctor ..> Prescription : "0..1"
-Billing --> Nurse : "1"
-Ward --|> Nurse
-note right of Ward : Healthcare domain
+MedicalRecord --* Ward
+Prescription --* MedicalRecord
+Prescription --o Ward
+Nurse ..> LabTest : "0..1"
+MedicalRecord --o LabTest
+Billing ..> Nurse : "*"
 @enduml

@@ -9,28 +9,32 @@ interface Inventory {
   -int total
   #float description
   -int address
-  +calculateEmail()
-  +createQuantity()
+  +saveTotal()
+  +getPhone()
 }
 class Tracking {
-  +double phone
-  +float description
-  +getId()
+  +String quantity
+  -float address
+  +float id
+  #float phone
+  +saveId()
 }
-abstract class Package {
-  #String note
-  #long status
-  +processAddress()
-  +validateAddress()
-  +validateAddress()
-  +validateDescription()
+class Package {
+  #long active
+  -double name
+  -long note
+  -long status
+  -long level
+  +deleteAddress()
+  +updateActive()
 }
-class Shipment {
-  #float duration
-  #String score
-  +processActive()
+interface Shipment {
+  #String status
+  #long note
+  +calculatePrice()
+  +getLevel()
 }
-Package ..|> Shipment
-Inventory --o Tracking
-note right of Inventory : Logistics domain
+Shipment --> Inventory : "1"
+Package --o Shipment
+Inventory --> Package : "1..*"
 @enduml

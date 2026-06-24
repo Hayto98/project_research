@@ -3,10 +3,10 @@ skinparam shadowing false
 skinparam backgroundColor #F5F5F5
 skinparam defaultFontSize 11
 left to right direction
-actor "Account Holder" as AccountHolder
-actor "Branch Manager" as BranchManager
-actor "Auditor" as Auditor
-actor "Bank Teller" as BankTeller
+actor "Account Holder" as AH
+actor "Branch Manager" as BM
+actor "Auditor" as A
+actor "Bank Teller" as BT
 rectangle "Banking System" {
   usecase "Open Account" as UC_OpenAccount
   usecase "Deposit Money" as UC_DepositMoney
@@ -14,14 +14,14 @@ rectangle "Banking System" {
   usecase "Pay Bill" as UC_PayBill
   usecase "Withdraw Cash" as UC_WithdrawCash
 }
-AccountHolder --> UC_BlockCard
-AccountHolder --> UC_OpenAccount
-AccountHolder --> UC_DepositMoney
-BranchManager --> UC_OpenAccount
-Auditor --> UC_DepositMoney
-Auditor --> UC_BlockCard
-BankTeller --> UC_BlockCard
-BankTeller --> UC_PayBill
-BankTeller --> UC_DepositMoney
+AH --> UC_BlockCard
+AH --> UC_OpenAccount
+AH --> UC_DepositMoney
+BM --> UC_OpenAccount
+A --> UC_DepositMoney
+A --> UC_BlockCard
+BT --> UC_BlockCard
+BT --> UC_PayBill
+BT --> UC_DepositMoney
 UC_DepositMoney ..> UC_OpenAccount : <<include>>
 @enduml

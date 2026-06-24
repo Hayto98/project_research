@@ -5,56 +5,57 @@ skinparam classBorderColor #E65100
 interface Catalog {
   -boolean level
   #Date description
-  +deleteEmail()
-  +updateName()
+  +createCreatedat()
+  +findCreatedat()
   +findAddress()
-  +getStatus()
+  +deleteNote()
 }
 class Reservation {
-  #int status
-  -int note
-  -boolean updatedAt
-  +validateAddress()
-  +calculateStatus()
-  +setUpdatedat()
-  +processType()
+  +String status
+  -int description
+  +cancelCode()
+  +sendNote()
 }
-interface Book {
-  -Date code
-  -boolean level
-  +String duration
-  #Date quantity
-  +cancelDescription()
-  +updateDuration()
-  +cancelQuantity()
+class Book {
+  +double phone
+  -Date address
+  #boolean price
+  -String status
+  #boolean active
+  +updateLevel()
 }
-interface Renewal {
-  +float quantity
-  #boolean duration
-  #long phone
-  -String type
-  +sendId()
+class Renewal {
+  #int score
+  +boolean createdAt
+  #long id
+  #Date address
+  +setDuration()
+  +calculatePhone()
+  +processDescription()
 }
 class Librarian {
-  +int id
   +boolean description
-  -double total
-  #long quantity
-  +long note
-  +getId()
+  +long active
+  -String phone
+  +double score
+  -boolean status
+  +updatePrice()
+  +processPrice()
+  +processCode()
+  +sendActive()
 }
-class Loan {
-  +float note
-  #int id
-  #boolean level
-  -float duration
-  #int email
-  +cancelLevel()
+abstract class Loan {
+  +String active
+  +float address
+  -float amount
+  #double email
+  +String code
+  +sendAddress()
+  +setType()
+  +setActive()
+  +validateStatus()
 }
-Loan --o Librarian
-Renewal ..> Loan : "0..1"
-Catalog --o Librarian
-Librarian ..|> Renewal
-Loan --o Renewal
-note right of Catalog : Library domain
+Loan --* Librarian
+Librarian --|> Reservation
+Librarian --> Loan : "*"
 @enduml

@@ -7,33 +7,31 @@ interface Vehicle {
   +int code
   #long quantity
   +int email
-  +deleteCreatedat()
-  +cancelDuration()
-  +setName()
+  +updateType()
+  +setCreatedat()
+  +getTotal()
 }
-abstract class Package {
-  +long updatedAt
-  #int createdAt
-  #Date amount
-  +calculateAmount()
+interface Package {
+  +int name
+  +float note
+  +calculateNote()
+  +validateAmount()
 }
 interface DeliveryNote {
-  +long level
-  +boolean status
-  +long active
-  #double phone
-  +processLevel()
-  +calculateAddress()
-  +createQuantity()
+  +Date level
+  #boolean id
+  -boolean price
+  +createDescription()
 }
 class Shipment {
-  -boolean code
-  +float level
-  #double name
-  +deleteType()
-  +setAmount()
+  #int address
+  -boolean id
+  +createQuantity()
+  +sendCode()
+  +sendDescription()
+  +processEmail()
 }
-Package --o Shipment
-Shipment --|> Package
-note right of Vehicle : Logistics domain
+DeliveryNote --* Package
+DeliveryNote ..|> Shipment
+Vehicle --|> DeliveryNote
 @enduml

@@ -9,60 +9,57 @@ class Guest {
   +long score
   -float phone
   -boolean name
-  +createNote()
-  +getLevel()
+  +calculateScore()
+  +calculateType()
 }
-class Booking {
-  +int total
-  +int email
-  #double quantity
-  #Date name
-  +findStatus()
-  +updateLevel()
-  +processPrice()
-  +deleteTotal()
+abstract class Booking {
+  -Date level
+  -long status
+  +setUpdatedat()
+  +calculateNote()
+  +calculateAddress()
 }
 class CheckOut {
+  #Date active
+  +float price
+  +boolean level
+  +findEmail()
+  +calculateCode()
+  +saveAddress()
+  +processLevel()
+}
+class Invoice {
   +long address
   +String level
-  +processCreatedat()
-  +setNote()
-}
-abstract class Invoice {
-  +Date score
-  #String name
-  +findPrice()
+  +cancelCode()
+  +getTotal()
 }
 class Reservation {
-  +long quantity
-  -String description
-  -String createdAt
-  +deleteUpdatedat()
-  +validateNote()
-  +processStatus()
+  #boolean note
+  +Date id
+  +Date score
+  -long name
+  #Date createdAt
+  +saveUpdatedat()
+  +getNote()
 }
 class Service {
-  +double quantity
-  +double phone
-  #long price
-  +long level
-  #int name
-  +findUpdatedat()
-  +deleteScore()
-  +updateCode()
-  +saveName()
-}
-abstract class Room {
-  #int active
-  #boolean status
-  +double code
-  +getType()
-  +deleteNote()
+  +long id
+  +long address
+  +float level
+  +updateTotal()
   +createName()
 }
-CheckOut --* Room
-Service ..|> Booking
-Reservation --> Service : "*"
-Service --|> Reservation
-note right of Guest : Hotel domain
+abstract class Room {
+  -boolean quantity
+  -double price
+  +deleteId()
+  +deleteNote()
+  +updateStatus()
+}
+Guest --> Invoice : "1..*"
+Guest ..> CheckOut : "0..1"
+Room ..> Invoice : "0..1"
+Booking ..|> Reservation
+Guest --|> Service
 @enduml

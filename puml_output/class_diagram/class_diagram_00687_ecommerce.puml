@@ -4,54 +4,60 @@ interface Category {
   #boolean updatedAt
   -double phone
   #long total
-  +getEmail()
-  +setPhone()
-  +findLevel()
-  +findAmount()
+  +deleteId()
+  +setUpdatedat()
+  +sendLevel()
+  +deleteCreatedat()
 }
-abstract class Supplier {
-  #Date note
-  +Date level
+class Supplier {
+  -float level
+  #boolean amount
+  #int price
+  #long name
+  +processEmail()
   +validateLevel()
-  +sendNote()
-  +deleteScore()
+  +calculatePrice()
 }
-class Review {
-  -Date name
-  #boolean level
-  -String type
-  +processAmount()
-  +updateCode()
-  +setId()
+abstract class Review {
+  +Date score
+  #Date code
+  -double createdAt
+  +saveId()
+  +findType()
+  +updateId()
+  +validateAddress()
 }
-interface Payment {
-  +float type
-  +String note
-  -boolean status
-  +saveLevel()
-  +sendDescription()
-  +sendCreatedat()
+abstract class Payment {
+  +Date createdAt
+  #float code
+  #int status
+  +setAmount()
+  +cancelQuantity()
+  +calculateType()
+  +createPhone()
 }
-interface Warehouse {
-  -long address
-  +int id
-  -double status
-  #String quantity
-  +validateEmail()
-  +deleteLevel()
+class Warehouse {
+  #float id
+  #boolean note
+  +boolean address
+  +calculatePrice()
+  +saveDescription()
 }
 class Shipment {
-  #int level
-  +String address
-  +createStatus()
-  +getPrice()
+  -int id
+  +float status
+  -double quantity
+  #String phone
+  +createAmount()
+  +deleteCreatedat()
 }
-abstract class Wishlist {
-  #Date phone
-  +Date duration
-  +updateAddress()
+class Wishlist {
+  +boolean duration
+  -float level
+  +cancelEmail()
+  +saveEmail()
 }
-Wishlist ..> Shipment : "1"
-Wishlist --> Review : "1"
-note right of Category : Ecommerce domain
+Review --|> Shipment
+Category --o Payment
+Category --* Review
 @enduml

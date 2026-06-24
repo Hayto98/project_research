@@ -5,58 +5,63 @@ skinparam defaultFontSize 13
 interface Review {
   #float price
   #float code
-  +updatePrice()
-  +setDuration()
+  +sendNote()
+  +processType()
 }
 class Category {
+  -String name
   -String address
-  -String active
+  #double active
+  +updateQuantity()
   +createQuantity()
+  +findType()
+}
+abstract class Payment {
+  -double price
+  +String status
+  #int score
+  #String duration
+  -float quantity
   +calculateNote()
-  +calculateStatus()
-  +sendPrice()
 }
-class Payment {
-  #String note
-  -float amount
-  #String name
-  +Date level
-  +processScore()
-}
-interface Customer {
+class Customer {
+  -Date score
+  #float active
+  #int price
   #double quantity
-  #long phone
-  -long type
-  #float updatedAt
-  #String total
-  +validateActive()
-  +saveCreatedat()
+  #double phone
+  +getAddress()
+  +setTotal()
+  +updateScore()
 }
 class Shipment {
-  +float price
-  +long address
-  -String name
-  +sendDescription()
-  +processCode()
-  +createAddress()
-  +processAmount()
+  +boolean phone
+  #int active
+  -long createdAt
+  +updatePrice()
 }
-interface Order {
-  #Date address
-  #double phone
-  +long level
-  -float email
-  +getScore()
-  +calculateDescription()
+class Order {
+  -String total
+  -long name
+  -float note
+  +boolean description
+  +createActive()
+  +findCode()
+  +sendPhone()
 }
-interface Product {
-  #long phone
-  +int total
-  -int type
-  +validateEmail()
+class Product {
+  #Date amount
+  #double email
+  +Date address
+  #int createdAt
+  -boolean id
+  +updateId()
+  +deleteTotal()
+  +getId()
+  +findDescription()
 }
-Order --> Shipment : "*"
-Product --o Payment
-Customer ..> Category : "1"
-note right of Review : Ecommerce domain
+Review --* Category
+Category --|> Shipment
+Payment ..> Order : "1..*"
+Category --> Order : "*"
 @enduml

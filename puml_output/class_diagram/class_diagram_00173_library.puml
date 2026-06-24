@@ -6,47 +6,40 @@ class Librarian {
   #double quantity
   +int note
   -float type
-  +saveTotal()
+  +saveUpdatedat()
 }
-interface Member {
+abstract class Member {
   +boolean duration
   -Date id
   #String price
   -double description
-  +calculateActive()
+  +processLevel()
 }
-abstract class Publisher {
-  -Date phone
-  #Date updatedAt
+interface Publisher {
+  +long type
+  #Date phone
+  #boolean updatedAt
   #Date total
-  #Date level
-  +String createdAt
-  +deletePhone()
-  +sendName()
-  +validateLevel()
-  +validateStatus()
+  #float score
+  +saveTotal()
+  +validateId()
 }
-class Loan {
-  #Date id
-  +double level
-  +int updatedAt
-  +deleteNote()
-  +getTotal()
-  +updatePrice()
-  +validateTotal()
+abstract class Loan {
+  -boolean phone
+  -String score
+  +int name
+  +setAmount()
 }
-class Renewal {
-  +float active
-  -boolean updatedAt
-  #long address
-  +processId()
-  +updateName()
-  +deleteDescription()
-  +createUpdatedat()
+interface Renewal {
+  +int duration
+  -int description
+  #Date type
+  +updateActive()
+  +getPhone()
+  +updateDescription()
+  +processType()
 }
-Member ..> Loan : "*"
-Loan ..|> Publisher
-Member --> Librarian : "1"
-Publisher --> Librarian : "0..1"
-note right of Librarian : Library domain
+Loan ..> Publisher : "0..1"
+Renewal ..> Member : "1..*"
+Librarian --> Publisher : "1..*"
 @enduml

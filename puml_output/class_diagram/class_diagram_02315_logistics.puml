@@ -6,54 +6,61 @@ skinparam shadowing true
 class Route {
   +long type
   #Date name
-  +createNote()
-  +getCode()
+  +deleteName()
+  +calculateAmount()
 }
 class Driver {
-  #long amount
-  -Date note
-  +boolean updatedAt
-  +Date phone
-  +boolean level
-  +sendCreatedat()
-  +saveName()
-  +setEmail()
+  +double phone
+  +float type
+  +validateTotal()
+  +saveAmount()
+  +processEmail()
 }
 class Shipment {
-  -boolean phone
-  -String email
-  +int id
-  #float updatedAt
-  #long code
-  +createNote()
-  +setTotal()
-  +findAddress()
+  #int code
+  #String level
+  +float description
+  -String amount
+  -long address
+  +processNote()
+  +processCode()
+  +validateNote()
 }
-abstract class DeliveryNote {
-  #String duration
-  #float updatedAt
-  +createQuantity()
-  +processQuantity()
+class DeliveryNote {
+  +Date level
+  #long note
+  -long status
+  -String name
+  +updateId()
+  +findQuantity()
+  +getId()
+  +validatePhone()
 }
-class Tracking {
-  -int note
-  #String price
-  +float total
-  +cancelDuration()
-  +validateAmount()
+interface Tracking {
+  #Date name
+  -double amount
+  -long email
+  +calculateAmount()
+  +saveCode()
 }
-class Warehouse {
-  +float status
-  -int price
-  +getEmail()
+interface Warehouse {
+  #Date address
+  #long updatedAt
+  +String status
+  +String name
+  -float description
+  +findTotal()
 }
 class Customer {
-  #String code
-  +float description
-  +processTotal()
+  +String id
+  +Date duration
+  #int email
+  +updateDuration()
 }
-DeliveryNote --|> Customer
-Driver --o DeliveryNote
+Customer --o Route
+DeliveryNote --o Driver
+DeliveryNote ..|> Route
+Customer --o DeliveryNote
 Route ..> Tracking : "*"
-note right of Route : Logistics domain
+Driver ..> Tracking : "0..1"
 @enduml

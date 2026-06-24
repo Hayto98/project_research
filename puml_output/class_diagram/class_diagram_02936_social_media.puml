@@ -6,41 +6,32 @@ abstract class Follower {
   #int updatedAt
   #double createdAt
   #long name
-  +saveQuantity()
-  +processEmail()
-  +createLevel()
+  +sendPrice()
+  +setTotal()
+  +validateName()
 }
-interface Group {
-  +boolean score
-  #int description
-  +long quantity
-  -boolean updatedAt
-  +int id
-  +processPhone()
-  +findPhone()
-  +updateScore()
-  +createId()
+class Group {
+  -int level
+  #boolean active
+  +int price
+  #Date description
+  +updateType()
+  +createQuantity()
 }
 class Message {
+  -long amount
+  #long note
+  +cancelAmount()
+  +createQuantity()
+}
+class Story {
+  -long phone
   +double total
   -int type
-  -boolean note
-  -String email
-  +updateStatus()
+  +findName()
+  +findAmount()
+  +validatePhone()
 }
-interface Story {
-  #Date phone
-  +boolean active
-  +long address
-  -int duration
-  #double name
-  +updateEmail()
-  +updateLevel()
-  +sendType()
-  +deleteDuration()
-}
-Group --|> Story
-Group --o Message
-Story ..|> Group
-note right of Follower : Social Media domain
+Group --> Follower : "*"
+Message --> Story : "1..*"
 @enduml

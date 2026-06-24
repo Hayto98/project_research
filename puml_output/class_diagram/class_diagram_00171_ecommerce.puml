@@ -4,36 +4,30 @@ skinparam shadowing true
 abstract class Payment {
   -boolean note
   #long total
-  +updateEmail()
-  +sendCode()
-  +processEmail()
-  +calculatePhone()
+  +processDuration()
+  +sendDuration()
+  +validateAddress()
+  +setActive()
 }
-class Cart {
-  +Date id
-  #boolean active
-  +calculateName()
-  +findAmount()
-  +processName()
-  +validatePrice()
+interface Cart {
+  -Date note
+  -long email
+  +updateDuration()
 }
 interface Warehouse {
+  +float active
+  #int note
+  -String price
+  +validateDescription()
+  +getName()
+  +createId()
+}
+abstract class Review {
   #int status
   +String note
-  +saveAddress()
+  +sendDuration()
 }
-class Review {
-  +boolean id
-  #String email
-  -boolean quantity
-  +boolean name
-  +float level
-  +cancelScore()
-  +getCode()
-  +sendPrice()
-  +getQuantity()
-}
-Review --|> Warehouse
-Payment --o Review
-note right of Payment : Ecommerce domain
+Cart --|> Review
+Warehouse --* Review
+Payment --* Warehouse
 @enduml

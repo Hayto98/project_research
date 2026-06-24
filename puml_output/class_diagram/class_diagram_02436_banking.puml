@@ -6,52 +6,51 @@ class Customer {
   -double phone
   #double type
   #long duration
-  +cancelCode()
-  +deleteLevel()
-  +processDescription()
+  +validateActive()
+  +getLevel()
+  +setLevel()
 }
-abstract class Loan {
-  +float phone
-  #float id
+interface Loan {
+  #String description
+  +int type
+  #float active
   #long createdAt
-  +deleteDescription()
-  +deleteActive()
+  +int phone
+  +cancelType()
+  +createNote()
 }
 class Beneficiary {
-  -boolean address
-  #String email
-  +setId()
-  +processAmount()
-  +processNote()
+  -double id
+  #Date address
+  +findTotal()
+}
+abstract class Transfer {
+  #int id
+  -float note
+  +sendLevel()
+  +processActive()
+  +saveLevel()
   +updateId()
 }
-class Transfer {
-  -int email
-  +int score
-  +long total
-  +boolean price
-  +double description
-  +saveDuration()
-  +validateActive()
-}
 class Statement {
-  -float phone
-  #float createdAt
-  -boolean total
-  +int id
-  -String status
-  +validateTotal()
-  +processCode()
-  +updatePhone()
-  +saveCreatedat()
+  -double total
+  +double email
+  +String score
+  +cancelEmail()
+  +cancelId()
 }
 class Interest {
-  #String name
-  +String description
-  +calculateTotal()
-  +findPhone()
+  #float note
+  +double description
+  -int phone
+  +updatePrice()
+  +createPhone()
+  +validateAddress()
+  +saveStatus()
 }
-Interest ..|> Beneficiary
-Beneficiary --|> Statement
-note right of Customer : Banking domain
+Statement ..|> Loan
+Transfer --o Customer
+Beneficiary --o Transfer
+Customer --* Loan
+Interest --|> Loan
 @enduml

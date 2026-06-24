@@ -4,34 +4,34 @@ skinparam backgroundColor #F5F5F5
 abstract class Enrollment {
   +long level
   #float code
-  +getQuantity()
-  +calculateNote()
+  +processCode()
+  +setTotal()
 }
-interface Teacher {
-  +boolean updatedAt
+abstract class Teacher {
+  #long duration
+  +String code
+  +Date updatedAt
   -int amount
-  +updatePrice()
+  -Date score
+  +setActive()
+  +validatePrice()
 }
 class Assignment {
-  #float score
-  #long description
-  +Date id
-  -String name
-  +int note
-  +validateDuration()
-  +validateName()
-  +validateCode()
-  +updateEmail()
+  #long note
+  +Date active
+  +setDescription()
+  +cancelEmail()
+  +updateDescription()
 }
-interface Exam {
-  #double description
-  +int quantity
-  #String name
-  -Date duration
-  +deleteTotal()
-  +calculateAddress()
+abstract class Exam {
+  #float duration
+  +int address
+  -float name
+  #Date phone
+  +setLevel()
+  +updateLevel()
+  +setUpdatedat()
 }
-Enrollment --> Teacher : "0..1"
-Enrollment ..|> Exam
-note right of Enrollment : Education domain
+Exam ..|> Enrollment
+Enrollment ..> Teacher : "0..1"
 @enduml

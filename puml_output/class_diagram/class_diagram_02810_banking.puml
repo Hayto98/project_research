@@ -6,70 +6,62 @@ skinparam defaultFontSize 13
 class Customer {
   #Date address
   +int updatedAt
-  +deleteLevel()
-  +sendType()
-  +processId()
-  +cancelScore()
+  +saveAddress()
+  +getCode()
+  +calculateDuration()
+  +processNote()
 }
-class Interest {
-  +Date description
-  +boolean active
-  #int createdAt
-  -String type
-  +calculateQuantity()
-  +calculateEmail()
+abstract class Interest {
+  +boolean id
+  #int level
+  #double score
+  +Date createdAt
+  +boolean email
+  +setNote()
+  +updateActive()
 }
-abstract class Deposit {
-  #String duration
-  +long updatedAt
-  #long createdAt
-  +setAmount()
-  +sendName()
-  +saveTotal()
-  +processScore()
+class Deposit {
+  #boolean quantity
+  +int price
+  #String email
+  +long total
+  #long amount
+  +cancelEmail()
+  +validateQuantity()
+  +createDescription()
+  +saveId()
 }
 abstract class Branch {
-  -double duration
+  -boolean score
+  -long note
+  -float total
   -double createdAt
   +boolean email
-  #int address
-  -double price
-  +updateCreatedat()
-  +getCode()
-  +processCreatedat()
-  +processCreatedat()
+  +setEmail()
+  +validateUpdatedat()
 }
-class Teller {
-  +double price
-  #float amount
-  +calculateType()
-  +deleteName()
-  +cancelLevel()
+abstract class Teller {
+  -float createdAt
+  +double id
+  +float code
+  +getStatus()
+  +sendTotal()
 }
-class Transaction {
-  -boolean duration
-  -int updatedAt
-  #int quantity
-  +double email
-  +double score
-  +getNote()
-  +setUpdatedat()
-  +getDescription()
-  +getCode()
-}
-class Withdrawal {
-  -Date updatedAt
+abstract class Transaction {
+  #long amount
   -double type
-  #long score
-  -boolean id
-  +cancelQuantity()
-  +calculateAddress()
+  +float score
+  +processEmail()
 }
-Branch --* Teller
-Teller --> Customer : "*"
-Withdrawal ..> Transaction : "1..*"
-Branch --o Deposit
-Teller --|> Branch
-Withdrawal ..> Branch : "1"
-note right of Customer : Banking domain
+interface Withdrawal {
+  -long total
+  #long updatedAt
+  +createUpdatedat()
+  +createPrice()
+  +deleteScore()
+  +setCode()
+}
+Withdrawal --o Interest
+Customer --o Branch
+Customer --o Transaction
 @enduml

@@ -8,61 +8,60 @@ abstract class Appointment {
   +float code
   #long total
   #String name
-  +findDescription()
-  +saveTotal()
+  +getPrice()
+  +createTotal()
 }
 class Hospital {
-  #double score
-  #boolean status
-  +updateAddress()
-  +sendTotal()
-  +deleteQuantity()
+  #boolean id
+  -float name
+  +float score
+  -boolean status
+  -int note
+  +findCode()
+  +saveDescription()
+  +saveAddress()
 }
-class Billing {
-  +String total
-  #float name
-  -float type
-  +validateCode()
-  +getNote()
-  +calculateCreatedat()
+abstract class Billing {
+  +String duration
+  #float type
+  +saveType()
+  +sendStatus()
+  +deleteTotal()
+  +setDuration()
 }
 class Insurance {
-  +int amount
-  -Date id
-  +validateAddress()
-  +sendAmount()
-  +calculateCode()
-  +findPhone()
+  +long code
+  +Date id
+  #int note
+  +float total
+  +updateDescription()
 }
 class Treatment {
-  #int phone
-  #String address
-  #double price
-  -boolean total
-  -float amount
-  +saveStatus()
-  +sendEmail()
+  +Date address
+  -String duration
+  -long score
+  -Date amount
+  -double price
+  +deleteLevel()
+  +validatePrice()
 }
 class Prescription {
-  #String createdAt
-  +double quantity
-  +float total
-  +int updatedAt
-  +double active
-  +sendCode()
-  +setStatus()
-  +sendNote()
+  -boolean duration
+  -float total
+  +sendLevel()
+  +cancelPrice()
 }
 class MedicalRecord {
-  -boolean total
-  #String status
-  +cancelCreatedat()
+  -int createdAt
+  +boolean price
+  +int duration
+  -int quantity
+  +saveQuantity()
+  +saveEmail()
 }
-MedicalRecord --> Insurance : "*"
-MedicalRecord --o Prescription
-Appointment --o MedicalRecord
-Insurance --o Billing
-MedicalRecord --o Treatment
-Hospital ..> Billing : "*"
-note right of Appointment : Healthcare domain
+Billing --|> Treatment
+Appointment --> MedicalRecord : "*"
+Billing --o Appointment
+Appointment --> Insurance : "1"
+MedicalRecord --> Appointment : "0..1"
 @enduml

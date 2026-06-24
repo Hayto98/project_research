@@ -4,64 +4,59 @@ skinparam defaultFontSize 11
 class Withdrawal {
   #float type
   -float quantity
-  +updateLevel()
-  +saveScore()
+  +createScore()
+  +savePrice()
 }
-class Transfer {
-  -int quantity
+interface Transfer {
+  +boolean total
+  +float quantity
   -int name
-  -boolean type
-  -float createdAt
-  -boolean code
-  +savePhone()
-  +sendScore()
-  +deletePhone()
+  -int type
+  +deleteDescription()
+  +cancelLevel()
+  +deleteActive()
 }
-class Interest {
-  #String level
-  -String duration
-  +int email
-  -boolean description
-  +findPhone()
-  +sendStatus()
+abstract class Interest {
+  -int phone
+  #boolean active
+  -boolean score
+  #long amount
+  +sendDuration()
+  +deleteNote()
 }
-class Deposit {
+abstract class Deposit {
+  -boolean status
+  +Date description
+  +updateNote()
+  +validateEmail()
+  +cancelPrice()
+}
+class Beneficiary {
   #double duration
   -boolean address
   -long level
   #Date score
   -long email
-  +deleteDescription()
-  +deleteName()
-  +getType()
-}
-class Beneficiary {
-  -double type
-  +Date amount
-  +long price
-  +boolean description
-  -float code
-  +getScore()
-  +deleteNote()
-  +validateCode()
+  +validateQuantity()
+  +getEmail()
+  +validateCreatedat()
 }
 class Transaction {
-  #double duration
-  +float address
-  +createName()
-  +updatePhone()
+  #double type
+  -int name
+  +cancelName()
+  +getEmail()
+  +createAddress()
+  +processTotal()
 }
-class Card {
-  +boolean note
-  +boolean quantity
-  -float total
-  #float amount
-  +sendEmail()
-  +validateLevel()
-  +setEmail()
+abstract class Card {
+  +boolean status
+  -float phone
+  +getDescription()
+  +calculateId()
+  +sendAmount()
 }
-Interest ..|> Card
-Transaction ..|> Beneficiary
-Card ..> Beneficiary : "*"
-note right of Withdrawal : Banking domain
+Deposit --|> Interest
+Transaction --> Interest : "1"
+Beneficiary --> Interest : "*"
 @enduml

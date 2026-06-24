@@ -7,45 +7,37 @@ class Guest {
   #String level
   -String active
   #float id
-  +updatePrice()
+  +sendNote()
 }
-class Payment {
-  -int note
-  #int createdAt
-  +String updatedAt
-  -String code
-  -String status
-  +setType()
-  +processLevel()
-  +updateNote()
-  +processName()
+abstract class Payment {
+  +boolean type
+  +long note
+  +float createdAt
+  #int updatedAt
+  +processQuantity()
+  +findActive()
 }
 class Invoice {
-  -int quantity
-  #boolean phone
-  #float id
-  #Date createdAt
-  +deleteDuration()
-  +calculateQuantity()
-  +setCreatedat()
-  +saveName()
+  #int id
+  -float price
+  -float code
+  +long type
+  -long active
+  +sendTotal()
+  +setPhone()
+  +sendId()
 }
-interface CheckOut {
+class CheckOut {
+  -int duration
+  #boolean level
+  -long score
+  +processActive()
+}
+class Booking {
   +boolean quantity
   -float active
-  +createAmount()
+  +createQuantity()
 }
-abstract class Booking {
-  +float description
-  -double name
-  #Date price
-  +double email
-  +saveCreatedat()
-  +validateUpdatedat()
-  +setTotal()
-}
-Invoice --> Payment : "0..1"
-Booking --> Payment : "1..*"
-Invoice --|> Booking
-note right of Guest : Hotel domain
+CheckOut ..|> Invoice
+Guest --* CheckOut
 @enduml

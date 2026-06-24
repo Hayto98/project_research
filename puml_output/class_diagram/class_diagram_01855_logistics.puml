@@ -4,37 +4,38 @@ class FuelLog {
   #long address
   -float duration
   -double type
-  +saveQuantity()
-  +createUpdatedat()
-  +validateQuantity()
+  +updateAmount()
+  +processNote()
+  +processDescription()
 }
 class Route {
-  #float note
-  -double total
-  -double createdAt
-  +long price
-  +cancelStatus()
-  +saveStatus()
-  +deleteActive()
+  -double address
+  -int quantity
+  -Date name
+  +processLevel()
+  +createActive()
+  +createDuration()
 }
-abstract class Shipment {
-  -String level
-  #double updatedAt
-  -float email
-  -boolean quantity
-  +saveAddress()
-  +getDuration()
-  +findStatus()
+class Shipment {
+  +boolean email
+  -long level
+  #boolean status
+  +float score
+  +updateScore()
+  +createQuantity()
+  +getAddress()
 }
-abstract class DeliveryNote {
-  -boolean score
-  #double phone
-  +String price
-  +boolean description
-  +double createdAt
-  +calculateType()
+class DeliveryNote {
+  +Date type
+  #float duration
+  #Date score
+  +double quantity
+  -float address
+  +sendScore()
+  +validateCode()
+  +updateDescription()
 }
-DeliveryNote --o Route
-Route --> DeliveryNote : "0..1"
-note right of FuelLog : Logistics domain
+DeliveryNote --|> FuelLog
+Route --|> Shipment
+DeliveryNote --|> Shipment
 @enduml

@@ -8,62 +8,65 @@ abstract class Message {
   +boolean phone
   #long active
   #String type
-  +calculateScore()
-  +createCode()
-  +validateScore()
-  +findNote()
+  +processType()
+  +calculatePrice()
+  +findCreatedat()
+  +createAddress()
 }
 class Hashtag {
-  +long id
-  -double description
-  +String email
-  +saveCreatedat()
-  +processActive()
-  +setCode()
+  +long createdAt
+  -double duration
+  +String id
+  -Date description
+  +double email
+  +getStatus()
 }
 class Like {
-  -boolean quantity
-  #int updatedAt
-  +int total
-  #String note
-  +calculateStatus()
-  +calculateTotal()
-  +findNote()
-  +setDuration()
+  +double quantity
+  #float duration
+  +validateDuration()
+  +setId()
+  +cancelAmount()
+  +deleteScore()
 }
 class Post {
-  #int note
-  -String code
-  +float duration
-  #Date score
-  +deletePrice()
-  +processLevel()
-  +updatePrice()
-  +processAmount()
+  -Date duration
+  #Date id
+  +double note
+  +setActive()
+  +sendUpdatedat()
+  +findTotal()
+  +calculateAmount()
 }
-abstract class Story {
+class Story {
+  #Date phone
+  +double note
+  +sendAmount()
+  +findEmail()
+  +processDuration()
+  +processLevel()
+}
+class Profile {
+  -float duration
+  -boolean total
+  +float description
+  +validateUpdatedat()
+  +createCode()
+  +validateTotal()
+  +processScore()
+}
+abstract class Group {
   -boolean email
   -float code
   +String note
   #Date type
   +String total
-  +validateScore()
+  +createActive()
 }
-class Profile {
-  #Date name
-  #int active
-  +createPhone()
-  +updateTotal()
-}
-class Group {
-  -long type
-  #boolean name
-  +validateAmount()
-  +calculatePhone()
-  +findEmail()
-}
-Group --* Profile
-Like ..|> Post
-Post --> Story : "1..*"
-note right of Message : Social Media domain
+Hashtag --|> Message
+Story ..> Profile : "0..1"
+Hashtag --* Like
+Group ..> Hashtag : "*"
+Like --o Message
+Story --o Message
 @enduml

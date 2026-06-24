@@ -9,64 +9,63 @@ class Supplier {
   #Date total
   +boolean createdAt
   -double quantity
-  +deleteLevel()
-  +setAddress()
-  +processDescription()
-  +updateType()
+  +processCreatedat()
+  +processUpdatedat()
+  +processNote()
+  +getCode()
 }
-abstract class Wishlist {
-  +float name
-  #int score
-  -double code
-  +float amount
-  +getId()
-  +calculateDuration()
-  +deleteId()
-  +validateCode()
+class Wishlist {
+  -boolean note
+  -Date description
+  +boolean createdAt
+  #String type
+  +processActive()
+  +calculateLevel()
 }
 class Category {
-  +double updatedAt
-  -float total
-  +findStatus()
+  +double type
+  #float amount
+  +String duration
+  -String id
+  +cancelTotal()
+  +processPrice()
+  +setDuration()
 }
-interface Cart {
+abstract class Cart {
+  #String note
+  #float address
+  +updateCreatedat()
+}
+interface Review {
   +float quantity
   -Date level
   -double active
   #Date status
-  +findPrice()
-  +savePrice()
+  +cancelName()
+  +setDuration()
 }
-class Review {
-  -Date phone
-  +float name
-  +String level
-  #long price
-  -double updatedAt
-  +createCode()
-  +calculateUpdatedat()
-  +sendEmail()
-  +saveDescription()
+abstract class Shipment {
+  -Date address
+  +double total
+  #int phone
+  +String name
+  #long active
+  +getAddress()
+  +processPhone()
+  +deleteDuration()
+  +findScore()
 }
-class Shipment {
-  #boolean price
-  #float code
-  +String updatedAt
-  +setTotal()
-  +calculateActive()
-  +getNote()
-  +saveCode()
+class Warehouse {
+  #int updatedAt
+  -Date active
+  +int email
+  #boolean description
+  #float duration
+  +deleteQuantity()
 }
-interface Warehouse {
-  -float price
-  +Date updatedAt
-  +createTotal()
-  +updatePrice()
-  +processDescription()
-  +deleteTotal()
-}
-Category --* Review
-Supplier --* Wishlist
-Cart --o Review
-note right of Supplier : Ecommerce domain
+Warehouse --o Supplier
+Cart --|> Review
+Cart --|> Shipment
+Review --|> Shipment
+Cart --o Wishlist
 @enduml

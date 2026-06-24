@@ -8,60 +8,68 @@ interface Payment {
   +float id
   +Date updatedAt
   -Date duration
-  +updateDuration()
-  +cancelAddress()
-  +validateType()
-  +createUpdatedat()
+  +deleteAddress()
+  +getDescription()
+  +setPhone()
+  +setId()
 }
-abstract class Order {
-  +Date updatedAt
-  #Date score
-  -String id
-  +validateType()
+class Order {
+  #boolean type
+  +int email
+  #float updatedAt
+  +String note
+  +updateActive()
+  +updateDuration()
+  +saveScore()
+  +validateName()
 }
 class Warehouse {
   +Date createdAt
   -int id
   +int status
-  +updateType()
-  +updateTotal()
-  +updateName()
+  +sendStatus()
+  +findAddress()
+  +getDescription()
 }
-interface Return {
-  #long duration
-  #Date price
-  #int note
-  -boolean name
-  +validateCreatedat()
+abstract class Return {
+  #long total
+  #double updatedAt
+  #float name
+  +setUpdatedat()
+  +sendUpdatedat()
+  +deleteCode()
+  +deleteStatus()
 }
-abstract class Shipment {
-  -float type
-  #String name
-  +calculateLevel()
-  +findNote()
+interface Shipment {
+  -int email
+  -boolean active
+  +float code
+  +sendActive()
+  +saveId()
+  +getNote()
   +validateDescription()
 }
-interface Review {
-  -int note
-  #Date total
-  +saveTotal()
-  +setScore()
-  +saveNote()
-  +deleteTotal()
+class Review {
+  +boolean total
+  #String level
+  #double note
+  -double phone
+  +cancelActive()
+  +calculateStatus()
 }
-class Supplier {
-  +Date level
-  -String total
-  +long type
-  #Date name
-  +float description
-  +sendAddress()
-  +createStatus()
-  +processCreatedat()
-  +sendTotal()
+abstract class Supplier {
+  +Date status
+  -boolean score
+  #double note
+  -String description
+  +int total
+  +findNote()
+  +setLevel()
+  +createActive()
 }
+Review --o Order
+Shipment --* Warehouse
+Payment ..|> Return
+Shipment --o Review
 Payment --> Supplier : "1..*"
-Warehouse ..> Return : "*"
-Review ..|> Payment
-note right of Payment : Ecommerce domain
 @enduml

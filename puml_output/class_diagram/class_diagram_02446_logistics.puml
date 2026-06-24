@@ -6,45 +6,42 @@ skinparam defaultFontSize 13
 class Vehicle {
   -Date email
   -float description
-  +getAddress()
-  +getScore()
-  +updateAddress()
+  +saveEmail()
+  +updatePhone()
+  +saveCreatedat()
 }
-abstract class FuelLog {
-  #Date note
-  -float total
-  #Date address
-  +processStatus()
-  +sendPrice()
-  +setQuantity()
-  +cancelQuantity()
+class FuelLog {
+  #boolean address
+  +Date price
+  -double active
+  +findUpdatedat()
+  +saveDescription()
+  +saveCode()
 }
-interface Depot {
-  +boolean level
-  -String amount
-  +sendEmail()
+abstract class Depot {
+  #long status
+  #String active
+  #int price
+  +boolean code
+  -String quantity
   +updateNote()
-  +findNote()
-  +sendScore()
+  +cancelPhone()
+  +calculateNote()
+  +saveAmount()
 }
-class DeliveryNote {
-  -String price
-  +long description
-  +float updatedAt
-  -long active
-  +validateDuration()
+abstract class DeliveryNote {
+  +int email
+  #long price
+  +deletePhone()
 }
-abstract class Manifest {
-  #float phone
-  +boolean duration
-  #int level
-  +processUpdatedat()
-  +sendScore()
-  +calculatePrice()
-  +createDescription()
+class Manifest {
+  -boolean id
+  -int phone
+  -long email
+  -boolean duration
+  +createStatus()
+  +createTotal()
 }
-Vehicle --|> Depot
-Depot ..> Vehicle : "*"
-FuelLog --> Depot : "*"
-note right of Vehicle : Logistics domain
+DeliveryNote ..> Manifest : "0..1"
+Manifest ..> DeliveryNote : "*"
 @enduml

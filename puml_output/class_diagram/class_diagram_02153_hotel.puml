@@ -6,39 +6,41 @@ skinparam defaultFontSize 11
 abstract class Reservation {
   #float description
   #float phone
-  +createLevel()
+  +findScore()
 }
-class Amenity {
-  #Date amount
-  +String description
-  -Date status
-  +updateAmount()
+interface Amenity {
+  +Date createdAt
+  +Date amount
+  +cancelStatus()
 }
-class Invoice {
-  -Date status
-  #Date note
-  +getEmail()
-  +deleteUpdatedat()
+abstract class Invoice {
+  +String createdAt
+  +double amount
+  +cancelDescription()
+  +cancelPrice()
+  +sendDuration()
+  +calculateNote()
 }
-abstract class Booking {
-  -boolean updatedAt
-  -int amount
-  +processPhone()
+class Booking {
+  #int amount
+  +long updatedAt
+  #long type
+  +boolean id
+  +processTotal()
 }
 class Staff {
+  #double code
   -int address
-  +double total
-  +setQuantity()
-  +processCreatedat()
+  +sendName()
 }
-interface Payment {
-  -String amount
-  -float score
-  +String quantity
-  +updateAmount()
-  +deleteName()
+class Payment {
+  +float quantity
+  #int type
+  +validateType()
+  +processAddress()
 }
-Amenity ..> Invoice : "0..1"
+Booking --* Reservation
+Amenity ..|> Reservation
+Amenity ..|> Payment
 Reservation ..|> Payment
-note right of Reservation : Hotel domain
 @enduml

@@ -5,55 +5,53 @@ abstract class Staff {
   +boolean createdAt
   -float description
   #Date price
-  +sendDescription()
-  +deleteName()
-  +calculateId()
-  +validateName()
+  +getCreatedat()
+  +saveQuantity()
+  +sendLevel()
+  +deleteEmail()
 }
 class Room {
-  #boolean updatedAt
-  -double total
-  +calculateName()
-  +processPrice()
+  -float price
+  +float id
+  +sendTotal()
 }
 class Service {
-  -long total
-  -boolean email
-  +boolean type
-  +calculateStatus()
+  -String duration
+  -float level
+  #float quantity
+  -String note
+  +double updatedAt
+  +deleteActive()
+  +sendPhone()
+  +saveStatus()
 }
-interface Payment {
-  #int level
-  -Date id
-  +getDescription()
-  +setTotal()
+abstract class Payment {
+  -float duration
+  +boolean code
+  +processCreatedat()
 }
-class Restaurant {
+interface Restaurant {
+  -Date score
+  +String createdAt
+  +createAddress()
+  +findAmount()
+}
+class Guest {
   -int name
   -float active
   #boolean level
-  +sendNote()
-}
-abstract class Guest {
-  -double name
-  +float phone
-  +double address
-  -long description
-  +updateId()
-  +createPhone()
+  +createStatus()
 }
 abstract class Housekeeping {
-  #Date level
-  -String active
-  +findAddress()
-  +deleteAddress()
-  +getAmount()
-  +updateCode()
+  -double address
+  +float name
+  +double phone
+  -long duration
+  +int description
+  +cancelPhone()
 }
-Room --* Guest
-Service --> Staff : "*"
-Housekeeping --|> Guest
-Restaurant --o Housekeeping
-Restaurant ..|> Service
-note right of Staff : Hotel domain
+Payment ..> Staff : "1..*"
+Staff ..> Payment : "1..*"
+Housekeeping --* Room
+Housekeeping ..|> Staff
 @enduml

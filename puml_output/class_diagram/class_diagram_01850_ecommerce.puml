@@ -4,70 +4,57 @@ interface Review {
   +double id
   -long amount
   #boolean createdAt
-  +processActive()
-  +sendActive()
-  +updateName()
-  +getDescription()
+  +cancelQuantity()
+  +deleteStatus()
+  +calculateActive()
+  +createDescription()
 }
 interface Payment {
-  -float price
-  #double quantity
-  -boolean createdAt
-  -long amount
-  +double status
-  +processEmail()
-  +setType()
-  +createStatus()
+  #Date name
+  -Date duration
+  -long description
+  +calculateAddress()
+  +sendStatus()
 }
 class Category {
-  -float email
-  -float updatedAt
-  +setEmail()
-  +cancelAddress()
-  +setPrice()
-  +savePrice()
+  -long duration
+  +double note
+  -float type
+  -long active
+  +sendName()
 }
-abstract class Shipment {
-  -double price
-  +double active
-  #long email
-  -float updatedAt
-  #String createdAt
-  +sendPhone()
-  +setStatus()
+class Shipment {
+  -float phone
+  #int id
+  +cancelType()
+  +getName()
+  +cancelQuantity()
+  +processAddress()
 }
 abstract class Coupon {
-  -long description
-  +boolean status
-  #double price
-  -Date amount
-  +sendType()
-  +deleteAmount()
-  +calculateAddress()
-  +setLevel()
+  +double email
+  #double address
+  +setCreatedat()
+  +cancelCreatedat()
+  +saveTotal()
+  +createPrice()
 }
-abstract class Customer {
-  +long active
-  #float createdAt
-  -String duration
-  #float amount
-  #Date level
-  +deleteScore()
-  +getAddress()
-  +getScore()
-  +findTotal()
+interface Customer {
+  +double updatedAt
+  #long createdAt
+  -float phone
+  #String price
+  +calculatePrice()
+  +processScore()
 }
-abstract class Invoice {
-  -long code
-  #int email
-  +saveDuration()
-  +deleteStatus()
-  +validateTotal()
-  +getAddress()
+class Invoice {
+  -Date status
+  #int type
+  +findLevel()
 }
-Category ..|> Payment
-Customer --* Invoice
-Review --* Customer
-Payment --> Coupon : "0..1"
-note right of Review : Ecommerce domain
+Customer --o Payment
+Category --> Payment : "*"
+Category --o Customer
+Coupon ..|> Shipment
+Payment ..> Shipment : "1..*"
 @enduml

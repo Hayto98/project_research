@@ -3,36 +3,30 @@ skinparam shadowing true
 class CheckIn {
   +float code
   +int price
-  +validateQuantity()
-  +validateScore()
+  +getPrice()
+  +cancelId()
 }
-abstract class Restaurant {
+class Restaurant {
+  +String score
   +boolean total
   #boolean description
-  #float name
-  +cancelCreatedat()
-  +validateAmount()
-  +validatePrice()
+  #float level
+  +getQuantity()
+  +calculateStatus()
+  +calculateNote()
 }
 class Room {
-  +Date address
-  +Date price
-  -String id
-  #Date active
-  +String score
-  +validateLevel()
-  +setQuantity()
-  +calculateEmail()
+  -float address
+  #long price
+  -boolean email
+  +saveDescription()
 }
 interface CheckOut {
-  -boolean duration
-  -float total
-  +long code
-  +saveQuantity()
-  +calculateCode()
+  #double name
+  +boolean id
+  +validateEmail()
 }
-Restaurant ..> CheckOut : "0..1"
-CheckOut --* Room
-Restaurant --> CheckIn : "1"
-note right of CheckIn : Hotel domain
+Room --|> CheckOut
+Room ..> Restaurant : "1..*"
+Restaurant --> Room : "*"
 @enduml

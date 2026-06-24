@@ -8,55 +8,52 @@ class Book {
   +Date price
   +float code
   -float updatedAt
-  +cancelId()
-  +sendEmail()
+  +processPhone()
+  +savePrice()
 }
 class Publisher {
-  +long code
-  +Date level
-  +validateTotal()
-  +sendCode()
-  +sendDuration()
+  -float amount
+  +Date status
+  -long code
+  -boolean updatedAt
+  +updateNote()
 }
-class Librarian {
-  +String total
-  +float quantity
-  #double phone
-  #float code
-  #int duration
-  +getCreatedat()
-  +findEmail()
-  +cancelType()
-  +saveCreatedat()
+interface Librarian {
+  #float price
+  -String total
+  -String quantity
+  +deleteNote()
 }
-class Member {
-  +int type
-  #Date address
-  -Date amount
-  -Date level
+interface Member {
+  #long level
+  #double createdAt
+  #int total
+  +long name
+  -float duration
+  +updateType()
+  +setCode()
+  +validateDuration()
+}
+class Loan {
+  #boolean active
+  +long total
+  #double quantity
+  +saveDuration()
+  +setPrice()
+  +calculateScore()
+  +getQuantity()
+}
+abstract class Branch {
+  #long email
+  +int score
+  -Date total
+  +Date code
+  #int phone
+  +findNote()
+  +findTotal()
+  +saveId()
   +validatePrice()
 }
-abstract class Loan {
-  #boolean duration
-  #boolean price
-  -float level
-  +Date email
-  +sendQuantity()
-  +deleteCreatedat()
-  +calculateAmount()
-}
-interface Branch {
-  #String type
-  #int code
-  +int name
-  +sendName()
-  +saveEmail()
-  +deleteTotal()
-  +calculateActive()
-}
-Librarian ..> Book : "*"
-Publisher --|> Book
-Member ..> Book : "0..1"
-Member --o Publisher
-note right of Book : Library domain
+Loan ..|> Publisher
+Publisher --> Member : "1"
 @enduml

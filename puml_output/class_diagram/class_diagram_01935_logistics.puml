@@ -5,63 +5,58 @@ interface Route {
   +boolean quantity
   +long name
   #int updatedAt
-  +updatePrice()
-  +saveNote()
-  +cancelNote()
-  +sendName()
+  +getTotal()
+  +sendType()
+  +saveName()
+  +cancelPrice()
 }
-interface Warehouse {
-  #int phone
-  #Date status
-  +float email
-  +double address
-  +getId()
+abstract class Warehouse {
+  -long score
+  #int name
+  #Date email
+  +float phone
+  +double status
+  +saveEmail()
 }
 class Shipment {
-  +float createdAt
-  -Date description
-  +saveCode()
-  +cancelLevel()
-  +createTotal()
-  +setLevel()
+  +float level
+  -Date code
+  #float createdAt
+  -float description
+  +processEmail()
 }
-class Manifest {
-  -float phone
-  #int total
-  #float address
-  #String quantity
-  #String code
-  +getCode()
-  +cancelUpdatedat()
+interface Manifest {
+  -float total
+  -long code
+  #long status
+  +double price
+  +sendUpdatedat()
+  +setActive()
 }
 class Customer {
-  -Date name
-  #boolean createdAt
-  #boolean address
-  +createCreatedat()
-  +setCode()
-  +createAmount()
+  +boolean updatedAt
+  +int name
+  +updateCreatedat()
+  +savePhone()
 }
 class Vehicle {
-  -Date note
-  #double level
-  -Date description
-  +double code
-  +setLevel()
+  -int address
+  +String level
+  -int score
+  #String phone
+  +createEmail()
+  +cancelScore()
+  +findStatus()
 }
-class FuelLog {
-  #double createdAt
-  #float code
-  -int price
-  +boolean description
-  #int id
-  +getDescription()
+abstract class FuelLog {
+  #boolean level
+  -long code
+  #int email
+  +processCreatedat()
+  +deleteNote()
+  +saveTotal()
+  +findEmail()
 }
-Route --* Warehouse
-FuelLog --> Manifest : "1"
-Manifest --|> Vehicle
-Warehouse --|> Shipment
-Vehicle ..> Shipment : "0..1"
-Customer ..> Vehicle : "0..1"
-note right of Route : Logistics domain
+Customer --o Warehouse
+Warehouse ..> Vehicle : "1"
 @enduml
